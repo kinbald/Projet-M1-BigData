@@ -32,6 +32,11 @@ parameters:
     secret: ASecretKey
 
 ```
+
+  Par la suite, il va falloir importer les entités Doctrine dans la BDD à l'aide de la commande suivante : 
+```bash
+php bin/console doctrine:schema:update --force
+```
 ## Execution
 
 ```bash
