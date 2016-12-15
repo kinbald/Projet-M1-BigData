@@ -1,3 +1,28 @@
+concours:
+    resource: "@ConcoursBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+contract:
+    resource: "@ContractBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+user:
+    resource: "@UserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+media:
+    resource: "@MediaBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+product:
+    resource: "@ProductBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
