@@ -3,6 +3,9 @@
 namespace UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use UserBundle\Entity\BaseUser;
+use ContractBundle\Entity\Option;
+use ContractBundle\Entity\OptionSubscription;
 
 /**
  * UserProducer
@@ -10,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="user_producer")
  * @ORM\Entity(repositoryClass="UserBundle\Repository\UserProducerRepository")
  */
-class UserProducer
+class UserProducer extends BaseUser
 {
     /**
      * @var int
@@ -55,6 +58,12 @@ class UserProducer
      * @ORM\Column(name="postal_code", type="string", length=10)
      */
     private $postalCode;
+
+    /**
+     * @var OptionSubscription
+     * @ORM\OneToMany(targetEntity="ContractBundle\Entity\OptionSubscription", mappedBy="user")
+     */
+    private $options;
 
 
     /**
@@ -186,5 +195,38 @@ class UserProducer
     {
         return $this->postalCode;
     }
-}
 
+    /**
+     * Add option
+     *
+     * @param \ContractBundle\Entity\OptionSubscription $option
+     *
+     * @return UserProducer
+     */
+    public function addOption(\ContractBundle\Entity\OptionSubscription $option)
+    {
+        $this->options[] = $option;
+
+        return $this;
+    }
+
+    /**
+     * Remove option
+     *
+     * @param \ContractBundle\Entity\OptionSubscription $option
+     */
+    public function removeOption(\ContractBundle\Entity\OptionSubscription $option)
+    {
+        $this->options->removeElement($option);
+    }
+
+    /**
+     * Get options
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getOptions()
+    {
+        return $this->options;
+    }
+}

@@ -3,6 +3,8 @@
 namespace ProductBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ProductBundle\Entity\Product;
+use ConcoursBundle\Entity\CompetitionWine;
 
 /**
  * Wine
@@ -10,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="wine")
  * @ORM\Entity(repositoryClass="ProductBundle\Repository\WineRepository")
  */
-class Wine
+class Wine extends Product
 {
     /**
      * @var int
@@ -34,6 +36,12 @@ class Wine
      * @ORM\Column(name="color", type="string", length=50)
      */
     private $color;
+
+    /**
+     * @var CompetitionWine
+     * @ORM\OneToMany(targetEntity="ConcoursBundle\Entity\CompetitionWine", mappedBy="wine")
+     */
+    private $competitions;
 
 
     /**
@@ -93,5 +101,38 @@ class Wine
     {
         return $this->color;
     }
-}
 
+    /**
+     * Add competition
+     *
+     * @param \ConcoursBundle\Entity\CompetitionWine $competition
+     *
+     * @return Wine
+     */
+    public function addCompetition(\ConcoursBundle\Entity\CompetitionWine $competition)
+    {
+        $this->competitions[] = $competition;
+
+        return $this;
+    }
+
+    /**
+     * Remove competition
+     *
+     * @param \ConcoursBundle\Entity\CompetitionWine $competition
+     */
+    public function removeCompetition(\ConcoursBundle\Entity\CompetitionWine $competition)
+    {
+        $this->competitions->removeElement($competition);
+    }
+
+    /**
+     * Get competitions
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCompetitions()
+    {
+        return $this->competitions;
+    }
+}

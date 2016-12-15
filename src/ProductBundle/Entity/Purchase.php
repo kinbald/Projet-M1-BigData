@@ -65,11 +65,7 @@ class Purchase
      */
     private $dateOrder;
 
-    /**
-     * @var Product
-     * @ORM\ManyToMany(targetEntity="\ProductBundle\Entity\Product", cascade={"persist"})
-     */
-    private $products;
+
 
     /**
      * @var BaseUser
@@ -77,6 +73,12 @@ class Purchase
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
+
+    /**
+     * @var Product
+     * @ORM\OneToMany(targetEntity="ProductBundle\Entity\ProductPurchase", mappedBy="purchase")
+     */
+    private $products;
 
 
     /**
@@ -232,47 +234,8 @@ class Purchase
     {
         return $this->dateOrder;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->products = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
-    /**
-     * Add product
-     *
-     * @param \ProductBundle\Entity\Product $product
-     *
-     * @return Purchase
-     */
-    public function addProduct(\ProductBundle\Entity\Product $product)
-    {
-        $this->products[] = $product;
 
-        return $this;
-    }
-
-    /**
-     * Remove product
-     *
-     * @param \ProductBundle\Entity\Product $product
-     */
-    public function removeProduct(\ProductBundle\Entity\Product $product)
-    {
-        $this->products->removeElement($product);
-    }
-
-    /**
-     * Get products
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getProducts()
-    {
-        return $this->products;
-    }
 
     /**
      * Set user
@@ -296,5 +259,46 @@ class Purchase
     public function getUser()
     {
         return $this->user;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->products = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add product
+     *
+     * @param \ProductBundle\Entity\ProductPurchase $product
+     *
+     * @return Purchase
+     */
+    public function addProduct(\ProductBundle\Entity\ProductPurchase $product)
+    {
+        $this->products[] = $product;
+
+        return $this;
+    }
+
+    /**
+     * Remove product
+     *
+     * @param \ProductBundle\Entity\ProductPurchase $product
+     */
+    public function removeProduct(\ProductBundle\Entity\ProductPurchase $product)
+    {
+        $this->products->removeElement($product);
+    }
+
+    /**
+     * Get products
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProducts()
+    {
+        return $this->products;
     }
 }

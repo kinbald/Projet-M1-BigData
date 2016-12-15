@@ -3,6 +3,7 @@
 namespace UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use UserBundle\Entity\BaseUser;
 
 /**
  * UserMedia
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="user_media")
  * @ORM\Entity(repositoryClass="UserBundle\Repository\UserMediaRepository")
  */
-class UserMedia
+class UserMedia extends BaseUser
 {
     /**
      * @var int

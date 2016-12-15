@@ -3,6 +3,8 @@
 namespace UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ProductBundle\Entity\ProductEvaluation;
+use UserBundle\Entity\BaseUser;
 
 /**
  * UserConsumer
@@ -10,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="user_consumer")
  * @ORM\Entity(repositoryClass="UserBundle\Repository\UserConsumerRepository")
  */
-class UserConsumer
+class UserConsumer extends BaseUser
 {
     /**
      * @var int
@@ -34,6 +36,13 @@ class UserConsumer
      * @ORM\Column(name="birth_date", type="date")
      */
     private $birthDate;
+
+    /**
+     * @var ProductEvaluation
+     *
+     * @ORM\OneToMany(targetEntity="ProductBundle\Entity\ProductEvaluation", mappedBy="user")
+     */
+    private $products;
 
 
     /**
@@ -93,5 +102,38 @@ class UserConsumer
     {
         return $this->birthDate;
     }
-}
 
+    /**
+     * Add product
+     *
+     * @param \ProductBundle\Entity\ProductEvaluation $product
+     *
+     * @return UserConsumer
+     */
+    public function addProduct(\ProductBundle\Entity\ProductEvaluation $product)
+    {
+        $this->products[] = $product;
+
+        return $this;
+    }
+
+    /**
+     * Remove product
+     *
+     * @param \ProductBundle\Entity\ProductEvaluation $product
+     */
+    public function removeProduct(\ProductBundle\Entity\ProductEvaluation $product)
+    {
+        $this->products->removeElement($product);
+    }
+
+    /**
+     * Get products
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProducts()
+    {
+        return $this->products;
+    }
+}

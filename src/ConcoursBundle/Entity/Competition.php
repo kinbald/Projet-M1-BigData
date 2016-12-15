@@ -3,6 +3,7 @@
 namespace ConcoursBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ConcoursBundle\Entity\CompetitionWine;
 
 /**
  * Competition
@@ -41,6 +42,12 @@ class Competition
      * @ORM\Column(name="description", type="text")
      */
     private $description;
+
+    /**
+     * @var CompetitionWine
+     * @ORM\OneToMany(targetEntity="ConcoursBundle\Entity\CompetitionWine", mappedBy="competition")
+     */
+    private $wines;
 
 
     /**
@@ -124,5 +131,45 @@ class Competition
     {
         return $this->description;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->wines = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add wine
+     *
+     * @param \ConcoursBundle\Entity\CompetitionWine $wine
+     *
+     * @return Competition
+     */
+    public function addWine(\ConcoursBundle\Entity\CompetitionWine $wine)
+    {
+        $this->wines[] = $wine;
+
+        return $this;
+    }
+
+    /**
+     * Remove wine
+     *
+     * @param \ConcoursBundle\Entity\CompetitionWine $wine
+     */
+    public function removeWine(\ConcoursBundle\Entity\CompetitionWine $wine)
+    {
+        $this->wines->removeElement($wine);
+    }
+
+    /**
+     * Get wines
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getWines()
+    {
+        return $this->wines;
+    }
+}

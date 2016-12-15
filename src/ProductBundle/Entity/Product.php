@@ -4,14 +4,22 @@ namespace ProductBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ProductBundle\Entity\PictureProduct;
+use ProductBundle\Entity\Universe;
+use ProductBundle\Entity\Purchase;
+use ProductBundle\Entity\ProductPurchase;
+use ProductBundle\Entity\ProductEvaluation;
+use UserBundle\Entity\UserConsumer;
 
 /**
  * Product
  *
  * @ORM\Table(name="product")
  * @ORM\Entity(repositoryClass="ProductBundle\Repository\ProductRepository")
+ * @ORM\InheritanceType("JOINED")
+ * @ORM\DiscriminatorColumn(name="discr", type="string")
+ * @ORM\DiscriminatorMap({"wine" = "Wine", "spirit" = "Spirit"})
  */
-class Product
+abstract class Product
 {
     /**
      * @var int
@@ -64,6 +72,23 @@ class Product
      */
     private $pictures;
 
+    /**
+     * @var Universe
+     * @ORM\ManyToMany(targetEntity="\ProductBundle\Entity\Universe", mappedBy="products")
+     */
+    private $universes;
+
+    /**
+     * @var ProductPurchase
+     * @ORM\OneToMany(targetEntity="ProductBundle\Entity\ProductPurchase", mappedBy="product")
+     */
+    private $purchases;
+
+    /**
+     * @var ProductEvaluation
+     * @ORM\OneToMany(targetEntity="ProductBundle\Entity\ProductEvaluation", mappedBy="product")
+     */
+    private $users;
 
     /**
      * Get id
@@ -234,5 +259,108 @@ class Product
     public function getPictures()
     {
         return $this->pictures;
+    }
+
+    /**
+     * Add universe
+     *
+     * @param \ProductBundle\Entity\Universe $universe
+     *
+     * @return Product
+     */
+    public function addUniverse(\ProductBundle\Entity\Universe $universe)
+    {
+        $this->universes[] = $universe;
+
+        return $this;
+    }
+
+    /**
+     * Remove universe
+     *
+     * @param \ProductBundle\Entity\Universe $universe
+     */
+    public function removeUniverse(\ProductBundle\Entity\Universe $universe)
+    {
+        $this->universes->removeElement($universe);
+    }
+
+    /**
+     * Get universes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUniverses()
+    {
+        return $this->universes;
+    }
+
+
+    /**
+     * Add purchase
+     *
+     * @param \ProductBundle\Entity\ProductPurchase $purchase
+     *
+     * @return Product
+     */
+    public function addPurchase(\ProductBundle\Entity\ProductPurchase $purchase)
+    {
+        $this->purchases[] = $purchase;
+
+        return $this;
+    }
+
+    /**
+     * Remove purchase
+     *
+     * @param \ProductBundle\Entity\ProductPurchase $purchase
+     */
+    public function removePurchase(\ProductBundle\Entity\ProductPurchase $purchase)
+    {
+        $this->purchases->removeElement($purchase);
+    }
+
+    /**
+     * Get purchases
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPurchases()
+    {
+        return $this->purchases;
+    }
+
+    /**
+     * Add user
+     *
+     * @param \ProductBundle\Entity\ProductEvaluation $user
+     *
+     * @return Product
+     */
+    public function addUser(\ProductBundle\Entity\ProductEvaluation $user)
+    {
+        $this->users[] = $user;
+
+        return $this;
+    }
+
+    /**
+     * Remove user
+     *
+     * @param \ProductBundle\Entity\ProductEvaluation $user
+     */
+    public function removeUser(\ProductBundle\Entity\ProductEvaluation $user)
+    {
+        $this->users->removeElement($user);
+    }
+
+    /**
+     * Get users
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUsers()
+    {
+        return $this->users;
     }
 }

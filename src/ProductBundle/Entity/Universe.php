@@ -46,7 +46,7 @@ class Universe
 
     /**
      * @var Product
-     * @ORM\ManyToMany(targetEntity="\ProductBundle\Entity\Product", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="\ProductBundle\Entity\Product", cascade={"persist"}, inversedBy="universes")
      */
     private $products;
 

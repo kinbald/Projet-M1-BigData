@@ -3,6 +3,8 @@
 namespace ProductBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ProductBundle\Entity\Product;
+use UserBundle\Entity\UserConsumer;
 
 /**
  * ProductEvaluation
@@ -34,6 +36,20 @@ class ProductEvaluation
      * @ORM\Column(name="review", type="string", length=255)
      */
     private $review;
+
+    /**
+     * @var Product
+     * @ORM\ManyToOne(targetEntity="ProductBundle\Entity\Product", inversedBy="users")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $product;
+
+    /**
+     * @var UserConsumer
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\UserConsumer", inversedBy="products")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
 
 
     /**
@@ -93,5 +109,52 @@ class ProductEvaluation
     {
         return $this->review;
     }
-}
 
+    /**
+     * Set product
+     *
+     * @param \ProductBundle\Entity\Product $product
+     *
+     * @return ProductEvaluation
+     */
+    public function setProduct(\ProductBundle\Entity\Product $product)
+    {
+        $this->product = $product;
+
+        return $this;
+    }
+
+    /**
+     * Get product
+     *
+     * @return \ProductBundle\Entity\Product
+     */
+    public function getProduct()
+    {
+        return $this->product;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \UserBundle\Entity\UserConsumer $user
+     *
+     * @return ProductEvaluation
+     */
+    public function setUser(\UserBundle\Entity\UserConsumer $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \UserBundle\Entity\UserConsumer
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+}

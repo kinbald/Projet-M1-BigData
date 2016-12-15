@@ -3,6 +3,7 @@
 namespace ProductBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ProductBundle\Entity\Product;
 
 /**
  * Spirit
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="spirit")
  * @ORM\Entity(repositoryClass="ProductBundle\Repository\SpiritRepository")
  */
-class Spirit
+class Spirit extends Product
 {
     /**
      * @var int

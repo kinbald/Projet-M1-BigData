@@ -4,14 +4,18 @@ namespace UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ProductBundle\Entity\Purchase;
+use UserBundle\Entity\UserConsumer;
 
 /**
  * BaseUser
  *
  * @ORM\Table(name="base_user")
  * @ORM\Entity(repositoryClass="UserBundle\Repository\BaseUserRepository")
+ * @ORM\InheritanceType("JOINED")
+ * @ORM\DiscriminatorColumn(name="discr", type="string")
+ * @ORM\DiscriminatorMap({"consumer" = "UserConsumer", "media" = "UserMedia", "producer" = "UserProducer"})
  */
-class BaseUser
+abstract class BaseUser
 {
     /**
      * @var int

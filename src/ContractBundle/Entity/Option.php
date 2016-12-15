@@ -3,6 +3,7 @@
 namespace ContractBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use UserBundle\Entity\UserProducer;
 
 /**
  * Option
@@ -41,6 +42,12 @@ class Option
      * @ORM\Column(name="price", type="float")
      */
     private $price;
+
+    /**
+     * @var UserProducer
+     * @ORM\OneToMany(targetEntity="ContractBundle\Entity\OptionSubscription", mappedBy="option")
+     */
+    private $users;
 
 
     /**
@@ -124,5 +131,45 @@ class Option
     {
         return $this->price;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add user
+     *
+     * @param \ConcoursBundle\Entity\OptionSubscription $user
+     *
+     * @return Option
+     */
+    public function addUser(\ConcoursBundle\Entity\OptionSubscription $user)
+    {
+        $this->users[] = $user;
+
+        return $this;
+    }
+
+    /**
+     * Remove user
+     *
+     * @param \ConcoursBundle\Entity\OptionSubscription $user
+     */
+    public function removeUser(\ConcoursBundle\Entity\OptionSubscription $user)
+    {
+        $this->users->removeElement($user);
+    }
+
+    /**
+     * Get users
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUsers()
+    {
+        return $this->users;
+    }
+}
