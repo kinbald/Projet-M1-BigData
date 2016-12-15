@@ -2,57 +2,64 @@
 
 namespace ProductBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use ProductBundle\Entity\PictureUniverse;
 use ProductBundle\Entity\Product;
 
 /**
  * Universe
  *
  * @ORM\Table(name="universe")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="ProductBundle\Repository\UniverseRepository")
  */
 class Universe
 {
     /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=2000, nullable=false)
+     * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=2000, nullable=true)
+     * @ORM\Column(name="description", type="text")
      */
     private $description;
 
     /**
-     * @var integer
+     * @var PictureUniverse
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="universe_id_seq", allocationSize=1, initialValue=1)
+     * @ORM\OneToMany(targetEntity="\ProductBundle\Entity\PictureUniverse", mappedBy="universe")
      */
-    private $id;
+    private $pictures;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Product", mappedBy="idUniverse")
+     * @var Product
+     * @ORM\ManyToMany(targetEntity="\ProductBundle\Entity\Product", cascade={"persist"})
      */
-    private $idProduct;
+    private $products;
+
 
     /**
-     * Constructor
+     * Get id
+     *
+     * @return int
      */
-    public function __construct()
+    public function getId()
     {
-        $this->idProduct = new ArrayCollection();
+        return $this->id;
     }
-
 
     /**
      * Set name
@@ -101,48 +108,79 @@ class Universe
     {
         return $this->description;
     }
-
     /**
-     * Get id
-     *
-     * @return integer
+     * Constructor
      */
-    public function getId()
+    public function __construct()
     {
-        return $this->id;
+        $this->pictures = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
-     * Add idProduct
+     * Add picture
      *
-     * @param Product $idProduct
+     * @param \ProductBundle\Entity\PictureUniverse $picture
      *
      * @return Universe
      */
-    public function addIdProduct(Product $idProduct)
+    public function addPicture(\ProductBundle\Entity\PictureUniverse $picture)
     {
-        $this->idProduct[] = $idProduct;
+        $this->pictures[] = $picture;
 
         return $this;
     }
 
     /**
-     * Remove idProduct
+     * Remove picture
      *
-     * @param Product $idProduct
+     * @param \ProductBundle\Entity\PictureUniverse $picture
      */
-    public function removeIdProduct(Product $idProduct)
+    public function removePicture(\ProductBundle\Entity\PictureUniverse $picture)
     {
-        $this->idProduct->removeElement($idProduct);
+        $this->pictures->removeElement($picture);
     }
 
     /**
-     * Get idProduct
+     * Get pictures
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getIdProduct()
+    public function getPictures()
     {
-        return $this->idProduct;
+        return $this->pictures;
+    }
+
+    /**
+     * Add product
+     *
+     * @param \ProductBundle\Entity\Product $product
+     *
+     * @return Universe
+     */
+    public function addProduct(\ProductBundle\Entity\Product $product)
+    {
+        $this->products[] = $product;
+
+        return $this;
+    }
+
+    /**
+     * Remove product
+     *
+     * @param \ProductBundle\Entity\Product $product
+     */
+    public function removeProduct(\ProductBundle\Entity\Product $product)
+    {
+        $this->products->removeElement($product);
+    }
+
+    /**
+     * Get products
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProducts()
+    {
+        return $this->products;
     }
 }

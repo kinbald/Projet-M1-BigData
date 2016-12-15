@@ -3,64 +3,69 @@
 namespace UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use UserBundle\Entity\User;
 
 /**
  * UserProducer
  *
  * @ORM\Table(name="user_producer")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="UserBundle\Repository\UserProducerRepository")
  */
 class UserProducer
 {
     /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
      * @var string
      *
-     * @ORM\Column(name="siret", type="string", length=2000, nullable=false)
+     * @ORM\Column(name="siret", type="string", length=255)
      */
     private $siret;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="company_name", type="string", length=2000, nullable=true)
+     * @ORM\Column(name="company_name", type="string", length=255)
      */
     private $companyName;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="address", type="string", length=2000, nullable=true)
+     * @ORM\Column(name="address", type="string", length=255)
      */
     private $address;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="city", type="string", length=2000, nullable=true)
+     * @ORM\Column(name="city", type="string", length=255)
      */
     private $city;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="postal_code", type="string", length=2000, nullable=true)
+     * @ORM\Column(name="postal_code", type="string", length=10)
      */
     private $postalCode;
 
+
     /**
-     * @var User
+     * Get id
      *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="User")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_user", referencedColumnName="id")
-     * })
+     * @return int
      */
-    private $idUser;
-
-
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * Set siret
@@ -181,28 +186,5 @@ class UserProducer
     {
         return $this->postalCode;
     }
-
-    /**
-     * Set idUser
-     *
-     * @param User $idUser
-     *
-     * @return UserProducer
-     */
-    public function setIdUser(User $idUser)
-    {
-        $this->idUser = $idUser;
-
-        return $this;
-    }
-
-    /**
-     * Get idUser
-     *
-     * @return User
-     */
-    public function getIdUser()
-    {
-        return $this->idUser;
-    }
 }
+

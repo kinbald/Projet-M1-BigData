@@ -3,36 +3,41 @@
 namespace ProductBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use ProductBundle\Entity\Product;
 
 /**
  * Spirit
  *
  * @ORM\Table(name="spirit")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="ProductBundle\Repository\SpiritRepository")
  */
 class Spirit
 {
     /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
      * @var float
      *
-     * @ORM\Column(name="alcohol_degree", type="float", precision=10, scale=0, nullable=true)
+     * @ORM\Column(name="alcohol_degree", type="float")
      */
     private $alcoholDegree;
 
+
     /**
-     * @var Product
+     * Get id
      *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Product")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_product", referencedColumnName="id")
-     * })
+     * @return int
      */
-    private $idProduct;
-
-
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * Set alcoholDegree
@@ -57,28 +62,5 @@ class Spirit
     {
         return $this->alcoholDegree;
     }
-
-    /**
-     * Set idProduct
-     *
-     * @param Product $idProduct
-     *
-     * @return Spirit
-     */
-    public function setIdProduct(Product $idProduct)
-    {
-        $this->idProduct = $idProduct;
-
-        return $this;
-    }
-
-    /**
-     * Get idProduct
-     *
-     * @return Product
-     */
-    public function getIdProduct()
-    {
-        return $this->idProduct;
-    }
 }
+

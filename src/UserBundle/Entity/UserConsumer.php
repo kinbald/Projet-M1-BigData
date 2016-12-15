@@ -3,50 +3,55 @@
 namespace UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use UserBundle\Entity\User;
 
 /**
- * Consumer
+ * UserConsumer
  *
- * @ORM\Table(name="consumer")
- * @ORM\Entity
+ * @ORM\Table(name="user_consumer")
+ * @ORM\Entity(repositoryClass="UserBundle\Repository\UserConsumerRepository")
  */
-class Consumer
+class UserConsumer
 {
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
     /**
      * @var string
      *
-     * @ORM\Column(name="sex", type="string", length=2000, nullable=false)
+     * @ORM\Column(name="sex", type="string", length=2)
      */
     private $sex;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="birth_date", type="date", nullable=false)
+     * @ORM\Column(name="birth_date", type="date")
      */
     private $birthDate;
 
+
     /**
-     * @var User
+     * Get id
      *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="User")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_user", referencedColumnName="id")
-     * })
+     * @return int
      */
-    private $idUser;
-
-
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * Set sex
      *
      * @param string $sex
      *
-     * @return Consumer
+     * @return UserConsumer
      */
     public function setSex($sex)
     {
@@ -70,7 +75,7 @@ class Consumer
      *
      * @param \DateTime $birthDate
      *
-     * @return Consumer
+     * @return UserConsumer
      */
     public function setBirthDate($birthDate)
     {
@@ -88,28 +93,5 @@ class Consumer
     {
         return $this->birthDate;
     }
-
-    /**
-     * Set idUser
-     *
-     * @param User $idUser
-     *
-     * @return Consumer
-     */
-    public function setIdUser(User $idUser)
-    {
-        $this->idUser = $idUser;
-
-        return $this;
-    }
-
-    /**
-     * Get idUser
-     *
-     * @return User
-     */
-    public function getIdUser()
-    {
-        return $this->idUser;
-    }
 }
+

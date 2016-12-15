@@ -2,72 +2,56 @@
 
 namespace ConcoursBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use ProductBundle\Entity\Product;
 
 /**
  * Competition
  *
  * @ORM\Table(name="competition")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="ConcoursBundle\Repository\CompetitionRepository")
  */
 class Competition
 {
     /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=2000, nullable=true)
+     * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_competition", type="date", nullable=true)
+     * @ORM\Column(name="date_competition", type="date")
      */
     private $dateCompetition;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=2000, nullable=true)
+     * @ORM\Column(name="description", type="text")
      */
     private $description;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="competition_id_seq", allocationSize=1, initialValue=1)
-     */
-    private $id;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * Get id
      *
-     * @ORM\ManyToMany(targetEntity="Product", inversedBy="idCompetition")
-     * @ORM\JoinTable(name="competition_wine",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="id_competition", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="id_product", referencedColumnName="id")
-     *   }
-     * )
+     * @return int
      */
-    private $idProduct;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
+    public function getId()
     {
-        $this->idProduct = new ArrayCollection();
+        return $this->id;
     }
-
 
     /**
      * Set name
@@ -140,48 +124,5 @@ class Competition
     {
         return $this->description;
     }
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Add idProduct
-     *
-     * @param Product $idProduct
-     *
-     * @return Competition
-     */
-    public function addIdProduct(Product $idProduct)
-    {
-        $this->idProduct[] = $idProduct;
-
-        return $this;
-    }
-
-    /**
-     * Remove idProduct
-     *
-     * @param Product $idProduct
-     */
-    public function removeIdProduct(Product $idProduct)
-    {
-        $this->idProduct->removeElement($idProduct);
-    }
-
-    /**
-     * Get idProduct
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getIdProduct()
-    {
-        return $this->idProduct;
-    }
 }
+

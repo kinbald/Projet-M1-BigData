@@ -2,131 +2,78 @@
 
 namespace ProductBundle\Entity;
 
-use ConcoursBundle\Entity\Order;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use ProductBundle\Entity\Competition;
-use ProductBundle\Entity\Universe;
-use UserBundle\Entity\User;
+use ProductBundle\Entity\PictureProduct;
 
 /**
  * Product
  *
- * @ORM\Table(name="product", indexes={@ORM\Index(name="IDX_D34A04ADA8866FD5", columns={"id_user_product"})})
- * @ORM\Entity
+ * @ORM\Table(name="product")
+ * @ORM\Entity(repositoryClass="ProductBundle\Repository\ProductRepository")
  */
 class Product
 {
     /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=2000, nullable=false)
+     * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=2000, nullable=true)
+     * @ORM\Column(name="description", type="text")
      */
     private $description;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="volume", type="float", precision=10, scale=0, nullable=false)
+     * @ORM\Column(name="volume", type="float")
      */
     private $volume;
 
     /**
-     * @var string
+     * @var float
      *
-     * @ORM\Column(name="price", type="decimal", precision=15, scale=3, nullable=false)
+     * @ORM\Column(name="price", type="float")
      */
     private $price;
 
     /**
-     * @var integer
+     * @var int
      *
-     * @ORM\Column(name="stock", type="integer", nullable=true)
+     * @ORM\Column(name="stock", type="integer")
      */
     private $stock;
 
     /**
-     * @var integer
+     * @var PictureProduct
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="product_id_seq", allocationSize=1, initialValue=1)
+     * @ORM\OneToMany(targetEntity="\ProductBundle\Entity\PictureProduct", mappedBy="product")
      */
-    private $id;
+    private $pictures;
+
 
     /**
-     * @var User
+     * Get id
      *
-     * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_user_product", referencedColumnName="id")
-     * })
+     * @return int
      */
-    private $idUserProduct;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Competition", mappedBy="idProduct")
-     */
-    private $idCompetition;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Order", mappedBy="idProduct")
-     */
-    private $idOrder;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Universe", inversedBy="idProduct")
-     * @ORM\JoinTable(name="product_universe",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="id_product", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="id_universe", referencedColumnName="id")
-     *   }
-     * )
-     */
-    private $idUniverse;
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="User", inversedBy="idProduct")
-     * @ORM\JoinTable(name="product_evaluation",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="id_product", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="id_user", referencedColumnName="id")
-     *   }
-     * )
-     */
-    private $idUser;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
+    public function getId()
     {
-        $this->idCompetition = new ArrayCollection();
-        $this->idOrder = new ArrayCollection();
-        $this->idUniverse = new ArrayCollection();
-        $this->idUser = new ArrayCollection();
+        return $this->id;
     }
-
 
     /**
      * Set name
@@ -203,7 +150,7 @@ class Product
     /**
      * Set price
      *
-     * @param string $price
+     * @param float $price
      *
      * @return Product
      */
@@ -217,7 +164,7 @@ class Product
     /**
      * Get price
      *
-     * @return string
+     * @return float
      */
     public function getPrice()
     {
@@ -241,180 +188,51 @@ class Product
     /**
      * Get stock
      *
-     * @return integer
+     * @return int
      */
     public function getStock()
     {
         return $this->stock;
     }
-
     /**
-     * Get id
-     *
-     * @return integer
+     * Constructor
      */
-    public function getId()
+    public function __construct()
     {
-        return $this->id;
+        $this->pictures = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
-     * Set idUserProduct
+     * Add picture
      *
-     * @param User $idUserProduct
+     * @param \ProductBundle\Entity\PictureProduct $picture
      *
      * @return Product
      */
-    public function setIdUserProduct(User $idUserProduct = null)
+    public function addPicture(\ProductBundle\Entity\PictureProduct $picture)
     {
-        $this->idUserProduct = $idUserProduct;
+        $this->pictures[] = $picture;
 
         return $this;
     }
 
     /**
-     * Get idUserProduct
+     * Remove picture
      *
-     * @return User
+     * @param \ProductBundle\Entity\PictureProduct $picture
      */
-    public function getIdUserProduct()
+    public function removePicture(\ProductBundle\Entity\PictureProduct $picture)
     {
-        return $this->idUserProduct;
+        $this->pictures->removeElement($picture);
     }
 
     /**
-     * Add idCompetition
-     *
-     * @param Competition $idCompetition
-     *
-     * @return Product
-     */
-    public function addIdCompetition(Competition $idCompetition)
-    {
-        $this->idCompetition[] = $idCompetition;
-
-        return $this;
-    }
-
-    /**
-     * Remove idCompetition
-     *
-     * @param Competition $idCompetition
-     */
-    public function removeIdCompetition(Competition $idCompetition)
-    {
-        $this->idCompetition->removeElement($idCompetition);
-    }
-
-    /**
-     * Get idCompetition
+     * Get pictures
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getIdCompetition()
+    public function getPictures()
     {
-        return $this->idCompetition;
-    }
-
-    /**
-     * Add idOrder
-     *
-     * @param Order $idOrder
-     *
-     * @return Product
-     */
-    public function addIdOrder(Order $idOrder)
-    {
-        $this->idOrder[] = $idOrder;
-
-        return $this;
-    }
-
-    /**
-     * Remove idOrder
-     *
-     * @param Order $idOrder
-     */
-    public function removeIdOrder(Order $idOrder)
-    {
-        $this->idOrder->removeElement($idOrder);
-    }
-
-    /**
-     * Get idOrder
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getIdOrder()
-    {
-        return $this->idOrder;
-    }
-
-    /**
-     * Add idUniverse
-     *
-     * @param Universe $idUniverse
-     *
-     * @return Product
-     */
-    public function addIdUniverse(Universe $idUniverse)
-    {
-        $this->idUniverse[] = $idUniverse;
-
-        return $this;
-    }
-
-    /**
-     * Remove idUniverse
-     *
-     * @param Universe $idUniverse
-     */
-    public function removeIdUniverse(Universe $idUniverse)
-    {
-        $this->idUniverse->removeElement($idUniverse);
-    }
-
-    /**
-     * Get idUniverse
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getIdUniverse()
-    {
-        return $this->idUniverse;
-    }
-
-    /**
-     * Add idUser
-     *
-     * @param User $idUser
-     *
-     * @return Product
-     */
-    public function addIdUser(User $idUser)
-    {
-        $this->idUser[] = $idUser;
-
-        return $this;
-    }
-
-    /**
-     * Remove idUser
-     *
-     * @param User $idUser
-     */
-    public function removeIdUser(User $idUser)
-    {
-        $this->idUser->removeElement($idUser);
-    }
-
-    /**
-     * Get idUser
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getIdUser()
-    {
-        return $this->idUser;
+        return $this->pictures;
     }
 }

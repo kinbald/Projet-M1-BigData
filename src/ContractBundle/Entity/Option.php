@@ -2,72 +2,56 @@
 
 namespace ContractBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use UserBundle\Entity\User;
 
 /**
  * Option
  *
  * @ORM\Table(name="option")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="ContractBundle\Repository\OptionRepository")
  */
 class Option
 {
     /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=2000, nullable=true)
+     * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=2000, nullable=true)
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="price", type="float", precision=10, scale=0, nullable=true)
+     * @ORM\Column(name="price", type="float")
      */
     private $price;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="option_id_seq", allocationSize=1, initialValue=1)
-     */
-    private $id;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * Get id
      *
-     * @ORM\ManyToMany(targetEntity="User", inversedBy="idOption")
-     * @ORM\JoinTable(name="option_subscription",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="id_option", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="id_user", referencedColumnName="id")
-     *   }
-     * )
+     * @return int
      */
-    private $idUser;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
+    public function getId()
     {
-        $this->idUser = new ArrayCollection();
+        return $this->id;
     }
-
 
     /**
      * Set name
@@ -140,48 +124,5 @@ class Option
     {
         return $this->price;
     }
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Add idUser
-     *
-     * @param User $idUser
-     *
-     * @return Option
-     */
-    public function addIdUser(User $idUser)
-    {
-        $this->idUser[] = $idUser;
-
-        return $this;
-    }
-
-    /**
-     * Remove idUser
-     *
-     * @param User $idUser
-     */
-    public function removeIdUser(User $idUser)
-    {
-        $this->idUser->removeElement($idUser);
-    }
-
-    /**
-     * Get idUser
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getIdUser()
-    {
-        return $this->idUser;
-    }
 }
+

@@ -3,50 +3,55 @@
 namespace UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use UserBundle\Entity\User;
 
 /**
  * UserMedia
  *
  * @ORM\Table(name="user_media")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="UserBundle\Repository\UserMediaRepository")
  */
 class UserMedia
 {
     /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
      * @var string
      *
-     * @ORM\Column(name="company_name", type="string", length=2000, nullable=true)
+     * @ORM\Column(name="company_name", type="string", length=255)
      */
     private $companyName;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="url_blog", type="string", length=2000, nullable=true)
+     * @ORM\Column(name="url_blog", type="string", length=255)
      */
     private $urlBlog;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="id_presse", type="string", length=2000, nullable=true)
+     * @ORM\Column(name="id_presse", type="string", length=255)
      */
     private $idPresse;
 
+
     /**
-     * @var User
+     * Get id
      *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="User")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_user", referencedColumnName="id")
-     * })
+     * @return int
      */
-    private $idUser;
-
-
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * Set companyName
@@ -119,28 +124,5 @@ class UserMedia
     {
         return $this->idPresse;
     }
-
-    /**
-     * Set idUser
-     *
-     * @param User $idUser
-     *
-     * @return UserMedia
-     */
-    public function setIdUser(User $idUser)
-    {
-        $this->idUser = $idUser;
-
-        return $this;
-    }
-
-    /**
-     * Get idUser
-     *
-     * @return User
-     */
-    public function getIdUser()
-    {
-        return $this->idUser;
-    }
 }
+

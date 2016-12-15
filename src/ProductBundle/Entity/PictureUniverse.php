@@ -2,52 +2,58 @@
 
 namespace ProductBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use ProductBundle\Entity\Universe;
 
 /**
  * PictureUniverse
  *
- * @ORM\Table(name="picture_universe", uniqueConstraints={@ORM\UniqueConstraint(name="picture_universe_url_key", columns={"url"})}, indexes={@ORM\Index(name="IDX_9F5AD3931EED4A0", columns={"id_universe"})})
- * @ORM\Entity
+ * @ORM\Table(name="picture_universe")
+ * @ORM\Entity(repositoryClass="ProductBundle\Repository\PictureUniverseRepository")
  */
 class PictureUniverse
 {
     /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
      * @var string
      *
-     * @ORM\Column(name="alt", type="string", length=2000, nullable=false)
+     * @ORM\Column(name="alt", type="string", length=255)
      */
     private $alt;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="url", type="string", length=2000, nullable=false)
+     * @ORM\Column(name="url", type="string", length=255)
      */
     private $url;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="picture_universe_id_seq", allocationSize=1, initialValue=1)
+     * @var Universe
+     * @ORM\ManyToOne(targetEntity="\ProductBundle\Entity\Universe", inversedBy="pictures")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $id;
+    private $universe;
+    
 
     /**
-     * @var Universe
+     * Get id
      *
-     * @ORM\ManyToOne(targetEntity="Universe")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_universe", referencedColumnName="id")
-     * })
+     * @return int
      */
-    private $idUniverse;
-
-
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * Set alt
@@ -98,36 +104,27 @@ class PictureUniverse
     }
 
     /**
-     * Get id
+     * Set universe
      *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set idUniverse
-     *
-     * @param Universe $idUniverse
+     * @param \ProductBundle\Universe $universe
      *
      * @return PictureUniverse
      */
-    public function setIdUniverse(Universe $idUniverse = null)
+    public function setUniverse(\ProductBundle\Universe $universe)
     {
-        $this->idUniverse = $idUniverse;
+        $this->universe = $universe;
 
         return $this;
     }
 
     /**
-     * Get idUniverse
+     * Get universe
      *
-     * @return Universe
+     * @return \ProductBundle\Universe
      */
-    public function getIdUniverse()
+    public function getUniverse()
     {
-        return $this->idUniverse;
+        return $this->universe;
     }
+
 }

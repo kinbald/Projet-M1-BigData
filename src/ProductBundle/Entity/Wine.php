@@ -3,48 +3,53 @@
 namespace ProductBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use ProductBundle\Entity\Product;
 
 /**
  * Wine
  *
  * @ORM\Table(name="wine")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="ProductBundle\Repository\WineRepository")
  */
 class Wine
 {
     /**
-     * @var integer
+     * @var int
      *
-     * @ORM\Column(name="vintage", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="vintage", type="date")
      */
     private $vintage;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="color", type="string", length=2000, nullable=true)
+     * @ORM\Column(name="color", type="string", length=50)
      */
     private $color;
 
+
     /**
-     * @var Product
+     * Get id
      *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Product")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_product", referencedColumnName="id")
-     * })
+     * @return int
      */
-    private $idProduct;
-
-
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * Set vintage
      *
-     * @param integer $vintage
+     * @param \DateTime $vintage
      *
      * @return Wine
      */
@@ -58,7 +63,7 @@ class Wine
     /**
      * Get vintage
      *
-     * @return integer
+     * @return \DateTime
      */
     public function getVintage()
     {
@@ -88,28 +93,5 @@ class Wine
     {
         return $this->color;
     }
-
-    /**
-     * Set idProduct
-     *
-     * @param Product $idProduct
-     *
-     * @return Wine
-     */
-    public function setIdProduct(Product $idProduct)
-    {
-        $this->idProduct = $idProduct;
-
-        return $this;
-    }
-
-    /**
-     * Get idProduct
-     *
-     * @return Product
-     */
-    public function getIdProduct()
-    {
-        return $this->idProduct;
-    }
 }
+

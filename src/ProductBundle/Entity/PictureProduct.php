@@ -8,46 +8,51 @@ use ProductBundle\Entity\Product;
 /**
  * PictureProduct
  *
- * @ORM\Table(name="picture_product", uniqueConstraints={@ORM\UniqueConstraint(name="picture_product_url_key", columns={"url"})}, indexes={@ORM\Index(name="IDX_CE6CF07FDD7ADDD", columns={"id_product"})})
- * @ORM\Entity
+ * @ORM\Table(name="picture_product")
+ * @ORM\Entity(repositoryClass="ProductBundle\Repository\PictureProductRepository")
  */
 class PictureProduct
 {
     /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
      * @var string
      *
-     * @ORM\Column(name="alt", type="string", length=2000, nullable=false)
+     * @ORM\Column(name="alt", type="string", length=255)
      */
     private $alt;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="url", type="string", length=2000, nullable=false)
+     * @ORM\Column(name="url", type="string", length=255)
      */
     private $url;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="picture_product_id_seq", allocationSize=1, initialValue=1)
+     * @var Product
+     * @ORM\ManyToOne(targetEntity="\ProductBundle\Entity\Product", inversedBy="pictures")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $id;
+    private $product;
+
 
     /**
-     * @var Product
+     * Get id
      *
-     * @ORM\ManyToOne(targetEntity="Product")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_product", referencedColumnName="id")
-     * })
+     * @return int
      */
-    private $idProduct;
-
-
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * Set alt
@@ -98,36 +103,26 @@ class PictureProduct
     }
 
     /**
-     * Get id
+     * Set product
      *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set idProduct
-     *
-     * @param Product $idProduct
+     * @param \ProductBundle\Entity\Product $product
      *
      * @return PictureProduct
      */
-    public function setIdProduct(Product $idProduct = null)
+    public function setProduct(\ProductBundle\Entity\Product $product)
     {
-        $this->idProduct = $idProduct;
+        $this->product = $product;
 
         return $this;
     }
 
     /**
-     * Get idProduct
+     * Get product
      *
-     * @return Product
+     * @return \ProductBundle\Entity\Product
      */
-    public function getIdProduct()
+    public function getProduct()
     {
-        return $this->idProduct;
+        return $this->product;
     }
 }
