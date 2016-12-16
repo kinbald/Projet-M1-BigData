@@ -5,12 +5,15 @@ namespace UserBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use ProductBundle\Entity\ProductEvaluation;
 use UserBundle\Entity\BaseUser;
+use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
 
 /**
  * UserConsumer
  *
  * @ORM\Table(name="user_consumer")
  * @ORM\Entity(repositoryClass="UserBundle\Repository\UserConsumerRepository")
+ * @UniqueEntity(fields = "username", targetClass = "UserBundle\Entity\User", message="fos_user.username.already_used")
+ * @UniqueEntity(fields = "email", targetClass = "UserBundle\Entity\User", message="fos_user.email.already_used")
  */
 class UserConsumer extends BaseUser
 {
