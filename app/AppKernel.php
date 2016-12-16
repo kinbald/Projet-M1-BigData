@@ -10,7 +10,6 @@ class AppKernel extends Kernel
         $bundles = [
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),
-            new FOS\UserBundle\FOSUserBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
             new Symfony\Bundle\MonologBundle\MonologBundle(),
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
@@ -22,6 +21,8 @@ class AppKernel extends Kernel
             new UserBundle\UserBundle(),
             new ContractBundle\ContractBundle(),
             new ConcoursBundle\ConcoursBundle(),
+            new PUGX\MultiUserBundle\PUGXMultiUserBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
