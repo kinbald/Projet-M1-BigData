@@ -1,0 +1,4 @@
+services:
+#    contract.example:
+#        class: ContractBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

@@ -10,12 +10,18 @@ class AppKernel extends Kernel
         $bundles = [
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
             new Symfony\Bundle\MonologBundle\MonologBundle(),
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
+            new ProductBundle\ProductBundle(),
+            new MediaBundle\MediaBundle(),
+            new UserBundle\UserBundle(),
+            new ContractBundle\ContractBundle(),
+            new ConcoursBundle\ConcoursBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
