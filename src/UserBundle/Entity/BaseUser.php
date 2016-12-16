@@ -5,6 +5,9 @@ namespace UserBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use ProductBundle\Entity\Purchase;
 use UserBundle\Entity\UserConsumer;
+use UserBundle\Entity\UserMedia;
+use FOS\UserBundle\Model\User as FosUser;
+
 
 /**
  * BaseUser
@@ -15,7 +18,7 @@ use UserBundle\Entity\UserConsumer;
  * @ORM\DiscriminatorColumn(name="discr", type="string")
  * @ORM\DiscriminatorMap({"consumer" = "UserConsumer", "media" = "UserMedia", "producer" = "UserProducer"})
  */
-abstract class BaseUser
+abstract class BaseUser extends FosUser
 {
     /**
      * @var int
@@ -24,7 +27,7 @@ abstract class BaseUser
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
