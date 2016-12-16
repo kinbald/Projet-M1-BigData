@@ -3,7 +3,7 @@
 {% block fos_user_content %}
     {% trans_default_domain 'FOSUserBundle' %}
 
-    <form action="{{ path('user_media_registration') }}" method="POST">
+    <form action="{{ path('user_producer_registration') }}" method="POST">
         {{ form_widget(form) }}
         <div>
             <input type="submit" value="{{ 'registration.submit'|trans }}" />

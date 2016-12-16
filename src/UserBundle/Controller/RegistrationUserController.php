@@ -26,4 +26,13 @@ class RegistrationUserController extends Controller
             ->register('UserBundle\Entity\UserMedia');
     }
 
+    /**
+     * @Route("/register-producer", name="user_producer_registration")
+     */
+    public function registerProducerAction(){
+        return $this->container
+            ->get('pugx_multi_user.registration_manager')
+            ->register('UserBundle\Entity\UserProducer');
+    }
+
 }

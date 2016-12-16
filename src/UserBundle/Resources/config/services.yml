@@ -12,3 +12,8 @@ services:
             arguments: ['%fos_user.model.user.class%']
             tags:
                 - { name: form.type, alias: user_media_registration }
+    user_producer.registration.form.type:
+                class: UserBundle\Form\Type\UserProducerType
+                arguments: ['%fos_user.model.user.class%']
+                tags:
+                    - { name: form.type, alias: user_producer_registration }
