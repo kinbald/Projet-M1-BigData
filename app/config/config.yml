@@ -78,8 +78,4 @@ swiftmailer:
 fos_user:
     db_driver: orm
     firewall_name: main
-<<<<<<< HEAD
-    user_class: AppBundle\Entity\User
-=======
     user_class: UserBundle\Entity\BaseUser
->>>>>>> backend
