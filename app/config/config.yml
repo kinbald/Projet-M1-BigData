@@ -42,6 +42,8 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    form_themes:
+        - 'form/fields.html.twig'
 
 # Doctrine Configuration
 doctrine:
@@ -79,3 +81,37 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: UserBundle\Entity\BaseUser
+    service:
+        user_manager: pugx_user_manager
+
+pugx_multi_user:
+  users:
+    user_consumer:
+        entity:
+          class: UserBundle\Entity\UserConsumer
+#          factory:
+        registration:
+          form:
+            type: UserBundle\Form\Type\UserConsumerType
+            name: fos_user_registration_form
+            validation_groups:  [Registration, Default]
+          template: UserBundle:Registration:UserConsumer.form.html.twig
+        profile:
+          form:
+            type: UserBundle\Form\Type\UserConsumerType
+            name: fos_user_profile_form
+            validation_groups:  [Profile, Default]
+    user_media:
+          entity:
+            class: UserBundle\Entity\UserMedia
+  #          factory:
+          registration:
+            form:
+              type: UserBundle\Form\Type\UserMediaType
+              validation_groups:  [Registration, Default]
+            template: UserBundle:Registration:UserMedia.form.html.twig
+          profile:
+            form:
+              type: UserBundle\Form\Type\UserMediaType
+              name: fos_user_profile_form
+              validation_groups:  [Profile, Default]

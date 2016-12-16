@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use UserBundle\Entity\BaseUser;
 use ContractBundle\Entity\Option;
 use ContractBundle\Entity\OptionSubscription;
+use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
 
 /**
  * UserProducer
@@ -21,6 +22,8 @@ class UserProducer extends BaseUser
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @UniqueEntity(fields = "username", targetClass = "UserBundle\Entity\User", message="fos_user.username.already_used")
+     * @UniqueEntity(fields = "email", targetClass = "UserBundle\Entity\User", message="fos_user.email.already_used")
      */
     protected $id;
 
