@@ -69,6 +69,10 @@ class UserProducer extends BaseUser
      */
     private $options;
 
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
     /**
      * Get id

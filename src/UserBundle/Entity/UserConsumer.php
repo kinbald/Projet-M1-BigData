@@ -47,6 +47,10 @@ class UserConsumer extends BaseUser
      */
     private $products;
 
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
     /**
      * Get id

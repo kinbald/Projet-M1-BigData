@@ -46,6 +46,10 @@ class UserMedia extends BaseUser
      */
     private $idPresse;
 
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
     /**
      * Get id

@@ -145,6 +145,7 @@ abstract class BaseUser extends FosUser
      */
     public function __construct()
     {
+        parent::__construct();
         $this->purchases = new \Doctrine\Common\Collections\ArrayCollection();
         $this->subDate = new \DateTime();
     }
