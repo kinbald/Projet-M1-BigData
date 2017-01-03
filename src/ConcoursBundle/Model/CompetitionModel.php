@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: cam2
- * Date: 16/12/16
- * Time: 13:02
- */
 
 namespace ConcoursBundle\Model;
 use Doctrine\Common\Persistence\ObjectManager;

@@ -2,16 +2,20 @@
 
 namespace ConcoursBundle\Controller;
 
+use ConcoursBundle\Model\CompetitionModel;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class DefaultController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/competitions")
      */
     public function indexAction()
     {
-        return $this->render('ConcoursBundle:Default:index.html.twig');
+        $model = new CompetitionModel($this->getDoctrine()->getManager());
+        return $this->render('ConcoursBundle:Default:index.html.twig', [
+            'competitions' => $model->getCompetitionsWineByName('plcmswvdxl')
+        ]);
     }
 }
