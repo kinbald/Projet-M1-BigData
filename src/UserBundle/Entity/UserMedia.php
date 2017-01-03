@@ -11,8 +11,8 @@ use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
  *
  * @ORM\Table(name="user_media")
  * @ORM\Entity(repositoryClass="UserBundle\Repository\UserMediaRepository")
- * @UniqueEntity(fields = "username", targetClass = "UserBundle\Entity\User", message="fos_user.username.already_used")
- * @UniqueEntity(fields = "email", targetClass = "UserBundle\Entity\User", message="fos_user.email.already_used")
+ * @UniqueEntity(fields = "username", targetClass = "UserBundle\Entity\BaseUser", message="fos_user.username.already_used")
+ * @UniqueEntity(fields = "email", targetClass = "UserBundle\Entity\BaseUser", message="fos_user.email.already_used")
  */
 class UserMedia extends BaseUser
 {

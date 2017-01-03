@@ -18,7 +18,10 @@ class UserProducerType extends RegistrationFormType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
-        $builder->add('siret', TextType::class)
+        $builder
+            ->add('firstname', TextType::class)
+            ->add('lastname', TextType::class)
+            ->add('siret', TextType::class)
             ->add('companyName', TextType::class)
             ->add('address', TextareaType::class)
             ->add('city', TextType::class)

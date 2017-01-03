@@ -8,6 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use UserBundle\Form\Type\GenderType;
 use FOS\UserBundle\Form\Type\RegistrationFormType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class UserConsumerType extends RegistrationFormType
 {
@@ -18,6 +19,8 @@ class UserConsumerType extends RegistrationFormType
     {
         parent::buildForm($builder, $options);
         $builder
+            ->add('firstname', TextType::class)
+            ->add('lastname', TextType::class)
             ->add('sex', GenderType::class)
             ->add('birthDate', DateType::class);
     }

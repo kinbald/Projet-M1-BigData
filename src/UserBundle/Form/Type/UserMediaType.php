@@ -16,7 +16,9 @@ class UserMediaType extends RegistrationFormType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
-        $builder->add('companyName', TextType::class)
+        $builder->add('firstname', TextType::class)
+                ->add('lastname', TextType::class)
+                ->add('companyName', TextType::class)
                 ->add('urlBlog', TextType::class)
                 ->add('idPresse', TextType::class);
     }

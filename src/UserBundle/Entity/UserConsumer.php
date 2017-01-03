@@ -12,8 +12,8 @@ use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
  *
  * @ORM\Table(name="user_consumer")
  * @ORM\Entity(repositoryClass="UserBundle\Repository\UserConsumerRepository")
- * @UniqueEntity(fields = "username", targetClass = "UserBundle\Entity\User", message="fos_user.username.already_used")
- * @UniqueEntity(fields = "email", targetClass = "UserBundle\Entity\User", message="fos_user.email.already_used")
+ * @UniqueEntity(fields = "username", targetClass = "UserBundle\Entity\BaseUser", message="fos_user.username.already_used")
+ * @UniqueEntity(fields = "email", targetClass = "UserBundle\Entity\BaseUser", message="fos_user.email.already_used")
  */
 class UserConsumer extends BaseUser
 {
@@ -29,7 +29,7 @@ class UserConsumer extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="sex", type="string", length=2)
+     * @ORM\Column(name="sex", type="string", length=10)
      */
     private $sex;
 
