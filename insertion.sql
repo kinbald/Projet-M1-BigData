@@ -1,8 +1,8 @@
 DO $$
 BEGIN
   FOR counter IN 1..100 LOOP
-    INSERT INTO "base_user" (id, firstname, lastname, sub_date, discr) VALUES (counter, random_string(10), random_string(10),
-    timestamp '2014-01-10 20:00:00' + random() * (timestamp '2016-01-10 20:00:00' - timestamp '2014-01-10 10:00:00'),
+    INSERT INTO "base_user" (id, username, username_canonical, email, email_canonical, enabled, salt,  password, last_login, confirmation_token, password_requested_at, roles, firstname, lastname, sub_date, discr) VALUES (counter, random_string(10), random_string(10), random_string(10), random_string(10), true_false(), random_string(255), random_string(10),
+    timestamp '2014-01-10 20:00:00' + random() * (timestamp '2016-01-10 20:00:00' - timestamp '2014-01-10 10:00:00'), random_string(10), timestamp '2014-01-10 20:00:00' + random() * (timestamp '2016-01-10 20:00:00' - timestamp '2014-01-10 10:00:00'), 'admin', random_string(10), random_string(10), timestamp '2014-01-10 20:00:00' + random() * (timestamp '2016-01-10 20:00:00' - timestamp '2014-01-10 10:00:00'),
     base_user_descr()
     );
   END LOOP;

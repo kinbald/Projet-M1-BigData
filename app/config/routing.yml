@@ -1,31 +1,36 @@
 concours:
     resource: "@ConcoursBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /concours
 
 contract:
     resource: "@ContractBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /contract
 
 user:
     resource: "@UserBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /user
 
 media:
     resource: "@MediaBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /media
 
 product:
     resource: "@ProductBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /product
 
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+    prefix:   /
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
@@ -44,3 +49,4 @@ fos_user_change_password:
 fos_user_register:
     resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
     prefix: /register_fos
+
