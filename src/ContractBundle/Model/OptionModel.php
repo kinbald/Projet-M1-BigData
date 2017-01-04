@@ -26,7 +26,7 @@ class OptionModel
 
     public function getAllOptionSubscriptions()
     {
-        return $this->repository->findAll();
+        return $this->repositorySubscription->findAll();
     }
 
     public function getFutureOptionSubscriptions(\DateTime $beginDate, $limit)
