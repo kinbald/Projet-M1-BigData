@@ -4,12 +4,16 @@ namespace UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use UserBundle\Entity\BaseUser;
+use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
 
 /**
  * UserMedia
  *
  * @ORM\Table(name="user_media")
  * @ORM\Entity(repositoryClass="UserBundle\Repository\UserMediaRepository")
+ * @ORM\HasLifecycleCallbacks()
+ * @UniqueEntity(fields = "username", targetClass = "UserBundle\Entity\BaseUser", message="fos_user.username.already_used")
+ * @UniqueEntity(fields = "email", targetClass = "UserBundle\Entity\BaseUser", message="fos_user.email.already_used")
  */
 class UserMedia extends BaseUser
 {
@@ -43,6 +47,10 @@ class UserMedia extends BaseUser
      */
     private $idPresse;
 
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
     /**
      * Get id
@@ -124,6 +132,13 @@ class UserMedia extends BaseUser
     public function getIdPresse()
     {
         return $this->idPresse;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setRegisterRole(){
+        $this->addRole('ROLE_MEDIA');
     }
 }
 

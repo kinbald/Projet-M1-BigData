@@ -142,11 +142,11 @@ class Option
     /**
      * Add user
      *
-     * @param \ConcoursBundle\Entity\OptionSubscription $user
+     * @param \ContractBundle\Entity\OptionSubscription $user
      *
      * @return Option
      */
-    public function addUser(\ConcoursBundle\Entity\OptionSubscription $user)
+    public function addUser(\ContractBundle\Entity\OptionSubscription $user)
     {
         $this->users[] = $user;
 
@@ -156,9 +156,9 @@ class Option
     /**
      * Remove user
      *
-     * @param \ConcoursBundle\Entity\OptionSubscription $user
+     * @param \ContractBundle\Entity\OptionSubscription $user
      */
-    public function removeUser(\ConcoursBundle\Entity\OptionSubscription $user)
+    public function removeUser(\ContractBundle\Entity\OptionSubscription $user)
     {
         $this->users->removeElement($user);
     }

@@ -6,12 +6,16 @@ use Doctrine\ORM\Mapping as ORM;
 use UserBundle\Entity\BaseUser;
 use ContractBundle\Entity\Option;
 use ContractBundle\Entity\OptionSubscription;
+use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
 
 /**
  * UserProducer
  *
  * @ORM\Table(name="user_producer")
  * @ORM\Entity(repositoryClass="UserBundle\Repository\UserProducerRepository")
+ * @ORM\HasLifecycleCallbacks()
+ * @UniqueEntity(fields = "username", targetClass = "UserBundle\Entity\BaseUser", message="fos_user.username.already_used")
+ * @UniqueEntity(fields = "email", targetClass = "UserBundle\Entity\BaseUser", message="fos_user.email.already_used")
  */
 class UserProducer extends BaseUser
 {
@@ -21,6 +25,7 @@ class UserProducer extends BaseUser
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     *
      */
     protected $id;
 
@@ -65,6 +70,10 @@ class UserProducer extends BaseUser
      */
     private $options;
 
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
     /**
      * Get id
@@ -228,5 +237,12 @@ class UserProducer extends BaseUser
     public function getOptions()
     {
         return $this->options;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setRegisterRole(){
+        $this->addRole('ROLE_PRODUCER');
     }
 }

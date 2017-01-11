@@ -1,1 +1,7 @@
-Hello World!
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for option in options %}
+        {{ option.id }} <br/>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,27 @@
+UserBundle\Entity\UserConsumer Object
+(
+    [id:protected] => 
+    [sex:UserBundle\Entity\UserConsumer:private] => 
+    [birthDate:UserBundle\Entity\UserConsumer:private] => 
+    [products:UserBundle\Entity\UserConsumer:private] => 
+    [firstname:UserBundle\Entity\BaseUser:private] => 
+    [lastname:UserBundle\Entity\BaseUser:private] => 
+    [subDate:UserBundle\Entity\BaseUser:private] => 
+    [purchases:UserBundle\Entity\BaseUser:private] => 
+    [username:protected] => 
+    [usernameCanonical:protected] => 
+    [email:protected] => 
+    [emailCanonical:protected] => 
+    [enabled:protected] => 
+    [salt:protected] => 
+    [password:protected] => 
+    [plainPassword:protected] => 
+    [lastLogin:protected] => 
+    [confirmationToken:protected] => 
+    [passwordRequestedAt:protected] => 
+    [groups:protected] => 
+    [roles:protected] => Array
+        (
+        )
+
+)

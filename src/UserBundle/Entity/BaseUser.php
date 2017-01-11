@@ -4,6 +4,7 @@ namespace UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ProductBundle\Entity\Purchase;
+use Symfony\Component\Validator\Constraints\Date;
 use UserBundle\Entity\UserConsumer;
 use UserBundle\Entity\UserMedia;
 use FOS\UserBundle\Model\User as FosUser;
@@ -144,7 +145,9 @@ abstract class BaseUser extends FosUser
      */
     public function __construct()
     {
+        parent::__construct();
         $this->purchases = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->subDate = new \DateTime();
     }
 
     /**

@@ -5,12 +5,16 @@ namespace UserBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use ProductBundle\Entity\ProductEvaluation;
 use UserBundle\Entity\BaseUser;
+use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
 
 /**
  * UserConsumer
  *
  * @ORM\Table(name="user_consumer")
  * @ORM\Entity(repositoryClass="UserBundle\Repository\UserConsumerRepository")
+ * @ORM\HasLifecycleCallbacks()
+ * @UniqueEntity(fields = "username", targetClass = "UserBundle\Entity\BaseUser", message="fos_user.username.already_used")
+ * @UniqueEntity(fields = "email", targetClass = "UserBundle\Entity\BaseUser", message="fos_user.email.already_used")
  */
 class UserConsumer extends BaseUser
 {
@@ -26,7 +30,7 @@ class UserConsumer extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="sex", type="string", length=2)
+     * @ORM\Column(name="sex", type="string", length=10)
      */
     private $sex;
 
@@ -44,6 +48,10 @@ class UserConsumer extends BaseUser
      */
     private $products;
 
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
     /**
      * Get id
@@ -106,11 +114,11 @@ class UserConsumer extends BaseUser
     /**
      * Add product
      *
-     * @param \ProductBundle\Entity\ProductEvaluation $product
+     * @param ProductEvaluation $product
      *
      * @return UserConsumer
      */
-    public function addProduct(\ProductBundle\Entity\ProductEvaluation $product)
+    public function addProduct(ProductEvaluation $product)
     {
         $this->products[] = $product;
 
@@ -120,9 +128,9 @@ class UserConsumer extends BaseUser
     /**
      * Remove product
      *
-     * @param \ProductBundle\Entity\ProductEvaluation $product
+     * @param ProductEvaluation $product
      */
-    public function removeProduct(\ProductBundle\Entity\ProductEvaluation $product)
+    public function removeProduct(ProductEvaluation $product)
     {
         $this->products->removeElement($product);
     }
@@ -130,10 +138,17 @@ class UserConsumer extends BaseUser
     /**
      * Get products
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return ProductEvaluation
      */
     public function getProducts()
     {
         return $this->products;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setRegisterRole(){
+        $this->addRole('ROLE_CONSUMER');
     }
 }

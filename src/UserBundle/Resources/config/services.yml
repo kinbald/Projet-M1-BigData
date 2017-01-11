@@ -2,3 +2,18 @@ services:
 #    user.example:
 #        class: UserBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
+    user_consumer.registration.form.type:
+        class: UserBundle\Form\Type\UserConsumerType
+        arguments: ['%fos_user.model.user.class%']
+        tags:
+            - { name: form.type, alias: user_consumer_registration }
+    user_media.registration.form.type:
+            class: UserBundle\Form\Type\UserMediaType
+            arguments: ['%fos_user.model.user.class%']
+            tags:
+                - { name: form.type, alias: user_media_registration }
+    user_producer.registration.form.type:
+                class: UserBundle\Form\Type\UserProducerType
+                arguments: ['%fos_user.model.user.class%']
+                tags:
+                    - { name: form.type, alias: user_producer_registration }
