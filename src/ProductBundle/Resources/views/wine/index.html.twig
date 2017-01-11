@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Wines list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Vintage</th>
+                <th>Color</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for wine in wines %}
+            <tr>
+                <td><a href="{{ path('wine_show', { 'id': wine.id }) }}">{{ wine.id }}</a></td>
+                <td>{% if wine.vintage %}{{ wine.vintage|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ wine.color }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('wine_show', { 'id': wine.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('wine_edit', { 'id': wine.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('wine_new') }}">Create a new wine</a>
+        </li>
+    </ul>
+{% endblock %}
