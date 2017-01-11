@@ -1,0 +1,10 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+    <div class="page-header">
+        <h1>Inscription réussi {{ user.username }} !</h1>
+        <a class="btn btn-success btn-lg" href="{{ targetUrl }}" role="button">Retournez ou vous etiez</a>
+    </div>
+{% endblock fos_user_content %}
