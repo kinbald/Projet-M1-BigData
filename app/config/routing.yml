@@ -1,3 +1,11 @@
+product_universe:
+    resource: "@ProductBundle/Controller/UniverseController.php"
+    type:     annotation
+
+product_wine:
+    resource: "@ProductBundle/Controller/WineController.php"
+    type:     annotation
+
 concours:
     resource: "@ConcoursBundle/Controller/"
     type:     annotation

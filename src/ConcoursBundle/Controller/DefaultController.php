@@ -14,7 +14,7 @@ class DefaultController extends Controller
     public function indexAction()
     {
         $model = new CompetitionModel($this->getDoctrine()->getManager());
-        return $this->render('ConcoursBundle:Default:index.html.twig', [
+        return $this->render('ConcoursBundle:Default:concours.html.twig', [
             'competitions' => $model->getCompetitionsWineByName('plcmswvdxl')
         ]);
     }

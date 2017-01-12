@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Universes list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for universe in universes %}
+            <tr>
+                <td><a href="{{ path('universe_show', { 'id': universe.id }) }}">{{ universe.id }}</a></td>
+                <td>{{ universe.name }}</td>
+                <td>{{ universe.description }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('universe_show', { 'id': universe.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('universe_edit', { 'id': universe.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('universe_new') }}">Create a new universe</a>
+        </li>
+    </ul>
+{% endblock %}

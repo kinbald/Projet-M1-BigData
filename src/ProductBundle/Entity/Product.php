@@ -28,67 +28,67 @@ abstract class Product
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
      *
      * @ORM\Column(name="description", type="text")
      */
-    private $description;
+    protected $description;
 
     /**
      * @var float
      *
      * @ORM\Column(name="volume", type="float")
      */
-    private $volume;
+    protected $volume;
 
     /**
      * @var float
      *
      * @ORM\Column(name="price", type="float")
      */
-    private $price;
+    protected $price;
 
     /**
      * @var int
      *
      * @ORM\Column(name="stock", type="integer")
      */
-    private $stock;
+    protected $stock;
 
     /**
      * @var PictureProduct
      *
      * @ORM\OneToMany(targetEntity="\ProductBundle\Entity\PictureProduct", mappedBy="product")
      */
-    private $pictures;
+    protected $pictures;
 
     /**
      * @var Universe
      * @ORM\ManyToMany(targetEntity="\ProductBundle\Entity\Universe", mappedBy="products")
      */
-    private $universes;
+    protected $universes;
 
     /**
      * @var ProductPurchase
      * @ORM\OneToMany(targetEntity="ProductBundle\Entity\ProductPurchase", mappedBy="product")
      */
-    private $purchases;
+    protected $purchases;
 
     /**
      * @var ProductEvaluation
      * @ORM\OneToMany(targetEntity="ProductBundle\Entity\ProductEvaluation", mappedBy="product")
      */
-    private $users;
+    protected $users;
 
     /**
      * Get id
@@ -225,6 +225,11 @@ abstract class Product
     public function __construct()
     {
         $this->pictures = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 
     /**

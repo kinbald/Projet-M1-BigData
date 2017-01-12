@@ -13,6 +13,7 @@ use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
  *
  * @ORM\Table(name="user_producer")
  * @ORM\Entity(repositoryClass="UserBundle\Repository\UserProducerRepository")
+ * @ORM\HasLifecycleCallbacks()
  * @UniqueEntity(fields = "username", targetClass = "UserBundle\Entity\BaseUser", message="fos_user.username.already_used")
  * @UniqueEntity(fields = "email", targetClass = "UserBundle\Entity\BaseUser", message="fos_user.email.already_used")
  */
@@ -236,5 +237,12 @@ class UserProducer extends BaseUser
     public function getOptions()
     {
         return $this->options;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setRegisterRole(){
+        $this->addRole('ROLE_PRODUCER');
     }
 }
