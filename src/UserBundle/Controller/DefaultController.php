@@ -4,6 +4,7 @@ namespace UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use UserBundle\Model\UserModel;
 
 class DefaultController extends Controller
 {
@@ -12,6 +13,9 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('UserBundle:Default:index.html.twig');
+        $model = new UserModel($this->getDoctrine()->getManager());
+        return $this->render('UserBundle:Default:index.html.twig', [
+            'userMedia' => $model->getAllUserMediaDisabled(10)
+        ]);
     }
 }
