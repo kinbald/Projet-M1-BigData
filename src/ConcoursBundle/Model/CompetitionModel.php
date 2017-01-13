@@ -14,9 +14,10 @@ class CompetitionModel
         $this->repositoryWine = $entityManager->getRepository('ConcoursBundle:CompetitionWine');
     }
 
-    public function getAllCompetitions()
+    public function getAllCompetitions($limit = 10, $page = 0)
     {
-        return $this->repository->findAll();
+        $offset = $limit*$page;
+        return $this->repository->findAllCompetitions($limit, $offset);
     }
 
     public function getFutureCompetitions(\DateTime $beginDate, $limit = 30, $page = 0)
