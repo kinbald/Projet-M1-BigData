@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new ProductBundle\ProductBundle(),
             new MediaBundle\MediaBundle(),
             new UserBundle\UserBundle(),
+            new AdminBundle\AdminBundle(),
             new ContractBundle\ContractBundle(),
             new ConcoursBundle\ConcoursBundle(),
             new PUGX\MultiUserBundle\PUGXMultiUserBundle(),
