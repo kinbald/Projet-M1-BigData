@@ -1,0 +1,85 @@
+
+
+h1{
+    font-size: 50px;
+    font-family: 'Pacifico', cursive;
+    color:white;
+    margin-top: 7%;
+}
+
+
+.bandeau_int{
+
+}
+
+
+
+.btn-circle {
+
+    margin: 10px;
+    width: 25vw;
+    height: 25vh;
+
+
+    padding: 0 0;
+    line-height: 1.428571429;
+    border-radius: 10px;
+}
+
+.gastronomie{
+
+    height: 25vh;
+    width: 25vw;
+
+    border-radius: 10px;
+}
+
+
+
+
+.monde{
+
+    height: 25vh;
+    width: 25vw;
+
+    border-radius: 10px;
+}
+
+.femme{
+
+    height: 25vh;
+    width: 25vw;
+    border-radius: 10px;
+}
+
+.terroir{
+
+    height: 25vh;
+    width: 25vw;
+
+    border-radius: 10px;
+}
+
+.rose{
+
+    height: 25vh;
+    width: 25vw;
+
+    border-radius: 10px;
+}
+
+.spiritueux{
+
+    height: 25vh;
+    width: 25vw;
+
+    border-radius: 10px;
+}
+.texte{
+    position : relative;
+    text-align: center;
+    text-shadow: 5px 5px 5px black;
+    top: -70%;
+    font-size: 2vw;
+    font-family: 'Pacifico', cursive;
+}

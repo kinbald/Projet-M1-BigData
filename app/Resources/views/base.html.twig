@@ -7,7 +7,34 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% block body %}{% endblock %}
+
+        <nav class="navbar navbar-fixed-top shadow" id="js-nav">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button class="navbar-toggle" data-target="#myNavbar" data-toggle="collapse" type="button">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <a class="navbar-brand" href="#"> <img src="img/logo-white.png" alt="logo"> </a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+
+                        <li><a href="#products">concours</a></li>
+                        <li><a href="#about">média</a></li>
+                        <li><a href="#special">se connecter</a></li>
+                        <li><a href="#news">news</a></li>
+                        <li><a href="#contact">nous contacter</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        {% block body %}
+
+        {% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
 </html>
