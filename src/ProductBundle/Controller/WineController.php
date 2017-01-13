@@ -71,6 +71,7 @@ class WineController extends Controller
         return $this->render('ProductBundle:wine:show.html.twig', array(
             'wine' => $wine,
             'delete_form' => $deleteForm->createView(),
+            'product_pictures' => $wine->getPictures()
         ));
     }
 
