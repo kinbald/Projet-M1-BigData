@@ -17,13 +17,15 @@ class UserModel
         return $this->repositoryUserMedia->findAll();
     }
 
-    public function getAllUserMediaEnabled($limit)
+    public function getAllUserMediaEnabled($limit = 30, $page = 0)
     {
-        return $this->repositoryUserMedia->UserMediaEnabled($limit);
+        $offset = $limit*$page;
+        return $this->repositoryUserMedia->UserMediaEnabled($limit, $offset);
     }
 
-    public function getAllUserMediaDisabled($limit)
+    public function getAllUserMediaDisabled($limit = 30, $page = 0)
     {
-        return $this->repositoryUserMedia->UserMediaDisabled($limit);
+        $offset = $limit*$page;
+        return $this->repositoryUserMedia->UserMediaDisabled($limit, $offset);
     }
 }

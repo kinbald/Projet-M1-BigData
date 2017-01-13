@@ -5,6 +5,7 @@ use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use UserBundle\Entity\UserConsumer;
+use UserBundle\Entity\UserMedia;
 use UserBundle\Entity\UserProducer;
 
 class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
@@ -39,6 +40,20 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $userProducer->setCity('Au miel');
         $userProducer->setPostalCode('6969');
         $manager->persist($userProducer);
+
+        $userMedia = new UserMedia();
+        $userMedia->setUsername('media');
+        $userMedia->setUsernameCanonical('media');
+        $userMedia->setEmail('mediaMedia@gmail.com');
+        $userMedia->setEmailCanonical('mediaMedia@gmail.com');
+        $userMedia->setEnabled(true);
+        $userMedia->setPassword('$2y$12$VtTfiZZ68ThnssIEc8vkp.pkCL9YGAKB85Zk/8Up0MWg85t2h3drf');
+        $userMedia->setFirstname('Journaliste');
+        $userMedia->setLastname('chépakoimaitre');
+        $userMedia->setCompanyName('Le Bon Pinnard');
+        $userMedia->setIdPresse('168464358');
+        $userMedia->setUrlBlog('LeBonPinnard.com');
+        $manager->persist($userMedia);
 
         $manager->flush();
     }

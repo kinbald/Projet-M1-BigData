@@ -15,7 +15,7 @@ class DefaultController extends Controller
     {
         $model = new UserModel($this->getDoctrine()->getManager());
         return $this->render('UserBundle:Default:index.html.twig', [
-            'userMedia' => $model->getAllUserMediaDisabled(10)
+            'userMedia' => $model->getAllUserMediaEnabled()
         ]);
     }
 }

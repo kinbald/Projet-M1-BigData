@@ -19,14 +19,16 @@ class CompetitionModel
         return $this->repository->findAll();
     }
 
-    public function getFutureCompetitions(\DateTime $beginDate, $limit)
+    public function getFutureCompetitions(\DateTime $beginDate, $limit = 30, $page = 0)
     {
-        return $this->repository->findCompetitionsAfterADate($beginDate, $limit);
+        $offset = $limit*$page;
+        return $this->repository->findCompetitionsAfterADate($beginDate, $limit, $offset);
     }
 
-    public function getCompetitionsBetweenTwoDates(\DateTime $beginDate, \DateTime $endDate, $limit)
+    public function getCompetitionsBetweenTwoDates(\DateTime $beginDate, \DateTime $endDate, $limit = 30, $page = 0)
     {
-        return $this->repository->findCompetitionsBetweenTwoDates($beginDate, $endDate, $limit);
+        $offset = $limit*$page;
+        return $this->repository->findCompetitionsBetweenTwoDates($beginDate, $endDate, $limit, $offset);
     }
 
     public function getCompetitionsByName($name)
