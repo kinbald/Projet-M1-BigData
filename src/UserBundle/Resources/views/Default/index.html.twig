@@ -1,1 +1,7 @@
-Hello World!
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for user in userMedia %}
+        {{ user.id }} <br/>
+    {% endfor %}
+{% endblock %}
