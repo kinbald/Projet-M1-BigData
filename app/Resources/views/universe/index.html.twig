@@ -1,9 +1,15 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link href="{{ asset('css/bootstrap-dark.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/theme-dark.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/index.css') }}" rel="stylesheet" />
+{% endblock %}
+
 {% block body %}
     <h1>Universes list</h1>
-
-    <table>
+    <br><br>
+    <table border="1">
         <thead>
             <tr>
                 <th>Id</th>
@@ -32,10 +38,10 @@
         {% endfor %}
         </tbody>
     </table>
-
+    <br><br>
     <ul>
         <li>
-            <a href="{{ path('universe_new') }}">Create a new universe</a>
+            <a href="{{ path('universe_new') }}"><div class="btn btn-primary btn-circle">Create a new universe</div></a>
         </li>
     </ul>
 {% endblock %}
