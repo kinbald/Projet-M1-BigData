@@ -19,7 +19,9 @@ class CompetitionModel
         return $this->repository->findAll();
     }
 
-    public function getFutureCompetitions(\DateTime $beginDate, $limit = 30, $page = 0)
+
+
+    public function getFutureCompetitions(\DateTime $beginDate, $limit, $page)
     {
         $offset = $limit*$page;
         return $this->repository->findCompetitionsAfterADate($beginDate, $limit, $offset);
