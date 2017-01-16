@@ -17,7 +17,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/validationPresse")
+     * @Route("/validationPresse", name="validationPresse")
      */
     public function validationPresseAction()
     {
@@ -26,7 +26,7 @@ class DefaultController extends Controller
 
 
     /**
-     * @Route("/importationPresse")
+     * @Route("/importationPresse", name="importationPresse")
      */
     public function importationPresseAction()
     {
@@ -34,7 +34,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/importationDb")
+     * @Route("/importationDb", name="importationDb")
      */
     public function importationDbAction()
     {
