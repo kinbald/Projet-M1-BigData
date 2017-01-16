@@ -29,13 +29,15 @@ class OptionModel
         return $this->repositorySubscription->findAll();
     }
 
-    public function getFutureOptionSubscriptions(\DateTime $beginDate, $limit)
+    public function getFutureOptionSubscriptions(\DateTime $beginDate, $limit = 30, $page = 0)
     {
-        return $this->repositorySubscription->findOptionSubscriptionsAfterADate($beginDate, $limit);
+        $offset = $limit*$page;
+        return $this->repositorySubscription->findOptionSubscriptionsAfterADate($beginDate, $limit, $offset);
     }
 
-    public function getOptionSubscriptionsBetweenTwoDates(\DateTime $beginDate, \DateTime $endDate, $limit)
+    public function getOptionSubscriptionsBetweenTwoDates(\DateTime $beginDate, \DateTime $endDate, $limit = 30, $page = 0)
     {
-        return $this->repositorySubscription->findOptionSubscriptionsBetweenTwoDates($beginDate, $endDate, $limit);
+        $offset = $limit*$page;
+        return $this->repositorySubscription->findOptionSubscriptionsBetweenTwoDates($beginDate, $endDate, $limit, $offset);
     }
 }

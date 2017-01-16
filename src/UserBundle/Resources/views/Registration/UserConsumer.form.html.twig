@@ -1,12 +1,15 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
+{% extends "UserBundle:Registration:User.form.html.twig" %}
+
+
 
 {% block fos_user_content %}
     {% trans_default_domain 'FOSUserBundle' %}
 
     <form action="{{ path('user_consumer_registration') }}" method="POST">
         {{ form_widget(form) }}
-        <div>
+        <div><br><br>
             <input type="submit" value="{{ 'registration.submit'|trans }}" />
+
         </div>
     </form>
 {% endblock fos_user_content %}

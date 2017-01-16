@@ -44,6 +44,7 @@ class Wine extends Product
     private $competitions;
 
 
+
     /**
      * Get id
      *
