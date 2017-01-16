@@ -12,9 +12,10 @@ class MediaModel
         $this->repository = $entityManager->getRepository('MediaBundle:Files');
     }
 
-    public function getAllMedias()
+    public function getAllMedias($limit = 30, $page = 0)
     {
-        return $this->repository->findAll();
+        $offset = $limit*$page;
+        return $this->repository->findAllMedias($limit, $offset);
     }
 
     public function getMediasByName($name)

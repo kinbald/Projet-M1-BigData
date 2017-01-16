@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * Universe controller.
  *
- * @Route("/")
+ * @Route("/universe")
  */
 class UniverseController extends Controller
 {

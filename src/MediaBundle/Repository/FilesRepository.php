@@ -10,6 +10,16 @@ namespace MediaBundle\Repository;
  */
 class FilesRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findAllMedias($limit, $offset)
+    {
+        return $this->createQueryBuilder('m')
+            ->setMaxResults($limit)
+            ->setFirstResult($offset)
+            ->orderBy("m.date", 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
     public function findMediasBetweenTwoDates(\DateTime $beginDate, \DateTime $endDate, $limit, $offset)
     {
         return $this->createQueryBuilder('m')

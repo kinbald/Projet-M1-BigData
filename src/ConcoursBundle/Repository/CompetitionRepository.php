@@ -10,6 +10,15 @@ namespace ConcoursBundle\Repository;
  */
 class CompetitionRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findAllCompetitions($limit, $offset)
+    {
+        return $this->createQueryBuilder('m')
+            ->setMaxResults($limit)
+            ->setFirstResult($offset)
+            ->orderBy("m.dateCompetition", 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
     public function findCompetitionsBetweenTwoDates(\DateTime $beginDate, \DateTime $endDate, $limit, $offset)
     {
         return $this->createQueryBuilder('m')
