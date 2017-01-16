@@ -14,19 +14,24 @@ class CompetitionModel
         $this->repositoryWine = $entityManager->getRepository('ConcoursBundle:CompetitionWine');
     }
 
-    public function getAllCompetitions()
+    public function getAllCompetitions($limit = 10, $page = 0)
     {
-        return $this->repository->findAll();
+        $offset = $limit*$page;
+        return $this->repository->findAllCompetitions($limit, $offset);
     }
 
-    public function getFutureCompetitions(\DateTime $beginDate, $limit)
+
+
+    public function getFutureCompetitions(\DateTime $beginDate, $limit, $page)
     {
-        return $this->repository->findCompetitionsAfterADate($beginDate, $limit);
+        $offset = $limit*$page;
+        return $this->repository->findCompetitionsAfterADate($beginDate, $limit, $offset);
     }
 
-    public function getCompetitionsBetweenTwoDates(\DateTime $beginDate, \DateTime $endDate, $limit)
+    public function getCompetitionsBetweenTwoDates(\DateTime $beginDate, \DateTime $endDate, $limit = 30, $page = 0)
     {
-        return $this->repository->findCompetitionsBetweenTwoDates($beginDate, $endDate, $limit);
+        $offset = $limit*$page;
+        return $this->repository->findCompetitionsBetweenTwoDates($beginDate, $endDate, $limit, $offset);
     }
 
     public function getCompetitionsByName($name)

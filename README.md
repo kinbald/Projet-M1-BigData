@@ -5,11 +5,10 @@ Projet Web des Master 1 Big Data ISEN 2016/2017
 ## Installation
 
 ```bash
-sudo apt-get install php7.0 php7.0-xml
-php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-php -r "if (hash_file('SHA384', 'composer-setup.php') === 'aa96f26c2b67226a324c27919f1eb05f21c248b987e6195cad9690d5c1ff713d53020a02ac8c217dbf90a7eacc9d141d') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
-php composer-setup.php
-php -r "unlink('composer-setup.php');"
+sudo apt-get install php7.0 php7.0-xml php7.0-intl
+wget https://getcomposer.org/installer
+php installer
+rm installer
 php composer.phar install
 ```
 
@@ -36,10 +35,11 @@ parameters:
   Par la suite, il va falloir importer les entités Doctrine dans la BDD à l'aide de la commande suivante : 
 ```bash
 php bin/console doctrine:schema:update --force
+php bin/console doctrine:fixtures:load
 ```
 ## Execution
 
 ```bash
-./bin/console server:start
+php bin/console server:start
 ```
    Le site Web sera alors accessible via [http://127.0.0.1:8000/](http://127.0.0.1:8000/)

@@ -12,9 +12,10 @@ class MediaModel
         $this->repository = $entityManager->getRepository('MediaBundle:Files');
     }
 
-    public function getAllMedias()
+    public function getAllMedias($limit = 30, $page = 0)
     {
-        return $this->repository->findAll();
+        $offset = $limit*$page;
+        return $this->repository->findAllMedias($limit, $offset);
     }
 
     public function getMediasByName($name)
@@ -22,13 +23,15 @@ class MediaModel
         return $this->repository->findByName($name);
     }
 
-    public function getMediasAfterADate(\DateTime $date, $limit)
+    public function getMediasAfterADate(\DateTime $date, $limit = 30, $page = 0)
     {
-        return $this->repository->findMediasAfterADate($date, $limit);
+        $offset = $limit*$page;
+        return $this->repository->findMediasAfterADate($date, $limit, $offset);
     }
 
-    public function getMediasBetweenTwoDates(\DateTime $beginDate, \DateTime $endDate, $limit)
+    public function getMediasBetweenTwoDates(\DateTime $beginDate, \DateTime $endDate, $limit = 30, $page = 0)
     {
-        return $this->repository->findMediasBetweenTwoDates($beginDate, $endDate, $limit);
+        $offset = $limit*$page;
+        return $this->repository->findMediasBetweenTwoDates($beginDate, $endDate, $limit, $offset);
     }
 }

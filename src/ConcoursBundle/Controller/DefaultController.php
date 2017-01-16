@@ -8,14 +8,4 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class DefaultController extends Controller
 {
-    /**
-     * @Route("/competitions")
-     */
-    public function indexAction()
-    {
-        $model = new CompetitionModel($this->getDoctrine()->getManager());
-        return $this->render('ConcoursBundle:Default:concours.html.twig', [
-            'competitions' => $model->getCompetitionsWineByName('plcmswvdxl')
-        ]);
-    }
 }

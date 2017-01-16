@@ -10,4 +10,23 @@ namespace UserBundle\Repository;
  */
 class UserMediaRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function UserMediaEnabled($limit, $offset)
+    {
+        return $this->createQueryBuilder('m')
+            ->where("m.enabled = TRUE")
+            ->setMaxResults($limit)
+            ->setFirstResult($offset)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function UserMediaDisabled($limit, $offset)
+    {
+        return $this->createQueryBuilder('m')
+            ->where("m.enabled = FALSE")
+            ->setMaxResults($limit)
+            ->setFirstResult($offset)
+            ->getQuery()
+            ->getResult();
+    }
 }
