@@ -29,7 +29,7 @@ class DefaultController extends Controller
         */
         $model = new MediaModel($this->getDoctrine()->getManager());
         return $this->render('MediaBundle:Default:index.html.twig', [
-            'medias' => $model->getMediasByName('Blala?')
+            'medias' => $model->getAllMedias(2,1)
         ]);
     }
 }

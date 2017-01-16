@@ -10,23 +10,25 @@ namespace ContractBundle\Repository;
  */
 class OptionSubscriptionRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function findOptionSubscriptionsBetweenTwoDates(\DateTime $beginDate, \DateTime $endDate, $limit)
+    public function findOptionSubscriptionsBetweenTwoDates(\DateTime $beginDate, \DateTime $endDate, $limit, $offset)
     {
         return $this->createQueryBuilder('m')
             ->where("m.dateSubscription > ?1")
             ->andWhere("m.dateSubscription < ?2")
             ->setMaxResults($limit)
+            ->setFirstResult($offset)
             ->setParameter(1, $beginDate)
             ->setParameter(2, $endDate)
             ->getQuery()
             ->getResult();
     }
 
-    public function findOptionSubscriptionsAfterADate(\DateTime $beginDate, $limit)
+    public function findOptionSubscriptionsAfterADate(\DateTime $beginDate, $limit, $offset)
     {
         return $this->createQueryBuilder('m')
             ->where("m.dateSubscription > ?1")
             ->setMaxResults($limit)
+            ->setFirstResult($offset)
             ->setParameter(1, $beginDate)
             ->getQuery()
             ->getResult();

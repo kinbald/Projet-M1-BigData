@@ -1,0 +1,21 @@
+
+h1 {
+
+    font-size: 50px;
+    font-family: 'Pacifico', cursive;
+    color: white;
+    margin-top: 7%;
+}
+
+.btn-circle {
+
+    margin: 10px;
+    width: 25vw;
+    height: 25vh;
+    line-height: 1.428571429;
+    border-radius: 10px;
+    position: relative;
+    font-size: 1.75vw;
+    font-family: 'Pacifico', cursive;
+}
+
