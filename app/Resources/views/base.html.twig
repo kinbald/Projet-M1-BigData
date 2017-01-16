@@ -1,13 +1,79 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}
+        <link href="{{ asset('css/bootstrap-dark.css') }}" rel="stylesheet" />
+        <link href="{{ asset('css/theme-dark.css') }}" rel="stylesheet" />
+    {% endblock %}
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+<nav class="navbar navbar-fixed-top shadow" id="js-nav">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button class="navbar-toggle" data-target="#myNavbar" data-toggle="collapse" type="button">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="#"> <img src="img/logo-white.png" alt="logo"> </a>
+        </div>
+        {% if is_granted('ROLE_CONSUMER') %}
+            <div class="navbar-collapse collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="#compte">Compte</a></li>
+                    <li><a href="#panier">Panier</a></li>
+                    <li><a href="/logout">Déconnexion</a></li>
+                </ul>
+            </div>
+        {% elseif is_granted('ROLE_PRODUCER') %}
+            <div class="navbar-collapse collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="#compte">Compte</a></li>
+                    <li><a href="{{ path("concours_index") }}">Concours</a></li>
+                    <li><a href="/logout">Déconnexion</a></li>
+                </ul>
+            </div>
+        {% elseif is_granted('ROLE_MEDIA') %}
+            <div class="navbar-collapse collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="#compte">Compte</a></li>
+                    <li><a href="{{ path("media_index") }}">Presse</a></li>
+                    <li><a href="/logout">Déconnexion</a></li>
+                </ul>
+            </div>
+        {% elseif is_granted('ROLE_ADMIN') %}
+            <div class="navbar-collapse collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="#compte">Compte</a></li>
+                    <li><a href="/admin">Admin</a></li>
+                    <li><a href="/logout">Déconnexion</a></li>
+                </ul>
+            </div>
+        {% else %}
+            <div class="navbar-collapse collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="#panier">Panier</a></li>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="{{ path("media_index") }}">Presse</a></li>
+                    <li><a href="{{ path("concours_index") }}">Concours</a></li>
+                </ul>
+            </div>
+    </div>
+</nav>
+{% endif %}
+
+{% block body %}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('https://maps.googleapis.com/maps/api/js?key=AIzaSyA_6m6Glf1-P7jvVdHZ00e3Ue_EoUNe39g') }}"></script>
+    <script src="{{ asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/bundle.js') }}"></script>
+{% endblock %}
+</body>
 </html>
