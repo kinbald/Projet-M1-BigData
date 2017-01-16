@@ -32,6 +32,7 @@ class CompetitionRepository extends \Doctrine\ORM\EntityRepository
             ->getResult();
     }
 
+
     public function findCompetitionsAfterADate(\DateTime $beginDate, $limit, $offset)
     {
         return $this->createQueryBuilder('m')

@@ -7,14 +7,10 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('https://maps.googleapis.com/maps/api/js?key=AIzaSyA_6m6Glf1-P7jvVdHZ00e3Ue_EoUNe39g') }}"></script>
     <script src="{{ asset('js/bundle.js') }}"></script>
 {% endblock %}
 
 {% block body %}
-    <div class="MetalHurlant">
-        blulu
-    </div>
 
 
     <!----------------------------------------->
@@ -109,7 +105,7 @@
                 <div id="timeline" class="timeline-container">
 
 
-                    {% for i in 1..5 %}
+                    {% for competition in competitions %}
 
                         <!-- timeline-block -->
                         <div class="timeline-block timeline-block-image-1">
@@ -118,19 +114,16 @@
                             <!-- timeline-img -->
                             <div class="timeline-content wow fadeInLeft">
                                 <span class="timeline-date">
-                                    <span class="timeline-month">May</span>
-                                    <span class="timeline-year">2016</span>
+                                    <span class="timeline-month">{{ competition.dateCompetition|localizeddate('full', 'none', 'fr') }}</span>
                                 </span>
 
 
                                 <a href="http://www.google.fr">
 
-                                    <h2>Concours {{ i }}</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                    </p>
+                                    <h2>Concours {{ competition.name }}</h2>
+
+
+                                    <p>{{ competition.description}}</p>
 
                                 </a>
 
@@ -161,19 +154,20 @@
                     <h3 class="section-heading">Contrats</h3>
                 </div>
 
+            </div>
 
-                <div class="">
+            <div class="row">
+
                     <div class="product-list-slider">
                         <ul class="swiper-wrapper product-list product-list-vertical">
 
 
                             {% for i in 1..10 %}
-                                <!-------------------  CONTRAT - LISTE DE 1 A 10  -------------------------------------------------------->
                                 <li class="swiper-slide wow fadeInUp text-center">
 								<span class="product-list-left pull-left">
 									<a href="http://www.google.fr">
-                                        <img alt="product image" class="product-list-primary-img" src="http://www.cashmanagement.co.uk/UserFiles/services/home_icon_supplier_contract.png">
-									    <img alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." class="product-list-secondary-img" src="img/product4.png">
+                                        <img alt="product image" class="product-list-primary-img" src="{{ asset('img/product/contract_default.png') }}">
+									    <img alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." class="product-list-secondary-img" src="{{ asset('img/product/panier.png') }}">
 										<span class="product-list-name h3">Contrat {{ i }}</span>
 										<span class="product-list-price">$400.00</span>
                                     </a>
@@ -181,7 +175,6 @@
                                 </li>
 
                             {% endfor %}
-
                         </ul>
 
 
@@ -190,93 +183,13 @@
 
                         <!-- Add Pagination -->
                         <div class="product-list-pagination text-center"> </div>
-                        <div class="product-list-slider-next right-arrow-negative"> <span class="ti-arrow-right"></span> </div>
-                        <div class="product-list-slider-prev left-arrow-negative"> <span class="ti-arrow-left"></span> </div>
+                        <div class="product-list-slider-next right-arrow-negative"> &#10095; </div>
+                        <div class="product-list-slider-prev left-arrow-negative"> &#10094;</div>
                     </div>
-                </div>
-                <!-- PRODUCT MODAL -->
-                <div class="modal fade product-modal" id="product-01" role="dialog">
-                    <div class="modal-dialog">
-                        <!-- Modal content-->
-                        <div class="modal-content shadow">
-                            <a class="close" data-dismiss="modal"> <span class="ti-close"></span></a>
-                            <div class="modal-body">
-                                <!-- Wrapper for slides -->
-                                <div class="carousel slide product-slide" id="product-carousel">
-                                    <div class="carousel-inner cont-slider">
-                                        <div class="item active"> <img alt="" src="img/product3.png" title=""> </div>
-                                        <div class="item"> <img alt="" src="img/product4.png" title=""> </div>
-                                        <div class="item"> <img alt="" src="img/product3.png" title=""> </div>
-                                        <div class="item"> <img alt="" src="img/product4.png" title=""> </div>
-                                    </div>
-                                    <!-- Indicators -->
-                                    <ol class="carousel-indicators">
-                                        <li class="active" data-slide-to="0" data-target="#product-carousel"> <img alt="" src="img/product3.png"> </li>
-                                        <li class="" data-slide-to="1" data-target="#product-carousel"> <img alt="" src="img/product4.png"> </li>
-                                        <li class="" data-slide-to="2" data-target="#product-carousel"> <img alt="" src="img/product3.png"> </li>
-                                        <li class="" data-slide-to="3" data-target="#product-carousel"> <img alt="" src="img/product4.png"> </li>
-                                    </ol>
-                                </div>
-                                <!-- Wrapper for slides -->
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-8 col-md-push-2">
-                                            <div class="row">
-                                                <div class="product-modal-header">
-                                                    <div class="col-md-12">
-                                                        <h3 class="pull-left product-modal-title">Chocolate desire</h3>
-                                                    </div>
-                                                    <div class="col-md-12">
-														<span class="product-action-section">
-															<span class="price">$299.00</span>
-															<span class="btn btn-default add-item" data-image="img/product3.png" data-name="Chocolate desire" data-cost="299.00" data-id="8">
-															<span class="ti-shopping-cart"></span>add to cart </span>
-														</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8 col-md-push-2 product-description">
-                                            <h4 class="section-heading">Ut enim ad minim veniam</h4>
-                                            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, </p>
-                                            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, </p>
-                                            <div class="row">
-                                                <div class="col-md-6"> <img src="img/product3.png" class="img-responsive" alt="product image"> </div>
-                                                <div class="col-md-6">
-                                                    <h4 class="section-heading">Ut enim ad minim veniam</h4>
-                                                    <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                                                </div>
-                                            </div>
-                                            <div class="product-tabs">
-                                                <ul class="nav nav-tabs">
-                                                    <li class="active"><a data-toggle="tab" href="#tab1">Details</a></li>
-                                                    <li><a data-toggle="tab" href="#tab2">Info tab</a></li>
-                                                    <li><a data-toggle="tab" href="#tab3">Other info </a></li>
-                                                </ul>
-                                                <div class="tab-content">
-                                                    <div id="tab1" class="tab-pane fade in active">
-                                                        <h4 class="section-heading">details</h4>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                                    </div>
-                                                    <div id="tab2" class="tab-pane fade">
-                                                        <h4 class="section-heading">Info tab</h4>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
-                                                    </div>
-                                                    <div id="tab3" class="tab-pane fade">
-                                                        <h4 class="section-heading">other info</h4>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- / PRODUCT MODAL -->
             </div>
+
+
+
         </div>
     </section>
 
