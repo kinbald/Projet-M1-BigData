@@ -15,7 +15,7 @@ class DefaultController extends Controller
     {
         $model = new CompetitionModel($this->getDoctrine()->getManager());
         return $this->render('ConcoursBundle:Default:concours.html.twig', [
-            'competitions' => $model->getCompetitionsWineByName('plcmswvdxl')
+            'competitions' => $model->getAllCompetitions()
         ]);
     }
 }

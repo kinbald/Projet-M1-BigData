@@ -26,6 +26,11 @@ media:
     type:     annotation
     prefix:   /{_locale}/media
 
+admin:
+    resource: "@AdminBundle/Controller/"
+    type:     annotation
+    prefix:   /admin
+
 product:
     resource: "@ProductBundle/Controller/"
     type:     annotation
