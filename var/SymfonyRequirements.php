@@ -783,7 +783,7 @@ class SymfonyRequirements extends RequirementCollection
         $unit = '';
         if (!ctype_digit($size)) {
             $unit = strtolower(substr($size, -1, 1));
-            $size = (int)substr($size, 0, -1);
+            $size = (int) substr($size, 0, -1);
         }
         switch ($unit) {
             case 'g':

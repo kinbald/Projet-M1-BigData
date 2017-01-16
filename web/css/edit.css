@@ -1,0 +1,50 @@
+body {
+    font-family:"pacifico",sans-serif;
+    color:#c6a668;
+    margin:10px;
+}
+
+label
+{
+    display: block;
+    width: 150px;
+    float: left;
+}
+
+.btn-circle {
+
+    margin: 10px;
+    width: 12em;
+    height: 3em;
+    line-height: 1.428571429;
+    border-radius: 10px;
+    position: relative;
+    font-size: 0.8em;
+    font-family: 'Pacifico', cursive;
+}
+
+#productbundle_universe_description,
+#productbundle_wine_description {
+    border-radius: 10px;
+    color:#555555;
+    width: 17em;
+    height: 7em;
+}
+
+#productbundle_universe_name,
+#productbundle_wine_color,
+#productbundle_wine_vintage,
+#productbundle_wine_stock,
+#productbundle_wine_price,
+#productbundle_wine_volume,
+#productbundle_wine_name {
+    border-radius: 10px;
+    color:#555555;
+}
+
+#productbundle_wine_universes {
+    border-radius: 10px;
+    color:#555555;
+    width: 12em;
+    height: 4em;
+}

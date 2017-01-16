@@ -25,7 +25,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/validationPresse/{page}", name="validation_presse", requirements={"page": "\d+"})
+     * @Route("/validationPresse/{page}", name="validationPresse", requirements={"page": "\d+"})
      */
     public function validationPresseAction(Request $request, $page=0)
     {
@@ -58,7 +58,7 @@ class DefaultController extends Controller
                 $em->persist($user);
             }
             $em->flush();
-            return $this->redirectToRoute('validation_presse');
+            return $this->redirectToRoute('validationPresse');
         }
 
 
@@ -69,7 +69,7 @@ class DefaultController extends Controller
 
 
     /**
-     * @Route("/importationPresse")
+     * @Route("/importationPresse", name="importationPresse")
      */
     public function importationPresseAction()
     {
@@ -77,7 +77,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/importationDb")
+     * @Route("/importationDb", name="importationDb")
      */
     public function importationDbAction()
     {

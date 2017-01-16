@@ -9,22 +9,22 @@ product_wine:
 concours:
     resource: "@ConcoursBundle/Controller/"
     type:     annotation
-    prefix:   /concours
+    prefix:   /{_locale}/concours
 
 contract:
     resource: "@ContractBundle/Controller/"
     type:     annotation
-    prefix:   /contract
+    prefix:   /{_locale}/contract
 
 user:
     resource: "@UserBundle/Controller/"
     type:     annotation
-    prefix:   /user
+    prefix:   /{_locale}/user
 
 media:
     resource: "@MediaBundle/Controller/"
     type:     annotation
-    prefix:   /media
+    prefix:   /{_locale}/media
 
 admin:
     resource: "@AdminBundle/Controller/"
@@ -34,12 +34,12 @@ admin:
 product:
     resource: "@ProductBundle/Controller/"
     type:     annotation
-    prefix:   /product
+    prefix:   /{_locale}/product
 
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /{_locale}/
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"

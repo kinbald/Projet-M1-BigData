@@ -5,7 +5,7 @@ Projet Web des Master 1 Big Data ISEN 2016/2017
 ## Installation
 
 ```bash
-sudo apt-get install php7.0 php7.0-xml
+sudo apt-get install php7.0 php7.0-xml php7.0-intl
 wget https://getcomposer.org/installer
 php installer
 rm installer

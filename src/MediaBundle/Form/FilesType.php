@@ -1,34 +1,28 @@
 <?php
 
-namespace ProductBundle\Form;
+namespace MediaBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
-class ProductType extends AbstractType
+class FilesType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')
-                ->add('description')
-                ->add('volume')
-                ->add('price')
-                ->add('stock')
-                ->add('universes');
+        $builder->add('url')->add('name')->add('date');
     }
-    
+
     /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'ProductBundle\Entity\Product'
+            'data_class' => 'MediaBundle\Entity\Files'
         ));
     }
 
@@ -37,7 +31,7 @@ class ProductType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'productbundle_product';
+        return 'mediabundle_files';
     }
 
 

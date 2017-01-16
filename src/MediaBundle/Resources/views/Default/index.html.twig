@@ -1,7 +1,40 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {% for media in medias %}
-        {{ media.id }} <br/>
-    {% endfor %}
+    <h1>Files list</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Date/th>
+            <th>Name</th>
+            <th>Url</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for file in files %}
+            <tr>
+                <td>{{ file.id }}</td>
+                <td>{{ file.date }}</td>
+                <td>{{ file.name }}</td>
+                <td><a href="{{ file.url }}">{{ file.url }}</a></td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('file_edit', { 'id': file.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('file_new') }}">Create a new file</a>
+        </li>
+    </ul>
 {% endblock %}
