@@ -24,7 +24,6 @@ class WineController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
         $wines = $em->getRepository('ProductBundle:Wine')->findAll();
         //\Doctrine\Common\Util\Debug::dump($wines);
         return $this->render('ProductBundle:wine:index.html.twig', array(
@@ -43,13 +42,14 @@ class WineController extends Controller
         $wine = new Wine();
         $form = $this->createForm('ProductBundle\Form\WineType', $wine);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
+            \Doctrine\Common\Util\Debug::dump($wine->getUniverses());
             $em = $this->getDoctrine()->getManager();
             $em->persist($wine);
             $em->flush($wine);
 
-            return $this->redirectToRoute('wine_show', array('id' => $wine->getId()));
+            return $this->render('ProductBundle:wine:empty.html.twig', array());
+            //return $this->redirectToRoute('wine_show', array('id' => $wine->getId()));
         }
 
         return $this->render('ProductBundle:wine:new.html.twig', array(
