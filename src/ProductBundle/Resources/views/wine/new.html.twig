@@ -1,16 +1,23 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link href="{{ asset('css/bootstrap-dark.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/theme-dark.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/create.css') }}" rel="stylesheet" />
+{% endblock %}
+
 {% block body %}
     <h1>{% trans %}Wine creation{% endtrans %}</h1>
-
+    <br><br>
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('wine_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    <table>
+        <td>
+            <input class="btn btn-primary btn-circle" type="submit" value="Create" />
+        </td>
+        {{ form_end(form) }}
+        <td>
+            <a class="btn btn-primary btn-circle" href="{{ path('wine_index') }}">Back to the list</a>
+        </td>
+    </table>
 {% endblock %}
