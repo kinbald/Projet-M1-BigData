@@ -67,6 +67,49 @@ class DefaultController extends Controller
         ));
     }
 
+    /**
+     * @Route("/validationProducer/{page}", name="validationProducer", requirements={"page": "\d+"})
+     */
+    public function validationProducer(Request $request, $page=0)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $userModel = new UserModel($em);
+
+        $users = $userModel->getAllUserProducer(30, $page);
+
+        $bform = $this->createFormBuilder();
+        $name = array();
+        foreach ($users as $user)
+        {
+            array_push($name, strtolower(str_replace(' ', '-', $user->getCompanyName())));
+            $bform->add('producer-' . $user->getId(), CheckboxType::class,
+                array("label" => $user->getCompanyName(), "attr" => ["checked" => ($user->isEnabled())]));
+        }
+
+        if('POST' === $request->getMethod())
+        {
+            $data = $request->request->all()['form'];
+
+            foreach ($users as $user)
+            {
+                $enabled = false;
+                foreach ($data as $key=>$value) {
+                    if($key == 'producer-' . $user->getId())
+                        $enabled = true;
+                }
+                $user->setEnabled($enabled);
+                $em->persist($user);
+            }
+            $em->flush();
+            return $this->redirectToRoute('validationProducer');
+        }
+
+
+        return $this->render('AdminBundle:Default:validationProducer.html.twig', array(
+            'form' => $bform->getForm()->createView()
+        ));
+    }
+
 
     /**
      * @Route("/importationPresse", name="importationPresse")
