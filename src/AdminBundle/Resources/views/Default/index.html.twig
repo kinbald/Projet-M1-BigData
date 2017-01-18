@@ -1,9 +1,11 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseadmin.html.twig' %}
 
     {% block stylesheets %}
         <link href="{{ asset('css/bootstrap-dark.css') }}" rel="stylesheet"/>
         <link href="{{ asset('css/theme-dark.css') }}" rel="stylesheet"/>
         <link href="{{ asset('css/admin.css') }}" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lemonada" rel="stylesheet">
     {% endblock %}
 
     {% block javascripts %}
@@ -16,30 +18,30 @@
 
         <div class="text-center">
 
-            <h2>Gestion BDD</h2>
+            <h1>Gestion BDD</h1>
 
 
-            <div class="bandeau_int text-center">
+            <div class="text-center">
                 <a class="btn btn-primary btn-circle" href="{{ path("wine_index") }}">
-                    Gestion Vins
+                    <div class="texte">Gestion Univers</div>
                 </a>
                 <a class="btn btn-primary btn-circle" href="{{ path("universe_index") }}">
-                    Gestion Univers
+                    <div class="texte">Gestion Univers</div>
                 </a>
                 <a class="btn btn-primary btn-circle" href="{{ path("importationDb") }}">
-                    Importation Excel
+                    <div class="texte">Importation Excel</div>
                 </a>
             </div>
 
             <h2>Gestion Presse</h2>
 
-            <div class="bandeau_int text-center">
+            <div class="text-center">
 
                 <a class="btn btn-primary btn-circle" href="{{ path("validationPresse") }}">
-                    Gestion Accréditations
+                    <div class="texte">Gestion Accréditations</div>
                 </a>
                 <a class="btn btn-primary btn-circle" href="{{ path("files_index") }}">
-                    Gestion Communiqués
+                    <div class="texte">Gestion Communiqués</div>
                 </a>
 
             </div>
