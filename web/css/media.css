@@ -1,0 +1,43 @@
+table {
+    border: medium solid #6495ed;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+
+}
+th {
+    font-family: monospace;
+    border: thin solid #6495ed;
+    padding: 5px;
+    background-color: #D0E3FA;
+    background-image: url(sky.jpg);
+}
+td {
+    font-family: sans-serif;
+    border: thin solid #6495ed;
+    padding: 5px;
+    text-align: center;
+    background-color: #FFFFFF;
+}
+a, th, td, tr{
+    color: #0d0d0d;
+    text-align: center;
+}
+.date{
+    width: 10%;
+}
+.auteur{
+    width: 10%;
+}
+.contenu{
+    width: 50%;
+}
+.section-heading{
+    width: auto;
+
+    font-size: xx-large;
+    margin-top: 90px;
+}
+
+

@@ -1,0 +1,85 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    <link href="{{ asset('css/bootstrap-dark.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/theme-dark.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/media.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('https://maps.googleapis.com/maps/api/js?key=AIzaSyA_6m6Glf1-P7jvVdHZ00e3Ue_EoUNe39g') }}"></script>
+    <script src="{{ asset('js/bundle.js') }}"></script>
+    <script src="{{ asset('js/product.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+
+    <nav class="navbar navbar-fixed-top shadow" id="js-nav">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-target="#myNavbar" data-toggle="collapse" type="button">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="navbar-brand" href="#"> <img src="img/logo-white.png" alt="logo"> </a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="#home">Accueil</a></li>
+                    <li><a href="#concours">Concours</a></li>
+                    <li><a href="#media">Média</a></li>
+                    <li><a href="#contact">Nous Contacter</a></li>
+                    <li><a href="#connection">Se Connecter</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+
+    <div class="container overflow-hidden">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="section-heading">Bienvenue dans l'espace presse </h3>
+        </div>
+    </div>
+    </div>
+<div class="tableau_media">
+    <table>
+
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>Nom auteur</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+
+        <tfoot>
+        <tr>
+            <th>Date</th>
+            <th>Nom auteur</th>
+            <th>Description</th>
+        </tr>
+        </tfoot>
+<tbody>
+{%  for i in 0..20 %}
+
+    <tr>
+        <td class="date">XX/XX/XXXX</td>
+        <td class="auteur">Nom auteur</td>
+        <td class="contenu"><a href="http://www.femmesetvinsdumonde.com/">Cliquez sur la description pour accéder à l'article</a></td>
+    </tr>
+
+{% endfor %}
+</tbody>
+
+
+    </table>
+</div>
+
+=======
+{% endblock %}
