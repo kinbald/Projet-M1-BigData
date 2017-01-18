@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="media_index")
+     * @Route("/")
      */
     public function indexAction()
     {
@@ -27,9 +27,5 @@ class DefaultController extends Controller
         // actually executes the queries (i.e. the INSERT query)
         $em->flush();
         */
-        $model = new MediaModel($this->getDoctrine()->getManager());
-        return $this->render('MediaBundle:Default:media.html.twig', [
-            'medias' => $model->getAllMedias(2,1)
-        ]);
     }
 }
