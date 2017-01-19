@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseadmin.html.twig' %}
 
 {% block stylesheets %}
     <link href="{{ asset('css/bootstrap-dark.css') }}" rel="stylesheet" />
@@ -7,6 +7,7 @@
 {% endblock %}
 
 {% block body %}
+    <div id="content">
     <h1>Universe edit</h1>
     <br><br>
     {{ form_start(edit_form) }}
@@ -25,4 +26,5 @@
             <a class="btn btn-primary btn-circle" href="{{ path('universe_index') }}"> Back to the list</a>
         </td>
     </table>
+    </div>
 {% endblock %}

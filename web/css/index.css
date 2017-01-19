@@ -1,7 +1,23 @@
-body {
-    font-family:"pacifico",sans-serif;
-    color:#c6a668;
-    margin:10px;
+table {
+    border: medium solid #ffc16b;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+
+}
+th {
+    font-family: monospace;
+    border: thin solid #0d0d0d;
+    padding: 5px;
+    background-color: #ffc16b;
+}
+td {
+    font-family: sans-serif;
+    border: thin solid black;
+    padding: 5px;
+    text-align: center;
+    background-color: #ffd893;
 }
 
 label
@@ -19,12 +35,16 @@ form{
     transform: translate(-50%, -50%);
     padding:5px;
 }
-
-table {
-    width: 50%;
-
+a, th, td, tr, li{
+    color: #0d0d0d;
+    text-align: center;
 }
-
+.id{
+    width: 10%;
+}
+.actions{
+    width: 10%;
+}
 .btn-circle {
     margin: 10px;
     width: 15em;
@@ -34,4 +54,8 @@ table {
     position: relative;
     font-size: 0.8em;
     font-family: 'Pacifico', cursive;
+}
+
+#content {
+    margin-top: 75px;
 }

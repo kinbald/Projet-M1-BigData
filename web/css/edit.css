@@ -48,3 +48,13 @@ label
     width: 12em;
     height: 4em;
 }
+
+div {
+    margin-top:5px;
+}
+
+#content {
+    margin-top: 75px;
+}
+
+

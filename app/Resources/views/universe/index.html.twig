@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseadmin.html.twig' %}
 
 {% block stylesheets %}
     <link href="{{ asset('css/bootstrap-dark.css') }}" rel="stylesheet" />
@@ -7,6 +7,7 @@
 {% endblock %}
 
 {% block body %}
+    <div id="content">
     <h1>Universes list</h1>
     <br><br>
     <table border="1">
@@ -44,4 +45,5 @@
             <a href="{{ path('universe_new') }}"><div class="btn btn-primary btn-circle">Create a new universe</div></a>
         </li>
     </ul>
+    </div>
 {% endblock %}

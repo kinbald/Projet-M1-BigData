@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseadmin.html.twig' %}
 
 {% block stylesheets %}
     <link href="{{ asset('css/bootstrap-dark.css') }}" rel="stylesheet" />
@@ -7,9 +7,10 @@
 {% endblock %}
 
 {% block body %}
+    <div id="content">
     <h1>Wines list</h1>
     <br><br>
-    <table border="1">
+    <table>
         <thead>
             <tr>
                 <th>Id</th>
@@ -21,10 +22,10 @@
         <tbody>
         {% for wine in wines %}
             <tr>
-                <td><a href="{{ path('wine_show', { 'id': wine.id }) }}">{{ wine.id }}</a></td>
-                <td>{% if wine.vintage %}{{ wine.vintage|date('Y-m-d') }}{% endif %}</td>
-                <td>{{ wine.color }}</td>
-                <td>
+                <td class="id"><a href="{{ path('wine_show', { 'id': wine.id }) }}">{{ wine.id }}</a></td>
+                <td class="vintage">{% if wine.vintage %}{{ wine.vintage|date('Y-m-d') }}{% endif %}</td>
+                <td class="color">{{ wine.color }}</td>
+                <td class="actions">
                     <ul>
                         <li>
                             <a href="{{ path('wine_show', { 'id': wine.id }) }}">show</a>
@@ -44,4 +45,5 @@
             <div class="btn btn-primary btn-circle"><a href="{{ path('wine_new') }}">Create a new wine</a></div>
         </li>
     </ul>
+    </div>
 {% endblock %}
