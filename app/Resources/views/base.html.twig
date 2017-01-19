@@ -25,42 +25,49 @@
         {% if is_granted('ROLE_CONSUMER') %}
             <div class="navbar-collapse collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li><a href="#compte">Compte</a></li>
+                    <li><a href="{{ path("homepage") }}">Accueil</a></li>
                     <li><a href="#panier">Panier</a></li>
+                    <li><a href="#compte">Compte</a></li>
+                    <li><a href="#contact">Nous Contacter</a></li>
                     <li><a href="/logout">Déconnexion</a></li>
                 </ul>
             </div>
         {% elseif is_granted('ROLE_PRODUCER') %}
             <div class="navbar-collapse collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li><a href="#compte">Compte</a></li>
+                    <li><a href="{{ path("homepage") }}">Accueil</a></li>
                     <li><a href="{{ path("concours_index") }}">Concours</a></li>
+                    <li><a href="#compte">Compte</a></li>
+                    <li><a href="#contact">Nous Contacter</a></li>
                     <li><a href="/logout">Déconnexion</a></li>
                 </ul>
             </div>
         {% elseif is_granted('ROLE_MEDIA') %}
             <div class="navbar-collapse collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li><a href="#compte">Compte</a></li>
+                    <li><a href="{{ path("homepage") }}">Accueil</a></li>
                     <li><a href="{{ path("media_index") }}">Presse</a></li>
+                    <li><a href="#compte">Compte</a></li>
+                    <li><a href="#contact">Nous Contacter</a></li>
                     <li><a href="/logout">Déconnexion</a></li>
                 </ul>
             </div>
         {% elseif is_granted('ROLE_ADMIN') %}
             <div class="navbar-collapse collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
+                    <li><a href="{{ path("homepage") }}">Accueil</a></li>
                     <li><a href="#compte">Compte</a></li>
                     <li><a href="/admin">Admin</a></li>
                     <li><a href="/logout">Déconnexion</a></li>
                 </ul>
             </div>
         {% else %}
-            <div class="navbar-collapse collapse" id="myNavbar">
+            <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
+                    <li><a href="{{ path("homepage") }}">Accueil</a></li>
                     <li><a href="#panier">Panier</a></li>
-                    <li><a href="/login">Login</a></li>
-                    <li><a href="{{ path("media_index") }}">Presse</a></li>
-                    <li><a href="{{ path("concours_index") }}">Concours</a></li>
+                    <li><a href="#contact">Nous Contacter</a></li>
+                    <li><a href="/login">Se Connecter</a></li>
                 </ul>
             </div>
     </div>
