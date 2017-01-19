@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseadmin.html.twig' %}
 
 {% block stylesheets %}
     <link href="{{ asset('css/bootstrap-dark.css') }}" rel="stylesheet" />
@@ -7,22 +7,24 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Wine edit</h1>
-    <br><br>
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-    <table>
-        <td>
-            <input class="btn btn-primary btn-circle" type="submit" value="Edit" />
-        </td>
-        {{ form_end(edit_form) }}
-        {{ form_start(delete_form) }}
-        <td>
-            <input class="btn btn-primary btn-circle" type="submit" value="Delete">
-        </td>
-        {{ form_end(delete_form) }}
-        <td>
-            <a class="btn btn-primary btn-circle" href="{{ path('wine_index') }}">Back to the list</a>
-        </td>
-    </table>
+    <div id="content">
+        <h1>Wine edit</h1>
+        <br><br>
+        {{ form_start(edit_form) }}
+            {{ form_widget(edit_form) }}
+        <table>
+            <td>
+                <input class="btn btn-primary btn-circle" type="submit" value="Edit" />
+            </td>
+            {{ form_end(edit_form) }}
+            {{ form_start(delete_form) }}
+            <td>
+                <input class="btn btn-primary btn-circle" type="submit" value="Delete">
+            </td>
+            {{ form_end(delete_form) }}
+            <td>
+                <a class="btn btn-primary btn-circle" href="{{ path('wine_index') }}">Back to the list</a>
+            </td>
+        </table>
+    </div>
 {% endblock %}
