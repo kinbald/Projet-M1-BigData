@@ -30,9 +30,13 @@ h2 {
 
 .texte {
     position: relative;
-    font-size: 1.75vw;
+    font-size: 2.25vw;
     font-family: 'Lemonada', cursive;
     text-shadow: 3px 2px 5px black;
     top : 35%;
+}
+
+.content {
+    margin-top: 75px;
 }
 
