@@ -14,7 +14,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class CompetitionController extends Controller
 {
     /**
-     * @Route("/competitions")
+     * @Route("/competitions", name="concours_index")
      */
     public function indexAction()
     {
