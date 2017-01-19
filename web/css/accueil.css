@@ -2,14 +2,9 @@
 
 h1{
     font-size: 50px;
-    font-family: 'Pacifico', cursive;
+    font-family: 'Dancing Script', cursive;
     color:white;
     margin-top: 7%;
-}
-
-
-.bandeau_int{
-
 }
 
 
@@ -78,8 +73,8 @@ h1{
 .texte{
     position : relative;
     text-align: center;
-    text-shadow: 5px 5px 5px black;
+    text-shadow: 3px 2px 1px black;
     top: -70%;
     font-size: 2vw;
-    font-family: 'Pacifico', cursive;
+    font-family: 'Lemonada', cursive;
 }
