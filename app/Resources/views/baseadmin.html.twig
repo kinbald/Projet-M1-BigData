@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+
+<nav class="navbar navbar-fixed-top shadow" id="js-nav">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button class="navbar-toggle" data-target="#myNavbar" data-toggle="collapse" type="button">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="#"> <img src="img/logo-white.png" alt="logo"> </a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+
+
+                <li><a href="#about">menu principal d'administration</a></li>
+                <li><a href="#special">déconnexion</a></li>
+
+
+            </ul>
+        </div>
+    </div>
+</nav>
+{% block body %}
+
+{% endblock %}
+{% block javascripts %}{% endblock %}
+</body>
+</html>
