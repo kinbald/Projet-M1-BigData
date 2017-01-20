@@ -15,55 +15,56 @@
 
 {% block body %}
 
-    {% for media in medias %}
-        {{ media.id }} <br/>
-        {{ media.companyName }} <br/>
-        {{ media.urlBlog }} <br/>
-        {{ media.idPresse }} <br/>
-    {% endfor %}
-
     <div class="container overflow-hidden">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="section-heading">Bienvenue dans l'espace presse </h3>
+                <h3 class="section-heading">Gestion des droits d'accès à l'espace Presse</h3>
             </div>
         </div>
     </div>
 
     <div class="tableau_media">
+        {{ form_start(form) }}
         <table>
 
             <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom journaliste</th>
-                <th>Justificatif (carte presse ou adresse du blog)</th>
-                <th>Droit d'accès au contenu Média</th>
-            </tr>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom journaliste</th>
+                    <th>Justificatif (carte presse)</th>
+                    <th>Justificatif (adresse du blog)</th>
+                    <th>Droit d'accès au contenu Média</th>
+                </tr>
             </thead>
 
             <tbody>
-            {%  for i in 1..20 %}
+                {% for media in medias %}
 
-                <tr>
-                    <td class="id">{{ i }}</td>
-                    <td class="nom">Arthur Delacroix {{ i }}</td>
-                    <td class="justificatif">n°H{{ 356*i }}</td>
-                    <td class="droit">Tick</td>
-                </tr>
+                    <tr>
+                        <td class="id">{{ media.id }}</td>
+                        <td class="nom">{{ media.companyName }}</td>
+                        <td class="justificatif-carte">{{ media.idPresse }}</td>
+                        <td class="justificatif-adresse">{{ media.urlBlog }}</td>
+                        <td class="droit">{{ form_widget(attribute(form, 'media_'~media.id))}}</td>
 
-            {% endfor %}
+                    </tr>
+
+                {% endfor %}
+
+                    <tr>
+                        <td colspan="4"></td>
+                        <td>{{ form_widget(form.save) }}</td>
+                    </tr>
+
             </tbody>
 
 
-        </table>
-    </div>
 
-    <div>
-        {{ form_start(form, {'attr': {'onclick': 'this.submit();'}}) }}
-        {{ form_widget(form) }}
+
+        </table>
         {{ form_end(form) }}
     </div>
+
 
 {% endblock %}
 
