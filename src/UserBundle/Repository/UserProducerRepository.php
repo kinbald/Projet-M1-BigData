@@ -10,4 +10,12 @@ namespace UserBundle\Repository;
  */
 class UserProducerRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findAllProducer($limit, $offset)
+    {
+        return $this->createQueryBuilder('m')
+            ->setMaxResults($limit)
+            ->setFirstResult($offset)
+            ->getQuery()
+            ->getResult();
+    }
 }

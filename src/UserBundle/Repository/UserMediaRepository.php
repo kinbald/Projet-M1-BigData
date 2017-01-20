@@ -29,4 +29,13 @@ class UserMediaRepository extends \Doctrine\ORM\EntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function findAllMedia($limit, $offset)
+    {
+        return $this->createQueryBuilder('m')
+            ->setMaxResults($limit)
+            ->setFirstResult($offset)
+            ->getQuery()
+            ->getResult();
+    }
 }

@@ -41,6 +41,22 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $userProducer->setPostalCode('6969');
         $manager->persist($userProducer);
 
+        $userProducer = new UserProducer();
+        $userProducer->setUsername('Producer2');
+        $userProducer->setUsernameCanonical('Producer2');
+        $userProducer->setEmail('zrhgiuOfgezorg@gmail.com');
+        $userProducer->setEmailCanonical('zrhgiuOfgezorg@gmail.com');
+        $userProducer->setEnabled(false);
+        $userProducer->setPassword('$2y$12$sNM3lJ9oRrOZB2cUSBKoHOjRkZMt8mB826dS5rE.2ppPg9TXby9BO');
+        $userProducer->setFirstname('zrgerg');
+        $userProducer->setLastname('qegetg');
+        $userProducer->setSiret('646535');
+        $userProducer->setCompanyName('vzu zfhkuzdhf hfskd');
+        $userProducer->setAddress('ta race maudite');
+        $userProducer->setCity('Le Poulpe');
+        $userProducer->setPostalCode('26485');
+        $manager->persist($userProducer);
+
         $userMedia = new UserMedia();
         $userMedia->setUsername('media');
         $userMedia->setUsernameCanonical('media');
@@ -60,7 +76,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $userMedia->setUsernameCanonical('media2');
         $userMedia->setEmail('vziuregLvnzougvb@gmail.com');
         $userMedia->setEmailCanonical('vziuregLvnzougvb@gmail.com');
-        $userMedia->setEnabled(false);
+        $userMedia->setEnabled(true);
         $userMedia->setPassword('$2y$12$VtTfiZZ68ThnssIEc8vkp.pkCL9YGAKB85Zk/8Ur3MWg85t2h3drf');
         $userMedia->setFirstname('vsqfgljn');
         $userMedia->setLastname('vlziehglz');
