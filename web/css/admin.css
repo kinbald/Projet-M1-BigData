@@ -1,42 +1,96 @@
-
-h1 {
-
-    font-size: 50px;
+h1,h2{
+    font-size: 6vw;
     font-family: 'Dancing Script', cursive;
     color: white;
-    margin-top: 4%;
+}
+
+@media screen and (max-width: 379px)
+{
+    .texte {
+        position: relative;
+        font-size: 3vw;
+        font-family: 'Lemonada', cursive;
+        text-shadow: 3px 2px 5px black;
+        text-align: center;
+        top: 25%;
+    }
+    .btn-circle {
+
+        margin-left: auto;
+        margin-right: auto;
+        margin: 1%;
+        width: 80%;
+        line-height: 1.428571429;
+        border-radius: 10px;
+    }
 
 }
 
-h2 {
+@media screen and (min-width: 380px) and (max-width: 499px)
+{
+    .texte {
+        position: relative;
+        font-size: 3.5vw;
+        font-family: 'Lemonada', cursive;
+        text-shadow: 3px 2px 5px black;
+        text-align: center;
+        top: 25%;
+    }
 
-    font-size: 50px;
-    font-family: 'Dancing Script', cursive;
-    color: white;
+    .btn-circle {
 
+        margin-left: auto;
+        margin-right: auto;
+        margin: 1%;
+        width: 80%;
+        line-height: 1.428571429;
+        border-radius: 10px;
+    }
+}
+@media screen and (min-width: 500px) and (max-width: 1023px)
+{
+    .texte {
+        position: relative;
+        font-size: 2vw;
+        font-family: 'Lemonada', cursive;
+        text-shadow: 3px 2px 5px black;
+        text-align: center;
+        top: 25%;
+    }
+
+    .btn-circle {
+
+        margin-left: auto;
+        margin-right: auto;
+        margin: 1%;
+        width: 40vw;
+        line-height: 1.428571429;
+        border-radius: 10px;
+    }
 }
 
-.btn-circle {
+@media screen and (min-width: 1024px)
+{
+    .texte {
+        position: relative;
+        font-size: 1vw;
+        font-family: 'Lemonada', cursive;
+        text-shadow: 3px 2px 5px black;
+        text-align: center;
+        top: 25%;
+    }
 
-    margin: 10px;
-    width: 25vw;
-    height: 25vh;
-    line-height: 1.428571429;
-    border-radius: 10px;
+    .btn-circle {
 
-
-
+        margin-left: auto;
+        margin-right: auto;
+        margin: 1%;
+        width: 25vw;
+        line-height: 1.428571429;
+        border-radius: 10px;
+    }
 }
-
-.texte {
-    position: relative;
-    font-size: 2.25vw;
-    font-family: 'Lemonada', cursive;
-    text-shadow: 3px 2px 5px black;
-    top : 35%;
-}
-
 .content {
-    margin-top: 75px;
+    margin-top: 60px;
 }
 
