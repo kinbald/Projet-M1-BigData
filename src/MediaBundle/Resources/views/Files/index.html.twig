@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseadmin.html.twig' %}
 
 {% block body %}
     <h1>Files list</h1>
@@ -7,7 +7,7 @@
         <thead>
         <tr>
             <th>Id</th>
-            <th>Date/th>
+            <th>Date</th>
             <th>Name</th>
             <th>Url</th>
             <th>Actions</th>
@@ -17,13 +17,13 @@
         {% for file in files %}
             <tr>
                 <td>{{ file.id }}</td>
-                <td>{{ file.date }}</td>
+                <td>{{ file.date|date("d/m/Y") }}</td>
                 <td>{{ file.name }}</td>
                 <td><a href="{{ file.url }}">{{ file.url }}</a></td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('file_edit', { 'id': file.id }) }}">edit</a>
+                            <a href="{{ path('files_edit', { 'id': file.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -34,7 +34,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('file_new') }}">Create a new file</a>
+            <a href="{{ path('files_new') }}">Create a new file</a>
         </li>
     </ul>
 {% endblock %}

@@ -17,7 +17,7 @@ use UserBundle\Model\UserModel;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/", name="admin_index")
      */
     public function indexAction()
     {

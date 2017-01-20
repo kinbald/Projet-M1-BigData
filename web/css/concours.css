@@ -1,19 +1,126 @@
-@media (min-width: 480px) {
-    .timeline-block .timeline-content
-    {
-    background-image: url("../img/concours/concours3.png");
-    background-repeat: no-repeat;
-    background-position: center center;
+/**********  ECRAN 1  ***********/
 
+@media (max-width: 479px) {
+    h3{
+        font-size: x-large !important;
     }
-    p, h2 {
+    h2{
+        font-size: large !important;
+    }
+    .product .swiper-slide img{
+        width: 60% !important;
+    }
+
+    .product-list-vertical li a img.product-list-secondary-img{
+        left: 20%;
+        right: 20%;
+    }
+
+    .timeline-block .timeline-content p{
+        color:white;
+    }
+
+    .timeline-block .timeline-content h2{
+        color:white;
+    }
+
+    .timeline-block .timeline-content{
+        background: rgba(255, 216, 147, 0.2);
+    }
+
+}
+
+
+
+/**********  ECRAN 2  ***********/
+
+@media (min-width: 480px) and (max-width: 879px)  {
+    h3{
+        font-size: 4em !important;
+    }
+    h2{
+        font-size: x-large !important;
+    }
+    .product .swiper-slide img{
+        width: 80% !important;
+    }
+
+    .product-list-vertical li a img.product-list-secondary-img{
+        left: 10%;
+        right: 10%;
+    }
+
+    .timeline-block .timeline-content {
+        background-image: url("../img/concours/concours3.png");
+        background-repeat: no-repeat;
+        background-position: center center;
+        max-height: 344px;
+    }
+
+    .timeline-block .timeline-content p{
+        color:black;
+        font-size: 15px;
+    }
+
+    .timeline-block .timeline-content h2{
+        color:black;
+        font-size: 30px;
+    }
+
+    .timeline-block .timeline-content p{
+        color:black;
+    }
+
+    .timeline-block .timeline-content h2{
+        color:black;
+    }
+}
+
+
+/**********  ECRAN 3  ***********/
+
+@media (min-width: 880px) {
+    .timeline-block {
+        padding: 30px 0;
+    }
+
+    .timeline-block .timeline-content {
+        background-image: url("../img/concours/concours3.png");
+         background-repeat: no-repeat;
+         background-position: center center;
+         max-height: 344px;
+     }
+
+    .timeline-block .timeline-content p{
+        color:black;
+        font-size: 18px;
+    }
+
+    .timeline-block .timeline-content h2{
+        color:black;
+        font-size: 35px;
+    }
+
+    .timeline-block .timeline-content p{
+        color:black;
+    }
+
+    .timeline-block .timeline-content h2{
         color:black;
     }
 
 }
 
-@media (min-width: 1200px) {
-    .timeline-block {
-        padding: 30px 0;
-    }
+/*******************************************************/
+
+.product .left-arrow-negative, .product .right-arrow-negative {
+    top: 50%;
+}
+
+.product {
+    padding: 0px;
+}
+
+.product-list-secondary-img{
+    text-align: center;
 }
