@@ -37,7 +37,10 @@ label
 #productbundle_wine_stock,
 #productbundle_wine_price,
 #productbundle_wine_volume,
-#productbundle_wine_name {
+#productbundle_wine_name,
+#mediabundle_files_url,
+#mediabundle_files_name,
+#mediabundle_files_date_date{
     border-radius: 10px;
     color:#555555;
 }
@@ -47,6 +50,12 @@ label
     color:#555555;
     width: 12em;
     height: 4em;
+}
+
+#mediabundle_files_date_time {
+    border-radius: 10px;
+    color:#555555;
+    margin-left:150px;
 }
 
 div {

@@ -1,8 +1,15 @@
 {% extends 'baseadmin.html.twig' %}
 
-{% block body %}
-    <h1>Files list</h1>
+{% block stylesheets %}
+    <link href="{{ asset('css/bootstrap-dark.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/theme-dark.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/index.css') }}" rel="stylesheet" />
+{% endblock %}
 
+{% block body %}
+    <div id="content">
+    <h1>Liste des communiqués</h1>
+        <br>
     <table>
         <thead>
         <tr>
@@ -31,10 +38,11 @@
         {% endfor %}
         </tbody>
     </table>
-
+        <br>
     <ul>
         <li>
-            <a href="{{ path('files_new') }}">Create a new file</a>
+            <a class="btn btn-primary btn-circle" href="{{ path('files_new') }}">Create a new file</a>
         </li>
     </ul>
+    </div>
 {% endblock %}

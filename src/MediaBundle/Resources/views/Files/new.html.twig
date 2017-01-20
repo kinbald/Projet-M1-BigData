@@ -1,16 +1,25 @@
 {% extends 'baseadmin.html.twig' %}
 
+{% block stylesheets %}
+    <link href="{{ asset('css/bootstrap-dark.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/theme-dark.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/create.css') }}" rel="stylesheet" />
+{% endblock %}
+
 {% block body %}
+    <div id="content">
     <h1>{% trans %}File creation{% endtrans %}</h1>
 
     {{ form_start(form) }}
     {{ form_widget(form) }}
-    <input type="submit" value="Create"/>
-    {{ form_end(form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('files_index') }}">Back to the list</a>
-        </li>
-    </ul>
+        <table>
+            <td>
+        <input class="btn btn-primary btn-circle" type="submit" value="Create"/>
+        {{ form_end(form) }}
+            </td>
+            <td>
+            <a class="btn btn-primary btn-circle" href="{{ path('files_index') }}">Back to the list</a>
+            </td>
+        </table>
+    </div>
 {% endblock %}

@@ -39,6 +39,11 @@ a, th, td, tr, li{
     color: #0d0d0d;
     text-align: center;
 }
+
+h1 {
+    text-align: center;
+}
+
 .id{
     width: 10%;
 }
