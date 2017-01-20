@@ -1,0 +1,46 @@
+
+.formulaire{
+    font-family: monospace;
+    background-color: red;
+}
+
+/* Formulaire complet */
+form{
+    margin-left: auto;
+    margin-right: auto;
+    width: 20vw;
+    padding: 2vw;
+    display: block;
+    float: left;
+}
+
+#form{
+    margin-left: auto;
+    margin-right: auto;
+    width: 20vw;
+}
+
+
+/* Texte */
+.required{
+    font-size: x-large;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+
+/* Tick-box 1 */
+#form_media-3{
+    margin-bottom: 5vw;
+}
+
+/* Tick-box 2 */
+#form_media-4{
+    margin-bottom: 5vw;
+}
+/* Tick-box 3 */
+#form_media-5{
+    margin-bottom: 5vw;
+}
