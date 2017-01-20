@@ -3,13 +3,16 @@
 
 
 {% block fos_user_content %}
+    <div id="content">
+        <h1>Inscription utilisateur</h1>
     {% trans_default_domain 'FOSUserBundle' %}
 
     <form action="{{ path('user_consumer_registration') }}" method="POST">
         {{ form_widget(form) }}
         <div><br><br>
-            <input type="submit" value="{{ 'registration.submit'|trans }}" />
+            <input class="btn btn-primary btn-circle" type="submit" value="{{ 'registration.submit'|trans }}" />
 
         </div>
     </form>
+    </div>
 {% endblock fos_user_content %}
