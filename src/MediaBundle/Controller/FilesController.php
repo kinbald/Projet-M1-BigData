@@ -27,7 +27,7 @@ class FilesController extends Controller
 
         $files = $em->getRepository('MediaBundle:Files')->findAll();
 
-        return $this->render('files/index.html.twig', array(
+        return $this->render('MediaBundle:Files:index.html.twig', array(
             'files' => $files,
         ));
     }
@@ -52,7 +52,7 @@ class FilesController extends Controller
             return $this->redirectToRoute('files_show', array('id' => $file->getId()));
         }
 
-        return $this->render('files/new.html.twig', array(
+        return $this->render('MediaBundle:Files:new.html.twig', array(
             'file' => $file,
             'form' => $form->createView(),
         ));
@@ -92,7 +92,7 @@ class FilesController extends Controller
             return $this->redirectToRoute('files_edit', array('id' => $file->getId()));
         }
 
-        return $this->render('files/edit.html.twig', array(
+        return $this->render('MediaBundle:Files:edit.html.twig', array(
             'file' => $file,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
