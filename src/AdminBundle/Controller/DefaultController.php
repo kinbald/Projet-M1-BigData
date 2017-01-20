@@ -39,7 +39,7 @@ class DefaultController extends Controller
         foreach ($users as $user)
         {
             array_push($name, strtolower(str_replace(' ', '-', $user->getCompanyName())));
-            $bform->add('media-' . $user->getId(), CheckboxType::class,
+            $bform->add('media_' . $user->getId(), CheckboxType::class,
                 array("label" => $user->getCompanyName(), "attr" => ["checked" => ($user->isEnabled())]));
         }
 
@@ -51,7 +51,7 @@ class DefaultController extends Controller
             {
                 $enabled = false;
                 foreach ($data as $key=>$value) {
-                    if($key == 'media-' . $user->getId())
+                    if($key == 'media_' . $user->getId())
                         $enabled = true;
                 }
                 $user->setEnabled($enabled);
@@ -63,7 +63,8 @@ class DefaultController extends Controller
 
 
         return $this->render('AdminBundle:Default:validationPresse.html.twig', array(
-            'form' => $bform->getForm()->createView()
+            'form' => $bform->getForm()->createView(),
+            'medias' => $users
         ));
     }
 

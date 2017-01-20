@@ -15,6 +15,13 @@
 
 {% block body %}
 
+    {% for media in medias %}
+        {{ media.id }} <br/>
+        {{ media.companyName }} <br/>
+        {{ media.urlBlog }} <br/>
+        {{ media.idPresse }} <br/>
+    {% endfor %}
+
     <div class="container overflow-hidden">
         <div class="row">
             <div class="col-md-12">
