@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
+ * Jérémy Tablet
  * File controller.
  *
  * @Route("files")
@@ -68,7 +69,7 @@ class FilesController extends Controller
     {
         $deleteForm = $this->createDeleteForm($file);
 
-        return $this->render('files/show.html.twig', array(
+        return $this->render('MediaBundle:Files:show.html.twig', array(
             'file' => $file,
             'delete_form' => $deleteForm->createView(),
         ));
