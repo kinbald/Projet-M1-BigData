@@ -6,6 +6,7 @@ use AdminBundle\Model\AdminModel;
 use Doctrine\Common\Util\Debug;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -40,8 +41,10 @@ class DefaultController extends Controller
         {
             array_push($name, strtolower(str_replace(' ', '-', $user->getCompanyName())));
             $bform->add('media_' . $user->getId(), CheckboxType::class,
-                array("label" => $user->getCompanyName(), "attr" => ["checked" => ($user->isEnabled())]));
+                array("label" => $user->getCompanyName(), 'required' => false, "attr" => ["checked" => ($user->isEnabled())]));
         }
+
+        $bform->add('save', SubmitType::class, array('attr' => array('class' => 'save')));
 
         if('POST' === $request->getMethod())
         {
