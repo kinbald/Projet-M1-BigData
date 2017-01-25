@@ -94,3 +94,8 @@ h1,h2{
     margin-top: 60px;
 }
 
+#center-and-marges{
+    margin-top: 60px;
+    margin-left: 30%;
+    margin-right: 30%;
+}
