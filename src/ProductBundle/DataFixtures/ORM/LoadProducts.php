@@ -20,10 +20,6 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $user = $manager->getRepository("UserBundle:BaseUser")->findOneByUsername('Consumer');
         $userConsumer = $manager->getRepository("UserBundle:UserConsumer")->findOneByUsername('Consumer');
 
-        $userAdmin = new Universe();
-        $userAdmin->setName('rouge');
-        $userAdmin->setDescription('Vous trouverez ici le vin rouge qui vous correspond');
-        $manager->persist($userAdmin);
 
         /*-----------------------LES VINS-------------------------*/
         /*--------------------------------------------------------*/
