@@ -86,9 +86,11 @@ class DefaultController extends Controller
         foreach ($users as $user)
         {
             array_push($name, strtolower(str_replace(' ', '-', $user->getCompanyName())));
-            $bform->add('producer-' . $user->getId(), CheckboxType::class,
-                array("label" => $user->getCompanyName(), "attr" => ["checked" => ($user->isEnabled())]));
+            $bform->add('producer_' . $user->getId(), CheckboxType::class,
+                array("label" => $user->getCompanyName(), 'required' => false, "attr" => ["checked" => ($user->isEnabled())]));
         }
+
+        $bform->add('save', SubmitType::class, array('attr' => array('class' => 'save')));
 
         if('POST' === $request->getMethod())
         {
@@ -98,7 +100,7 @@ class DefaultController extends Controller
             {
                 $enabled = false;
                 foreach ($data as $key=>$value) {
-                    if($key == 'producer-' . $user->getId())
+                    if($key == 'producer_' . $user->getId())
                         $enabled = true;
                 }
                 $user->setEnabled($enabled);
@@ -110,7 +112,8 @@ class DefaultController extends Controller
 
 
         return $this->render('AdminBundle:Default:validationProducer.html.twig', array(
-            'form' => $bform->getForm()->createView()
+            'form' => $bform->getForm()->createView(),
+            'producers' => $users
         ));
     }
 
