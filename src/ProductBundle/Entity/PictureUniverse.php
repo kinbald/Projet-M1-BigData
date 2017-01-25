@@ -106,11 +106,11 @@ class PictureUniverse
     /**
      * Set universe
      *
-     * @param \ProductBundle\Universe $universe
+     * @param Universe $universe
      *
      * @return PictureUniverse
      */
-    public function setUniverse(\ProductBundle\Universe $universe)
+    public function setUniverse(Universe $universe)
     {
         $this->universe = $universe;
 
@@ -120,7 +120,7 @@ class PictureUniverse
     /**
      * Get universe
      *
-     * @return \ProductBundle\Universe
+     * @return Universe
      */
     public function getUniverse()
     {

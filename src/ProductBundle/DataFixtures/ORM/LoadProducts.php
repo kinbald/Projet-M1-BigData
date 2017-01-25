@@ -5,6 +5,7 @@ use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use ProductBundle\Entity\PictureProduct;
+use ProductBundle\Entity\PictureUniverse;
 use ProductBundle\Entity\ProductEvaluation;
 use ProductBundle\Entity\ProductPurchase;
 use ProductBundle\Entity\Purchase;
@@ -175,6 +176,60 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $productEvaluation->setMark(15);
         $productEvaluation->setReview('cété trai bon lol');
         $manager->persist($productEvaluation);
+
+
+        /*-----------------------LES UNIVERS-------------------------*/
+        /*-----------------------------------------------------------*/
+        $universe = new Universe();
+        $universe->setName('vinasse de femelle');
+        $universe->setDescription('blabla');
+        $manager->persist($universe);
+
+        $picture = new PictureUniverse();
+        $picture->setAlt('vin');
+        $picture->setUrl('univ_femme.jpg');
+        $picture->setUniverse($universe);
+        $manager->persist($picture);
+
+        /*-----------------------------------------------------------*/
+        $universe = new Universe();
+        $universe->setName('Vin a Gastro');
+        $universe->setDescription('blabla');
+        $manager->persist($universe);
+
+        $picture = new PictureUniverse();
+        $picture->setAlt('vin');
+        $picture->setUrl('univ_gastronomie.jpg');
+        $picture->setUniverse($universe);
+        $manager->persist($picture);
+
+        /*-----------------------------------------------------------*/
+        $universe = new Universe();
+        $universe->setName('Vin étranger');
+        $universe->setDescription('blabla');
+        $manager->persist($universe);
+
+        $picture = new PictureUniverse();
+        $picture->setAlt('vin');
+        $picture->setUrl('univ_monde.jpg');
+        $picture->setUniverse($universe);
+        $manager->persist($picture);
+
+        /*-----------------------------------------------------------*/
+        $universe = new Universe();
+        $universe->setName('Vin rose');
+        $universe->setDescription('blabla');
+        $manager->persist($universe);
+
+        $picture = new PictureUniverse();
+        $picture->setAlt('vin');
+        $picture->setUrl('univ_rose.jpg');
+        $picture->setUniverse($universe);
+        $manager->persist($picture);
+
+
+
+
 
         $manager->flush();
     }
