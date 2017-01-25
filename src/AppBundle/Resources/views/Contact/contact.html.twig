@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link href="{{ asset('css/bootstrap-dark.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/theme-dark.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/contact.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block body %}
+    <div id="content">
+        <h1>Présentation</h1>
+        <br>
+        <h2>Site de vente de vin appartenant à la société xxx</h2>
+        <br>
+        <p>Ici, les clients pourront raconter l'histoire de leur entreprise, histoire de se présenter à eux avant qu'on puisse
+        les contacter, ça peut toujours être utile. Meanwhile, je mets un lorem ipsum, et un métal hurlant. #PG Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non pharetra leo. Etiam mollis at orci auctor ornare. Praesent tellus sapien, maximus eu orci eu, ultricies ullamcorper neque. Donec interdum placerat risus sit amet consectetur. Nullam nec laoreet erat. Duis quis accumsan metus. Nullam porttitor pulvinar sagittis. Fusce justo velit, condimentum at convallis eu, bibendum non tortor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas sagittis velit vehicula sodales hendrerit. Phasellus tristique maximus ipsum quis pharetra. Mauris aliquam eu quam at pharetra. Morbi nec orci turpis. Morbi quis posuere elit. Suspendisse nec neque a orci imperdiet aliquet.
+        </p>
+        <br>
+        <h2>Nous contacter</h2>
+        <p>
+            Facebook: http://www.facebook.com/vignasse (ou bouton) <br>
+            Twitter: @LeVinCestBien <br>
+            Mail: contact@adressedusite.fr
+        </p>
+    </div>
+{% endblock %}
