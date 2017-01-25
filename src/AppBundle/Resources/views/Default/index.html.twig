@@ -20,7 +20,7 @@
                         {% for universe in universes %}
                             <a type="button" class="btn">
                                 {% set picture = universe.pictures|last %}
-                                <img class="monde" src="/img/upload/{{ picture.url}}" alt="{{ picture.alt}}"/>
+                                <img class="image" src="/img/upload/{{ picture.url}}" alt="{{ picture.alt}}"/>
                                 <p class="texte"> {{ universe.name }}</p>
                             </a>
                         {% endfor %}
