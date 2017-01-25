@@ -5074,7 +5074,7 @@ if (function (e, t) {
     }
 }), window.onload = function () {
     function e(e, t) {
-        l++, s[l] = t, $("#items-counter").empty(), curCounter = $("#items .cart-item").length + 1, document.getElementById("items").innerHTML += "<div class='cart-item hidden' id='item" + l + "' data-id='" + e + "'><span class='cart-item-image'><img alt='" + o + "' src='" + curImage + "'/></span><span class='cart-item-name h4'>" + o + "</span><span class='cart-item-price'>$<span class='cvalue'>" + t + "</span></span> <span class='cart-item-remove'><span class='ti-close'></span><span></div>", document.getElementById("items-counter").innerHTML += "<span class='animate'>" + curCounter + "<span class='circle'></span></span>", document.getElementById("item" + l).classList.remove("hidden"), a()
+        l++, s[l] = t, $("#items-counter").empty(), curCounter = $("#items .cart-item").length + 1, document.getElementById("items").innerHTML += "<div class='cart-item hidden' id='item" + l + "' data-id='" + e + "'><span class='cart-item-image'><img alt='" + o + "' src='" + curImage + "'/></span><span class='cart-item-name h4'>" + o + "</span><span class='cart-item-price'>$<span class='cvalue'>" + t + "</span></span> <span class='cart-item-remove'>✘<span></div>", document.getElementById("items-counter").innerHTML += "<span class='animate'>" + curCounter + "<span class='circle'></span></span>", document.getElementById("item" + l).classList.remove("hidden"), a()
     }
 
     function t(e) {
