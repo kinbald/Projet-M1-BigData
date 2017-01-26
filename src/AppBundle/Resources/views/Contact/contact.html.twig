@@ -7,20 +7,39 @@
 {% endblock %}
 
 {% block body %}
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.8";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
     <div id="content">
         <h1>Présentation</h1>
         <br>
-        <h2>Site de vente de vin appartenant à la société xxx</h2>
+        <h3>Site de vente de vin appartenant à la société xxx</h3>
         <br>
         <p>Ici, les clients pourront raconter l'histoire de leur entreprise, histoire de se présenter à eux avant qu'on puisse
         les contacter, ça peut toujours être utile. Meanwhile, je mets un lorem ipsum, et un métal hurlant. #PG Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non pharetra leo. Etiam mollis at orci auctor ornare. Praesent tellus sapien, maximus eu orci eu, ultricies ullamcorper neque. Donec interdum placerat risus sit amet consectetur. Nullam nec laoreet erat. Duis quis accumsan metus. Nullam porttitor pulvinar sagittis. Fusce justo velit, condimentum at convallis eu, bibendum non tortor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas sagittis velit vehicula sodales hendrerit. Phasellus tristique maximus ipsum quis pharetra. Mauris aliquam eu quam at pharetra. Morbi nec orci turpis. Morbi quis posuere elit. Suspendisse nec neque a orci imperdiet aliquet.
         </p>
         <br>
-        <h2>Nous contacter</h2>
-        <p>
-            Facebook: http://www.facebook.com/vignasse (ou bouton) <br>
-            Twitter: @LeVinCestBien <br>
-            Mail: contact@adressedusite.fr
-        </p>
+        <h1>Nous contacter</h1>
+        <br>
+        <h3>Retrouvez-nous sur les réseaux sociaux</h3>
+        <br>
+        <table>
+            <tr>
+               <td>Facebook:</td> <td><div class="fb-like" data-href="https://www.facebook.com/OfficielADM/?fref=ts" data-layout="button" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div> <br>
+                </td> </tr>
+            <tr>
+               <td>Twitter:</td> <td><a href="https://twitter.com/onlythepg" class="twitter-follow-button" data-show-count="false" data-lang="fr">Suivre @onlythepg</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script> <br>
+                </td> </tr>
+            <tr>
+               <td>Mail:</td> <td>contact@adressedusite.fr</td>
+            </tr>
+        </table>
+        <br>
+        <i>Site créé par des étudiants désespérés de l'ISEN Toulon pour leur projet de 4e année. Ils sont heureux, et aimeraient partir à Monaco.</i>
     </div>
 {% endblock %}
