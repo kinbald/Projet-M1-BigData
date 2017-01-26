@@ -48,6 +48,10 @@ app:
     type:     annotation
     prefix:   /
 
+app_contact:
+    resource: "@AppBundle/Controller/ContactController.php"
+    type:     annotation
+
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
