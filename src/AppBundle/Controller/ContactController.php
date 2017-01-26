@@ -8,10 +8,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-class DefaultController extends Controller
+class ContactController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("/contact", name="contact")
      */
     public function indexAction(Request $request)
     {
@@ -25,7 +25,7 @@ class DefaultController extends Controller
         }
 
 
-        return $this->render('AppBundle:Default:index.html.twig', [
+        return $this->render('AppBundle:Contact:contact.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir') . '/..') . DIRECTORY_SEPARATOR,
             'universes' => $universes,
             'product_pictures' => $pictureArray,

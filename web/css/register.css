@@ -11,11 +11,47 @@ label
     float: left;
 }
 
-form{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    /* bring your own prefixes */
-    transform: translate(-50%, -50%);
-    padding:5px;
+#content {
+    margin-top: 75px;
+}
+
+#fos_user_registration_form div {
+    margin-top: 22px;
+
+}
+
+.btn-circle {
+    margin: 10px;
+    width: 12em;
+    height: 3em;
+    line-height: 1.428571429;
+    border-radius: 10px;
+    position: relative;
+    font-size: 0.8em;
+    font-family: 'Pacifico', cursive;
+}
+
+#fos_user_registration_form_email,
+#fos_user_registration_form_username,
+#fos_user_registration_form_plainPassword_first,
+#fos_user_registration_form_plainPassword_second,
+#fos_user_registration_form_firstname,
+#fos_user_registration_form_lastname,
+#fos_user_registration_form_sex,
+#fos_user_registration_form_birthDate,
+#fos_user_registration_form_siret,
+#fos_user_registration_form_companyName,
+#fos_user_registration_form_city,
+#fos_user_registration_form_postalCode,
+#fos_user_registration_form_urlBlog,
+#fos_user_registration_form_idPresse{
+    border-radius: 10px;
+    color:#555555;
+}
+
+#fos_user_registration_form_address {
+    border-radius: 10px;
+    color: #555555;
+    width: 17em;
+    height: 7em;
 }

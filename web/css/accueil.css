@@ -1,80 +1,156 @@
 
 
-h1{
-    font-size: 50px;
-    font-family: 'Dancing Script', cursive;
-    color:white;
-    margin-top: 7%;
+@media (max-width: 360px) {
+
+    h1{
+        font-size: 50px;
+        font-family: 'Dancing Script', cursive;
+        color:white;
+        margin-top: 20%;
+        margin-bottom: 10%;
+    }
+
+
+    .neutral {
+        display: inline-block;
+        text-align: center;
+        margin-bottom: 20px;
+        height: 40vh;
+        width: 80vw;
+    }
+
+
+    .btn {
+        padding: 0px;
+        height : 100%;
+        width: 100%;
+
+    }
+    .image {
+        height: 100%;
+        width: 100%;
+        border-radius: 10px;
+
+    }
+    .texte {
+        position: relative;
+        width: 100%;
+        text-align: center;
+        text-shadow: 3px 2px 1px black;
+        top:-70%;
+
+        font-size: 5vw;
+        font-family: 'Lemonada', cursive;
+    }
+
+}
+
+@media (min-width: 360px) and (max-width: 1000px) {
+
+    h1{
+        font-size: 10vw;
+        font-family: 'Dancing Script', cursive;
+        color:white;
+        margin-top: 15%;
+        margin-bottom: 5%;
+    }
+
+    .neutral {
+        display: inline-block;
+        text-align: center;
+        margin-bottom: 20px;
+        margin-right: 10px;
+        margin-left: 10px;
+        height: 30vh;
+        width: 40vw;
+    }
+
+    .btn {
+        padding: 0px;
+
+
+        height: 100%;
+        width: 100%;
+
+    }
+    .image {
+        padding: 0px;
+
+        height: 100%;
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    .texte {
+        position: relative;
+        text-align: center;
+        padding: 0px;
+        text-shadow: 3px 2px 1px black;
+        top:-70%;
+        font-size: 3vw;
+        font-family: 'Lemonada', cursive;
+    }
+
 }
 
 
 
-.btn-circle {
 
-    margin: 10px;
-    width: 25vw;
-    height: 25vh;
-
-
-    padding: 0 0;
-    line-height: 1.428571429;
-    border-radius: 10px;
-}
-
-.gastronomie{
-
-    height: 25vh;
-    width: 25vw;
-
-    border-radius: 10px;
-}
+/********************************** ECRAN 3 **************/
 
 
 
 
-.monde{
 
-    height: 25vh;
-    width: 25vw;
 
-    border-radius: 10px;
-}
+@media (min-width: 1000px) {
+    h1{
+        font-size: 50px;
+        font-family: 'Dancing Script', cursive;
+        color:white;
+        margin-top: 7%;
+        margin-bottom: 1%;
 
-.femme{
+    }
 
-    height: 25vh;
-    width: 25vw;
-    border-radius: 10px;
-}
+    .neutral {
+        display: inline-block;
+        text-align: center;
+        margin-bottom: 20px;
+        margin-right: 10px;
+        margin-left: 10px;
+        height: 25vh;
+        width: 25vw;
+    }
 
-.terroir{
 
-    height: 25vh;
-    width: 25vw;
+    .btn {
+        left: 500px;
+        padding: 0px 0px;
 
-    border-radius: 10px;
-}
+        height: 100%;
+        width: 100%;
 
-.rose{
 
-    height: 25vh;
-    width: 25vw;
+        border-radius: 10px;
+    }
 
-    border-radius: 10px;
-}
+    .image {
+        padding: 0px 0px;
 
-.spiritueux{
+        height: 100%;
+        width: 100%;
 
-    height: 25vh;
-    width: 25vw;
+        border-radius: 10px;
+    }
 
-    border-radius: 10px;
-}
-.texte{
-    position : relative;
-    text-align: center;
-    text-shadow: 3px 2px 1px black;
-    top: -70%;
-    font-size: 2vw;
-    font-family: 'Lemonada', cursive;
+    .texte {
+        position: relative;
+        text-align: center;
+        text-shadow: 3px 2px 1px black;
+        top: -70%;
+        font-size: 2vw;
+        font-family: 'Lemonada', cursive;
+    }
+
 }

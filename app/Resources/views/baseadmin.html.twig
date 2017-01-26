@@ -17,14 +17,15 @@
                 <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="#"> <img src="img/logo-white.png" alt="logo"> </a>
+            <a class="navbar-brand" href="{{ path("homepage") }}"> <img src="{{ asset('img/product/logo.png') }}"
+                                                                        alt="logo"> </a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
 
 
-                <li><a href="#about">menu principal d'administration</a></li>
-                <li><a href="#special">déconnexion</a></li>
+                <li><a href="{{ path('admin_index') }}">menu principal d'administration</a></li>
+                <li><a href="#">déconnexion</a></li>
 
 
             </ul>

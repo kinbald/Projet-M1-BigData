@@ -9,79 +9,24 @@
 {% endblock %}
 
 {% block javascripts %}
-    <!--<script src="{{ asset('https://maps.googleapis.com/maps/api/js?key=AIzaSyA_6m6Glf1-P7jvVdHZ00e3Ue_EoUNe39g') }}"></script>
-    --><script src="{{ asset('js/bundle.js') }}"></script>
+    <script src="{{ asset('js/bundle.js') }}"></script>
 {% endblock %}
 
 {% block body %}
 
         <div class="text-center">
-
-
-
-                    <h1>Box Office Vine</h1>
+                    <h1>Box Office Wine</h1>
                     <div class="text-center">
-                        <a type="button" class="btn btn-circle">
-                            <img class="monde" src="{{ asset('img/app/monde.jpg')}}"
-
-                                 alt="monde"
-                            />
-                            <div class="texte">Monde</div>
-                        </a>
-
-                        <a type="button" class="btn btn-circle">
-
-                            <img class="gastronomie" src="{{ asset('img/app/gastronomie.jpg')}}"
-
-                                 alt="gastronomie";
-                            />
-                            <div class="texte">Gastronomie</div>
-                        </a>
-                        <a type="button" class="btn btn-circle">
-
-                            <img class="femme" src="{{ asset('img/app/femme.jpg')}}"
-
-                                 alt="femme";
-                            />
-
-                            <div class="texte">Femmes</div>
-                        </a>
-
-
-                    </div>
-                    <div class="text-center">
-                        <a type="button" class="btn btn-circle">
-
-                            <img class="terroir" src="{{ asset('img/app/terroir.jpg')}}"
-
-                                 alt="terroir";
-                            />
-                            <div class="texte">Terroir</div>
-                        </a>
-                        <a type="button" class="btn btn-circle">
-
-                            <img  class="rose" src="{{ asset('img/app/rose.jpg')}}"
-
-                                 alt="rose"
-                            />
-                            <div class="texte">Rosé</div>
-                        </a>
-                        <a type="button" class="btn btn-circle">
-
-                            <img class="spiritueux" src="{{ asset('img/app/spiritueux.jpg')}}"
-
-                                 alt="spirit"
-                            />
-                            <div class="texte">Spiritueux</div>
-                        </a>
-                    </div>
-
+                        {% for universe in universes %}
+                            <div class="neutral text-center">
+                            <a type="button" class="btn">
+                                {% set picture = universe.pictures|last %}
+                                <img class="image" src="/img/upload/{{ picture.url}}" alt="{{ picture.alt}}"/>
+                                <p class="texte"> {{ universe.name }}</p>
+                            </a>
+                            </div>
+                        {% endfor %}
         </div>
-
-
-
-
-
 
 {% endblock %}
 
