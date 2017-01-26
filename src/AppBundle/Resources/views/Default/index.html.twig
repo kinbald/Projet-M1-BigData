@@ -18,11 +18,13 @@
                     <h1>Box Office Wine</h1>
                     <div class="text-center">
                         {% for universe in universes %}
+                            <div class="neutral text-center">
                             <a type="button" class="btn">
                                 {% set picture = universe.pictures|last %}
                                 <img class="image" src="/img/upload/{{ picture.url}}" alt="{{ picture.alt}}"/>
                                 <p class="texte"> {{ universe.name }}</p>
                             </a>
+                            </div>
                         {% endfor %}
         </div>
 
