@@ -1,0 +1,145 @@
+{% block stylesheets %}
+    <link href="{{ asset('http://www.w3schools.com/lib/w3.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/compte.css') }}" rel="stylesheet" />
+{% endblock %}
+
+
+{% trans_default_domain 'FOSUserBundle' %}
+{{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+
+
+<nav class="w3-sidenav w3-black w3-card-2" style="width:130px;">
+    <div class="w3-container">
+        <h5>Menu</h5>
+    </div>
+    <a href="javascript:void(0)" class="tablink" onclick="openLink(event, 'Profile')">Profile</a>
+    <a href="javascript:void(0)" class="tablink" onclick="openLink(event, 'ECivil')">Etat civil</a>
+    <a href="javascript:void(0)" class="tablink" onclick="openLink(event, 'Factures')">Factures</a>
+</nav>
+
+<div style="margin-left:130px">
+    <h1 id="titre">Bienvenue sur votre espace client</h1>
+
+    <!-------------------Profile--------------------->
+    <div id="Profile" class="w3-container city w3-animate-left" style="display:none;">
+        <h2>Profile</h2>
+            <div>
+                <p>Username:</p>
+            </div>
+            <div>
+                <p>Password: ******</p>
+            </div>
+            <div>
+                <p>Email:</p>
+            </div>
+            <br>
+            <a href="javascript:void(0)" id="modifier" class="tablink" onclick="openLink(event, 'Profile1')">Modifier</a>
+
+    </div>
+    <!-------------------Profile edit--------------------->
+    <div id="Profile1" class="w3-container city w3-animate-left" style="display:none;">
+        <h2>Profile</h2>
+            <div>
+                {{ form_label(form.username) }}
+                {{ form_errors(form.username) }}
+                {{ form_widget(form.username) }}
+            </div>
+            <div>
+                {{ form_label(form.plainPassword.first) }}
+                {{ form_errors(form.plainPassword.first) }}
+                {{ form_widget(form.plainPassword.first) }}
+            </div>
+            <div>
+                {{ form_label(form.plainPassword.second) }}
+                {{ form_errors(form.plainPassword.second) }}
+                {{ form_widget(form.plainPassword.second) }}
+            </div>
+            <div>
+                {{ form_label(form.email) }}
+                {{ form_errors(form.email) }}
+                {{ form_widget(form.email) }}
+            </div>
+            <br>
+            <div>
+                <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+            </div>
+    </div>
+
+    <!-------------------Etat Civil--------------------->
+    <div id="ECivil" class="w3-container city w3-animate-left" style="display:none">
+        <h2>Etat civil</h2>
+        <div>
+            <p>Last name:</p>
+        </div>
+        <div>
+            <p>First name:</p>
+        </div>
+        <div>
+            <p>Birth Date:</p>
+        </div>
+        <div>
+            <p>Gender:</p>
+        </div>
+
+        <br>
+        <a href="javascript:void(0)" id="modifier" class="tablink" onclick="openLink(event, 'ECivil1')">Modifier</a>
+    </div>
+
+    <!-------------------Etat Civil edit--------------------->
+    <div id="ECivil1" class="w3-container city w3-animate-left" style="display:none">
+        <h2>Etat civil</h2>
+        <div>
+            {{ form_label(form.lastname) }}
+            {{ form_errors(form.lastname) }}
+            {{ form_widget(form.lastname) }}
+        </div>
+        <div>
+            {{ form_label(form.firstname) }}
+            {{ form_errors(form.firstname) }}
+            {{ form_widget(form.firstname) }}
+        </div>
+        <div>
+            {{ form_label(form.birthDate) }}
+            {{ form_errors(form.birthDate) }}
+            {{ form_widget(form.birthDate) }}
+        </div>
+        <div>
+            {{ form_label(form.sex) }}
+            {{ form_errors(form.sex) }}
+            {{ form_widget(form.sex) }}
+        </div>
+
+        <br>
+        <div>
+            <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+        </div>
+    </div>
+
+    <div id="Factures" class="w3-container city w3-animate-left" style="display:none">
+        <h2>Factures & Paiements</h2>
+        <p>blablabla</p>
+        <p>blablabla</p>
+    </div>
+
+
+</div>
+
+<script>
+    function openLink(evt, animName) {
+        var i, x, tablinks;
+        x = document.getElementsByClassName("city");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablink");
+        for (i = 0; i < x.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+        }
+        document.getElementById(animName).style.display = "block";
+        evt.currentTarget.className += " w3-red";
+    }
+
+</script>
+
+
+{{ form_end(form) }}
