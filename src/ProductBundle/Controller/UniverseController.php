@@ -26,7 +26,7 @@ class UniverseController extends Controller
 
         $universes = $em->getRepository('ProductBundle:Universe')->findAll();
 
-        return $this->render('universe/index.html.twig', array(
+        return $this->render('ProductBundle:universe:index.html.twig', array(
             'universes' => $universes,
         ));
     }
@@ -51,7 +51,7 @@ class UniverseController extends Controller
             return $this->redirectToRoute('universe_show', array('id' => $universe->getId()));
         }
 
-        return $this->render('universe/new.html.twig', array(
+        return $this->render('ProductBundle:universe:new.html.twig', array(
             'universe' => $universe,
             'form' => $form->createView(),
         ));
@@ -67,9 +67,19 @@ class UniverseController extends Controller
     {
         $deleteForm = $this->createDeleteForm($universe);
 
-        return $this->render('universe/show.html.twig', array(
+
+        $pictureArray = array();
+        $products = $universe->getProducts();
+                    foreach ($products as $product) {
+                        $pictures=$product->getPictures();
+                        array_push($pictureArray, $pictures[0]);
+                    }
+
+        return $this->render('ProductBundle:universe:show.html.twig', array(
             'universe' => $universe,
             'delete_form' => $deleteForm->createView(),
+            'products' => $products,
+            'product_pictures' => $pictureArray,
         ));
     }
 
@@ -91,7 +101,7 @@ class UniverseController extends Controller
             return $this->redirectToRoute('universe_edit', array('id' => $universe->getId()));
         }
 
-        return $this->render('universe/edit.html.twig', array(
+        return $this->render('ProductBundle:universe:edit.html.twig', array(
             'universe' => $universe,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

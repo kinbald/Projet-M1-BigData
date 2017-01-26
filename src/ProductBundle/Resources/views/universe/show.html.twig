@@ -7,7 +7,6 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('https://maps.googleapis.com/maps/api/js?key=AIzaSyA_6m6Glf1-P7jvVdHZ00e3Ue_EoUNe39g') }}"></script>
     <script src="{{ asset('js/bundle.js') }}"></script>
     <script src="{{ asset('js/univers.js') }}"></script>
 {% endblock %}
@@ -18,7 +17,7 @@
         <p class="universe-name"> {{ universe.name }}</p>
     </div>
     <!-- Barre Laterale -->
-    <section class="barre_laterale barre_color_police">
+    <section class="barre_laterale barre_color_police" id="sidebar">
 
         <form method="post" action="traitement.php">
             <div class="barre_color_police">
@@ -107,27 +106,29 @@
 
     <section class="section-product">
         <!-- Autre -->
-        <section class="section-product-table">
+        <section class="section-product-table ">
             <div class="product-table-title">
-                <h3 class="section-heading">Egalement disponible</h3>
+                <h3 class="section-heading">Tous les produits</h3>
             </div>
 
             <div class="text-center">
                 <div class="product-table" id="product-table">
                     <ul class="product-holder">
-                        {% for i in 0..30 %}
+
+                        {% for product in products %}
                             <li>
                                 <div class="text-center">
 
 									<span class="product-list-primary-img">
-										<a href="#" data-target="#product-01" data-toggle="modal"><img alt="product image" class="product-list-primary-img table-primary-img" src="{{ asset('img/vinsprimes.png') }}">
+                                        {% set picture = product.pictures|last %}
+										<a href="#" data-target="#product-01" data-toggle="modal"><img alt="product image" class="product-list-primary-img table-primary-img" src="/img/upload/{{ picture.url }}" />
 										</a> <br>
 									</span>
 
                                     <a href="#" data-target="#product-01" data-toggle="modal">
 										<span class="swiper-slide text-center table-product-text">
-											<span class="table-product-name">Chocolate desire no. {{ i }}</span><br>
-											<span class="able-product-price">${{ i }}00</span>
+											<span class="table-product-name">{{ product.name }}</span><br>
+											<span class="able-product-price">{{ product.price }} €</span>
 										</span>
                                     </a> <br>
 
@@ -138,6 +139,8 @@
                                 </div>
                             </li>
                         {% endfor %}
+
+
                     </ul>
                 </div>
 
