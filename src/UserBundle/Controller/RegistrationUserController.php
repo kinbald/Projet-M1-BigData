@@ -8,6 +8,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class RegistrationUserController extends Controller
 {
     /**
+     * @Route("/inscription", name="inscription_choix")
+     */
+    public function inscriptionChoix()
+    {
+        return $this->render('UserBundle:Registration:inscription.html.twig');
+    }
+
+    /**
      * @Route("/register", name="user_consumer_registration")
      */
     public function registerConsumerAction()

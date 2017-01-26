@@ -20,8 +20,7 @@
                 <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="{{ path("homepage") }}"> <img src="{{ asset('img/product/logo.png') }}"
-                                                                        alt="logo"> </a>
+            <a class="navbar-brand" href="{{ path("homepage") }}"> <img src="{{ asset('img/product/logo.png') }}" alt="logo"> </a>
         </div>
         {% if is_granted('ROLE_CONSUMER') %}
             <div class="navbar-collapse collapse" id="myNavbar">
@@ -69,6 +68,7 @@
                     <li><a href="#panier">Panier</a></li>
                     <li><a href="#contact">Nous Contacter</a></li>
                     <li><a href="/login">Se Connecter</a></li>
+                    <li><a href="{{ path("inscription_choix") }}">S'inscrire</a></li>
                 </ul>
             </div>
     </div>
