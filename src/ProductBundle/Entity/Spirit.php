@@ -41,6 +41,16 @@ class Spirit extends Product
     }
 
     /**
+     * Get discr
+     *
+     * @return string
+     */
+    public function getDiscr()
+    {
+        return 'spirit';
+    }
+
+    /**
      * Set alcoholDegree
      *
      * @param float $alcoholDegree

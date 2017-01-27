@@ -9,26 +9,52 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 
-
-abstract class ProductController extends Controller
+/**
+ * Lists all product entities
+ * @Route("/")
+ */
+class ProductController extends Controller
 {
 
+    /**
+     * Lists all wine entities.
+     *
+     * @Route("/", name="product_index")
+     * @Method("GET")
+     */
 
-    public function indexAction($product_type)
+    public function indexAction()
+    {
+        return $this->redirectToRoute('homepage');
+    }
+
+    /**
+     * Lists all wine entities.
+     *
+     * @Route("/list/{type}", name="product_list")
+     * @Method("GET")
+     */
+
+    public function listAction($type)
     {
         $em = $this->getDoctrine()->getManager();
-        $products = $em->getRepository('ProductBundle:'.ucfirst($product_type))->findAll();
-        //\Doctrine\Common\Util\Debug::dump($product_type);
-        return $this->render('ProductBundle:' . $product_type . ':index.html.twig', array(
+        $products = $em->getRepository('ProductBundle:'.ucfirst($type))->findAll();
+        //\Doctrine\Common\Util\Debug::dump($product->getDiscr());
+        return $this->render('ProductBundle:' . $type . ':index.html.twig', array(
             'products' => $products,
         ));
     }
 
+    /**
+     * Creates a new product entity.
+     *
+     * @Route("/new/{type}", name="product_new")
+     * @Method({"GET", "POST"})
+     */
 
-
-    public function newAction(Request $request, Product $product = null, $product_type = '')
+    public function newAction(Request $request, $type, Product $product = null)
     {
-        $form = $this->createForm('ProductBundle\Form\\' . ucfirst($product_type) .  'Type', $product);
+        $form = $this->createForm('ProductBundle\Form\\' . ucfirst($type) .  'Type', $product);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             \Doctrine\Common\Util\Debug::dump($product->getUniverses());
@@ -36,40 +62,51 @@ abstract class ProductController extends Controller
             $em->persist($product);
             $em->flush($product);
 
-            return $this->render('ProductBundle:' . $product_type . ':empty.html.twig', array());
-            //return $this->redirectToRoute('wine_show', array('id' => $product_type->getId()));
+            return $this->render('ProductBundle:' . $product->getDiscr() . ':empty.html.twig', array());
+            //return $this->redirectToRoute('wine_show', array('id' => $product->getDiscr()->getId()));
         }
 
-        return $this->render('ProductBundle:' . $product_type . ':new.html.twig', array(
+        return $this->render('ProductBundle:' . $type . ':new.html.twig', array(
             'form' => $form->createView(),
         ));
     }
 
+    /**
+     * Displays a form to edit an existing wine entity.
+     *
+     * @Route("/{id}/edit", name="product_edit")
+     * @Method({"GET", "POST"})
+     */
 
-
-    public function editAction(Request $request, Product $product, $product_type = '')
+    public function editAction(Request $request, Product $product)
     {
-        $deleteForm = $this->createDeleteForm($product, $product_type);
-        $editForm = $this->createForm('ProductBundle\Form\\' . ucfirst($product_type) .  'Type', $product);
+        $deleteForm = $this->createDeleteForm($product, $product->getDiscr());
+        $editForm = $this->createForm('ProductBundle\Form\\' . ucfirst($product->getDiscr()) .  'Type', $product);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute($product_type . '_edit', array('id' => $product->getId()));
+            return $this->redirectToRoute('product_edit', array('id' => $product->getId()));
         }
 
-        return $this->render('ProductBundle:' . $product_type . ':edit.html.twig', array(
-            $product_type => $product,
+        return $this->render('ProductBundle:' . $product->getDiscr() . ':edit.html.twig', array(
+            $product->getDiscr() => $product,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
 
+    /**
+     * Deletes a wine entity.
+     *
+     * @Route("/{id}/delete", name="product_delete")
+     * @Method("DELETE")
+     */
 
-    public function deleteAction(Request $request, Product $product, $product_type = '')
+    public function deleteAction(Request $request, Product $product)
     {
-        $form = $this->createDeleteForm($product, $product_type);
+        $form = $this->createDeleteForm($product, $product->getDiscr());
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -78,26 +115,39 @@ abstract class ProductController extends Controller
             $em->flush($product);
         }
 
-        return $this->redirectToRoute($product_type . '_index');
+        return $this->redirectToRoute($product->getDiscr() . '_index');
     }
 
+    /**
+     * Creates a form to delete a Product entity.
+     *
+     * @param Product $product The product entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
 
-    protected function createDeleteForm(Product $product, $product_type)
+
+    protected function createDeleteForm(Product $product)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl($product_type.'_delete', array('id' => $product->getId())))
+            ->setAction($this->generateUrl('product_delete', array('id' => $product->getId())))
             ->setMethod('DELETE')
             ->getForm()
             ;
     }
 
+    /**
+     * Finds and displays a wine entity.
+     *
+     * @Route("/{id}", name="product_show")
+     * @Method("GET")
+     */
 
-
-    public function showAction(Product $product, $product_type)
+    public function showAction(Product $product)
     {
-        $deleteForm = $this->createDeleteForm($product, $product_type);
+        $deleteForm = $this->createDeleteForm($product, $product->getDiscr());
 
-        return $this->render('ProductBundle:' . $product_type . ':show.html.twig', array(
+        return $this->render('ProductBundle:' . $product->getDiscr() . ':show.html.twig', array(
             'product' => $product,
             'delete_form' => $deleteForm->createView(),
             'product_pictures' => $product->getPictures()

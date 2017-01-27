@@ -141,7 +141,7 @@
                 <h4 class="wow fadeInDown">Médaille</h4>
 
                 <p class="wow fadeInDown">{{ product.alcoholdegree }} </p>
-                <p>Univers : {% for universe in product.universes %}universe.name{% if not loop.last %}, {% endif %}{% endfor %} </br>
+                <p>Univers : {% for universe in product.universes %} {{universe.name}} {% if not loop.last %}, {% endif %}{% endfor %} </br>
 </p>
 
                 <span class="countdown-price h3 wow fadeInUp">{{ product.price }} €</span>

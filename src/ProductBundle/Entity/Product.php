@@ -65,6 +65,10 @@ abstract class Product
      */
     protected $stock;
 
+
+
+
+
     /**
      * @var PictureProduct
      *
@@ -231,6 +235,17 @@ abstract class Product
     {
         return $this->name;
     }
+
+    /**
+     * Get discr
+     *
+     * @return string
+     */
+    public function getDiscr()
+    {
+        return null;
+    }
+
 
     /**
      * Add picture

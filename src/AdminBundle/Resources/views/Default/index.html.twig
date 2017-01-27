@@ -22,8 +22,11 @@
 
 
             <div class="text-center">
-                <a class="btn btn-primary btn-circle" href="{{ path("wine_index") }}">
-                    <div class="texte">Gestion Produits</div>
+                <a class="btn btn-primary btn-circle" href="{{ path("product_list", {type:'wine'}) }}">
+                    <div class="texte">Gestion Vin</div>
+                </a>
+                <a class="btn btn-primary btn-circle" href="{{ path("product_list", {type:'spirit'}) }}">
+                    <div class="texte">Gestion Spiritueux</div>
                 </a>
                 <a class="btn btn-primary btn-circle" href="{{ path("universe_index") }}">
                     <div class="texte">Gestion Univers</div>

@@ -115,7 +115,7 @@
                 <h4 class="wow fadeInDown">Médaille</h4>
 
                 <p class="wow fadeInDown">{{ product.description }} </p>
-                <p>Univers : {% for universe in product.universes %}universe.name{% if not loop.last %}, {% endif %}{% endfor %} </br>
+                <p>Univers : {% for universe in product.universes %} {{universe.name}} {% if not loop.last %}, {% endif %}{% endfor %} </br>
                     Volume : {{ product.volume }} <br>
                     Stock : {{ product.stock }} <br>
                     {% if product.vintage %}{{ product.vintage|date('Y-m-d') }}{% endif %} </br>

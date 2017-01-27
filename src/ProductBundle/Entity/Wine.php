@@ -56,6 +56,17 @@ class Wine extends Product
     }
 
     /**
+     * Get discr
+     *
+     * @return string
+     */
+    public function getDiscr()
+    {
+        return 'wine';
+    }
+
+
+    /**
      * Set vintage
      *
      * @param \DateTime $vintage

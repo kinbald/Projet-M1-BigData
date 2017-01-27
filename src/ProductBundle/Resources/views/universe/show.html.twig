@@ -118,7 +118,7 @@
                         {% for product in products %}
                             <li>
                                 <div class="text-center">
-                                    <a href="{{ path("wine_show", {id:product.id}) }}" >
+                                    <a href="{{ path('product_show', {id:product.id}) }}" >
                                         <span class="product-list-primary-img">
                                             {% set picture = product.pictures|last %}
                                             <img alt="product image" class="product-list-primary-img table-primary-img" src="/img/upload/{{ picture.url }}" />

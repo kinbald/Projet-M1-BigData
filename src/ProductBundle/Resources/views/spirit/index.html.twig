@@ -21,15 +21,15 @@
         <tbody>
         {% for spirit in products %}
             <tr>
-                <td class="id"><a href="{{ path('spirit_show', { 'id': spirit.id }) }}">{{ spirit.id }}</a></td>
+                <td class="id"><a href="{{ path('product_show', { 'product': spirit.discr,  'id': spirit.id }) }}">{{ spirit.id }}</a></td>
                 <td class="degree">{{ spirit.alcoholDegree }}</td>
                 <td class="actions">
                     <ul>
                         <li>
-                            <a href="{{ path('spirit_show', { 'id': spirit.id }) }}">show</a>
+                            <a href="{{ path('product_show', { 'product': spirit.discr,  'id': spirit.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('spirit_edit', { 'id': spirit.id }) }}">edit</a>
+                            <a href="{{ path('product_edit', { 'product': spirit.discr, 'id': spirit.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -40,7 +40,7 @@
     <br><br>
     <ul>
         <li>
-            <div class="btn btn-primary btn-circle"><a href="{{ path('spirit_new') }}">Create a new spirit</a></div>
+            <div class="btn btn-primary btn-circle"><a href="{{ path('product_new', { 'type' : 'spirit'}) }}">Create a new spirit</a></div>
         </li>
     </ul>
     </div>
