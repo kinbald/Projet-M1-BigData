@@ -5251,3 +5251,10 @@ $(".navbar-nav li a[href^='#']").on("click", function (e) {
 });
 var map, mapAddress = new google.maps.LatLng(52.406374, 16.925168100000064);
 google.maps.event.addDomListener(window, "load", initialize);
+
+
+
+
+
+
+

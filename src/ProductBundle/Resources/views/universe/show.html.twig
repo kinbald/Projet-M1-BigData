@@ -12,12 +12,13 @@
 {% endblock %}
 
 {% block body %}
-    <div class="universe-bandeau">
+    <div class="universe-bandeau" id="universe-bandeau" >
         <img class="universe-img" src="/img/home-of-middle-earth.jpg" alt="image {{ universe.name}}"/>
         <p class="universe-name"> {{ universe.name }}</p>
     </div>
     <!-- Barre Laterale -->
-    <section class="barre_laterale barre_color_police" id="sidebar">
+
+    <div class="barre_laterale barre_color_police" id="sidebar">
 
         <form method="post" action="traitement.php">
             <div class="barre_color_police">
@@ -102,11 +103,12 @@
                 <input type="submit" value="Envoyer" />
             </div>
         </form>
-    </section>
+    </div>
 
-    <section class="section-product">
+    <div class="section-product">
         <!-- Autre -->
-        <section class="section-product-table ">
+
+        <section class="section-product-table" id="section-product-table">
             <div class="product-table-title">
                 <h3 class="section-heading">Tous les produits</h3>
             </div>
@@ -114,7 +116,6 @@
             <div class="text-center">
                 <div class="product-table" id="product-table">
                     <ul class="product-holder">
-
                         {% for product in products %}
                             <li>
                                 <div class="text-center">
@@ -134,7 +135,6 @@
                                     <span class="btn btn-default add-item" data-image="{{ asset('img/add-to-cart-dark.png') }}" data-name="Chocolate desire no. 3" data-cost="600.00" data-id="5" >
 										<span class="ti-shopping-cart"></span>add
 									</span>
-
                                 </div>
                             </li>
                         {% endfor %}
@@ -145,7 +145,7 @@
 
             </div>
         </section>
-    </section>
+    </div>
 
 {% endblock %}
 
