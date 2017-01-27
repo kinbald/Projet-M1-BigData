@@ -60,7 +60,10 @@ class UniverseController extends Controller
     /**
      * Finds and displays a universe entity.
      *
-     * @Route("/{id}", name="universe_show")
+     * @Route("/{id}", name="universe_show",
+     *     requirements={
+     *         "id": "\d+",
+     *     })
      * @Method("GET")
      */
     public function showAction(Universe $universe)
@@ -86,7 +89,10 @@ class UniverseController extends Controller
     /**
      * Displays a form to edit an existing universe entity.
      *
-     * @Route("/{id}/edit", name="universe_edit")
+     * @Route("/{id}/edit", name="universe_edit",
+     *     requirements={
+     *         "id": "\d+",
+     *     })
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Universe $universe)
@@ -111,7 +117,10 @@ class UniverseController extends Controller
     /**
      * Deletes a universe entity.
      *
-     * @Route("/{id}", name="universe_delete")
+     * @Route("/{id}", name="universe_delete",
+     *     requirements={
+     *         "id": "\d+",
+     *     })
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Universe $universe)

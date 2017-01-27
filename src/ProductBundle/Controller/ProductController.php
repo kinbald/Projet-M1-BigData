@@ -31,7 +31,10 @@ class ProductController extends Controller
     /**
      * Lists all wine entities.
      *
-     * @Route("/list/{type}", name="product_list")
+     * @Route("/list/{type}", name="product_list",
+     *     requirements={
+     *         "type": "wine|spirit",
+     *     })
      * @Method("GET")
      */
 
@@ -48,22 +51,26 @@ class ProductController extends Controller
     /**
      * Creates a new product entity.
      *
-     * @Route("/new/{type}", name="product_new")
+     * @Route("/new/{type}", name="product_new",
+     *     requirements={
+     *         "type": "wine|spirit",
+     *     })
      * @Method({"GET", "POST"})
      */
 
-    public function newAction(Request $request, $type, Product $product = null)
+    public function newAction(Request $request, $type)
     {
+        $class = 'ProductBundle\Entity\\' . ucfirst($type);
+        $product = new $class();
         $form = $this->createForm('ProductBundle\Form\\' . ucfirst($type) .  'Type', $product);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            \Doctrine\Common\Util\Debug::dump($product->getUniverses());
+            //\Doctrine\Common\Util\Debug::dump($product->getUniverses());
             $em = $this->getDoctrine()->getManager();
             $em->persist($product);
             $em->flush($product);
 
-            return $this->render('ProductBundle:' . $product->getDiscr() . ':empty.html.twig', array());
-            //return $this->redirectToRoute('wine_show', array('id' => $product->getDiscr()->getId()));
+            return $this->redirectToRoute('product_list', array('type' => $product->getDiscr()));
         }
 
         return $this->render('ProductBundle:' . $type . ':new.html.twig', array(
@@ -74,7 +81,10 @@ class ProductController extends Controller
     /**
      * Displays a form to edit an existing wine entity.
      *
-     * @Route("/{id}/edit", name="product_edit")
+     * @Route("/{id}/edit", name="product_edit",
+     *     requirements={
+     *         "id": "\d+",
+     *     })
      * @Method({"GET", "POST"})
      */
 
@@ -87,7 +97,7 @@ class ProductController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('product_edit', array('id' => $product->getId()));
+            return $this->redirectToRoute('product_list', array('type' => $product->getDiscr()));
         }
 
         return $this->render('ProductBundle:' . $product->getDiscr() . ':edit.html.twig', array(
@@ -100,7 +110,10 @@ class ProductController extends Controller
     /**
      * Deletes a wine entity.
      *
-     * @Route("/{id}/delete", name="product_delete")
+     * @Route("/{id}/delete", name="product_delete",
+     *     requirements={
+     *         "id": "\d+",
+     *     })
      * @Method("DELETE")
      */
 
@@ -115,7 +128,7 @@ class ProductController extends Controller
             $em->flush($product);
         }
 
-        return $this->redirectToRoute($product->getDiscr() . '_index');
+        return $this->redirectToRoute('product_list', array('type' => $product->getDiscr()));
     }
 
     /**
@@ -139,7 +152,10 @@ class ProductController extends Controller
     /**
      * Finds and displays a wine entity.
      *
-     * @Route("/{id}", name="product_show")
+     * @Route("/{id}", name="product_show"), 
+     *     requirements={
+     *         "id": "\d+",
+     *     })
      * @Method("GET")
      */
 

@@ -40,7 +40,7 @@ class CompetitionWine
     /**
      * @var Wine
      * @ORM\ManyToOne(targetEntity="ProductBundle\Entity\Wine", inversedBy="competitions")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $wine;
 

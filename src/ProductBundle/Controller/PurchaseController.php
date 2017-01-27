@@ -60,7 +60,10 @@ class PurchaseController extends Controller
     /**
      * Finds and displays a purchase entity.
      *
-     * @Route("/{id}", name="purchase_show")
+     * @Route("/{id}", name="purchase_show"),
+     *     requirements={
+     *         "id": "\d+",
+     *     })
      * @Method("GET")
      */
     public function showAction(Purchase $purchase)
@@ -76,7 +79,10 @@ class PurchaseController extends Controller
     /**
      * Displays a form to edit an existing purchase entity.
      *
-     * @Route("/{id}/edit", name="purchase_edit")
+     * @Route("/{id}/edit", name="purchase_edit",
+     *     requirements={
+     *         "id": "\d+",
+     *     })
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Purchase $purchase)
@@ -101,7 +107,10 @@ class PurchaseController extends Controller
     /**
      * Deletes a purchase entity.
      *
-     * @Route("/{id}", name="purchase_delete")
+     * @Route("/{id}", name="purchase_delete",
+     *     requirements={
+     *         "id": "\d+",
+     *     })
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Purchase $purchase)

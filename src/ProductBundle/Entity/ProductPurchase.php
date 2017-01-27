@@ -33,7 +33,7 @@ class ProductPurchase
     /**
      * @var Product
      * @ORM\ManyToOne(targetEntity="ProductBundle\Entity\Product", inversedBy="purchases")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
      */
     private $product;
 
