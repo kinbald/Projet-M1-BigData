@@ -4,11 +4,17 @@
     <link href="{{ asset('css/bootstrap-dark.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/theme-dark.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/index.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/media.css') }}" rel="stylesheet" />
 {% endblock %}
 
 {% block body %}
-    <div id="content">
-    <h1>Liste des communiqués</h1>
+    <div class="container overflow-hidden">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="section-heading">Post list</h3>
+            </div>
+        </div>
+    </div>
         <br>
     <table>
         <thead>
@@ -44,5 +50,4 @@
             <a class="btn btn-primary btn-circle" href="{{ path('files_new') }}">Create a new file</a>
         </li>
     </ul>
-    </div>
 {% endblock %}

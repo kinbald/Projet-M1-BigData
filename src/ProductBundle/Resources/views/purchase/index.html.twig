@@ -3,53 +3,73 @@
 {% block stylesheets %}
     <link href="{{ asset('css/bootstrap-dark.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/theme-dark.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/index.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/media.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/validPresse.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('https://maps.googleapis.com/maps/api/js?key=AIzaSyA_6m6Glf1-P7jvVdHZ00e3Ue_EoUNe39g') }}"></script>
+    <script src="{{ asset('js/bundle.js') }}"></script>
+    <script src="{{ asset('js/product.js') }}"></script>
 {% endblock %}
 
 {% block body %}
-    <h1>Purchases list</h1>
+    <div class="container overflow-hidden">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="section-heading">Gestion des commandes</h3>
+            </div>
+        </div>
+    </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Address</th>
-                <th>City</th>
-                <th>Postalcode</th>
-                <th>Country</th>
-                <th>Done</th>
-                <th>Dateorder</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for purchase in purchases %}
-            <tr>
-                <td><a href="{{ path('purchase_show', { 'id': purchase.id }) }}">{{ purchase.id }}</a></td>
-                <td>{{ purchase.address }}</td>
-                <td>{{ purchase.city }}</td>
-                <td>{{ purchase.postalCode }}</td>
-                <td>{{ purchase.country }}</td>
-                <td>{% if purchase.done %}Yes{% else %}No{% endif %}</td>
-                <td>{% if purchase.dateOrder %}{{ purchase.dateOrder|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('purchase_show', { 'id': purchase.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('purchase_edit', { 'id': purchase.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="tableau_media">
 
-    <ul>
-        <li>
-            <a href="{{ path('purchase_new') }}">Create a new purchase</a>
-        </li>
-    </ul>
+        <table>
+
+            <thead>
+            <tr>
+                <th>ID commande</th>
+                <th>ID user</th>
+                <th>Adresse</th>
+                <th>Ville</th>
+                <th>Code postal</th>
+                <th>Pays</th>
+                <th>Date de commande</th>
+                <th>Statut</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            {% for purchase in purchases %}
+
+                <tr>
+                    <td class="id_commande"> {{ purchase.id }}</td>
+                    <td class="id_user">{{ purchase.user }}</td>
+                    <td class="adresse">{{ purchase.address }}</td>
+                    <td class="ville">{{ purchase.city }}</td>
+                    <td class="code_postal">{{ purchase.postalCode }}</td>
+                    <td class="pays">{{ purchase.country }}</td>
+                    <td class="date_commande">{% if purchase.dateOrder %}{{ purchase.dateOrder | date('Y-m-d H:i:s') }} {% endif %}</td>
+                    <td class="statut">{% if purchase.done %}En cours{% else %}Effectué{% endif %}</>
+                    <td class="action"><ul>
+                            <li><a href="{{ path('purchase_show', { 'id': purchase.id }) }}">show</a></li>
+                            <li><a href="{{ path('purchase_edit', { 'id': purchase.id }) }}">edit</a></li>
+                        </ul></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
 {% endblock %}
+
+
+
+
+
+
+
+
+
+

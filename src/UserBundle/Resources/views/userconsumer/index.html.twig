@@ -4,11 +4,17 @@
     <link href="{{ asset('css/bootstrap-dark.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/theme-dark.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/index.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/media.css') }}" rel="stylesheet" />
 {% endblock %}
 
 {% block body %}
-    <div id="content">
-    <h1>Userconsumers list</h1>
+    <div class="container overflow-hidden">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="section-heading">User comsumer list</h3>
+            </div>
+        </div>
+    </div>
 
     <table>
         <thead>
@@ -47,5 +53,5 @@
             <div class="btn btn-primary btn-circle"><a href="{{ path('userconsumer_new') }}">Create a new Consumer</a></div>
         </li>
     </ul>
-    </div>
+
 {% endblock %}
