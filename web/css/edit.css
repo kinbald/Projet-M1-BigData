@@ -40,7 +40,8 @@ label
 #productbundle_wine_name,
 #mediabundle_files_url,
 #mediabundle_files_name,
-#mediabundle_files_date_date{
+#mediabundle_files_date_date,
+#userbundle_userconsumer_sex{
     border-radius: 10px;
     color:#555555;
 }
@@ -52,7 +53,8 @@ label
     height: 4em;
 }
 
-#mediabundle_files_date_time {
+#mediabundle_files_date_time,
+#userbundle_userconsumer_birthDate{
     border-radius: 10px;
     color:#555555;
     margin-left:150px;
@@ -66,4 +68,7 @@ div {
     margin-top: 75px;
 }
 
+#tableau {
+    margin:5px;
+}
 

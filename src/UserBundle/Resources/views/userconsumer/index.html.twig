@@ -1,6 +1,13 @@
 {% extends 'baseadmin.html.twig' %}
 
+{% block stylesheets %}
+    <link href="{{ asset('css/bootstrap-dark.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/theme-dark.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/index.css') }}" rel="stylesheet" />
+{% endblock %}
+
 {% block body %}
+    <div id="content">
     <h1>Userconsumers list</h1>
 
     <table>
@@ -19,23 +26,26 @@
                 <td>{{ userConsumer.sex }}</td>
                 <td>{% if userConsumer.birthDate %}{{ userConsumer.birthDate|date('Y-m-d') }}{% endif %}</td>
                 <td>
-                    <ul>
-                        <li>
+                    <table>
+                    <tr>
+                        <td>
                             <a href="{{ path('userconsumer_show', { 'id': userConsumer.id }) }}">show</a>
-                        </li>
-                        <li>
+                        </td>
+                        <td>
                             <a href="{{ path('userconsumer_edit', { 'id': userConsumer.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                        </td>
+                    </tr>
+                    </table>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
+        <br><br>
     <ul>
         <li>
-            <a href="{{ path('userconsumer_new') }}">Create a new userConsumer</a>
+            <div class="btn btn-primary btn-circle"><a href="{{ path('userconsumer_new') }}">Create a new Consumer</a></div>
         </li>
     </ul>
+    </div>
 {% endblock %}
