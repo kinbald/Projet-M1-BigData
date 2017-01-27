@@ -4,11 +4,17 @@
     <link href="{{ asset('css/bootstrap-dark.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/theme-dark.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/index.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/media.css') }}" rel="stylesheet" />
 {% endblock %}
 
 {% block body %}
-    <div id="content">
-    <h1>Universes list</h1>
+    <div class="container overflow-hidden">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="section-heading">Universe list</h3>
+            </div>
+        </div>
+    </div>
     <br><br>
     <table border="1">
         <thead>
@@ -45,5 +51,5 @@
             <a href="{{ path('universe_new') }}"><div class="btn btn-primary btn-circle">Create a new universe</div></a>
         </li>
     </ul>
-    </div>
+
 {% endblock %}

@@ -1,21 +1,32 @@
 {% extends 'baseadmin.html.twig' %}
 
-{% block body %}
-    <h1>Userconsumer edit</h1>
+{% block stylesheets %}
+    <link href="{{ asset('css/bootstrap-dark.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/theme-dark.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/edit.css') }}" rel="stylesheet" />
+{% endblock %}
 
+{% block body %}
+    <div id="content">
+    <h1>Userconsumer edit</h1>
+        <br><br>
     {{ form_start(edit_form) }}
     {{ form_widget(edit_form) }}
-    <input type="submit" value="Edit"/>
+        <table id="tableau">
+            <td>
+    <input class="btn btn-primary btn-circle" type="submit" value="Edit"/>
+            </td>
     {{ form_end(edit_form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('userconsumer_index') }}">Back to the list</a>
-        </li>
-        <li>
+    <td>
+            <a class="btn btn-primary btn-circle" href="{{ path('userconsumer_index') }}">Back to the list</a>
+    </td>
+
             {{ form_start(delete_form) }}
-            <input type="submit" value="Delete">
+            <td>
+            <input class="btn btn-primary btn-circle" type="submit" value="Delete">
             {{ form_end(delete_form) }}
-        </li>
-    </ul>
+            </td>
+        </table>
+    </div>
 {% endblock %}

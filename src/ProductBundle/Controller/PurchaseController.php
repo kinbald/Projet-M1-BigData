@@ -67,7 +67,7 @@ class PurchaseController extends Controller
     {
         $deleteForm = $this->createDeleteForm($purchase);
 
-        return $this->render('purchase/show.html.twig', array(
+        return $this->render('ProductBundle:purchase:show.html.twig', array(
             'purchase' => $purchase,
             'delete_form' => $deleteForm->createView(),
         ));
