@@ -51,7 +51,7 @@
             <h3 class="section-heading">Votre panier</h3>
             <!-- EMPTY CART MESSAGE -->
             <div id="cart-empty" class="cart-empty">
-                <h4>vide <span class="ti-face-sad icon"></span></h4>
+                <h4>vide</h4>
             </div>
             <!-- / EMPTY CART MESSAGE -->
 
@@ -149,7 +149,9 @@
 
                 <span class="countdown-price h3 wow fadeInUp">{{ wine.price }} €</span>
 
-                <span class="btn btn-default add-item wow swing" data-name="{{ wine.name }}"
+                {% set picture = wine.pictures|last %}
+
+                <span class="btn btn-default add-item wow swing" data-image="/img/upload/{{ picture.url}}" data-name="{{ wine.name }}"
                       data-cost="{{ wine.price }}" data-id="{{ wine.id }}">
                     <img alt="e-commerce" src="{{ asset('img/product/panier.png') }}" height="55">
 
