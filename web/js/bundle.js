@@ -5073,8 +5073,15 @@ if (function (e, t) {
         })
     }
 }), window.onload = function () {
+
+    var panier = JSON.parse(window.localStorage.getItem('panier'));
+
+    if(panier == null){
+        panier = [];
+    }
+
     function e(e, t) {
-        l++, s[l] = t, $("#items-counter").empty(), curCounter = $("#items .cart-item").length + 1, document.getElementById("items").innerHTML += "<div class='cart-item hidden' id='item" + l + "' data-id='" + e + "'><span class='cart-item-image'><img alt='" + o + "' src='" + curImage + "'/></span><span class='cart-item-name h4'>" + o + "</span><span class='cart-item-price'>$<span class='cvalue'>" + t + "</span></span> <span class='cart-item-remove'>✘<span></div>", document.getElementById("items-counter").innerHTML += "<span class='animate'>" + curCounter + "<span class='circle'></span></span>", document.getElementById("item" + l).classList.remove("hidden"), a()
+        l++, s[l] = t, $("#items-counter").empty(), curCounter = (panier != null ? panier.length : $("#items .cart-item").length + 1), document.getElementById("items").innerHTML += "<div class='cart-item hidden' id='item" + l + "' data-id='" + e + "'><span class='cart-item-image'><img alt='" + o + "' src='" + curImage + "'/></span><span class='cart-item-name h4'>" + o + "</span><span class='cart-item-price'>$<span class='cvalue'>" + t + "</span></span> <span class='cart-item-remove'>✘<span></div>", document.getElementById("items-counter").innerHTML += "<span class='animate'>" + curCounter + "<span class='circle'></span></span>", document.getElementById("item" + l).classList.remove("hidden"), a()
     }
 
     function t(e) {
@@ -5087,7 +5094,7 @@ if (function (e, t) {
         document.getElementById("total-total").innerHTML = r.toFixed(2), $("#amount").val(r.toFixed(2))
     }
 
-    function n(e) {
+    function bla(e) {
         $delivery = $("input[name=delivery]:checked").val();
         var t = Number($delivery), n = document.getElementById("cost_value").innerHTML;
         n = parseFloat(n), e = parseFloat(e);
@@ -5126,9 +5133,26 @@ if (function (e, t) {
     $delivery = $("input[name=delivery]:checked").val();
     var h = Number($delivery);
     document.getElementById("cost_delivery").innerHTML = h.toFixed(2);
+
+    if(panier != null){
+        if(panier.length > 0){
+            for(var indice = 0; indice < panier.length; indice++){
+                r = panier[indice].prix;
+                o = panier[indice].nom;
+                curImage = panier[indice].image;
+                n = panier[indice].id;
+                e(n, r, o, curImage);
+            }
+        }
+    }
+
     for (var m = 0; m < f.length; m++)f[m].addEventListener("click", function (t) {
         r = this.getAttribute("data-cost"), o = this.getAttribute("data-name"), curImage = this.getAttribute("data-image");
         var n = this.getAttribute("data-id");
+
+        panier.push({prix: r, nom: o, image: curImage, id: n});
+        window.localStorage.setItem('panier', JSON.stringify(panier));
+
         $(this).position();
         d = (window.innerWidth - 982) / 2 + 160 * (n - 1), function () {
             i(d, u, p, c)
@@ -5137,7 +5161,18 @@ if (function (e, t) {
         }, 350))
     });
     $(document).on("click", ".cart-item-remove", function () {
-        r = $(this).parent(".cart-item").find(".cvalue").text(), n(r), this.parentNode.outerHTML = "", a(), curCounter = $("#items .cart-item").length, $("#items-counter").empty(), document.getElementById("items-counter").innerHTML += "<span class='animate'>" + curCounter + "<span class='circle'></span></span>"
+        r = $(this).parent(".cart-item").find(".cvalue").text(), bla(r), this.parentNode.outerHTML = "", a(), curCounter = $("#items .cart-item").length, $("#items-counter").empty(), document.getElementById("items-counter").innerHTML += "<span class='animate'>" + curCounter + "<span class='circle'></span></span>"
+
+        for(var i = 0; i < panier.length; i++)
+        {
+            if(panier[i].id == $(this).parent(".cart-item").attr("data-id"))
+            {
+                panier.splice(i, 1);
+                window.localStorage.setItem('panier', JSON.stringify(panier));
+            }
+        }
+
+
     }), $("input").change(function () {
         $delivery = $(this).val(), $total = document.getElementById("cost_value").innerHTML;
         var e = Number($total), t = Number($delivery), n = e + t;

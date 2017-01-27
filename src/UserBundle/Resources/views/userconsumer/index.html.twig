@@ -1,0 +1,41 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block body %}
+    <h1>Userconsumers list</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Sex</th>
+            <th>Birthdate</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for userConsumer in userConsumers %}
+            <tr>
+                <td><a href="{{ path('userconsumer_show', { 'id': userConsumer.id }) }}">{{ userConsumer.id }}</a></td>
+                <td>{{ userConsumer.sex }}</td>
+                <td>{% if userConsumer.birthDate %}{{ userConsumer.birthDate|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('userconsumer_show', { 'id': userConsumer.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('userconsumer_edit', { 'id': userConsumer.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('userconsumer_new') }}">Create a new userConsumer</a>
+        </li>
+    </ul>
+{% endblock %}

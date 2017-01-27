@@ -1,0 +1,36 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block body %}
+    <h1>Userconsumer</h1>
+
+    <table>
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ userConsumer.id }}</td>
+        </tr>
+        <tr>
+            <th>Sex</th>
+            <td>{{ userConsumer.sex }}</td>
+        </tr>
+        <tr>
+            <th>Birthdate</th>
+            <td>{% if userConsumer.birthDate %}{{ userConsumer.birthDate|date('Y-m-d') }}{% endif %}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('userconsumer_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('userconsumer_edit', { 'id': userConsumer.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+            <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
