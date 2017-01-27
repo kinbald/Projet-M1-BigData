@@ -1,79 +1,48 @@
 <?php
 
+
 namespace ProductBundle\Controller;
 
+use ProductBundle\Entity\Product;
 use ProductBundle\Entity\Wine;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 
+
+
 /**
- * Wine controller.
- *
+ * Lists all wine entities
  * @Route("/wine")
  */
-class WineController extends Controller
+
+
+class WineController extends \ProductBundle\Controller\ProductController
 {
+
     /**
      * Lists all wine entities.
      *
      * @Route("/", name="wine_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction($product_type = 'wine')
     {
-        $em = $this->getDoctrine()->getManager();
-        $wines = $em->getRepository('ProductBundle:Wine')->findAll();
-        //\Doctrine\Common\Util\Debug::dump($wines);
-        return $this->render('ProductBundle:wine:index.html.twig', array(
-            'wines' => $wines,
-        ));
+        return parent::indexAction($product_type);
     }
 
     /**
-     * Creates a new wine entity.
+     * Creates a new product entity.
      *
      * @Route("/new", name="wine_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, Product $wine = null, $prod = 'wine')
     {
-        $wine = new Wine();
-        $form = $this->createForm('ProductBundle\Form\WineType', $wine);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            \Doctrine\Common\Util\Debug::dump($wine->getUniverses());
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($wine);
-            $em->flush($wine);
-
-            return $this->render('ProductBundle:wine:empty.html.twig', array());
-            //return $this->redirectToRoute('wine_show', array('id' => $wine->getId()));
-        }
-
-        return $this->render('ProductBundle:wine:new.html.twig', array(
-            'wine' => $wine,
-            'form' => $form->createView(),
-        ));
+        return parent::newAction($request, new wine(), $prod);
     }
 
-    /**
-     * Finds and displays a wine entity.
-     *
-     * @Route("/{id}", name="wine_show")
-     * @Method("GET")
-     */
-    public function showAction(Wine $wine)
-    {
-        $deleteForm = $this->createDeleteForm($wine);
-
-        return $this->render('ProductBundle:wine:show.html.twig', array(
-            'wine' => $wine,
-            'delete_form' => $deleteForm->createView(),
-            'product_pictures' => $wine->getPictures()
-        ));
-    }
 
     /**
      * Displays a form to edit an existing wine entity.
@@ -81,44 +50,26 @@ class WineController extends Controller
      * @Route("/{id}/edit", name="wine_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Wine $wine)
+    public function editAction(Request $request, Product $wine , $prod = 'wine')
     {
-        $deleteForm = $this->createDeleteForm($wine);
-        $editForm = $this->createForm('ProductBundle\Form\WineType', $wine);
-        $editForm->handleRequest($request);
-
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('wine_edit', array('id' => $wine->getId()));
-        }
-
-        return $this->render('ProductBundle:wine:edit.html.twig', array(
-            'wine' => $wine,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
+        return parent::editAction($request, $wine, $prod);
     }
+
+
 
     /**
      * Deletes a wine entity.
      *
-     * @Route("/{id}", name="wine_delete")
+     * @Route("/{id}/delete", name="wine_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Wine $wine)
-    {
-        $form = $this->createDeleteForm($wine);
-        $form->handleRequest($request);
+    public function deleteAction(Request $request, Product $wine , $prod = 'wine') {
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($wine);
-            $em->flush($wine);
-        }
-
-        return $this->redirectToRoute('wine_index');
+        return parent::deleteAction($request, $wine, $prod);
     }
+
+
+
 
     /**
      * Creates a form to delete a wine entity.
@@ -127,12 +78,25 @@ class WineController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Wine $wine)
+    protected function createDeleteForm(Product $wine, $prod = 'wine')
     {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('wine_delete', array('id' => $wine->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
-        ;
+        return parent::createDeleteForm( $wine, $prod);
     }
+
+
+
+
+
+    /**
+     * Finds and displays a wine entity.
+     *
+     * @Route("/{id}", name="wine_show")
+     * @Method("GET")
+     */
+    public function showAction(Product $wine, $prod = 'wine')
+    {
+        return parent::showAction( $wine, $prod);
+    }
+
+
 }

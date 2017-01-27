@@ -17,9 +17,15 @@ product_wine:
     resource: "@ProductBundle/Controller/WineController.php"
     type:     annotation
 
+
 product_purchase:
     resource: "@ProductBundle/Controller/PurchaseController.php"
     type:     annotation
+
+product_spirit:
+  resource: "@ProductBundle/Controller/SpiritController.php"
+  type:     annotation
+
 
 concours:
     resource: "@ConcoursBundle/Controller/"

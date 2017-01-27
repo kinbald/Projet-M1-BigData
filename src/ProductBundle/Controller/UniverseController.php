@@ -135,7 +135,7 @@ class UniverseController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Universe $universe)
+    protected function createDeleteForm(Universe $universe)
     {
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('universe_delete', array('id' => $universe->getId())))
