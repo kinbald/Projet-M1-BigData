@@ -1,6 +1,7 @@
 {% block stylesheets %}
     <link href="{{ asset('http://www.w3schools.com/lib/w3.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/compte.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/register.css') }}" rel="stylesheet" />
 {% endblock %}
 
 
@@ -8,12 +9,11 @@
 {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
 
 
-<nav class="w3-sidenav w3-black w3-card-2" style="width:130px;">
+<nav class="w3-sidenav w3-black w3-card-2" style="width:150px;">
     <div class="w3-container">
         <h5>Menu</h5>
     </div>
-    <a href="javascript:void(0)" class="tablink" onclick="openLink(event, 'Profile')">Profile</a>
-    <a href="javascript:void(0)" class="tablink" onclick="openLink(event, 'ECivil')">Etat civil</a>
+    <a href="javascript:void(0)" class="tablink" onclick="openLink(event, 'Profile')">Profil</a>
     <a href="javascript:void(0)" class="tablink" onclick="openLink(event, 'Factures')">Factures</a>
 </nav>
 
@@ -22,23 +22,66 @@
 
     <!-------------------Profile--------------------->
     <div id="Profile" class="w3-container city w3-animate-left" style="display:none;">
-        <h2>Profile</h2>
+        <h2>Profil</h2>
             <div>
                 <p>Username:</p>
             </div>
             <div>
-                <p>Password: ******</p>
-            </div>
-            <div>
                 <p>Email:</p>
             </div>
+
+            <div>
+                <p>Last name:</p>
+            </div>
+            <div>
+                <p>First name:</p>
+            </div>
+            {% if is_granted('ROLE_CONSUMER') %}
+                <div>
+                    <p>Birth Date:</p>
+                </div>
+                <div>
+                    <p>Gender:</p>
+                </div>
+            {% endif %}
+
+            {% if is_granted('ROLE_MEDIA') %}
+                <div>
+                    <p>Url blog:</p>
+                </div>
+                <div>
+                    <p>ID presse:</p>
+                </div>
+                <div>
+                    <p>Company name:</p>
+                </div>
+            {% endif %}
+
+            {% if is_granted('ROLE_PRODUCER') %}
+                <div>
+                    <p>Company name:</p>
+                </div>
+                <div>
+                    <p>Siret:</p>
+                </div>
+                <div>
+                    <p>Address:</p>
+                </div>
+                <div>
+                    <p>City:</p>
+                </div>
+                <div>
+                    <p>Postal code:</p>
+                </div>
+            {% endif %}
+
             <br>
             <a href="javascript:void(0)" id="modifier" class="tablink" onclick="openLink(event, 'Profile1')">Modifier</a>
 
     </div>
     <!-------------------Profile edit--------------------->
     <div id="Profile1" class="w3-container city w3-animate-left" style="display:none;">
-        <h2>Profile</h2>
+        <h2>Profil</h2>
             <div>
                 {{ form_label(form.username) }}
                 {{ form_errors(form.username) }}
@@ -59,61 +102,84 @@
                 {{ form_errors(form.email) }}
                 {{ form_widget(form.email) }}
             </div>
+
+            <div>
+                {{ form_label(form.lastname) }}
+                {{ form_errors(form.lastname) }}
+                {{ form_widget(form.lastname) }}
+            </div>
+            <div>
+                {{ form_label(form.firstname) }}
+                {{ form_errors(form.firstname) }}
+                {{ form_widget(form.firstname) }}
+            </div>
+            {% if is_granted('ROLE_CONSUMER') %}
+                <div>
+                    {{ form_label(form.birthDate) }}
+                    {{ form_errors(form.birthDate) }}
+                    {{ form_widget(form.birthDate) }}
+                </div>
+
+                <div>
+                    {{ form_label(form.sex) }}
+                    {{ form_errors(form.sex) }}
+                    {{ form_widget(form.sex) }}
+                </div>
+            {% endif %}
+            {% if is_granted('ROLE_MEDIA') %}
+                <div>
+                    {{ form_label(form.urlBlog) }}
+                    {{ form_errors(form.urlBlog) }}
+                    {{ form_widget(form.urlBlog) }}
+                </div>
+                <div>
+                    {{ form_label(form.idPresse) }}
+                    {{ form_errors(form.idPresse) }}
+                    {{ form_widget(form.idPresse) }}
+                </div>
+                <div>
+                    {{ form_label(form.companyName) }}
+                    {{ form_errors(form.companyName) }}
+                    {{ form_widget(form.companyName) }}
+                </div>
+            {% endif %}
+
+            {% if is_granted('ROLE_PRODUCER') %}
+                <div>
+                    {{ form_label(form.companyName) }}
+                    {{ form_errors(form.companyName) }}
+                    {{ form_widget(form.companyName) }}
+                </div>
+                <div>
+                    {{ form_label(form.siret) }}
+                    {{ form_errors(form.siret) }}
+                    {{ form_widget(form.siret) }}
+                </div>
+                <div>
+                    {{ form_label(form.address) }}
+                    {{ form_errors(form.address) }}
+                    {{ form_widget(form.address) }}
+                </div>
+                <div>
+                    {{ form_label(form.city) }}
+                    {{ form_errors(form.city) }}
+                    {{ form_widget(form.city) }}
+                </div>
+                <div>
+                    {{ form_label(form.postalCode) }}
+                    {{ form_errors(form.postalCode) }}
+                    {{ form_widget(form.postalCode) }}
+                </div>
+            {% endif %}
+
             <br>
             <div>
                 <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
             </div>
     </div>
 
-    <!-------------------Etat Civil--------------------->
-    <div id="ECivil" class="w3-container city w3-animate-left" style="display:none">
-        <h2>Etat civil</h2>
-        <div>
-            <p>Last name:</p>
-        </div>
-        <div>
-            <p>First name:</p>
-        </div>
-        <div>
-            <p>Birth Date:</p>
-        </div>
-        <div>
-            <p>Gender:</p>
-        </div>
 
-        <br>
-        <a href="javascript:void(0)" id="modifier" class="tablink" onclick="openLink(event, 'ECivil1')">Modifier</a>
-    </div>
-
-    <!-------------------Etat Civil edit--------------------->
-    <div id="ECivil1" class="w3-container city w3-animate-left" style="display:none">
-        <h2>Etat civil</h2>
-        <div>
-            {{ form_label(form.lastname) }}
-            {{ form_errors(form.lastname) }}
-            {{ form_widget(form.lastname) }}
-        </div>
-        <div>
-            {{ form_label(form.firstname) }}
-            {{ form_errors(form.firstname) }}
-            {{ form_widget(form.firstname) }}
-        </div>
-        <div>
-            {{ form_label(form.birthDate) }}
-            {{ form_errors(form.birthDate) }}
-            {{ form_widget(form.birthDate) }}
-        </div>
-        <div>
-            {{ form_label(form.sex) }}
-            {{ form_errors(form.sex) }}
-            {{ form_widget(form.sex) }}
-        </div>
-
-        <br>
-        <div>
-            <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
-        </div>
-    </div>
+    <!-------------------Factures--------------------->
 
     <div id="Factures" class="w3-container city w3-animate-left" style="display:none">
         <h2>Factures & Paiements</h2>

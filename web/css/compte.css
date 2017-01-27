@@ -6,6 +6,7 @@
     }
     h1{
         font-size: 20px;
+        width:200px;
     }
     h2{
         font-size: 15px;
@@ -13,12 +14,13 @@
     h3{
         font-size: 7px;
     }
-    nav{
-        width:90px!important;
+    nav.w3-sidenav.w3-black.w3-card-2{
+        width:100px!important;
     }
     nav a{
         font-size: 10px;
     }
+
 }
 
 
@@ -30,16 +32,18 @@
         font-size:13px;
     }
     h1{
-        font-size: 35px;
+        font-size: 27px;
+        width: 310px;
     }
     h2{
         font-size: 20px;
+        margin-bottom: 20px;
     }
     h3{
         font-size: 15px;
     }
-    #Profile, #ECivil,#Factures{
-        margin-left:30px;
+    #Profile, #Profile1, #Factures{
+        margin-left:50px;
     }
 }
 
@@ -55,12 +59,13 @@
     }
     h2{
         font-size: 25px;
+        margin-bottom: 20px;
     }
     h3{
         font-size: 18px;
     }
-    #Profile, #ECivil,#Factures{
-        margin-left:30px;
+    #Profile, #Profile1, #Factures{
+        margin-left:100px;
     }
 }
 
@@ -83,12 +88,22 @@
 
 .navbar{
     background: #333;
+    text-align: left;
 }
 #modifier {
-    color:white;
+    color:#c6a668;
     text-decoration: underline;
 }
 
 input, select{
     color:black;
 }
+
+label{
+    width: 250px !important;
+}
+
+nav .w3-sidenav .w3-black .w3-card-2{
+    width: 100px !important;
+}
+
