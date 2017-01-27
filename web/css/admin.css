@@ -4,8 +4,14 @@ h1,h2{
     color: white;
 }
 
+
+
 @media screen and (max-width: 379px)
 {
+    h3 {
+        font-size: 4.3vw;
+    }
+
     .texte {
         position: relative;
         font-size: 3vw;
@@ -28,6 +34,10 @@ h1,h2{
 
 @media screen and (min-width: 380px) and (max-width: 499px)
 {
+    h3 {
+        font-size: 4.8vw;
+    }
+
     .texte {
         position: relative;
         font-size: 3.5vw;
@@ -49,6 +59,10 @@ h1,h2{
 }
 @media screen and (min-width: 500px) and (max-width: 1023px)
 {
+    h3 {
+        font-size: 3.3vw;
+    }
+
     .texte {
         position: relative;
         font-size: 2vw;
@@ -71,6 +85,10 @@ h1,h2{
 
 @media screen and (min-width: 1024px)
 {
+    h3 {
+        font-size: 2.3vw;
+    }
+
     .texte {
         position: relative;
         font-size: 1vw;
