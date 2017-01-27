@@ -4,7 +4,7 @@
     <link href="{{ asset('css/register.css') }}" rel="stylesheet" />
 {% endblock %}
 
-
+<div id="marginTop">
 {% trans_default_domain 'FOSUserBundle' %}
 {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
 
@@ -23,6 +23,7 @@
     <!-------------------Profile--------------------->
     <div id="Profile" class="w3-container city w3-animate-left" style="display:none;">
         <h2>Profil</h2>
+            <br>
             <div>
                 <p>Username:</p>
             </div>
@@ -82,6 +83,7 @@
     <!-------------------Profile edit--------------------->
     <div id="Profile1" class="w3-container city w3-animate-left" style="display:none;">
         <h2>Profil</h2>
+            <br>
             <div>
                 {{ form_label(form.username) }}
                 {{ form_errors(form.username) }}
@@ -183,8 +185,12 @@
 
     <div id="Factures" class="w3-container city w3-animate-left" style="display:none">
         <h2>Factures & Paiements</h2>
-        <p>blablabla</p>
-        <p>blablabla</p>
+        <div>
+            <br>
+            <p>blablabla</p>
+            <p>blablabla</p>
+        </div>
+
     </div>
 
 
@@ -209,3 +215,4 @@
 
 
 {{ form_end(form) }}
+</div>
