@@ -1,3 +1,7 @@
+product_purchase:
+    resource: "@ProductBundle/Controller/PurchaseController.php"
+    type:     annotation
+
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
@@ -11,6 +15,10 @@ product_universe:
 
 product_wine:
     resource: "@ProductBundle/Controller/WineController.php"
+    type:     annotation
+
+product_purchase:
+    resource: "@ProductBundle/Controller/PurchaseController.php"
     type:     annotation
 
 concours:
