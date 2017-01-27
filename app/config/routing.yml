@@ -28,6 +28,10 @@ user:
     type:     annotation
     prefix:   /{_locale}/user
 
+user_consumer:
+    resource: "@UserBundle/Controller/UserConsumerController.php"
+    type:     annotation
+
 media:
     resource: "@MediaBundle/Controller/"
     type:     annotation
