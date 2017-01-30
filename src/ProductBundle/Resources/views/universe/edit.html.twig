@@ -8,23 +8,23 @@
 
 {% block body %}
     <div id="content">
-    <h1>Universe edit</h1>
-    <br><br>
-    {{ form_start(edit_form) }}
-            {{ form_widget(edit_form) }}
-    <table>
-        <td>
-            <input class="btn btn-primary btn-circle" type="submit" value="Edit" />
-        </td>
-        {{ form_end(edit_form) }}
-        {{ form_start(delete_form) }}
-        <td>
-            <input class="btn btn-primary btn-circle" type="submit" value="Delete" />
-        </td>
-        {{ form_end(delete_form) }}
-        <td>
-            <a class="btn btn-primary btn-circle" href="{{ path('universe_index') }}"> Back to the list</a>
-        </td>
-    </table>
+        <h1>Universe edit</h1>
+        <br><br>
+        {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+        <table>
+            <td>
+                <input class="btn btn-primary btn-circle" type="submit" value="Edit" />
+            </td>
+            {{ form_end(edit_form) }}
+            {{ form_start(delete_form) }}
+            <td>
+                <input class="btn btn-primary btn-circle" type="submit" value="Delete" />
+            </td>
+            {{ form_end(delete_form) }}
+            <td>
+                <a class="btn btn-primary btn-circle" href="{{ path('universe_index') }}"> Back to the list</a>
+            </td>
+        </table>
     </div>
 {% endblock %}

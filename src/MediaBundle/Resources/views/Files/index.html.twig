@@ -15,36 +15,36 @@
             </div>
         </div>
     </div>
-        <br>
+    <br>
     <table>
         <thead>
-        <tr>
-            <th>Id</th>
-            <th>Date</th>
-            <th>Name</th>
-            <th>Url</th>
-            <th>Actions</th>
-        </tr>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Name</th>
+                <th>Url</th>
+                <th>Actions</th>
+            </tr>
         </thead>
         <tbody>
-        {% for file in files %}
-            <tr>
-                <td>{{ file.id }}</td>
-                <td>{{ file.date|date("d/m/Y") }}</td>
-                <td>{{ file.name }}</td>
-                <td><a href="{{ file.url }}">{{ file.url }}</a></td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('files_edit', { 'id': file.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
+            {% for file in files %}
+                <tr>
+                    <td>{{ file.id }}</td>
+                    <td>{{ file.date|date("d/m/Y") }}</td>
+                    <td>{{ file.name }}</td>
+                    <td><a href="{{ file.url }}">{{ file.url }}</a></td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('files_edit', { 'id': file.id }) }}">edit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
-        <br>
+    <br>
     <ul>
         <li>
             <a class="btn btn-primary btn-circle" href="{{ path('files_new') }}">Create a new file</a>
