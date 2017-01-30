@@ -13,7 +13,8 @@
 
 {% block body %}
     <div class="universe-bandeau" id="universe-bandeau" >
-        <img class="universe-img" src="/img/home-of-middle-earth.jpg" alt="image {{ universe.name}}"/>
+        {% set picture = universe.pictures|last %}
+        <img class="universe-img" src="/img/upload/{{ picture.url}}" alt="{{ picture.alt}}"/>
         <p class="universe-name"> {{ universe.name }}</p>
     </div>
     <!-- Barre Laterale -->
