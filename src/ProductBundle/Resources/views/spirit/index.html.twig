@@ -14,15 +14,19 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Nom du produit/th>
+                <th>Nom du produit</th>
+                <th>Prix</th>
+                <th>Stock</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-        {% for spirit in products %}
+            {% for spirit in products %}
             <tr>
                 <td class="id"><a href="{{ path('product_show', { 'product': spirit.discr,  'id': spirit.id }) }}">{{ spirit.id }}</a></td>
                 <td class="degree">{{ spirit.name }}</td>
+                <td class="price">{{ spirit.price }} €</td>
+                <td class="stock">{{ spirit.stock }}</td>
                 <td class="actions">
                     <ul>
                         <li>
@@ -34,7 +38,7 @@
                     </ul>
                 </td>
             </tr>
-        {% endfor %}
+            {% endfor %}
         </tbody>
     </table>
     <br><br>

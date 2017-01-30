@@ -13,24 +13,20 @@
 {% endblock %}
 
 {% block body %}
-<div class="text-center content">
-
-    <h1>Inscription</h1>
-
-    <br><br>
-
-    <h3>Je suis un...</h3>
-    <div class="text-center">
-        <a class="btn btn-primary btn-circle" href="{{ path("user_consumer_registration") }}">
-            <div class="texte">Client</div>
-        </a>
-        <a class="btn btn-primary btn-circle" href="{{ path("user_producer_registration") }}">
-            <div class="texte">Producteur</div>
-        </a>
-        <a class="btn btn-primary btn-circle" href="{{ path("user_media_registration") }}">
-            <div class="texte">Presse</div>
-        </a>
-
+    <div class="text-center content">
+        <h1>Inscription</h1>
+        <br><br>
+        <h3>Je suis un...</h3>
+        <div class="text-center">
+            <a class="btn btn-primary btn-circle" href="{{ path("user_consumer_registration") }}">
+                <div class="texte">Client</div>
+            </a>
+            <a class="btn btn-primary btn-circle" href="{{ path("user_producer_registration") }}">
+                <div class="texte">Producteur</div>
+            </a>
+            <a class="btn btn-primary btn-circle" href="{{ path("user_media_registration") }}">
+                <div class="texte">Presse</div>
+            </a>
+        </div>
     </div>
-</div>
 {% endblock %}

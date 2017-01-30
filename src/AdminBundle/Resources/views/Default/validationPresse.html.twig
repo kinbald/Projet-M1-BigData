@@ -14,7 +14,6 @@
 {% endblock %}
 
 {% block body %}
-
     <div class="container overflow-hidden">
         <div class="row">
             <div class="col-md-12">
@@ -22,11 +21,9 @@
             </div>
         </div>
     </div>
-
     <div class="tableau_media">
         {{ form_start(form) }}
         <table>
-
             <thead>
                 <tr>
                     <th>Id</th>
@@ -36,36 +33,24 @@
                     <th>Droit d'accès au contenu Média</th>
                 </tr>
             </thead>
-
             <tbody>
                 {% for media in medias %}
-
                     <tr>
                         <td class="id">{{ media.id }}</td>
                         <td class="nom">{{ media.companyName }}</td>
                         <td class="justificatif-carte">{{ media.idPresse }}</td>
                         <td class="justificatif-adresse">{{ media.urlBlog }}</td>
                         <td class="droit">{{ form_widget(attribute(form, 'media_'~media.id))}}</td>
-
                     </tr>
-
                 {% endfor %}
-
                     <tr>
                         <td colspan="4"></td>
                         <td>{{ form_widget(form.save) }}</td>
                     </tr>
-
             </tbody>
-
-
-
-
         </table>
         {{ form_end(form) }}
     </div>
-
-
 {% endblock %}
 
 

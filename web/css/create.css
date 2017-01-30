@@ -23,7 +23,8 @@ label
 }
 
 #productbundle_universe_description,
-#productbundle_wine_description {
+#productbundle_wine_description,
+#productbundle_purchase_address{
     border-radius: 10px;
     color:#555555;
     width: 17em;
@@ -40,13 +41,18 @@ label
 #mediabundle_files_url,
 #mediabundle_files_name,
 #mediabundle_files_date_date,
-#userbundle_userconsumer_sex{
+#userbundle_userconsumer_sex,
+#productbundle_purchase_city,
+#productbundle_purchase_postalCode,
+#productbundle_purchase_country,
+#productbundle_purchase_user{
     border-radius: 10px;
     color:#555555;
 }
 
 #mediabundle_files_date_time,
-#userbundle_userconsumer_birthDate{
+#userbundle_userconsumer_birthDate,
+#productbundle_purchase_dateOrder{
     border-radius: 10px;
     color:#555555;
     margin-left:150px;

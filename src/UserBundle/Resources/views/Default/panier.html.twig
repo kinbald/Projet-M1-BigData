@@ -23,10 +23,8 @@
             </div>
         </div>
     </div>
-
     <div class="tableau_panier_prix">
         <table>
-
             <tbody>
             <tr>
                 <th>Prix HT</th>
@@ -45,80 +43,71 @@
                 <td><input type="submit" value="Continuer"></td>
             </tr>
             </tbody>
-
         </table>
     </div>
-
     <div class="tableau_panier">
         <table>
-
             <thead>
-            <tr>
-                <th>Date d'ajout</th>
-                <th>Article</th>
-                <th>Prix</th>
-                <th>Quantité</th>
-            </tr>
-            </thead>
-
-            <tbody>
-            {% for i in 1..10 %}
                 <tr>
-                    <td class="date">11/11/1111</td>
-                    <td class="article"><img src="https://www.chateau-lastours.fr/vues/uploads/images/miniatures/vin-rouge-gaillac-chateau-lastours-selection-2008-898355.png"></img> <br> Nom  article</td>
-                    <td class="prix">prix article</td>
-                    <td class="quantite"><div class="PlusMoins">
-                            <form>
-
-                                <input type="text" value="1" id="quantite" size="1" maxlength="3" onkeypress="return isNumberKey(event);"><br>
-                                <a onClick="retireProduit('quantite');"><img class="bouton_moins" src="/img/product/b_minus.png" height="40"></a>
-                                <a onClick="ajoutProduit('quantite');" ><img class="bouton_plus" src="/img/product/b_plus.png" height="40"></a>
-                            </form>
-                        </div></td>
+                    <th>Date d'ajout</th>
+                    <th>Article</th>
+                    <th>Prix</th>
+                    <th>Quantité</th>
                 </tr>
-            {% endfor %}
+            </thead>
+            <tbody>
+                {% for i in 1..10 %}
+                    <tr>
+                        <td class="date">11/11/1111</td>
+                        <td class="article"><img src="https://www.chateau-lastours.fr/vues/uploads/images/miniatures/vin-rouge-gaillac-chateau-lastours-selection-2008-898355.png"></img> <br> Nom  article</td>
+                        <td class="prix">prix article</td>
+                        <td class="quantite">
+                            <div class="PlusMoins">
+                                <form>
+                                    <input type="text" value="1" id="quantite" size="1" maxlength="3" onkeypress="return isNumberKey(event);"><br>
+                                    <a onClick="retireProduit('quantite');"><img class="bouton_moins" src="/img/product/b_minus.png" height="40"></a>
+                                    <a onClick="ajoutProduit('quantite');" ><img class="bouton_plus" src="/img/product/b_plus.png" height="40"></a>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
             </tbody>
-
-
         </table>
     </div>
-
-
-
-<!----------------------------------------->
-<!------- PROPOSITION AUTRES PRODUITS ----->
-<!----------------------------------------->
-<section class="section-min section product" id="products">
-    <div class="container overflow-hidden">
-        <div class="row">
-            <div class="col-md-12">
-                <h3>Ceci pourrait aussi vous intéresser :</h3>
+    <!----------------------------------------->
+    <!------- PROPOSITION AUTRES PRODUITS ----->
+    <!----------------------------------------->
+    <section class="section-min section product" id="products">
+        <div class="container overflow-hidden">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>Ceci pourrait aussi vous intéresser :</h3>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="product-list-slider">
-                <ul class="swiper-wrapper product-list product-list-vertical">
-                    {% for i in 1..10 %}
-                    <li class="swiper-slide wow fadeInUp text-center">
+            <div class="row">
+                <div class="product-list-slider">
+                    <ul class="swiper-wrapper product-list product-list-vertical">
+                        {% for i in 1..10 %}
+                            <li class="swiper-slide wow fadeInUp text-center">
                                 <span class="product-list-left pull-left">
-                                        <!--Rajouter le lien vers la produit : <a href="http://www.google.fr"> -->
-                                       <img alt="product image" class="product-list-primary-img" src="{{ asset('img/product/contract_default.png') }}">
-                                        <span class="product-list-name h3">Nom produit</span>
-                                        <span class="product-list-price">400.00 €</span>
+                                    <!--Rajouter le lien vers la produit : <a href="http://www.google.fr"> -->
+                                    <img alt="product image" class="product-list-primary-img" src="{{ asset('img/product/contract_default.png') }}">
+                                    <span class="product-list-name h3">Nom produit</span>
+                                    <span class="product-list-price">400.00 €</span>
                                     <!--</a>-->
-                                      </span>
-                    </li>
-                    {% endfor %}
-                </ul>
-                <!-----------------------------------   DEFILEMENT  -------------------------------->
-                <!-- Add Pagination -->
-                <div class="product-list-pagination text-center"> </div>
-                <div class="product-list-slider-next right-arrow-negative"> &#10095; </div>
-                <div class="product-list-slider-prev left-arrow-negative"> &#10094;</div>
-                <br><br>
+                                </span>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    <!-----------------------------------   DEFILEMENT  -------------------------------->
+                    <!-- Add Pagination -->
+                    <div class="product-list-pagination text-center"> </div>
+                    <div class="product-list-slider-next right-arrow-negative"> &#10095; </div>
+                    <div class="product-list-slider-prev left-arrow-negative"> &#10094;</div>
+                    <br><br>
+                </div>
             </div>
         </div>
-    </div>
-</section>
-
+    </section>
 {% endblock %}

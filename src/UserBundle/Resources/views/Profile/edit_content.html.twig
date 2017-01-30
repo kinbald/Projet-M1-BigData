@@ -1,9 +1,14 @@
+{% extends 'base.html.twig' %}
+
+
 {% block stylesheets %}
     <link href="{{ asset('http://www.w3schools.com/lib/w3.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/compte.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/register.css') }}" rel="stylesheet" />
 {% endblock %}
 
+
+{% block body %}
 <div id="marginTop">
 {% trans_default_domain 'FOSUserBundle' %}
 {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
@@ -11,75 +16,15 @@
 
 <nav class="w3-sidenav w3-black w3-card-2" style="width:150px;">
     <div class="w3-container">
-        <h5>Menu</h5>
+        <h5><b>Menu</b></h5>
     </div>
-    <a href="javascript:void(0)" class="tablink" onclick="openLink(event, 'Profile')">Profil</a>
-    <a href="javascript:void(0)" class="tablink" onclick="openLink(event, 'Factures')">Factures</a>
+    <a href="{{ path('fos_user_profile_show') }}" class="tablink" onclick="openLink(event, 'Profile')"><b>Profil</b></a>
+    <a href="javascript:void(0)" class="tablink" onclick="openLink(event, 'Factures')"><b>Factures</b></a>
 </nav>
 
 <div style="margin-left:130px">
     <h1 id="titre">Bienvenue sur votre espace client</h1>
 
-    <!-------------------Profile--------------------->
-    <div id="Profile" class="w3-container city w3-animate-left" style="display:none;">
-        <h2>Profil</h2>
-            <br>
-            <div>
-                <p>Username:</p>
-            </div>
-            <div>
-                <p>Email:</p>
-            </div>
-
-            <div>
-                <p>Last name:</p>
-            </div>
-            <div>
-                <p>First name:</p>
-            </div>
-            {% if is_granted('ROLE_CONSUMER') %}
-                <div>
-                    <p>Birth Date:</p>
-                </div>
-                <div>
-                    <p>Gender:</p>
-                </div>
-            {% endif %}
-
-            {% if is_granted('ROLE_MEDIA') %}
-                <div>
-                    <p>Url blog:</p>
-                </div>
-                <div>
-                    <p>ID presse:</p>
-                </div>
-                <div>
-                    <p>Company name:</p>
-                </div>
-            {% endif %}
-
-            {% if is_granted('ROLE_PRODUCER') %}
-                <div>
-                    <p>Company name:</p>
-                </div>
-                <div>
-                    <p>Siret:</p>
-                </div>
-                <div>
-                    <p>Address:</p>
-                </div>
-                <div>
-                    <p>City:</p>
-                </div>
-                <div>
-                    <p>Postal code:</p>
-                </div>
-            {% endif %}
-
-            <br>
-            <a href="javascript:void(0)" id="modifier" class="tablink" onclick="openLink(event, 'Profile1')">Modifier</a>
-
-    </div>
     <!-------------------Profile edit--------------------->
     <div id="Profile1" class="w3-container city w3-animate-left" style="display:none;">
         <h2>Profil</h2>
@@ -210,9 +155,11 @@
         document.getElementById(animName).style.display = "block";
         evt.currentTarget.className += " w3-red";
     }
+    openLink(null, 'Profile1');
 
 </script>
 
 
 {{ form_end(form) }}
 </div>
+{% endblock %}
