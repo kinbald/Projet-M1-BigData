@@ -63,15 +63,16 @@
             <!-- / CART SUMMARY CALCULATION -->
 
             <!-- HIDDEN PAYPAL FORM -->
-            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" class="cart-form" id="cart-form">
+            <form action="{{ path("cart_view") }}" method="post" class="cart-form" id="cart-form" name="form">
                 <!-- Identify your business so that you can collect the payments. -->
                 <input name="business" value="yourpaypal@email.com" type="hidden">
                 <!-- Specify a Buy Now button. -->
                 <input name="cmd" value="_xclick" type="hidden">
                 <!-- Specify details about the item that buyers will purchase. -->
-                <input name="item_name" value="Choco - checkout" type="hidden">
-                <input name="amount" id="amount" value="2115.00" type="hidden">
-                <input name="currency_code" value="USD" type="hidden">
+                <input name="item_name" value="Total - checkout" type="hidden">
+                <input name="amount" id="amount" value="0.00" type="hidden">
+                <input name="id_list" id="id_list" value="" type="hidden">
+                <input name="currency_code" value="EUR" type="hidden">
                 <!-- Display the payment button. -->
                 <button type="submit" name="submit" class="btn btn-default btn-lg">
                     paiement paypal ⯈</span>

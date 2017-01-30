@@ -9,6 +9,10 @@ media_files:
     resource: "@MediaBundle/Controller/FilesController.php"
     type:     annotation
 
+cart:
+    resource: "@UserBundle/Controller/CartController.php"
+    type:     annotation
+
 product_universe:
     resource: "@ProductBundle/Controller/UniverseController.php"
     type:     annotation

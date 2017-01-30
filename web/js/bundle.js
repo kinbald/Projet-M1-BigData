@@ -5072,111 +5072,228 @@ if (function (e, t) {
             } else new d(this, t[0], t[1])
         })
     }
-}), window.onload = function () {
+}), window.onload = function() {
 
     var panier = JSON.parse(window.localStorage.getItem('panier'));
 
-    if(panier == null){
-        panier = [];
-    }
-
-    function e(e, t) {
-        l++, s[l] = t, $("#items-counter").empty(), curCounter = (panier != null ? panier.length : $("#items .cart-item").length + 1), document.getElementById("items").innerHTML += "<div class='cart-item hidden' id='item" + l + "' data-id='" + e + "'><span class='cart-item-image'><img alt='" + o + "' src='" + curImage + "'/></span><span class='cart-item-name h4'>" + o + "</span><span class='cart-item-price'>$<span class='cvalue'>" + t + "</span></span> <span class='cart-item-remove'>✘<span></div>", document.getElementById("items-counter").innerHTML += "<span class='animate'>" + curCounter + "<span class='circle'></span></span>", document.getElementById("item" + l).classList.remove("hidden"), a()
-    }
-
-    function t(e) {
-        $delivery = $("input[name=delivery]:checked").val();
-        var t = Number($delivery), n = document.getElementById("cost_value").innerHTML;
-        n = parseFloat(n), e = parseFloat(e);
-        var i = n + e, a = n + e;
-        document.getElementById("cost_value").innerHTML = i.toFixed(2);
-        var r = a + t;
-        document.getElementById("total-total").innerHTML = r.toFixed(2), $("#amount").val(r.toFixed(2))
-    }
-
-    function bla(e) {
-        $delivery = $("input[name=delivery]:checked").val();
-        var t = Number($delivery), n = document.getElementById("cost_value").innerHTML;
-        n = parseFloat(n), e = parseFloat(e);
-        var i = n - e;
-        "NaN" == i && (i = 0);
-        var a = n - e;
-        "NaN" == a && (a = 0);
-        var r = a + t;
-        document.getElementById("total-total").innerHTML = r.toFixed(2), document.getElementById("cost_value").innerHTML = i.toFixed(2), document.getElementById("cost_delivery").innerHTML = t.toFixed(2), $("#amount").val(r.toFixed(2))
-    }
-
-    function i(e, n, i, o) {
-        var s = document.createElement("div");
-        s.className = "mover_animator " + l, s.style.display = "none", document.body.appendChild(s), $(s).css({
-            left: e + "px",
-            bottom: n + "px",
-            top: "auto",
-            right: "auto"
-        }).fadeIn(10).animate({
-            right: "auto",
-            top: "auto",
-            left: window.innerWidth - 200 + "px",
-            bottom: window.innerHeight - 240 + "px"
-        }, 300, function () {
-            t(r)
-        }), setTimeout(function () {
-            $(s).remove(), a()
-        }, 200)
-    }
-
-    function a() {
-        document.querySelectorAll(".cart-item").length >= 1 ? (document.getElementById("cart-summary").style.display = "block", document.getElementById("cart-delivery").style.display = "block", document.getElementById("cart-form").style.display = "block", document.getElementById("cart-empty").style.display = "none", document.getElementById("items-counter").style.display = "block") : (document.getElementById("cart-summary").style.display = "none", document.getElementById("cart-delivery").style.display = "none", document.getElementById("cart-form").style.display = "none", document.getElementById("cart-empty").style.display = "block", document.getElementById("items-counter").style.display = "none")
-    }
-
-    var r = 0, o = 0, s = [], l = 0, d = 0, u = 0, p = 0, c = 0, f = document.querySelectorAll(".add-item");
+    var curCost = 0;
+    var curName = 0;
+    var cartItems = [];
+    var cindex = 0;
+    var fx = 0,
+        fy = 0;
+    var tx = 0,
+        ty = 0;
+    var curItem = "";
+    var item_list = document.querySelectorAll(".add-item");
     $delivery = $("input[name=delivery]:checked").val();
-    var h = Number($delivery);
-    document.getElementById("cost_delivery").innerHTML = h.toFixed(2);
+    var delivery = Number($delivery);
 
-    if(panier != null){
-        if(panier.length > 0){
-            for(var indice = 0; indice < panier.length; indice++){
-                r = panier[indice].prix;
-                o = panier[indice].nom;
-                curImage = panier[indice].image;
-                n = panier[indice].id;
-                e(n, r, o, curImage);
+    loadItems();
+
+    document.getElementById("cost_delivery").innerHTML = delivery.toFixed(2);
+    for (var i = 0; i < item_list.length; i++) {
+        item_list[i].addEventListener("click", function(ev) {
+            var id = this.getAttribute("data-id");
+            var inCard = false;
+            for(var j = 0 ; j < panier.length ; j++)
+            {
+                if(panier[j].id == id) {
+                    inCard = true;
+                    break;
+                }
             }
-        }
+            if(inCard)
+                return;
+            curCost = this.getAttribute("data-cost");
+            curName = this.getAttribute("data-name");
+            curImage = this.getAttribute("data-image");
+            quantity = 1;
+
+
+            panier.push({prix: curCost, nom: curName, image: curImage, id: id, quantity: quantity});
+            window.localStorage.setItem('panier', JSON.stringify(panier));
+
+            var x = $(this).position();
+            fx = (((window.innerWidth) - 982) / 2) + (160 * (id - 1));
+            (function() {
+                mover_animator(fx, fy, tx, ty);
+            })(setTimeout(function() {
+                addItem(id, curCost, curName, curImage);
+            }, 350));
+        })
     }
 
-    for (var m = 0; m < f.length; m++)f[m].addEventListener("click", function (t) {
-        r = this.getAttribute("data-cost"), o = this.getAttribute("data-name"), curImage = this.getAttribute("data-image");
-        var n = this.getAttribute("data-id");
+    $(document).on("click", ".cart-item-remove", function() {
+        curCost = $(this).parent(".cart-item").find(".cvalue").text();
 
-        panier.push({prix: r, nom: o, image: curImage, id: n});
-        window.localStorage.setItem('panier', JSON.stringify(panier));
-
-        $(this).position();
-        d = (window.innerWidth - 982) / 2 + 160 * (n - 1), function () {
-            i(d, u, p, c)
-        }(setTimeout(function () {
-            e(n, r, o, curImage)
-        }, 350))
-    });
-    $(document).on("click", ".cart-item-remove", function () {
-        r = $(this).parent(".cart-item").find(".cvalue").text(), bla(r), this.parentNode.outerHTML = "", a(), curCounter = $("#items .cart-item").length, $("#items-counter").empty(), document.getElementById("items-counter").innerHTML += "<span class='animate'>" + curCounter + "<span class='circle'></span></span>"
+        //this.parentNode.remove(); // ie fix
+        this.parentNode.outerHTML='';
+        //$( "#items-counter" ).empty();
+        toggleEptyCart();
+        curCounter = $("#items .cart-item").length;
+        $("#items-counter").empty();
+        document.getElementById("items-counter").innerHTML += "<span class='animate'>" + curCounter +
+            "<span class='circle'></span></span>";
+        var quantity = 1;
 
         for(var i = 0; i < panier.length; i++)
         {
             if(panier[i].id == $(this).parent(".cart-item").attr("data-id"))
             {
+                quantity = panier[id].quantity;
                 panier.splice(i, 1);
                 window.localStorage.setItem('panier', JSON.stringify(panier));
             }
         }
+        removeCost(curCost*quantity);
+    });
 
+    function addItem(id, cost) {
+        cindex++;
+        cartItems[cindex] = cost;
+        $("#items-counter").empty();
+        curCounter = (panier != null ? panier.length : $("#items .cart-item").length + 1);
+        document.getElementById("items").innerHTML += "<div class='cart-item' id='item" + cindex +
+            "' data-id='" + id + "'><span class='cart-item-image'><img alt='" + curName + "' src='" + curImage +
+            "'/></span><span class='cart-item-name h4'>" + curName +
+            "</span><span class='cart-item-price'>$<span class='cvalue'>" + cost +
+            "</span></span> <span class='cart-item-remove'>✘</span>" +
+            "<input class='quantityInput' type='number' min='1' max='1023' id='input_" + id +"' value='"+quantity+"'/> </div>";
+        document.getElementById("items-counter").innerHTML += "<span class='animate'>" + curCounter +
+            "<span class='circle'></span></span>";
+        document.getElementById("item" + cindex).classList.remove("hidden");
+        document.getElementById("input_"+id).addEventListener("change", function(ev) {
+            var id = this.parentElement.getAttribute("data-id");
+            var value = this.value;
+            panier.forEach(function (element) {
+                if(element.id == id){
+                    var diff = element.quantity - value;
+                    element.quantity = value;
+                    removeCost(diff*element.prix);
+                    window.localStorage.setItem('panier', JSON.stringify(panier));
+                }
+            });
+        });
+        toggleEptyCart();
+    }
 
-    }), $("input").change(function () {
-        $delivery = $(this).val(), $total = document.getElementById("cost_value").innerHTML;
-        var e = Number($total), t = Number($delivery), n = e + t;
-        document.getElementById("total-total").innerHTML = n.toFixed(2), $("#amount").val(n.toFixed(2)), document.getElementById("cost_delivery").innerHTML = t.toFixed(2)
+    function addCost(amount) {
+        $delivery = $("input[name=delivery]:checked").val();
+        var delivery = Number($delivery);
+        var oldcost = document.getElementById("cost_value").innerHTML;
+        oldcost = parseFloat(oldcost);
+        amount = parseFloat(amount);
+        var newcost = oldcost + amount;
+        var total = oldcost + amount;
+        document.getElementById("cost_value").innerHTML = newcost.toFixed(2);
+        var carttotal = total + delivery;
+        document.getElementById("total-total").innerHTML = carttotal.toFixed(2);
+        $("#amount").val(carttotal.toFixed(2));
+    }
+
+    function loadItems() {
+        if(panier == null){
+            panier = [];
+        }else {
+            if(panier.length > 0){
+                for(var indice = 0; indice < panier.length; indice++){
+                    curCost = panier[indice].prix;
+                    curName = panier[indice].nom;
+                    curImage = panier[indice].image;
+                    cindex = panier[indice].id;
+                    quantity = panier[indice].quantity;
+                    addItem(cindex, curCost, quantity, curName, curImage);
+                    addCost(curCost*quantity);
+                }
+            }
+        }
+    }
+
+    function removeItem() {}
+
+    function removeCost(amount) {
+        $delivery = $("input[name=delivery]:checked").val();
+        var delivery = Number($delivery);
+        var oldcost = document.getElementById("cost_value").innerHTML;
+        oldcost = parseFloat(oldcost);
+        amount = parseFloat(amount);
+        var newcost = (oldcost - amount);
+        if (newcost == "NaN") {
+            newcost = 0.00
+        }
+        var total = (oldcost - amount);
+        if (total == "NaN") {
+            total = 0.00
+        }
+        var carttotal = total + delivery;
+        document.getElementById("total-total").innerHTML = carttotal.toFixed(2);
+        document.getElementById("cost_value").innerHTML = newcost.toFixed(2);
+        document.getElementById("cost_delivery").innerHTML = delivery.toFixed(2);
+        $("#amount").val(carttotal.toFixed(2));
+    }
+
+    function mover_animator(x1, y1, x2, y2) {
+        var div = document.createElement("div");
+        div.className = "mover_animator " + cindex;
+        div.style.display = "none";
+        document.body.appendChild(div);
+        $(div).css({
+            "left": x1 + "px",
+            "bottom": y1 + "px",
+            "top": "auto",
+            "right": "auto"
+        })
+            .fadeIn(10)
+            .animate({
+                "right": "auto",
+                "top": "auto",
+                "left": (window.innerWidth - 200) + "px",
+                "bottom": (window.innerHeight - 240) + "px"
+            }, 300, function() {
+                addCost(curCost)
+            })
+        setTimeout(function() {
+            $(div).remove();
+            toggleEptyCart();
+        }, 200);
+    }
+
+    function updateNumber() {
+        var nums = document.querySelectorAll(".cart-item");
+        var len = nums.length;
+        if (len > 0) {
+            for (var i = 0; i < len; i++) {
+                nums[i].querySelector(".cart-item-name h3").innerHTML = "Item " + (i + 1) + " ---";
+            }
+        }
+    }
+
+    function toggleEptyCart() {
+        if (document.querySelectorAll(".cart-item").length >= 1) {
+            document.getElementById("cart-summary").style.display = "block";
+            document.getElementById("cart-delivery").style.display = "block";
+            document.getElementById("cart-form").style.display = "block";
+            document.getElementById("cart-empty").style.display = "none";
+            document.getElementById("items-counter").style.display = "block";
+        }
+        else {
+            document.getElementById("cart-summary").style.display = "none";
+            document.getElementById("cart-delivery").style.display = "none";
+            document.getElementById("cart-form").style.display = "none";
+            document.getElementById("cart-empty").style.display = "block";
+            document.getElementById("items-counter").style.display = "none";
+        }
+    }
+    $('input').change(function() {
+        $delivery = $(this).val();
+        $total = document.getElementById("cost_value").innerHTML;
+        var total = Number($total);
+        var delivery = Number($delivery);
+        var carttotal = total + delivery;
+        document.getElementById("total-total").innerHTML = carttotal.toFixed(2);
+        $("#amount").val(carttotal.toFixed(2));
+        document.getElementById("cost_delivery").innerHTML = delivery.toFixed(2);
     })
 }, $("#countdown").countdown("2018/10/10", function (e) {
     $(this).html(e.strftime("<li><span>%D</span> days</li> <li><span>%H</span> hr</li> <li><span>%M</span> min</li> <li><span>%S</span> sec</li>"))
