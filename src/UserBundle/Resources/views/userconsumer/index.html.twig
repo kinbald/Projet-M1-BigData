@@ -19,8 +19,8 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Sex</th>
-                <th>Birthdate</th>
+                <th>Nom</th>
+                <th>Prenom</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -28,8 +28,8 @@
             {% for userConsumer in userConsumers %}
                 <tr>
                     <td><a href="{{ path('userconsumer_show', { 'id': userConsumer.id }) }}">{{ userConsumer.id }}</a></td>
-                    <td>{{ userConsumer.sex }}</td>
-                    <td>{% if userConsumer.birthDate %}{{ userConsumer.birthDate|date('Y-m-d') }}{% endif %}</td>
+                    <td>{{ userConsumer.lastname }}</td>
+                    <td>{{ userConsumer.firstname }}</td>
                     <td>
                         <table>
                             <tr>

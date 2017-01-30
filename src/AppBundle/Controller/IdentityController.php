@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 class IdentityController extends Controller
 {
     /**
-     * @Route("/qui-sommes-nous", name="qui-sommes-nous")
+     * @Route("/qui_sommes_nous", name="qui_sommes_nous")
      */
     public function indexAction(Request $request)
     {

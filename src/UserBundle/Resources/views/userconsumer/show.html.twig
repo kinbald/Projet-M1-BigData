@@ -13,6 +13,10 @@
                 <td>{{ userConsumer.sex }}</td>
             </tr>
             <tr>
+                <th>Email</th>
+                <td>{{ userConsumer.email }}</td>
+            </tr>
+            <tr>
                 <th>Birthdate</th>
                 <td>{% if userConsumer.birthDate %}{{ userConsumer.birthDate|date('Y-m-d') }}{% endif %}</td>
             </tr>

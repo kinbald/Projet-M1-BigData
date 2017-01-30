@@ -20,8 +20,11 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Vintage</th>
-                <th>Color</th>
+                <th>Nom</th>
+                <th>Milésime</th>
+                <th>Couleur</th>
+                <th>Prix</th>
+                <th>Stock</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -29,8 +32,11 @@
             {% for wine in products %}
                 <tr>
                     <td class="id"><a href="{{ path('product_show', { 'id': wine.id }) }}">{{ wine.id }}</a></td>
-                    <td class="vintage">{% if wine.vintage %}{{ wine.vintage|date('Y-m-d') }}{% endif %}</td>
+                    <td class="name">{{ wine.name }}</td>
+                    <td class="vintage">{% if wine.vintage %}{{ wine.vintage|date('Y') }}{% endif %}</td>
                     <td class="color">{{ wine.color }}</td>
+                    <td class="price">{{ wine.price }} €</td>
+                    <td class="price">{{ wine.stock }}</td>
                     <td class="actions">
                         <ul>
                             <li>
