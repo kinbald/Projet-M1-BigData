@@ -4,6 +4,8 @@
     <link href="{{ asset('css/bootstrap-dark.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/theme-dark.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/univers.css') }}" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lemonada" rel="stylesheet">
 {% endblock %}
 
 {% block javascripts %}
@@ -13,8 +15,10 @@
 
 {% block body %}
     <div class="universe-bandeau" id="universe-bandeau" >
-        <img class="universe-img" src="/img/home-of-middle-earth.jpg" alt="image {{ universe.name}}"/>
+        {% set picture = universe.pictures|last %}
+        <img class="universe-img" src="/img/upload/{{ picture.url}}" alt="{{ picture.alt}}"/>
         <p class="universe-name"> {{ universe.name }}</p>
+        <p class="universe-description"> L, non convallis felis. Donec tempor, lorem in placerat porttitor, orci arcu convallis odio, tincidunt vestibulum metus nibh vel elit. Sed bibendum vel nisi quis lacinia. Sed at dignissim metus, ut convallis eros. Nulla finibus, ante eget pretium gravida, arcu nibh sollicitudin risus, vitae efficitur libero erat et eros.{{ universe.description }}</p>
     </div>
     <!-- Barre Laterale -->
     <div class="barre_laterale barre_color_police" id="sidebar">
