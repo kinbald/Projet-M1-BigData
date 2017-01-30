@@ -68,7 +68,7 @@ class UserConsumerController extends Controller
     {
         $deleteForm = $this->createDeleteForm($userConsumer);
 
-        return $this->render('userconsumer/show.html.twig', array(
+        return $this->render('UserBundle:userconsumer:show.html.twig', array(
             'userConsumer' => $userConsumer,
             'delete_form' => $deleteForm->createView(),
         ));

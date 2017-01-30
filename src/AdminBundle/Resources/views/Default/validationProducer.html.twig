@@ -14,8 +14,6 @@
 {% endblock %}
 
 {% block body %}
-
-
     <div class="container overflow-hidden">
         <div class="row">
             <div class="col-md-12">
@@ -23,10 +21,8 @@
             </div>
         </div>
     </div>
-
     {{ form_start(form) }}
     <table>
-
         <thead>
             <tr>
                 <th>Id</th>
@@ -38,11 +34,7 @@
                 <th>Autorisation de connexion</th>
             </tr>
         </thead>
-
-
-
         <tbody>
-
             {% for producer in producers %}
                 <tr>
                     <td class="id">{{ producer.id }}</td>
@@ -54,16 +46,11 @@
                     <td class="droit">{{ form_widget(attribute(form, 'producer_'~producer.id))}}</td>
                 </tr>
             {% endfor %}
-
             <tr>
                 <td colspan="6"></td>
                 <td>{{ form_widget(form.save) }}</td>
             </tr>
-
         </tbody>
-
     </table>
-
     {{ form_end(form) }}
-
 {% endblock %}

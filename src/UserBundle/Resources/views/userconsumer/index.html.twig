@@ -15,36 +15,35 @@
             </div>
         </div>
     </div>
-
     <table>
         <thead>
-        <tr>
-            <th>Id</th>
-            <th>Sex</th>
-            <th>Birthdate</th>
-            <th>Actions</th>
-        </tr>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Actions</th>
+            </tr>
         </thead>
         <tbody>
-        {% for userConsumer in userConsumers %}
-            <tr>
-                <td><a href="{{ path('userconsumer_show', { 'id': userConsumer.id }) }}">{{ userConsumer.id }}</a></td>
-                <td>{{ userConsumer.sex }}</td>
-                <td>{% if userConsumer.birthDate %}{{ userConsumer.birthDate|date('Y-m-d') }}{% endif %}</td>
-                <td>
-                    <table>
-                    <tr>
-                        <td>
-                            <a href="{{ path('userconsumer_show', { 'id': userConsumer.id }) }}">show</a>
-                        </td>
-                        <td>
-                            <a href="{{ path('userconsumer_edit', { 'id': userConsumer.id }) }}">edit</a>
-                        </td>
-                    </tr>
-                    </table>
-                </td>
-            </tr>
-        {% endfor %}
+            {% for userConsumer in userConsumers %}
+                <tr>
+                    <td><a href="{{ path('userconsumer_show', { 'id': userConsumer.id }) }}">{{ userConsumer.id }}</a></td>
+                    <td>{{ userConsumer.lastname }}</td>
+                    <td>{{ userConsumer.firstname }}</td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>
+                                    <a href="{{ path('userconsumer_show', { 'id': userConsumer.id }) }}">show</a>
+                                </td>
+                                <td>
+                                    <a href="{{ path('userconsumer_edit', { 'id': userConsumer.id }) }}">edit</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
         <br><br>
@@ -53,5 +52,4 @@
             <div class="btn btn-primary btn-circle"><a href="{{ path('userconsumer_new') }}">Create a new Consumer</a></div>
         </li>
     </ul>
-
 {% endblock %}
