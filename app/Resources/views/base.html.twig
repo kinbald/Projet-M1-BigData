@@ -24,7 +24,8 @@
                 <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="{{ path("homepage") }}"> <img src="{{ asset('img/product/logo.png') }}" alt="logo"> </a>
+            <a class="navbar-brand" href="{{ path("homepage") }}"> <img src="{{ asset('img/logo.png') }}" alt="logo">
+            </a>
         </div>
         {% if is_granted('ROLE_CONSUMER') %}
             <div class="navbar-collapse collapse" id="myNavbar">
