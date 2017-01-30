@@ -42,6 +42,47 @@
                 </tr>
             </tbody>
         </table>
+        <h1>Achat</h1>
+        <br>
+        <table>
+            <tbody>
+            <tr>
+                <th width="100px">Produit</th>
+                <td id="champ">{{ product.name }}</td>
+            </tr>
+            <tr>
+                <th width="100px">Description</th>
+                <td id="champ">{{ product.description }}</td>
+            </tr>
+            <tr>
+                <th width="100px">Volume</th>
+                <td id="champ">{{ product.volume }}</td>
+            </tr>
+            <tr>
+                <th width="100px">Price</th>
+                <td id="champ">{{ product.price }}</td>
+            </tr>
+            </tbody>
+        </table>
+        <h1>Acheteur</h1>
+        <br>
+        <table>
+            <tbody>
+            <tr>
+                <th width="100px">Pseudo</th>
+                <td id="champ">{{ base_user.username }}</td>
+            </tr>
+            <tr>
+                <th width="100px">Prenom</th>
+                <td id="champ">{{ base_user.firstname }}</td>
+            </tr>
+            <tr>
+                <th width="100px">Nom</th>
+                <td id="champ">{{ base_user.lastname }}</td>
+            </tr>
+            </tbody>
+        </table>
+
         <br>
         <table>
             <td>
