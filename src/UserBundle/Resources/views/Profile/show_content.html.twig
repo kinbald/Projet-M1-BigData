@@ -42,7 +42,7 @@
             </div>
             {% if is_granted('ROLE_CONSUMER') %}
                 <div>
-                    <p><b>Birth Date:</b> {{ user.birthDate }}</p>
+                    <p><b>Birth Date:</b> {{ user.birthDate | date("Y-m-d") }}</p>
                 </div>
                 <div>
                     <p><b>Gender:</b> {{ user.sex }}</p>
