@@ -51,6 +51,9 @@
 /**********  ECRAN 3  ***********/
 
 @media (min-width: 880px) {
+    body{
+        font-size: 17px;
+    }
     form{
         font-size:17px;
     }
@@ -75,6 +78,7 @@
     text-align:center;
     margin-bottom:40px;
     margin-top:40px;
+    color: #c6a668;
 }
 
 .w3-container h5{

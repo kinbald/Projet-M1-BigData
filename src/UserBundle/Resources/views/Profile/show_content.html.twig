@@ -1,0 +1,122 @@
+{% extends 'base.html.twig' %}
+
+
+{% block stylesheets %}
+    <link href="{{ asset('http://www.w3schools.com/lib/w3.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/compte.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/register.css') }}" rel="stylesheet" />
+{% endblock %}
+
+
+{% block body %}
+<div id="marginTop">
+{% trans_default_domain 'FOSUserBundle' %}
+
+<nav class="w3-sidenav w3-black w3-card-2" style="width:150px;">
+    <div class="w3-container">
+        <h5><b>Menu</b></h5>
+    </div>
+    <a href="javascript:void(0)" class="tablink" onclick="openLink(event, 'Profile')"><b>Profil</b></a>
+    <a href="javascript:void(0)" class="tablink" onclick="openLink(event, 'Factures')"><b>Factures</b></a>
+</nav>
+
+<div style="margin-left:130px">
+    <h1 id="titre">Bienvenue sur votre espace client</h1>
+
+    <!-------------------Profile--------------------->
+    <div id="Profile" class="w3-container city w3-animate-left" style="display:none;">
+        <h2>Profil</h2>
+            <br>
+            <div>
+                <p><b>Username:</b> {{ user.username }}</p>
+            </div>
+            <div>
+                <p><b>Email:</b> {{ user.email }}</p>
+            </div>
+
+            <div>
+                <p><b>Last name:</b> {{ user.lastname }}</p>
+            </div>
+            <div>
+                <p><b>First name:</b> {{ user.firstname }}</p>
+            </div>
+            {% if is_granted('ROLE_CONSUMER') %}
+                <div>
+                    <p><b>Birth Date:</b> {{ user.birthDate }}</p>
+                </div>
+                <div>
+                    <p><b>Gender:</b> {{ user.sex }}</p>
+                </div>
+            {% endif %}
+
+            {% if is_granted('ROLE_MEDIA') %}
+                <div>
+                    <p><b>Url blog:</b> {{ user.urlBlog }}</p>
+                </div>
+                <div>
+                    <p><b>ID presse:</b> {{ user.idPresse }}</p>
+                </div>
+                <div>
+                    <p><b>Company name:</b> {{ user.companyName }}</p>
+                </div>
+            {% endif %}
+
+            {% if is_granted('ROLE_PRODUCER') %}
+                <div>
+                    <p><b>Company name:</b> {{ user.companyName }}</p>
+                </div>
+                <div>
+                    <p><b>Siret:</b> {{ user.siret }}</p>
+                </div>
+                <div>
+                    <p><b>Address:</b> {{ user.address }}</p>
+                </div>
+                <div>
+                    <p><b>City:</b> {{ user.city }}</p>
+                </div>
+                <div>
+                    <p><b>Postal code:</b> {{ user.postalCode }}</p>
+                </div>
+            {% endif %}
+
+            <br>
+            <a href="{{ path('fos_user_profile_edit') }}" id="modifier" class="tablink" onclick="openLink(event, 'Profile1')"><b>Modifier</b></a>
+
+    </div>
+
+
+    <!-------------------Factures--------------------->
+
+    <div id="Factures" class="w3-container city w3-animate-left" style="display:none">
+        <h2>Factures & Paiements</h2>
+        <div>
+            <br>
+            <p>blablabla</p>
+            <p>blablabla</p>
+        </div>
+
+    </div>
+
+
+</div>
+
+<script>
+    function openLink(evt, animName) {
+        var i, x, tablinks;
+        x = document.getElementsByClassName("city");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablink");
+        for (i = 0; i < x.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+        }
+        document.getElementById(animName).style.display = "block";
+        evt.currentTarget.className += " w3-red";
+    }
+
+    openLink(null, 'Profile');
+
+</script>
+
+{% endblock %}
