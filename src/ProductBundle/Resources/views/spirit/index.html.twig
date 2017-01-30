@@ -14,7 +14,7 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Degree</th>
+                <th>Nom du produit/th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -22,7 +22,7 @@
         {% for spirit in products %}
             <tr>
                 <td class="id"><a href="{{ path('product_show', { 'product': spirit.discr,  'id': spirit.id }) }}">{{ spirit.id }}</a></td>
-                <td class="degree">{{ spirit.alcoholDegree }}</td>
+                <td class="degree">{{ spirit.name }}</td>
                 <td class="actions">
                     <ul>
                         <li>
