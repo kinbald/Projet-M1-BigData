@@ -2,19 +2,6 @@
 
 {% block fos_user_content %}
     <div id="content">
-<<<<<<< Updated upstream
-        <h1 class="text-center">Inscription utilisateur</h1>
-    <div class="centrage">
-    {% trans_default_domain 'FOSUserBundle' %}
-
-    <form action="{{ path('user_consumer_registration') }}" method="POST">
-        {{ form_widget(form) }}
-        <div><br><br>
-            <input class="btn btn-primary btn-circle text-center" type="submit" value="{{ 'registration.submit'|trans }}" />
-
-        </div>
-    </form>
-=======
         <h1>Inscription utilisateur</h1>
         {% trans_default_domain 'FOSUserBundle' %}
         <form action="{{ path('user_consumer_registration') }}" method="POST">
@@ -24,7 +11,5 @@
                 <input class="btn btn-primary btn-circle" type="submit" value="{{ 'registration.submit'|trans }}" />
             </div>
         </form>
->>>>>>> Stashed changes
-    </div>
     </div>
 {% endblock fos_user_content %}
