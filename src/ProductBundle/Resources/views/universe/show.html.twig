@@ -17,9 +17,7 @@
         <p class="universe-name"> {{ universe.name }}</p>
     </div>
     <!-- Barre Laterale -->
-
     <div class="barre_laterale barre_color_police" id="sidebar">
-
         <form method="post" action="traitement.php">
             <div class="barre_color_police">
                 <label for="recherche">Recherche: </label><br />
@@ -27,92 +25,86 @@
             <div class="barre_color_list">
                 <input type="search" maxlength="30" size="12"/><br />
             </div>
-
             <p>
-            <div class="barre_color_police">
-                <label for="vin_gamme">Gamme de vin:</label><br />
-            </div>
-            <div class="barre_color_list">
-                <select name="vin_gamme" id="vin_gamme">
-                    <option value=""></option>
-                    <option value="Premium">Premium</option>
-                    <option value="Super_premium">Super premium</option>
-                    <option value="Ultra_premium">Ultra premium</option>
-                    <option value="Icon">Icon</option>
-                </select>
-            </div>
+                <div class="barre_color_police">
+                    <label for="vin_gamme">Gamme de vin:</label><br />
+                </div>
+                <div class="barre_color_list">
+                    <select name="vin_gamme" id="vin_gamme">
+                        <option value=""></option>
+                        <option value="Premium">Premium</option>
+                        <option value="Super_premium">Super premium</option>
+                        <option value="Ultra_premium">Ultra premium</option>
+                        <option value="Icon">Icon</option>
+                    </select>
+                </div>
             </p>
-
             <p>
-            <div class="barre_color_police">
-                <label for="vin_type">Type de vin:</label><br />
-            </div>
-            <div class="barre_color_list">
-                <select name="vin_type" id="vin_type">
-                    <option value=""></option>
-                    <option value="Rouge_tannique">Rouge tannique</option>
-                    <option value="Rouge_puissant">Rouge puissant</option>
-                    <option value="Rouge_corse">Rouge corsé</option>
-                </select>
-            </div>
-            </p><br />
-
+                <div class="barre_color_police">
+                    <label for="vin_type">Type de vin:</label><br />
+                </div>
+                <div class="barre_color_list">
+                    <select name="vin_type" id="vin_type">
+                        <option value=""></option>
+                        <option value="Rouge_tannique">Rouge tannique</option>
+                        <option value="Rouge_puissant">Rouge puissant</option>
+                        <option value="Rouge_corse">Rouge corsé</option>
+                    </select>
+                </div>
+            </p>
+            <br />
             <div class="barre_color_police range">
                 <label>Prix:</label>
-                <input type="range" value="15" max="1000" min="0" step="10"><br /><br />
+                <input type="range" value="15" max="1000" min="0" step="10">
+                <br /><br />
             </div>
-
-
             <details>
-                <summary>Critères avancés</summary><br />
+                <summary>Critères avancés</summary>
+                <br />
                 <fieldset>
                     <div class="barre_color_police"><label> Choix de la région :</label></div>
                     <p>
-                    <div class="barre_color_list">
-                        <select name="vin_region" id="vin_region">
-                            <optgroup label="Region">
-                                <option value=""> </option>
-                                <option value="Europe">Europe</option>
-                                <option value="Asie">Asie</option>
-                                <option value="Amerique">Amérique</option>
-                                <option value="Oceanie">Océanie</option>
-                            </optgroup>
-                        </select>
-                    </div>
+                        <div class="barre_color_list">
+                            <select name="vin_region" id="vin_region">
+                                <optgroup label="Region">
+                                    <option value=""> </option>
+                                    <option value="Europe">Europe</option>
+                                    <option value="Asie">Asie</option>
+                                    <option value="Amerique">Amérique</option>
+                                    <option value="Oceanie">Océanie</option>
+                                </optgroup>
+                            </select>
+                        </div>
                     </p>
-
                     <div class="barre_color_police"><label>Choix du cépage :</label></div>
                     <p>
                         <input type="radio" id="d1" name="cepage"><label for="d1">Rouge</label>
                         <input type="radio" id="d2" name="cepage"><label for="d2">Blanc</label>
-                    <div class="barre_color_list">
-                        <select name="vin_cepage" id="vin_cepage">
-                            <optgroup label="Cepage">
-                                <option value=""> </option>
-                                <option value="Cabernet sauvignon">Cabernet sauvignon</option>
-                                <option value="Merlot">Merlot</option>
-                                <option value="Syrah">Syrah</option>
-                            </optgroup>
-                        </select>
-                    </div>
+                        <div class="barre_color_list">
+                            <select name="vin_cepage" id="vin_cepage">
+                                <optgroup label="Cepage">
+                                    <option value=""> </option>
+                                    <option value="Cabernet sauvignon">Cabernet sauvignon</option>
+                                    <option value="Merlot">Merlot</option>
+                                    <option value="Syrah">Syrah</option>
+                                </optgroup>
+                            </select>
+                        </div>
                     </p>
                 </fieldset>
-            </details><br />
-
+            </details>
+            <br />
             <div class="barre_color_list">
                 <input type="submit" value="Envoyer" />
             </div>
         </form>
     </div>
-
     <div class="section-product">
         <!-- Autre -->
-
         <section class="section-product-table" id="section-product-table">
             <div class="product-table-title">
                 <h3 class="section-heading">Tous les produits</h3>
             </div>
-
             <div class="text-center">
                 <div class="product-table" id="product-table">
                     <ul class="product-holder">
@@ -125,28 +117,23 @@
                                             <img alt="product image" class="product-list-primary-img table-primary-img" src="/img/upload/{{ picture.url }}" />
                                              <br>
                                         </span>
-
 										<span class="swiper-slide text-center table-product-text">
 											<span class="table-product-name">{{ product.name }}</span><br>
 											<span class="table-product-price">{{ product.price }} €</span>
 										</span>
-                                    </a> <br>
-
+                                    </a>
+                                    <br>
                                     <span class="btn btn-default add-item" data-image="{{ asset('img/add-to-cart-dark.png') }}" data-name="Chocolate desire no. 3" data-cost="600.00" data-id="5" >
 										<span class="ti-shopping-cart"></span>add
 									</span>
                                 </div>
                             </li>
                         {% endfor %}
-
-
                     </ul>
                 </div>
-
             </div>
         </section>
     </div>
-
 {% endblock %}
 
 

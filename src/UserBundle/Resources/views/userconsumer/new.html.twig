@@ -8,17 +8,17 @@
 
 {% block body %}
     <div id="content">
-    <h1>Userconsumer creation</h1>
+        <h1>Userconsumer creation</h1>
         <br><br>
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
         <table id="tableau">
             <td>
-    <input class="btn btn-primary btn-circle" type="submit" value="Create"/>
+                <input class="btn btn-primary btn-circle" type="submit" value="Create"/>
             </td>
-    {{ form_end(form) }}
+            {{ form_end(form) }}
             <td>
-            <a class="btn btn-primary btn-circle" href="{{ path('userconsumer_index') }}">Back to the list</a>
+                <a class="btn btn-primary btn-circle" href="{{ path('userconsumer_index') }}">Back to the list</a>
             </td>
         </table>
     </div>

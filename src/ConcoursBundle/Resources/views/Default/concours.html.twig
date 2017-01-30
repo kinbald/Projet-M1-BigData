@@ -11,8 +11,6 @@
 {% endblock %}
 
 {% block body %}
-
-
     <!----------------------------------------->
     <!---------------- ONGLETS ---------------->
     <!----------------------------------------->
@@ -24,7 +22,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"> <img src="img/logo-white.png" alt="logo"> </a>
+                <a class="navbar-brand" href="#">
+                    <img src="img/logo-white.png" alt="logo">
+                </a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
@@ -35,8 +35,6 @@
             </div>
         </div>
     </nav>
-
-
     <!----------------------------------------->
     <!------- CALENDRIER DES CONCOURS --------->
     <!----------------------------------------->
@@ -45,19 +43,17 @@
             <div class="row">
                 <h3 class="section-heading">Calendrier des concours</h3>
                 <div id="timeline" class="timeline-container">
-
                     {% for competition in competitions %}
-
                         <!-- timeline-block -->
                         <div class="timeline-block timeline-block-image-1">
-                            <div class="timeline-point">
-                            </div>
+                            <div class="timeline-point"></div>
                             <!-- timeline-img -->
                             <div class="timeline-content wow fadeInLeft">
                                 <span class="timeline-date">
-                                    <span class="timeline-month">{{ competition.dateCompetition|localizeddate('full', 'none', 'fr') }}</span>
+                                    <span class="timeline-month">
+                                        {{ competition.dateCompetition|localizeddate('full', 'none', 'fr') }}
+                                    </span>
                                 </span>
-
                                 <a href="http://www.google.fr">
                                     <h2>Concours {{ competition.name }}</h2>
                                     <p>{{ competition.description}}</p>
@@ -66,7 +62,6 @@
                             <!-- timeline-content -->
                         </div>
                     {% endfor %}
-
                 </div>
                 <!-- timeline -->
             </div>
@@ -74,9 +69,6 @@
         </div>
         <!-- end container -->
     </section>
-
-
-
     <!----------------------------------------->
     <!------------ CONTRATS 1 + PRIX ---------->
     <!----------------------------------------->
@@ -86,38 +78,30 @@
                 <div class="col-md-12">
                     <h3 class="section-heading">Contrats</h3>
                 </div>
-
             </div>
             <div class="row">
-                    <div class="product-list-slider">
-                        <ul class="swiper-wrapper product-list product-list-vertical">
-
-
-                            {% for i in 1..10 %}
-                                <li class="swiper-slide wow fadeInUp text-center">
-								<span class="product-list-left pull-left">
-									<a href="http://www.google.fr">
+                <div class="product-list-slider">
+                    <ul class="swiper-wrapper product-list product-list-vertical">
+                        {% for i in 1..10 %}
+                            <li class="swiper-slide wow fadeInUp text-center">
+                                <span class="product-list-left pull-left">
+                                    <a href="http://www.google.fr">
                                         <img alt="product image" class="product-list-primary-img" src="{{ asset('img/product/contract_default.png') }}">
-									    <img alt="Lorem ipsum dolor sit amet." class="product-list-secondary-img" src="img/product4.png">
-										<span class="product-list-name h3">Contrat {{ i }}</span>
-										<span class="product-list-price">$400.00</span>
+                                        <img alt="Lorem ipsum dolor sit amet." class="product-list-secondary-img" src="img/product4.png">
+                                        <span class="product-list-name h3">Contrat {{ i }}</span>
+                                        <span class="product-list-price">$400.00</span>
                                     </a>
                                 </span>
-                                </li>
-
-                            {% endfor %}
-                        </ul>
-
-                        <!-----------------------------------   DEFILEMENT  -------------------------------->
-                        <!-- Add Pagination -->
-                        <div class="product-list-pagination text-center"> </div>
-                        <div class="product-list-slider-next right-arrow-negative"> &#10095; </div>
-                        <div class="product-list-slider-prev left-arrow-negative"> &#10094;</div>
-                    </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    <!-----------------------------------   DEFILEMENT  -------------------------------->
+                    <!-- Add Pagination -->
+                    <div class="product-list-pagination text-center"> </div>
+                    <div class="product-list-slider-next right-arrow-negative"> &#10095; </div>
+                    <div class="product-list-slider-prev left-arrow-negative"> &#10094;</div>
+                </div>
             </div>
-
-
         </div>
     </section>
-
 {% endblock %}

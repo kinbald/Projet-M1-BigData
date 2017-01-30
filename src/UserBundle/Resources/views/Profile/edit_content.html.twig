@@ -5,24 +5,20 @@
 {% endblock %}
 
 <div id="marginTop">
-{% trans_default_domain 'FOSUserBundle' %}
-{{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
-
-
-<nav class="w3-sidenav w3-black w3-card-2" style="width:150px;">
-    <div class="w3-container">
-        <h5>Menu</h5>
-    </div>
-    <a href="javascript:void(0)" class="tablink" onclick="openLink(event, 'Profile')">Profil</a>
-    <a href="javascript:void(0)" class="tablink" onclick="openLink(event, 'Factures')">Factures</a>
-</nav>
-
-<div style="margin-left:130px">
-    <h1 id="titre">Bienvenue sur votre espace client</h1>
-
-    <!-------------------Profile--------------------->
-    <div id="Profile" class="w3-container city w3-animate-left" style="display:none;">
-        <h2>Profil</h2>
+    {% trans_default_domain 'FOSUserBundle' %}
+    {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+    <nav class="w3-sidenav w3-black w3-card-2" style="width:150px;">
+        <div class="w3-container">
+            <h5>Menu</h5>
+        </div>
+        <a href="javascript:void(0)" class="tablink" onclick="openLink(event, 'Profile')">Profil</a>
+        <a href="javascript:void(0)" class="tablink" onclick="openLink(event, 'Factures')">Factures</a>
+    </nav>
+    <div style="margin-left:130px">
+        <h1 id="titre">Bienvenue sur votre espace client</h1>
+        <!-------------------Profile--------------------->
+        <div id="Profile" class="w3-container city w3-animate-left" style="display:none;">
+            <h2>Profil</h2>
             <br>
             <div>
                 <p>Username:</p>
@@ -30,7 +26,6 @@
             <div>
                 <p>Email:</p>
             </div>
-
             <div>
                 <p>Last name:</p>
             </div>
@@ -45,7 +40,6 @@
                     <p>Gender:</p>
                 </div>
             {% endif %}
-
             {% if is_granted('ROLE_MEDIA') %}
                 <div>
                     <p>Url blog:</p>
@@ -57,7 +51,6 @@
                     <p>Company name:</p>
                 </div>
             {% endif %}
-
             {% if is_granted('ROLE_PRODUCER') %}
                 <div>
                     <p>Company name:</p>
@@ -75,14 +68,12 @@
                     <p>Postal code:</p>
                 </div>
             {% endif %}
-
             <br>
             <a href="javascript:void(0)" id="modifier" class="tablink" onclick="openLink(event, 'Profile1')">Modifier</a>
-
-    </div>
-    <!-------------------Profile edit--------------------->
-    <div id="Profile1" class="w3-container city w3-animate-left" style="display:none;">
-        <h2>Profil</h2>
+        </div>
+        <!-------------------Profile edit--------------------->
+        <div id="Profile1" class="w3-container city w3-animate-left" style="display:none;">
+            <h2>Profil</h2>
             <br>
             <div>
                 {{ form_label(form.username) }}
@@ -145,7 +136,6 @@
                     {{ form_widget(form.companyName) }}
                 </div>
             {% endif %}
-
             {% if is_granted('ROLE_PRODUCER') %}
                 <div>
                     {{ form_label(form.companyName) }}
@@ -173,46 +163,36 @@
                     {{ form_widget(form.postalCode) }}
                 </div>
             {% endif %}
-
             <br>
             <div>
                 <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
             </div>
-    </div>
-
-
-    <!-------------------Factures--------------------->
-
-    <div id="Factures" class="w3-container city w3-animate-left" style="display:none">
-        <h2>Factures & Paiements</h2>
-        <div>
-            <br>
-            <p>blablabla</p>
-            <p>blablabla</p>
         </div>
-
+        <!-------------------Factures--------------------->
+        <div id="Factures" class="w3-container city w3-animate-left" style="display:none">
+            <h2>Factures & Paiements</h2>
+            <div>
+                <br>
+                <p>blablabla</p>
+                <p>blablabla</p>
+            </div>
+        </div>
     </div>
-
-
-</div>
-
-<script>
-    function openLink(evt, animName) {
-        var i, x, tablinks;
-        x = document.getElementsByClassName("city");
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
+    <script>
+        function openLink(evt, animName) {
+            var i, x, tablinks;
+            x = document.getElementsByClassName("city");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < x.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+            }
+            document.getElementById(animName).style.display = "block";
+            evt.currentTarget.className += " w3-red";
         }
-        tablinks = document.getElementsByClassName("tablink");
-        for (i = 0; i < x.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
-        }
-        document.getElementById(animName).style.display = "block";
-        evt.currentTarget.className += " w3-red";
-    }
 
-</script>
-
-
-{{ form_end(form) }}
+    </script>
+    {{ form_end(form) }}
 </div>

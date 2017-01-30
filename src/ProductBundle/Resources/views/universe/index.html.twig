@@ -26,7 +26,7 @@
             </tr>
         </thead>
         <tbody>
-        {% for universe in universes %}
+            {% for universe in universes %}
             <tr>
                 <td><a href="{{ path('universe_show', { 'id': universe.id }) }}">{{ universe.id }}</a></td>
                 <td>{{ universe.name }}</td>
@@ -42,7 +42,7 @@
                     </ul>
                 </td>
             </tr>
-        {% endfor %}
+            {% endfor %}
         </tbody>
     </table>
     <br><br>
@@ -51,5 +51,4 @@
             <a href="{{ path('universe_new') }}"><div class="btn btn-primary btn-circle">Create a new universe</div></a>
         </li>
     </ul>
-
 {% endblock %}

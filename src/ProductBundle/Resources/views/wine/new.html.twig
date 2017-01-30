@@ -8,18 +8,18 @@
 
 {% block body %}
     <div id="content">
-    <h1>{% trans %}Wine creation{% endtrans %}</h1>
-    <br><br>
-    {{ form_start(form) }}
+        <h1>{% trans %}Wine creation{% endtrans %}</h1>
+        <br><br>
+        {{ form_start(form) }}
         {{ form_widget(form) }}
-    <table>
-        <td>
-            <input class="btn btn-primary btn-circle" type="submit" value="Create" />
-        </td>
-        {{ form_end(form) }}
-        <td>
-            <a class="btn btn-primary btn-circle" href="{{ path('product_index') }}">Back to the list</a>
-        </td>
-    </table>
+        <table>
+            <td>
+                <input class="btn btn-primary btn-circle" type="submit" value="Create" />
+            </td>
+            {{ form_end(form) }}
+            <td>
+                <a class="btn btn-primary btn-circle" href="{{ path('product_index') }}">Back to the list</a>
+            </td>
+        </table>
     </div>
 {% endblock %}
