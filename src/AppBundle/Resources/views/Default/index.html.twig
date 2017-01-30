@@ -13,21 +13,19 @@
 {% endblock %}
 
 {% block body %}
-
         <div class="text-center">
-                    <h1>Box Office Wine</h1>
-                    <div class="text-center">
-                        {% for universe in universes %}
-                            <div class="neutral text-center">
-                            <a type="button" class="btn" href="{{ path("universe_show", {id:universe.id}) }}">
-                                {% set picture = universe.pictures|last %}
-                                <img class="image" src="/img/upload/{{ picture.url}}" alt="{{ picture.alt}}"/>
-                                <p class="texte"> {{ universe.name }}</p>
-                            </a>
-                            </div>
-                        {% endfor %}
+            <h1>Box Office Wine</h1>
+            <div class="text-center">
+                {% for universe in universes %}
+                    <div class="neutral text-center">
+                    <a type="button" class="btn" href="{{ path("universe_show", {id:universe.id}) }}">
+                        {% set picture = universe.pictures|last %}
+                        <img class="image" src="/img/upload/{{ picture.url}}" alt="{{ picture.alt}}"/>
+                        <p class="texte">{{ universe.name }}</p>
+                    </a>
                     </div>
+                {% endfor %}
+            </div>
         </div>
-
 {% endblock %}
 

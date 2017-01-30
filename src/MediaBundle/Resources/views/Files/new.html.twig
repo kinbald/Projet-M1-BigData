@@ -8,17 +8,16 @@
 
 {% block body %}
     <div id="content">
-    <h1>{% trans %}File creation{% endtrans %}</h1>
-
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
+        <h1>{% trans %}File creation{% endtrans %}</h1>
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
         <table>
             <td>
-        <input class="btn btn-primary btn-circle" type="submit" value="Create"/>
-        {{ form_end(form) }}
+                <input class="btn btn-primary btn-circle" type="submit" value="Create"/>
+                {{ form_end(form) }}
             </td>
             <td>
-            <a class="btn btn-primary btn-circle" href="{{ path('files_index') }}">Back to the list</a>
+                <a class="btn btn-primary btn-circle" href="{{ path('files_index') }}">Back to the list</a>
             </td>
         </table>
     </div>

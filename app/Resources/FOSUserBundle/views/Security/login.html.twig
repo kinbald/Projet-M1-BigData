@@ -15,7 +15,6 @@
     <div class="container bootstrap snippet">
         <div class="lc-block col-md-4 col-md-offset-4 toggled" id="l-login">
             <div class="lcb-float"><i class="fa fa-users"></i></div>
-
                 <form id="loginform" class="form-horizontal" role="form" action="{{ path("fos_user_security_check") }}" method="post">
                     <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
                     <div class="form-group">
@@ -24,13 +23,9 @@
                     <div class="form-group">
                         <input type="password" id="password" class="form-control" name="_password" placeholder="Mot de passe" required="required">
                     </div>
-
                     <input type="submit" id="submit" class="btn btn-block btn-primary btn-float m-t-25" name="_submit" value="Connexion" />
                 </form>
-
             <div class="clearfix"></div>
-
-
             <div id="suplogin" class="form-group">
                 <h6>Vous n'avez pas encore de compte?</h6>
                 <a href="{{ path("inscription_choix") }}" class="btn btn-block btn-primary btn-float m-t-25">S'inscrire</a>

@@ -1,66 +1,55 @@
 {% extends 'baseadmin.html.twig' %}
 
-    {% block stylesheets %}
-        <link href="{{ asset('css/bootstrap-dark.css') }}" rel="stylesheet"/>
-        <link href="{{ asset('css/theme-dark.css') }}" rel="stylesheet"/>
-        <link href="{{ asset('css/admin.css') }}" rel="stylesheet"/>
-        <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Lemonada" rel="stylesheet">
-    {% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('css/bootstrap-dark.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('css/theme-dark.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('css/admin.css') }}" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lemonada" rel="stylesheet">
+{% endblock %}
 
-    {% block javascripts %}
-        <!--<script src="{{ asset('https://maps.googleapis.com/maps/api/js?key=AIzaSyA_6m6Glf1-P7jvVdHZ00e3Ue_EoUNe39g') }}"></script>
-    -->
-        <script src="{{ asset('js/bundle.js') }}"></script>
-    {% endblock %}
+{% block javascripts %}
+    <!--<script src="{{ asset('https://maps.googleapis.com/maps/api/js?key=AIzaSyA_6m6Glf1-P7jvVdHZ00e3Ue_EoUNe39g') }}"></script>
+-->
+    <script src="{{ asset('js/bundle.js') }}"></script>
+{% endblock %}
 
-    {% block body %}
-
-        <div class="text-center content">
-
-            <h1>Gestion BDD</h1>
-
-
-            <div class="text-center">
-                <a class="btn btn-primary btn-circle" href="{{ path("product_list", {type:'wine'}) }}">
-                    <div class="texte">Gestion Vin</div>
-                </a>
-                <a class="btn btn-primary btn-circle" href="{{ path("product_list", {type:'spirit'}) }}">
-                    <div class="texte">Gestion Spiritueux</div>
-                </a>
-                <a class="btn btn-primary btn-circle" href="{{ path("universe_index") }}">
-                    <div class="texte">Gestion Univers</div>
-                </a>
-                <a class="btn btn-primary btn-circle" href="{{ path("importationDb") }}">
-                    <div class="texte">Importation Excel</div>
-                </a>
-                <a class="btn btn-primary btn-circle" href="{{ path('validationProducer') }}">
-                    <div class="texte">Gestion Producteurs</div>
-                </a>
-                <a class="btn btn-primary btn-circle" href="{{ path('userconsumer_index') }}">
-                    <div class="texte">Gestion Utilisateurs</div>
-                </a>
-                <a class="btn btn-primary btn-circle" href="{{ path('purchase_index') }}">
-                    <div class="texte">Gestion Commandes</div>
-                </a>
-
-            </div>
-
-            <h2>Gestion Presse</h2>
-
-            <div class="text-center">
-
-                <a class="btn btn-primary btn-circle" href="{{ path("validationPresse") }}">
-                    <div class="texte">Gestion Accréditations</div>
-                </a>
-                <a class="btn btn-primary btn-circle" href="{{ path("files_index") }}">
-                    <div class="texte">Gestion Communiqués</div>
-                </a>
-
-            </div>
-
+{% block body %}
+    <div class="text-center content">
+        <h1>Gestion BDD</h1>
+        <div class="text-center">
+            <a class="btn btn-primary btn-circle" href="{{ path("product_list", {type:'wine'}) }}">
+                <div class="texte">Gestion Vin</div>
+            </a>
+            <a class="btn btn-primary btn-circle" href="{{ path("product_list", {type:'spirit'}) }}">
+                <div class="texte">Gestion Spiritueux</div>
+            </a>
+            <a class="btn btn-primary btn-circle" href="{{ path("universe_index") }}">
+                <div class="texte">Gestion Univers</div>
+            </a>
+            <a class="btn btn-primary btn-circle" href="{{ path("importationDb") }}">
+                <div class="texte">Importation Excel</div>
+            </a>
+            <a class="btn btn-primary btn-circle" href="{{ path('validationProducer') }}">
+                <div class="texte">Gestion Producteurs</div>
+            </a>
+            <a class="btn btn-primary btn-circle" href="{{ path('userconsumer_index') }}">
+                <div class="texte">Gestion Utilisateurs</div>
+            </a>
+            <a class="btn btn-primary btn-circle" href="{{ path('purchase_index') }}">
+                <div class="texte">Gestion Commandes</div>
+            </a>
         </div>
-
-    {% endblock %}
+        <h2>Gestion Presse</h2>
+        <div class="text-center">
+            <a class="btn btn-primary btn-circle" href="{{ path("validationPresse") }}">
+                <div class="texte">Gestion Accréditations</div>
+            </a>
+            <a class="btn btn-primary btn-circle" href="{{ path("files_index") }}">
+                <div class="texte">Gestion Communiqués</div>
+            </a>
+        </div>
+    </div>
+{% endblock %}
 
 

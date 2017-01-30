@@ -3,13 +3,12 @@
 {% block fos_user_content %}
     <div id="content">
         <h1>Inscription Producteur</h1>
-    {% trans_default_domain 'FOSUserBundle' %}
-
-    <form action="{{ path('user_producer_registration') }}" method="POST">
-        {{ form_widget(form) }}
-        <div>
-            <input class="btn btn-primary btn-circle" type="submit" value="{{ 'registration.submit'|trans }}" />
-        </div>
-    </form>
+        {% trans_default_domain 'FOSUserBundle' %}
+        <form action="{{ path('user_producer_registration') }}" method="POST">
+            {{ form_widget(form) }}
+            <div>
+                <input class="btn btn-primary btn-circle" type="submit" value="{{ 'registration.submit'|trans }}" />
+            </div>
+        </form>
     </div>
 {% endblock fos_user_content %}
