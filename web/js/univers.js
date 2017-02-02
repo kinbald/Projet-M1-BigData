@@ -50,6 +50,7 @@ function paddingProductTable() {
         var productTable = document.getElementById("section-product-table");
         productTable.style.paddingLeft = productTablePaddingLeft+"px";
     } else {
+        var productTable = document.getElementById("section-product-table");
         productTable.style.paddingLeft ="0px";
     }
 }
