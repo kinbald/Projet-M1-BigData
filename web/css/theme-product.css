@@ -120,6 +120,12 @@
     .photo{
         max-height: 20em;
     }
+    .countdown-container{
+        padding:0px;
+    }
+    h3{
+        font-size: 25px;
+    }
 }
 
 
@@ -138,9 +144,9 @@
     }
     .countdown-container{
         float: none;
+        padding:0px;
     }
-    
-    
+
     #TITRE {
         margin-bottom: 450px;
     }
@@ -156,6 +162,9 @@
     }
     .photo{
         max-height: 20em;
+    }
+    h3{
+        font-size: 25px;
     }
 }
 
