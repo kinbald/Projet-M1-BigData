@@ -5075,6 +5075,8 @@ if (function (e, t) {
 }), window.onload = function() {
 
     var panier = JSON.parse(window.localStorage.getItem('panier'));
+    var idList = "";
+    var quantityList = "";
 
     var curCost = 0;
     var curName = 0;
@@ -5121,6 +5123,9 @@ if (function (e, t) {
             })(setTimeout(function() {
                 addItem(id, curCost, curName, curImage);
             }, 350));
+            panierToString();
+            $("#id_list").val(idList);
+            $("#quantity_list").val(quantityList);
         })
     }
 
@@ -5141,11 +5146,14 @@ if (function (e, t) {
         {
             if(panier[i].id == $(this).parent(".cart-item").attr("data-id"))
             {
-                quantity = panier[id].quantity;
+                quantity = panier[i].quantity;
                 panier.splice(i, 1);
                 window.localStorage.setItem('panier', JSON.stringify(panier));
             }
         }
+        panierToString();
+        $("#id_list").val(idList);
+        $("#quantity_list").val(quantityList);
         removeCost(curCost*quantity);
     });
 
@@ -5174,7 +5182,13 @@ if (function (e, t) {
                     window.localStorage.setItem('panier', JSON.stringify(panier));
                 }
             });
+
+            panierToString();
+            $("#quantity_list").val(quantityList);
         });
+        panierToString();
+        $("#id_list").val(idList);
+        $("#quantity_list").val(quantityList);
         toggleEptyCart();
     }
 
@@ -5208,6 +5222,23 @@ if (function (e, t) {
                 }
             }
         }
+        panierToString();
+        $("#id_list").val(idList);
+        $("#quantity_list").val(quantityList);
+    }
+
+    function panierToString(){
+        idList = "";
+        quantityList = "";
+        if(panier.length > 0){
+            for(var i = 0; i < panier.length - 1; i++){
+                idList += panier[i].id + ",";
+                quantityList += panier[i].quantity + ",";
+            }
+            idList += panier[i].id;
+            quantityList += panier[i].quantity;
+        }
+
     }
 
     function removeItem() {}
@@ -5298,7 +5329,7 @@ if (function (e, t) {
 }, $("#countdown").countdown("2018/10/10", function (e) {
     $(this).html(e.strftime("<li><span>%D</span> days</li> <li><span>%H</span> hr</li> <li><span>%M</span> min</li> <li><span>%S</span> sec</li>"))
 }), wow = new WOW({
-    animateClass: "animated", offset: 150, mobile: !1, callback: function (e) {
+    animateClass: "animated", offset: 100, mobile: !1, callback: function (e) {
     }
 }), wow.init(), $(function () {
     $('[data-toggle="tooltip"]').tooltip(), $("[data-toggle=popover]").popover()
