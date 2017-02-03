@@ -1,296 +1,88 @@
-@media (max-width: 349px) {
-
+@media (max-width: 499px ) {
     h1{
-        font-size: 15vw;
+        font-size: 50px;
         font-family: 'Dancing Script', cursive;
         color:white;
-        margin-top: 23%;
-        margin-bottom: 6%;
-    }
-
-
-    .neutral {
-        display: inline-block;
-        text-align: center;
-        margin-bottom: 20px;
-        margin-right: 10px;
-        margin-left: 10px;
-        height: 15vh;
-        width: 80vw;
-        overflow: hidden;
-    }
-
-
-    .btn {
-        left: 500px;
-        padding: 0px 0px;
-        height: 100%;
-        border-radius: 10px;
-    }
-    .image {
-        height: 100%;
-        width: 100%;
-        border-radius: 10px;
-
-    }
-    .texte {
-        position: relative;
-        text-align: center;
-        text-shadow: 3px 2px 1px black;
-        top: -70%;
-        font-size: 130%;
-        font-family: 'Lemonada', cursive;
-        overflow-wrap: break-word;
-        white-space: pre-wrap;
-        width: 80vw;
-    }
-
-}
-
-@media (min-width: 350px) and (max-width: 489px){
-
-    h1{
-        font-size: 10vw;
-        font-family: 'Dancing Script', cursive;
-        color:white;
-        margin-top: 16%;
-        margin-bottom: 4%;
-    }
-
-
-    .neutral {
-        display: inline-block;
-        text-align: center;
-        margin-bottom: 20px;
-        margin-right: 10px;
-        margin-left: 10px;
-        height: 15vh;
-        width: 80vw;
-        overflow: hidden;
-    }
-
-
-    .btn {
-        left: 500px;
-        padding: 0px 0px;
-        height: 100%;
-        border-radius: 10px;
-    }
-    .image {
-        height: 100%;
-        width: 100%;
-        border-radius: 10px;
-
-    }
-    .texte {
-        position: relative;
-        text-align: center;
-        text-shadow: 3px 2px 1px black;
-        top: -70%;
-        font-size: 130%;
-        font-family: 'Lemonada', cursive;
-        overflow-wrap: break-word;
-        white-space: pre-wrap;
-        width: 80vw;
-    }
-
-}
-
-@media (min-width: 490px) and (max-width: 699px) {
-
-    h1{
-        font-size: 10vw;
-        font-family: 'Dancing Script', cursive;
-        color:white;
-        margin-top: 11%;
-        margin-bottom: 4%;
-    }
-
-
-    .neutral {
-        display: inline-block;
-        text-align: center;
-        margin-bottom: 20px;
-        margin-right: 10px;
-        margin-left: 10px;
-        height: 15vh;
-        width: 40vw;
-        overflow: hidden;
-    }
-
-
-    .btn {
-        left: 500px;
-        padding: 0px 0px;
-        height: 100%;
-        border-radius: 10px;
-    }
-    .image {
-        height: 100%;
-        width: 100%;
-        border-radius: 10px;
-
-    }
-    .texte {
-        position: relative;
-        text-align: center;
-        text-shadow: 3px 2px 1px black;
-        top: -70%;
-        font-size: 130%;
-        font-family: 'Lemonada', cursive;
-        overflow-wrap: break-word;
-        white-space: pre-wrap;
-        width: 40vw;
-    }
-
-}
-
-@media (min-width: 700px) and (max-width: 1000px) {
-
-    h1{
-        font-size: 6vw;
-        font-family: 'Dancing Script', cursive;
-        color:white;
-        margin-top: 8%;
+        margin-top: 80px;
         margin-bottom: 3%;
     }
 
     .neutral {
         display: inline-block;
         text-align: center;
-        margin-bottom: 20px;
-        margin-right: 10px;
-        margin-left: 10px;
-        height: 15vh;
-        width: 35vw;
         overflow: hidden;
+        height: 20em;
+        margin-bottom: 1%;
+        margin-left: 1%;
+        margin-right: 1%;
     }
 
     .btn {
-        left: 500px;
         padding: 0px 0px;
-        height: 100%;
-        border-radius: 10px;
+        text-align: center;
+        width: 350px;
+        height: 250px;
     }
+
     .image {
-        height: 100%;
-        width: 100%;
+        position: inherit;
         border-radius: 10px;
+        background-size: cover;
+        width: 350px;
+        height: 280px;
     }
 
     .texte {
         position: relative;
-        text-align: center;
+        top:-180px;
         text-shadow: 3px 2px 1px black;
-        top: -70%;
-        font-size: 140%;
+        font-size: 150%;
         font-family: 'Lemonada', cursive;
         overflow-wrap: break-word;
         white-space: pre-wrap;
-        width: 35vw;
     }
-
 }
-
-
-
-@media (min-width: 1001px) and (max-width: 1450px) {
-
-    h1{
-        font-size: 5vw;
-        font-family: 'Dancing Script', cursive;
-        color:white;
-        margin-top: 7%;
-        margin-bottom: 3%;
-    }
-
-    .neutral {
-        display: inline-block;
-        text-align: center;
-        margin-bottom: 20px;
-        margin-right: 10px;
-        margin-left: 10px;
-        height: 17vh;
-        width: 25vw;
-        overflow: hidden;
-    }
-
-    .btn {
-        left: 500px;
-        padding: 0px 0px;
-        height: 100%;
-        border-radius: 10px;
-    }
-    .image {
-        height: 100%;
-        width: 100%;
-        border-radius: 10px;
-    }
-
-    .texte {
-        position: relative;
-        text-align: center;
-        text-shadow: 3px 2px 1px black;
-        top: -70%;
-        font-size: 140%;
-        font-family: 'Lemonada', cursive;
-        overflow-wrap: break-word;
-        white-space: pre-wrap;
-        width: 25vw;
-    }
-
-}
-
-
-
-
-
-
-@media (min-width: 1451px) {
+@media (min-width: 500px ) {
     h1{
         font-size: 60px;
         font-family: 'Dancing Script', cursive;
         color:white;
-        margin-top: 5%;
+        margin-top: 80px;
         margin-bottom: 3%;
-
     }
 
     .neutral {
         display: inline-block;
         text-align: center;
-        margin-bottom: 20px;
-        margin-right: 10px;
-        margin-left: 10px;
-        height: 20vh;
-        width: 25vw;
         overflow: hidden;
+        height: 20em;
+        margin-bottom: 1%;
+        margin-left: 1%;
+        margin-right: 1%;
     }
 
-
     .btn {
-        left: 500px;
         padding: 0px 0px;
-        height: 100%;
-        border-radius: 10px;
+        text-align: center;
+        width: 450px;
+        height: 350px;
     }
 
     .image {
-        height: 100%;
-        width: 100%;
+        position: inherit;
         border-radius: 10px;
+        background-size: cover;
+        width: 450px;
+        height: 350px;
     }
 
     .texte {
         position: relative;
-        text-align: center;
+        top: -225px;
         text-shadow: 3px 2px 1px black;
-        top: -70%;
-        font-size: 170%;
+        font-size: 150%;
         font-family: 'Lemonada', cursive;
         overflow-wrap: break-word;
         white-space: pre-wrap;
-        width: 25vw;
     }
-
 }
