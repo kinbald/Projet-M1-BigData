@@ -22,6 +22,7 @@ function getWindowWidth() {
     return windowWidth;
 };
 
+
 var addEvent = function(object, type, callback) {
     if (object == null || typeof(object) == 'undefined') return;
     if (object.addEventListener) {
@@ -75,7 +76,12 @@ function estVisible(id_element){
     }
     bandeauBottom = bandeauTop + source.offsetHeight;
     /*Prise en compte de la topbar de 51px*/
-    windowTop += 51;
+    var windowWidth = getWindowWidth();
+    if (windowWidth>1200){ //si la topBar a une position fixed
+        windowTop += 51;
+    } else {
+        windowTop += 0;
+    }
 
 
     var bandeauVisible= bandeauBottom-windowTop;
@@ -91,20 +97,37 @@ function estVisible(id_element){
 function ScrollSideBar () {
     var windowWidth = getWindowWidth();
     var sidebar = document.getElementById("sidebar");
-    if(windowWidth>480) {
+    if (windowWidth>1200) {
         var bandeauVisible = estVisible('universe-bandeau');
         if (bandeauVisible>0) {
             /*console.log('scroll, bandeau visible');*/
             sidebar.style.position = 'fixed';
-            sidebar.style.paddingTop=(bandeauVisible+90)+'px';
+            sidebar.style.marginTop=(bandeauVisible+60)+'px';
+            sidebar.style.overflow="hidden";
+            sidebar.scrollTo(0,0);
         } else {
             /*console.log('scroll, bandeau non visible');*/
             sidebar.style.position = 'fixed';
-            sidebar.style.paddingTop='90px';
+            sidebar.style.marginTop='60px';
+            sidebar.style.overflow="auto";
+        }
+    } else if(windowWidth>480) {
+        var bandeauVisible = estVisible('universe-bandeau');
+        if (bandeauVisible>0) {
+            /*console.log('scroll, bandeau visible');*/
+            sidebar.style.position = 'fixed';
+            sidebar.style.marginTop=(bandeauVisible+20)+'px';
+            sidebar.style.overflow="hidden";
+            sidebar.scrollTo(0,0);
+        } else {
+            /*console.log('scroll, bandeau non visible');*/
+            sidebar.style.position = 'fixed';
+            sidebar.style.marginTop='20px';
+            sidebar.style.overflow="auto";
         }
     } else {
         sidebar.style.position = 'relative';
-        sidebar.style.paddingTop='30px';
+        sidebar.style.marginTop='30px';
     }
 }
 
@@ -128,7 +151,7 @@ function ResizeUniverseTitle() {
             bandeauHeigh=universeTitle.offsetHeight;
             ratio=bandeauHeigh/windowWidth;
             console.log("size : "+size+" ; ratio : "+ratio);
-        } while (ratio < 0.14 );
+        } while (ratio < 0.12 );
         universeTitle.style.fontSize=size+"vw";
     }
 
