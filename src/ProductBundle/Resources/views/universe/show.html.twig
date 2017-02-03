@@ -21,7 +21,19 @@
         <p class="universe-description"> L, non convallis felis. Donec tempor, lorem in placerat porttitor, orci arcu convallis odio, tincidunt vestibulum metus nibh vel elit. Sed bibendum vel nisi quis lacinia. Sed at dignissim metus, ut convallis eros. Nulla finibus, ante eget pretium gravida, arcu nibh sollicitudin risus, vitae efficitur libero erat et eros.{{ universe.description }}</p>
     </div>
     <!-- Barre Laterale -->
+
     <div class="barre_laterale barre_color_police" id="sidebar">
+
+        {{ form_start(search_form) }}
+        {{ form_widget(search_form) }}
+        <table>
+            <td>
+                <input class="btn btn-primary btn-circle" type="submit" value="Rechercher" />
+            </td>
+        </table>
+        {{ form_end(search_form) }}
+
+
         <form method="post" action="traitement.php">
             <div class="barre_color_police">
                 <label for="recherche">Recherche: </label><br />
@@ -107,7 +119,7 @@
         <!-- Autre -->
         <section class="section-product-table" id="section-product-table">
             <div class="product-table-title">
-                <h3 class="section-heading">Tous les produits</h3>
+                <h3 class="section-heading">Tous les produits  {{ dump(query) }}</h3>
             </div>
             <div class="text-center">
                 <div class="product-table" id="product-table">

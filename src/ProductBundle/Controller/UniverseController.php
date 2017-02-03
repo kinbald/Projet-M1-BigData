@@ -3,9 +3,11 @@
 namespace ProductBundle\Controller;
 
 use ProductBundle\Entity\Universe;
+use ProductBundle\Model\UniversModel;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Universe controller.
@@ -58,7 +60,7 @@ class UniverseController extends Controller
     }
 
     /**
-     * Finds and displays a universe entity.
+     * Finds and displays all of a universe entity.
      *
      * @Route("/{id}", name="universe_show",
      *     requirements={
@@ -68,9 +70,6 @@ class UniverseController extends Controller
      */
     public function showAction(Universe $universe)
     {
-        $deleteForm = $this->createDeleteForm($universe);
-
-
         $pictureArray = array();
         $products = $universe->getProducts();
                     foreach ($products as $product) {
@@ -80,11 +79,60 @@ class UniverseController extends Controller
 
         return $this->render('ProductBundle:universe:show.html.twig', array(
             'universe' => $universe,
-            'delete_form' => $deleteForm->createView(),
             'products' => $products,
             'product_pictures' => $pictureArray,
         ));
     }
+
+    /**
+     * Finds and displays a universe entity with a query.
+     *
+     * @Route("/{id}/search", name="query_show",
+     *     requirements={
+     *         "id": "\d+",
+     *     })
+     * @Method({"GET", "POST"})
+     */
+    public function showActionQuery(Request $request, Universe $universe)
+    {
+        $pictureArray = array();
+        $products = $universe->getProducts();
+        $formResult=null;
+        $res =null;
+        $name=array();
+        $toto = 'Absolute';
+        $searchForm = $this->createForm('ProductBundle\Form\SearchType', $name);
+        $model = new UniversModel($this->getDoctrine()->getManager());
+
+
+        $searchForm->handleRequest($request);
+
+        if ($searchForm->isSubmitted() && $searchForm->isValid()) {
+
+            $formResult= $searchForm->getData();
+            $res = $model->findProductsByName($toto);
+
+        }
+
+
+
+        foreach ($products as $product) {
+            $pictures=$product->getPictures();
+            array_push($pictureArray, $pictures[0]);
+        }
+
+        return $this->render('ProductBundle:universe:show.html.twig', array(
+            'universe' => $universe,
+            'search_form' => $searchForm->createView(),
+            'products' => $res, //$formResult['name']
+            'product_pictures' => $pictureArray,
+            'query' => $res
+        ));
+    }
+
+
+
+
 
     /**
      * Displays a form to edit an existing universe entity.
