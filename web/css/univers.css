@@ -2,10 +2,6 @@
     color: black;
 }
 
-.ti-shopping-cart {
-    content:none;
-}
-
 .section-heading {
     position: relative;
     margin: 45px 0px;
@@ -133,6 +129,10 @@ details[open] summary:after {
 
 
 @media screen and (max-width: 480px) {
+    .add-cart-text{
+        display: none;
+    }
+
     #sidebar {
         padding-top: 30px;
         position: relative;

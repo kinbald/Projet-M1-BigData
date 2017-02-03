@@ -2,7 +2,8 @@
 
 namespace ProductBundle\Controller;
 
-use ProductBundle\Entity\Universe;
+
+use \ProductBundle\Entity\Universe;
 use ProductBundle\Model\UniversModel;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;

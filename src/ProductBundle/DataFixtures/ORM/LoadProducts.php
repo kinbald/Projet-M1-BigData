@@ -21,6 +21,82 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $userConsumer = $manager->getRepository("UserBundle:UserConsumer")->findOneByUsername('Consumer');
 
 
+        /*-----------------------LES UNIVERS-------------------------*/
+        /*-----------------------------------------------------------*/
+        $universe1 = new Universe();
+        $universe1->setName('Femmes et vin du monde');
+        $universe1->setDescription('Sélection de femmes expertes internationales');
+        $manager->persist($universe1);
+
+        $picture = new PictureUniverse();
+        $picture->setAlt('Femmes et vin du monde');
+        $picture->setUrl('univ_femme.jpg');
+        $picture->setUniverse($universe1);
+        $manager->persist($picture);
+
+        /*-----------------------------------------------------------*/
+        $universe2 = new Universe();
+        $universe2->setName('Femmes et vin de France');
+        $universe2->setDescription('Sélection de femmes expertes internationales');
+        $manager->persist($universe2);
+
+        $picture = new PictureUniverse();
+        $picture->setAlt('Femmes et vin de France');
+        $picture->setUrl('univ_france.jpg');
+        $picture->setUniverse($universe2);
+        $manager->persist($picture);
+
+        /*-----------------------------------------------------------*/
+        $universe3 = new Universe();
+        $universe3->setName('Femmes et spiritueux du monde');
+        $universe3->setDescription('Sélection de femmes expertes internationales');
+        $manager->persist($universe3);
+
+        $picture = new PictureUniverse();
+        $picture->setAlt('Femmes et spiritueux du monde');
+        $picture->setUrl('univ_monde.jpg');
+        $picture->setUniverse($universe3);
+        $manager->persist($picture);
+
+        /*-----------------------------------------------------------*/
+        $universe4 = new Universe();
+        $universe4->setName('Vins de terroir');
+        $universe4->setDescription('Sélection d\'experts internationaux');
+        $manager->persist($universe4);
+
+        $picture = new PictureUniverse();
+        $picture->setAlt('terroir');
+        $picture->setUrl('univ_terroir.jpg');
+        $picture->setUniverse($universe4);
+        $manager->persist($picture);
+
+        /*-----------------------------------------------------------*/
+        $universe5 = new Universe();
+        $universe5->setName('Vin de gastronomie');
+        $universe5->setDescription('Sélection d\'experts internationaux');
+        $manager->persist($universe5);
+
+
+        $picture = new PictureUniverse();
+        $picture->setAlt('gastronomie');
+        $picture->setUrl('univ_gastronomie.jpg');
+        $picture->setUniverse($universe5);
+        $manager->persist($picture);
+
+        /*-----------------------------------------------------------*/
+        $universe6 = new Universe();
+        $universe6->setName('Vin rosés du monde');
+        $universe6->setDescription('Sélection d\'experts internationaux');
+        $manager->persist($universe6);
+
+
+        $picture = new PictureUniverse();
+        $picture->setAlt('vin rosés');
+        $picture->setUrl('univ_rose.jpg');
+        $picture->setUniverse($universe6);
+        $manager->persist($picture);
+
+
         /*-----------------------LES VINS-------------------------*/
         /*--------------------------------------------------------*/
         $wine1 = new Wine();
@@ -31,6 +107,8 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $wine1->setVolume(1.5);
         $wine1->setPrice(135.40);
         $wine1->setStock(30);
+        $wine1->addUniverse($universe1);
+        $wine1->addUniverse($universe3);
         $manager->persist($wine1);
 
         $picture = new PictureProduct();
@@ -47,6 +125,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $wine2->setVolume(1.5);
         $wine2->setPrice(48.70);
         $wine2->setStock(20);
+        $wine2->addUniverse($universe1);
         $manager->persist($wine2);
 
         $picture = new PictureProduct();
@@ -63,6 +142,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $wine3->setVolume(0.7);
         $wine3->setPrice(12.70);
         $wine3->setStock(150);
+        $wine3->addUniverse($universe1);
         $manager->persist($wine3);
 
         $picture = new PictureProduct();
@@ -79,6 +159,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $wine4->setVolume(0.3);
         $wine4->setPrice(9.56);
         $wine4->setStock(110);
+        $wine4->addUniverse($universe2);
         $manager->persist($wine4);
 
         $picture = new PictureProduct();
@@ -96,6 +177,8 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $spiritueux1->setVolume(1);
         $spiritueux1->setPrice(56.20);
         $spiritueux1->setStock(60);
+        $spiritueux1->addUniverse($universe5);
+        $spiritueux1->addUniverse($universe6);
         $manager->persist($spiritueux1);
 
         $picture = new PictureProduct();
@@ -111,6 +194,8 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $spiritueux2->setVolume(0.7);
         $spiritueux2->setPrice(43.15);
         $spiritueux2->setStock(35);
+        $spiritueux2->addUniverse($universe5);
+        $spiritueux2->addUniverse($universe6);
         $manager->persist($spiritueux2);
 
         $picture = new PictureProduct();
@@ -126,6 +211,8 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $spiritueux3->setVolume(0.7);
         $spiritueux3->setPrice(35.45);
         $spiritueux3->setStock(59);
+        $spiritueux3->addUniverse($universe5);
+        $spiritueux3->addUniverse($universe6);
         $manager->persist($spiritueux3);
 
         $picture = new PictureProduct();
@@ -141,6 +228,8 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $spiritueux4->setVolume(0.7);
         $spiritueux4->setPrice(53.05);
         $spiritueux4->setStock(56);
+        $spiritueux4->addUniverse($universe5);
+        $spiritueux4->addUniverse($universe6);
         $manager->persist($spiritueux4);
 
         $picture = new PictureProduct();
@@ -174,95 +263,6 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($productEvaluation);
 
 
-        /*-----------------------LES UNIVERS-------------------------*/
-        /*-----------------------------------------------------------*/
-        $universe = new Universe();
-        $universe->setName('Femmes et vin du monde');
-        $universe->setDescription('Sélection de femmes expertes internationales');
-        $universe->addProduct($wine1);
-        $universe->addProduct($wine2);
-        $universe->addProduct($wine3);
-        $manager->persist($universe);
-
-        $picture = new PictureUniverse();
-        $picture->setAlt('Femmes et vin du monde');
-        $picture->setUrl('univ_femme.jpg');
-        $picture->setUniverse($universe);
-        $manager->persist($picture);
-
-        /*-----------------------------------------------------------*/
-        $universe = new Universe();
-        $universe->setName('Femmes et vin de France');
-        $universe->setDescription('Sélection de femmes expertes internationales');
-        $universe->addProduct($wine4);
-        $manager->persist($universe);
-
-        $picture = new PictureUniverse();
-        $picture->setAlt('Femmes et vin de France');
-        $picture->setUrl('univ_france.jpg');
-        $picture->setUniverse($universe);
-        $manager->persist($picture);
-
-        /*-----------------------------------------------------------*/
-        $universe = new Universe();
-        $universe->setName('Femmes et spiritueux du monde');
-        $universe->setDescription('Sélection de femmes expertes internationales');
-        $universe->addProduct($wine1);
-        $manager->persist($universe);
-
-        $picture = new PictureUniverse();
-        $picture->setAlt('Femmes et spiritueux du monde');
-        $picture->setUrl('univ_monde.jpg');
-        $picture->setUniverse($universe);
-        $manager->persist($picture);
-
-        /*-----------------------------------------------------------*/
-        $universe = new Universe();
-        $universe->setName('Vins de terroir');
-        $universe->setDescription('Sélection d\'experts internationaux');
-        $manager->persist($universe);
-
-        $picture = new PictureUniverse();
-        $picture->setAlt('terroir');
-        $picture->setUrl('univ_terroir.jpg');
-        $picture->setUniverse($universe);
-        $manager->persist($picture);
-
-         /*-----------------------------------------------------------*/
-         $universe = new Universe();
-        $universe->setName('Vin de gastronomie');
-        $universe->setDescription('Sélection d\'experts internationaux');
-
-        $universe->addProduct($spiritueux1);
-        $universe->addProduct($spiritueux2);
-        $universe->addProduct($spiritueux3);
-        $universe->addProduct($spiritueux4);
-        $manager->persist($universe);
-
-
-         $picture = new PictureUniverse();
-        $picture->setAlt('gastronomie');
-        $picture->setUrl('univ_gastronomie.jpg');
-         $picture->setUniverse($universe);
-         $manager->persist($picture);
-
-        /*-----------------------------------------------------------*/
-        $universe = new Universe();
-        $universe->setName('Vin rosés du monde');
-        $universe->setDescription('Sélection d\'experts internationaux');
-
-        $universe->addProduct($spiritueux1);
-        $universe->addProduct($spiritueux2);
-        $universe->addProduct($spiritueux3);
-        $universe->addProduct($spiritueux4);
-        $manager->persist($universe);
-
-
-        $picture = new PictureUniverse();
-        $picture->setAlt('vin rosés');
-        $picture->setUrl('univ_rose.jpg');
-        $picture->setUniverse($universe);
-        $manager->persist($picture);
 
         $manager->flush();
     }

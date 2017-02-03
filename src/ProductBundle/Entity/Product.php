@@ -78,7 +78,8 @@ abstract class Product
 
     /**
      * @var Universe
-     * @ORM\ManyToMany(targetEntity="\ProductBundle\Entity\Universe", mappedBy="products")
+     * @ORM\ManyToMany(targetEntity="\ProductBundle\Entity\Universe", inversedBy="products")
+     * @ORM\JoinColumn(name="product_id", referencedColumnName="id")
      */
     protected $universes;
 
@@ -291,7 +292,6 @@ abstract class Product
     public function addUniverse(\ProductBundle\Entity\Universe $universe)
     {
         $this->universes[] = $universe;
-
         return $this;
     }
 

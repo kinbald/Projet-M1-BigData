@@ -1,117 +1,122 @@
-/**********  ECRAN 1  ***********/
-
-@media (max-width: 479px) {
-    form{
-        font-size:12px;
-    }
-    h1{
-        font-size: 22px;
-        width:200px;
-    }
-    h2{
-        font-size: 17px;
-    }
-    h3{
-        font-size: 9px;
-    }
-    nav.w3-sidenav.w3-black.w3-card-2{
-        width:100px!important;
-    }
-    nav a{
-        font-size: 16px;
-    }
-
+/*Titre de la page*/
+h3, h2{
+    color: white;
 }
 
-
-
-/**********  ECRAN 2  ***********/
-
-@media (min-width: 480px) and (max-width: 879px)  {
-    form{
-        font-size:13px;
-    }
-    h1{
-        font-size: 27px;
-    }
-    h2{
-        font-size: 20px;
-        margin-bottom: 20px;
-    }
-    h3{
-        font-size: 15px;
-    }
-    #Profile, #Profile1, #Factures{
-        margin-left:50px;
-        width:300px;
-    }
-}
-
-
-/**********  ECRAN 3  ***********/
-
-@media (min-width: 880px) {
-    body{
-        font-size: 17px;
-    }
-    form{
-        font-size:17px;
-    }
-    h1{
-        font-size: 35px;
-    }
-    h2{
-        font-size: 25px;
-        margin-bottom: 20px;
-    }
-    h3{
-        font-size: 18px;
-    }
-    #Profile, #Profile1, #Factures{
-        margin-left:100px;
-    }
-}
-
-/*******************************************************/
-
-#titre {
-    text-align:center;
-    margin-bottom:40px;
-    margin-top:40px;
+/*Lien "modifier"*/
+b{
     color: #c6a668;
 }
 
-.w3-container h5{
 
-    padding-bottom:70px;
+
+/********* ECRAN 3 *********/
+
+@media (min-width: 880px) {
+
+    #Profile{
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 2px 2px 6px #aaa;
+        color: white;
+        text-shadow: 2px 2px 2px black;
+        width: 30%;
+        float: left;
+        position: relative;
+        display: block;
+    }
+
+    #slideshow {
+        float: left;
+        position: relative;
+        display: block;
+        width: 40%;
+
+        margin-left: 15%;
+    }
+
+    #slideshow > div {
+        position: absolute;
+    }
+
+    .diapo{
+        width: 100%;
+        border-radius: 20px;
+        box-shadow: 2px 2px 6px #aaa;
+    }
+
+    #Factures{
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 450px;
+        margin-bottom: 70px;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 2px 2px 6px #aaa;
+        color: white;
+        text-shadow: 2px 2px 2px black;
+        width: 80%;
+
+        position: relative;
+        display: block;
+    }
+
+    .gros-bloc{
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+    }
+
+
 }
 
-.w3-sidenav a{
-    color:white;
-}
 
-.navbar{
-    background: #333;
-    text-align: left;
-}
-#modifier {
-    color:#c6a668;
-    text-decoration: underline;
-}
 
-input, select{
-    color:black;
-}
+/********* ECRAN 2 *********/
 
-label{
-    width: 250px !important;
-}
+@media (max-width: 879px) {
 
-nav .w3-sidenav .w3-black .w3-card-2{
-    width: 100px !important;
-}
+    #Profile{
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 2px 2px 6px #aaa;
+        color: white;
+        text-shadow: 2px 2px 2px black;
+    }
 
-#marginTop{
-    margin-top: 75px;
-}
+    #slideshow {
+        display: none;
+    }
 
+    #slideshow > div {
+        display: none;
+    }
+
+    .diapo{
+        display: none;
+    }
+
+
+
+    #Factures{
+        margin-top: 30px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 70px;
+        width: 80%;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 2px 2px 6px #aaa;
+        color: white;
+        text-shadow: 2px 2px 2px black;
+
+        position: relative;
+        display: block
+
+    }
+
+
+}
