@@ -16,12 +16,17 @@ class UniversModel
 
     public function __construct(ObjectManager $entityManager)
     {
-        $this->repositoryUniverse = $entityManager->getRepository('ProductBundle:Universe');
+        $this->repositoryUniverse = $entityManager->getRepository('ProductBundle:Product');
     }
 
     public function findProductsByName($name)
     {
         return $this->repositoryUniverse->findProductsByName($name);
+    }
+
+    public function findProductsByPrice($price)
+    {
+        return $this->repositoryUniverse->findProductsByPrice($price);
     }
 
 }

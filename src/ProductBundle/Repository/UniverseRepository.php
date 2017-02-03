@@ -11,26 +11,6 @@ namespace ProductBundle\Repository;
 class UniverseRepository extends \Doctrine\ORM\EntityRepository
 {
 
-    public function findProductsByName($name)
-    {
-        $queryBuilder = $this->createQueryBuilder('p');
-        $toto = '%vodka%';
-        $queryBuilder->where($queryBuilder->expr()->like('p.name', $toto))
-            ->setParameter('name', '%'.$name.'%');
-
-        $query = $queryBuilder->getQuery();
-        return $query->getResult();
-
-    }
-
-
-
-
-
-
-
-
-
 }
 
 
