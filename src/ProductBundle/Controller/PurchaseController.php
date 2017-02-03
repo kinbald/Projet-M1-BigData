@@ -68,16 +68,17 @@ class PurchaseController extends Controller
      */
     public function showAction(Purchase $purchase)
     {
-        $id_purchase = $purchase->getId();
-        $repository = $this->getDoctrine()->getRepository('ProductBundle:ProductPurchase');
-        $product_purchase = $repository->find($id_purchase);
-        $product = $product_purchase->getProduct();
         $user = $purchase->getUser();
+        $products = array();
+        $purchaseProduct = $purchase->getProducts();
+        foreach ($purchaseProduct as $product) {
+            array_push($products, $product->getProduct());
+        }
 
         $deleteForm = $this->createDeleteForm($purchase);
         return $this->render('ProductBundle:purchase:show.html.twig', array(
             'purchase' => $purchase,
-            'product' => $product,
+            'products' => $products,
             'base_user' => $user,
             'delete_form' => $deleteForm->createView(),
         ));

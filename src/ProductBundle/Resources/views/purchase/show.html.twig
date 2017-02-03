@@ -44,33 +44,41 @@
         </table>
         <h1>Achat</h1>
         <br>
-        <table>
-            <tbody>
-            <tr>
-                <th width="100px">Produit</th>
-                <td id="champ">{{ product.name }}</td>
-            </tr>
-            <tr>
-                <th width="100px">Description</th>
-                <td id="champ">{{ product.description }}</td>
-            </tr>
-            <tr>
-                <th width="100px">Volume</th>
-                <td id="champ">{{ product.volume }}</td>
-            </tr>
-            <tr>
-                <th width="100px">Price</th>
-                <td id="champ">{{ product.price }}</td>
-            </tr>
-            </tbody>
-        </table>
+        {% for product in products %}
+            <div class="text-center">
+                    <span class="swiper-slide text-center table-product-text">
+                        <table>
+                            <tbody>
+                            <tr>
+                                <th width="100px">Produit</th>
+                                <td id="champ"><a href="{{ path('product_show', {id:product.id}) }}">{{ product.name }}</a></td>
+                            </tr>
+                            <tr>
+                                <th width="100px">Description</th>
+                                <td id="champ">{{ product.description }}</td>
+                            </tr>
+                            <tr>
+                                <th width="100px">Volume</th>
+                                <td id="champ">{{ product.volume }}</td>
+                            </tr>
+                            <tr>
+                                <th width="100px">Price</th>
+                                <td id="champ">{{ product.price }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </span>
+
+            </div>
+        {% endfor %}
+
         <h1>Acheteur</h1>
         <br>
         <table>
             <tbody>
             <tr>
                 <th width="100px">Pseudo</th>
-                <td id="champ">{{ base_user.username }}</td>
+                <td id="champ"><a href="{{ path('userconsumer_show', {id:base_user.id}) }}">{{ base_user.username }}</a></td>
             </tr>
             <tr>
                 <th width="100px">Prenom</th>
