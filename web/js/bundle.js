@@ -5326,36 +5326,69 @@ if (function (e, t) {
         $("#amount").val(carttotal.toFixed(2));
         document.getElementById("cost_delivery").innerHTML = delivery.toFixed(2);
     })
-}, $("#countdown").countdown("2018/10/10", function (e) {
-    $(this).html(e.strftime("<li><span>%D</span> days</li> <li><span>%H</span> hr</li> <li><span>%M</span> min</li> <li><span>%S</span> sec</li>"))
-}), wow = new WOW({
-    animateClass: "animated", offset: 100, mobile: !1, callback: function (e) {
-    }
-}), wow.init(), $(function () {
-    $('[data-toggle="tooltip"]').tooltip(), $("[data-toggle=popover]").popover()
-}), $("#about-counter").bind("inview", function (e, t, n, i) {
-    t && ($(this).find(".timer").each(function () {
-        var e = $(this);
-        $({Counter: 0}).animate({Counter: e.text()}, {
-            duration: 2e3, easing: "swing", step: function () {
-                e.text(Math.ceil(this.Counter))
-            }
-        })
-    }), $(this).unbind("inview"))
-}), $(function () {
-    $("#items-counter").click(function () {
-        $("body").toggleClass("cart-widget-open")
-    }), $("#cart-widget-close").click(function () {
-        $("body").toggleClass("cart-widget-open")
-    }), $(".cart-widget-close-overlay").click(function () {
-        $("body").toggleClass("cart-widget-open")
-    })
-});
-var swiper = new Swiper(".home-slider", {
-    pagination: ".home-pagination",
-    paginationClickable: !0,
-    nextButton: ".home-slider-next",
-    prevButton: ".home-slider-prev"
+},
+    // COUNTDOWN
+    $('#countdown').countdown('2018/10/10', function(event) {
+        var $this = $(this).html(event.strftime(''
+            //+ '<li><span>%w</span> weeks</li> '
+            + '<li><span>%D</span> days</li> '
+            + '<li><span>%H</span> hr</li> '
+            + '<li><span>%M</span> min</li> '
+            + '<li><span>%S</span> sec</li>'));
+    }),
+    // initialize and configuration for wow js - animations
+    wow = new WOW({
+        animateClass: 'animated',
+        offset: 150,
+        mobile: false,
+        callback: function(box) {
+            //console.log("WOW: animating <" + box.tagName.toLowerCase() + ">")
+        }
+    }), wow.init(), $(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+    $('[data-toggle=popover]').popover();
+}),
+    // js counters
+    $('#about-counter').bind('inview', function(event, visible, visiblePartX, visiblePartY) {
+        if (visible) {
+            $(this).find('.timer').each(function() {
+                var $this = $(this);
+                $({
+                    Counter: 0
+                }).animate({
+                    Counter: $this.text()
+                }, {
+                    duration: 2000,
+                    easing: 'swing',
+                    step: function() {
+                        $this.text(Math.ceil(this.Counter));
+                    }
+                });
+            });
+            $(this).unbind('inview');
+        }
+    }),
+    // cart widget toggle
+    $(function() {
+        $("#items-counter").click(function() {
+            $("body").toggleClass("cart-widget-open");
+        });
+        $("#cart-widget-close").click(function() {
+            $("body").toggleClass("cart-widget-open");
+        });
+
+        $(".cart-widget-close-overlay").click(function() {
+            $("body").toggleClass("cart-widget-open");
+        });
+
+    });
+//initialize swipers
+//home slider
+var swiper = new Swiper('.home-slider', {
+    pagination: '.home-pagination',
+    paginationClickable: true,
+    nextButton: '.home-slider-next',
+    prevButton: '.home-slider-prev'
 }), swiper = new Swiper(".testimonials-slider", {
     pagination: ".testimonials-pagination",
     paginationClickable: !0,
@@ -5390,12 +5423,24 @@ var swiper = new Swiper(".home-slider", {
         320: {slidesPerView: 1, spaceBetween: 0}
     }
 });
+// smoth scroll
 $(".navbar-nav li a[href^='#']").on("click", function (e) {
+    // prevent default anchor click behavior
     e.preventDefault();
-    var t = this.hash;
-    $("html, body").animate({scrollTop: $(this.hash).offset().top}, 300, function () {
-        window.location.hash = t
-    })
+
+    // store hash
+    var hash = this.hash;
+
+    // animate
+    $('html, body').animate({
+        scrollTop: $(this.hash).offset().top
+    }, 300, function(){
+
+        // when done, add hash to url
+        // (default click behaviour)
+        window.location.hash = hash;
+    });
+
 });
 var map, mapAddress = new google.maps.LatLng(52.406374, 16.925168100000064);
 google.maps.event.addDomListener(window, "load", initialize);
