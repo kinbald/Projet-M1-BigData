@@ -5339,7 +5339,7 @@ if (function (e, t) {
     // initialize and configuration for wow js - animations
     wow = new WOW({
         animateClass: 'animated',
-        offset: 150,
+        offset: 100,
         mobile: false,
         callback: function(box) {
             //console.log("WOW: animating <" + box.tagName.toLowerCase() + ">")

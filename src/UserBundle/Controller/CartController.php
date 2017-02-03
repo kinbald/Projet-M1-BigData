@@ -27,12 +27,16 @@ class CartController extends Controller
     {
         if('POST' === $request->getMethod())
         {
-            //$data = $request->request->all()['form'];
             $model = new CartModel($this->getDoctrine()->getManager());
 
             $idList = explode(",", $request->get('id_list'));
             $quantityList = explode(",", $request->get('quantity_list'));
+            $rightQuantityList = Array();
             $quantityListError = Array();
+            $productError = Array();
+            $products = Array();
+            $products_pictures = Array();
+            $products_pictures_error = Array();
 
             for($i = 0; $i < count($idList); $i++ ){
                 if($model->find($idList[$i]) == null)
@@ -40,13 +44,26 @@ class CartController extends Controller
                     return $this->render('UserBundle:Default:error.html.twig');
                 }else if($model->getQuantityById($idList[$i]) < $quantityList[$i])
                 {
-                    array_push($quantityListError, $model->find($idList[$i]));
+                    array_push($productError, $model->find($idList[$i]));
+                    array_push($quantityListError, $quantityList[$i]);
+                    array_push($products_pictures_error, $model->find($idList[$i])->getPictures());
+                }else
+                {
+                    array_push($products, $model->find($idList[$i]));
+                    array_push($products_pictures, $model->find($idList[$i])->getPictures());
+                    array_push($rightQuantityList, $quantityList[$i]);
                 }
             }
 
             return $this->render('UserBundle:Default:panier.html.twig', [
-                'request' => $request,
-                'error_quantity' => $quantityListError
+                'request' => $request->request,
+                'products' => $products,
+                'amount' => $request->request->get('amount'),
+                'quantity_list' => $rightQuantityList,
+                'quantityListError' => $quantityListError,
+                'productError' => $productError,
+                'products_pictures' => $products_pictures,
+                'products_pictures_error' => $products_pictures_error
             ]);
         }
 

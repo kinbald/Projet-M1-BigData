@@ -4501,7 +4501,7 @@ button.close, .close {
         right: 122%;
         text-align: right; } }
     .timeline-block .timeline-content {
-      background: white;
+      background: #C6A668;
       float: left;
       left: 0px; }
     .timeline-block:first-child {
@@ -4535,8 +4535,6 @@ button.close, .close {
       top: 0; }
   .timeline-content {
     background: rgba(255, 255, 255, 0) none repeat scroll 0 0;
-    border: 1px solid #C6A668;
-    border-radius: 0;
     color: #fff;
     font-size: 10px;
     margin-left: 0;
