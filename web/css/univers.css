@@ -70,7 +70,7 @@ details[open] summary:after {
 .table-primary-img {
     padding: 10px;
     max-width:200px;
-    max-height: 200px;
+    height: 200px;
 }
 .table-product-text, .table-product-name, .table-product-price {
     font-size: 15px;
@@ -103,7 +103,7 @@ details[open] summary:after {
     min-height: 50px;
     overflow: hidden;
  }
-.universe-name{
+#universe-name{
     position : absolute;
     text-align:center;
     color: rgba(255, 255, 255, 0.93);
@@ -222,7 +222,7 @@ details[open] summary:after {
     .universe-bandeau {
         height: 20vw;
     }
-    .universe-name{
+    #universe-name{
         top: -10%;
     }
     .universe-description{
@@ -235,7 +235,7 @@ details[open] summary:after {
     .universe-bandeau {
         height: 25vw;
     }
-    .universe-name{
+    #universe-name{
         top: -5%;
     }
     .universe-description{
@@ -248,7 +248,7 @@ details[open] summary:after {
     .universe-bandeau {
         height: 30vw;
     }
-    .universe-name{
+    #universe-name{
         top: 0%;
     }
     .universe-description{
@@ -261,7 +261,7 @@ details[open] summary:after {
     .universe-bandeau {
         height: 40vw;
     }
-    .universe-name{
+    #universe-name{
         top: 0%;
     }
     .universe-description{
@@ -274,7 +274,7 @@ details[open] summary:after {
     .universe-bandeau {
         height: 20vw;
     }
-    .universe-name{
+    #universe-name{
         top: 10%;
     }
     .universe-description{
