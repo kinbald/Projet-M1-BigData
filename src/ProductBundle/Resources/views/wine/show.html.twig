@@ -116,11 +116,13 @@
                 </p>
                 <span class="countdown-price h3 wow fadeInUp">{{ product.price }} €</span>
                 {% set picture = product.pictures|last %}
+                <br><br> <br> <br>
                 <span class="btn btn-default add-item wow swing" {% if picture %}data-image="/img/upload/{{ picture.url}}"{% endif %}  data-name="{{ product.name }}" data-cost="{{ product.price }}" data-id="{{ product.id }}">
-                    <img alt="e-commerce" src="{{ asset('img/product/panier.png') }}" height="55">
+                    <div id="ajout"><img alt="e-commerce" src="{{ asset('img/product/panier.png') }}" height="55"></div>
                     <span class="ti-shopping-cart"></span>Ajouter au panier
                 </span>
             </div>
+            <br><br> <br> <br>
         </div>
     </section>
 {% endblock %}

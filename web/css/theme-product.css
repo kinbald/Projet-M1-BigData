@@ -1,32 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .ti-shopping-cart:before {
     content: none; }
 
@@ -91,8 +62,11 @@
 
 
 /********* MEDIA QUERIES *********/
-
 @media screen and (max-device-width:360px) {
+    #ajout {
+        display:none;
+    }
+
     .TEXTE {
         position: absolute;
         margin-top: 10%;
@@ -131,6 +105,10 @@
 
 
 @media screen and (min-device-width:361px) and (max-device-width:900px) {
+    #ajout {
+        display:none;
+    }
+
     .TEXTE {
         position: absolute;
         margin-top: 10%;
