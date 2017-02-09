@@ -42,6 +42,13 @@ class UserConsumer extends BaseUser
     private $birthDate;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="phone", type="string", length=15)
+     */
+    private $phone;
+
+    /**
      * @var ProductEvaluation
      *
      * @ORM\OneToMany(targetEntity="ProductBundle\Entity\ProductEvaluation", mappedBy="user")
@@ -150,5 +157,29 @@ class UserConsumer extends BaseUser
      */
     public function setRegisterRole(){
         $this->addRole('ROLE_CONSUMER');
+    }
+
+    /**
+     * Set phone
+     *
+     * @param string $phone
+     *
+     * @return UserConsumer
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * Get phone
+     *
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->phone;
     }
 }

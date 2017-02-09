@@ -25,7 +25,8 @@ class UserProducerType extends RegistrationFormType
             ->add('companyName', TextType::class)
             ->add('address', TextareaType::class)
             ->add('city', TextType::class)
-            ->add('postalCode', TextType::class);
+            ->add('postalCode', TextType::class)
+            ->add('phone', TextType::class);
     }
     
     /**
