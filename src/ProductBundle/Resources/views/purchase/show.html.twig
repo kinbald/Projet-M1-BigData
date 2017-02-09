@@ -10,6 +10,7 @@
     <div id="content">
         <h1>Purchase</h1>
         <br>
+        <p>Adresse de livraison :</p>
         <table>
             <tbody>
                 <tr>
@@ -42,35 +43,40 @@
                 </tr>
             </tbody>
         </table>
+        <br>
+        <p>Adresse de facturation :</p>
         <h1>Achat</h1>
         <br>
-        {% for product in products %}
-            <div class="text-center">
+
+        <div class="text-center">
                     <span class="swiper-slide text-center table-product-text">
                         <table>
+                            <thead>
+                                <td>Nom</td>
+                                <td>Prix</td>
+                            </thead>
                             <tbody>
-                            <tr>
+
+        {% for product in products %}
+
+            <tr>
+                            <td>
                                 <th width="100px">Produit</th>
                                 <td id="champ"><a href="{{ path('product_show', {id:product.id}) }}">{{ product.name }}</a></td>
-                            </tr>
-                            <tr>
-                                <th width="100px">Description</th>
-                                <td id="champ">{{ product.description }}</td>
-                            </tr>
-                            <tr>
-                                <th width="100px">Volume</th>
-                                <td id="champ">{{ product.volume }}</td>
-                            </tr>
-                            <tr>
+                </td>
+                <td>
                                 <th width="100px">Price</th>
                                 <td id="champ">{{ product.price }}</td>
+                </td>
                             </tr>
-                            </tbody>
+
+        {% endfor %}
+
+                                     </tbody>
                         </table>
                     </span>
 
-            </div>
-        {% endfor %}
+        </div>
 
         <h1>Acheteur</h1>
         <br>
