@@ -70,6 +70,12 @@ class UserProducer extends BaseUser
      */
     private $options;
 
+    /**
+     * @var string
+     * @ORM\Column(name="phone", type="string", length=15)
+     */
+    private $phone;
+
     public function __construct()
     {
         parent::__construct();
@@ -244,5 +250,29 @@ class UserProducer extends BaseUser
      */
     public function setRegisterRole(){
         $this->addRole('ROLE_PRODUCER');
+    }
+
+    /**
+     * Set phone
+     *
+     * @param string $phone
+     *
+     * @return UserProducer
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * Get phone
+     *
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->phone;
     }
 }

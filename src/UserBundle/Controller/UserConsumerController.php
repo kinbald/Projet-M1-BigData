@@ -41,7 +41,7 @@ class UserConsumerController extends Controller
     public function newAction(Request $request)
     {
         $userConsumer = new Userconsumer();
-        $form = $this->createForm('UserBundle\Form\UserConsumerType', $userConsumer);
+        $form = $this->createForm('UserBundle\Form\Type\UserConsumerType', $userConsumer);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -83,7 +83,7 @@ class UserConsumerController extends Controller
     public function editAction(Request $request, UserConsumer $userConsumer)
     {
         $deleteForm = $this->createDeleteForm($userConsumer);
-        $editForm = $this->createForm('UserBundle\Form\UserConsumerType', $userConsumer);
+        $editForm = $this->createForm('UserBundle\Form\Type\UserConsumerType', $userConsumer);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
