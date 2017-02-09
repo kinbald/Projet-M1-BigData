@@ -38,10 +38,20 @@ class Wine extends Product
     private $color;
 
     /**
-     * @var CompetitionWine
+     * @var Collection
      * @ORM\OneToMany(targetEntity="ConcoursBundle\Entity\CompetitionWine", mappedBy="wine")
      */
     private $competitions;
+
+    /**
+     * @var grapeVariety
+     *
+     * @ORM\ManyToOne(targetEntity="\ProductBundle\Entity\GrapeVariety", inversedBy="wines")
+     * @ORM\JoinColumns({
+     *  @ORM\JoinColumn(name="grape_variety", referencedColumnName="id")
+     * })
+     */
+    private $grapeVariety;
 
 
 
@@ -139,12 +149,36 @@ class Wine extends Product
     }
 
     /**
-     * Get competitions
+     * Get Collection
      *
      * @return \Doctrine\Common\Collections\Collection
      */
     public function getCompetitions()
     {
         return $this->competitions;
+    }
+
+    /**
+     * Set grapeVariety
+     *
+     * @param \ProductBundle\Entity\GrapeVariety $grapeVariety
+     *
+     * @return Wine
+     */
+    public function setGrapeVariety(\ProductBundle\Entity\GrapeVariety $grapeVariety = null)
+    {
+        $this->grapeVariety = $grapeVariety;
+
+        return $this;
+    }
+
+    /**
+     * Get grapeVariety
+     *
+     * @return \ProductBundle\Entity\GrapeVariety
+     */
+    public function getGrapeVariety()
+    {
+        return $this->grapeVariety;
     }
 }

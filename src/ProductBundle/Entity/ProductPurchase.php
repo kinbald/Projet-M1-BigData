@@ -3,6 +3,7 @@
 namespace ProductBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ProductBundle\Entity\ConditioningType;
 use ProductBundle\Entity\Product;
 use ProductBundle\Entity\Purchase;
 
@@ -32,17 +33,27 @@ class ProductPurchase
 
     /**
      * @var Product
-     * @ORM\ManyToOne(targetEntity="ProductBundle\Entity\Product", inversedBy="purchases")
+     * @ORM\ManyToOne(targetEntity="\ProductBundle\Entity\Product", inversedBy="purchases")
      * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
      */
     private $product;
 
     /**
      * @var Purchase
-     * @ORM\ManyToOne(targetEntity="ProductBundle\Entity\Purchase", inversedBy="products")
+     * @ORM\ManyToOne(targetEntity="\ProductBundle\Entity\Purchase", inversedBy="products")
      * @ORM\JoinColumn(nullable=false)
      */
     private $purchase;
+
+    /**
+     * @var ConditioningType
+     *
+     * @ORM\ManyToOne(targetEntity="\ProductBundle\Entity\ConditioningType", inversedBy="purchases")
+     * @ORM\JoinColumns({
+     *  @ORM\JoinColumn(name="conditioning_type", referencedColumnName="id")
+     * })
+     */
+    private $conditioningType;
 
     /**
      * Get id
@@ -79,13 +90,36 @@ class ProductPurchase
     }
 
     /**
+     * Set conditioningType
+     *
+     * @param \ProductBundle\Entity\Product $product
+     *
+     * @return ProductPurchase
+     */
+    public function setConditioningType(ConditioningType $type)
+    {
+        $this->conditioningType = $type;
+        return $this;
+    }
+
+    /**
+     * Get conditioningType
+     *
+     * @return ConditioningType
+     */
+    public function getConditioningType()
+    {
+        return $this->conditioningType;
+    }
+
+    /**
      * Set product
      *
      * @param \ProductBundle\Entity\Product $product
      *
      * @return ProductPurchase
      */
-    public function setProduct(\ProductBundle\Entity\Product $product)
+    public function setProduct(Product $product)
     {
         $this->product = $product;
 

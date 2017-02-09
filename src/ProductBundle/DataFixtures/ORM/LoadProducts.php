@@ -4,6 +4,7 @@ namespace ProductBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
+use ProductBundle\Entity\ConditioningType;
 use ProductBundle\Entity\PictureProduct;
 use ProductBundle\Entity\PictureUniverse;
 use ProductBundle\Entity\ProductEvaluation;
@@ -19,6 +20,23 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
     {
         $user = $manager->getRepository("UserBundle:BaseUser")->findOneByUsername('Consumer');
         $userConsumer = $manager->getRepository("UserBundle:UserConsumer")->findOneByUsername('Consumer');
+
+        /*-------------------LES CONDITIONNEMENTS--------------------*/
+        /*-----------------------------------------------------------*/
+        $cond1 = new ConditioningType();
+        $cond1->setName('Caisse');
+        $cond1->setPrice(5);
+        $manager->persist($cond1);
+
+        $cond2 = new ConditioningType();
+        $cond2->setName('Fût');
+        $cond2->setPrice(10);
+        $manager->persist($cond2);
+
+        $cond3 = new ConditioningType();
+        $cond3->setName('Sac plastique');
+        $cond3->setPrice(1);
+        $manager->persist($cond3);
 
 
         /*-----------------------LES UNIVERS-------------------------*/
@@ -253,6 +271,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $productPurchase->setStock(10);
         $productPurchase->setPurchase($purchase5);
         $productPurchase->setProduct($wine1);
+        $productPurchase->setConditioningType($cond1);
         $manager->persist($productPurchase);
 
         $productEvaluation = new ProductEvaluation();
@@ -261,8 +280,6 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $productEvaluation->setMark(15);
         $productEvaluation->setReview('Vin de très bonne qualité, je le recommande');
         $manager->persist($productEvaluation);
-
-
 
         $manager->flush();
     }
