@@ -23,6 +23,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $userConsumer->setLastname('Chiquet');
         $userConsumer->setSex('Male');
         $userConsumer->setBirthDate(new \DateTime('1995-10-29 10:00:00'));
+        $userConsumer->setPhone('0606060606');
         $manager->persist($userConsumer);
 
         $userProducer = new UserProducer();
@@ -39,6 +40,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $userProducer->setAddress('25 Avenue Mescouilles');
         $userProducer->setCity('Au miel');
         $userProducer->setPostalCode('6969');
+        $userProducer->setPhone('0606060606');
         $manager->persist($userProducer);
 
         $userProducer = new UserProducer();
@@ -55,6 +57,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $userProducer->setAddress('ta race maudite');
         $userProducer->setCity('Le Poulpe');
         $userProducer->setPostalCode('26485');
+        $userProducer->setPhone('0606060606');
         $manager->persist($userProducer);
 
         $userMedia = new UserMedia();
