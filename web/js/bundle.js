@@ -5158,7 +5158,6 @@ if (function (e, t) {
     });
 
     function addItem(id, cost) {
-        console.log("addItem");
         cindex++;
         cartItems[cindex] = cost;
         $("#items-counter").empty();
@@ -5178,7 +5177,6 @@ if (function (e, t) {
         toggleEptyCart();
 
         $('input').change(function() {
-            console.log("Input");
             $delivery = $(this).val();
             $total = document.getElementById("cost_value").innerHTML;
             var total = Number($total);
@@ -5220,7 +5218,6 @@ if (function (e, t) {
     }
 
     function loadItems() {
-        console.log("loadItems");
         if(panier == null){
             panier = [];
         }else {
@@ -5375,11 +5372,9 @@ if (function (e, t) {
     // cart widget toggle
     $(function() {
         $("#items-counter").click(function() {
-            console.log("items-counter");
             $("body").toggleClass("cart-widget-open");
         });
         $("#cart-widget-close").click(function() {
-            console.log("cart-widget-close");
             $("body").toggleClass("cart-widget-open");
         });
 
