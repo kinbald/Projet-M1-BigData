@@ -20,7 +20,9 @@
     position: relative;
 }
 
-
+.items-container{
+    border-radius: 100px;
+}
 
 summary::-webkit-details-marker {
     display: none;

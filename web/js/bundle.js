@@ -5166,26 +5166,11 @@ if (function (e, t) {
             "' data-id='" + id + "'><span class='cart-item-image'><img alt='" + curName + "' src='" + curImage +
             "'/></span><span class='cart-item-name h4'>" + curName +
             "</span><span class='cart-item-price'>$<span class='cvalue'>" + cost +
-            "</span></span> <span class='cart-item-remove'>✘</span>" +
-            "<input class='quantityInput' type='number' min='1' max='1023' id='input_" + id +"' value='"+quantity+"'/> </div>";
+            "</span></span><span class='cart-item-remove'>✘</span>" +
+            "<br/><br/><br/><span class='cart cart-item-name'>quantity<input class='quantityInput' type='number' min='1' max='1023' data-id='" + id +"' value='"+quantity+"'></span></div>";
         document.getElementById("items-counter").innerHTML += "<span class='animate'>" + curCounter +
             "<span class='circle'></span></span>";
         document.getElementById("item" + cindex).classList.remove("hidden");
-        document.getElementById("input_"+id).addEventListener("change", function(ev) {
-            var id = this.parentElement.getAttribute("data-id");
-            var value = this.value;
-            panier.forEach(function (element) {
-                if(element.id == id){
-                    var diff = element.quantity - value;
-                    element.quantity = value;
-                    removeCost(diff*element.prix);
-                    window.localStorage.setItem('panier', JSON.stringify(panier));
-                }
-            });
-
-            panierToString();
-            $("#quantity_list").val(quantityList);
-        });
         panierToString();
         $("#id_list").val(idList);
         $("#quantity_list").val(quantityList);
@@ -5317,6 +5302,7 @@ if (function (e, t) {
         }
     }
     $('input').change(function() {
+        console.log("Inpuuuuuut");
         $delivery = $(this).val();
         $total = document.getElementById("cost_value").innerHTML;
         var total = Number($total);
@@ -5325,6 +5311,22 @@ if (function (e, t) {
         document.getElementById("total-total").innerHTML = carttotal.toFixed(2);
         $("#amount").val(carttotal.toFixed(2));
         document.getElementById("cost_delivery").innerHTML = delivery.toFixed(2);
+
+
+        var id = this.getAttribute("data-id");
+        var value = this.value;
+        console.log("longueur du panier : " + panier.length);
+        panier.forEach(function (element) {
+            if(element.id == id){
+                var diff = element.quantity - value;
+                element.quantity = value;
+                removeCost(diff*element.prix);
+                window.localStorage.setItem('panier', JSON.stringify(panier));
+            }
+        });
+
+        panierToString();
+        $("#quantity_list").val(quantityList);
     })
 },
     // COUNTDOWN
@@ -5442,8 +5444,8 @@ $(".navbar-nav li a[href^='#']").on("click", function (e) {
     });
 
 });
-var map, mapAddress = new google.maps.LatLng(52.406374, 16.925168100000064);
-google.maps.event.addDomListener(window, "load", initialize);
+//var map, mapAddress = new google.maps.LatLng(52.406374, 16.925168100000064);
+//google.maps.event.addDomListener(window, "load", initialize);
 
 
 

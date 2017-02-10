@@ -159,12 +159,9 @@ function ResizeUniverseTitle() {
 
 /** Event listener **/
 
-window.onload = function () {
-    /*console.log('onload');*/
     paddingProductTable();
     ScrollSideBar();
     ResizeUniverseTitle();
-};
 
 
 addEvent(window, "resize", function(event) {
