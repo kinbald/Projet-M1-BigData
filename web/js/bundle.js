@@ -5158,6 +5158,7 @@ if (function (e, t) {
     });
 
     function addItem(id, cost) {
+        console.log("addItem");
         cindex++;
         cartItems[cindex] = cost;
         $("#items-counter").empty();
@@ -5175,6 +5176,33 @@ if (function (e, t) {
         $("#id_list").val(idList);
         $("#quantity_list").val(quantityList);
         toggleEptyCart();
+
+        $('input').change(function() {
+            console.log("Input");
+            $delivery = $(this).val();
+            $total = document.getElementById("cost_value").innerHTML;
+            var total = Number($total);
+            var delivery = Number($delivery);
+            var carttotal = total + delivery;
+            document.getElementById("total-total").innerHTML = carttotal.toFixed(2);
+            $("#amount").val(carttotal.toFixed(2));
+            document.getElementById("cost_delivery").innerHTML = delivery.toFixed(2);
+
+
+            var id = this.getAttribute("data-id");
+            var value = this.value;
+            panier.forEach(function (element) {
+                if(element.id == id){
+                    var diff = element.quantity - value;
+                    element.quantity = value;
+                    removeCost(diff*element.prix);
+                    window.localStorage.setItem('panier', JSON.stringify(panier));
+                }
+            });
+
+            panierToString();
+            $("#quantity_list").val(quantityList);
+        });
     }
 
     function addCost(amount) {
@@ -5192,6 +5220,7 @@ if (function (e, t) {
     }
 
     function loadItems() {
+        console.log("loadItems");
         if(panier == null){
             panier = [];
         }else {
@@ -5301,33 +5330,6 @@ if (function (e, t) {
             document.getElementById("items-counter").style.display = "none";
         }
     }
-    $('input').change(function() {
-        console.log("Inpuuuuuut");
-        $delivery = $(this).val();
-        $total = document.getElementById("cost_value").innerHTML;
-        var total = Number($total);
-        var delivery = Number($delivery);
-        var carttotal = total + delivery;
-        document.getElementById("total-total").innerHTML = carttotal.toFixed(2);
-        $("#amount").val(carttotal.toFixed(2));
-        document.getElementById("cost_delivery").innerHTML = delivery.toFixed(2);
-
-
-        var id = this.getAttribute("data-id");
-        var value = this.value;
-        console.log("longueur du panier : " + panier.length);
-        panier.forEach(function (element) {
-            if(element.id == id){
-                var diff = element.quantity - value;
-                element.quantity = value;
-                removeCost(diff*element.prix);
-                window.localStorage.setItem('panier', JSON.stringify(panier));
-            }
-        });
-
-        panierToString();
-        $("#quantity_list").val(quantityList);
-    })
 },
     // COUNTDOWN
     $('#countdown').countdown('2018/10/10', function(event) {
@@ -5373,13 +5375,11 @@ if (function (e, t) {
     // cart widget toggle
     $(function() {
         $("#items-counter").click(function() {
+            console.log("items-counter");
             $("body").toggleClass("cart-widget-open");
         });
         $("#cart-widget-close").click(function() {
-            $("body").toggleClass("cart-widget-open");
-        });
-
-        $(".cart-widget-close-overlay").click(function() {
+            console.log("cart-widget-close");
             $("body").toggleClass("cart-widget-open");
         });
 
