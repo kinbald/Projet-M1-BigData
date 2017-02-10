@@ -82,6 +82,7 @@
     </div>
     <section class="SLIDESHOW">
         <div class="slideshow-container">
+            <INPUT type="button" value="❮ Retour à la sélection" class="back-button" onClick="window.history.back()">
             {% for product_picture in product_pictures %}
                 <div class="mySlides" style="text-align:center">
                     <img class="photo" src="/img/upload/{{ product_picture.url }}" alt="{{ product_picture.alt }}" />
