@@ -4,15 +4,17 @@ namespace ProductBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use ProductBundle\Entity\ConditioningType;
 use ProductBundle\Entity\PictureProduct;
 use ProductBundle\Entity\PictureUniverse;
 use ProductBundle\Entity\ProductEvaluation;
-use ProductBundle\Entity\ProductPurchase;
 use ProductBundle\Entity\Purchase;
 use ProductBundle\Entity\Spirit;
 use ProductBundle\Entity\Universe;
 use ProductBundle\Entity\Wine;
+use ProductBundle\Entity\Recipe;
+use ProductBundle\Entity\GrapeVariety;
+use ProductBundle\Entity\ConditioningType;
+use ProductBundle\Entity\ProductPurchase;
 
 class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
 {
@@ -280,6 +282,76 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $productEvaluation->setMark(15);
         $productEvaluation->setReview('Vin de très bonne qualité, je le recommande');
         $manager->persist($productEvaluation);
+
+        /*-----------------------LES RECETTES---------------------*/
+        /*--------------------------------------------------------*/
+
+        $recipe = new Recipe();
+        $recipe->setName("Boeuf bourguignon");
+        $recipe->setUrl("http://lucbor.fr/boeuf%20bourguignon%20de%20Bernard%20Loiseau.pdf");
+        $manager->persist($recipe);
+
+        $recipe2 = new Recipe();
+        $recipe2->setName("Gratin dauphinois");
+        $recipe2->setUrl("https://cuisine-facile.com/divers/recette-gratin-dauphinois.pdf");
+        $manager->persist($recipe2);
+
+        /*-----------------------LES PURCHASES--------------------*/
+        /*--------------------------------------------------------*/
+        
+        $purchase = new Purchase();
+        $purchase->setAddress("128 avenue philippe lebon");
+        $purchase->setCity("Toulon");
+        $purchase->setPostalCode("83000");
+        $purchase->setCountry("France");
+        $purchase->setDone(true);
+        $purchase->setDateOrder(new \DateTime);
+        $purchase->setUser($userConsumer);
+        $manager->persist($purchase);
+
+        $purchase2 = new Purchase();
+        $purchase2->setAddress("48 impasse vent dames");
+        $purchase2->setCity("Istres");
+        $purchase2->setPostalCode("13800");
+        $purchase2->setCountry("France");
+        $purchase2->setDone(false);
+        $purchase2->setDateOrder(new \DateTime);
+        $purchase2->setUser($userConsumer);
+        $manager->persist($purchase2);
+
+        /*-----------------------GRAPE VARIETY--------------------*/
+        /*--------------------------------------------------------*/
+
+        $grape = new GrapeVariety();
+        $grape->setName("Cabernet-sauvignon");
+        $manager->persist($grape);
+
+        $grape2 = new GrapeVariety();
+        $grape2->setName("Chardonnay");
+        $manager->persist($grape2);
+
+        /*-------------------CONDITONNING TYPE--------------------*/
+        /*--------------------------------------------------------*/
+        
+        $condition = new ConditioningType();
+        $condition->setName("Caisse");
+        $condition->setPrice(45);
+        $manager->persist($condition);
+        
+        $condition2 = new ConditioningType();
+        $condition2->setName("Palette");
+        $condition2->setPrice(125);
+        $manager->persist($condition2);
+
+        /*-------------------PRODUCT PURCHASE---------------------*/
+        /*--------------------------------------------------------*/
+        
+        $propur = new ProductPurchase();
+        $propur->setStock(1200);
+        $propur->setConditioningType($condition);
+        $propur->setProduct($wine3);
+        $propur->setPurchase($purchase);
+        $manager->persist($propur);
 
         $manager->flush();
     }
