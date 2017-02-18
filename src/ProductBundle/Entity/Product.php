@@ -5,6 +5,7 @@ namespace ProductBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use ProductBundle\Entity\Country;
 use ProductBundle\Entity\PictureProduct;
 use ProductBundle\Entity\Recipe;
 use ProductBundle\Entity\Universe;
@@ -48,6 +49,13 @@ abstract class Product
     protected $description;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="description_short", type="text")
+     */
+    protected $descriptionShort;
+
+    /**
      * @var float
      *
      * @ORM\Column(name="volume", type="float")
@@ -69,7 +77,35 @@ abstract class Product
     protected $stock;
 
 
+    /**
+     * @var Continent
+     *
+     * @ORM\ManyToOne(targetEntity="\ProductBundle\Entity\Continent", inversedBy="products")
+     * @ORM\JoinColumns({
+     *  @ORM\JoinColumn(name="origin_continent", referencedColumnName="id", nullable=true)
+     * })
+     */
+    private $originContinent;
 
+    /**
+     * @var Country
+     *
+     * @ORM\ManyToOne(targetEntity="\ProductBundle\Entity\Country", inversedBy="products")
+     * @ORM\JoinColumns({
+     *  @ORM\JoinColumn(name="origin_country", referencedColumnName="id", nullable=true)
+     * })
+     */
+    private $originCountry;
+
+    /**
+     * @var Range
+     *
+     * @ORM\ManyToOne(targetEntity="\ProductBundle\Entity\Range", inversedBy="products")
+     * @ORM\JoinColumns({
+     *  @ORM\JoinColumn(name="range", referencedColumnName="id", nullable=true)
+     * })
+     */
+    private $range;
 
 
     /**
@@ -166,6 +202,30 @@ abstract class Product
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set descriptionShort
+     *
+     * @param string $descriptionShort
+     *
+     * @return Product
+     */
+    public function setDescriptionShort($descriptionShort)
+    {
+        $this->descriptionShort = $descriptionShort;
+
+        return $this;
+    }
+
+    /**
+     * Get descriptionShort
+     *
+     * @return string
+     */
+    public function getDescriptionShort()
+    {
+        return $this->descriptionShort;
     }
 
     /**
@@ -461,5 +521,71 @@ abstract class Product
     public function getConditioningTypes()
     {
         return $this->conditioningTypes;
+    }
+
+    /**
+     * Set origin_country
+     *
+     * @param Country $country
+     * @return Product
+     */
+    public function setOriginCountry(Country $country = null)
+    {
+        $this->originCountry = $country;
+        return $this;
+    }
+
+    /**
+     * Get origin_country
+     *
+     * @return Country
+     */
+    public function getOriginCountry()
+    {
+        return $this->originCountry;
+    }
+
+    /**
+     * Set origin_continent
+     *
+     * @param Continent $continent
+     * @return Product
+     */
+    public function setOriginContinent(Continent $continent = null)
+    {
+        $this->originContinent = $continent;
+        return $this;
+    }
+
+    /**
+     * Get origin_continent
+     *
+     * @return Continent
+     */
+    public function getOriginContinent()
+    {
+        return $this->originContinent;
+    }
+
+    /**
+     * Set range
+     *
+     * @param Range $range
+     * @return Product
+     */
+    public function setRange(Range $range = null)
+    {
+        $this->range = $range;
+        return $this;
+    }
+
+    /**
+     * Get range
+     *
+     * @return Range
+     */
+    public function getRange()
+    {
+        return $this->range;
     }
 }
