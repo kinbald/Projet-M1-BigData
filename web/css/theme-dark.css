@@ -4449,51 +4449,10 @@ button.close, .close {
     margin: 15px 0;
     transition: all 600ms ease-in-out;
     background-size: cover; }
-    .timeline-block.timeline-block-image-1 {
-      background-image: url("../img/timeline-1.jpg"); }
-      @media (max-width: 479px) {
-        .timeline-block.timeline-block-image-1 {
-          background: none; } }
-    .timeline-block.timeline-block-image-2 {
-      background-image: url("../img/timeline-2.jpg"); }
-      @media (max-width: 479px) {
-        .timeline-block.timeline-block-image-2 {
-          background: none; } }
-    .timeline-block.timeline-block-image-3 {
-      background-image: url("../img/timeline-3.jpg"); }
-      @media (max-width: 479px) {
-        .timeline-block.timeline-block-image-3 {
-          background: none; } }
-    .timeline-block.timeline-block-image-4 {
-      background-image: url("../img/timeline-4.jpg"); }
-      @media (max-width: 479px) {
-        .timeline-block.timeline-block-image-4 {
-          background: none; } }
-    .timeline-block.timeline-block-image-5 {
-      background-image: url("../img/timeline-5.jpg"); }
-      @media (max-width: 479px) {
-        .timeline-block.timeline-block-image-5 {
-          background: none; } }
-    .timeline-block.timeline-block-image-6 {
-      background-image: url("../img/timeline-6.jpg"); }
-      @media (max-width: 479px) {
-        .timeline-block.timeline-block-image-6 {
-          background: none; } }
-    .timeline-block.timeline-block-image-7 {
-      background-image: url("../img/timeline-7.jpg"); }
-      @media (max-width: 479px) {
-        .timeline-block.timeline-block-image-7 {
-          background: none; } }
-    .timeline-block.timeline-block-image-8 {
-      background-image: url("../img/timeline-8.jpg"); }
-      @media (max-width: 479px) {
-        .timeline-block.timeline-block-image-8 {
-          background: none; } }
     @media (min-width: 1200px) {
       .timeline-block {
         cursor: pointer;
         opacity: 1;
-        padding: 100px 0;
         background-position: 60px center;
         background-repeat: no-repeat;
         background-size: cover; }
@@ -4924,12 +4883,6 @@ button.close, .close {
     .cart-widget {
       width: 100%;
       padding: 15px; } }
-  .cart-widget-close-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0; }
   .cart-widget .section-heading {
     font-size: 32px; }
   .cart-widget-open {

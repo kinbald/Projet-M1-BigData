@@ -20,7 +20,7 @@ b{
         box-shadow: 2px 2px 6px #aaa;
         color: white;
         text-shadow: 2px 2px 2px black;
-        width: 30%;
+        width: 40%;
         float: left;
         position: relative;
         display: block;
@@ -48,7 +48,7 @@ b{
     #Factures{
         margin-left: auto;
         margin-right: auto;
-        margin-top: 450px;
+        margin-top: 480px;
         margin-bottom: 70px;
         padding: 20px;
         border-radius: 20px;
@@ -65,8 +65,25 @@ b{
         margin-left: auto;
         margin-right: auto;
         width: 80%;
+        display: block;
     }
 
+    .espaceProd{
+        display: inline-block;
+        margin: 50px;
+    }
+
+
+    .espaceUser{
+        display: inline-block;
+        margin: 10px;
+    }
+
+
+    .espaceMedia{
+        display: inline-block;
+        margin: 5px;
+    }
 
 }
 
@@ -119,4 +136,13 @@ b{
     }
 
 
+}
+
+
+.required{
+    width: 200px;
+}
+
+button, input, optgroup, select, textarea {
+    color: black;
 }
