@@ -1,0 +1,86 @@
+
+/********* ECRAN PETIT *********/
+
+@media (max-width: 900px) {
+
+    #contenu {
+        margin-left: 10%;
+        margin-right: auto;
+    }
+
+    #productbundle_universe_name, #productbundle_wine_color, #productbundle_wine_vintage,
+    #productbundle_wine_stock, #productbundle_wine_price, #productbundle_wine_volume, #productbundle_universe_description,
+    #productbundle_wine_name, #mediabundle_files_url, #mediabundle_files_name, #mediabundle_files_date_date, #productbundle_purchase_address,
+    #userbundle_userconsumer_sex, #productbundle_purchase_city, #productbundle_purchase_postalCode, #productbundle_wine_alcoholDegree,
+    #productbundle_purchase_country, #productbundle_purchase_user, #productbundle_wine_description, #productbundle_wine_universes{
+        width: 90%;
+        max-width: 500px;
+        margin-bottom: 10px;
+        color: black;
+    }
+
+    #boutons{
+        margin: auto;
+        margin-left: 10%;
+        margin-top: 40px;
+        width: 100%;
+    }
+
+    .bouton1{
+        display: block;
+        float: left;
+        margin: auto;
+    }
+
+
+}
+
+
+
+/********* ECRAN GRAND *********/
+
+@media (min-width: 901px) {
+
+    #contenu {
+        margin: auto;
+        width: 50%;
+    }
+
+    h1{
+        margin-top: 100px;
+        text-align: center;
+    }
+
+    #productbundle_universe_name, #productbundle_wine_color, #productbundle_wine_vintage,
+    #productbundle_wine_stock, #productbundle_wine_price, #productbundle_wine_volume, #productbundle_universe_description,
+    #productbundle_wine_name, #mediabundle_files_url, #mediabundle_files_name, #mediabundle_files_date_date, #productbundle_purchase_address,
+    #userbundle_userconsumer_sex, #productbundle_purchase_city, #productbundle_purchase_postalCode, #productbundle_wine_alcoholDegree,
+    #productbundle_purchase_country, #productbundle_purchase_user, #productbundle_wine_description, #productbundle_wine_universes{
+        width: 100%;
+        margin-bottom: 20px;
+        color: black;
+    }
+
+    #productbundle_wine div{
+        width: 500px;
+        margin: auto;
+    }
+
+    #boutons{
+        margin: auto;
+        margin-top: 40px;
+        width: 500px;
+    }
+
+    .bouton1{
+        display: block;
+        float: left;
+        margin: auto;
+    }
+
+
+}
+
+.espace-bas{
+    height: 80px;
+}
