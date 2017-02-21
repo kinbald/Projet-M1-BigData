@@ -32,7 +32,7 @@ class Country
 
     /**
      * @var Collection
-     * @ORM\OneToMany(targetEntity="\ProductBundle\Entity\Product", mappedBy="origin_country")
+     * @ORM\OneToMany(targetEntity="\ProductBundle\Entity\Product", mappedBy="originCountry")
      */
     private $products;
 

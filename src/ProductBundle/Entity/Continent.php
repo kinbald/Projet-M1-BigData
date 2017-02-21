@@ -33,7 +33,7 @@ class Continent
 
     /**
      * @var Collection
-     * @ORM\OneToMany(targetEntity="\ProductBundle\Entity\Product", mappedBy="origin_continent")
+     * @ORM\OneToMany(targetEntity="\ProductBundle\Entity\Product", mappedBy="originContinent")
      */
     private $products;
 
