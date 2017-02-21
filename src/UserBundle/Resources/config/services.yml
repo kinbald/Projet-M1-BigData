@@ -17,3 +17,8 @@ services:
                 arguments: ['%fos_user.model.user.class%']
                 tags:
                     - { name: form.type, alias: user_producer_registration }
+    user_wholesale.registration.form.type:
+                class: UserBundle\Form\Type\UserWholesaleType
+                arguments: ['%fos_user.model.user.class%']
+                tags:
+                    - { name: form.type, alias: user_wholesale_registration }
