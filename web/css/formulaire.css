@@ -12,7 +12,9 @@
     #productbundle_wine_stock, #productbundle_wine_price, #productbundle_wine_volume, #productbundle_universe_description,
     #productbundle_wine_name, #mediabundle_files_url, #mediabundle_files_name, #mediabundle_files_date_date, #productbundle_purchase_address,
     #userbundle_userconsumer_sex, #productbundle_purchase_city, #productbundle_purchase_postalCode, #productbundle_wine_alcoholDegree,
-    #productbundle_purchase_country, #productbundle_purchase_user, #productbundle_wine_description, #productbundle_wine_universes{
+    #productbundle_purchase_country, #productbundle_purchase_user, #productbundle_wine_description, #productbundle_wine_universes,
+    #userbundle_userconsumer_username, #userbundle_userconsumer_email, #userbundle_userconsumer_plainPassword_first, #userbundle_userconsumer_plainPassword_second,
+    #userbundle_userconsumer_firstname, #userbundle_userconsumer_lastname, #userbundle_userconsumer_birthDate, #userbundle_userconsumer_phone{
         width: 90%;
         max-width: 500px;
         margin-bottom: 10px;
@@ -55,7 +57,9 @@
     #productbundle_wine_stock, #productbundle_wine_price, #productbundle_wine_volume, #productbundle_universe_description,
     #productbundle_wine_name, #mediabundle_files_url, #mediabundle_files_name, #mediabundle_files_date_date, #productbundle_purchase_address,
     #userbundle_userconsumer_sex, #productbundle_purchase_city, #productbundle_purchase_postalCode, #productbundle_wine_alcoholDegree,
-    #productbundle_purchase_country, #productbundle_purchase_user, #productbundle_wine_description, #productbundle_wine_universes{
+    #productbundle_purchase_country, #productbundle_purchase_user, #productbundle_wine_description, #productbundle_wine_universes,
+    #userbundle_userconsumer_username, #userbundle_userconsumer_email, #userbundle_userconsumer_plainPassword_first, #userbundle_userconsumer_plainPassword_second,
+    #userbundle_userconsumer_firstname, #userbundle_userconsumer_lastname, #userbundle_userconsumer_birthDate, #userbundle_userconsumer_phone{
         width: 100%;
         margin-bottom: 20px;
         color: black;
