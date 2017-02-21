@@ -2,7 +2,8 @@
 
 namespace ProductBundle\Controller;
 
-use \ProductBundle\Entity\Universe;
+use ProductBundle\Entity\PictureUniverse;
+use ProductBundle\Entity\Universe;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -46,8 +47,18 @@ class UniverseController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
             $em->persist($universe);
-            $em->flush($universe);
+            $em->flush();
+
+            $urlImg = $request->get('urlImg');
+            $pictUniv = new PictureUniverse();
+            $pictUniv->setUrl($urlImg);
+            $pictUniv->setAlt($universe->getName());
+            $pictUniv->setUniverse($universe);
+
+            $em->persist($pictUniv);
+            $em->flush();
 
             return $this->redirectToRoute('universe_show', array('id' => $universe->getId()));
         }
@@ -103,7 +114,20 @@ class UniverseController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+
+            $em = $this->getDoctrine()->getManager();
+
+            $urlImg = $request->get('urlImg');
+            if ($urlImg) {
+                $pictUniv = new PictureUniverse();
+                $pictUniv->setUrl($urlImg);
+                $pictUniv->setAlt($universe->getName());
+                $pictUniv->setUniverse($universe);
+
+                $em->persist($pictUniv);
+            }
+
+            $em->flush();
 
             return $this->redirectToRoute('universe_edit', array('id' => $universe->getId()));
         }
