@@ -9,30 +9,61 @@ h1 {
 
 
 .tableauContour {
-
+    font-family: 'Lemonada', cursive;
+    width: 35vw;
     box-shadow: 2px 2px 6px #AAA ;
     padding: 20px;
     margin-left: auto;
     margin-right: auto;
+
+    margin-bottom: 20px;
     border-radius: 20px;
     border-collapse: separate;
 
 }
 
-#MaTable {
-    width: 100%;
-    padding: 2px;
-    border-spacing: 2px;
+input,option,select {
+    color: black;
 }
+
+
+
+label
+{
+
+    display: block;
+    width: 150px;
+    float: left;
+}
+
+
+.zonetexte {
+    width: 30vw;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    font-family: 'Lemonada', cursive;
+}
+
+
 .tabcenter{
     margin-left:auto;
     margin-right:auto;
 }
 
+.titre{
+    background-color: green;
+    text-align: center;
+    height: 20vh;
+    width: 100vw;
+}
 
 
-
-
+td {
+    font-family: Lemonada, cursive;
+    margin: 10px;
+}
 
 
 .paragraphe {
@@ -44,6 +75,12 @@ h1 {
     margin-left: 5em;
     float: right;
 }
+
+textarea {
+    color: black;
+}
+
+
 
 .photo {
     display: inline-block;

@@ -1,24 +1,80 @@
-body {
-    font-family:"pacifico",sans-serif;
-    color:#c6a668;
-    margin:10px;
+@media (max-width: 600px) {
+    body {
+        font-family:"pacifico",sans-serif;
+        color:#c6a668;
+        text-align: center;
+    }
+
+    label
+    {
+        width: 500px;
+        float: left;
+        margin: 0 auto;
+    }
+
+    #content {
+        border: double;
+        max-width: 80vw;
+        margin: 0 auto;
+        margin-top: 75px;
+    }
+
+    #fos_user_registration_form div {
+        margin-top: 22px;
+    }
+}
+@media (min-width: 601px) and (max-width: 1199px) {
+    body {
+        font-family:"pacifico",sans-serif;
+        color:#c6a668;
+        text-align: center;
+    }
+
+    label
+    {
+        width: 200px;
+        float: left;
+        margin: 0 auto;
+    }
+
+    #content {
+        border: double;
+        max-width: 75vw;
+        margin: 0 auto;
+        margin-top: 75px;
+    }
+
+    #fos_user_registration_form div {
+        margin-top: 22px;
+    }
+}
+@media (min-width: 1200px) {
+    body {
+        font-family:"pacifico",sans-serif;
+        color:#c6a668;
+        text-align: center;
+    }
+
+    label
+    {
+        width: 200px;
+        float: left;
+        margin: 0 auto;
+    }
+
+    #content {
+        border: double;
+        max-width: 40vw;
+        margin: 0 auto;
+        margin-top: 75px;
+    }
+
+    #fos_user_registration_form div {
+        margin-top: 22px;
+    }
+
 }
 
-label
-{
-    display: block;
-    width: 150px;
-    float: left;
-}
-
-#content {
-    margin-top: 75px;
-}
-
-#fos_user_registration_form div {
-    margin-top: 22px;
-
-}
 
 .btn-circle {
     margin: 10px;
