@@ -30,7 +30,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
 
         $picture = new PictureUniverse();
         $picture->setAlt('Femmes et vin du monde');
-        $picture->setUrl('univ_femme.jpg');
+        $picture->setUrl('../uploads/Illustrations Univers/univ_femme.jpg');
         $picture->setUniverse($universe1);
         $manager->persist($picture);
 
@@ -42,7 +42,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
 
         $picture = new PictureUniverse();
         $picture->setAlt('Femmes et vin de France');
-        $picture->setUrl('univ_france.jpg');
+        $picture->setUrl('../uploads/Illustrations Univers/univ_france.jpg');
         $picture->setUniverse($universe2);
         $manager->persist($picture);
 
@@ -54,7 +54,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
 
         $picture = new PictureUniverse();
         $picture->setAlt('Femmes et spiritueux du monde');
-        $picture->setUrl('univ_monde.jpg');
+        $picture->setUrl('../uploads/Illustrations Univers/univ_monde.jpg');
         $picture->setUniverse($universe3);
         $manager->persist($picture);
 
@@ -66,7 +66,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
 
         $picture = new PictureUniverse();
         $picture->setAlt('terroir');
-        $picture->setUrl('univ_terroir.jpg');
+        $picture->setUrl('../uploads/Illustrations Univers/univ_terroir.jpg');
         $picture->setUniverse($universe4);
         $manager->persist($picture);
 
@@ -79,7 +79,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
 
         $picture = new PictureUniverse();
         $picture->setAlt('gastronomie');
-        $picture->setUrl('univ_gastronomie.jpg');
+        $picture->setUrl('../uploads/Illustrations Univers/univ_gastronomie.jpg');
         $picture->setUniverse($universe5);
         $manager->persist($picture);
 
@@ -92,7 +92,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
 
         $picture = new PictureUniverse();
         $picture->setAlt('vin rosés');
-        $picture->setUrl('univ_rose.jpg');
+        $picture->setUrl('../uploads/Illustrations Univers/univ_rose.jpg');
         $picture->setUniverse($universe6);
         $manager->persist($picture);
 

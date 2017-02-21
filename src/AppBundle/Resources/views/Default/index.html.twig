@@ -88,8 +88,8 @@
             {% for universe in universes %}
                 <div class="neutral text-center">
                     <a type="button" class="btn" href="{{ path("universe_show", {id:universe.id}) }}">
-                        {% set picture = universe.pictures|last %}
-                        <img class="image" src="/img/upload/{{ picture.url}}" alt="{{ picture.alt}}"/>
+                        {% set picture = universe.pictures|first %}
+                        <img class="image" src="{{ asset(picture.url) }}" alt="{{ picture.alt }}"/>
                         <p class="texte">{{ universe.name }}</p>
                     </a>
                 </div>

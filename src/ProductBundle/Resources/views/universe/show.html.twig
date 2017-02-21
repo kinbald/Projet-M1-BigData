@@ -85,9 +85,9 @@
 
     <div class="universe-bandeau" id="universe-bandeau" >
         {% set picture = universe.pictures|last %}
-        <img class="universe-img" src="/img/upload/{{ picture.url}}" alt="{{ picture.alt}}"/>
+        <img class="universe-img" src="{{ asset(picture.url) }}" alt="{{ picture.alt }}"/>
         <p id="universe-name">{{ universe.name }}</p>
-        <p class="universe-description"> L, non convallis felis. Donec tempor, lorem in placerat porttitor, orci arcu convallis odio, tincidunt vestibulum metus nibh vel elit. Sed bibendum vel nisi quis lacinia. Sed at dignissim metus, ut convallis eros. Nulla finibus, ante eget pretium gravida, arcu nibh sollicitudin risus, vitae efficitur libero erat et eros.{{ universe.description }}</p>
+        <p class="universe-description">{{ universe.description }}</p>
     </div>
     <!-- Barre Laterale -->
     <div class="barre_laterale barre_color_police" id="sidebar">
