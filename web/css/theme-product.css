@@ -1,32 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .ti-shopping-cart:before {
     content: none; }
 
@@ -39,6 +10,18 @@
     margin: auto;
 }
 
+/*Bouton retour*/
+.back-button{
+    margin-left: 6vw;
+    margin-bottom: 10px;
+    color: #C6A668;
+    background: none;
+    border: none;
+    font-weight: bold;
+}
+.back-button:hover {
+    color: rgba(156, 127, 80, 0.78);
+}
 
 
 /********* FLECHES *********/
@@ -91,8 +74,11 @@
 
 
 /********* MEDIA QUERIES *********/
-
 @media screen and (max-device-width:360px) {
+    #ajout {
+        display:none;
+    }
+
     .TEXTE {
         position: absolute;
         margin-top: 10%;
@@ -131,6 +117,10 @@
 
 
 @media screen and (min-device-width:361px) and (max-device-width:900px) {
+    #ajout {
+        display:none;
+    }
+
     .TEXTE {
         position: absolute;
         margin-top: 10%;

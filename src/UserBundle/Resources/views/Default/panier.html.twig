@@ -112,40 +112,4 @@
             </div>
         </div>
     </section>
-
-    <!----------------------------------------->
-    <!------- PROPOSITION AUTRES PRODUITS ----->
-    <!----------------------------------------->
-    <section class="section-min section product" id="products">
-        <div class="container overflow-hidden">
-            <div class="row">
-                <div class="col-md-12">
-                    <h3>Ceci pourrait aussi vous intéresser :</h3>
-                </div>
-            </div>
-            <div class="row">
-                <div class="product-list-slider">
-                    <ul class="swiper-wrapper product-list product-list-vertical">
-                        {% for i in 1..10 %}
-                            <li class="swiper-slide wow fadeInUp text-center">
-                                <span class="product-list-left pull-left">
-                                    <!--Rajouter le lien vers la produit : <a href="http://www.google.fr"> -->
-                                    <img alt="product image" class="product-list-primary-img" src="{{ asset('img/product/contract_default.png') }}">
-                                    <span class="product-list-name h3">Nom produit</span>
-                                    <span class="product-list-price">400.00 €</span>
-                                    <!--</a>-->
-                                </span>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                    <!-----------------------------------   DEFILEMENT  -------------------------------->
-                    <!-- Add Pagination -->
-                    <div class="product-list-pagination text-center"> </div>
-                    <div class="product-list-slider-next right-arrow-negative"> &#10095; </div>
-                    <div class="product-list-slider-prev left-arrow-negative"> &#10094;</div>
-                    <br><br>
-                </div>
-            </div>
-        </div>
-    </section>
 {% endblock %}

@@ -14,14 +14,14 @@ class LoadCompetitions extends AbstractFixture implements OrderedFixtureInterfac
         $wine = $manager->getRepository("ProductBundle:Wine")->findOneByColor('Rouge');
 
         $competition = new Competition();
-        $competition->setName('Ramène ta vinasse');
-        $competition->setDescription('compet à la bonne franquette');
+        $competition->setName('Concours 01');
+        $competition->setDescription('Concours vin');
         $competition->setDateCompetition(new \DateTime('2017-04-01 10:00:00'));
         $manager->persist($competition);
 
         $competitionWine = new CompetitionWine();
         $competitionWine->setCompetition($competition);
-        $competitionWine->setPrimeName('Vinasse de qualitasse');
+        $competitionWine->setPrimeName('Vin de qualité');
         $competitionWine->setWine($wine);
         $manager->persist($competitionWine);
 

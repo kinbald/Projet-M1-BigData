@@ -11,7 +11,7 @@ class LoadContract extends AbstractFixture implements OrderedFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
-        $user = $manager->getRepository("UserBundle:UserProducer")->findOneByCompanyName('Bitonnet de poisson & co');
+        $user = $manager->getRepository("UserBundle:UserProducer")->findOneByCompanyName('Vin & co');
 
         $option = new Option();
         $option->setName('option test');

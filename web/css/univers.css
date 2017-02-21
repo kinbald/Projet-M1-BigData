@@ -1,3 +1,7 @@
+.champ {
+    border-radius: 10px;
+}
+
 .barre_color_list{
     color: black;
 }
@@ -20,7 +24,9 @@
     position: relative;
 }
 
-
+.items-container{
+    border-radius: 100px;
+}
 
 summary::-webkit-details-marker {
     display: none;

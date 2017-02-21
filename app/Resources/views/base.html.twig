@@ -24,14 +24,15 @@
                 <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="{{ path("homepage") }}"> <img src="{{ asset('img/logo.png') }}" alt="logo">
+            <a class="navbar-brand" href="{{ path("homepage") }}">
+                <img src="{{ asset('img/logo.png') }}" alt="logo">
+                <span>Box Office Wine</span>
             </a>
         </div>
         {% if is_granted('ROLE_CONSUMER') %}
             <div class="navbar-collapse collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
                     <li><a href="{{ path("homepage") }}">Accueil</a></li>
-                    <li><a href="#panier">Panier</a></li>
                     <li><a href="/profile">Compte</a></li>
                     <li><a href="{{ path("contact") }}">Nous Contacter</a></li>
                     <li><a href="{{ path("qui_sommes_nous") }}">Qui Sommes Nous ?</a></li>
@@ -73,7 +74,6 @@
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
                     <li><a href="{{ path("homepage") }}">Accueil</a></li>
-                    <li><a href="#panier">Panier</a></li>
                     <li><a href="{{ path("contact") }}">Nous Contacter</a></li>
                     <li><a href="{{ path("qui_sommes_nous") }}">Qui Sommes Nous ?</a></li>
                     <li><a href="/login">Se Connecter</a></li>
@@ -94,3 +94,9 @@
 {% endblock %}
 </body>
 </html>
+
+
+
+
+
+

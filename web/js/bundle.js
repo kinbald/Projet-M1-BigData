@@ -5166,13 +5166,28 @@ if (function (e, t) {
             "' data-id='" + id + "'><span class='cart-item-image'><img alt='" + curName + "' src='" + curImage +
             "'/></span><span class='cart-item-name h4'>" + curName +
             "</span><span class='cart-item-price'>$<span class='cvalue'>" + cost +
-            "</span></span> <span class='cart-item-remove'>✘</span>" +
-            "<input class='quantityInput' type='number' min='1' max='1023' id='input_" + id +"' value='"+quantity+"'/> </div>";
-        document.getElementById("items-counter").innerHTML += "<span class='animate'>" + curCounter +
+            "</span></span><span class='cart-item-remove'>✘</span>" +
+            "<br/><br/><br/><span class='cart cart-item-name'>quantity<input class='quantityInput' type='number' min='1' max='1023' data-id='" + id +"' value='"+quantity+"'></span></div>";
+        document.getElementById("items-counter").innerHTML += "<span class='animate '><div class='caddie glyphicon glyphicon-shopping-cart'></div>" + curCounter +
             "<span class='circle'></span></span>";
         document.getElementById("item" + cindex).classList.remove("hidden");
-        document.getElementById("input_"+id).addEventListener("change", function(ev) {
-            var id = this.parentElement.getAttribute("data-id");
+        panierToString();
+        $("#id_list").val(idList);
+        $("#quantity_list").val(quantityList);
+        toggleEptyCart();
+
+        $('input').change(function() {
+            $delivery = $(this).val();
+            $total = document.getElementById("cost_value").innerHTML;
+            var total = Number($total);
+            var delivery = Number($delivery);
+            var carttotal = total + delivery;
+            document.getElementById("total-total").innerHTML = carttotal.toFixed(2);
+            $("#amount").val(carttotal.toFixed(2));
+            document.getElementById("cost_delivery").innerHTML = delivery.toFixed(2);
+
+
+            var id = this.getAttribute("data-id");
             var value = this.value;
             panier.forEach(function (element) {
                 if(element.id == id){
@@ -5186,10 +5201,6 @@ if (function (e, t) {
             panierToString();
             $("#quantity_list").val(quantityList);
         });
-        panierToString();
-        $("#id_list").val(idList);
-        $("#quantity_list").val(quantityList);
-        toggleEptyCart();
     }
 
     function addCost(amount) {
@@ -5316,16 +5327,6 @@ if (function (e, t) {
             document.getElementById("items-counter").style.display = "none";
         }
     }
-    $('input').change(function() {
-        $delivery = $(this).val();
-        $total = document.getElementById("cost_value").innerHTML;
-        var total = Number($total);
-        var delivery = Number($delivery);
-        var carttotal = total + delivery;
-        document.getElementById("total-total").innerHTML = carttotal.toFixed(2);
-        $("#amount").val(carttotal.toFixed(2));
-        document.getElementById("cost_delivery").innerHTML = delivery.toFixed(2);
-    })
 },
     // COUNTDOWN
     $('#countdown').countdown('2018/10/10', function(event) {
@@ -5374,10 +5375,6 @@ if (function (e, t) {
             $("body").toggleClass("cart-widget-open");
         });
         $("#cart-widget-close").click(function() {
-            $("body").toggleClass("cart-widget-open");
-        });
-
-        $(".cart-widget-close-overlay").click(function() {
             $("body").toggleClass("cart-widget-open");
         });
 
@@ -5442,8 +5439,8 @@ $(".navbar-nav li a[href^='#']").on("click", function (e) {
     });
 
 });
-var map, mapAddress = new google.maps.LatLng(52.406374, 16.925168100000064);
-google.maps.event.addDomListener(window, "load", initialize);
+//var map, mapAddress = new google.maps.LatLng(52.406374, 16.925168100000064);
+//google.maps.event.addDomListener(window, "load", initialize);
 
 
 
