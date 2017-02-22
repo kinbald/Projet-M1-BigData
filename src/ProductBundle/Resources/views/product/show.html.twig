@@ -88,7 +88,7 @@
             <div class="slideshow-container">
                 {% for product_picture in product_pictures %}
                     <div class="mySlides">
-                        <img class="photo" src="/img/upload/{{ product_picture.url }}" alt="{{ product_picture.alt }}" />
+                        <img class="photo" src="{{ asset(product_picture.url) }}" alt="{{ product_picture.alt }}"/>
                     </div>
                 {% endfor %}
                 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
