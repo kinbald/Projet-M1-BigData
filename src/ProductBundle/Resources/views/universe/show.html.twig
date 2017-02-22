@@ -187,7 +187,8 @@
                                     <a href="{{ path('product_show', {id:product.id}) }}" >
                                         <span class="product-list-primary-img">
                                             {% set picture = product.pictures|last %}
-                                            <img alt="product image" class="product-list-primary-img table-primary-img" src="/img/upload/{{ picture.url }}" />
+                                            <img alt="product image" class="product-list-primary-img table-primary-img"
+                                                 src="{{ asset(picture.url) }}"/>
                                              <br>
                                         </span>
 										<span class="swiper-slide text-center table-product-text">
@@ -196,7 +197,10 @@
 										</span>
                                     </a>
                                 </div>
-                                <span class="btn add-item wow swing" {% if picture %}data-image="/img/upload/{{ picture.url}}"{% endif %}  data-name="{{ product.name }}" data-cost="{{ product.price }}" data-id="{{ product.id }}">
+                                <span class="btn add-item wow swing"
+                                      {% if picture %}data-image="{{ asset(picture.url) }}"{% endif %}
+                                      data-name="{{ product.name }}" data-cost="{{ product.price }}"
+                                      data-id="{{ product.id }}">
                                     <img alt="e-commerce" src="{{ asset('img/product/panier.png') }}" height="55">
                                 </span>
                             </li>

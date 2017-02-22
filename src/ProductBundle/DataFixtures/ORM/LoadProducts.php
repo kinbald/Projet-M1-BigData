@@ -114,7 +114,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $picture = new PictureProduct();
         $picture->setProduct($wine1);
         $picture->setAlt('vin');
-        $picture->setUrl('vin_gigondas_rouge_2007.jpg');
+        $picture->setUrl('../uploads/Illustration Vins/vin_gigondas_rouge_2007.jpg');
         $manager->persist($picture);
         /*--------------------------------------------------------*/
         $wine2 = new Wine();
@@ -131,7 +131,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $picture = new PictureProduct();
         $picture->setProduct($wine2);
         $picture->setAlt('vin');
-        $picture->setUrl('Vin_Montauriol.jpg');
+        $picture->setUrl('../uploads/Illustration Vins/Vin_Montauriol.jpg');
         $manager->persist($picture);
         /*--------------------------------------------------------*/
         $wine3 = new Wine();
@@ -148,7 +148,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $picture = new PictureProduct();
         $picture->setProduct($wine3);
         $picture->setAlt('rose');
-        $picture->setUrl('ocean_rose.jpg');
+        $picture->setUrl('../uploads/Illustration Vins/ocean_rose.jpg');
         $manager->persist($picture);
         /*--------------------------------------------------------*/
         $wine4 = new Wine();
@@ -165,7 +165,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $picture = new PictureProduct();
         $picture->setProduct($wine4);
         $picture->setAlt('rose');
-        $picture->setUrl('rose_jeroboam_chateau_les_crostes.jpg');
+        $picture->setUrl('../uploads/Illustration Vins/rose_jeroboam_chateau_les_crostes.jpg');
         $manager->persist($picture);
 
         /*-------------------LES SPIRITUEUX-----------------------*/
@@ -184,7 +184,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $picture = new PictureProduct();
         $picture->setProduct($spiritueux1);
         $picture->setAlt('vodka');
-        $picture->setUrl('Absolut_vodka_100.jpg');
+        $picture->setUrl('../uploads/Illustrations Spiritueux/Absolut_vodka_100.jpg');
         $manager->persist($picture);
         /*--------------------------------------------------------*/
         $spiritueux2 = new Spirit();
@@ -201,7 +201,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $picture = new PictureProduct();
         $picture->setProduct($spiritueux2);
         $picture->setAlt('whisky');
-        $picture->setUrl('aged_canadian_whisky.jpg');
+        $picture->setUrl('../uploads/Illustrations Spiritueux/aged_canadian_whisky.jpg');
         $manager->persist($picture);
         /*--------------------------------------------------------*/
         $spiritueux3 = new Spirit();
@@ -218,7 +218,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $picture = new PictureProduct();
         $picture->setProduct($spiritueux3);
         $picture->setAlt('vodka');
-        $picture->setUrl('belvedere_unfiltered_vodka.jpg');
+        $picture->setUrl('../uploads/Illustrations Spiritueux/belvedere_unfiltered_vodka.jpg 	');
         $manager->persist($picture);
         /*--------------------------------------------------------*/
         $spiritueux4 = new Spirit();
@@ -235,7 +235,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $picture = new PictureProduct();
         $picture->setProduct($spiritueux4);
         $picture->setAlt('whisky');
-        $picture->setUrl('whisky-red-label.jpg');
+        $picture->setUrl('../uploads/Illustrations Spiritueux/whisky-red-label.jpg');
         $manager->persist($picture);
         /*--------------------------------------------------------*/
 
