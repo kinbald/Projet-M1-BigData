@@ -12,7 +12,8 @@ class LoadCompetitions extends AbstractFixture implements OrderedFixtureInterfac
     public function load(ObjectManager $manager)
     {
         $wine = $manager->getRepository("ProductBundle:Wine")->findOneByColor('Rouge');
-
+        $universe = $manager->getRepository("ProductBundle:Universe")->findOneByName('Femmes et spiritueux du monde');
+        
         $competition = new Competition();
         $competition->setName('Concours 01');
         $competition->setDescription('Concours vin');
@@ -23,6 +24,7 @@ class LoadCompetitions extends AbstractFixture implements OrderedFixtureInterfac
         $competitionWine->setCompetition($competition);
         $competitionWine->setPrimeName('Vin de qualité');
         $competitionWine->setWine($wine);
+        $competitionWine->setUniverse($universe);
         $manager->persist($competitionWine);
 
         $manager->flush();

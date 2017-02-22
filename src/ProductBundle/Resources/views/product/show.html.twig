@@ -110,9 +110,9 @@
                 <img alt="lauriers" src="{{ asset('img/product/lauriers.png') }}" height="55">
                 <h4 class="wow fadeInDown">Médaille</h4>
                 <p class="wow fadeInDown">{{ product.description }} </p>
-                <p>Univers : {% for universe in product.universes %} {{universe.name}} {% if not loop.last %}, {% endif %}{% endfor %} </br>
-                    Volume : {{ product.volume }} <br>
-                    Stock : {{ product.stock }} <br>
+                <p><b>Univers :</b> {% for universe in product.universes %} {{universe.name}} {% if not loop.last %}, {% endif %}{% endfor %} </br>
+                    <b>Volume : </b>{{ product.volume }} <br>
+                    <b>Stock : </b>{{ product.stock }} <br>
                     {%  block features %}
                     {% endblock %}
                 </p>

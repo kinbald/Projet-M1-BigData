@@ -38,6 +38,13 @@ class Wine extends Product
     private $color;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="region", type="string", length=255)
+     */
+    private $region;
+
+    /**
      * @var Collection
      * @ORM\OneToMany(targetEntity="ConcoursBundle\Entity\CompetitionWine", mappedBy="wine")
      */
@@ -52,6 +59,8 @@ class Wine extends Product
      * })
      */
     private $grapeVariety;
+
+
 
 
 
@@ -123,6 +132,32 @@ class Wine extends Product
     {
         return $this->color;
     }
+
+
+    /**
+     * Set region
+     *
+     * @param string $region
+     *
+     * @return Wine
+     */
+    public function setRegion($region)
+    {
+        $this->region = $region;
+
+        return $this;
+    }
+
+    /**
+     * Get region
+     *
+     * @return string
+     */
+    public function getRegion()
+    {
+        return $this->region;
+    }
+
 
     /**
      * Add competition

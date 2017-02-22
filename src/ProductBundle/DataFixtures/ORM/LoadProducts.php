@@ -4,10 +4,13 @@ namespace ProductBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
+use ProductBundle\Entity\Continent;
+use ProductBundle\Entity\Country;
 use ProductBundle\Entity\PictureProduct;
 use ProductBundle\Entity\PictureUniverse;
 use ProductBundle\Entity\ProductEvaluation;
 use ProductBundle\Entity\Purchase;
+use ProductBundle\Entity\Range;
 use ProductBundle\Entity\Spirit;
 use ProductBundle\Entity\Universe;
 use ProductBundle\Entity\Wine;
@@ -117,6 +120,59 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($picture);
 
 
+        /*-----------------------GRAPE VARIETY--------------------*/
+        /*--------------------------------------------------------*/
+
+        $grape = new GrapeVariety();
+        $grape->setName("Cabernet-sauvignon");
+        $manager->persist($grape);
+
+        $grape2 = new GrapeVariety();
+        $grape2->setName("Chardonnay");
+        $manager->persist($grape2);
+
+        /*-----------------------COUNTRY--------------------*/
+        /*--------------------------------------------------------*/
+
+        $country = new Country();
+        $country->setName("France");
+        $manager->persist($country);
+
+        $country2 = new Country();
+        $country2->setName("Espagne");
+        $manager->persist($country2);
+
+        /*-----------------------RANGE--------------------*/
+        /*--------------------------------------------------------*/
+
+        $range = new Range();
+        $range->setName("Premium");
+        $range->setImg("/img/product/lauriers.png");
+        $manager->persist($range);
+
+        /*-----------------------Recette--------------------*/
+        /*--------------------------------------------------------*/
+
+        $recipe = new Recipe();
+        $recipe->setName("Royale de foie gras au cognac");
+        $recipe->setUrl("http://www.accordeursdegoutsetdesaveurs.com/recettesnovadedi/page3.html");
+        $manager->persist($recipe);
+
+
+
+
+
+        /*-----------------------CONTINENT--------------------*/
+        /*--------------------------------------------------------*/
+
+        $continent = new Continent();
+        $continent->setName("Europe");
+        $manager->persist($continent);
+
+        $continent2 = new Country();
+        $continent2->setName("Asie");
+        $manager->persist($continent2);
+
         /*-----------------------LES VINS-------------------------*/
         /*--------------------------------------------------------*/
         $wine1 = new Wine();
@@ -127,11 +183,16 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $wine1->setDescriptionShort('Lorem ipsum dolor sit amet, consectetur adipiscing elit');
         $wine1->setVolume(1.5);
         $wine1->setPrice(135.40);
+        $wine1->setRegion('Var');
+        $wine1->setGrapeVariety($grape);
+        $wine1->setOriginContinent($continent);
+        $wine1->setOriginCountry($country) ;
+        $wine1->setRange($range);
         $wine1->setStock(30);
         $wine1->addUniverse($universe1);
         $wine1->addUniverse($universe3);
-        $manager->persist($wine1);
 
+        $manager->persist($wine1);
         $picture = new PictureProduct();
         $picture->setProduct($wine1);
         $picture->setAlt('vin');
@@ -145,9 +206,15 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $wine2->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
         $wine2->setDescriptionShort('Lorem ipsum dolor sit amet, consectetur adipiscing elit');
         $wine2->setVolume(1.5);
+        $wine2->setRegion('Var');
+        $wine2->setGrapeVariety($grape);
+        $wine2->setOriginContinent($continent);
+        $wine2->setOriginCountry($country) ;
+        $wine2->setRange($range);
         $wine2->setPrice(48.70);
         $wine2->setStock(20);
         $wine2->addUniverse($universe1);
+        $wine2->addRecipe($recipe);
         $manager->persist($wine2);
 
         $picture = new PictureProduct();
@@ -163,9 +230,15 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $wine3->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
         $wine3->setDescriptionShort('Lorem ipsum dolor sit amet, consectetur adipiscing elit');
         $wine3->setVolume(0.7);
+        $wine3->setRegion('Var');
+        $wine3->setGrapeVariety($grape);
+        $wine3->setOriginContinent($continent);
+        $wine3->setOriginCountry($country) ;
+        $wine3->setRange($range);
         $wine3->setPrice(12.70);
         $wine3->setStock(150);
         $wine3->addUniverse($universe1);
+        $wine3->addRecipe($recipe);
         $manager->persist($wine3);
 
         $picture = new PictureProduct();
@@ -181,6 +254,11 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $wine4->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
         $wine4->setDescriptionShort('Lorem ipsum dolor sit amet, consectetur adipiscing elit');
         $wine4->setVolume(0.3);
+        $wine4->setRegion('Var');
+        $wine4->setGrapeVariety($grape);
+        $wine4->setOriginContinent($continent);
+        $wine4->setOriginCountry($country) ;
+        $wine4->setRange($range);
         $wine4->setPrice(9.56);
         $wine4->setStock(110);
         $wine4->addUniverse($universe2);
@@ -297,11 +375,13 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $recipe = new Recipe();
         $recipe->setName("Boeuf bourguignon");
         $recipe->setUrl("http://lucbor.fr/boeuf%20bourguignon%20de%20Bernard%20Loiseau.pdf");
+        $recipe->addProduct($wine1);
         $manager->persist($recipe);
 
         $recipe2 = new Recipe();
         $recipe2->setName("Gratin dauphinois");
         $recipe2->setUrl("https://cuisine-facile.com/divers/recette-gratin-dauphinois.pdf");
+        $recipe->addProduct($wine2);
         $manager->persist($recipe2);
 
         /*-----------------------LES PURCHASES--------------------*/
@@ -327,29 +407,26 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $purchase2->setUser($userConsumer);
         $manager->persist($purchase2);
 
-        /*-----------------------GRAPE VARIETY--------------------*/
-        /*--------------------------------------------------------*/
 
-        $grape = new GrapeVariety();
-        $grape->setName("Cabernet-sauvignon");
-        $manager->persist($grape);
-
-        $grape2 = new GrapeVariety();
-        $grape2->setName("Chardonnay");
-        $manager->persist($grape2);
 
         /*-------------------CONDITONNING TYPE--------------------*/
         /*--------------------------------------------------------*/
-        
+
         $condition = new ConditioningType();
         $condition->setName("Caisse");
         $condition->setPrice(45);
+        $condition->addProduct($wine1);
+        $condition->addProduct($wine2);
+        $condition->addProduct($wine3);
         $manager->persist($condition);
-        
+
         $condition2 = new ConditioningType();
         $condition2->setName("Palette");
         $condition2->setPrice(125);
+        $condition2->addProduct($wine2);
+        $condition2->addProduct($wine1);
         $manager->persist($condition2);
+
 
         /*-------------------PRODUCT PURCHASE---------------------*/
         /*--------------------------------------------------------*/
