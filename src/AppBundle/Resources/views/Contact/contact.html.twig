@@ -23,37 +23,48 @@
         <h3 class="text-center">Retrouvez-nous sur les réseaux sociaux</h3>
         <br>
 
-        <table class="tableauContour">
-            <tr>
-               <td>
-                   Facebook:
-               </td>
-                <td>
-                    <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="300" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+        <table class="tableauContour_bas">
 
-                </td>
-            </tr>
+            <ul id=menu>
+                <li>Facebook : <br /><div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="300" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div></li>
+                <br />
+                <li>Twitter : <a href="https://twitter.com/twitter" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @twitter</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></li>
 
+            </ul>
+            <div id=smartphone>
+                <tr id=smartphone>
+                   <td>
+                       Facebook:
+                   </td>
+                    <td>
+                        <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="300" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+
+                    </td>
+                </tr>
+
+                <tr id=smartphone>
+                   <td>
+                       Twitter:
+                   </td>
+                    <td>
+                        <br />
+                        <a href="https://twitter.com/twitter" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @twitter</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                    </td>
+                </tr>
+            </div>
             <tr>
-               <td>
-                   Twitter:
-               </td>
-                <td>
-                    <br />
-                    <a href="https://twitter.com/twitter" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @twitter</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-                </td>
-            </tr>
-            <tr>
+
                 <div class="tableauContour">
-                    <label for="nom">Nom :</label><input type="text" id="nom" /><br />
-                    <label for="prenom">Prénom :</label><input type="text" id="prenom" /><br />
-                    <label for="email">Email :</label><input type="email" id="email" /><br />
-                    <label for="sujet">Sujet :</label><input type="text" id="sujet" /><br />
-                    <label for="type">Vous êtes :</label><select id="type"><option>client</option><option>producteur</option><option>presse</option><option>professionnel</option></select><br />
+                    <label for="nom">Nom :</label><input class="taille_zone_de_saisie" type="text" id="nom" /><br />
+                    <label for="prenom">Prénom :</label><input class="taille_zone_de_saisie" type="text" id="prenom" /><br />
+                    <label for="email">Email :</label><input class="taille_zone_de_saisie" type="email" id="email" /><br />
+                    <label for="sujet">Sujet :</label><input  class="taille_zone_de_saisie" type="text" id="sujet" /><br />
+                    <label for="type">Vous êtes :</label><select class="taille_zone_de_saisie" id="type"><option>client</option><option>producteur</option><option>presse</option><option>professionnel</option></select><br />
                     <br />
-                    <label for="sexe">Sexe :</label><input type="radio" name="sexe" id="sexe" />Homme <input type="radio" name="sexe" />Femme<br />
+                    <label for="sexe">Sexe :</label><div id="smartphone"><br /><br /></div><div class="bloc_btn_genre"><input type="radio" name="sexe" id="sexe" />Homme</div> <div class="bloc_btn_genre"><input type="radio" name="sexe" />Femme</div><br />
                     <br />
-                    <label for="message">Votre message</label><textarea id="message" placeholder="Taper votre message ici" cols="40" rows="4"></textarea><br />
+                    <label for="message">Votre message</label><textarea class="taille_zone_texte" id="message" placeholder="Taper votre message ici" cols="40" rows="4"></textarea><br />
+                    <br />
                     <input type="submit" value="Envoyer" />
                 </div>
             </tr>
