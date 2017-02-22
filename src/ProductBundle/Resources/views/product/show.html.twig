@@ -5,7 +5,7 @@
     <link href="{{ asset('css/theme-dark.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/theme-product.css') }}" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lemonada" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lemonada:300" rel="stylesheet">
 {% endblock %}
 
 {% block javascripts %}
@@ -88,7 +88,7 @@
             <div class="slideshow-container">
                 {% for product_picture in product_pictures %}
                     <div class="mySlides">
-                        <img class="photo" src="/img/upload/{{ product_picture.url }}" alt="{{ product_picture.alt }}" />
+                        <img class="photo" src="{{ asset(product_picture.url) }}" alt="{{ product_picture.alt }}"/>
                     </div>
                 {% endfor %}
                 <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -107,29 +107,29 @@
             </div>
             <img alt="lauriers" src="{{ asset('img/product/lauriers.png') }}" height="55">
             <h4 class="wow fadeInDown">Médaille</h4>
-            <p class="wow fadeInDown">{{ product.description }}</p>
+            <p class="wow fadeInDown product-description-text">{{ product.description }}</p>
             <table>
                 <tr>
-                    <td>
-                        Univers:
+                    <td class="attribute">
+                        Univers :
                     </td>
-                    <td>
+                    <td class="att-value">
                         {% for universe in product.universes %} {{universe.name}}{% if not loop.last %},</br>{% endif %}{% endfor %}
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        Volume:
+                    <td class="attribute">
+                        Volume :
                     </td>
-                    <td>
-                        {{ product.volume }}
+                    <td class="att-value">
+                        {{ product.volume }} L
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        Stock:
+                    <td class="attribute">
+                        Stock :
                     </td>
-                    <td>
+                    <td class="att-value">
                         {{ product.stock }} bouteille{% if product.stock > 1 %}s{% endif %}
                     </td>
                 </tr>

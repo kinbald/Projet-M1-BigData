@@ -1,6 +1,13 @@
 {% extends  'ProductBundle:product:show.html.twig' %}
 {% block features %}
-    degrès : {{ product.alcoholdegree }}%
+    <tr>
+        <td class="attribute">
+            Degré d'alcool :
+        </td>
+        <td class="att-value">
+            {{ product.alcoholdegree }}%
+        </td>
+    </tr>
 {% endblock %}
 
 
