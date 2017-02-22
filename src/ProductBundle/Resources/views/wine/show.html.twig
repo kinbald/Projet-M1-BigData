@@ -2,10 +2,10 @@
 {% block features %}
     <tr>
         <td class="attribute">
-            Cuvée :
+            Millésime :
         </td>
         <td class="att-value">
-            {% if product.vintage %}{{ product.vintage|date('Y-m-d') }}{% endif %}
+            {% if product.vintage %}{{ product.vintage|date('Y') }}{% endif %}
         </td>
     </tr>
     <tr>
