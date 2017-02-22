@@ -31,7 +31,7 @@ class GrapeVariety
 
     /**
      * @var Collection
-     * @ORM\OneToMany(targetEntity="\ProductBundle\Entity\Wine", mappedBy="grappeVariety")
+     * @ORM\OneToMany(targetEntity="\ProductBundle\Entity\Wine", mappedBy="grapeVariety")
      */
     private $wines;
 

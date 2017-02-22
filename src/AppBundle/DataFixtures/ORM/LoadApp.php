@@ -3,6 +3,7 @@ namespace AppBundle\DataFixtures\ORM;
 
 use AppBundle\Entity\News;
 use AppBundle\Entity\NewsAttachment;
+use AppBundle\Entity\Parameters;
 use AppBundle\Entity\Partner;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
@@ -58,6 +59,11 @@ class LoadApp extends AbstractFixture implements OrderedFixtureInterface
         $partner2->setLevel("");
         $partner2->setName("Yahoo!");
         $manager->persist($partner2);
+
+        $parameters = new Parameters();
+        $parameters->setName('TVA');
+        $parameters->setValue('19.6');
+        $manager->persist($parameters);
 
         $manager->flush();
     }
