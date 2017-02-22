@@ -36,9 +36,8 @@
             <br><br>
             {{ form_start(form) }}
             {{ form_widget(form) }}
-            <p>Image associée au produit : </p>
+            <a id="clic" id="button" href="{{ asset('uploader/fancybox.php') }}?iframe">Load a picture</a>
             <input type="text" id="chemin" name="urlImg" required>
-            <a id="button" href="{{ asset('uploader/fancybox.php') }}?iframe">Choisir</a>
         </div>
     </div>
 
@@ -54,7 +53,6 @@
         </div>
 
     </div>
-
 
     <div class="espace-bas"></div>
 

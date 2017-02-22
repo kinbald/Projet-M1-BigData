@@ -36,9 +36,8 @@
         <br><br>
         {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
-        <p>Image associée au produit : (laisser vide si non modifiée)</p>
+        <a id="clic" id="button" href="{{ asset('uploader/fancybox.php') }}?iframe">Load a picture</a>
         <input type="text" id="chemin" name="urlImg">
-        <a id="button" href="{{ asset('uploader/fancybox.php') }}?iframe">Choisir</a>
     </div>
 </div>
 
@@ -56,7 +55,6 @@
             <a class="btn btn-primary btn-circle" href="{{ path('product_list', {type: 'wine'}) }}">Back to the list</a>
         </div>
     </div>
-
 
     <div class="espace-bas"></div>
 

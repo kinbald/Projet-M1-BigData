@@ -8,7 +8,7 @@
         margin-right: auto;
     }
 
-    #productbundle_universe_name, #productbundle_wine_color, #productbundle_wine_vintage,
+    #productbundle_universe_name, #productbundle_wine_color, #productbundle_wine_vintage, #chemin,
     #productbundle_wine_stock, #productbundle_wine_price, #productbundle_wine_volume, #productbundle_universe_description,
     #productbundle_wine_name, #mediabundle_files_url, #mediabundle_files_name, #mediabundle_files_date_date, #productbundle_purchase_address,
     #userbundle_userconsumer_sex, #productbundle_purchase_city, #productbundle_purchase_postalCode, #productbundle_wine_alcoholDegree,
@@ -53,7 +53,7 @@
         text-align: center;
     }
 
-    #productbundle_universe_name, #productbundle_wine_color, #productbundle_wine_vintage,
+    #productbundle_universe_name, #productbundle_wine_color, #productbundle_wine_vintage, #chemin,
     #productbundle_wine_stock, #productbundle_wine_price, #productbundle_wine_volume, #productbundle_universe_description,
     #productbundle_wine_name, #mediabundle_files_url, #mediabundle_files_name, #mediabundle_files_date_date, #productbundle_purchase_address,
     #userbundle_userconsumer_sex, #productbundle_purchase_city, #productbundle_purchase_postalCode, #productbundle_wine_alcoholDegree,
@@ -83,8 +83,29 @@
     }
 
 
+    #clic{
+        border-radius: 3px;
+        padding: 5px;
+        background-color: #c6a668;
+        color:white;
+        font-style: italic;
+        float: right;
+        display: inline-block;
+    }
+
 }
 
 .espace-bas{
     height: 80px;
+}
+
+#clic{
+    border-radius: 3px;
+    padding: 5px;
+    background-color: #c6a668;
+    color:white;
+    font-style: italic;
+    float: left;
+    display: inline-block;
+    margin-right: 30px;
 }
