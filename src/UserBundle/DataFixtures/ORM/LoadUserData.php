@@ -7,6 +7,8 @@ use Doctrine\Common\Persistence\ObjectManager;
 use UserBundle\Entity\UserConsumer;
 use UserBundle\Entity\UserMedia;
 use UserBundle\Entity\UserProducer;
+use UserBundle\Entity\UserWholesale;
+use UserBundle\Repository\UserWholesaleRepository;
 
 class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
 {
@@ -101,6 +103,18 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $userMedia->setIdPresse('134864785');
         $userMedia->setUrlBlog('blablavzelijla.com');
         $manager->persist($userMedia);
+
+        $userWhole = new UserWholesale();
+        $userWhole->setUsername('SteamSale');
+        $userWhole->setUsernameCanonical('wholesale1');
+        $userWhole->setEmail('zlvhlejelivj@gmail.com');
+        $userWhole->setEmailCanonical('zlvhleivjelivj@gmail.com');
+        $userWhole->setEnabled(true);
+        $userWhole->setPassword('$2y$12$VtTfiZZ68ThnssIEc8vkp.pkCL9YGAKB85Zk/8Ur3Mjgk8t2h3drf');
+        $userWhole->setFirstname('vepojtgo');
+        $userWhole->setLastname('erfcvek');
+        $userWhole->setCompanyName('Baboo');
+        $manager->persist($userWhole);
 
         $manager->flush();
     }

@@ -17,7 +17,7 @@ use FOS\UserBundle\Model\User as FosUser;
  * @ORM\Entity(repositoryClass="UserBundle\Repository\BaseUserRepository")
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="discr", type="string")
- * @ORM\DiscriminatorMap({"consumer" = "UserConsumer", "media" = "UserMedia", "producer" = "UserProducer"})
+ * @ORM\DiscriminatorMap({"consumer" = "UserConsumer", "media" = "UserMedia", "producer" = "UserProducer", "wholesale" = "UserWholesale"})
  */
 abstract class BaseUser extends FosUser
 {
