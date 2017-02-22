@@ -1,6 +1,20 @@
 {% extends  'ProductBundle:product:show.html.twig' %}
 {% block features %}
-    {% if product.vintage %}{{ product.vintage|date('Y-m-d') }}{% endif %} </br>
-    Color : {{ product.color }}
+    <tr>
+        <td class="attribute">
+            Cuvée :
+        </td>
+        <td class="att-value">
+            {% if product.vintage %}{{ product.vintage|date('Y-m-d') }}{% endif %}
+        </td>
+    </tr>
+    <tr>
+        <td class="attribute">
+            Couleur :
+        </td>
+        <td class="att-value">
+            {{ product.color }}
+        </td>
+    </tr>
 {% endblock %}
 
