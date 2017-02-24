@@ -16,7 +16,7 @@ class DefaultController extends Controller
     {
         $model = new MediaModel($this->getDoctrine()->getManager());
         return $this->render('MediaBundle:Default:media.html.twig', [
-            'medias' => $model->getAllMedias(2,1)
+            'medias' => $model->getAllMedias(20, 0)
         ]);
     }
 }
