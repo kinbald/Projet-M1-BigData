@@ -147,6 +147,12 @@ abstract class Product
     protected $users;
 
     /**
+     * @var Collection
+     * @ORM\OneToMany(targetEntity="\ProductBundle\Entity\Reservation", mappedBy="product")
+     */
+    protected $reservations;
+
+    /**
      * Get id
      *
      * @return int
@@ -305,6 +311,7 @@ abstract class Product
     public function __construct()
     {
         $this->pictures = new ArrayCollection();
+        $this->reservations = new ArrayCollection();
     }
 
     public function __toString()
@@ -587,5 +594,39 @@ abstract class Product
     public function getRange()
     {
         return $this->range;
+    }
+
+    /**
+     * Add reservations
+     *
+     * @param \ProductBundle\Entity\Reservation $reservation
+     *
+     * @return Product
+     */
+    public function addReservation(\ProductBundle\Entity\Reservation $reservation)
+    {
+        $this->reservations[] = $reservation;
+
+        return $this;
+    }
+
+    /**
+     * Remove reservations
+     *
+     * @param \ProductBundle\Entity\Reservation $reservation
+     */
+    public function removeReservation(\ProductBundle\Entity\Reservation $reservation)
+    {
+        $this->reservations->removeElement($reservation);
+    }
+
+    /**
+     * Get reservations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReservations()
+    {
+        return $this->reservations;
     }
 }

@@ -5375,6 +5375,16 @@ if (function (e, t) {
             $("body").toggleClass("cart-widget-open");
         });
         $("#cart-widget-close").click(function() {
+            /* sert à rafraichir la table reservation (et donc également la table product) dans la DB
+            $.post(refresh_route, { panier: JSON.parse(window.localStorage.getItem('panier')) })
+                .done(function (data) {
+                
+                })
+                .fail(function (data) {
+
+            });
+            */
+            
             $("body").toggleClass("cart-widget-open");
         });
 

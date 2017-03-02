@@ -2,6 +2,7 @@
 
 namespace UserBundle\Entity;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use ProductBundle\Entity\Purchase;
 use Symfony\Component\Validator\Constraints\Date;
@@ -57,6 +58,12 @@ abstract class BaseUser extends FosUser
      * @ORM\OneToMany(targetEntity="\ProductBundle\Entity\Purchase", mappedBy="user")
      */
     private $purchases;
+
+    /**
+     * @var Collection
+     * @ORM\OneToMany(targetEntity="\ProductBundle\Entity\Reservation", mappedBy="user_id")
+     */
+    private $reservations;
 
 
     /**
@@ -147,6 +154,7 @@ abstract class BaseUser extends FosUser
     {
         parent::__construct();
         $this->purchases = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->reservations = new \Doctrine\Common\Collections\ArrayCollection();
         $this->subDate = new \DateTime();
     }
 
@@ -182,5 +190,39 @@ abstract class BaseUser extends FosUser
     public function getPurchases()
     {
         return $this->purchases;
+    }
+
+    /**
+     * Add reservation
+     *
+     * @param \ProductBundle\Entity\Reservation $reservation
+     *
+     * @return BaseUser
+     */
+    public function addReservation(\ProductBundle\Entity\Reservation $reservation)
+    {
+        $this->reservations[] = $reservation;
+
+        return $this;
+    }
+
+    /**
+     * Remove reservation
+     *
+     * @param \ProductBundle\Entity\Reservation $reservation
+     */
+    public function removeReservation(\ProductBundle\Entity\Reservation $reservation)
+    {
+        $this->reservations->removeElement($reservation);
+    }
+
+    /**
+     * Get reservation
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReservation()
+    {
+        return $this->reservations;
     }
 }
