@@ -1,10 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lemonada" rel="stylesheet">
-    <link href="{{ asset('css/bootstrap-dark.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/theme-dark.css') }}" rel="stylesheet" />
+    {{ parent() }}
     <link href="{{ asset('css/inscription.css') }}" rel="stylesheet"/>
 {% endblock %}
 
