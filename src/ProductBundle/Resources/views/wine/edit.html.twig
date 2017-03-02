@@ -37,7 +37,7 @@
             {{ form_start(edit_form) }}
             {{ form_widget(edit_form) }}
 
-            <a id="clic" id="button" href="{{ asset('uploader/fancybox.php') }}?iframe">Load a picture</a>
+            <a  id="button" class="clic" href="{{ asset('uploader/fancybox.php') }}?iframe">Load a picture</a>
             <input type="text" id="chemin" name="urlImg" required>
 
             <br>
@@ -49,6 +49,16 @@
                         <td class="voir"><a href="{{ asset(picture.url) }}">voir</a></td>
                         <td class="supprimer">supprimer</td>
                     </tr>
+
+                    <!--
+
+                <tr>
+                    <td class="url"> picture.url }}</td>
+                    <td class="voir"><a href=" asset(picture.url) }}"><img src="/img/adminlogo/eye.png" alt="preview" style="height: 20px;"></a></td>
+                    <td class="supprimer"><img src="/img/adminlogo/trash.png" alt="delete"  style="height: 20px;></td>
+                                </tr>
+
+                    -->
                 {% endfor %}
             </table>
 
