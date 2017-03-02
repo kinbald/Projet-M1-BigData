@@ -38,9 +38,8 @@
             {{ form_start(form) }}
             {{ form_widget(form) }}
 
-            <p>Fichiers à téléverser :</p>
-            <input type="text" id="chemin" name="urlFile" required>
-            <a id="button" href="{{ asset('uploader/fancybox.php') }}?iframe">Choisir</a>
+            <a id="clic" id="button" href="{{ asset('uploader/fancybox.php') }}?iframe">Load a file</a>
+            <input type="text" id="chemin" name="urlImg" required>
 
         </div>
     </div>

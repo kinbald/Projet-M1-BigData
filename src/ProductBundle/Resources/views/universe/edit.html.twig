@@ -30,16 +30,16 @@
 
 {% block body %}
 
-<div id="contenu">
-    <div id="content">
-        <h1>Universe edit</h1>
-        <br><br>
-        {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <a id="clic" id="button" href="{{ asset('uploader/fancybox.php') }}?iframe">Load a picture</a>
-        <input type="text" id="chemin" name="urlImg">
+    <div id="contenu">
+        <div id="content">
+            <h1>Universe edit</h1>
+            <br><br>
+            {{ form_start(edit_form) }}
+            {{ form_widget(edit_form) }}
+            <a id="clic" id="button" href="{{ asset('uploader/fancybox.php') }}?iframe">Load a picture</a>
+            <input type="text" id="chemin" name="urlImg">
+        </div>
     </div>
-</div>
 
     <div id="boutons">
         <div class="bouton1">
