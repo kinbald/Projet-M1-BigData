@@ -40,4 +40,14 @@ class ReservationRepository extends \Doctrine\ORM\EntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function deleteOldReservations(\DateTime $datetime)
+    {
+        return $this->createQueryBuilder('m')
+            ->delete()
+            ->where("m.date < ?1")
+            ->setParameter(1, $datetime->format('Y-m-d H:i:s'))
+            ->getQuery()
+            ->getResult();
+    }
 }
