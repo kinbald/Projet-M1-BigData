@@ -10,4 +10,7 @@ namespace ProductBundle\Repository;
  */
 class UniverseRepository extends \Doctrine\ORM\EntityRepository
 {
+
 }
+
+
