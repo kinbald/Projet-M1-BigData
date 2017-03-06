@@ -46,19 +46,11 @@
 
                     <tr>
                         <td class="url">{{ picture.url }}</td>
-                        <td class="voir"><a href="{{ asset(picture.url) }}">voir</a></td>
-                        <td class="supprimer">supprimer</td>
+                        <td><div class="pic1"><a href="{{ asset(picture.url) }}"><img src="/img/adminlogo/eye.png" alt="preview" style="height: 30px;"></a></div></td>
+                        <td><div class="pic1"><img src="/img/adminlogo/trash.png" alt="delete"  style="height: 30px;></div></td>
+                        <td class="supprimer"></td>
                     </tr>
 
-                    <!--
-
-                <tr>
-                    <td class="url"> picture.url }}</td>
-                    <td class="voir"><a href=" asset(picture.url) }}"><img src="/img/adminlogo/eye.png" alt="preview" style="height: 20px;"></a></td>
-                    <td class="supprimer"><img src="/img/adminlogo/trash.png" alt="delete"  style="height: 20px;></td>
-                                </tr>
-
-                    -->
                 {% endfor %}
             </table>
 
