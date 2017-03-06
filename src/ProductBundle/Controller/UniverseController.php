@@ -2,9 +2,8 @@
 
 namespace ProductBundle\Controller;
 
-
-use \ProductBundle\Entity\Universe;
-use ProductBundle\Model\UniversModel;
+use ProductBundle\Entity\PictureUniverse;
+use ProductBundle\Entity\Universe;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -48,8 +47,18 @@ class UniverseController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
             $em->persist($universe);
-            $em->flush($universe);
+            $em->flush();
+
+            $urlImg = $request->get('urlImg');
+            $pictUniv = new PictureUniverse();
+            $pictUniv->setUrl($urlImg);
+            $pictUniv->setAlt($universe->getName());
+            $pictUniv->setUniverse($universe);
+
+            $em->persist($pictUniv);
+            $em->flush();
 
             return $this->redirectToRoute('universe_show', array('id' => $universe->getId()));
         }
@@ -61,16 +70,19 @@ class UniverseController extends Controller
     }
 
     /**
-     * //////////OLD \\\\\\\\\\\\Finds and displays all of a universe entity.
+     * Finds and displays a universe entity.
      *
-     * @Route("/{id}/old", name="universe_show",
+     * @Route("/{id}", name="universe_show",
      *     requirements={
      *         "id": "\d+",
      *     })
      * @Method("GET")
-
+     */
     public function showAction(Universe $universe)
     {
+        $deleteForm = $this->createDeleteForm($universe);
+
+
         $pictureArray = array();
         $products = $universe->getProducts();
                     foreach ($products as $product) {
@@ -80,68 +92,11 @@ class UniverseController extends Controller
 
         return $this->render('ProductBundle:universe:show.html.twig', array(
             'universe' => $universe,
+            'delete_form' => $deleteForm->createView(),
             'products' => $products,
             'product_pictures' => $pictureArray,
-        ));
-    }*/
-
-
-
-
-
-    /**
-     * Finds and displays a universe entity with a query.
-     *
-     * @Route("/{id}", name="universe_show",
-     *     requirements={
-     *         "id": "\d+",
-     *     })
-     * @Method({"GET", "POST"})
-     */
-    public function showActionQuery(Request $request, Universe $universe)
-    {
-        $pictureArray = array();
-        $products = $universe->getProducts();
-        $formResult=null;
-        $options=array(); //options du formulaire
-        $searchForm = $this->createForm('ProductBundle\Form\SearchType', $options);
-        $model = new UniversModel($this->getDoctrine()->getManager());
-
-
-        $searchForm->handleRequest($request);
-
-        if ($searchForm->isSubmitted() && $searchForm->isValid()) { // si le formulaire est rempli et valide, alors on retourne les résultats de la recherche
-
-            $formResult= $searchForm->getData(); //On récupère les données du formulaire puis on exécute la recherche et on renvoie les résultats dans products pour affichage
-
-            if($formResult['name']!=null){
-                $products = $model->findProductsByName($formResult['name']);
-            }
-
-            if($formResult['price_max']!=null) {
-                $products = $model->findProductsByPrice($formResult['price_max']);
-            }
-
-
-        }
-
-        foreach ($products as $product) { // pour récupérer les photos des produits
-            $pictures=$product->getPictures();
-            array_push($pictureArray, $pictures[0]);
-        }
-
-        return $this->render('ProductBundle:universe:show.html.twig', array(
-            'universe' => $universe,
-            'search_form' => $searchForm->createView(),
-            'products' => $products,
-            'product_pictures' => $pictureArray,
-            'query' => $formResult //pour le débug
         ));
     }
-
-
-
-
 
     /**
      * Displays a form to edit an existing universe entity.
@@ -159,7 +114,20 @@ class UniverseController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+
+            $em = $this->getDoctrine()->getManager();
+
+            $urlImg = $request->get('urlImg');
+            if ($urlImg) {
+                $pictUniv = new PictureUniverse();
+                $pictUniv->setUrl($urlImg);
+                $pictUniv->setAlt($universe->getName());
+                $pictUniv->setUniverse($universe);
+
+                $em->persist($pictUniv);
+            }
+
+            $em->flush();
 
             return $this->redirectToRoute('universe_edit', array('id' => $universe->getId()));
         }

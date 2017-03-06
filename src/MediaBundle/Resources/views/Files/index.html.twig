@@ -32,7 +32,7 @@
                     <td>{{ file.id }}</td>
                     <td>{{ file.date|date("d/m/Y") }}</td>
                     <td>{{ file.name }}</td>
-                    <td><a href="{{ file.url }}">{{ file.url }}</a></td>
+                    <td><a href="{{ asset(file.url) }}">{{ file.url }}</a></td>
                     <td>
                         <ul>
                             <li>

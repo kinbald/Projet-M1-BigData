@@ -1,3 +1,4 @@
+@media (max-width: 480px){
 
 #content {
     margin-top: 75px;
@@ -10,7 +11,7 @@ h1 {
 
 .tableauContour {
     font-family: 'Lemonada', cursive;
-    width: 35vw;
+    width: 80vw;
     box-shadow: 2px 2px 6px #AAA ;
     padding: 20px;
     margin-left: auto;
@@ -22,11 +23,28 @@ h1 {
 
 }
 
+.tableauContour_bas {
+    font-family: 'Lemonada', cursive;
+    width: 80vw;
+    height: 10vh;
+    box-shadow: 2px 2px 6px #AAA ;
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
+
+    margin-bottom: 20px;
+    border-radius: 20px;
+    border-collapse: separate;
+
+}
+
+#menu {
+    display: none;
+}
+
 input,option,select {
     color: black;
 }
-
-
 
 label
 {
@@ -35,30 +53,18 @@ label
     width: 150px;
     float: left;
 }
-
-
-.zonetexte {
-    width: 30vw;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 20px;
-    margin-bottom: 10px;
-    font-family: 'Lemonada', cursive;
+.bloc_btn_genre{
+    display: inline-block;
+    margin-left: 10px;
+}
+.taille_zone_de_saisie{
+    width: 100%;
 }
 
-
-.tabcenter{
-    margin-left:auto;
-    margin-right:auto;
+.taille_zone_texte{
+    border-radius: 10px;
+    width: 100%;
 }
-
-.titre{
-    background-color: green;
-    text-align: center;
-    height: 20vh;
-    width: 100vw;
-}
-
 
 td {
     font-family: Lemonada, cursive;
@@ -66,15 +72,6 @@ td {
 }
 
 
-.paragraphe {
-    display: block;
-    /*background-color: red;*/
-    height: 20em;
-    width: 90em;
-    margin-right: 5em;
-    margin-left: 5em;
-    float: right;
-}
 
 textarea {
     color: black;
@@ -82,26 +79,95 @@ textarea {
 
 
 
-.photo {
-    display: inline-block;
-    background-color: #0d8aee;
-    margin-left: 5em;
-    height: 20em;
-    width: 20em;
-    /*float: left;*/
 }
 
+/*///////////////////////////////////////////////////////////////////////
+
+                    //ECRAN taille moyenne-grande//
+
+////////////////////////////////////////////////////////////////////////*/
+
+@media (min-width: 480px) {
+
+    #content {
+        margin-top: 75px;
+    }
+
+    h1 {
+        color:#c6a668;
+    }
+    .bloc_btn_genre{
+        display: inline-block;
+        margin-left: 10px;
+    }
+
+    .tableauContour {
+        font-family: 'Lemonada', cursive;
+        width: 50vw;
+        box-shadow: 2px 2px 6px #AAA ;
+        padding: 20px;
+        margin-left: auto;
+        margin-right: auto;
+
+        margin-bottom: 20px;
+        border-radius: 20px;
+        border-collapse: separate;
+
+    }
+
+    input,option,select {
+        color: black;
+    }
 
 
-@media all and (max-device-width: 480px)
-{
-    body,p { font-size: 28em; }
-    h1,h2,h3 { font-size: 33em; }
-}
+
+    label
+    {
+        display: block;
+        width: 150px;
+        float: left;
+    }
+
+    .taille_zone_de_saisie{
+        width: 30vw;
+    }
+
+    .taille_zone_texte{
+        border-radius: 10px;
+        width: 100%;
+    }
+    #smartphone {
+        display: none;
+    }
+
+    #menu {
+
+        font-family: Lemonada, cursive;
+        padding: 20px;
+        background-color: rgba(100,100,100,0.5);
+        width: 20vw;
+        min-width: 150px;
+        max-width: 250px;
+        height: 15vh;
+        min-height: 150px;
+        max-height: 150px;
+        box-shadow: 2px 2px 6px #000 ;
+        border-radius: 10px;
+        position: fixed;
+        left: 3vw;
+        top: 20%;
 
 
-@media (max-width: 480px)
-{
-    body,p { font-size: 18em; }
-    h1,h2,h3 { font-size: 23em; }
+        margin-top: -2.5em;
+    }
+
+
+    td {
+        font-family: Lemonada, cursive;
+        margin: 10px;
+    }
+
+    textarea {
+        color: black;
+    }
 }

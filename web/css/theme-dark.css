@@ -5023,3 +5023,9 @@ button.close, .close {
     background: #C6A668; }
 
 /*# sourceMappingURL=theme-dark.css.map */
+
+@media (min-width: 480px){
+  #myNavbar {
+    padding:0 160px 0 160px;
+  }
+}

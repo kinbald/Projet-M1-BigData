@@ -29,21 +29,14 @@
                     <th>Description</th>
                 </tr>
             </thead>
-            <tfoot>
-                <tr>
-                    <th>Date</th>
-                    <th>Nom auteur</th>
-                    <th>Description</th>
-                </tr>
-            </tfoot>
             <tbody>
-                {%  for i in 0..20 %}
+            {% for media in medias %}
                 <tr>
-                    <td class="date">XX/XX/XXXX</td>
-                    <td class="auteur">Nom auteur</td>
+                    <td class="date">{{ media.date|date('Y-m-d') }}</td>
+                    <td class="titre">{{ media.name }}</td>
                     <td class="contenu">
-                        <a href="http://www.femmesetvinsdumonde.com/">
-                            Cliquez sur la description pour accéder à l'article
+                        <a href="{{ asset(media.url) }}/">
+                            Télécharger
                         </a>
                     </td>
                 </tr>

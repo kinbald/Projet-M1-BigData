@@ -2,6 +2,7 @@
 
 namespace ProductBundle\Controller;
 
+use ProductBundle\Entity\PictureProduct;
 use ProductBundle\Entity\Product;
 use ProductBundle\Entity\Wine;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -41,7 +42,7 @@ class ProductController extends Controller
     public function listAction($type)
     {
         $em = $this->getDoctrine()->getManager();
-        $products = $em->getRepository('ProductBundle:'.ucfirst($type))->findAll();
+        $products = $em->getRepository('ProductBundle:' . ucfirst($type))->findAll();
         //\Doctrine\Common\Util\Debug::dump($product->getDiscr());
         return $this->render('ProductBundle:' . $type . ':index.html.twig', array(
             'products' => $products,
@@ -62,13 +63,22 @@ class ProductController extends Controller
     {
         $class = 'ProductBundle\Entity\\' . ucfirst($type);
         $product = new $class();
-        $form = $this->createForm('ProductBundle\Form\\' . ucfirst($type) .  'Type', $product);
+        $form = $this->createForm('ProductBundle\Form\\' . ucfirst($type) . 'Type', $product);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            //\Doctrine\Common\Util\Debug::dump($product->getUniverses());
             $em = $this->getDoctrine()->getManager();
+
             $em->persist($product);
-            $em->flush($product);
+            $em->flush();
+
+            $urlImg = $request->get('urlImg');
+            $pictProduct = new PictureProduct();
+            $pictProduct->setUrl($urlImg);
+            $pictProduct->setAlt($product->getName());
+            $pictProduct->setProduct($product);
+
+            $em->persist($pictProduct);
+            $em->flush();
 
             return $this->redirectToRoute('product_list', array('type' => $product->getDiscr()));
         }
@@ -91,11 +101,21 @@ class ProductController extends Controller
     public function editAction(Request $request, Product $product)
     {
         $deleteForm = $this->createDeleteForm($product, $product->getDiscr());
-        $editForm = $this->createForm('ProductBundle\Form\\' . ucfirst($product->getDiscr()) .  'Type', $product);
+        $editForm = $this->createForm('ProductBundle\Form\\' . ucfirst($product->getDiscr()) . 'Type', $product);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $em = $this->getDoctrine()->getManager();
+            $urlImg = $request->get('urlImg');
+            if ($urlImg) {
+                $pictProduct = new PictureProduct();
+                $pictProduct->setUrl($urlImg);
+                $pictProduct->setAlt($product->getName());
+                $pictProduct->setProduct($product);
+
+                $em->persist($pictProduct);
+            }
+            $em->flush();
 
             return $this->redirectToRoute('product_list', array('type' => $product->getDiscr()));
         }
@@ -104,6 +124,7 @@ class ProductController extends Controller
             $product->getDiscr() => $product,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            'pictures' => $product->getPictures(),
         ));
     }
 
@@ -145,14 +166,13 @@ class ProductController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('product_delete', array('id' => $product->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-            ;
+            ->getForm();
     }
 
     /**
      * Finds and displays a wine entity.
      *
-     * @Route("/{id}", name="product_show"), 
+     * @Route("/{id}", name="product_show"),
      *     requirements={
      *         "id": "\d+",
      *     })
@@ -170,4 +190,22 @@ class ProductController extends Controller
         ));
     }
 
+    /**
+     * Supprime une image d'un produit
+     *
+     * @Route("/{id}/delImg/{idImg}", name="product_del_img",
+     *     requirements={
+     *         "id": "\d+",
+     *         "idImg": "\d+",
+     *     })
+     * @Method({"GET", "POST"})
+     */
+    public function delImgAction(Request $request, Product $product)
+    {
+        $id = $request->get("idImg");
+        $em = $this->getDoctrine()->getManager();
+        $picture = $em->getRepository("ProductBundle:PictureProduct")->find($id);
+        $product->removePicture($picture);
+        return $this->redirectToRoute('product_edit', array('type' => $product->getDiscr()));
+    }
 }

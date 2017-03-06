@@ -4,27 +4,74 @@
     <link href="{{ asset('css/bootstrap-dark.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/theme-dark.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/edit.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/formulaire.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('uploader/fancybox/source/jquery.fancybox.css') }}">
+{% endblock %}
+{% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{{ asset('uploader/fancybox/source/jquery.fancybox.pack.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('uploader/js/uploader.js') }}"></script>
+    <script type="text/javascript">
+        var uploader = new Uploader("chemin");
+        $("#button").fancybox({
+            'fitToView': false,
+            'width': '75%',
+            'height': '80%',
+            'autoScale': false,
+            'autoSize': false,
+            'transitionIn': 'elastic',
+            'transitionOut': 'elastic',
+            'type': 'iframe'
+        });
+    </script>
 {% endblock %}
 
 {% block body %}
-    <div id="content">
-        <h1>Wine edit</h1>
-        <br><br>
-        {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <table>
-            <td>
-                <input class="btn btn-primary btn-circle" type="submit" value="Edit" />
-            </td>
-            {{ form_end(edit_form) }}
-            {{ form_start(delete_form) }}
-            <td>
-                <input class="btn btn-primary btn-circle" type="submit" value="Delete">
-            </td>
-            {{ form_end(delete_form) }}
-            <td>
-                <a class="btn btn-primary btn-circle" href="{{ path('product_list', {type: 'wine'}) }}">Back to the list</a>
-            </td>
-        </table>
+
+    <div id="contenu">
+        <div id="content">
+            <h1>Wine edit</h1>
+            <br><br>
+            {{ form_start(edit_form) }}
+            {{ form_widget(edit_form) }}
+
+            <a  id="button" class="clic" href="{{ asset('uploader/fancybox.php') }}?iframe">Load a picture</a>
+            <input type="text" id="chemin" name="urlImg" required>
+
+            <br>
+            <table>
+                {% for picture in pictures %}
+
+                    <tr>
+                        <td class="url">{{ picture.url }}</td>
+                        <td><div class="pic1"><a href="{{ asset(picture.url) }}"><img src="/img/adminlogo/eye.png" alt="preview" style="height: 30px;"></a></div></td>
+                        <td><div class="pic1"><img src="/img/adminlogo/trash.png" alt="delete"  style="height: 30px;></div></td>
+                        <td class="supprimer"></td>
+                    </tr>
+
+                {% endfor %}
+            </table>
+
+        </div>
     </div>
+
+    <div id="boutons">
+        <div class="bouton1">
+            <input class="btn btn-primary btn-circle" type="submit" value="Edit" />
+        </div>
+        {{ form_end(edit_form) }}
+        {{ form_start(delete_form) }}
+        <div class="bouton1">
+            <input class="btn btn-primary btn-circle" type="submit" value="Delete">
+        </div>
+        {{ form_end(delete_form) }}
+        <div class="bouton1">
+            <a class="btn btn-primary btn-circle" href="{{ path('product_list', {type: 'wine'}) }}">Back to the list</a>
+        </div>
+    </div>
+
+    <div class="espace-bas"></div>
+
 {% endblock %}

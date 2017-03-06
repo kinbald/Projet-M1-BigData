@@ -47,10 +47,14 @@ class FilesController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            $urlFile = $request->get('urlFile');
+            $file->setUrl($urlFile);
+            $file->setDate(date_create(date("Y-m-d H:i:s")));
             $em->persist($file);
             $em->flush($file);
 
-            return $this->redirectToRoute('files_show', array('id' => $file->getId()));
+            return $this->redirectToRoute('files_index');
         }
 
         return $this->render('MediaBundle:Files:new.html.twig', array(
@@ -88,7 +92,13 @@ class FilesController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $em = $this->getDoctrine()->getManager();
+            $urlFile = $request->get('urlFile');
+            if ($urlFile != '') {
+                $file->setDate(date_create(date("Y-m-d H:i:s")));
+                $file->setUrl($urlFile);
+            }
+            $em->flush();
 
             return $this->redirectToRoute('files_edit', array('id' => $file->getId()));
         }

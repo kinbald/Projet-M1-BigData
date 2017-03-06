@@ -45,7 +45,8 @@ label
 #productbundle_purchase_city,
 #productbundle_purchase_postalCode,
 #productbundle_purchase_country,
-#productbundle_purchase_user{
+#productbundle_purchase_user,
+#chemin{
     border-radius: 10px;
     color:#555555;
 }

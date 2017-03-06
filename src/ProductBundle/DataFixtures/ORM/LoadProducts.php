@@ -30,7 +30,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
 
         $picture = new PictureUniverse();
         $picture->setAlt('Femmes et vin du monde');
-        $picture->setUrl('univ_femme.jpg');
+        $picture->setUrl('../uploads/Illustrations Univers/univ_femme.jpg');
         $picture->setUniverse($universe1);
         $manager->persist($picture);
 
@@ -42,7 +42,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
 
         $picture = new PictureUniverse();
         $picture->setAlt('Femmes et vin de France');
-        $picture->setUrl('univ_france.jpg');
+        $picture->setUrl('../uploads/Illustrations Univers/univ_france.jpg');
         $picture->setUniverse($universe2);
         $manager->persist($picture);
 
@@ -54,7 +54,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
 
         $picture = new PictureUniverse();
         $picture->setAlt('Femmes et spiritueux du monde');
-        $picture->setUrl('univ_monde.jpg');
+        $picture->setUrl('../uploads/Illustrations Univers/univ_monde.jpg');
         $picture->setUniverse($universe3);
         $manager->persist($picture);
 
@@ -66,7 +66,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
 
         $picture = new PictureUniverse();
         $picture->setAlt('terroir');
-        $picture->setUrl('univ_terroir.jpg');
+        $picture->setUrl('../uploads/Illustrations Univers/univ_terroir.jpg');
         $picture->setUniverse($universe4);
         $manager->persist($picture);
 
@@ -79,7 +79,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
 
         $picture = new PictureUniverse();
         $picture->setAlt('gastronomie');
-        $picture->setUrl('univ_gastronomie.jpg');
+        $picture->setUrl('../uploads/Illustrations Univers/univ_gastronomie.jpg');
         $picture->setUniverse($universe5);
         $manager->persist($picture);
 
@@ -92,7 +92,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
 
         $picture = new PictureUniverse();
         $picture->setAlt('vin rosés');
-        $picture->setUrl('univ_rose.jpg');
+        $picture->setUrl('../uploads/Illustrations Univers/univ_rose.jpg');
         $picture->setUniverse($universe6);
         $manager->persist($picture);
 
@@ -114,7 +114,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $picture = new PictureProduct();
         $picture->setProduct($wine1);
         $picture->setAlt('vin');
-        $picture->setUrl('vin_gigondas_rouge_2007.jpg');
+        $picture->setUrl('../uploads/Illustration Vins/vin_gigondas_rouge_2007.jpg');
         $manager->persist($picture);
         /*--------------------------------------------------------*/
         $wine2 = new Wine();
@@ -131,7 +131,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $picture = new PictureProduct();
         $picture->setProduct($wine2);
         $picture->setAlt('vin');
-        $picture->setUrl('Vin_Montauriol.jpg');
+        $picture->setUrl('../uploads/Illustration Vins/Vin_Montauriol.jpg');
         $manager->persist($picture);
         /*--------------------------------------------------------*/
         $wine3 = new Wine();
@@ -148,7 +148,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $picture = new PictureProduct();
         $picture->setProduct($wine3);
         $picture->setAlt('rose');
-        $picture->setUrl('ocean_rose.jpg');
+        $picture->setUrl('../uploads/Illustration Vins/ocean_rose.jpg');
         $manager->persist($picture);
         /*--------------------------------------------------------*/
         $wine4 = new Wine();
@@ -165,7 +165,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $picture = new PictureProduct();
         $picture->setProduct($wine4);
         $picture->setAlt('rose');
-        $picture->setUrl('rose_jeroboam_chateau_les_crostes.jpg');
+        $picture->setUrl('../uploads/Illustration Vins/rose_jeroboam_chateau_les_crostes.jpg');
         $manager->persist($picture);
 
         /*-------------------LES SPIRITUEUX-----------------------*/
@@ -184,7 +184,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $picture = new PictureProduct();
         $picture->setProduct($spiritueux1);
         $picture->setAlt('vodka');
-        $picture->setUrl('Absolut_vodka_100.jpg');
+        $picture->setUrl('../uploads/Illustrations Spiritueux/Absolut_vodka_100.jpg');
         $manager->persist($picture);
         /*--------------------------------------------------------*/
         $spiritueux2 = new Spirit();
@@ -201,7 +201,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $picture = new PictureProduct();
         $picture->setProduct($spiritueux2);
         $picture->setAlt('whisky');
-        $picture->setUrl('aged_canadian_whisky.jpg');
+        $picture->setUrl('../uploads/Illustrations Spiritueux/aged_canadian_whisky.jpg');
         $manager->persist($picture);
         /*--------------------------------------------------------*/
         $spiritueux3 = new Spirit();
@@ -218,7 +218,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $picture = new PictureProduct();
         $picture->setProduct($spiritueux3);
         $picture->setAlt('vodka');
-        $picture->setUrl('belvedere_unfiltered_vodka.jpg');
+        $picture->setUrl('../uploads/Illustrations Spiritueux/belvedere_unfiltered_vodka.jpg 	');
         $manager->persist($picture);
         /*--------------------------------------------------------*/
         $spiritueux4 = new Spirit();
@@ -235,7 +235,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $picture = new PictureProduct();
         $picture->setProduct($spiritueux4);
         $picture->setAlt('whisky');
-        $picture->setUrl('whisky-red-label.jpg');
+        $picture->setUrl('../uploads/Illustrations Spiritueux/whisky-red-label.jpg');
         $manager->persist($picture);
         /*--------------------------------------------------------*/
 

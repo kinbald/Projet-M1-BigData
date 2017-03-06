@@ -5,7 +5,7 @@
     <link href="{{ asset('css/theme-dark.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/theme-product.css') }}" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lemonada" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lemonada:300" rel="stylesheet">
 {% endblock %}
 
 {% block javascripts %}
@@ -82,51 +82,70 @@
         </div>
         <div class="cart-widget-close-overlay"></div>
     </div>
-    <section class="SLIDESHOW">
-        <div class="slideshow-container">
-            <INPUT type="button" value="❮ Retour à la sélection" class="back-button" onClick="window.history.back()">
-            {% for product_picture in product_pictures %}
-                <div class="mySlides" style="text-align:center">
-                    <img class="photo" src="/img/upload/{{ product_picture.url }}" alt="{{ product_picture.alt }}" />
-                </div>
-            {% endfor %}
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
-        </div>
-        <br>
-        <div style="text-align:center">
-            {% for product_picture in product_pictures %}
-                <span class="dot" onclick="currentSlide({{ product_picture.id }})"></span>
-            {% endfor %}
-        </div>
-    </section>
-    <!--  TEXTE  -->
-    <section class="TEXTE section-min section product" id="products">
-        <div class="col-md-7 text-center">
-            <div class="countdown-container">
-                <div id="TITRE">
-                    <h3 class="wow fadeInDown">{{ product.name }}</h3>
-                </div>
-                <img alt="lauriers" src="{{ asset('img/product/lauriers.png') }}" height="55">
-                <h4 class="wow fadeInDown">Médaille</h4>
-                <p class="wow fadeInDown">{{ product.description }} </p>
-                <p>Univers : {% for universe in product.universes %} {{universe.name}} {% if not loop.last %}, {% endif %}{% endfor %} </br>
-                    Volume : {{ product.volume }} <br>
-                    Stock : {{ product.stock }} <br>
-                    {%  block features %}
-                    {% endblock %}
-                </p>
-                <span class="countdown-price h3 wow fadeInUp">{{ product.price }} €</span>
-                {% set picture = product.pictures|last %}
-                <br><br> <br> <br>
-                <span class="btn btn-default add-item wow swing" {% if picture %}data-image="/img/upload/{{ picture.url}}"{% endif %}  data-name="{{ product.name }}" data-cost="{{ product.price }}" data-id="{{ product.id }}">
-                    <div id="ajout"><img alt="e-commerce" src="{{ asset('img/product/panier.png') }}" height="55"></div>
-                    <span class="ti-shopping-cart"></span>Ajouter au panier
-                </span>
+    <div class="product-content">
+        <section class="section-slide">
+            <INPUT type="button" value="❮ Retour à la sélection" class="back-button wow fadeInRight" onClick="window.history.back()">
+            <div class="slideshow-container">
+                {% for product_picture in product_pictures %}
+                    <div class="mySlides">
+                        <img class="photo" src="{{ asset(product_picture.url) }}" alt="{{ product_picture.alt }}"/>
+                    </div>
+                {% endfor %}
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
             </div>
+            <br>
+            <div style="text-align:center">
+                {% for product_picture in product_pictures %}
+                    <span class="dot" onclick="currentSlide({{ product_picture.id }})"></span>
+                {% endfor %}
+            </div>
+        </section>
+        <div class="section-presentation text-center">
+            <div id="TITRE">
+                <h3 class="wow fadeInDown">{{ product.name }}</h3>
+            </div>
+            <img alt="lauriers" src="{{ asset('img/product/lauriers.png') }}" height="55">
+            <h4 class="wow fadeInDown">Médaille</h4>
+            <p class="wow fadeInDown product-description-text">{{ product.description }}</p>
+            <table>
+                <tr>
+                    <td class="attribute">
+                        Univers :
+                    </td>
+                    <td class="att-value">
+                        {% for universe in product.universes %} {{universe.name}}{% if not loop.last %},</br>{% endif %}{% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="attribute">
+                        Volume :
+                    </td>
+                    <td class="att-value">
+                        {{ product.volume }} L
+                    </td>
+                </tr>
+                <tr>
+                    <td class="attribute">
+                        Stock :
+                    </td>
+                    <td class="att-value">
+                        {{ product.stock }} bouteille{% if product.stock > 1 %}s{% endif %}
+                    </td>
+                </tr>
+                {%  block features %}
+                {% endblock %}
+            </table>
+            <span class="h3 wow fadeInUp">{{ product.price }} €</span>
+            {% set picture = product.pictures|last %}
+            <br><br>
+            <span class="btn btn-default add-item wow swing" {% if picture %}data-image="/img/upload/{{ picture.url}}"{% endif %}  data-name="{{ product.name }}" data-cost="{{ product.price }}" data-id="{{ product.id }}">
+                <div id="ajout"><img alt="e-commerce" src="{{ asset('img/product/panier.png') }}" height="55"></div>
+                <span class="ti-shopping-cart"></span>Ajouter au panier
+            </span>
             <br><br> <br> <br>
         </div>
-    </section>
+    </div>
 {% endblock %}
 
 
