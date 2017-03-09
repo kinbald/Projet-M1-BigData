@@ -1,16 +1,28 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseadmin.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/media.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/index.css') }}" rel="stylesheet" />
+{% endblock %}
 
 {% block body %}
-    <h1>News list</h1>
-
-    <table>
+    <div class="container overflow-hidden">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="section-heading">News list</h3>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <table border="1">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Title</th>
                 <th>Author</th>
-                <th>Datepublication</th>
-                <th>Newstext</th>
+                <th>Date publication</th>
+                <th>News text</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -36,10 +48,10 @@
         {% endfor %}
         </tbody>
     </table>
-
+    <br><br>
     <ul>
         <li>
-            <a href="{{ path('news_new') }}">Create a new news</a>
+            <a href="{{ path('news_new') }}"><div class="btn btn-primary btn-circle">Create a new news</div></a>
         </li>
     </ul>
 {% endblock %}

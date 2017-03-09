@@ -25,7 +25,10 @@ label
 
 #productbundle_universe_description,
 #productbundle_wine_description,
-#productbundle_purchase_address{
+#productbundle_purchase_address,
+#appbundle_news_title,
+#appbundle_news_author,
+#appbundle_news_newsText{
     border-radius: 10px;
     color:#555555;
     width: 17em;
@@ -60,7 +63,9 @@ label
 
 #mediabundle_files_date_time,
 #userbundle_userconsumer_birthDate,
-#productbundle_purchase_dateOrder{
+#productbundle_purchase_dateOrder,
+#appbundle_news_datePublication_date,
+#appbundle_news_datePublication_time{
     border-radius: 10px;
     color:#555555;
     margin-left:150px;
