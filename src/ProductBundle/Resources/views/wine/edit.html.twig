@@ -26,12 +26,6 @@
             'type': 'iframe'
         });
     </script>
-
-
-    <script>
-
-    </script>
-
 {% endblock %}
 
 {% block body %}
@@ -42,9 +36,9 @@
             <br><br>
             {{ form_start(edit_form) }}
             {{ form_widget(edit_form) }}
-            <p>Image a ajouter : (laisser vide sinon)</p>
-            <input type="text" id="chemin" name="urlImg">
-            <a id="button" href="{{ asset('uploader/fancybox.php') }}?iframe">Choisir</a>
+
+            <a  id="button" class="clic" href="{{ asset('uploader/fancybox.php') }}?iframe">Load a picture</a>
+            <input type="text" id="chemin" name="urlImg" required>
 
             <br>
             <table>
@@ -52,9 +46,11 @@
 
                     <tr>
                         <td class="url">{{ picture.url }}</td>
-                        <td class="voir"><a href="{{ asset(picture.url) }}">voir</a></td>
-                        <td class="supprimer">supprimer</td>
+                        <td><div class="pic1"><a href="{{ asset(picture.url) }}"><img src="/img/adminlogo/eye.png" alt="preview" style="height: 30px;"></a></div></td>
+                        <td><div class="pic1"><img src="/img/adminlogo/trash.png" alt="delete"  style="height: 30px;></div></td>
+                        <td class="supprimer"></td>
                     </tr>
+
                 {% endfor %}
             </table>
 

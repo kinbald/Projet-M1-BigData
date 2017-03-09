@@ -30,16 +30,16 @@
 
 {% block body %}
 
-<div id="contenu">
-    <div id="content">
-        <h1>Universe edit</h1>
-        <br><br>
-        {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <a id="clic" id="button" href="{{ asset('uploader/fancybox.php') }}?iframe">Load a picture</a>
-        <input type="text" id="chemin" name="urlImg">
+    <div id="contenu">
+        <div id="content">
+            <h1>Universe edit</h1>
+            <br><br>
+            {{ form_start(edit_form) }}
+            {{ form_widget(edit_form) }}
+            <a  id="button" class="clic" href="{{ asset('uploader/fancybox.php') }}?iframe">Load a picture</a>
+            <input type="text" id="chemin" name="urlImg">
+        </div>
     </div>
-</div>
 
     <div id="boutons">
         <div class="bouton1">
@@ -52,7 +52,7 @@
         </div>
         {{ form_end(delete_form) }}
         <div class="bouton1">
-            <a class="btn btn-primary btn-circle" href="{{ path('product_list', {type: 'wine'}) }}">Back to the list</a>
+            <a class="btn btn-primary btn-circle" href="{{ path('universe_index') }}">Back to the list</a>
         </div>
     </div>
 

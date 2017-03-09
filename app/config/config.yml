@@ -84,6 +84,9 @@ fos_user:
     user_class: UserBundle\Entity\BaseUser
     service:
         user_manager: pugx_user_manager
+    from_email:
+        address: "yourapp@yourapp.com"
+        sender_name: "Demo String"
 
 pugx_multi_user:
   users:

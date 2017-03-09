@@ -13,7 +13,7 @@ class FilesType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('url')->add('name')->add('date');
+        $builder->add('name');
     }
 
     /**

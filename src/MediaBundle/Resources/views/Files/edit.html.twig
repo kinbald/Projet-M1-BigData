@@ -33,9 +33,10 @@
         <h1>Edition Communiqués</h1>
         {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
-        <p>Fichiers lié (laisser vide si non modifié) :</p>
-        <input type="text" id="chemin" name="urlFile">
-        <a id="button" href="{{ asset('uploader/fancybox.php') }}?iframe">Choisir</a>
+
+        <a  id="button" class="clic" href="{{ asset('uploader/fancybox.php') }}?iframe">Link a file</a>
+        <input type="text" id="chemin" name="urlImg">
+
         <table>
             <td>
                 <input class="btn btn-primary btn-circle" type="submit" value="Edit"/>

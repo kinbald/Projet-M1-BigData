@@ -65,10 +65,10 @@
         color: black;
     }
 
-    #productbundle_wine div{
+    /*#productbundle_wine div{
         width: 500px;
         margin: auto;
-    }
+    }*/
 
     #boutons{
         margin: auto;
@@ -83,7 +83,7 @@
     }
 
 
-    #clic{
+    .clic{
         border-radius: 3px;
         padding: 5px;
         background-color: #c6a668;
@@ -99,7 +99,7 @@
     height: 80px;
 }
 
-#clic{
+.clic{
     border-radius: 3px;
     padding: 5px;
     background-color: #c6a668;
