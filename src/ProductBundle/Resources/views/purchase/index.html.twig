@@ -17,7 +17,7 @@
     <div class="container overflow-hidden">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="section-heading">Gestion des commandes</h3>
+                <h3 class="section-heading">{% trans %}Gestion des commandes{% endtrans %}</h3>
             </div>
         </div>
     </div>
@@ -26,15 +26,15 @@
         <table>
             <thead>
                 <tr>
-                    <th>ID commande</th>
-                    <th>ID user</th>
-                    <th>Adresse</th>
-                    <th>Ville</th>
-                    <th>Code postal</th>
-                    <th>Pays</th>
-                    <th>Date de commande</th>
-                    <th>Statut</th>
-                    <th>Action</th>
+                    <th>{% trans %}ID commande{% endtrans %}</th>
+                    <th>{% trans %}ID user{% endtrans %}</th>
+                    <th>{% trans %}Adresse{% endtrans %}</th>
+                    <th>{% trans %}Ville{% endtrans %}</th>
+                    <th>{% trans %}Code postal{% endtrans %}</th>
+                    <th>{% trans %}Pays{% endtrans %}</th>
+                    <th>{% trans %}Date de commande{% endtrans %}</th>
+                    <th>{% trans %}Statut{% endtrans %}</th>
+                    <th>{% trans %}Action{% endtrans %}</th>
                 </tr>
             </thead>
             <tbody>
@@ -61,7 +61,7 @@
         <br><br>
         <ul>
             <li>
-                <div class="btn btn-primary btn-circle"><a href="{{ path('purchase_new', {type: 'purchase'}) }}">Create a new purchase</a></div>
+                <div class="btn btn-primary btn-circle"><a href="{{ path('purchase_new', {type: 'purchase'}) }}">{% trans %}Create a new purchase{% endtrans %}</a></div>
             </li>
         </ul>
     </div>
