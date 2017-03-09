@@ -186,7 +186,8 @@ class ProductController extends Controller
         return $this->render('ProductBundle:' . $product->getDiscr() . ':show.html.twig', array(
             'product' => $product,
             'delete_form' => $deleteForm->createView(),
-            'product_pictures' => $product->getPictures()
+            'product_pictures' => $product->getPictures(),
+            'competitions' => ($product->getDiscr() == 'wine') ? $product->getCompetitions() : null
         ));
     }
 

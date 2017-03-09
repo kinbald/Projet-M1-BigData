@@ -1,19 +1,15 @@
 {% extends "base.html.twig" %}
 
 {% block stylesheets %}
-    <link href="{{ asset('css/bootstrap-dark.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/theme-dark.css') }}" rel="stylesheet" />
+    {{ parent() }}
 {% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('https://maps.googleapis.com/maps/api/js?key=AIzaSyA_6m6Glf1-P7jvVdHZ00e3Ue_EoUNe39g') }}"></script>
     <script src="{{ asset('js/bundle.js') }}"></script>
     <script src="{{ asset('js/panier.js') }}"></script>
 {% endblock %}
 
 {% block body %}
-
-
 
     <section class="timeline" id="history">
         <div class="container">
@@ -22,8 +18,7 @@
                     <h3 class="section-heading">Récapitulatif des achats</h3>
                     <div id="timeline" class="timeline-container">
 
-
-                        {% for i in 0..(products|length - 1) %}
+                        {% for product in commande.products %}
                             <!-- CART ITEM -->
                             <div class="timeline-block timeline-block-image-1">
                                 <div class="timeline-point">
@@ -31,12 +26,12 @@
 
                                 <div class="timeline-content wow fadeInLeft" style="visibility: visible; animation-name: fadeInLeft;">
                                     <span class="timeline-date">
-                                        <span class="timeline-month">{{ products[i].name }}</span>
-                                        <br />{{ products[i].price }}€ x {{ quantity_list[i] }}
+                                        <span class="timeline-month">{{ product.product.name }}</span>
+                                        <br />{{ product.product.price }}€ x {{ product.stock }}
                                     </span>
 
                                     <div class="slideshow-container">
-                                        {% for product_picture in products_pictures[i] %}
+                                        {% for product_picture in product.product.pictures %}
                                             <div class="mySlides" style="text-align:center">
                                                 <img class="photo" src="/img/upload/{{ product_picture.url }}" alt="{{ product_picture.alt }}" />
                                             </div>
@@ -44,7 +39,7 @@
                                         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                                         <a class="next" onclick="plusSlides(1)">&#10095;</a>
                                     </div>
-                                    <p>{{ products[i].description }}</p>
+                                    <p>{{ product.product.description }}</p>
                                 </div>
                             </div>
                             <!-- / CART ITEM -->
@@ -97,15 +92,15 @@
                 <table id="table_recap" align="center">
                     <tr>
                         <th class="about-counter-single">Prix HT</th>
-                        <td>{{ amount }}</td>
+                        <td>{{ commande.amount }}</td>
                     </tr>
                     <tr>
                         <th class="about-counter-single">TVA</th>
-                        <td>19.6%</td>
+                        <td>{{ tva }}%</td>
                     </tr>
                     <tr>
                         <th class="about-counter-single">Prix total</th>
-                        <td>{{(amount + 0.196 * amount)|round(2) }}</td>
+                        <td>{{ (commande.amount*(1+tva/100))|round(2) }}</td>
                     </tr>
                 </table>
                 </div>
@@ -113,3 +108,8 @@
         </div>
     </section>
 {% endblock %}
+{#
+https://api-3t.sandbox.paypal.com/nvp?version=204&user=grisot.remi-facilitator_api1.gmail.com&pwd=QZLEL69NWCF6QUGE&signature=AFcWxV21C7fd0v3bYYYRCpSSRl31Ab6nocvqRHaMJv1ybVoYzIrz8WGl&method=setexpresscheckout&cancelurl=https://google.fr&currencycode=EUR&returnurl=https://google.fr&amt=10.0&desc=bonne%20vinasse&localecode=fr
+https://www.sandbox.paypal.com/webscr&cmd=_express-checkout&token=EC%2d98A96882VN0088128
+https://api-3t.sandbox.paypal.com/nvp?version=204&user=grisot.remi-facilitator_api1.gmail.com&pwd=QZLEL69NWCF6QUGE&signature=AFcWxV21C7fd0v3bYYYRCpSSRl31Ab6nocvqRHaMJv1ybVoYzIrz8WGl&method=getexpresscheckoutdetails&token=EC%2d98A96882VN0088128
+https://api-3t.sandbox.paypal.com/nvp?version=204&user=grisot.remi-facilitator_api1.gmail.com&pwd=QZLEL69NWCF6QUGE&signature=AFcWxV21C7fd0v3bYYYRCpSSRl31Ab6nocvqRHaMJv1ybVoYzIrz8WGl&method=doexpresscheckoutpayment&token=EC%2d98A96882VN0088128&paymentaction=sale&payerid=44EZAY75P6CS4&amt=10.0&currencycode=EUR#}

@@ -1,8 +1,7 @@
 {% extends 'baseadmin.html.twig' %}
 
 {% block stylesheets %}
-    <link href="{{ asset('css/bootstrap-dark.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/theme-dark.css') }}" rel="stylesheet" />
+    {{ parent() }}
     <link href="{{ asset('css/index.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/media.css') }}" rel="stylesheet" />
 {% endblock %}
@@ -23,6 +22,7 @@
     </div>
     <br> <br>
     <div class="tableau_media">
+        <h3 class="type_commande">Commandes en cours</h3>
         <table>
             <thead>
                 <tr>
@@ -39,6 +39,7 @@
             </thead>
             <tbody>
                 {% for purchase in purchases %}
+                {% if purchase.done %}
                 <tr>
                     <td class="id_commande"> {{ purchase.id }}</td>
                     <td class="id_user">{{ purchase.user }}</td>
@@ -47,7 +48,7 @@
                     <td class="code_postal">{{ purchase.postalCode }}</td>
                     <td class="pays">{{ purchase.country }}</td>
                     <td class="date_commande">{% if purchase.dateOrder %}{{ purchase.dateOrder | date('Y-m-d H:i:s') }} {% endif %}</td>
-                    <td class="statut">{% if purchase.done %}En cours{% else %}Effectué{% endif %}</>
+                    <td class="statut">En cours</td>
                     <td class="action">
                         <ul>
                             <li><a href="{{ path('purchase_show', { 'id': purchase.id }) }}">show</a></li>
@@ -55,7 +56,48 @@
                         </ul>
                     </td>
                 </tr>
+                {% endif %}
                 {% endfor %}
+            </tbody>
+        </table>
+        <br><br>
+        <h3 class="type_commande">Commandes terminées</h3>
+        <table>
+            <thead>
+            <tr>
+                <th>ID commande</th>
+                <th>ID user</th>
+                <th>Adresse</th>
+                <th>Ville</th>
+                <th>Code postal</th>
+                <th>Pays</th>
+                <th>Date de commande</th>
+                <th>Statut</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for purchase in purchases %}
+            {% if purchase.done %}
+            {% else %}
+                <tr>
+                    <td class="id_commande"> {{ purchase.id }}</td>
+                    <td class="id_user">{{ purchase.user }}</td>
+                    <td class="adresse">{{ purchase.address }}</td>
+                    <td class="ville">{{ purchase.city }}</td>
+                    <td class="code_postal">{{ purchase.postalCode }}</td>
+                    <td class="pays">{{ purchase.country }}</td>
+                    <td class="date_commande">{% if purchase.dateOrder %}{{ purchase.dateOrder | date('Y-m-d H:i:s') }} {% endif %}</td>
+                    <td class="statut">Effectué</td>
+                    <td class="action">
+                        <ul>
+                            <li><a href="{{ path('purchase_show', { 'id': purchase.id }) }}">show</a></li>
+                            <li><a href="{{ path('purchase_edit', { 'id': purchase.id }) }}">edit</a></li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endif %}
+            {% endfor %}
             </tbody>
         </table>
         <br><br>

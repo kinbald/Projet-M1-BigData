@@ -43,4 +43,13 @@ class RegistrationUserController extends Controller
             ->register('UserBundle\Entity\UserProducer');
     }
 
+    /**
+     * @Route("/register-wholesale", name="user_wholesale_registration")
+     */
+    public function registerWholesaleAction(){
+        return $this->container
+            ->get('pugx_multi_user.registration_manager')
+            ->register('UserBundle\Entity\UserWholesale');
+    }
+
 }

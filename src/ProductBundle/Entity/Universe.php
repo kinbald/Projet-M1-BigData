@@ -2,6 +2,7 @@
 
 namespace ProductBundle\Entity;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use ProductBundle\Entity\PictureUniverse;
 use ProductBundle\Entity\Product;
@@ -41,6 +42,7 @@ class Universe
      * @var PictureUniverse
      *
      * @ORM\OneToMany(targetEntity="\ProductBundle\Entity\PictureUniverse", mappedBy="universe")
+     * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $pictures;
 
@@ -50,6 +52,12 @@ class Universe
      * @ORM\JoinColumn(name="universe_id", referencedColumnName="id")
      */
     private $products;
+
+    /**
+     * @var Collection
+     * @ORM\OneToMany(targetEntity="ConcoursBundle\Entity\CompetitionWine", mappedBy="universe")
+     */
+    private $competitions;
 
 
     /**
@@ -189,4 +197,42 @@ class Universe
     {
         return $this->products;
     }
+
+
+    /**
+     * Add competition
+     *
+     * @param \ConcoursBundle\Entity\CompetitionWine $competition
+     *
+     * @return Universe
+     */
+    public function addCompetition(\ConcoursBundle\Entity\CompetitionWine $competition)
+    {
+        $this->competitions[] = $competition;
+
+        return $this;
+    }
+
+    /**
+     * Remove competition
+     *
+     * @param \ConcoursBundle\Entity\CompetitionWine $competition
+     */
+    public function removeCompetition(\ConcoursBundle\Entity\CompetitionWine $competition)
+    {
+        $this->competitions->removeElement($competition);
+    }
+
+    /**
+     * Get Collection
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCompetitions()
+    {
+        return $this->competitions;
+    }
+
+
+
 }

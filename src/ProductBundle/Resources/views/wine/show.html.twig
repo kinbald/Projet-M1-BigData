@@ -18,3 +18,32 @@
     </tr>
 {% endblock %}
 
+    {% if product.vintage %}<b>Millésime : </b>{{ product.vintage|date('Y-m-d') }}{% endif %} <br />
+    <b>Couleur :</b> {{ product.color }} <br />
+    <b>Sépage : </b>{{ product.grapeVariety.name }} <br />
+    {% if product.range %}<b>Catégorie : </b> {% if product.range.img %} <img src="{{ product.range.img }}" alt="categorie" height="30"> {% endif %} {{ product.range.name }}{% endif %} <br />
+
+    {% if product.region %}<b>Region : </b>{{ product.region}} <br />{% endif %}
+    {% if product.origincountry %}<b>Pays : </b>{{ product.origincountry.name}}, {{ product.origincontinent.name}} <br />{% endif %}
+
+    {% if product.recipes %}
+    {% for recipe in product.recipes %}
+        <b>Recette : {{ recipe.name }}</b>
+        <a href="{{ recipe.url }}"> <img src="{{ asset('img/product/recipe.png') }}" alt="recipe_link" height="50"></a>
+    {% endfor %}
+    {% endif %}
+
+    {% if product.conditioningTypes is not empty %}
+    <b>Conditionnement :</b>
+    {% for conditioningType in product.conditioningTypes %}
+    {{ conditioningType.name }},
+    {% endfor %}
+    {% endif %}
+
+    <b>Médaille : </b>
+
+    {% for competition in competitions %}
+        {{ competition.universe.name }}, {{ competition.primeName }}
+    {% endfor %}
+
+{% endblock %}

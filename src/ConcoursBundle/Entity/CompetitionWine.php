@@ -4,6 +4,7 @@ namespace ConcoursBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ConcoursBundle\Entity\Competition;
+use ProductBundle\Entity\Universe;
 use ProductBundle\Entity\Wine;
 
 /**
@@ -44,6 +45,13 @@ class CompetitionWine
      */
     private $wine;
 
+
+    /**
+     * @var Universe
+     * @ORM\ManyToOne(targetEntity="ProductBundle\Entity\Universe", inversedBy="competitions")
+     * @ORM\JoinColumn(nullable=false )
+     */
+    private $universe;
 
     /**
      * Get id
@@ -125,5 +133,29 @@ class CompetitionWine
     public function getWine()
     {
         return $this->wine;
+    }
+
+    /**
+     * Set universe
+     *
+     * @param \ProductBundle\Entity\Universe $universe
+     *
+     * @return CompetitionWine
+     */
+    public function setUniverse(\ProductBundle\Entity\Universe $universe)
+    {
+        $this->universe = $universe;
+
+        return $this;
+    }
+
+    /**
+     * Get universe
+     *
+     * @return \ProductBundle\Entity\Universe
+     */
+    public function getUniverse()
+    {
+        return $this->universe;
     }
 }

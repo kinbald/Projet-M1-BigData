@@ -19,7 +19,8 @@ class ProductType extends AbstractType
                 ->add('volume')
                 ->add('price')
                 ->add('stock')
-                ->add('universes');
+                ->add('universes')
+                ->add('conditioning_types');
     }
     
     /**

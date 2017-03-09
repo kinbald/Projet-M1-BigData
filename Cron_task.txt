@@ -1,0 +1,3 @@
+Edition Cron tab : sudo -u www-data crontab -e
+Cron task : */10 * * * * php bin/console reservation:update-table
+
