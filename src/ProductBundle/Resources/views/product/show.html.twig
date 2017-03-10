@@ -11,80 +11,13 @@
 {% endblock %}
 
 {% block body %}
-    <span id="items-counter" class="h3 cart-items-counter" style="display: none">0</span>
-    <div class="cart-widget-container">
-        <div class="cart-widget text-center">
-            <a class="close" id="cart-widget-close">
-                ✘
-            </a>
-            <img class="cart-logo" src="img/logo-white.png" alt="store logo" width="200">
-            <h3 class="section-heading">Votre panier</h3>
-            <!-- EMPTY CART MESSAGE -->
-            <div id="cart-empty" class="cart-empty">
-                <h4>vide</h4>
-            </div>
-            <!-- / EMPTY CART MESSAGE -->
-
-            <!-- CONTAINER FOR JS INJECT CART ITEMS, DON'T CHANGE ID AND CLASS -->
-            <div class="items-container" id="items"></div>
-            <!-- / CONTAINER FOR JS INJECT CART ITEMS, DON'T CHANGE ID AND CLASS -->
-
-            <!-- CART DELIVERY OPTIONS -->
-            <div class="cart-delivery" id="cart-delivery">
-                <h4 class="section-heading">Option de livraison</h4>
-                <div class="custom-radio">
-                    <input id="radio1" name="delivery" value="10.00" checked="" type="radio">
-                    <label for="radio1">livraison à domicile ($10)</label>
-                </div>
-
-                <div class="custom-radio">
-                    <input id="radio2" name="delivery" value="15.00" type="radio">
-                    <label for="radio2">livraison à domicile express ($15) </label>
-                </div>
-
-                <div class="custom-radio">
-                    <input id="radio3" name="delivery" value="20.00" type="radio">
-                    <label for="radio3">livraison internationale ($20)</label>
-                </div>
-            </div>
-            <!-- / CART DELIVERY OPTIONS -->
-
-            <!-- CART SUMMARY CALCULATION -->
-            <div class="cart-summary" id="cart-summary">
-                <h4 class="section-heading">Total</h4>
-                <div class="cart-summary-row" id="cart-total">Total des produits <span class="cart-value">$<span id="cost_value">0.00</span></span></div>
-                <div class="cart-summary-row">livraison <span class="cart-value">$<span id="cost_delivery">15.00</span></span></div>
-                <div class="cart-summary-row cart-summary-row-total">Total <span class="cart-value">$<span id="total-total"></span></span></div>
-            </div>
-            <!-- / CART SUMMARY CALCULATION -->
-
-            <!-- HIDDEN PAYPAL FORM -->
-            <form action="{{ path("cart_view") }}" method="post" class="cart-form" id="cart-form" name="form">
-                <!-- Identify your business so that you can collect the payments. -->
-                <input name="business" value="yourpaypal@email.com" type="hidden">
-                <!-- Specify a Buy Now button. -->
-                <input name="cmd" value="_xclick" type="hidden">
-                <!-- Specify details about the item that buyers will purchase. -->
-                <input name="item_name" value="Total - checkout" type="hidden">
-                <input name="amount" id="amount" value="0.00" type="hidden">
-                <input name="id_list" id="id_list" value="" type="hidden">
-                <input name="quantity_list" id="quantity_list" value="" type="hidden">
-                <input name="currency_code" value="EUR" type="hidden">
-                <!-- Display the payment button. -->
-                <button type="submit" name="submit" class="btn btn-default btn-lg">
-                    paiement paypal ⯈</span>
-                </button>
-            </form>
-            <!-- / HIDDEN PAYPAL FORM -->
-        </div>
-        <div class="cart-widget-close-overlay"></div>
-    </div>
-    <section class="SLIDESHOW">
+<div class="product-content">
+    <section class="section-slide">
+        <INPUT type="button" value="❮ Retour à la sélection" class="back-button wow fadeInRight" onClick="window.history.back()">
         <div class="slideshow-container">
-            <INPUT type="button" value="❮ Retour à la sélection" class="back-button" onClick="window.history.back()">
             {% for product_picture in product_pictures %}
-                <div class="mySlides" style="text-align:center">
-                    <img class="photo" src="/img/upload/{{ product_picture.url }}" alt="{{ product_picture.alt }}" />
+                <div class="mySlides">
+                    <img class="photo" src="{{ asset(product_picture.url) }}" alt="{{ product_picture.alt }}"/>
                 </div>
             {% endfor %}
             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -98,7 +31,7 @@
         </div>
     </section>
     <!--  TEXTE  -->
-    <section class="TEXTE section-min section product" id="products">
+    <section class="section-presentation product" id="products">
         <div class="col-md-7 text-center">
             <div class="countdown-container">
                 <div id="TITRE">
@@ -127,52 +60,9 @@
                     <span class="dot" onclick="currentSlide({{ product_picture.id }})"></span>
                 {% endfor %}
             </div>
-        </section>
-        <div class="section-presentation text-center">
-            <div id="TITRE">
-                <h3 class="wow fadeInDown">{{ product.name }}</h3>
-            </div>
-            <img alt="lauriers" src="{{ asset('img/product/lauriers.png') }}" height="55">
-            <h4 class="wow fadeInDown">Médaille</h4>
-            <p class="wow fadeInDown product-description-text">{{ product.description }}</p>
-            <table>
-                <tr>
-                    <td class="attribute">
-                        Univers :
-                    </td>
-                    <td class="att-value">
-                        {% for universe in product.universes %} {{universe.name}}{% if not loop.last %},</br>{% endif %}{% endfor %}
-                    </td>
-                </tr>
-                <tr>
-                    <td class="attribute">
-                        Volume :
-                    </td>
-                    <td class="att-value">
-                        {{ product.volume }} L
-                    </td>
-                </tr>
-                <tr>
-                    <td class="attribute">
-                        Stock :
-                    </td>
-                    <td class="att-value">
-                        {{ product.stock }} bouteille{% if product.stock > 1 %}s{% endif %}
-                    </td>
-                </tr>
-                {%  block features %}
-                {% endblock %}
-            </table>
-            <span class="h3 wow fadeInUp">{{ product.price }} €</span>
-            {% set picture = product.pictures|last %}
-            <br><br>
-            <span class="btn btn-default add-item wow swing" {% if picture %}data-image="/img/upload/{{ picture.url}}"{% endif %}  data-name="{{ product.name }}" data-cost="{{ product.price }}" data-id="{{ product.id }}">
-                <div id="ajout"><img alt="e-commerce" src="{{ asset('img/product/panier.png') }}" height="55"></div>
-                <span class="ti-shopping-cart"></span>Ajouter au panier
-            </span>
-            <br><br> <br> <br>
         </div>
-    </div>
+    </section>
+</div>
 {% endblock %}
 
 
