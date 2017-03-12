@@ -9,6 +9,7 @@
         <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Lemonada" rel="stylesheet">
     {% endblock %}
+
     <script type="text/javascript">
         var refresh_route = "{{ path("refresh") }}";
     </script>
@@ -159,7 +160,6 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('https://maps.googleapis.com/maps/api/js?key=AIzaSyA_6m6Glf1-P7jvVdHZ00e3Ue_EoUNe39g') }}"></script>
     <script src="{{ asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/bundle.js') }}"></script>
 {% endblock %}

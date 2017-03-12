@@ -7,24 +7,7 @@
     <link rel="stylesheet" href="{{ asset('uploader/fancybox/source/jquery.fancybox.css') }}">
 {% endblock %}
 {% block javascripts %}
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
-            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-            crossorigin="anonymous"></script>
-    <script type="text/javascript" src="{{ asset('uploader/fancybox/source/jquery.fancybox.pack.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('uploader/js/uploader.js') }}"></script>
-    <script type="text/javascript">
-        var uploader = new Uploader("chemin");
-        $("#button").fancybox({
-            'fitToView': false,
-            'width': '75%',
-            'height': '80%',
-            'autoScale': false,
-            'autoSize': false,
-            'transitionIn': 'elastic',
-            'transitionOut': 'elastic',
-            'type': 'iframe'
-        });
-    </script>
+    {{ parent() }}
 {% endblock %}
 
 {% block body %}

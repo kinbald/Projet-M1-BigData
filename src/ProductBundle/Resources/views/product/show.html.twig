@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('js/bundle.js') }}"></script>
+    {{ parent() }}
     <script src="{{ asset('js/item.js') }}"></script>
 {% endblock %}
 
