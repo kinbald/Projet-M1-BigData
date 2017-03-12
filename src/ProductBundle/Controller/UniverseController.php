@@ -103,26 +103,20 @@ class UniverseController extends Controller
         $pictureArray = array();
         $products = $universe->getProducts();
         $formResult=null;
-        $options=array(); //options du formulaire
+        $em = $this->getDoctrine()->getManager();
+        $ranges = $em->getRepository('ProductBundle:Range')->findAll();
+        //$couleurs = $em->getRepository('ProductBundle:Wine')->findAll();
+        //$sepages = $em->getRepository('ProductBundle:Grape')->findAll();
+        $regions = $em->getRepository('ProductBundle:Wine')->findAll();
+        $options = array('ranges' => $ranges, 'regions' => $regions); //options du formulaire
         $searchForm = $this->createForm('ProductBundle\Form\SearchType', $options);
         $model = new UniversModel($this->getDoctrine()->getManager());
-
 
         $searchForm->handleRequest($request);
 
         if ($searchForm->isSubmitted() && $searchForm->isValid()) { // si le formulaire est rempli et valide, alors on retourne les résultats de la recherche
-
             $formResult= $searchForm->getData(); //On récupère les données du formulaire puis on exécute la recherche et on renvoie les résultats dans products pour affichage
-
-            if($formResult['name']!=null){
-                $products = $model->findProductsByName($formResult['name']);
-            }
-
-            if($formResult['price_max']!=null) {
-                $products = $model->findProductsByPrice($formResult['price_max']);
-            }
-
-
+            $products = $model->searchEngine($formResult['name'], $formResult['price_max']);
         }
 
         foreach ($products as $product) { // pour récupérer les photos des produits
@@ -135,7 +129,8 @@ class UniverseController extends Controller
             'search_form' => $searchForm->createView(),
             'products' => $products,
             'product_pictures' => $pictureArray,
-            'query' => $formResult //pour le débug
+            'query' => $formResult, //pour le débug
+            'regions' =>$regions
         ));
     }
 

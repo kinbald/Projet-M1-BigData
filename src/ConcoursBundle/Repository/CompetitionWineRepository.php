@@ -1,6 +1,8 @@
 <?php
 
 namespace ConcoursBundle\Repository;
+use ProductBundle\Entity\Product;
+use ProductBundle\Entity\Universe;
 
 /**
  * CompetitionWineRepository
@@ -10,4 +12,27 @@ namespace ConcoursBundle\Repository;
  */
 class CompetitionWineRepository extends \Doctrine\ORM\EntityRepository
 {
+
+
+
+
+
+    public function findCompetitionsByUniverse(Universe $universe, Product $product)
+    {
+        return $this->createQueryBuilder('m')
+            ->where("m.universe = ?1")
+            ->andWhere("m.wine = ?2")
+            ->setParameter(1, $universe->getId())
+            ->setParameter(2, $product->getId())
+            ->getQuery()
+            ->getResult();
+    }
+
+
+
+
+
+
+
+
 }

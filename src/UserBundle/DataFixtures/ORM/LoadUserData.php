@@ -7,6 +7,8 @@ use Doctrine\Common\Persistence\ObjectManager;
 use UserBundle\Entity\UserConsumer;
 use UserBundle\Entity\UserMedia;
 use UserBundle\Entity\UserProducer;
+use UserBundle\Entity\UserWholesale;
+use UserBundle\Repository\UserWholesaleRepository;
 
 class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
 {
@@ -23,6 +25,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $userConsumer->setLastname('Chiquet');
         $userConsumer->setSex('Male');
         $userConsumer->setBirthDate(new \DateTime('1995-10-29 10:00:00'));
+        $userConsumer->setPhone('0606060606');
         $manager->persist($userConsumer);
 
         $userProducer = new UserProducer();
@@ -32,13 +35,14 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $userProducer->setEmailCanonical('tatatoto@gmail.com');
         $userProducer->setEnabled(true);
         $userProducer->setPassword('$2y$12$sNM3lJ9oRrOZB2cUSBKoHODtXZMt8mB826dS5rE.2ppPg9TXby9BO');
-        $userProducer->setFirstname('fish');
-        $userProducer->setLastname('dick');
+        $userProducer->setFirstname('John');
+        $userProducer->setLastname('Doe');
         $userProducer->setSiret('168435135');
-        $userProducer->setCompanyName('Bitonnet de poisson & co');
-        $userProducer->setAddress('25 Avenue Mescouilles');
-        $userProducer->setCity('Au miel');
-        $userProducer->setPostalCode('6969');
+        $userProducer->setCompanyName('Vin & co');
+        $userProducer->setAddress('25 Avenue A');
+        $userProducer->setCity('Toulon');
+        $userProducer->setPostalCode('83000');
+        $userProducer->setPhone('0606060606');
         $manager->persist($userProducer);
 
         $userProducer = new UserProducer();
@@ -52,9 +56,10 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $userProducer->setLastname('qegetg');
         $userProducer->setSiret('646535');
         $userProducer->setCompanyName('vzu zfhkuzdhf hfskd');
-        $userProducer->setAddress('ta race maudite');
-        $userProducer->setCity('Le Poulpe');
+        $userProducer->setAddress('Rue B');
+        $userProducer->setCity('Azerty');
         $userProducer->setPostalCode('26485');
+        $userProducer->setPhone('0606060606');
         $manager->persist($userProducer);
 
         $userMedia = new UserMedia();
@@ -64,11 +69,11 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $userMedia->setEmailCanonical('mediaMedia@gmail.com');
         $userMedia->setEnabled(false);
         $userMedia->setPassword('$2y$12$VtTfiZZ68ThnssIEc8vkp.pkCL9YGAKB85Zk/8Up0MWg85t2h3drf');
-        $userMedia->setFirstname('Journaliste');
-        $userMedia->setLastname('chépakoimaitre');
-        $userMedia->setCompanyName('Le Bon Pinnard');
+        $userMedia->setFirstname('Camille');
+        $userMedia->setLastname('Cassagne');
+        $userMedia->setCompanyName('Var Matin');
         $userMedia->setIdPresse('168464358');
-        $userMedia->setUrlBlog('LeBonPinnard.com');
+        $userMedia->setUrlBlog('varmatin.fr');
         $manager->persist($userMedia);
 
         $userMedia = new UserMedia();
@@ -98,6 +103,18 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $userMedia->setIdPresse('134864785');
         $userMedia->setUrlBlog('blablavzelijla.com');
         $manager->persist($userMedia);
+
+        $userWhole = new UserWholesale();
+        $userWhole->setUsername('SteamSale');
+        $userWhole->setUsernameCanonical('wholesale1');
+        $userWhole->setEmail('zlvhlejelivj@gmail.com');
+        $userWhole->setEmailCanonical('zlvhleivjelivj@gmail.com');
+        $userWhole->setEnabled(true);
+        $userWhole->setPassword('$2y$12$VtTfiZZ68ThnssIEc8vkp.pkCL9YGAKB85Zk/8Ur3Mjgk8t2h3drf');
+        $userWhole->setFirstname('vepojtgo');
+        $userWhole->setLastname('erfcvek');
+        $userWhole->setCompanyName('Baboo');
+        $manager->persist($userWhole);
 
         $manager->flush();
     }

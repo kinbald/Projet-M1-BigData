@@ -19,14 +19,11 @@ class UniversModel
         $this->repositoryUniverse = $entityManager->getRepository('ProductBundle:Product');
     }
 
-    public function findProductsByName($name)
+    public function searchEngine($name, $price)
     {
-        return $this->repositoryUniverse->findProductsByName($name);
+        return $this->repositoryUniverse->searchEngine($name, $price);
     }
 
-    public function findProductsByPrice($price)
-    {
-        return $this->repositoryUniverse->findProductsByPrice($price);
-    }
+
 
 }

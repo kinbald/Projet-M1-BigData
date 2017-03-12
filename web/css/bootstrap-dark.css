@@ -1509,6 +1509,15 @@ pre {
   max-height: 340px;
   overflow-y: scroll; }
 
+#table_recap{
+  width: 50%;
+}
+
+.error_quantity{
+  color: #e60000;
+  font-weight: bold;
+}
+
 .container {
   margin-right: auto;
   margin-left: auto;

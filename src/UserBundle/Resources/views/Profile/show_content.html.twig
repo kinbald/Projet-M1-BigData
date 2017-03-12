@@ -32,16 +32,19 @@
         <div id="Profile">
             <h2>Profil</h2>
             <br>
+
             <div>
                 <p><b>Username:</b> {{ user.username }}</p>
                 <p><b>Email:</b> {{ user.email }}</p>
                 <p><b>Last name:</b> {{ user.lastname }}</p>
                 <p><b>First name:</b> {{ user.firstname }}</p>
             </div>
+
             {% if is_granted('ROLE_CONSUMER') %}
                 <div>
                     <p><b>Birth Date:</b> {{ user.birthDate | date("Y-m-d") }}</p>
                     <p><b>Gender:</b> {{ user.sex }}</p>
+                    <p><b>Phone:</b> {{ user.phone }}</p>
                 </div>
             {% endif %}
 
@@ -60,13 +63,16 @@
                     <p><b>Address:</b> {{ user.address }}</p>
                     <p><b>City:</b> {{ user.city }}</p>
                     <p><b>Postal code:</b> {{ user.postalCode }}</p>
+                    <p><b>Phone:</b> {{ user.phone }}</p>
                 </div>
             {% endif %}
             <br>
+
             <a href="{{ path('fos_user_profile_edit') }}" id="modifier" class="tablink" onclick="openLink(event, 'Profile1')">
                 <img src="/img/slider/crayon.png" alt="x" height="25px">
                 <b>Modifier</b>
             </a>
+
         </div>
 
 
@@ -93,6 +99,24 @@
 
 
 
+    {% if is_granted('ROLE_CONSUMER') %}
+        <div class="espaceUser">
+        </div>
+    {% endif %}
+
+
+    {% if is_granted('ROLE_PRODUCER') %}
+        <div class="espaceProd">
+        </div>
+    {% endif %}
+
+
+    {% if is_granted('ROLE_MEDIA') %}
+        <div class="espaceMedia">
+        </div>
+    {% endif %}
+
+
     <!-------------------Factures--------------------->
 
     <div id="Factures">
@@ -107,6 +131,3 @@
 
 
 {% endblock %}
-
-
-

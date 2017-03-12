@@ -10,23 +10,20 @@ namespace ProductBundle\Repository;
  */
 class ProductRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function findProductsByName($name)
+    public function searchEngine($name, $price)
     {
         $name_lower = strtolower($name);
         $queryBuilder = $this->createQueryBuilder('p');
         $queryBuilder->where($queryBuilder->expr()->like('LOWER(p.name)', '\'%'.$name_lower.'%\''));  //pour enlever la sensibilité à la casse LOWER et strtolower
+        $queryBuilder->andWhere($queryBuilder->expr()->lte('p.price', $price));
         $query = $queryBuilder->getQuery();
         return $query->getResult();
 
     }
 
-    public function findProductsByPrice($price)
-    {
-        $queryBuilder = $this->createQueryBuilder('p');
-        $queryBuilder->where($queryBuilder->expr()->lte('p.price', $price));
-        $query = $queryBuilder->getQuery();
-        return $query->getResult();
-    }
+
+
+
 
 
 }

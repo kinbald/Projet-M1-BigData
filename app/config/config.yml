@@ -116,6 +116,20 @@ pugx_multi_user:
               type: UserBundle\Form\Type\UserMediaType
               name: fos_user_profile_form
               validation_groups:  [Profile, Default]
+    user_wholesale:
+          entity:
+            class: UserBundle\Entity\UserWholesale
+  #          factory:
+          registration:
+            form:
+              type: UserBundle\Form\Type\UserWholesaleType
+              validation_groups:  [Registration, Default]
+            template: UserBundle:Registration:UserWholesale.form.html.twig
+          profile:
+            form:
+              type: UserBundle\Form\Type\UserWholesaleType
+              name: fos_user_profile_form
+              validation_groups:  [Profile, Default]
     user_producer:
           entity:
             class: UserBundle\Entity\UserProducer

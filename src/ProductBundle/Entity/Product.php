@@ -2,8 +2,12 @@
 
 namespace ProductBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use ProductBundle\Entity\Country;
 use ProductBundle\Entity\PictureProduct;
+use ProductBundle\Entity\Recipe;
 use ProductBundle\Entity\Universe;
 use ProductBundle\Entity\Purchase;
 use ProductBundle\Entity\ProductPurchase;
@@ -45,6 +49,13 @@ abstract class Product
     protected $description;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="description_short", type="text")
+     */
+    protected $descriptionShort;
+
+    /**
      * @var float
      *
      * @ORM\Column(name="volume", type="float")
@@ -66,7 +77,35 @@ abstract class Product
     protected $stock;
 
 
+    /**
+     * @var Continent
+     *
+     * @ORM\ManyToOne(targetEntity="\ProductBundle\Entity\Continent", inversedBy="products")
+     * @ORM\JoinColumns({
+     *  @ORM\JoinColumn(name="origin_continent", referencedColumnName="id", nullable=true)
+     * })
+     */
+    private $originContinent;
 
+    /**
+     * @var Country
+     *
+     * @ORM\ManyToOne(targetEntity="\ProductBundle\Entity\Country", inversedBy="products")
+     * @ORM\JoinColumns({
+     *  @ORM\JoinColumn(name="origin_country", referencedColumnName="id", nullable=true)
+     * })
+     */
+    private $originCountry;
+
+    /**
+     * @var Range
+     *
+     * @ORM\ManyToOne(targetEntity="\ProductBundle\Entity\Range", inversedBy="products")
+     * @ORM\JoinColumns({
+     *  @ORM\JoinColumn(name="range", referencedColumnName="id", nullable=true)
+     * })
+     */
+    private $range;
 
 
     /**
@@ -77,20 +116,32 @@ abstract class Product
     protected $pictures;
 
     /**
-     * @var Universe
+     * @var Collection
      * @ORM\ManyToMany(targetEntity="\ProductBundle\Entity\Universe", inversedBy="products")
      * @ORM\JoinColumn(name="product_id", referencedColumnName="id")
      */
     protected $universes;
 
     /**
-     * @var ProductPurchase
+     * @var Collection
+     * @ORM\ManyToMany(targetEntity="\ProductBundle\Entity\Recipe", mappedBy="products")
+     */
+    protected $recipes;
+
+    /**
+     * @var Collection
+     * @ORM\ManyToMany(targetEntity="\ProductBundle\Entity\ConditioningType", mappedBy="products")
+     */
+    protected $conditioningTypes;
+
+    /**
+     * @var Collection
      * @ORM\OneToMany(targetEntity="ProductBundle\Entity\ProductPurchase", mappedBy="product")
      */
     protected $purchases;
 
     /**
-     * @var ProductEvaluation
+     * @var Collection
      * @ORM\OneToMany(targetEntity="ProductBundle\Entity\ProductEvaluation", mappedBy="product")
      */
     protected $users;
@@ -151,6 +202,30 @@ abstract class Product
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set descriptionShort
+     *
+     * @param string $descriptionShort
+     *
+     * @return Product
+     */
+    public function setDescriptionShort($descriptionShort)
+    {
+        $this->descriptionShort = $descriptionShort;
+
+        return $this;
+    }
+
+    /**
+     * Get descriptionShort
+     *
+     * @return string
+     */
+    public function getDescriptionShort()
+    {
+        return $this->descriptionShort;
     }
 
     /**
@@ -229,7 +304,7 @@ abstract class Product
      */
     public function __construct()
     {
-        $this->pictures = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->pictures = new ArrayCollection();
     }
 
     public function __toString()
@@ -242,10 +317,7 @@ abstract class Product
      *
      * @return string
      */
-    public function getDiscr()
-    {
-        return null;
-    }
+    abstract public function getDiscr();
 
 
     /**
@@ -255,7 +327,7 @@ abstract class Product
      *
      * @return Product
      */
-    public function addPicture(\ProductBundle\Entity\PictureProduct $picture)
+    public function addPicture(PictureProduct $picture)
     {
         $this->pictures[] = $picture;
 
@@ -267,7 +339,7 @@ abstract class Product
      *
      * @param \ProductBundle\Entity\PictureProduct $picture
      */
-    public function removePicture(\ProductBundle\Entity\PictureProduct $picture)
+    public function removePicture(PictureProduct $picture)
     {
         $this->pictures->removeElement($picture);
     }
@@ -289,7 +361,7 @@ abstract class Product
      *
      * @return Product
      */
-    public function addUniverse(\ProductBundle\Entity\Universe $universe)
+    public function addUniverse(Universe $universe)
     {
         $this->universes[] = $universe;
         return $this;
@@ -300,7 +372,7 @@ abstract class Product
      *
      * @param \ProductBundle\Entity\Universe $universe
      */
-    public function removeUniverse(\ProductBundle\Entity\Universe $universe)
+    public function removeUniverse(Universe $universe)
     {
         $this->universes->removeElement($universe);
     }
@@ -314,8 +386,7 @@ abstract class Product
     {
         return $this->universes;
     }
-
-
+    
     /**
      * Add purchase
      *
@@ -323,7 +394,7 @@ abstract class Product
      *
      * @return Product
      */
-    public function addPurchase(\ProductBundle\Entity\ProductPurchase $purchase)
+    public function addPurchase(ProductPurchase $purchase)
     {
         $this->purchases[] = $purchase;
 
@@ -335,7 +406,7 @@ abstract class Product
      *
      * @param \ProductBundle\Entity\ProductPurchase $purchase
      */
-    public function removePurchase(\ProductBundle\Entity\ProductPurchase $purchase)
+    public function removePurchase(ProductPurchase $purchase)
     {
         $this->purchases->removeElement($purchase);
     }
@@ -357,7 +428,7 @@ abstract class Product
      *
      * @return Product
      */
-    public function addUser(\ProductBundle\Entity\ProductEvaluation $user)
+    public function addUser(ProductEvaluation $user)
     {
         $this->users[] = $user;
 
@@ -369,7 +440,7 @@ abstract class Product
      *
      * @param \ProductBundle\Entity\ProductEvaluation $user
      */
-    public function removeUser(\ProductBundle\Entity\ProductEvaluation $user)
+    public function removeUser(ProductEvaluation $user)
     {
         $this->users->removeElement($user);
     }
@@ -382,5 +453,139 @@ abstract class Product
     public function getUsers()
     {
         return $this->users;
+    }
+
+    /**
+     * Add recipe
+     *
+     * @param \ProductBundle\Entity\Recipe $recipe
+     *
+     * @return Product
+     */
+    public function addRecipe(\ProductBundle\Entity\Recipe $recipe)
+    {
+        $this->recipes[] = $recipe;
+
+        return $this;
+    }
+
+    /**
+     * Remove recipe
+     *
+     * @param \ProductBundle\Entity\Recipe $recipe
+     */
+    public function removeRecipe(\ProductBundle\Entity\Recipe $recipe)
+    {
+        $this->recipes->removeElement($recipe);
+    }
+
+    /**
+     * Get recipes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRecipes()
+    {
+        return $this->recipes;
+    }
+
+    /**
+     * Add conditioningType
+     *
+     * @param \ProductBundle\Entity\ConditioningType $conditioningType
+     *
+     * @return Product
+     */
+    public function addConditioningType(\ProductBundle\Entity\ConditioningType $conditioningType)
+    {
+        $this->conditioningTypes[] = $conditioningType;
+
+        return $this;
+    }
+
+    /**
+     * Remove conditioningType
+     *
+     * @param \ProductBundle\Entity\ConditioningType $conditioningType
+     */
+    public function removeConditioningType(\ProductBundle\Entity\ConditioningType $conditioningType)
+    {
+        $this->conditioningTypes->removeElement($conditioningType);
+    }
+
+    /**
+     * Get conditioningTypes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getConditioningTypes()
+    {
+        return $this->conditioningTypes;
+    }
+
+    /**
+     * Set origin_country
+     *
+     * @param Country $country
+     * @return Product
+     */
+    public function setOriginCountry(Country $country = null)
+    {
+        $this->originCountry = $country;
+        return $this;
+    }
+
+    /**
+     * Get origin_country
+     *
+     * @return Country
+     */
+    public function getOriginCountry()
+    {
+        return $this->originCountry;
+    }
+
+    /**
+     * Set origin_continent
+     *
+     * @param Continent $continent
+     * @return Product
+     */
+    public function setOriginContinent(Continent $continent = null)
+    {
+        $this->originContinent = $continent;
+        return $this;
+    }
+
+    /**
+     * Get origin_continent
+     *
+     * @return Continent
+     */
+    public function getOriginContinent()
+    {
+        return $this->originContinent;
+    }
+
+    /**
+     * Set range
+     *
+     * @param Range $range
+     * @return Product
+     */
+    public function setRange(Range $range = null)
+    {
+        $this->range = $range;
+        return $this;
+    }
+
+    /**
+     * Get range
+     *
+     * @return Range
+     */
+    public function getRange()
+    {
+        return $this->range;
     }
 }

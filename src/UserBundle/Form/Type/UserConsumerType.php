@@ -10,6 +10,7 @@ use FOS\UserBundle\Form\Type\RegistrationFormType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
+
 class UserConsumerType extends RegistrationFormType
 {
     /**
@@ -22,7 +23,10 @@ class UserConsumerType extends RegistrationFormType
             ->add('firstname', TextType::class)
             ->add('lastname', TextType::class)
             ->add('sex', GenderType::class)
-            ->add('birthDate', DateType::class);
+            ->add('birthDate', DateType::class, array(
+                'years' => range(1900, date("Y"))
+            ))
+            ->add('phone', TextType::class);
     }
     
     /**

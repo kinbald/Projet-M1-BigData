@@ -2,6 +2,7 @@
 
 namespace ProductBundle\Repository;
 use Doctrine\ORM\EntityRepository;
+use \Doctrine\ORM\QueryBuilder;
 
 /**
  * WineRepository
@@ -11,4 +12,17 @@ use Doctrine\ORM\EntityRepository;
  */
 class WineRepository extends EntityRepository
 {
+
+    public function findRegionName(){
+
+        $qb = $em->getRepository("GerlaFrontendBundle:Store")->createQueryBuilder("p");
+
+        $province = $qb->select("p")
+            ->distinct(true)
+            ->getQuery()
+            ->getResult();
+
+    }
+
+
 }

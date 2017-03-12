@@ -4,6 +4,7 @@ namespace ProductBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ProductBundle\Entity\Product;
+use Symfony\Component\Validator\Constraints\DateTime;
 use UserBundle\Entity\BaseUser;
 
 /**
@@ -26,21 +27,21 @@ class Purchase
     /**
      * @var string
      *
-     * @ORM\Column(name="address", type="text")
+     * @ORM\Column(name="address", type="text", nullable=true)
      */
     private $address;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="city", type="string", length=255)
+     * @ORM\Column(name="city", type="string", length=255, nullable=true)
      */
     private $city;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="postal_code", type="string", length=10)
+     * @ORM\Column(name="postal_code", type="string", length=10, nullable=true)
      */
     private $postalCode;
 
@@ -64,6 +65,12 @@ class Purchase
      * @ORM\Column(name="date_order", type="datetime")
      */
     private $dateOrder;
+
+    /**
+     * @var bool
+     * @ORM\Column(name="paid", type="boolean", nullable = true)
+     */
+    private $paid;
 
 
 
@@ -266,6 +273,8 @@ class Purchase
     public function __construct()
     {
         $this->products = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->dateOrder = new DateTime();
+        $this->paid = false;
     }
 
     /**
@@ -300,5 +309,41 @@ class Purchase
     public function getProducts()
     {
         return $this->products;
+    }
+
+    /**
+     * Get purchase amount
+     * @return int
+     */
+    public function getAmount(){
+        $amount = 0;
+        foreach ($this->products as $product){
+            $amount += $product->getStock()*$product->getProduct()->getPrice();
+        }
+        return $amount;
+    }
+
+    /**
+     * Set paid
+     *
+     * @param boolean $paid
+     *
+     * @return Purchase
+     */
+    public function setPaid($paid)
+    {
+        $this->paid = $paid;
+
+        return $this;
+    }
+
+    /**
+     * Get paid
+     *
+     * @return boolean
+     */
+    public function getPaid()
+    {
+        return $this->paid;
     }
 }
