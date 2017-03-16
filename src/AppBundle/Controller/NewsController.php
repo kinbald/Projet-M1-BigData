@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\News;
+use AppBundle\Model\NewsModel;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -60,7 +61,10 @@ class NewsController extends Controller
     /**
      * Finds and displays a news entity.
      *
-     * @Route("/{id}", name="news_show")
+     * @Route("/{id}", name="news_show",
+     * requirements={
+     *         "id": "\d+",
+     *     })
      * @Method("GET")
      */
     public function showAction(News $news)
@@ -76,7 +80,10 @@ class NewsController extends Controller
     /**
      * Displays a form to edit an existing news entity.
      *
-     * @Route("/{id}/edit", name="news_edit")
+     * @Route("/{id}/edit", name="news_edit",
+     * requirements={
+     *         "id": "\d+",
+     *     })
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, News $news)
@@ -101,7 +108,10 @@ class NewsController extends Controller
     /**
      * Deletes a news entity.
      *
-     * @Route("/{id}", name="news_delete")
+     * @Route("/{id}/delete", name="news_delete",
+     * requirements={
+     *         "id": "\d+",
+     *     })
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, News $news)
@@ -132,5 +142,16 @@ class NewsController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    /**
+     * @Route("/public", name="news_public")
+     */
+    public function publicNews()
+    {
+        $model = new NewsModel($this->getDoctrine()->getManager());
+        return $this->render('AppBundle:News:public_news.html.twig', [
+            'news' => $model-> getAllNews( 10, 0)
+        ]);
     }
 }

@@ -10,4 +10,13 @@ namespace AppBundle\Repository;
  */
 class NewsRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findAllNews($limit, $offset)
+    {
+        return $this->createQueryBuilder('m')
+            ->setMaxResults($limit)
+            ->setFirstResult($offset)
+            ->orderBy("m.datePublication", 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
 }

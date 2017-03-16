@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section class="timeline" id="concours">
+        <div class="container">
+            <div class="row">
+                <h3 class="section-heading">News</h3>
+                <div id="timeline" class="timeline-container">
+                    {% for new in news %}
+                        <!-- timeline-block -->
+                        <div class="timeline-block timeline-block-image-1">
+                            <div class="timeline-point"></div>
+                            <!-- timeline-img -->
+                            <div class="timeline-content wow fadeInLeft">
+                                <span class="timeline-date">
+                                    <span class="timeline-month">
+                                        {{ new.datePublication|localizeddate('full', 'none', 'fr') }}
+                                    </span>
+                                </span>
+                                <h2>Concours {{ new.title }}</h2>
+                                <p>{{ new.newsText}}</p>
+                            </div>
+                            <!-- timeline-content -->
+                        </div>
+                    {% endfor %}
+                </div>
+                <!-- timeline -->
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </section>
+{% endblock %}
