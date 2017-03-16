@@ -37,8 +37,16 @@
                 <div id="TITRE">
                     <h3 class="wow fadeInDown">{{ product.name }}</h3>
                 </div>
+
                 <img alt="lauriers" src="{{ asset('img/product/lauriers.png') }}" height="55">
                 <h4 class="wow fadeInDown">Médaille</h4>
+                <div class="rating"><!--
+                    --><a href="#5" title="Give 5 stars">☆</a><!--
+                    --><a href="#4" title="Give 4 stars">☆</a><!--
+                    --><a href="#3" title="Give 3 stars">☆</a><!--
+                    --><a href="#2" title="Give 2 stars">☆</a><!--
+                    --><a href="#1" title="Give 1 star">☆</a>
+                </div>
                 <p class="wow fadeInDown">{{ product.description }} </p>
                 <p><b>Univers :</b> {% for universe in product.universes %} {{universe.name}} {% if not loop.last %}, {% endif %}{% endfor %} </br>
                     <b>Volume : </b>{{ product.volume }} <br>
