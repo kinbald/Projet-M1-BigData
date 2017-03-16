@@ -5030,3 +5030,20 @@ button.close, .close {
     padding:0 160px 0 160px;
   }
 }
+
+.connexion {
+    background-color: #B01E61;
+}
+
+.inscription {
+    background-color: #3F8DD1;
+}
+
+.connexion:hover, .connexion:focus {
+    background-color: #611931 !important;
+}
+
+.inscription:hover, connexion:focus {
+    background-color: #183652 !important;
+
+}
