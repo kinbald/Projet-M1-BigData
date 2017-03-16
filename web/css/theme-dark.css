@@ -4272,7 +4272,7 @@ button.close, .close {
   .about-black-box p {
     color: white !important; }
 .about-white-box {
-  min-height: 70vh;
+  min-height: 50vh;
   background: rgba(255, 255, 255, 0.9);
   color: black !important;
   padding: 60px;
@@ -4378,7 +4378,8 @@ button.close, .close {
   width: 100%;
   padding: 0 15px 15px 15px; }
   .post-entry h3, .post-entry .h3 {
-    margin-bottom: 30px;
+    margin-top: 100px;
+    margin-bottom: 100px;
     float: left;
     width: 100%; }
   .post-entry .section-heading {

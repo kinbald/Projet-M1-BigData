@@ -1,44 +1,21 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>News</h1>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ news.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ news.title }}</td>
-            </tr>
-            <tr>
-                <th>Author</th>
-                <td>{{ news.author }}</td>
-            </tr>
-            <tr>
-                <th>Datepublication</th>
-                <td>{% if news.datePublication %}{{ news.datePublication|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Newstext</th>
-                <td>{{ news.newsText }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="post-entry text-center">
+        <h3 class="section-heading">News</h3>
 
-    <ul>
-        <li>
-            <a href="{{ path('news_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('news_edit', { 'id': news.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        <p>Date de publication : {% if news.datePublication %}{{ news.datePublication|date('Y-m-d H:i:s') }}{% endif %}</p>
+    </div>
+
+        <div class="col-md-8 about-white-box col-md-offset-2">
+            <h2 class="section-claim wow fadeInDown" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInDown;">
+                {{ news.title }}
+            </h2>
+
+            <p>{{ news.newsText }}</p>
+
+            <br>
+            <a href="{{ path('news_index') }}" class="btn btn-default">Back to the list</a>
+        </div>
 {% endblock %}
