@@ -5052,3 +5052,26 @@ button.close, .close {
   padding: 16px;
   font-size: 15px;
 }
+
+#bandeau-age{
+  display: none;
+  background: rgba(0, 0, 0, 0.8) none repeat scroll 0 0;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  overflow-y: auto;
+  overflow-x: hidden;
+  right: 0;
+  top: 0;
+  z-index: 10000;
+}
+
+.bandeau {
+  min-height: 30vh;
+  background: rgba(0, 0, 0, 0.9);
+  color: white !important;
+  padding: 60px;
+  padding-bottom: 90px;
+  margin-top: 200px;
+  text-align: center;
+}
