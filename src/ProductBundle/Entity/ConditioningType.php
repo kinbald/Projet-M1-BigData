@@ -48,6 +48,12 @@ class ConditioningType
      */
     private $purchases;
 
+    /**
+     * @var Collection
+     * @ORM\ManyToMany(targetEntity="\ProductBundle\Entity\Delivery", mappedBy="conditioningType")
+     */
+    protected $deliveries;
+
 
     /**
      * Constructor
@@ -187,5 +193,39 @@ class ConditioningType
     public function getPurchases()
     {
         return $this->purchases;
+    }
+
+    /**
+     * Add purchase
+     *
+     * @param \ProductBundle\Entity\Delivery $delivery
+     *
+     * @return ConditioningType
+     */
+    public function addDelivery(\ProductBundle\Entity\Delivery $delivery)
+    {
+        $this->deliveries[] = $delivery;
+
+        return $this;
+    }
+
+    /**
+     * Remove purchase
+     *
+     * @param \ProductBundle\Entity\Delivery $delivery
+     */
+    public function removeDelivery(\ProductBundle\Entity\Delivery $delivery)
+    {
+        $this->deliveries->removeElement($delivery);
+    }
+
+    /**
+     * Get purchases
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDeliveries()
+    {
+        return $this->deliveries;
     }
 }

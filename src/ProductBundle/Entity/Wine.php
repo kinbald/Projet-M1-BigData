@@ -2,6 +2,7 @@
 
 namespace ProductBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use ProductBundle\Entity\Product;
 use ConcoursBundle\Entity\CompetitionWine;
@@ -45,23 +46,21 @@ class Wine extends Product
     private $region;
 
     /**
-     * @var Collection
-     * @ORM\OneToMany(targetEntity="ConcoursBundle\Entity\CompetitionWine", mappedBy="wine")
-     */
-    private $competitions;
-
-    /**
-     * @var grapeVariety
-     *
-     * @ORM\ManyToOne(targetEntity="\ProductBundle\Entity\GrapeVariety", inversedBy="wines")
-     * @ORM\JoinColumns({
-     *  @ORM\JoinColumn(name="grape_variety", referencedColumnName="id")
-     * })
+     * @var Product
+     * @ORM\ManyToMany(targetEntity="\ProductBundle\Entity\GrapeVariety", cascade={"persist"}, mappedBy="wines")
+     * @ORM\JoinColumn(name="grape_variety", referencedColumnName="id")
      */
     private $grapeVariety;
 
 
-
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->grapeVariety = new ArrayCollection();
+    }
 
 
     /**
@@ -158,62 +157,37 @@ class Wine extends Product
         return $this->region;
     }
 
-
     /**
-     * Add competition
+     * Add GrapeVariety
      *
-     * @param \ConcoursBundle\Entity\CompetitionWine $competition
+     * @param \ProductBundle\Entity\GrapeVariety $grape
      *
-     * @return Wine
+     * @return Product
      */
-    public function addCompetition(\ConcoursBundle\Entity\CompetitionWine $competition)
+    public function addGrapeVariety(GrapeVariety $grape)
     {
-        $this->competitions[] = $competition;
-
+        $this->grapeVariety[] = $grape;
         return $this;
     }
 
     /**
-     * Remove competition
+     * Remove GrapeVariety
      *
-     * @param \ConcoursBundle\Entity\CompetitionWine $competition
+     * @param \ProductBundle\Entity\GrapeVariety $grape
      */
-    public function removeCompetition(\ConcoursBundle\Entity\CompetitionWine $competition)
+    public function removeGrapeVariety(GrapeVariety $grape)
     {
-        $this->competitions->removeElement($competition);
+        $this->grapeVariety->removeElement($grape);
     }
 
     /**
-     * Get Collection
+     * Get GrapeVarietys
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getCompetitions()
-    {
-        return $this->competitions;
-    }
-
-    /**
-     * Set grapeVariety
-     *
-     * @param \ProductBundle\Entity\GrapeVariety $grapeVariety
-     *
-     * @return Wine
-     */
-    public function setGrapeVariety(\ProductBundle\Entity\GrapeVariety $grapeVariety = null)
-    {
-        $this->grapeVariety = $grapeVariety;
-
-        return $this;
-    }
-
-    /**
-     * Get grapeVariety
-     *
-     * @return \ProductBundle\Entity\GrapeVariety
-     */
-    public function getGrapeVariety()
+    public function getGrapeVarieties()
     {
         return $this->grapeVariety;
     }
+
 }

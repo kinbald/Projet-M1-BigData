@@ -2,7 +2,7 @@
 namespace ConcoursBundle\DataFixtures\ORM;
 
 use ConcoursBundle\Entity\Competition;
-use ConcoursBundle\Entity\CompetitionWine;
+use ConcoursBundle\Entity\CompetitionProduct;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -20,10 +20,11 @@ class LoadCompetitions extends AbstractFixture implements OrderedFixtureInterfac
         $competition->setDateCompetition(new \DateTime('2017-04-01 10:00:00'));
         $manager->persist($competition);
 
-        $competitionWine = new CompetitionWine();
+        $competitionWine = new CompetitionProduct();
         $competitionWine->setCompetition($competition);
         $competitionWine->setPrimeName('Vin de qualité');
-        $competitionWine->setWine($wine);
+        $competitionWine->setProduct($wine);
+        $competitionWine->setPoints(75);
         $competitionWine->setUniverse($universe);
         $manager->persist($competitionWine);
 

@@ -44,8 +44,8 @@ class Competition
     private $description;
 
     /**
-     * @var CompetitionWine
-     * @ORM\OneToMany(targetEntity="ConcoursBundle\Entity\CompetitionWine", mappedBy="competition")
+     * @var CompetitionProduct
+     * @ORM\OneToMany(targetEntity="ConcoursBundle\Entity\CompetitionProduct", mappedBy="competition")
      */
     private $wines;
 
