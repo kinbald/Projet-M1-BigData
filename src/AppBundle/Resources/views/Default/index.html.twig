@@ -10,12 +10,25 @@
 {% endblock %}
 
 {% block body %}
-    <div class="text-center">
-        <h1>Box Office Wines</h1>
+
+    <section class="testimonials testimonials-banner" id="testimonials">
+        <div class="container">
+            <div class="row">
+                <img src="/img/logo.png"><br>
+                <span class="text-newsletter">S'abonner à la Newsletter: </span><br>
+                <input id="" class="text-newsletter" name="email" type="text">
+                <button type="button" class="button btn-info btn-lg" data-toggle="modal" data-target="#myModal">Je m'inscris</button>
+            </div>
+        </div>
+
+    </section>
+
+    <section>
         <div class="text-center">
+            <h1> Box Office Wines</h1>
             {% for universe in universes %}
                 <div class="neutral text-center">
-                    <a type="button" class="btn" href="{{ path("universe_show", {id:universe.id}) }}">
+                    <a type="button" class="btn btn-home" href="{{ path("universe_show", {id:universe.id}) }}">
                         {% set picture = universe.pictures|first %}
                         <img class="image" src="{{ asset(picture.url) }}" alt="{{ picture.alt }}"/>
                         <p class="texte">{{ universe.name }}</p>
@@ -23,6 +36,68 @@
                 </div>
             {% endfor %}
         </div>
-    </div>
-{% endblock %}
 
+    </section>
+
+    <section class="testimonials testimonials-banner" id="testimonials">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="section-heading">Recettes</h3>
+                </div>
+                <div class="testimonials-slider text-center">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="testimonials-container shadow"> <img alt="user avatar" class="wow fadeInUp" src="img/user.png">
+                                <h3 class="wow fadeInUp" data-wow-delay=".4s"> Lien vers site de recettes 1 <span>Fastcompany ltd.</span> </h3>
+                                <p class="wow fadeInUp" data-wow-delay=".6s"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="testimonials-container shadow"> <img alt="user avatar" class="wow fadeInUp" src="img/user.png">
+                                <h3 class="wow fadeInUp" data-wow-delay=".4s"> Martin Johe, Co-Founder / CEO <span>Fastcompany ltd.</span> </h3>
+                                <p class="wow fadeInUp" data-wow-delay=".6s"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="testimonials-container shadow"> <img alt="user avatar" class="wow fadeInUp" src="img/user.png">
+                                <h3 class="wow fadeInUp" data-wow-delay=".4s"> Martin Johe, Co-Founder / CEO <span>Fastcompany ltd.</span> </h3>
+                                <p class="wow fadeInUp" data-wow-delay=".6s"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonials-pagination"></div>
+                    <div class="testimonials-slider-next right-arrow-negative"> <span class="ti-arrow-right"></span> </div>
+                    <div class="testimonials-slider-prev left-arrow-negative"> <span class="ti-arrow-left"></span> </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <div class="section section-min">
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-4 col-md-push-4 text-center"> <img class="footer-logo" src="img/logo.png" alt="footer-logo">
+                            <div class="social">
+                                <ul>
+                                    <li><a href="http://facebook.com/" target="_blank"><span class="ti-facebook"></span></a></li>
+                                    <li><a href="https://twitter.com/" target="_blank"><span class="ti-twitter-alt"></span></a></li>
+                                    <li><a href="http://linkedin.com/" target="_blank"><span class="ti-linkedin"></span></a></li>
+                                    <li><a href="https://vimeo.com/" target="_blank"><span class="ti-vimeo-alt"></span></a></li>
+                                    <li><a href="http://youtube.com/" target="_blank"><span class="ti-youtube"></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+    </div>
+
+{% endblock %}
