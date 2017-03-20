@@ -56,12 +56,6 @@ abstract class Product
     protected $description;
 
     /**
-     * @var string
-     * @ORM\Column(name="description_short", type="text")
-     */
-    protected $descriptionShort;
-
-    /**
      * @var float
      *
      * @ORM\Column(name="volume", type="float")
@@ -280,29 +274,6 @@ abstract class Product
         return $this->description;
     }
 
-    /**
-     * Set descriptionShort
-     *
-     * @param string $descriptionShort
-     *
-     * @return Product
-     */
-    public function setDescriptionShort($descriptionShort)
-    {
-        $this->descriptionShort = $descriptionShort;
-
-        return $this;
-    }
-
-    /**
-     * Get descriptionShort
-     *
-     * @return string
-     */
-    public function getDescriptionShort()
-    {
-        return $this->descriptionShort;
-    }
 
     /**
      * Set volume

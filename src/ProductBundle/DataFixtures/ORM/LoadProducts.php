@@ -180,7 +180,6 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $wine1->setColor('Rouge');
         $wine1->setName('Vin Gigondas rouge');
         $wine1->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
-        $wine1->setDescriptionShort('Lorem ipsum dolor sit amet, consectetur adipiscing elit');
         $wine1->setVolume(1.5);
         $wine1->setPrice(135.40);
         $wine1->setRegion('Var');
@@ -204,7 +203,6 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $wine2->setColor('Rouge');
         $wine2->setName('Vin Montauriol rouge');
         $wine2->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
-        $wine2->setDescriptionShort('Lorem ipsum dolor sit amet, consectetur adipiscing elit');
         $wine2->setVolume(1.5);
         $wine2->setRegion('Var');
         $wine2->addGrapeVariety($grape);
@@ -229,7 +227,6 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $wine3->setName('Vin rosé cultivé dans les océans');
         $wine3->setDisplayName('Ocean Rose');
         $wine3->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
-        $wine3->setDescriptionShort('Lorem ipsum dolor sit amet, consectetur adipiscing elit');
         $wine3->setVolume(0.7);
         $wine3->setRegion('Var');
         $wine3->addGrapeVariety($grape);
@@ -253,7 +250,6 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $wine4->setColor('Rose');
         $wine4->setName('Chateau Toulon');
         $wine4->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
-        $wine4->setDescriptionShort('Lorem ipsum dolor sit amet, consectetur adipiscing elit');
         $wine4->setVolume(0.3);
         $wine4->setRegion('Var');
         $wine4->addGrapeVariety($grape);
@@ -277,7 +273,6 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $spiritueux1->setAlcoholDegree(50);
         $spiritueux1->setName('Absolute vodka');
         $spiritueux1->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
-        $spiritueux1->setDescriptionShort('Lorem ipsum dolor sit amet, consectetur adipiscing elit');
         $spiritueux1->setVolume(1);
         $spiritueux1->setPrice(56.20);
         $spiritueux1->setStock(60);
@@ -295,7 +290,6 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $spiritueux2->setAlcoholDegree(40);
         $spiritueux2->setName('Canadian Whisky');
         $spiritueux2->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
-        $spiritueux2->setDescriptionShort('Lorem ipsum dolor sit amet, consectetur adipiscing elit');
         $spiritueux2->setVolume(0.7);
         $spiritueux2->setPrice(43.15);
         $spiritueux2->setStock(35);
@@ -313,7 +307,6 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $spiritueux3->setAlcoholDegree(40);
         $spiritueux3->setName('Belvedere vodka');
         $spiritueux3->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
-        $spiritueux3->setDescriptionShort('Lorem ipsum dolor sit amet, consectetur adipiscing elit');
         $spiritueux3->setVolume(0.7);
         $spiritueux3->setPrice(35.45);
         $spiritueux3->setStock(59);
@@ -331,7 +324,6 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $spiritueux4->setAlcoholDegree(40);
         $spiritueux4->setName('Whisky Red Label');
         $spiritueux4->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
-        $spiritueux4->setDescriptionShort('Lorem ipsum dolor sit amet, consectetur adipiscing elit');
         $spiritueux4->setVolume(0.7);
         $spiritueux4->setPrice(53.05);
         $spiritueux4->setStock(56);
