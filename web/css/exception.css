@@ -1,7 +1,15 @@
 .exceptionContent {
     text-align: center;
-    width: 100%;
+    margin: auto;
+    margin-top: 80px;
 }
-
-#exceptionTitle {
+.exceptionImg {
+    max-height: 100vh;
+    max-width: 100vw;
+}
+.btn-exception {
+    margin-bottom: 20px;
+}
+#exceptionTitle, .exceptionCode, .exceptionImg {
+    font-family: 'Roboto', sans-serif;
 }

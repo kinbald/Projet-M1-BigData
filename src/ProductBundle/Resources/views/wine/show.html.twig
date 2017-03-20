@@ -1,45 +1,47 @@
 {% extends  'ProductBundle:product:show.html.twig' %}
 {% block features %}
-    <tr>
-        <td class="attribute">
-            Millésime :
-        </td>
-        <td class="att-value">
-            {% if product.vintage %}{{ product.vintage|date('Y') }}{% endif %}
-        </td>
-    </tr>
-    <tr>
-        <td class="attribute">
-            Couleur :
-        </td>
-        <td class="att-value">
-                {{ product.color }}
-            </td>
-        </tr>
 
-    {% if product.vintage %}<b>Millésime : </b>{{ product.vintage|date('Y-m-d') }}{% endif %} <br />
-    <b>Couleur :</b> {{ product.color }} <br />
-    <b>Sépage : </b>{{ product.grapeVariety.name }} <br />
-    {% if product.range %}<b>Catégorie : </b> {% if product.range.img %} <img src="{{ product.range.img }}" alt="categorie" height="30"> {% endif %} {{ product.range.name }}{% endif %} <br />
+    {% if product.vintage %}
+        <b>{% trans %}Vintage{% endtrans %} : </b>{{ product.vintage|date('Y-m-d') }}
+        <br>
+    {% endif %}
 
-    {% if product.region %}<b>Region : </b>{{ product.region}} <br />{% endif %}
-    {% if product.origincountry %}<b>Pays : </b>{{ product.origincountry.name}}, {{ product.origincontinent.name}} <br />{% endif %}
+    <b>{% trans %}Color{% endtrans %} :</b> {{ product.color }} <br />
+
+    <b>{% trans %}Cepage{% endtrans %} : </b>{{ product.grapeVariety.name }} <br />
+
+    {% if product.range %}
+        <b>{% trans %}Category{% endtrans %} : </b>
+        {% if product.range.img %}
+            <img src="{{ product.range.img }}" alt="categorie" height="30">
+        {% endif %} {{ product.range.name }}
+    {% endif %} <br />
+
+    {% if product.region %}
+        <b>{% trans %}Region{% endtrans %} : </b>{{ product.region}} <br />
+    {% endif %}
+
+    {% if product.origincountry %}
+        <b>{% trans %}Country{% endtrans %} : </b>{{ product.origincountry.name}}, {{ product.origincontinent.name}} <br />
+    {% endif %}
 
     {% if product.recipes %}
-    {% for recipe in product.recipes %}
-        <b>Recette : {{ recipe.name }}</b>
-        <a href="{{ recipe.url }}"> <img src="{{ asset('img/product/recipe.png') }}" alt="recipe_link" height="50"></a>
-    {% endfor %}
+        {% for recipe in product.recipes %}
+            <b>{% trans %}Recipe{% endtrans %} : </b>{{ recipe.name }}
+            <a href="{{ recipe.url }}"> <img src="{{ asset('img/product/recipe.png') }}" alt="recipe_link" height="50"></a>
+            <br />
+        {% endfor %}
     {% endif %}
 
     {% if product.conditioningTypes is not empty %}
-    <b>Conditionnement :</b>
-    {% for conditioningType in product.conditioningTypes %}
-    {{ conditioningType.name }},
-    {% endfor %}
+        <b>{% trans %}Conditioning{% endtrans %} :</b>
+        {% for conditioningType in product.conditioningTypes %}
+            {{ conditioningType.name }},
+        {% endfor %}
+        <br>
     {% endif %}
 
-    <b>Médaille : </b>
+    <b>{% trans %}Medal{% endtrans %} : </b>
 
     {% for competition in competitions %}
         {{ competition.universe.name }}, {{ competition.primeName }}

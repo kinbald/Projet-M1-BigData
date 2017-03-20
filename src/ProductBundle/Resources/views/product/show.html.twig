@@ -13,7 +13,7 @@
 {% block body %}
 <div class="product-content">
     <section class="section-slide">
-        <INPUT type="button" value="❮ Retour à la sélection" class="back-button wow fadeInRight" onClick="window.history.back()">
+        <INPUT type="button" value="❮ {% trans %}Back to selection{% endtrans %}" class="back-button wow fadeInRight" onClick="window.history.back()">
         <div class="slideshow-container">
             {% for product_picture in product_pictures %}
                 <div class="mySlides">
@@ -39,7 +39,7 @@
                 </div>
 
                 <img alt="lauriers" src="{{ asset('img/product/lauriers.png') }}" height="55">
-                <h4 class="wow fadeInDown">Médaille</h4>
+                <h4 class="wow fadeInDown">{% trans %}Medal{% endtrans %}</h4>
                 <div class="rating"><!--
                     --><a href="#5" title="Give 5 stars">☆</a><!--
                     --><a href="#4" title="Give 4 stars">☆</a><!--
@@ -48,9 +48,9 @@
                     --><a href="#1" title="Give 1 star">☆</a>
                 </div>
                 <p class="wow fadeInDown">{{ product.description }} </p>
-                <p><b>Univers :</b> {% for universe in product.universes %} {{universe.name}} {% if not loop.last %}, {% endif %}{% endfor %} </br>
-                    <b>Volume : </b>{{ product.volume }} <br>
-                    <b>Stock : </b>{{ product.stock }} <br>
+                <p><b>{% trans %}Universes{% endtrans %} :</b> {% for universe in product.universes %} {{universe.name}} {% if not loop.last %}, {% endif %}{% endfor %} </br>
+                    <b>{% trans %}Volume{% endtrans %} : </b>{{ product.volume }} <br>
+                    <b>{% trans %}Stock{% endtrans %} : </b>{{ product.stock }} <br>
                     {%  block features %}
                     {% endblock %}
                 </p>
@@ -59,7 +59,7 @@
                 <br><br> <br> <br>
                 <span class="btn btn-default add-item wow swing" {% if picture %}data-image="/img/upload/{{ picture.url}}"{% endif %}  data-name="{{ product.name }}" data-cost="{{ product.price }}" data-id="{{ product.id }}">
                     <div id="ajout"><img alt="e-commerce" src="{{ asset('img/product/panier.png') }}" height="55"></div>
-                    <span class="ti-shopping-cart"></span>Ajouter au panier
+                    <span class="ti-shopping-cart"></span>{% trans %}Panier{% endtrans %}
                 </span>
             </div>
             <br>

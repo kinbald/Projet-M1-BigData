@@ -14,26 +14,27 @@
 
     <div id="contenu">
         <div id="content">
-            <h1>{% trans %}Wine creation{% endtrans %}</h1>
+            <h1>{% trans %}Create Wine{% endtrans %}</h1>
             <br><br>
             {{ form_start(form) }}
             {{ form_widget(form) }}
 
-            <a  id="button" class="clic" href="{{ asset('uploader/fancybox.php') }}?iframe">Load a picture</a>
+            <a  id="button" class="clic" href="{{ asset('uploader/fancybox.php') }}?iframe">{% trans %}Load a picture{% endtrans %}</a>
             <input type="text" id="chemin" name="urlImg" required>
 
         </div>
     </div>
 
 
+
     <div id="boutons">
         <div class="bouton1">
-            <input class="btn btn-primary btn-circle" type="submit" value="Create" />
+            <input class="btn btn-primary btn-circle" type="submit" value="{% trans %}Create{% endtrans %}" />
         </div>
         {{ form_end(form) }}
 
         <div class="bouton1">
-            <a class="btn btn-primary btn-circle" href="{{ path('product_list', {type: 'wine'}) }}">Back to the list</a>
+            <a class="btn btn-primary btn-circle" href="{{ path('product_list', {type: 'wine'}) }}">{% trans %}Back to the list{% endtrans %}</a>
         </div>
 
     </div>

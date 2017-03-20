@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/accueil.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        setTimeout(jeMeCasse,5000);
+        function jeMeCasse() {
+            window.location.replace('{{path("homepage")}}')
+        }
+    </script>
+{% endblock %}
+
+{% block body %}
+    <div class="text-center">
+        <h1>Inscritpion réussie !</h1>
+        <p>Vous allez être redirigé(e) dans quelques secondes.</p>
+    </div>
+{% endblock %}
