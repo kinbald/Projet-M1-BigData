@@ -17,7 +17,7 @@
         margin-right: 1%;
     }
 
-    .btn {
+    .btn-home {
         padding: 0px 0px;
         text-align: center;
         width: 354px;
@@ -43,6 +43,22 @@
         overflow-wrap: break-word;
         white-space: pre-wrap;
     }
+
+    .testimonials {
+        text-align: center;
+        position: relative;
+        width: 100%;
+        min-height: 500px;
+        background: url('http://payload134.cargocollective.com/1/8/282041/4988189/Winery%20Landscape%201_1050.jpg') no-repeat;
+        background-size: cover;
+    }
+    .text-newsletter{
+        font-size: 155%;
+        font-family: 'Lemonada', cursive;
+        overflow-wrap: break-word;
+        white-space: pre-wrap;
+        color: black;
+    }
 }
 @media (min-width: 500px ) {
     h1{
@@ -63,7 +79,7 @@
         margin-right: 1%;
     }
 
-    .btn {
+    .btn-home {
         padding: 0px 0px;
         text-align: center;
         width: 454px;
@@ -88,5 +104,20 @@
         font-family: 'Lemonada', cursive;
         overflow-wrap: break-word;
         white-space: pre-wrap;
+    }
+    .testimonials-banner {
+        text-align: center;
+        position: relative;
+        width: 100%;
+        min-height: 500px;
+        background: url('http://payload134.cargocollective.com/1/8/282041/4988189/Winery%20Landscape%201_1050.jpg') no-repeat;
+        background-size: cover;
+    }
+    .text-newsletter{
+        font-size: 155%;
+        font-family: 'Lemonada', cursive;
+        overflow-wrap: break-word;
+        white-space: pre-wrap;
+        color: black;
     }
 }
