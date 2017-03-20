@@ -44,13 +44,19 @@ abstract class Product
     /**
      * @var string
      *
+     * @ORM\Column(name="display_name", nullable=true, type="string", length=255)
+     */
+    protected $displayName;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="description", type="text")
      */
     protected $description;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="description_short", type="text")
      */
     protected $descriptionShort;
@@ -75,6 +81,47 @@ abstract class Product
      * @ORM\Column(name="stock", type="integer")
      */
     protected $stock;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="a_decanter", type="boolean", options={"default" : false})
+     */
+    protected $aDecanter;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="contact_lies", type="boolean", options={"default" : false})
+     */
+    protected $contactLies;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="contact_bois", type="boolean", options={"default" : false})
+     */
+    protected $contactBois;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="non_filtre", type="boolean", options={"default" : false})
+     */
+    protected $nonFiltre;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="demarche_qualite", type="boolean", options={"default" : false})
+     */
+    protected $demarcheQualite;
+
+    /**
+     * @var Collection
+     * @ORM\OneToMany(targetEntity="ConcoursBundle\Entity\CompetitionProduct", mappedBy="product")
+     */
+    private $competitions;
 
 
     /**
@@ -184,6 +231,29 @@ abstract class Product
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set displayName
+     *
+     * @param string $name
+     *
+     * @return Product
+     */
+    public function setDisplayName($name)
+    {
+        $this->displayName = $name;
+        return $this;
+    }
+
+    /**
+     * Get displayName
+     *
+     * @return string
+     */
+    public function getDisplayName()
+    {
+        return $this->displayName;
     }
 
     /**
@@ -305,6 +375,7 @@ abstract class Product
     {
         return $this->stock;
     }
+
     /**
      * Constructor
      */
@@ -312,6 +383,11 @@ abstract class Product
     {
         $this->pictures = new ArrayCollection();
         $this->reservations = new ArrayCollection();
+        $this->aDecanter = false;
+        $this->contactBois = false;
+        $this->demarcheQualite = false;
+        $this->contactLies = false;
+        $this->nonFiltre = false;
     }
 
     public function __toString()
@@ -629,4 +705,41 @@ abstract class Product
     {
         return $this->reservations;
     }
+
+
+
+    /**
+     * Add competition
+     *
+     * @param \ConcoursBundle\Entity\CompetitionProduct $competition
+     *
+     * @return Product
+     */
+    public function addCompetition(\ConcoursBundle\Entity\CompetitionProduct $competition)
+    {
+        $this->competitions[] = $competition;
+
+        return $this;
+    }
+
+    /**
+     * Remove competition
+     *
+     * @param \ConcoursBundle\Entity\CompetitionProduct $competition
+     */
+    public function removeCompetition(\ConcoursBundle\Entity\CompetitionProduct $competition)
+    {
+        $this->competitions->removeElement($competition);
+    }
+
+    /**
+     * Get Collection
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCompetitions()
+    {
+        return $this->competitions;
+    }
+
 }

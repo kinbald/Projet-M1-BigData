@@ -4,16 +4,16 @@ namespace ConcoursBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ConcoursBundle\Entity\Competition;
+use ProductBundle\Entity\Product;
 use ProductBundle\Entity\Universe;
-use ProductBundle\Entity\Wine;
 
 /**
  * CompetitionWine
  *
- * @ORM\Table(name="competition_wine")
- * @ORM\Entity(repositoryClass="ConcoursBundle\Repository\CompetitionWineRepository")
+ * @ORM\Table(name="competition_product")
+ * @ORM\Entity(repositoryClass="ConcoursBundle\Repository\CompetitionProductRepository")
  */
-class CompetitionWine
+class CompetitionProduct
 {
     /**
      * @var int
@@ -32,6 +32,13 @@ class CompetitionWine
     private $primeName;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="points", type="integer")
+     */
+    private $points;
+
+    /**
      * @var Competition
      * @ORM\ManyToOne(targetEntity="ConcoursBundle\Entity\Competition", inversedBy="wines")
      * @ORM\JoinColumn(nullable=false)
@@ -39,11 +46,11 @@ class CompetitionWine
     private $competition;
 
     /**
-     * @var Wine
-     * @ORM\ManyToOne(targetEntity="ProductBundle\Entity\Wine", inversedBy="competitions")
+     * @var Product
+     * @ORM\ManyToOne(targetEntity="ProductBundle\Entity\Product", inversedBy="competitions")
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
-    private $wine;
+    private $product;
 
 
     /**
@@ -88,6 +95,30 @@ class CompetitionWine
     }
 
     /**
+     * Set primeName
+     *
+     * @param integer $points
+     *
+     * @return CompetitionWine
+     */
+    public function setPoints($points)
+    {
+        $this->points = $points;
+
+        return $this;
+    }
+
+    /**
+     * Get primeName
+     *
+     * @return integer
+     */
+    public function getPoints()
+    {
+        return $this->points;
+    }
+
+    /**
      * Set competition
      *
      * @param \ConcoursBundle\Entity\Competition $competition
@@ -114,25 +145,24 @@ class CompetitionWine
     /**
      * Set wine
      *
-     * @param \ProductBundle\Entity\Wine $wine
+     * @param \ProductBundle\Entity\Product $product
      *
      * @return CompetitionWine
      */
-    public function setWine(\ProductBundle\Entity\Wine $wine)
+    public function setProduct(\ProductBundle\Entity\Product $product)
     {
-        $this->wine = $wine;
-
+        $this->product = $product;
         return $this;
     }
 
     /**
      * Get wine
      *
-     * @return \ProductBundle\Entity\Wine
+     * @return \ProductBundle\Entity\Product
      */
-    public function getWine()
+    public function getProduct()
     {
-        return $this->wine;
+        return $this->product;
     }
 
     /**

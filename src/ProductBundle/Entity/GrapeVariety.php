@@ -29,9 +29,11 @@ class GrapeVariety
      */
     private $name;
 
+
     /**
-     * @var Collection
-     * @ORM\OneToMany(targetEntity="\ProductBundle\Entity\Wine", mappedBy="grapeVariety")
+     * @var Product
+     * @ORM\ManyToMany(targetEntity="\ProductBundle\Entity\Wine", cascade={"persist"}, inversedBy="grapeVariety")
+     * @ORM\JoinColumn(name="wines", referencedColumnName="id")
      */
     private $wines;
 

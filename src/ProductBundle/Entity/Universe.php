@@ -55,7 +55,7 @@ class Universe
 
     /**
      * @var Collection
-     * @ORM\OneToMany(targetEntity="ConcoursBundle\Entity\CompetitionWine", mappedBy="universe")
+     * @ORM\OneToMany(targetEntity="ConcoursBundle\Entity\CompetitionProduct", mappedBy="universe")
      */
     private $competitions;
 
