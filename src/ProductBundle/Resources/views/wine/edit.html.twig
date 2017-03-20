@@ -14,12 +14,12 @@
 
     <div id="contenu">
         <div id="content">
-            <h1>Wine edit</h1>
+            <h1>{% trans %}Edit Wine{% endtrans %}</h1>
             <br><br>
             {{ form_start(edit_form) }}
             {{ form_widget(edit_form) }}
 
-            <a  id="button" class="clic" href="{{ asset('uploader/fancybox.php') }}?iframe">Load a picture</a>
+            <a  id="button" class="clic" href="{{ asset('uploader/fancybox.php') }}?iframe">{% trans %}Load a picture{% endtrans %}</a>
             <input type="text" id="chemin" name="urlImg" required>
 
             <br>
@@ -38,21 +38,23 @@
 
         </div>
     </div>
+    
 
     <div id="boutons">
         <div class="bouton1">
-            <input class="btn btn-primary btn-circle" type="submit" value="Edit" />
+            <input class="btn btn-primary btn-circle" type="submit" value="{% trans %}Edit{% endtrans %}" />
         </div>
         {{ form_end(edit_form) }}
         {{ form_start(delete_form) }}
         <div class="bouton1">
-            <input class="btn btn-primary btn-circle" type="submit" value="Delete">
+            <input class="btn btn-primary btn-circle" type="submit" value="{% trans %}Delete{% endtrans %}">
         </div>
         {{ form_end(delete_form) }}
         <div class="bouton1">
-            <a class="btn btn-primary btn-circle" href="{{ path('product_list', {type: 'wine'}) }}">Back to the list</a>
+            <a class="btn btn-primary btn-circle" href="{{ path('product_list', {type: 'wine'}) }}">{% trans %}Back to the list{% endtrans %}</a>
         </div>
     </div>
+
 
     <div class="espace-bas"></div>
 

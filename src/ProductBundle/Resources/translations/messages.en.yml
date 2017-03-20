@@ -1,25 +1,20 @@
 Name: Name
 Description: Description
 Volume: Volume
-Price: Price
-Stock: Stock
-Universes: Universes
-Vintage: Vintage
+Universes: Universe
 Color: Color
-Wine creation: Add wine
-
-
-Purchase edit: Purchase edit
 
 
 Edit: Edit
 Delete: Delete
+Show: Show
+Create: Create
+
 
 
 Back to the list: Back to the list
 
-Gestion des commandes: Orders management
-Create a new purchase: Create a new purchase
+
 ID commande: Order ID
 ID user: User ID
 Adresse: Address
@@ -28,4 +23,37 @@ Code postal: Postal code
 Pays: Country
 Date de commande: Order date
 Statut: Status
-Action: Action
+Doing: Doing
+Done: Done
+Done Purchase: Finished purchases
+Degree: Alcohol degree :
+
+
+Id: Id
+Name: Product name
+Vintage: Vintage
+Color: Color
+Price: Price
+Stock: Stock
+Actions: Actions
+
+Create Spirit: Add a new spirit
+Create Wine: Add a new wine
+Create Universe: Add a new universe
+Create Purchase: Create a new purchase
+
+Edit Wine: Wine edition
+Edit Spirit: Spirit edition
+Edit Universe: Universe edition
+Edit Purchase: Purchase edition
+
+Spirit Title: Spirit list
+Wine Title: Wine list
+Universe Title: Universe list
+Purchase Title: Orders management
+
+Purchase Admin: Purchase admin
+
+
+Retour: Back to the list
+Load a picture: Load a picture

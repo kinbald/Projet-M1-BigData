@@ -10,7 +10,7 @@
 
     <div id="contenu">
         <div id="content">
-            <h1>Purchase creation</h1>
+            <h1>{% trans %}Create Purchase{% endtrans %}</h1>
             <br><br>
             {{ form_start(form) }}
             {{ form_widget(form) }}
@@ -20,16 +20,15 @@
 
     <div id="boutons">
         <div class="bouton1">
-            <input class="btn btn-primary btn-circle" type="submit" value="Create" />
+            <input class="btn btn-primary btn-circle" type="submit" value="{% trans %}Create{% endtrans %}" />
         </div>
         {{ form_end(form) }}
 
         <div class="bouton1">
-            <a class="btn btn-primary btn-circle" href="{{ path('purchase_index') }}">Back to the list</a>
+            <a class="btn btn-primary btn-circle" href="{{ path('purchase_index') }}">{% trans %}Back to the list{% endtrans %}</a>
         </div>
 
     </div>
-
 
     <div class="espace-bas"></div>
 {% endblock %}
