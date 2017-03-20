@@ -29,7 +29,11 @@
                     <tr>
                         <td class="url">{{ picture.url }}</td>
                         <td><div class="pic1"><a href="{{ asset(picture.url) }}"><img src="/img/adminlogo/eye.png" alt="preview" style="height: 30px;"></a></div></td>
-                        <td><div class="pic1"><img src="/img/adminlogo/trash.png" alt="delete"  style="height: 30px;"></div></td>
+                        <td>
+                            <div class="pic1"><a
+                                        href="{{ path('product_del_img', { 'id': wine.id, 'idImg': picture.id}) }}"><img
+                                            src="/img/adminlogo/trash.png" alt="delete" style="height: 30px;"></a></div>
+                        </td>
                         <td class="supprimer"></td>
                     </tr>
                 {% endfor %}

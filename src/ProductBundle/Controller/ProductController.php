@@ -203,10 +203,12 @@ class ProductController extends Controller
      */
     public function delImgAction(Request $request, Product $product)
     {
-        $id = $request->get("idImg");
+        $idImg = $request->get("idImg");
         $em = $this->getDoctrine()->getManager();
-        $picture = $em->getRepository("ProductBundle:PictureProduct")->find($id);
-        $product->removePicture($picture);
-        return $this->redirectToRoute('product_edit', array('type' => $product->getDiscr()));
+        $picture = $em->getRepository("ProductBundle:PictureProduct")->find($idImg);
+        $em->remove($picture);
+
+        $em->flush();
+        return $this->redirectToRoute('product_edit', array('id' => $product->getId()));
     }
 }
