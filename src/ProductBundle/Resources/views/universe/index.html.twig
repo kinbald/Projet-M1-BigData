@@ -1,7 +1,8 @@
 {% extends 'baseadmin.html.twig' %}
 
 {% block stylesheets %}
-    {{ parent() }}
+    <link href="{{ asset('css/bootstrap-dark.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/theme-dark.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/index.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/media.css') }}" rel="stylesheet" />
 {% endblock %}
@@ -10,22 +11,22 @@
     <div class="container overflow-hidden">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="section-heading">Universe list</h3>
+                <h3 class="section-heading">{% trans %}Universe Title{% endtrans %}</h3>
             </div>
         </div>
     </div>
     <br><br>
     <table border="1">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Description</th>
-                <th>Actions</th>
-            </tr>
+        <tr>
+            <th>{% trans %}Id{% endtrans %}</th>
+            <th>{% trans %}Name{% endtrans %}</th>
+            <th>{% trans %}Description{% endtrans %}</th>
+            <th>{% trans %}Actions{% endtrans %}</th>
+        </tr>
         </thead>
         <tbody>
-            {% for universe in universes %}
+        {% for universe in universes %}
             <tr>
                 <td><a href="{{ path('universe_show', { 'id': universe.id }) }}">{{ universe.id }}</a></td>
                 <td>{{ universe.name }}</td>
@@ -33,21 +34,21 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('universe_show', { 'id': universe.id }) }}">show</a>
+                            <a href="{{ path('universe_show', { 'id': universe.id }) }}">{% trans %}Show{% endtrans %}</a>
                         </li>
                         <li>
-                            <a href="{{ path('universe_edit', { 'id': universe.id }) }}">edit</a>
+                            <a href="{{ path('universe_edit', { 'id': universe.id }) }}">{% trans %}Edit{% endtrans %}</a>
                         </li>
                     </ul>
                 </td>
             </tr>
-            {% endfor %}
+        {% endfor %}
         </tbody>
     </table>
     <br><br>
     <ul>
         <li>
-            <a href="{{ path('universe_new') }}"><div class="btn btn-primary btn-circle">Create a new universe</div></a>
+            <a href="{{ path('universe_new') }}"><div class="btn btn-primary btn-circle">{% trans %}Create Universe {% endtrans%}</div></a>
         </li>
     </ul>
 {% endblock %}
