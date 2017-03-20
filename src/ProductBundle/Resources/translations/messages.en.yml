@@ -3,6 +3,8 @@ Description: Description
 Volume: Volume
 Universes: Universe
 Color: Color
+Red: Red
+White: White
 
 
 Edit: Edit
@@ -67,3 +69,13 @@ Recipe: Recipe
 Category: Category
 Country: Country
 Region: Region
+
+Search: SEARCH
+Range: Range
+Type: Type
+Advanced: Advanced criteria
+Submit: Submit
+Invitation: Discover our products
+
+
+

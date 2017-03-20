@@ -3,7 +3,8 @@ Description: Description
 Volume: Volume
 Universes: Univers
 Color: Couleur
-
+Red: Rouge
+White: Blanc
 
 Edit: Modifier
 Delete: Supprimer
@@ -72,4 +73,9 @@ Category: Catégorie
 Country: Pays
 Region: Région
 
-
+Search: RECHERCHE
+Range: Gamme
+Type: Type
+Advanced: Critères avancés
+Submit: Envoyer
+Invitation: Découvrez nos produits

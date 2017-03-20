@@ -14,7 +14,7 @@
     <div class="container overflow-hidden">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="section-heading">Bienvenue dans l'espace presse </h3>
+                <h3 class="section-heading">{% trans %}Welcome{% endtrans %}</h3>
             </div>
         </div>
     </div>
@@ -22,9 +22,9 @@
         <table>
             <thead>
                 <tr>
-                    <th>Date</th>
-                    <th>Titre</th>
-                    <th>Description</th>
+                    <th>{% trans %}Date{% endtrans %}</th>
+                    <th>{% trans %}Title{% endtrans %}</th>
+                    <th>{% trans %}Description{% endtrans %}</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,7 +34,7 @@
                     <td class="titre">{{ media.name }}</td>
                     <td class="contenu">
                         <a href="{{ asset(media.url) }}/">
-                            Télécharger
+                            {% trans %}Download{% endtrans %}
                         </a>
                     </td>
                 </tr>
