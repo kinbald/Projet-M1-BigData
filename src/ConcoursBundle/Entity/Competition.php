@@ -47,7 +47,7 @@ class Competition
      * @var CompetitionProduct
      * @ORM\OneToMany(targetEntity="ConcoursBundle\Entity\CompetitionProduct", mappedBy="competition")
      */
-    private $wines;
+    private $products;
 
 
     /**
@@ -136,40 +136,40 @@ class Competition
      */
     public function __construct()
     {
-        $this->wines = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->products = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
-     * Add wine
+     * Add product
      *
-     * @param \ConcoursBundle\Entity\CompetitionWine $wine
+     * @param \ConcoursBundle\Entity\Competition $product
      *
      * @return Competition
      */
-    public function addWine(\ConcoursBundle\Entity\CompetitionWine $wine)
+    public function addWine(\ConcoursBundle\Entity\Competition $product)
     {
-        $this->wines[] = $wine;
+        $this->products[] = $product;
 
         return $this;
     }
 
     /**
-     * Remove wine
+     * Remove product
      *
-     * @param \ConcoursBundle\Entity\CompetitionWine $wine
+     * @param \ConcoursBundle\Entity\Competition $product
      */
-    public function removeWine(\ConcoursBundle\Entity\CompetitionWine $wine)
+    public function removeWine(\ConcoursBundle\Entity\Competition $product)
     {
-        $this->wines->removeElement($wine);
+        $this->products->removeElement($product);
     }
 
     /**
-     * Get wines
+     * Get products
      *
      * @return \Doctrine\Common\Collections\Collection
      */
     public function getWines()
     {
-        return $this->wines;
+        return $this->products;
     }
 }
