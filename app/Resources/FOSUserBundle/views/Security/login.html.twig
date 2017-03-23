@@ -26,7 +26,7 @@
                 </form>
             <div class="clearfix"></div>
             <div id="suplogin" class="form-group">
-                <h6>Vous n'avez pas encore de compte?</h6>
+                <h4>Vous n'avez pas encore de compte?</h4>
                 <a href="{{ path("inscription_choix") }}" class="btn btn-block btn-primary btn-float m-t-25">S'inscrire</a>
             </div>
         </div>
@@ -34,5 +34,6 @@
 {% endblock fos_user_content %}
 
 {% block javascripts %}
+    {{ parent() }}
     <script src="{{ asset('https://use.fontawesome.com/4fea08bc45.js') }}"></script>
 {% endblock %}
