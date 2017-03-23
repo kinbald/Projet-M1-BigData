@@ -3,6 +3,7 @@
 {% block stylesheets %}
     {{ parent() }}
     <link href="{{ asset('css/accueil.css') }}" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 {% endblock %}
 
 {% block javascripts %}
@@ -39,8 +40,22 @@
                 </div>
             {% endfor %}
         </div>
-
     </section>
+        {% for universe in universes %}
+            <table class="tabdescr">
+            <tr class="descr">
+                <td>
+                    <div>
+                        <a type="button" class="btn" href="{{ path("universe_show", {id:universe.id}) }}">
+                            <p class="centrer">{{ universe.description }}</p>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            <br>
+            </table>
+        {% endfor %}
+
 
     <section class="testimonials testimonials-banner" id="testimonials">
         <div class="container">
