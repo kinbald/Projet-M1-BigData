@@ -121,3 +121,27 @@
         color: black;
     }
 }
+
+.tabdescr {
+    margin-left:auto;
+    margin-right:auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+.descr {
+    display:block;
+    -moz-border-radius:7px;
+    -webkit-border-radius:7px;
+    border-radius:7px;
+    color: #FFFFFF;
+    background-color: #A49D61;
+    font-family: 'Lobster', cursive;
+    text-align: center;
+}
+
+.centrer {
+    margin-left: auto;
+    margin-right: auto;
+}
