@@ -8,7 +8,14 @@
 
     <b>{% trans %}Color{% endtrans %} :</b> {{ product.color }} <br />
 
-    <b>{% trans %}Cepage{% endtrans %} : </b>{{ product.grapeVariety.name }} <br />
+
+    {% if product.grapeVariety is not empty %}
+        <b>{% trans %}Cepage{% endtrans %} : </b>
+        {% for variety in product.grapeVariety %}
+            {{ variety.name }},
+        {% endfor %}
+        <br />
+    {% endif %}
 
     {% if product.range %}
         <b>{% trans %}Category{% endtrans %} : </b>

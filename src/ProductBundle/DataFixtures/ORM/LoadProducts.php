@@ -183,7 +183,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $wine1->setVolume(1.5);
         $wine1->setPrice(135.40);
         $wine1->setRegion('Var');
-        $wine1->addGrapeVariety($grape);
+        $grape->addWine($wine1);
         $wine1->setOriginContinent($continent);
         $wine1->setOriginCountry($country) ;
         $wine1->setRange($range);
@@ -205,7 +205,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $wine2->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
         $wine2->setVolume(1.5);
         $wine2->setRegion('Var');
-        $wine2->addGrapeVariety($grape);
+        $grape->addWine($wine2);
         $wine2->setOriginContinent($continent);
         $wine2->setOriginCountry($country) ;
         $wine2->setRange($range);
@@ -229,7 +229,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $wine3->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
         $wine3->setVolume(0.7);
         $wine3->setRegion('Var');
-        $wine3->addGrapeVariety($grape);
+        $grape->addWine($wine3);
         $wine3->setOriginContinent($continent);
         $wine3->setOriginCountry($country) ;
         $wine3->setRange($range);
@@ -252,7 +252,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $wine4->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
         $wine4->setVolume(0.3);
         $wine4->setRegion('Var');
-        $wine4->addGrapeVariety($grape);
+        $grape->addWine($wine4);
         $wine4->setOriginContinent($continent);
         $wine4->setOriginCountry($country) ;
         $wine4->setRange($range);

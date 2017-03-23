@@ -185,7 +185,7 @@ class Wine extends Product
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getGrapeVarieties()
+    public function getGrapeVariety()
     {
         return $this->grapeVariety;
     }
