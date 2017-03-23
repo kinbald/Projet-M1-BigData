@@ -15,9 +15,12 @@
         <div class="container">
             <div class="row">
                 <img src="/img/logo.png"><br>
-                <span class="text-newsletter">S'abonner à la Newsletter: </span><br>
-                <input id="" class="text-newsletter" name="email" type="text">
-                <button type="button" class="button btn-info btn-lg" data-toggle="modal" data-target="#myModal">Je m'inscris</button>
+                <span class="text-newsletter newsletter">S'abonner à la Newsletter: </span><br>
+
+                <form method="post" action="traitement.php">
+                    <p><input id="" class="text-newsletter" name="email" type="text" placeholder="Veuillez entrer votre email"/></p>
+                </form>
+                    <button type="button" class="button btn-info btn-lg" data-toggle="modal" data-target="#myModal">Je m'inscris</button>
             </div>
         </div>
 
@@ -56,14 +59,14 @@
 
                         <div class="swiper-slide">
                             <div class="testimonials-container shadow"> <img alt="user avatar" class="wow fadeInUp" src="img/user.png">
-                                <h3 class="wow fadeInUp" data-wow-delay=".4s"> Martin Johe, Co-Founder / CEO <span>Fastcompany ltd.</span> </h3>
+                                <h3 class="wow fadeInUp" data-wow-delay=".4s"> Lien vers site de recettes 2 <span>Fastcompany ltd.</span> </h3>
                                 <p class="wow fadeInUp" data-wow-delay=".6s"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
                             </div>
                         </div>
 
                         <div class="swiper-slide">
                             <div class="testimonials-container shadow"> <img alt="user avatar" class="wow fadeInUp" src="img/user.png">
-                                <h3 class="wow fadeInUp" data-wow-delay=".4s"> Martin Johe, Co-Founder / CEO <span>Fastcompany ltd.</span> </h3>
+                                <h3 class="wow fadeInUp" data-wow-delay=".4s"> Lien vers site de recettes 2 <span>Fastcompany ltd.</span> </h3>
                                 <p class="wow fadeInUp" data-wow-delay=".6s"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
                             </div>
                         </div>
@@ -75,7 +78,86 @@
             </div>
         </div>
     </section>
-    
+
+    <section class="post-list" id="news">
+        <div class="container overflow-hidden">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="section-heading">Concours</h3>
+                </div>
+                <div class="post-slider">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="post-entry wow fadeInUp">
+                                <a href="http://www.femmesetvinsdumonde.com" data-toggle="modal" onclick="window.open(this.href); return false;">
+									<span class="post-entry-cover" style="background-image:url(img/concours/femmes-vins-monde.png);">
+									</span>
+                                </a>
+
+                                <a class="h3" href="http://www.femmesetvinsdumonde.com/" data-toggle="modal" onclick="window.open(this.href); return false;">Femmes et spiritueux du monde</a>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="post-entry wow fadeInUp">
+                                <a href="http://www.femmesetspiritueuxdumonde.com/" data-toggle="modal" onclick="window.open(this.href); return false;">
+									<span class="post-entry-cover" style="background-image:url(img/concours/femmes-spiritueux-monde.png);">
+									</span>
+                                </a>
+
+                                <a class="h3" href="http://www.femmesetspiritueuxdumonde.com/" data-toggle="modal" onclick="window.open(this.href); return false;">Femmes et vins du monde</a>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="post-entry wow fadeInUp">
+                                <a href="http://femmesetvinsdefrance.com" data-toggle="modal" onclick="window.open(this.href); return false;">
+									<span class="post-entry-cover" style="background-image:url(img/concours/femmes-vins-france.png);">
+									</span>
+                                </a>
+
+                                <a class="h3" href="http://femmesetvinsdefrance.com" data-toggle="modal" onclick="window.open(this.href); return false;">Femmes et vins de France</a>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="post-entry wow fadeInUp">
+                                <a href="http://www.guideduvinrose.com/" data-toggle="modal" onclick="window.open(this.href); return false;">
+									<span class="post-entry-cover" style="background-image:url(img/concours/vin_rose_wine.png);">
+									</span>
+                                </a>
+
+                                <a class="h3" href="http://www.guideduvinrose.com/" data-toggle="modal" onclick="window.open(this.href); return false;">Guide international du vin Rosé</a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="post-entry wow fadeInUp">
+                                <a href="http://www.civg-igwc.fr/" data-toggle="modal" onclick="window.open(this.href); return false;">
+									<span class="post-entry-cover" style="background-image:url(img/concours/vins-gastronomie.png);">
+									</span>
+                                </a>
+
+                                <a class="h3" href="http://www.civg-igwc.fr/" data-toggle="modal" onclick="window.open(this.href); return false;">Vins de Gastronomie</a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="post-entry wow fadeInUp">
+                                <a href="http://www.civt-ictw.fr/" data-toggle="modal" onclick="window.open(this.href); return false;">
+									<span class="post-entry-cover" style="background-image:url(img/concours/vins-terroir.png);">
+									</span>
+                                </a>
+
+                                <a class="h3" href="http://www.civt-ictw.fr/" data-toggle="modal" onclick="window.open(this.href); return false;">Vins de Terroir</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-pagination text-center"></div>
+                    <div class="post-slider-next right-arrow-negative"> <span class="ti-arrow-right"></span> </div>
+                    <div class="post-slider-prev left-arrow-negative"> <span class="ti-arrow-left"></span> </div>
+                </div>
+                           </div>
+        </div>
+    </section>
 
     <div class="section section-min">
         <footer class="footer">
@@ -99,5 +181,4 @@
             </div>
         </footer>
     </div>
-
 {% endblock %}
