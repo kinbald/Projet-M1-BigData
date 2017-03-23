@@ -340,6 +340,9 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
 
         $purchase5 = new Purchase();
         $purchase5->setUser($user);
+        $purchase5->setFirstname($user->getFirstname());
+        $purchase5->setLastname($user->getLastname());
+        $purchase5->setPhone('0654789654');
         $purchase5->setAddress('Avenue du Port');
         $purchase5->setCity('Hyères');
         $purchase5->setPostalCode('83400');
@@ -381,6 +384,9 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         /*--------------------------------------------------------*/
         
         $purchase = new Purchase();
+        $purchase->setFirstname($userConsumer->getFirstname());
+        $purchase->setLastname($userConsumer->getLastname());
+        $purchase->setPhone('0256987456');
         $purchase->setAddress("128 avenue philippe lebon");
         $purchase->setCity("Toulon");
         $purchase->setPostalCode("83000");
@@ -395,6 +401,9 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $purchase2->setCity("Istres");
         $purchase2->setPostalCode("13800");
         $purchase2->setCountry("France");
+        $purchase2->setFirstname($userConsumer->getFirstname());
+        $purchase2->setLastname($userConsumer->getLastname());
+        $purchase2->setPhone('0456857896');
         $purchase2->setDone(false);
         $purchase2->setDateOrder(new \DateTime);
         $purchase2->setUser($userConsumer);
