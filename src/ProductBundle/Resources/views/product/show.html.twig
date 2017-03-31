@@ -40,13 +40,15 @@
 
                 <img alt="lauriers" src="{{ asset('img/product/lauriers.png') }}" height="55">
                 <h4 class="wow fadeInDown">{% trans %}Medal{% endtrans %}</h4>
-                <div class="rating"><!--
-                    --><a href="#5" title="Give 5 stars">☆</a><!--
-                    --><a href="#4" title="Give 4 stars">☆</a><!--
-                    --><a href="#3" title="Give 3 stars">☆</a><!--
-                    --><a href="#2" title="Give 2 stars">☆</a><!--
-                    --><a href="#1" title="Give 1 star">☆</a>
+
+                <div class="rating">
+                    <a href="#5" title="Give 5 stars">☆</a>
+                    <a href="#4" title="Give 4 stars">☆</a>
+                    <a href="#3" title="Give 3 stars">☆</a>
+                    <a href="#2" title="Give 2 stars">☆</a>
+                    <a href="#1" title="Give 1 star">☆</a>
                 </div>
+
                 <p class="wow fadeInDown">{{ product.description }} </p>
                 <p><b>{% trans %}Universes{% endtrans %} :</b> {% for universe in product.universes %} {{universe.name}} {% if not loop.last %}, {% endif %}{% endfor %} </br>
                     <b>{% trans %}Volume{% endtrans %} : </b>{{ product.volume }} <br>
@@ -54,7 +56,7 @@
                     {%  block features %}
                     {% endblock %}
                 </p>
-                <span class="countdown-price h3 wow fadeInUp">{{ product.price }} €</span>
+                <span class="h3 wow fadeInUp countdown-price">{{ product.price }} €</span>
                 {% set picture = product.pictures|last %}
                 <br><br> <br> <br>
                 <span class="btn btn-default add-item wow swing" {% if picture %}data-image="/img/upload/{{ picture.url}}"{% endif %}  data-name="{{ product.name }}" data-cost="{{ product.price }}" data-id="{{ product.id }}">
@@ -69,6 +71,66 @@
                 {% endfor %}
             </div>
         </div>
+
+        <div class="comment">
+            <div class="comment-header">
+                <h4 class="yellow">
+                    Fabrice Coisy
+                </h4>
+                <strong>12 Jan 2017</strong>
+                <div class="rating">
+                    <a href="#5" title="Give 5 stars">☆</a>
+                    <a href="#4" title="Give 4 stars">☆</a>
+                    <a href="#3" title="Give 3 stars">☆</a>
+                    <a href="#2" title="Give 2 stars">☆</a>
+                    <a href="#1" title="Give 1 star">☆</a>
+                </div>
+            </div>
+
+            <div class="comment-content">
+                <h3>Excellent produit. </h3>
+                <p>
+                    Excellent produit! Je le recommande!
+                </p>
+
+            </div>
+        </div>
+
+        <h3>Ajouter un commentaire</h3>
+
+        <form>
+            <div class="comment">
+                <div class="comment-header">
+                    <h4 class="yellow">
+                        Utilisateur Actuel
+                    </h4>
+                    <strong>Date Actuelle</strong>
+                    <li>
+                        <div class="rating">
+                            <label>Votre note</label>
+                            <a href="#5" title="Give 5 stars">☆</a>
+                            <a href="#4" title="Give 4 stars">☆</a>
+                            <a href="#3" title="Give 3 stars">☆</a>
+                            <a href="#2" title="Give 2 stars">☆</a>
+                            <a href="#1" title="Give 1 star">☆</a>
+                        </div>
+                    </li>
+                </div>
+
+                <div class="comment-content">
+                    <h3>Titre de votre commentaire. </h3>
+                    <ul class="form-style-1">
+                        <li>
+                            <textarea name="field5" id="field5" class="field-long field-textarea" placeholder="Votre commentaire"></textarea>
+                        </li>
+                        <li>
+                            <input type="submit" value="Submit" />
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </form>
     </section>
 </div>
 {% endblock %}

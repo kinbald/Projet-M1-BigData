@@ -40,7 +40,7 @@ class ProductPurchase
 
     /**
      * @var Purchase
-     * @ORM\ManyToOne(targetEntity="\ProductBundle\Entity\Purchase", inversedBy="products")
+     * @ORM\ManyToOne(targetEntity="\ProductBundle\Entity\Purchase", inversedBy="products", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $purchase;

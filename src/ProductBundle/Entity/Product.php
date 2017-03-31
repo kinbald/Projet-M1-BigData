@@ -77,46 +77,24 @@ abstract class Product
     protected $stock;
 
     /**
-     * @var boolean
-     *
-     * @ORM\Column(name="a_decanter", type="boolean", options={"default" : false})
-     */
-    protected $aDecanter;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="contact_lies", type="boolean", options={"default" : false})
-     */
-    protected $contactLies;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="contact_bois", type="boolean", options={"default" : false})
-     */
-    protected $contactBois;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="non_filtre", type="boolean", options={"default" : false})
-     */
-    protected $nonFiltre;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="demarche_qualite", type="boolean", options={"default" : false})
-     */
-    protected $demarcheQualite;
-
-    /**
      * @var Collection
      * @ORM\OneToMany(targetEntity="ConcoursBundle\Entity\CompetitionProduct", mappedBy="product")
      */
     private $competitions;
 
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="alcohol_degree", type="float")
+     */
+    private $alcoholDegree;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="sugar", type="float")
+     */
+    private $sugar;
 
     /**
      * @var Continent
@@ -147,7 +125,6 @@ abstract class Product
      * })
      */
     private $range;
-
 
     /**
      * @var PictureProduct
@@ -274,7 +251,6 @@ abstract class Product
         return $this->description;
     }
 
-
     /**
      * Set volume
      *
@@ -348,17 +324,60 @@ abstract class Product
     }
 
     /**
+     * Set alcoholDegree
+     *
+     * @param float $alcoholDegree
+     *
+     * @return Product
+     */
+    public function setAlcoholDegree($alcoholDegree)
+    {
+        $this->alcoholDegree = $alcoholDegree;
+
+        return $this;
+    }
+
+    /**
+     * Get alcoholDegree
+     *
+     * @return float
+     */
+    public function getAlcoholDegree()
+    {
+        return $this->alcoholDegree;
+    }
+
+    /**
+     * Set sugar
+     *
+     * @param float $sugar
+     *
+     * @return Product
+     */
+    public function setSugar($sugar)
+    {
+        $this->sugar = $sugar;
+
+        return $this;
+    }
+
+    /**
+     * Get sugar
+     *
+     * @return float
+     */
+    public function getSugar()
+    {
+        return $this->sugar;
+    }
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->pictures = new ArrayCollection();
         $this->reservations = new ArrayCollection();
-        $this->aDecanter = false;
-        $this->contactBois = false;
-        $this->demarcheQualite = false;
-        $this->contactLies = false;
-        $this->nonFiltre = false;
     }
 
     public function __toString()
@@ -372,7 +391,6 @@ abstract class Product
      * @return string
      */
     abstract public function getDiscr();
-
 
     /**
      * Add picture
@@ -676,8 +694,6 @@ abstract class Product
     {
         return $this->reservations;
     }
-
-
 
     /**
      * Add competition

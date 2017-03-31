@@ -23,14 +23,6 @@ class Spirit extends Product
     protected $id;
 
     /**
-     * @var float
-     *
-     * @ORM\Column(name="alcohol_degree", type="float")
-     */
-    private $alcoholDegree;
-
-
-    /**
      * Get id
      *
      * @return int
@@ -48,30 +40,6 @@ class Spirit extends Product
     public function getDiscr()
     {
         return 'spirit';
-    }
-
-    /**
-     * Set alcoholDegree
-     *
-     * @param float $alcoholDegree
-     *
-     * @return Spirit
-     */
-    public function setAlcoholDegree($alcoholDegree)
-    {
-        $this->alcoholDegree = $alcoholDegree;
-
-        return $this;
-    }
-
-    /**
-     * Get alcoholDegree
-     *
-     * @return float
-     */
-    public function getAlcoholDegree()
-    {
-        return $this->alcoholDegree;
     }
 }
 

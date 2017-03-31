@@ -171,3 +171,24 @@ textarea {
         color: black;
     }
 }
+
+.img-texte-g  {
+    overflow:auto;
+    display: inline-block;
+}
+.img-texte-g img {
+    float:left;
+    margin-left: 15px;
+    margin-right: 15px;
+
+}
+
+.img-texte-d  {
+    overflow:auto;
+    display: inline-block;
+}
+.img-texte-d img {
+    float:right;
+    margin-left: 15px;
+    margin-right: 15px;
+}
