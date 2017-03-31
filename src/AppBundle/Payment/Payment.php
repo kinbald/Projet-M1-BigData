@@ -12,43 +12,64 @@ use Doctrine\ORM\EntityManager;
 use PayPal\CoreComponentTypes\BasicAmountType;
 use PayPal\EBLBaseComponents\AddressType;
 use PayPal\EBLBaseComponents\BillingAgreementDetailsType;
+use PayPal\EBLBaseComponents\DoExpressCheckoutPaymentRequestDetailsType;
 use PayPal\EBLBaseComponents\PaymentDetailsItemType;
 use PayPal\EBLBaseComponents\PaymentDetailsType;
 use PayPal\EBLBaseComponents\SetExpressCheckoutRequestDetailsType;
+use PayPal\PayPalAPI\DoExpressCheckoutPaymentReq;
+use PayPal\PayPalAPI\DoExpressCheckoutPaymentRequestType;
+use PayPal\PayPalAPI\GetExpressCheckoutDetailsReq;
+use PayPal\PayPalAPI\GetExpressCheckoutDetailsRequestType;
+use PayPal\PayPalAPI\GetExpressCheckoutDetailsResponseType;
+use PayPal\PayPalAPI\SetExpressCheckoutReq;
+use PayPal\PayPalAPI\SetExpressCheckoutRequestType;
+use PayPal\Service\PayPalAPIInterfaceServiceService;
 use ProductBundle\Entity\Product;
 use Doctrine\Common\Collections\ArrayCollection;
 use ProductBundle\Entity\Purchase;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Router;
 
 class Payment
 {
     private $em;
+    private $router;
     private $cancelUrl;
     private $returnUrl;
+    private $paypalUrl;
     private $currencyCode;
     private $itemTotal;
     private $taxTotal;
 
     public function __construct(Router $router, $env, EntityManager $em)
     {
+        //initialisation des services
         $this->em = $em;
+        $this->router = $router;
+        //paramètres différents en fonction de l'environnement
         if($env === "dev"){
             $url = 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'];
+            $this->paypalUrl = 'https://www.sandbox.paypal.com/webscr?cmd=_express-checkout&token=';
         }else{
             $url = 'https://'.$_SERVER['SERVER_NAME'];
+            $this->paypalUrl = '';
         }
         $this->returnUrl = $url.$router->generate('paypal_return');
         $this->cancelUrl = $url.$router->generate('paypal_cancel');
+
         $this->currencyCode = 'EUR';
     }
 
     /**
      * @param Purchase $commande
+     * @return RedirectResponse
      * @throws \Exception
      */
     public function pay(Purchase $commande){
+        //initialisation du paiement
         $rep = $this->em->getRepository('AppBundle:Parameters');
         $tva = current($rep->findBy(array('name' => 'TVA')));
+        $tva = (float)$tva->getValue();
 
         // total shipping amount
         $shippingTotal = new BasicAmountType($this->currencyCode, 0);
@@ -61,8 +82,9 @@ class Payment
 
         $address = $this->initAdresse($commande);
 
+        //ajout items + prix + taxes
         $paymentDetails = $this->initPaymentDetails($commande, $tva);
-
+        // prix au bon format
         $this->formatPrices();
 
         /*
@@ -94,7 +116,112 @@ class Payment
         $paymentDetails->HandlingTotal = $handlingTotal;
         $paymentDetails->InsuranceTotal = $insuranceTotal;
         $paymentDetails->ShippingTotal = $shippingTotal;
+
+
         $setECReqDetails = $this->initECReqDetails($paymentDetails);
+        $setECReq = $this->initECReq($setECReqDetails);
+
+        /*
+         * 	 ## Creating service wrapper object
+        Creating service wrapper object to make API call and loading
+        Configuration::getAcctAndConfig() returns array that contains credential and config parameters
+        */
+        $paypalService = new PayPalAPIInterfaceServiceService(Configuration::getAcctAndConfig());
+        try {
+            /* wrap API method calls on the service object with a try catch */
+            $setECResponse = $paypalService->SetExpressCheckout($setECReq);
+        } catch (\Exception $ex) {
+            echo $ex->getMessage();
+            exit;
+        }
+        if($setECResponse->Ack =='Success') {
+            $token = $setECResponse->Token;
+            return new RedirectResponse($this->paypalUrl.$token);
+            // Redirect to paypal.com here
+            // echo' <a href="'.$this->paypalUrl.$token.'"><b>* Redirect to PayPal to login </b></a><br>';
+        }
+        throw new \Exception("Error with payment");
+
+    }
+
+    /**
+     * @param string $token
+     * @param string $payerID
+     * @return RedirectResponse
+     * @throws \Exception
+     */
+    public function validatePayment(string $token, string $payerID){
+        //validation du paiement
+
+        //récupération des infos du paiement
+        if(!($paymentInfo = $this->getPaymentInfo($token, $payerID))){
+            throw new \Exception("Cannot validate payment");
+        }
+        /*
+         * The total cost of the transaction to the buyer. If shipping cost (not applicable to digital goods) and tax charges are known, include them in this value. If not, this value should be the current sub-total of the order. If the transaction includes one or more one-time purchases, this field must be equal to the sum of the purchases. Set this field to 0 if the transaction does not include a one-time purchase such as when you set up a billing agreement for a recurring payment that is not immediately charged. When the field is set to 0, purchase-specific fields are ignored.
+         */
+        $paymentDetails= $paymentInfo->PaymentDetails[0];
+
+
+        $DoECRequestDetails = new DoExpressCheckoutPaymentRequestDetailsType();
+        $DoECRequestDetails->PayerID = $payerID;
+        $DoECRequestDetails->Token = $token;
+        $DoECRequestDetails->PaymentAction = 'Sale';
+        $DoECRequestDetails->PaymentDetails[0] = $paymentDetails;
+
+        $DoECRequest = new DoExpressCheckoutPaymentRequestType();
+        $DoECRequest->DoExpressCheckoutPaymentRequestDetails = $DoECRequestDetails;
+
+
+        $DoECReq = new DoExpressCheckoutPaymentReq();
+        $DoECReq->DoExpressCheckoutPaymentRequest = $DoECRequest;
+        $paypalService = new PayPalAPIInterfaceServiceService(Configuration::getAcctAndConfig());
+        try {
+            /* wrap API method calls on the service object with a try catch */
+            $DoECResponse = $paypalService->DoExpressCheckoutPayment($DoECReq);
+            $rep = $this->em->getRepository('ProductBundle:Purchase');
+            $commande = $rep->find($paymentInfo->InvoiceID);
+            if($commande === null){
+                throw new \Exception("wrong purchase id");
+            }
+            //la commande a été payée
+            $commande->setPaid(true);
+            $this->em->persist($commande);
+            $this->em->flush();
+        } catch (\Exception $ex) {
+            $error = true;
+        }
+        if(!isset($DoECResponse) or $DoECResponse->Ack !== 'Success' or isset($error)) {
+            throw new \Exception("Payment not accepted");
+        }
+        return new RedirectResponse($this->router->generate('paypal_paid'));
+    }
+
+    /**
+     * @param string $token
+     * @param string $payerID
+     * @return bool|GetExpressCheckoutDetailsResponseType
+     */
+    private function getPaymentInfo(string $token, string $payerID){
+        $getExpressCheckoutDetailsRequest = new GetExpressCheckoutDetailsRequestType($token);
+        $getExpressCheckoutReq = new GetExpressCheckoutDetailsReq();
+        $getExpressCheckoutReq->GetExpressCheckoutDetailsRequest = $getExpressCheckoutDetailsRequest;
+
+        $paypalService = new PayPalAPIInterfaceServiceService(Configuration::getAcctAndConfig());
+        try {
+            /* wrap API method calls on the service object with a try catch */
+            $getECResponse = $paypalService->GetExpressCheckoutDetails($getExpressCheckoutReq);
+        } catch (\Exception $ex) {
+            echo $ex->getMessage();
+            exit;
+        }
+        if($getECResponse->Ack === 'Success'){
+            return $getECResponse->GetExpressCheckoutDetailsResponseDetails;
+        }
+        else{
+            return false;
+        }
+
     }
 
     /**
@@ -150,6 +277,7 @@ class Payment
 
             $paymentDetails->PaymentDetailsItem[$key] = $itemDetails;
         }
+        $paymentDetails->InvoiceID = $commande->getId();
         return $paymentDetails;
     }
 
@@ -219,5 +347,13 @@ class Payment
         // Advanced options
         $setECReqDetails->AllowNote = '0';
         return $setECReqDetails;
+    }
+
+    private function initECReq(SetExpressCheckoutRequestDetailsType $setECReqDetails){
+        $setECReqType = new SetExpressCheckoutRequestType();
+        $setECReqType->SetExpressCheckoutRequestDetails = $setECReqDetails;
+        $setECReq = new SetExpressCheckoutReq();
+        $setECReq->SetExpressCheckoutRequest = $setECReqType;
+        return $setECReq;
     }
 }
