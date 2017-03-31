@@ -271,6 +271,12 @@ section{
     margin-bottom: 20px;
 }
 
+@media screen and (min-width:0px) and (max-width:993px) {
+    .comment{
+        width:100%;
+    }
+}
+
 .yellow{
     color: #f7a128;
     margin-bottom: 10px;
