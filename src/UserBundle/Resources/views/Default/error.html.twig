@@ -14,8 +14,11 @@
 
 {% block body %}
     <div class="container">
-            <h1 class="section-heading">Une erreur est survenue lors de votre commande !<br>Un ou plusieurs produits demandés ne sont pas présents dans nos stocks.<br>
-                Votre panier va être réinitialisé.</h1>
+        {% trans_default_domain 'FOSUserBundle_trad' %}
+        <h1 class="section-heading">{% trans %}Erreur Panier 1{% endtrans %}<br>
+                {% trans %}Erreur Panier 2{% endtrans %}<br>
+                {% trans %}Erreur Panier 3{% endtrans %}
+            </h1>
     </div>
 
 {% endblock %}
