@@ -40,13 +40,6 @@
 
                 <img alt="lauriers" src="{{ asset('img/product/lauriers.png') }}" height="55">
                 <h4 class="wow fadeInDown">{% trans %}Medal{% endtrans %}</h4>
-                <div class="rating"><!--
-                    --><a href="#5" title="Give 5 stars">☆</a><!--
-                    --><a href="#4" title="Give 4 stars">☆</a><!--
-                    --><a href="#3" title="Give 3 stars">☆</a><!--
-                    --><a href="#2" title="Give 2 stars">☆</a><!--
-                    --><a href="#1" title="Give 1 star">☆</a>
-                </div>
                 <p class="wow fadeInDown">{{ product.description }} </p>
                 <p><b>{% trans %}Universes{% endtrans %} :</b> {% for universe in product.universes %} {{universe.name}} {% if not loop.last %}, {% endif %}{% endfor %} </br>
                     <b>{% trans %}Volume{% endtrans %} : </b>{{ product.volume }} <br>
@@ -69,6 +62,61 @@
                 {% endfor %}
             </div>
         </div>
+
+        <div class="comment">
+            <div class="comment-header">
+                <h4 class="yellow">
+                    Fabrice Coisy
+                </h4>
+                <strong>12 Jan 2017</strong>
+                <div class="rating"><!--
+				--><a href="#5" title="Give 5 stars">☆</a><!--
+				--><a href="#4" title="Give 4 stars">☆</a><!--
+				--><a href="#3" title="Give 3 stars">☆</a><!--
+				--><a href="#2" title="Give 2 stars">☆</a><!--
+				--><a href="#1" title="Give 1 star">☆</a>
+                </div>
+            </div>
+
+            <div class="comment-content">
+                <h5>Excellent produit. </h5>
+                <p>
+                    Excellent produit! Je le recommande!
+                </p>
+
+            </div>
+        </div>
+
+        <form>
+            <ul class="form-style-1">
+                <li><label>Full Name <span class="required">*</span></label><input type="text" name="field1" class="field-divided" placeholder="First" />&nbsp;<input type="text" name="field2" class="field-divided" placeholder="Last" /></li>
+                <li>
+                    <label>Email</label>
+                    <input type="email" name="field3" class="field-long" />
+                </li>
+                <li>
+                    <label>Subject <span class="required">*</span></label>
+                    <input type="text" name="field4" class="field-long" />
+                </li>
+                <li>
+                    <label>Your Message <span class="required">*</span></label>
+                    <textarea name="field5" id="field5" class="field-long field-textarea"></textarea>
+                </li>
+                <li>
+                    <label>Your note</label>
+                    <div class="rating"><!--
+					--><a href="#5" title="Give 5 stars">☆</a><!--
+					--><a href="#4" title="Give 4 stars">☆</a><!--
+					--><a href="#3" title="Give 3 stars">☆</a><!--
+					--><a href="#2" title="Give 2 stars">☆</a><!--
+					--><a href="#1" title="Give 1 star">☆</a>
+                    </div>
+                </li>
+                <li>
+                    <input type="submit" value="Submit" />
+                </li>
+            </ul>
+        </form>
     </section>
 </div>
 {% endblock %}
