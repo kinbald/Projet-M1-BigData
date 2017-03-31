@@ -40,7 +40,7 @@ class CompetitionProduct
 
     /**
      * @var Competition
-     * @ORM\ManyToOne(targetEntity="ConcoursBundle\Entity\Competition", inversedBy="wines")
+     * @ORM\ManyToOne(targetEntity="ConcoursBundle\Entity\Competition", inversedBy="products")
      * @ORM\JoinColumn(nullable=false)
      */
     private $competition;

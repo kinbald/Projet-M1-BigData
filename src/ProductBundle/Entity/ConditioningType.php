@@ -50,7 +50,7 @@ class ConditioningType
 
     /**
      * @var Collection
-     * @ORM\ManyToMany(targetEntity="\ProductBundle\Entity\Delivery", mappedBy="conditioningType")
+     * @ORM\ManyToMany(targetEntity="\ProductBundle\Entity\Delivery", mappedBy="conditioningTypes")
      */
     protected $deliveries;
 
