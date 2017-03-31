@@ -375,8 +375,20 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $productEvaluation = new ProductEvaluation();
         $productEvaluation->setProduct($wine1);
         $productEvaluation->setUser($userConsumer);
-        $productEvaluation->setMark(15);
-        $productEvaluation->setReview('Vin de très bonne qualité, je le recommande');
+        $productEvaluation->setMark(4);
+        $productEvaluation->setReview('On aime, dans cette cuvée, cet embonpoint généreux de notes de fleurs et de fruits frais rouges (cerise, fraise, framboise), teintées d’épices et de fumée. La texture soyeuse et sensuelle attise les papilles avec gourmandise. Dégustation octobre 2015.');
+        $manager->persist($productEvaluation);
+        $productEvaluation = new ProductEvaluation();
+        $productEvaluation->setProduct($wine1);
+        $productEvaluation->setUser($userConsumer);
+        $productEvaluation->setMark(3);
+        $productEvaluation->setReview('commentaire 2');
+        $manager->persist($productEvaluation);
+        $productEvaluation = new ProductEvaluation();
+        $productEvaluation->setProduct($wine1);
+        $productEvaluation->setUser($userConsumer);
+        $productEvaluation->setMark(3);
+        $productEvaluation->setReview('commentaire 3');
         $manager->persist($productEvaluation);
 
         /*-----------------------LES RECETTES---------------------*/

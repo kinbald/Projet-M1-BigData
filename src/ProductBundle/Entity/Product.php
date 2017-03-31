@@ -162,7 +162,7 @@ abstract class Product
      * @var Collection
      * @ORM\OneToMany(targetEntity="ProductBundle\Entity\ProductEvaluation", mappedBy="product")
      */
-    protected $users;
+    protected $evaluations;
 
     /**
      * @var Collection
@@ -502,7 +502,7 @@ abstract class Product
      */
     public function addUser(ProductEvaluation $user)
     {
-        $this->users[] = $user;
+        $this->evaluations[] = $user;
 
         return $this;
     }
@@ -514,17 +514,37 @@ abstract class Product
      */
     public function removeUser(ProductEvaluation $user)
     {
-        $this->users->removeElement($user);
+        $this->evaluations->removeElement($user);
     }
 
     /**
-     * Get users
+     * Get evaluations
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getUsers()
+    public function getEvaluations()
     {
-        return $this->users;
+        return $this->evaluations;
+    }
+
+    /**
+     * Get average evaluations
+     * @return int
+     */
+    public function getAverageMarks(){
+        $evaluations = $this->getEvaluations();
+        $sommeNotes = 0;
+        $nbEval = 0;
+        $noteProduit = 0;
+        foreach ($evaluations as $evaluation){
+            $sommeNotes += $evaluation->getMark();
+            $nbEval++;
+        }
+        if($nbEval > 0){
+            $noteProduit = $sommeNotes / $nbEval;
+        }
+
+        return round($noteProduit);
     }
 
     /**

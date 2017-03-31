@@ -41,13 +41,18 @@
                 <img alt="lauriers" src="{{ asset('img/product/lauriers.png') }}" height="55">
                 <h4 class="wow fadeInDown">{% trans %}Medal{% endtrans %}</h4>
 
+                {% if noteProduit > 0 %}
                 <div class="rating">
-                    <a href="#5" title="Give 5 stars">☆</a>
-                    <a href="#4" title="Give 4 stars">☆</a>
-                    <a href="#3" title="Give 3 stars">☆</a>
-                    <a href="#2" title="Give 2 stars">☆</a>
-                    <a href="#1" title="Give 1 star">☆</a>
+                    {% for i in range(1, noteProduit) %}
+                        <span class="full-star">★</span>
+                    {% endfor %}
+                    {% if noteProduit < 5 %}
+                        {%  for i in range(noteProduit + 1, 5) %}
+                            <span class="empty-star">☆</span>
+                        {% endfor %}
+                    {% endif %}
                 </div>
+                {% endif %}
 
                 <p class="wow fadeInDown">{{ product.description }} </p>
                 <p><b>{% trans %}Universes{% endtrans %} :</b> {% for universe in product.universes %} {{universe.name}} {% if not loop.last %}, {% endif %}{% endfor %} </br>
@@ -67,70 +72,65 @@
             <br>
             <div style="text-align:center">
                 {% for product_picture in product_pictures %}
-                    <span class="dot" onclick="currentSlide({{ product_picture.id }})"></span>
+                <span class="dot" onclick="currentSlide({{ product_picture.id }})"></span>
                 {% endfor %}
             </div>
         </div>
 
+        {% for evaluation in evaluations %}
         <div class="comment">
             <div class="comment-header">
-                <h4 class="yellow">
-                    Fabrice Coisy
-                </h4>
-                <strong>12 Jan 2017</strong>
+                <h4 class="yellow text-center">{{ evaluation.user.firstname }} {{ evaluation.user.lastname }}</h4>
                 <div class="rating">
-                    <a href="#5" title="Give 5 stars">☆</a>
-                    <a href="#4" title="Give 4 stars">☆</a>
-                    <a href="#3" title="Give 3 stars">☆</a>
-                    <a href="#2" title="Give 2 stars">☆</a>
-                    <a href="#1" title="Give 1 star">☆</a>
+                    {% for i in range(1, evaluation.mark) %}
+                    <span class="full-star">★</span>
+                    {% endfor %}
+                    {% if evaluation.mark < 5 %}
+                        {%  for i in range(evaluation.mark + 1, 5) %}
+                        <span class="empty-star">☆</span>
+                        {% endfor %}
+                    {% endif %}
                 </div>
             </div>
 
             <div class="comment-content">
-                <h3>Excellent produit. </h3>
-                <p>
-                    Excellent produit! Je le recommande!
-                </p>
+                <p>{{ evaluation.review }}</p>
 
             </div>
         </div>
+        {% endfor %}
 
+        {% if utilisateur != null %}
         <h3>Ajouter un commentaire</h3>
 
-        <form>
-            <div class="comment">
-                <div class="comment-header">
-                    <h4 class="yellow">
-                        Utilisateur Actuel
-                    </h4>
-                    <strong>Date Actuelle</strong>
-                    <li>
-                        <div class="rating">
-                            <label>Votre note</label>
-                            <a href="#5" title="Give 5 stars">☆</a>
-                            <a href="#4" title="Give 4 stars">☆</a>
-                            <a href="#3" title="Give 3 stars">☆</a>
-                            <a href="#2" title="Give 2 stars">☆</a>
-                            <a href="#1" title="Give 1 star">☆</a>
-                        </div>
-                    </li>
-                </div>
+        <div class="comment">
+            <div class="comment-header">
+                <h4 class="yellow text-center">
+                    {{ utilisateur.firstname }} {{ utilisateur.lastname }}
+                </h4>
+                <li>
+                    <div class="rating">
+                        <a id="1" class="star" href="#1" title="Give 1 star">☆</a>
+                        <a id="2" class="star" href="#2" title="Give 2 stars">☆</a>
+                        <a id="3" class="star" href="#3" title="Give 3 stars">☆</a>
+                        <a id="4" class="star" href="#4" title="Give 4 stars">☆</a>
+                        <a id="5" class="star" href="#5" title="Give 5 stars">☆</a>
+                    </div>
+                </li>
+            </div>
+
 
                 <div class="comment-content">
-                    <h3>Titre de votre commentaire. </h3>
-                    <ul class="form-style-1">
-                        <li>
-                            <textarea name="field5" id="field5" class="field-long field-textarea" placeholder="Votre commentaire"></textarea>
-                        </li>
-                        <li>
-                            <input type="submit" value="Submit" />
-                        </li>
-                    </ul>
-
+                    <div class="form-style-1">
+                        {{ form_start(evaluation_form) }}
+                        {{ form_widget(evaluation_form) }}
+                        {{ form_end(evaluation_form) }}
+                    </div>
                 </div>
-            </div>
-        </form>
+        </div>
+        {% else %}
+        <h3>Vous de devez être connecté pour laisser un commentaire</h3>
+        {% endif %}
     </section>
 </div>
 {% endblock %}

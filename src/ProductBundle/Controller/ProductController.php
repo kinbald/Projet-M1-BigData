@@ -4,6 +4,7 @@ namespace ProductBundle\Controller;
 
 use ProductBundle\Entity\PictureProduct;
 use ProductBundle\Entity\Product;
+use ProductBundle\Entity\ProductEvaluation;
 use ProductBundle\Entity\Wine;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -176,14 +177,40 @@ class ProductController extends Controller
      *     requirements={
      *         "id": "\d+",
      *     })
-     * @Method("GET")
+     * @Method({"GET", "POST"})
      */
 
-    public function showAction(Product $product)
+    public function showAction(Product $product, Request $request)
     {
         $deleteForm = $this->createDeleteForm($product, $product->getDiscr());
 
+
+        $evaluation = new ProductEvaluation();
+        $evaluationForm = $this->createForm('ProductBundle\Form\EvaluationType', $evaluation);
+        $evaluationForm->handleRequest($request);
+
+        if ($evaluationForm->isSubmitted() && $evaluationForm->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $userEvaluations = $em->getRepository("ProductBundle:ProductEvaluation")->findByUser($this->getUser());
+            $dejaCommente = false;
+            foreach ($userEvaluations as $evaluation){
+                if($evaluation->getProduct()->getId() == $product->getId()){
+                    $dejaCommente = true;
+                }
+            }
+            if(!$dejaCommente){
+                $evaluation->setUser($this->getUser());
+                $evaluation->setProduct($product);
+                $em->persist($evaluation);
+                $em->flush($evaluation);
+            }
+        }
+
         return $this->render('ProductBundle:' . $product->getDiscr() . ':show.html.twig', array(
+            'evaluation_form' => $evaluationForm->createView(),
+            'utilisateur' => $this->getUser(),
+            'noteProduit' => $product->getAverageMarks(),
+            'evaluations' => $product->getEvaluations(),
             'product' => $product,
             'delete_form' => $deleteForm->createView(),
             'product_pictures' => $product->getPictures(),
