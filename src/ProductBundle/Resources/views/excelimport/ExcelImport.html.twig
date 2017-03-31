@@ -1,0 +1,72 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/theme-product.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/item.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+
+
+    <h1>Produits à insérer</h1>
+    <table>
+        {% for product in products %}
+            <tr>
+                {% for cell in product %}
+                    <td style="border: 1px solid white; font-family:'Arial';">{{ cell }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+
+    <h1>Producteurs à insérer</h1>
+    <table>
+        {% for producer in producers %}
+            <tr>
+                {% for cell in producer %}
+                    <td style="border: 1px solid white; font-family:'Arial';">{{ cell }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+
+
+    <h1>Univers a insérer</h1>
+    <table>
+        {% for univer in univers %}
+            <tr>
+                {% for cell in univer %}
+                    <td style="border: 1px solid white; font-family:'Arial';">{{ cell }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+
+    <h1>Concours à insérer</h1>
+    <table>
+        {% for concour in concours %}
+            <tr>
+                {% for cell in concour %}
+                    <td style="border: 1px solid white; font-family:'Arial';">{{ cell }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+
+    <h1>Tableau des expéditions</h1>
+    <table>
+        {% for shipment in shipments %}
+            <tr>
+                {% for cell in shipment %}
+                    <td style="border: 1px solid white; font-family:'Arial';">{{ cell }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}

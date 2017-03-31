@@ -25,7 +25,8 @@
         "friendsofsymfony/user-bundle": "2.0.x-dev",
         "pugx/multi-user-bundle": "3.0.*@dev",
         "twig/extensions": "^1.4",
-        "symfony/console": "^3.2"
+        "symfony/console": "^3.2",
+        "liuggio/excelbundle": "^2.1"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
