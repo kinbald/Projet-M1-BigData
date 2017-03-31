@@ -53,6 +53,13 @@
                     <li><a href="{{ path("contact") }}">Nous Contacter</a></li>
                     <li><a href="{{ path("qui_sommes_nous") }}">Qui Sommes Nous ?</a></li>
                     <li><a href="/logout">Déconnexion</a></li>
+                    <li class="dropdown nav navbar-nav navbar-right">
+                        <a href="#" class="dropdown-toggle nav navbar-nav navbar-right" data-toggle="dropdown" role="button" aria-expanded="false">Langue <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#" class="language" rel="fr-FR"><img src="http://www.cogep.fr/images/drapeaufr.png" alt="Francais" />  Francais</a></li>
+                            <li><a href="#" class="language" rel="us-EN"><img src="http://www.cogep.fr/images/anglais.png" alt="Anglais" />  Anglais</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         {% elseif is_granted('ROLE_PRODUCER') %}
@@ -64,6 +71,13 @@
                     <li><a href="{{ path("contact") }}">Nous Contacter</a></li>
                     <li><a href="{{ path("qui_sommes_nous") }}">Qui Sommes Nous ?</a></li>
                     <li><a href="/logout">Déconnexion</a></li>
+                    <li class="dropdown nav navbar-nav navbar-right">
+                        <a href="#" class="dropdown-toggle nav navbar-nav navbar-right" data-toggle="dropdown" role="button" aria-expanded="false">Langue <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#" class="language" rel="fr-FR"><img src="http://www.cogep.fr/images/drapeaufr.png" alt="Francais" />  Francais</a></li>
+                            <li><a href="#" class="language" rel="us-EN"><img src="http://www.cogep.fr/images/anglais.png" alt="Anglais" />  Anglais</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         {% elseif is_granted('ROLE_MEDIA') %}
@@ -75,6 +89,13 @@
                     <li><a href="{{ path("contact") }}">Nous Contacter</a></li>
                     <li><a href="{{ path("qui_sommes_nous") }}">Qui Sommes Nous ?</a></li>
                     <li><a href="/logout">Déconnexion</a></li>
+                    <li class="dropdown nav navbar-nav navbar-right">
+                        <a href="#" class="dropdown-toggle nav navbar-nav navbar-right" data-toggle="dropdown" role="button" aria-expanded="false">Langue <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#" class="language" rel="fr-FR"><img src="http://www.cogep.fr/images/drapeaufr.png" alt="Francais" />  Francais</a></li>
+                            <li><a href="#" class="language" rel="us-EN"><img src="http://www.cogep.fr/images/anglais.png" alt="Anglais" />  Anglais</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         {% elseif is_granted('ROLE_ADMIN') %}
@@ -84,6 +105,13 @@
                     <li><a href="/profile">Compte</a></li>
                     <li><a href="{{ path("admin_index") }}">Admin</a></li>
                     <li><a href="/logout">Déconnexion</a></li>
+                    <li class="dropdown nav navbar-nav navbar-right">
+                        <a href="#" class="dropdown-toggle nav navbar-nav navbar-right" data-toggle="dropdown" role="button" aria-expanded="false">Langue <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#" class="language" rel="fr-FR"><img src="http://www.cogep.fr/images/drapeaufr.png" alt="Francais" />  Francais</a></li>
+                            <li><a href="#" class="language" rel="us-EN"><img src="http://www.cogep.fr/images/anglais.png" alt="Anglais" />  Anglais</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         {% else %}
@@ -94,7 +122,16 @@
                     <li><a href="{{ path("qui_sommes_nous") }}">Qui Sommes Nous ?</a></li>
                     <li><a class="connexion" href="/login">Se Connecter</a></li>
                     <li><a class="inscription" href="{{ path("inscription_choix") }}">S'inscrire</a></li>
+                    <li class="dropdown nav navbar-nav navbar-right">
+                        <a href="#" class="dropdown-toggle nav navbar-nav navbar-right" data-toggle="dropdown" role="button" aria-expanded="false">Langue <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#" class="language" rel="fr-FR"><img src="http://www.cogep.fr/images/drapeaufr.png" alt="Francais" />  Francais</a></li>
+                            <li><a href="#" class="language" rel="us-EN"><img src="http://www.cogep.fr/images/anglais.png" alt="Anglais" />  Anglais</a></li>
+                        </ul>
+                    </li>
                 </ul>
+
+
             </div>
         {% endif %}
     </div>
@@ -178,9 +215,3 @@
 {% endblock %}
 </body>
 </html>
-
-
-
-
-
-
