@@ -38,7 +38,7 @@ class Delivery
 
     /**
      * @var Collection
-     * @ORM\ManyToMany(targetEntity="\ProductBundle\Entity\ConditioningType", cascade={"persist"}, inversedBy="delivery")
+     * @ORM\ManyToMany(targetEntity="\ProductBundle\Entity\ConditioningType", cascade={"persist"}, inversedBy="deliveries")
      */
     private $conditioningTypes;
 
