@@ -404,7 +404,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $purchase->setAddress("128 avenue philippe lebon");
         $purchase->setCity("Toulon");
         $purchase->setPostalCode("83000");
-        $purchase->setCountry("France");
+        $purchase->setCountry("FR");
         $purchase->setDone(true);
         $purchase->setDateOrder(new \DateTime);
         $purchase->setUser($userConsumer);
@@ -414,7 +414,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $purchase2->setAddress("48 impasse vent dames");
         $purchase2->setCity("Istres");
         $purchase2->setPostalCode("13800");
-        $purchase2->setCountry("France");
+        $purchase2->setCountry("FR");
         $purchase2->setFirstname($userConsumer->getFirstname());
         $purchase2->setLastname($userConsumer->getLastname());
         $purchase2->setPhone('0456857896');

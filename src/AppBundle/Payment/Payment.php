@@ -232,12 +232,12 @@ class Payment
         // shipping address
         $address = new AddressType();
         $address->CityName = $commande->getCity();
-        $address->Name = $commande->getUser()->getFirstname().' '.$commande->getUser()->getLastname();
+        $address->Name = $commande->getFirstname().' '.$commande->getLastname();
         $address->Street1 = $commande->getAddress();
         $address->StateOrProvince = '';
         $address->PostalCode = $commande->getPostalCode();
         $address->Country = $commande->getCountry();
-        $address->Phone = '';
+        $address->Phone = $commande->getPhone();
         return $address;
     }
 

@@ -295,6 +295,14 @@ class Purchase
         $this->products = new \Doctrine\Common\Collections\ArrayCollection();
         $this->dateOrder = new DateTime();
         $this->paid = false;
+        $this->address = 'addr';
+        $this->city = 'Toulon';
+        $this->postalCode = '83000';
+        $this->country = 'FR';
+        $this->done = false;
+        $this->firstname = 'Jérémy';
+        $this->lastname = 'Tablet';
+        $this->phone = '1111111111';
     }
 
     /**
