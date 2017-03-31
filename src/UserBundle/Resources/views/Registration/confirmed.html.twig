@@ -17,7 +17,8 @@
 
 {% block body %}
     <div class="text-center">
-        <h1>Inscritpion réussie !</h1>
-        <p>Vous allez être redirigé(e) dans quelques secondes.</p>
+        {% trans_default_domain 'FOSUserBundle_trad' %}
+        <h1>{% trans %}Registration ok{% endtrans %}</h1>
+        <p>{% trans %}Redirection{% endtrans %}</p>
     </div>
 {% endblock %}

@@ -99,6 +99,7 @@
 }
 
 .section-presentation {
+    padding: 0px;
     display: block;
     width: auto;
     margin-left: 550px;
@@ -123,8 +124,6 @@
 
 .countdown-price {
     display: inline;
-    width: auto;
-    float: auto;
     margin-top: auto;
     margin-bottom: auto;
     text-align: center; }
@@ -181,7 +180,6 @@ td.att-value {
     }
     .photo{
         max-width: 70%;
-        min-height: auto;
     }
     .dot{
         margin-bottom: 10px;
@@ -227,10 +225,16 @@ section{
 .rating {
     width: 112px;
     font-size: 25px;
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
     overflow:hidden;
+    padding-bottom: 20px;
 }
 .rating a {
     float:right;
+    margin-right: 2px;
+    color: #aaa;
     text-decoration: none;
     -webkit-transition: color .4s;
     -moz-transition: color .4s;
@@ -244,6 +248,9 @@ section{
     color: orange;
     cursor: pointer;
 }
+.rating label{
+    font-size: 18px;
+}
 
 .comment-header{
     background-color: #424242;
@@ -253,24 +260,33 @@ section{
 .comment-content{
     padding:10px;
 }
+.field-textarea{
+    color: #1e1e1e;
+}
 
 .comment{
 
     border: solid 1px #bababa;
     width:60%;
+    margin-bottom: 20px;
+}
+
+@media screen and (min-width:0px) and (max-width:993px) {
+    .comment{
+        width:100%;
+    }
 }
 
 .yellow{
     color: #f7a128;
-    margin-bottom: 10px
+    margin-bottom: 10px;
+    font-size: 20px;
 }
 
 /**************form********************/
 
 .form-style-1 {
-    margin:10px;
-    max-width: 400px;
-    padding: 20px 12px 10px 20px;
+    width: 90%;
     font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 .form-style-1 li {

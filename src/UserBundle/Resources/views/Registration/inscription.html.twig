@@ -11,7 +11,8 @@
 
 {% block body %}
     <div class="text-center">
-        <h1>Inscription</h1>
+        {% trans_default_domain 'FOSUserBundle_trad' %}
+        <h1>{% trans %}New Account{% endtrans %}</h1>
         <div class="neutral text-center">
             <a type="button" class="btn" href="{{ path("user_consumer_registration") }}">
                 <img class="image" src="/img/upload/customers.jpg" alt="customers"/>
@@ -24,7 +25,9 @@
             <a type="button" class="btn" href="{{ path("user_media_registration") }}">
                 <img class="image" src="/img/upload/media.jpg" alt="media"/>
                 <p class="texte">{% trans %}Presse{% endtrans %}</p>
+
             </a>
         </div>
     </div>
+
 {% endblock %}

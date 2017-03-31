@@ -2,8 +2,8 @@
 
 {% block fos_user_content %}
     <div id="content">
-        <h1>Inscription utilisateur</h1>
-        {% trans_default_domain 'FOSUserBundle' %}
+        {% trans_default_domain 'FOSUserBundle_trad' %}
+        <h1>{% trans %}Registration User{% endtrans %}</h1>
         <form action="{{ path('user_consumer_registration') }}" method="POST">
             {{ form_widget(form) }}
             <div>
