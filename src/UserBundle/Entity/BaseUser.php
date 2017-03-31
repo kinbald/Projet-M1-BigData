@@ -61,7 +61,7 @@ abstract class BaseUser extends FosUser
 
     /**
      * @var Collection
-     * @ORM\OneToMany(targetEntity="\ProductBundle\Entity\Reservation", mappedBy="user_id")
+     * @ORM\OneToMany(targetEntity="\ProductBundle\Entity\Reservation", mappedBy="user")
      */
     private $reservations;
 

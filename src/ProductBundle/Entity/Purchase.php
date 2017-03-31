@@ -4,7 +4,7 @@ namespace ProductBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ProductBundle\Entity\Product;
-use Symfony\Component\Validator\Constraints\DateTime;
+use DateTime;
 use UserBundle\Entity\BaseUser;
 
 /**
@@ -48,14 +48,14 @@ class Purchase
     /**
      * @var string
      *
-     * @ORM\Column(name="country", type="string", length=100)
+     * @ORM\Column(name="country", type="string", length=100, nullable=true)
      */
     private $country;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="done", type="boolean")
+     * @ORM\Column(name="done", type="boolean", nullable=true)
      */
     private $done;
 
@@ -97,7 +97,7 @@ class Purchase
     /**
      * @var BaseUser
      * @ORM\ManyToOne(targetEntity="\UserBundle\Entity\BaseUser", inversedBy="purchases")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $user;
 
@@ -235,7 +235,7 @@ class Purchase
      */
     public function getDone()
     {
-        return $this->done;
+        return $this->done===null?false:$this->done;
     }
 
     /**
@@ -364,7 +364,7 @@ class Purchase
      */
     public function getPaid()
     {
-        return $this->paid;
+        return $this->paid===null?false:$this->paid;
     }
 
     /**

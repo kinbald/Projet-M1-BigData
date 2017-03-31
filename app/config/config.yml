@@ -80,6 +80,9 @@ swiftmailer:
 
 fos_user:
     db_driver: orm
+    from_email:
+        address: "noreply@yourcompany.com"
+        sender_name: "No Reply"
     firewall_name: main
     user_class: UserBundle\Entity\BaseUser
     service:
