@@ -224,7 +224,7 @@ abstract class Product
      */
     public function getDisplayName()
     {
-        return $this->displayName;
+        return !empty($this->displayName)?$this->displayName:$this->getName() ;
     }
 
     /**
