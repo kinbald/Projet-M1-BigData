@@ -38,11 +38,15 @@ class Delivery
 
     /**
      * @var Collection
-     * @ORM\ManyToMany(targetEntity="\ProductBundle\Entity\ConditioningType", cascade={"persist"}, inversedBy="deliveries")
+     * @ORM\ManyToMany(targetEntity="\ProductBundle\Entity\ProductConditioning", cascade={"persist"}, inversedBy="deliveries")
      */
     private $conditioningTypes;
 
-
+    /**
+     * @var Collection
+     * @ORM\OneToMany(targetEntity="\ProductBundle\Entity\ProductPurchase", mappedBy="delivery")
+     */
+    private $purchases;
 
     /**
      * Constructor
@@ -113,13 +117,13 @@ class Delivery
     }
 
     /**
-     * Add product
+     * Add conditioningType
      *
-     * @param \ProductBundle\Entity\ConditioningType $conditioningType
+     * @param \ProductBundle\Entity\ProductConditioning $conditioningType
      *
      * @return Delivery
      */
-    public function addProduct(\ProductBundle\Entity\ConditioningType $conditioningType)
+    public function addConditioningType(\ProductBundle\Entity\ProductConditioning $conditioningType)
     {
         $this->conditioningTypes[] = $conditioningType;
 
@@ -127,23 +131,56 @@ class Delivery
     }
 
     /**
-     * Remove product
+     * Remove conditioningType
      *
-     * @param \ProductBundle\Entity\ConditioningType $conditioningType
+     * @param \ProductBundle\Entity\ProductConditioning $conditioningType
      */
-    public function removeProduct(\ProductBundle\Entity\ConditioningType $conditioningType)
+    public function removeConditioningType(\ProductBundle\Entity\ProductConditioning $conditioningType)
     {
         $this->conditioningTypes->removeElement($conditioningType);
     }
 
     /**
-     * Get products
+     * Get conditioningTypes
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getProducts()
+    public function getConditioningTypes()
     {
         return $this->conditioningTypes;
     }
-}
 
+    /**
+     * Add purchase
+     *
+     * @param \ProductBundle\Entity\ProductPurchase $purchase
+     *
+     * @return Delivery
+     */
+    public function addPurchase(\ProductBundle\Entity\ProductPurchase $purchase)
+    {
+        $this->purchases[] = $purchase;
+
+        return $this;
+    }
+
+    /**
+     * Remove purchase
+     *
+     * @param \ProductBundle\Entity\ProductPurchase $purchase
+     */
+    public function removePurchase(\ProductBundle\Entity\ProductPurchase $purchase)
+    {
+        $this->purchases->removeElement($purchase);
+    }
+
+    /**
+     * Get purchases
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPurchases()
+    {
+        return $this->purchases;
+    }
+}

@@ -16,7 +16,7 @@ use ProductBundle\Entity\Universe;
 use ProductBundle\Entity\Wine;
 use ProductBundle\Entity\Recipe;
 use ProductBundle\Entity\GrapeVariety;
-use ProductBundle\Entity\ConditioningType;
+use ProductBundle\Entity\ProductConditioning;
 use ProductBundle\Entity\ProductPurchase;
 
 class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
@@ -25,23 +25,6 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
     {
         $user = $manager->getRepository("UserBundle:BaseUser")->findOneByUsername('Consumer');
         $userConsumer = $manager->getRepository("UserBundle:UserConsumer")->findOneByUsername('Consumer');
-
-        /*-------------------LES CONDITIONNEMENTS--------------------*/
-        /*-----------------------------------------------------------*/
-        $cond1 = new ConditioningType();
-        $cond1->setName('Caisse');
-        $cond1->setPrice(5);
-        $manager->persist($cond1);
-
-        $cond2 = new ConditioningType();
-        $cond2->setName('Fût');
-        $cond2->setPrice(10);
-        $manager->persist($cond2);
-
-        $cond3 = new ConditioningType();
-        $cond3->setName('Sac plastique');
-        $cond3->setPrice(1);
-        $manager->persist($cond3);
 
 
         /*-----------------------LES UNIVERS-------------------------*/
@@ -369,7 +352,6 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $productPurchase->setStock(10);
         $productPurchase->setPurchase($purchase5);
         $productPurchase->setProduct($wine1);
-        $productPurchase->setConditioningType($cond1);
         $manager->persist($productPurchase);
 
         $productEvaluation = new ProductEvaluation();
@@ -440,20 +422,66 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         /*-------------------CONDITONNING TYPE--------------------*/
         /*--------------------------------------------------------*/
 
-        $condition = new ConditioningType();
-        $condition->setName("Caisse");
+        $condition = new ProductConditioning();
+        $condition->setName("Cagette");
         $condition->setPrice(45);
+        $condition->setPubPrice(45);
+        $condition->setProPrice(40);
         $condition->addProduct($wine1);
         $condition->addProduct($wine2);
         $condition->addProduct($wine3);
+        $condition->setStock(10);
+        $condition->setPack(true);
+        $condition->setVolumeValue('2');
+        $condition->setVolumeUnit('mL');
         $manager->persist($condition);
 
-        $condition2 = new ConditioningType();
+        $condition2 = new ProductConditioning();
         $condition2->setName("Palette");
         $condition2->setPrice(125);
+        $condition2->setPubPrice(125);
+        $condition2->setProPrice(120);
+        $condition2->setStock(10);
+        $condition2->setPack(true);
+        $condition2->setVolumeValue('2');
+        $condition2->setVolumeUnit('mL');
         $condition2->addProduct($wine2);
         $condition2->addProduct($wine1);
         $manager->persist($condition2);
+
+
+        $cond1 = new ProductConditioning();
+        $cond1->setName('Caisse');
+        $cond1->setPrice(5);
+        $cond1->setPubPrice(5);
+        $cond1->setProPrice(3);
+        $cond1->setStock(10);
+        $cond1->setPack(false);
+        $cond1->setVolumeValue('2');
+        $cond1->setVolumeUnit('L');
+        $manager->persist($cond1);
+
+        $cond2 = new ProductConditioning();
+        $cond2->setName('Fût');
+        $cond2->setPrice(10);
+        $cond2->setPubPrice(10);
+        $cond2->setProPrice(6);
+        $cond2->setStock(20);
+        $cond2->setPack(true);
+        $cond2->setVolumeValue('50');
+        $cond2->setVolumeUnit('cL');
+        $manager->persist($cond2);
+
+        $cond3 = new ProductConditioning();
+        $cond3->setName('Sac plastique');
+        $cond3->setPrice(1);
+        $cond3->setPubPrice(1);
+        $cond3->setProPrice(0.5);
+        $cond3->setStock(50);
+        $cond3->setPack(false);
+        $cond3->setVolumeValue('200');
+        $cond3->setVolumeUnit('mL');
+        $manager->persist($cond3);
 
 
         /*-------------------PRODUCT PURCHASE---------------------*/

@@ -148,7 +148,7 @@ abstract class Product
 
     /**
      * @var Collection
-     * @ORM\ManyToMany(targetEntity="\ProductBundle\Entity\ConditioningType", mappedBy="products")
+     * @ORM\ManyToMany(targetEntity="\ProductBundle\Entity\ProductConditioning", mappedBy="products")
      */
     protected $conditioningTypes;
 
@@ -277,6 +277,7 @@ abstract class Product
 
     /**
      * Set price
+     * @deprecated
      *
      * @param float $price
      *
@@ -291,6 +292,7 @@ abstract class Product
 
     /**
      * Get price
+     * @deprecated
      *
      * @return float
      */
@@ -301,6 +303,7 @@ abstract class Product
 
     /**
      * Set stock
+     * @deprecated
      *
      * @param integer $stock
      *
@@ -315,6 +318,7 @@ abstract class Product
 
     /**
      * Get stock
+     * @deprecated
      *
      * @return int
      */
@@ -584,11 +588,11 @@ abstract class Product
     /**
      * Add conditioningType
      *
-     * @param \ProductBundle\Entity\ConditioningType $conditioningType
+     * @param \ProductBundle\Entity\ProductConditioning $conditioningType
      *
      * @return Product
      */
-    public function addConditioningType(\ProductBundle\Entity\ConditioningType $conditioningType)
+    public function addConditioningType(\ProductBundle\Entity\ProductConditioning $conditioningType)
     {
         $this->conditioningTypes[] = $conditioningType;
 
@@ -598,9 +602,9 @@ abstract class Product
     /**
      * Remove conditioningType
      *
-     * @param \ProductBundle\Entity\ConditioningType $conditioningType
+     * @param \ProductBundle\Entity\ProductConditioning $conditioningType
      */
-    public function removeConditioningType(\ProductBundle\Entity\ConditioningType $conditioningType)
+    public function removeConditioningType(\ProductBundle\Entity\ProductConditioning $conditioningType)
     {
         $this->conditioningTypes->removeElement($conditioningType);
     }
