@@ -176,6 +176,9 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         /*-----------------------LES VINS-------------------------*/
         /*--------------------------------------------------------*/
         $wine1 = new Wine();
+        $wine1->setAlcoholDegree(15);
+        $wine1->setSugar(2.5);
+        $wine1->setOverpressure(4.5);
         $wine1->setVintage(new \DateTime('2007-01-01 10:00:00'));
         $wine1->setColor('Rouge');
         $wine1->setName('Vin Gigondas rouge');
@@ -199,6 +202,9 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($picture);
         /*--------------------------------------------------------*/
         $wine2 = new Wine();
+        $wine2->setAlcoholDegree(15);
+        $wine2->setSugar(2.5);
+        $wine1->setOverpressure(0);
         $wine2->setVintage(new \DateTime('2012-01-01 10:00:00'));
         $wine2->setColor('Rouge');
         $wine2->setName('Vin Montauriol rouge');
@@ -222,6 +228,8 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($picture);
         /*--------------------------------------------------------*/
         $wine3 = new Wine();
+        $wine3->setAlcoholDegree(15);
+        $wine3->setSugar(2.5);
         $wine3->setVintage(new \DateTime('2015-01-01 10:00:00'));
         $wine3->setColor('Rose');
         $wine3->setName('Vin rosé cultivé dans les océans');
@@ -246,6 +254,8 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($picture);
         /*--------------------------------------------------------*/
         $wine4 = new Wine();
+        $wine4->setAlcoholDegree(15);
+        $wine4->setSugar(2.5);
         $wine4->setVintage(new \DateTime('2014-01-01 10:00:00'));
         $wine4->setColor('Rose');
         $wine4->setName('Chateau Toulon');
@@ -271,6 +281,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         /*--------------------------------------------------------*/
         $spiritueux1 = new Spirit();
         $spiritueux1->setAlcoholDegree(50);
+        $spiritueux1->setSugar(2.5);
         $spiritueux1->setName('Absolute vodka');
         $spiritueux1->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
         $spiritueux1->setVolume(1);
@@ -288,6 +299,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         /*--------------------------------------------------------*/
         $spiritueux2 = new Spirit();
         $spiritueux2->setAlcoholDegree(40);
+        $spiritueux2->setSugar(2.5);
         $spiritueux2->setName('Canadian Whisky');
         $spiritueux2->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
         $spiritueux2->setVolume(0.7);
@@ -305,6 +317,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         /*--------------------------------------------------------*/
         $spiritueux3 = new Spirit();
         $spiritueux3->setAlcoholDegree(40);
+        $spiritueux3->setSugar(2.5);
         $spiritueux3->setName('Belvedere vodka');
         $spiritueux3->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
         $spiritueux3->setVolume(0.7);
@@ -322,6 +335,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         /*--------------------------------------------------------*/
         $spiritueux4 = new Spirit();
         $spiritueux4->setAlcoholDegree(40);
+        $spiritueux4->setSugar(2.5);
         $spiritueux4->setName('Whisky Red Label');
         $spiritueux4->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
         $spiritueux4->setVolume(0.7);

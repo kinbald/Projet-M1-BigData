@@ -52,6 +52,48 @@ class Wine extends Product
      */
     private $grapeVariety;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="a_decanter", type="boolean", options={"default" : false})
+     */
+    protected $aDecanter;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="contact_lies", type="boolean", options={"default" : false})
+     */
+    protected $contactLies;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="contact_bois", type="boolean", options={"default" : false})
+     */
+    protected $contactBois;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="non_filtre", type="boolean", options={"default" : false})
+     */
+    protected $nonFiltre;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="demarche_qualite", type="boolean", options={"default" : false})
+     */
+    protected $demarcheQualite;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="overpressure", type="float")
+     */
+    protected $overpressure;
+
 
     /**
      * Constructor
@@ -60,8 +102,13 @@ class Wine extends Product
     {
         parent::__construct();
         $this->grapeVariety = new ArrayCollection();
+        $this->aDecanter = false;
+        $this->contactBois = false;
+        $this->demarcheQualite = false;
+        $this->contactLies = false;
+        $this->nonFiltre = false;
+        $this->overpressure = -1;
     }
-
 
     /**
      * Get id
@@ -82,7 +129,6 @@ class Wine extends Product
     {
         return 'wine';
     }
-
 
     /**
      * Set vintage
@@ -132,29 +178,28 @@ class Wine extends Product
         return $this->color;
     }
 
-
     /**
-     * Set region
+     * Set aDecanter
      *
-     * @param string $region
+     * @param boolean $aDecanter
      *
      * @return Wine
      */
-    public function setRegion($region)
+    public function setADecanter($aDecanter)
     {
-        $this->region = $region;
+        $this->aDecanter = $aDecanter;
 
         return $this;
     }
 
     /**
-     * Get region
+     * Get aDecanter
      *
-     * @return string
+     * @return boolean
      */
-    public function getRegion()
+    public function getADecanter()
     {
-        return $this->region;
+        return $this->aDecanter;
     }
 
     /**
@@ -190,4 +235,147 @@ class Wine extends Product
         return $this->grapeVariety;
     }
 
+    /**
+     * Set region
+     *
+     * @param string $region
+     *
+     * @return Wine
+     */
+    public function setRegion($region)
+    {
+        $this->region = $region;
+
+        return $this;
+    }
+
+    /**
+     * Get region
+     *
+     * @return string
+     */
+    public function getRegion()
+    {
+        return $this->region;
+    }
+
+    /**
+     * Set contactLies
+     *
+     * @param boolean $contactLies
+     *
+     * @return Wine
+     */
+    public function setContactLies($contactLies)
+    {
+        $this->contactLies = $contactLies;
+
+        return $this;
+    }
+
+    /**
+     * Get contactLies
+     *
+     * @return boolean
+     */
+    public function getContactLies()
+    {
+        return $this->contactLies;
+    }
+
+    /**
+     * Set contactBois
+     *
+     * @param boolean $contactBois
+     *
+     * @return Wine
+     */
+    public function setContactBois($contactBois)
+    {
+        $this->contactBois = $contactBois;
+
+        return $this;
+    }
+
+    /**
+     * Get contactBois
+     *
+     * @return boolean
+     */
+    public function getContactBois()
+    {
+        return $this->contactBois;
+    }
+
+    /**
+     * Set nonFiltre
+     *
+     * @param boolean $nonFiltre
+     *
+     * @return Wine
+     */
+    public function setNonFiltre($nonFiltre)
+    {
+        $this->nonFiltre = $nonFiltre;
+
+        return $this;
+    }
+
+    /**
+     * Get nonFiltre
+     *
+     * @return boolean
+     */
+    public function getNonFiltre()
+    {
+        return $this->nonFiltre;
+    }
+
+    /**
+     * Set demarcheQualite
+     *
+     * @param boolean $demarcheQualite
+     *
+     * @return Wine
+     */
+    public function setDemarcheQualite($demarcheQualite)
+    {
+        $this->demarcheQualite = $demarcheQualite;
+
+        return $this;
+    }
+
+    /**
+     * Get demarcheQualite
+     *
+     * @return boolean
+     */
+    public function getDemarcheQualite()
+    {
+        return $this->demarcheQualite;
+    }
+
+    /**
+     * Set overpressure
+     *
+     * @param float $overpressure
+     *
+     * @return Wine
+     */
+    public function setOverpressure($overpressure)
+    {
+        $this->overpressure = $overpressure;
+
+        return $this;
+    }
+
+    /**
+     * Get overpressure
+     *
+     * @return float
+     */
+    public function getOverpressure()
+    {
+        return $this->overpressure;
+    }
 }
