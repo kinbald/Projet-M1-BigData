@@ -49,12 +49,12 @@
         position: relative;
         width: 100%;
         min-height: 500px;
-        background: url('http://payload134.cargocollective.com/1/8/282041/4988189/Winery%20Landscape%201_1050.jpg') no-repeat;
+        background: url("/img/concours/fond_accueil_provisoire.jpg") no-repeat;
         background-size: cover;
     }
     .text-newsletter{
         font-size: 155%;
-        font-family: 'Lemonada', cursive;
+        font-family: 'Roboto', cursive;
         overflow-wrap: break-word;
         white-space: pre-wrap;
         color: black;
@@ -62,12 +62,12 @@
     .newsletter{
         color: white;
         text-shadow: 3px 2px 1px black;
-        font-family: "Dancing Script", cursive;
-        font-size: 400%;
+        font-family: "Roboto", cursive;
+        font-size: 250%;
     }
     .post-entry-cover {
         width: 100%;
-        height: 400px;
+        height: auto;
         float: left;
         margin: 15px 0;
         background-size: cover;
@@ -126,12 +126,12 @@
         position: relative;
         width: 100%;
         min-height: 500px;
-        background: url('http://payload134.cargocollective.com/1/8/282041/4988189/Winery%20Landscape%201_1050.jpg') no-repeat;
+        background: url("/img/concours/fond_accueil_provisoire.jpg") no-repeat;
         background-size: cover;
     }
     .text-newsletter{
         font-size: 155%;
-        font-family: 'Lemonada', cursive;
+        font-family: 'Roboto', cursive;
         overflow-wrap: break-word;
         white-space: pre-wrap;
         color: black;
@@ -140,13 +140,13 @@
     .newsletter{
         color: white;
         text-shadow: 3px 2px 1px black;
-        font-family: "Dancing Script", cursive;
-        font-size: 400%;
+        font-family: "Roboto", cursive;
+        font-size: 250%;
     }
 
     .post-entry-cover {
-        width: 97%;
-        height: 330px;
+        width: 100%;
+        height: auto;
         float: left;
         margin: 15px 0;
         background-size: cover;
@@ -173,7 +173,7 @@
     border-radius:7px;
     color: #FFFFFF;
     background-color: #A49D61;
-    font-family: 'Lobster', cursive;
+    font-family: 'Roboto', cursive;
     text-align: center;
 }
 
