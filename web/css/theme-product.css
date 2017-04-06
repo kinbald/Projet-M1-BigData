@@ -3,12 +3,12 @@
 
 
 
-/* Slideshow container */
+/* Slideshow container
 .slideshow-container {
     max-width: 1000px;
     position: relative;
     margin: auto;
-}
+}*/
 
 /*Bouton retour*/
 .back-button{
@@ -72,40 +72,67 @@
     background-color: #717171;
 }
 
-
-
-
-
-/********* MEDIA QUERIES *********/
-
-@media screen and (max-device-width:900px) {
-    #ajout {
-        display:none;
-    }
+.center-justified {
+    text-align: justify;
+    -moz-text-align-last: center;
+    text-align-last: center;
 }
+
+
+
+
+
 
 
 .product-content {
     margin: auto;
-    margin-top: 51px;
+    margin-top: 80px;
+    width: 1200px;
+}
+body-content {
+    margin: auto;
+    margin-top: 80px;
+    width: 1200px;
+
 }
 
 .section-slide {
     display: block;
-    position: fixed;
+    position: relative;
     float: left;
     width: 550px;
-    margin-right: 30px;
+    margin-right: 20px;
 }
 
-.section-presentation {
-    padding: 0px;
-    display: block;
-    width: auto;
-    margin-left: 550px;
-    margin-right: 30px;
+/*  CAROUSEL   */
+.mycarousel {
+    padding-top: 0;
+}
+.mycarousel-inner > .item > img, .mycarousel-inner > .item > a > img {
+    height: auto;
+}
+.mycarousel-indicators {
+    position: absolute;
+    float: none;
+    bottom: 10px;
+    left: 50%;
+    width: 60%;
+    margin-left: -30%;
+    padding: 0;
+    background: none;
+}
+.carousel-control.right,.carousel-control.left{
+    background-image: none;
+    color: #C6A668;
+    opacity: 1;
 }
 
+/*SLIDER*/
+.slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+}
 .mySlides {
     text-align:center;
 }
@@ -115,25 +142,30 @@
 .photo{
     min-height: 350px;
     max-width: 450px;
-    max-height: 70vh;
+    max-height: 600px;
 }
+
+
+/* PRESENTATON PRODUIT*/
 
 #TITRE{
     padding-top: 27px;
 }
 
+.my-countdown-container{
+    float: none;
+    margin: auto;
+    text-align: center;
+}
 .countdown-price {
-    display: inline;
-    margin-top: auto;
-    margin-bottom: auto;
-    text-align: center; }
+}
 
 table {
     margin: auto;
     margin-top: 20px;
     margin-bottom: 20px;
 }
-td {
+td.attribute,td.att-value {
     padding-left: 10px;
     padding-right: 10px;
     padding-bottom: 5px;
@@ -151,6 +183,14 @@ td.att-value {
     margin: 20px;
     font-family: 'Lemonada', cursive;
     line-height: 1.5em
+}
+
+/********* MEDIA QUERIES *********//*
+
+@media screen and (max-device-width:900px) {
+    #ajout {
+        display:none;
+    }
 }
 
 @media screen and (min-width:801px) and (max-width:1200px) {
@@ -250,7 +290,7 @@ section{
 }
 
 .comment{
-
+    margin: auto;
     border: solid 1px #bababa;
     width:60%;
     margin-bottom: 20px;

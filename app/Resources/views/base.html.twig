@@ -6,6 +6,7 @@
     {% block stylesheets %}
         <link href="{{ asset('css/bootstrap-dark.css') }}" rel="stylesheet" />
         <link href="{{ asset('css/theme-dark.css') }}" rel="stylesheet" />
+        <link href="{{ asset('css/footer.css') }}" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Lemonada" rel="stylesheet">
     {% endblock %}
@@ -49,7 +50,7 @@
             <div class="navbar-collapse collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
                     <li><a href="{{ path("homepage") }}">Accueil</a></li>
-                    <li><a href="/profile">Compte</a></li>
+                    <li><a href="{{ path("profil") }}">Compte</a></li>
                     <li><a href="{{ path("contact") }}">Nous Contacter</a></li>
                     <li><a href="{{ path("qui_sommes_nous") }}">Qui Sommes Nous ?</a></li>
                     <li><a href="/logout">Déconnexion</a></li>
@@ -67,7 +68,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ path("homepage") }}">Accueil</a></li>
                     <li><a href="{{ path("concours_index") }}">Concours</a></li>
-                    <li><a href="/profile">Compte</a></li>
+                    <li><a href="{{ path("profil") }}">Compte</a></li>
                     <li><a href="{{ path("contact") }}">Nous Contacter</a></li>
                     <li><a href="{{ path("qui_sommes_nous") }}">Qui Sommes Nous ?</a></li>
                     <li><a href="/logout">Déconnexion</a></li>
@@ -85,7 +86,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ path("homepage") }}">Accueil</a></li>
                     <li><a href="{{ path("media_index") }}">Presse</a></li>
-                    <li><a href="/profile">Compte</a></li>
+                    <li><a href="{{ path("profil") }}">Compte</a></li>
                     <li><a href="{{ path("contact") }}">Nous Contacter</a></li>
                     <li><a href="{{ path("qui_sommes_nous") }}">Qui Sommes Nous ?</a></li>
                     <li><a href="/logout">Déconnexion</a></li>
@@ -102,7 +103,7 @@
             <div class="navbar-collapse collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
                     <li><a href="{{ path("homepage") }}">Accueil</a></li>
-                    <li><a href="/profile">Compte</a></li>
+                    <li><a href="{{ path("profil") }}">Compte</a></li>
                     <li><a href="{{ path("admin_index") }}">Admin</a></li>
                     <li><a href="/logout">Déconnexion</a></li>
                     <li class="dropdown nav navbar-nav navbar-right">
@@ -209,20 +210,27 @@
 {% block body %}
 {% endblock %}
 
-<div class="container">
 
-    <div class="row" style="text-align:center;">
-    </div>
-    <!----------- Footer ------------>
-    <footer class="footer-bs">
+
+
+
+
+
+<!----------- Footer ------------>
+
+<div id="large_footer" class="container">
+
+    <div class="row" style="text-align:center;"></div>
+
+    <footer id="slim_footer" class="footer-bs">
         <div class="row">
             <div class="col-md-3 footer-brand animated fadeInLeft">
                 <h2>Logo</h2>
                 <p>Box Office Wines est une entreprise fondée pour vendre du vin. Principalement.</p>
                 <p>© 2017, All rights reserved.</p>
-                <p><i>Design by ISEN Toulon <strong>(BIG UP)</strong>.</i></p>
+                <p><i>Design by ISEN Toulon.</i></p>
             </div>
-            <div class="col-md-4 footer-nav animated fadeInUp">
+            <div class="col-md-3 footer-nav animated fadeInUp">
                 <h4>Menu —</h4>
                 <div class="col-md-6">
                     <ul class="list">
@@ -233,7 +241,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-md-2 footer-social animated fadeInDown">
+            <div class="col-md-3 footer-social animated fadeInDown">
                 <h4>Suivez-nous !</h4>
                 <ul>
                     <li><a href="#">Facebook</a></li>
@@ -245,18 +253,21 @@
             <div class="col-md-3 footer-ns animated fadeInRight">
                 <h4>Newsletter</h4>
                 <p>Si tu veux recevoir des infos sur le vin, ça peut être bien</p>
-                <p>
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Ton mail ici">
                     <span class="input-group-btn">
-                        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-envelope"></span></button>
+                        <button id="enveloppe" class="btn btn-default" type="button"><span class="glyphicon glyphicon-envelope"></span></button>
                       </span>
                 </div><!-- /input-group -->
-                </p>
             </div>
         </div>
     </footer>
+
 </div>
+
+
+<!----------------------------------------------------------------->
+
 
 {% block javascripts %}
     <script src="{{ asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js') }}"></script>

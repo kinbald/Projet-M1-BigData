@@ -358,18 +358,21 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $productEvaluation->setProduct($wine1);
         $productEvaluation->setUser($userConsumer);
         $productEvaluation->setMark(4);
+        $productEvaluation->setDate(new \DateTime());
         $productEvaluation->setReview('On aime, dans cette cuvée, cet embonpoint généreux de notes de fleurs et de fruits frais rouges (cerise, fraise, framboise), teintées d’épices et de fumée. La texture soyeuse et sensuelle attise les papilles avec gourmandise. Dégustation octobre 2015.');
         $manager->persist($productEvaluation);
         $productEvaluation = new ProductEvaluation();
         $productEvaluation->setProduct($wine1);
         $productEvaluation->setUser($userConsumer);
         $productEvaluation->setMark(3);
+        $productEvaluation->setDate(new \DateTime());
         $productEvaluation->setReview('commentaire 2');
         $manager->persist($productEvaluation);
         $productEvaluation = new ProductEvaluation();
         $productEvaluation->setProduct($wine1);
         $productEvaluation->setUser($userConsumer);
         $productEvaluation->setMark(3);
+        $productEvaluation->setDate(new \DateTime());
         $productEvaluation->setReview('commentaire 3');
         $manager->persist($productEvaluation);
 
