@@ -2,6 +2,7 @@
 
 namespace UserBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use ProductBundle\Entity\Purchase;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
