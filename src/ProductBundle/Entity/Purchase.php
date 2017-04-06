@@ -352,6 +352,19 @@ class Purchase
     }
 
     /**
+     * Get purchase number of articles
+     * @return int
+     */
+    public function getNbArticles(){
+        $nbArticles = 0;
+        foreach ($this->products as $product){
+            $nbArticles += $product->getStock();
+        }
+        return $nbArticles;
+    }
+
+
+    /**
      * Set paid
      *
      * @param boolean $paid

@@ -43,7 +43,7 @@
                     <tr>
                         <td>{{ purchase.id }}</td>
                         <td>{{ purchase.getAmount }} €</td>
-                        <td>{{ purchase.getArticles }}</td>
+                        <td>{{ purchase.getNbArticles }}</td>
                         <td>{{ purchase.getdateOrder|date('d-m-y') }}</td>
                     </tr>
                     </tr>
@@ -55,8 +55,8 @@
                 <div>
                     <p><b>Nom:</b> <a href="{{ path('product_show', {id:product.id}) }}">{{ product.name }}</a></p>
                     <p><b>Volume:</b> {{ product.volume }}</p>
-                    <p><b>Prix:</b> {{ product.price }}</p>
-                    <p><b>Stock:</b> {{ product.stock }}</p>
+                    <p><b>Prix Unitaire:</b> {{ product.price }}</p>
+                    <p><b>Stock:</b> {{ product.getStock }}</p>
                 </div>
             {% endfor %}
         </div>
