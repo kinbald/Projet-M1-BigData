@@ -45,6 +45,15 @@ class ProductEvaluation
     private $product;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime")
+     */
+    private $date;
+
+
+
+    /**
      * @var UserConsumer
      * @ORM\ManyToOne(targetEntity="UserBundle\Entity\UserConsumer", inversedBy="products")
      * @ORM\JoinColumn(nullable=false)
@@ -108,6 +117,29 @@ class ProductEvaluation
     public function getReview()
     {
         return $this->review;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return ProductEvaluation
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
     }
 
     /**

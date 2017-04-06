@@ -201,6 +201,7 @@ class ProductController extends Controller
             if(!$dejaCommente){
                 $evaluation->setUser($this->getUser());
                 $evaluation->setProduct($product);
+                $evaluation->setDate(new \DateTime());
                 $em->persist($evaluation);
                 $em->flush($evaluation);
             }
