@@ -11,6 +11,7 @@
 {% endblock %}
 
 {% block body %}
+<div class="body-content">
     <table class="product-content">
         <tr>
             <td class="section-slide">
@@ -48,7 +49,7 @@
 
                         {% for product_picture in product_pictures %}
                             <div class="item active">
-                                <img src="{{ asset(product_picture.url) }}" alt="{{ product_picture.alt }}"/>
+                                <img class="photo" src="{{ asset(product_picture.url) }}" alt="{{ product_picture.alt }}"/>
                             </div>
                         {% endfor %}
                     </div>
@@ -66,7 +67,7 @@
 
             </td>
             <!--  TEXTE  -->
-            <td class="section-presentation center-justified">
+            <td class="center-justified">
                 <div id="TITRE">
                     <h3 class="wow fadeInDown">{{ product.displayName }}</h3>
                 </div>
@@ -155,63 +156,62 @@
         {% endblock %}
     </table>
 
-    <!--  TEXTE  -->
-    <section class="section-presentation product" id="products">
-        {% for evaluation in evaluations %}
-            <div class="comment">
-                <div class="comment-header">
-                    <h4 class="yellow text-center">{{ evaluation.user.firstname }} {{ evaluation.user.lastname }}</h4>
-                    <div class="rating">
-                        {% for i in range(1, evaluation.mark) %}
-                            <span class="full-star">★</span>
+    <!--  AVIS  -->
+    {% for evaluation in evaluations %}
+        <div class="comment">
+            <div class="comment-header">
+                <h4 class="yellow text-center">{{ evaluation.user.firstname }} {{ evaluation.user.lastname }}</h4>
+                <div class="rating">
+                    {% for i in range(1, evaluation.mark) %}
+                        <span class="full-star">★</span>
+                    {% endfor %}
+                    {% if evaluation.mark < 5 %}
+                        {%  for i in range(evaluation.mark + 1, 5) %}
+                            <span class="empty-star">☆</span>
                         {% endfor %}
-                        {% if evaluation.mark < 5 %}
-                            {%  for i in range(evaluation.mark + 1, 5) %}
-                                <span class="empty-star">☆</span>
-                            {% endfor %}
-                        {% endif %}
-                    </div>
-                </div>
-
-                <div class="comment-content">
-                    <p>{{ evaluation.review }}</p>
-
+                    {% endif %}
                 </div>
             </div>
-        {% endfor %}
 
-        {% if utilisateur != null %}
-            <h3>Ajouter un commentaire</h3>
+            <div class="comment-content">
+                <p>{{ evaluation.review }}</p>
 
-            <div class="comment">
-                <div class="comment-header">
-                    <h4 class="yellow text-center">
-                        {{ utilisateur.firstname }} {{ utilisateur.lastname }}
-                    </h4>
-                    <li>
-                        <div class="rating">
-                            <a id="1" class="star" href="#1" title="Give 1 star">☆</a>
-                            <a id="2" class="star" href="#2" title="Give 2 stars">☆</a>
-                            <a id="3" class="star" href="#3" title="Give 3 stars">☆</a>
-                            <a id="4" class="star" href="#4" title="Give 4 stars">☆</a>
-                            <a id="5" class="star" href="#5" title="Give 5 stars">☆</a>
-                        </div>
-                    </li>
-                </div>
+            </div>
+        </div>
+    {% endfor %}
 
+    {% if utilisateur != null %}
+        <h3 class="text-center">Ajouter un commentaire</h3>
 
-                <div class="comment-content">
-                    <div class="form-style-1">
-                        {{ form_start(evaluation_form) }}
-                        {{ form_widget(evaluation_form) }}
-                        {{ form_end(evaluation_form) }}
+        <div class="comment">
+            <div class="comment-header">
+                <h4 class="yellow text-center">
+                    {{ utilisateur.firstname }} {{ utilisateur.lastname }}
+                </h4>
+                <li>
+                    <div class="rating">
+                        <a id="1" class="star" href="#1" title="Give 1 star">☆</a>
+                        <a id="2" class="star" href="#2" title="Give 2 stars">☆</a>
+                        <a id="3" class="star" href="#3" title="Give 3 stars">☆</a>
+                        <a id="4" class="star" href="#4" title="Give 4 stars">☆</a>
+                        <a id="5" class="star" href="#5" title="Give 5 stars">☆</a>
                     </div>
+                </li>
+            </div>
+
+
+            <div class="comment-content">
+                <div class="form-style-1">
+                    {{ form_start(evaluation_form) }}
+                    {{ form_widget(evaluation_form) }}
+                    {{ form_end(evaluation_form) }}
                 </div>
             </div>
-        {% else %}
-            <h3>Vous de devez être connecté pour laisser un commentaire</h3>
-        {% endif %}
-    </section>
+        </div>
+    {% else %}
+        <h3 class="text-center">Vous de devez être connecté pour laisser un commentaire</h3>
+    {% endif %}
+</div>
 {% endblock %}
 
 

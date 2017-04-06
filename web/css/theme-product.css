@@ -89,6 +89,12 @@
     margin-top: 80px;
     width: 1200px;
 }
+body-content {
+    margin: auto;
+    margin-top: 80px;
+    width: 1200px;
+
+}
 
 .section-slide {
     display: block;
@@ -136,25 +142,11 @@
 .photo{
     min-height: 350px;
     max-width: 450px;
-    max-height: 70vh;
-}
-.section-presentation {
-    display: block;
-    width: auto;
-    margin-left: 550px;
-    margin-right: 30px;
+    max-height: 600px;
 }
 
 
 /* PRESENTATON PRODUIT*/
-
-.section-presentation {
-    padding: 0px;
-    display: block;
-    width: auto;
-    margin-left: 550px;
-    margin-right: 30px;
-}
 
 #TITRE{
     padding-top: 27px;
@@ -298,7 +290,7 @@ section{
 }
 
 .comment{
-
+    margin: auto;
     border: solid 1px #bababa;
     width:60%;
     margin-bottom: 20px;
