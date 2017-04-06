@@ -123,10 +123,18 @@
         <h2>Factures & Paiements</h2>
         <div>
             <br>
-            <p>blablabla</p>
-            <p>blablabla</p>
+            <h1 class="section-heading">Commandes</h1>
+            <br>
+            <div class="text-center content">
+                <div class="text-center">
+                    {% for purchase in purchases %}
+                        <a class="btn btn-primary btn-circle" href="{{ path("profil_products", {'id': purchase.id }) }}">
+                            <div class="texte">Commande n° {{ purchase.id }} - {{ purchase.getdateOrder|date('d-m-y') }} </div>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
-
     </div>
 
 
