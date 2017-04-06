@@ -1,48 +1,155 @@
 {% extends  'ProductBundle:product:show.html.twig' %}
 {% block features %}
-    <tr>
-        <td class="attribute">
-            Millésime :
-        </td>
-        <td class="att-value">
-            {% if product.vintage %}{{ product.vintage|date('Y') }}{% endif %}
-        </td>
-    </tr>
-    <tr>
-        <td class="attribute">
-            Couleur :
-        </td>
-        <td class="att-value">
+
+    {% if product.vintage %}
+        <tr>
+            <td class="td attribute">
+                {% trans %}Vintage{% endtrans %} :
+            </td>
+            <td class="td att-value">
+                {{ product.vintage|date('Y') }}
+            </td>
+        </tr>
+    {% endif %}
+
+
+    {% if product.color %}
+        <tr>
+            <td class="td attribute">
+                {% trans %}Color{% endtrans %} :
+            </td>
+            <td class="td att-value">
                 {{ product.color }}
             </td>
         </tr>
+    {% endif %}
+    {% if product.grapeVariety is not empty %}
+        <tr>
+            <td class="td attribute">
+                {% trans %}Cepage{% endtrans %} :
+            </td>
+            <td class="td att-value">
+                {% for variety in product.grapeVariety %} {{ variety.name }} {% if not loop.last %}, {% endif %}{% endfor %}
 
-    {% if product.vintage %}<b>Millésime : </b>{{ product.vintage|date('Y-m-d') }}{% endif %} <br />
-    <b>Couleur :</b> {{ product.color }} <br />
-    <b>Sépage : </b>{{ product.grapeVariety.name }} <br />
-    {% if product.range %}<b>Catégorie : </b> {% if product.range.img %} <img src="{{ product.range.img }}" alt="categorie" height="30"> {% endif %} {{ product.range.name }}{% endif %} <br />
-
-    {% if product.region %}<b>Region : </b>{{ product.region}} <br />{% endif %}
-    {% if product.origincountry %}<b>Pays : </b>{{ product.origincountry.name}}, {{ product.origincontinent.name}} <br />{% endif %}
-
-    {% if product.recipes %}
-    {% for recipe in product.recipes %}
-        <b>Recette : {{ recipe.name }}</b>
-        <a href="{{ recipe.url }}"> <img src="{{ asset('img/product/recipe.png') }}" alt="recipe_link" height="50"></a>
-    {% endfor %}
+            </td>
+        </tr>
     {% endif %}
 
-    {% if product.conditioningTypes is not empty %}
-    <b>Conditionnement :</b>
-    {% for conditioningType in product.conditioningTypes %}
-    {{ conditioningType.name }},
-    {% endfor %}
+    {% if product.range  %}
+        <tr>
+            <td class="td attribute">
+                {% trans %}Category{% endtrans %} :
+            </td>
+            <td class="td att-value">
+                {% if product.range.img %}
+                    <img src="{{ product.range.img }}" alt="categorie" height="30">
+                {% endif %} {{ product.range.name }}
+            </td>
+        </tr>
     {% endif %}
 
-    <b>Médaille : </b>
+    <tr>
+        <td class="td attribute">
+            {% trans %}Traduction! A decanter{% endtrans %} :
+        </td>
+        <td class="td att-value">
+            {% if product.aDecanter %}
+                Oui
+            {% else %}
+                Non
+            {% endif %}
+        </td>
+    </tr>
 
-    {% for competition in competitions %}
-        {{ competition.universe.name }}, {{ competition.primeName }}
-    {% endfor %}
+    <tr>
+        <td class="td attribute">
+            {% trans %}Traduction! Non Filtré{% endtrans %} :
+        </td>
+        <td class="td att-value">
+            {% if product.nonFiltre %}
+                Oui
+            {% else %}
+                Non
+            {% endif %}
+        </td>
+    </tr>
+
+    <tr>
+        <td class="td attribute">
+            {% trans %}Traduction! Démarche Qualité{% endtrans %} :
+        </td>
+        <td class="td att-value">
+            {% if product.demarcheQualite %}
+                Oui
+            {% else %}
+                Non
+            {% endif %}
+        </td>
+    </tr>
+
+
+
+
+
+
+    {% if product.origincountry  %}
+        <tr>
+            <td class="td attribute">
+                {% trans %}Country{% endtrans %} :
+            </td>
+            <td class="td att-value">
+                {{ product.origincountry.name}}, {{ product.origincontinent.name}}
+            </td>
+        </tr>
+    {% endif %}
+    {% if product.region  %}
+        <tr>
+            <td class="td attribute">
+                {% trans %}Region{% endtrans %} :
+            </td>
+            <td class="td att-value">
+                {{ product.region }}
+            </td>
+        </tr>
+    {% endif %}
+    {% if product.recipes is not empty %}
+        <tr>
+            <td class="td attribute">
+                {% trans %}Recipe{% endtrans %} :
+            </td>
+            <td class="td att-value">
+                {% for recipe in product.recipes %}
+                    <a href="{{ recipe.url }}">
+                        <img src="{{ asset('img/product/recipe.png') }}" alt="recipe_link" height="50">
+                        {{ recipe.name }}
+                    </a>
+                {% endfor %}
+            </td>
+        </tr>
+    {% endif %}
+    {% if product.conditioningTypes is not empty  %}
+        <tr>
+            <td class="td attribute">
+                {% trans %}Conditioning{% endtrans %} :
+            </td>
+            <td class="td att-value">
+                {% for conditioningType in product.conditioningTypes %}
+                    {{ conditioningType.name }}{% if not loop.last %}, {% endif %}
+                {% endfor %}
+            </td>
+        </tr>
+    {% endif %}
+    {% if product.competitions is not empty  %}
+        <tr>
+            <td class="td attribute">
+                {% trans %}Medal{% endtrans %} :
+            </td>
+            <td class="td att-value">
+                {% for competition in competitions %}
+                    {{ competition.universe.name }}, {{ competition.primeName }}
+                {% endfor %}
+            </td>
+        </tr>
+    {% endif %}
 
 {% endblock %}

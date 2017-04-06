@@ -70,16 +70,16 @@ app_contact:
     resource: "@AppBundle/Controller/ContactController.php"
     type:     annotation
 
+profil:
+    resource: "@UserBundle/Controller/ProfileCommandController.php"
+    type:     annotation
+
+profil_products:
+    resource: "@UserBundle/Controller/ProfileCommandController.php"
+    type:     annotation
+
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
-
-fos_user_profile:
-    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
-    prefix: /profile
-
-profile:
-    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
-    prefix: /profile
 
 fos_user_resetting:
     resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"

@@ -4,7 +4,7 @@ namespace ProductBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ProductBundle\Entity\Product;
-use Symfony\Component\Validator\Constraints\DateTime;
+use DateTime;
 use UserBundle\Entity\BaseUser;
 
 /**
@@ -48,14 +48,14 @@ class Purchase
     /**
      * @var string
      *
-     * @ORM\Column(name="country", type="string", length=100)
+     * @ORM\Column(name="country", type="string", length=100, nullable=true)
      */
     private $country;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="done", type="boolean")
+     * @ORM\Column(name="done", type="boolean", nullable=true)
      */
     private $done;
 
@@ -72,12 +72,32 @@ class Purchase
      */
     private $paid;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="phone", type="string", length=15)
+     */
+    private $phone;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="firstname", type="string", length=255)
+     */
+    private $firstname;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lastname", type="string", length=255)
+     */
+    private $lastname;
 
 
     /**
      * @var BaseUser
      * @ORM\ManyToOne(targetEntity="\UserBundle\Entity\BaseUser", inversedBy="purchases")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $user;
 
@@ -215,7 +235,7 @@ class Purchase
      */
     public function getDone()
     {
-        return $this->done;
+        return $this->done===null?false:$this->done;
     }
 
     /**
@@ -275,6 +295,14 @@ class Purchase
         $this->products = new \Doctrine\Common\Collections\ArrayCollection();
         $this->dateOrder = new DateTime();
         $this->paid = false;
+        $this->address = 'addr';
+        $this->city = 'Toulon';
+        $this->postalCode = '83000';
+        $this->country = 'FR';
+        $this->done = false;
+        $this->firstname = 'Jérémy';
+        $this->lastname = 'Tablet';
+        $this->phone = '1111111111';
     }
 
     /**
@@ -344,6 +372,79 @@ class Purchase
      */
     public function getPaid()
     {
-        return $this->paid;
+        return $this->paid===null?false:$this->paid;
     }
+
+    /**
+     * Set phone
+     *
+     * @param string $phone
+     *
+     * @return Purchase
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * Get phone
+     *
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * Set firstname
+     *
+     * @param string $firstname
+     *
+     * @return Purchase
+     */
+    public function setFirstname($firstname)
+    {
+        $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    /**
+     * Get firstname
+     *
+     * @return string
+     */
+    public function getFirstname()
+    {
+        return $this->firstname;
+    }
+
+    /**
+     * Set lastname
+     *
+     * @param string $lastname
+     *
+     * @return Purchase
+     */
+    public function setLastname($lastname)
+    {
+        $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    /**
+     * Get lastname
+     *
+     * @return string
+     */
+    public function getLastname()
+    {
+        return $this->lastname;
+    }
+
 }

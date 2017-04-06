@@ -39,8 +39,10 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $userProducer->setLastname('Doe');
         $userProducer->setSiret('168435135');
         $userProducer->setCompanyName('Vin & co');
+        $userProducer->setBusinessName('Vin & co');
         $userProducer->setAddress('25 Avenue A');
         $userProducer->setCity('Toulon');
+        $userProducer->setCountry('Azerbaidjan');
         $userProducer->setPostalCode('83000');
         $userProducer->setPhone('0606060606');
         $manager->persist($userProducer);
@@ -56,8 +58,10 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $userProducer->setLastname('qegetg');
         $userProducer->setSiret('646535');
         $userProducer->setCompanyName('vzu zfhkuzdhf hfskd');
+        $userProducer->setBusinessName('vzu zfhkuzdhf hfskd');
         $userProducer->setAddress('Rue B');
         $userProducer->setCity('Azerty');
+        $userProducer->setCountry('France');
         $userProducer->setPostalCode('26485');
         $userProducer->setPhone('0606060606');
         $manager->persist($userProducer);

@@ -5,6 +5,7 @@
     <!--<link href="{{ asset('css/concours.css') }}" rel="stylesheet" />-->
 {% endblock %}
 {% block body %}
+    {% trans_default_domain 'FOSUserBundle_trad' %}
     {% for user in userMedia %}
         {{ user.id }} <br/>
     {% endfor %}

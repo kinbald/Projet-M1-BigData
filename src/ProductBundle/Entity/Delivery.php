@@ -6,12 +6,12 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * ConditioningType
+ * Delivery
  *
- * @ORM\Table(name="conditioning_type")
- * @ORM\Entity(repositoryClass="ProductBundle\Repository\ConditioningTypeRepository")
+ * @ORM\Table(name="delivery")
+ * @ORM\Entity(repositoryClass="ProductBundle\Repository\DeliveryRepository")
  */
-class ConditioningType
+class Delivery
 {
     /**
      * @var int
@@ -25,43 +25,43 @@ class ConditioningType
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255, unique=true)
      */
     private $name;
 
     /**
-     * @var float
+     * @var int
      *
-     * @ORM\Column(name="price", type="float")
+     * @ORM\Column(name="price", type="integer")
      */
     private $price;
 
     /**
      * @var Collection
-     * @ORM\ManyToMany(targetEntity="\ProductBundle\Entity\Product", cascade={"persist"}, inversedBy="conditioningTypes")
+     * @ORM\ManyToMany(targetEntity="\ProductBundle\Entity\ProductConditioning", cascade={"persist"}, inversedBy="deliveries")
      */
-    private $products;
+    private $conditioningTypes;
 
     /**
      * @var Collection
-     * @ORM\OneToMany(targetEntity="\ProductBundle\Entity\ProductPurchase", mappedBy="conditioningType")
+     * @ORM\OneToMany(targetEntity="\ProductBundle\Entity\ProductPurchase", mappedBy="delivery")
      */
     private $purchases;
-
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->products = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->purchases = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->conditioningTypes = new \Doctrine\Common\Collections\ArrayCollection();
     }
+
+
 
     /**
      * Get id
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -73,7 +73,7 @@ class ConditioningType
      *
      * @param string $name
      *
-     * @return ConditioningType
+     * @return Delivery
      */
     public function setName($name)
     {
@@ -95,9 +95,9 @@ class ConditioningType
     /**
      * Set price
      *
-     * @param float $price
+     * @param integer $price
      *
-     * @return ConditioningType
+     * @return Delivery
      */
     public function setPrice($price)
     {
@@ -109,7 +109,7 @@ class ConditioningType
     /**
      * Get price
      *
-     * @return float
+     * @return int
      */
     public function getPrice()
     {
@@ -117,37 +117,37 @@ class ConditioningType
     }
 
     /**
-     * Add product
+     * Add conditioningType
      *
-     * @param \ProductBundle\Entity\Product $product
+     * @param \ProductBundle\Entity\ProductConditioning $conditioningType
      *
-     * @return ConditioningType
+     * @return Delivery
      */
-    public function addProduct(\ProductBundle\Entity\Product $product)
+    public function addConditioningType(\ProductBundle\Entity\ProductConditioning $conditioningType)
     {
-        $this->products[] = $product;
+        $this->conditioningTypes[] = $conditioningType;
 
         return $this;
     }
 
     /**
-     * Remove product
+     * Remove conditioningType
      *
-     * @param \ProductBundle\Entity\Product $product
+     * @param \ProductBundle\Entity\ProductConditioning $conditioningType
      */
-    public function removeProduct(\ProductBundle\Entity\Product $product)
+    public function removeConditioningType(\ProductBundle\Entity\ProductConditioning $conditioningType)
     {
-        $this->products->removeElement($product);
+        $this->conditioningTypes->removeElement($conditioningType);
     }
 
     /**
-     * Get products
+     * Get conditioningTypes
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getProducts()
+    public function getConditioningTypes()
     {
-        return $this->products;
+        return $this->conditioningTypes;
     }
 
     /**
@@ -155,7 +155,7 @@ class ConditioningType
      *
      * @param \ProductBundle\Entity\ProductPurchase $purchase
      *
-     * @return ConditioningType
+     * @return Delivery
      */
     public function addPurchase(\ProductBundle\Entity\ProductPurchase $purchase)
     {

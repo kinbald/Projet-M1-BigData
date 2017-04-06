@@ -8,15 +8,6 @@ use AppBundle\Entity\Partner;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use ProductBundle\Entity\ConditioningType;
-use ProductBundle\Entity\PictureProduct;
-use ProductBundle\Entity\PictureUniverse;
-use ProductBundle\Entity\ProductEvaluation;
-use ProductBundle\Entity\ProductPurchase;
-use ProductBundle\Entity\Purchase;
-use ProductBundle\Entity\Spirit;
-use ProductBundle\Entity\Universe;
-use ProductBundle\Entity\Wine;
 
 class LoadApp extends AbstractFixture implements OrderedFixtureInterface
 {

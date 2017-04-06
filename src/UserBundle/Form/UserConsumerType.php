@@ -13,7 +13,9 @@ class UserConsumerType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('sex')->add('birthDate');
+        $builder
+            ->add('sex')
+            ->add('birthDate');
     }
 
     /**

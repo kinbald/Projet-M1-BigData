@@ -44,16 +44,16 @@ abstract class Product
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="display_name", nullable=true, type="string", length=255)
      */
-    protected $description;
+    protected $displayName;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="description_short", type="text")
+     * @ORM\Column(name="description", type="text")
      */
-    protected $descriptionShort;
+    protected $description;
 
     /**
      * @var float
@@ -76,6 +76,25 @@ abstract class Product
      */
     protected $stock;
 
+    /**
+     * @var Collection
+     * @ORM\OneToMany(targetEntity="ConcoursBundle\Entity\CompetitionProduct", mappedBy="product")
+     */
+    private $competitions;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="alcohol_degree", type="float")
+     */
+    private $alcoholDegree;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="sugar", type="float")
+     */
+    private $sugar;
 
     /**
      * @var Continent
@@ -107,7 +126,6 @@ abstract class Product
      */
     private $range;
 
-
     /**
      * @var PictureProduct
      *
@@ -130,7 +148,7 @@ abstract class Product
 
     /**
      * @var Collection
-     * @ORM\ManyToMany(targetEntity="\ProductBundle\Entity\ConditioningType", mappedBy="products")
+     * @ORM\ManyToMany(targetEntity="\ProductBundle\Entity\ProductConditioning", mappedBy="products")
      */
     protected $conditioningTypes;
 
@@ -144,7 +162,7 @@ abstract class Product
      * @var Collection
      * @ORM\OneToMany(targetEntity="ProductBundle\Entity\ProductEvaluation", mappedBy="product")
      */
-    protected $users;
+    protected $evaluations;
 
     /**
      * @var Collection
@@ -187,6 +205,29 @@ abstract class Product
     }
 
     /**
+     * Set displayName
+     *
+     * @param string $name
+     *
+     * @return Product
+     */
+    public function setDisplayName($name)
+    {
+        $this->displayName = $name;
+        return $this;
+    }
+
+    /**
+     * Get displayName
+     *
+     * @return string
+     */
+    public function getDisplayName()
+    {
+        return !empty($this->displayName)?$this->displayName:$this->getName() ;
+    }
+
+    /**
      * Set description
      *
      * @param string $description
@@ -208,30 +249,6 @@ abstract class Product
     public function getDescription()
     {
         return $this->description;
-    }
-
-    /**
-     * Set descriptionShort
-     *
-     * @param string $descriptionShort
-     *
-     * @return Product
-     */
-    public function setDescriptionShort($descriptionShort)
-    {
-        $this->descriptionShort = $descriptionShort;
-
-        return $this;
-    }
-
-    /**
-     * Get descriptionShort
-     *
-     * @return string
-     */
-    public function getDescriptionShort()
-    {
-        return $this->descriptionShort;
     }
 
     /**
@@ -260,6 +277,7 @@ abstract class Product
 
     /**
      * Set price
+     * @deprecated
      *
      * @param float $price
      *
@@ -274,6 +292,7 @@ abstract class Product
 
     /**
      * Get price
+     * @deprecated
      *
      * @return float
      */
@@ -284,6 +303,7 @@ abstract class Product
 
     /**
      * Set stock
+     * @deprecated
      *
      * @param integer $stock
      *
@@ -298,6 +318,7 @@ abstract class Product
 
     /**
      * Get stock
+     * @deprecated
      *
      * @return int
      */
@@ -305,6 +326,55 @@ abstract class Product
     {
         return $this->stock;
     }
+
+    /**
+     * Set alcoholDegree
+     *
+     * @param float $alcoholDegree
+     *
+     * @return Product
+     */
+    public function setAlcoholDegree($alcoholDegree)
+    {
+        $this->alcoholDegree = $alcoholDegree;
+
+        return $this;
+    }
+
+    /**
+     * Get alcoholDegree
+     *
+     * @return float
+     */
+    public function getAlcoholDegree()
+    {
+        return $this->alcoholDegree;
+    }
+
+    /**
+     * Set sugar
+     *
+     * @param float $sugar
+     *
+     * @return Product
+     */
+    public function setSugar($sugar)
+    {
+        $this->sugar = $sugar;
+
+        return $this;
+    }
+
+    /**
+     * Get sugar
+     *
+     * @return float
+     */
+    public function getSugar()
+    {
+        return $this->sugar;
+    }
+
     /**
      * Constructor
      */
@@ -325,7 +395,6 @@ abstract class Product
      * @return string
      */
     abstract public function getDiscr();
-
 
     /**
      * Add picture
@@ -437,7 +506,7 @@ abstract class Product
      */
     public function addUser(ProductEvaluation $user)
     {
-        $this->users[] = $user;
+        $this->evaluations[] = $user;
 
         return $this;
     }
@@ -449,17 +518,37 @@ abstract class Product
      */
     public function removeUser(ProductEvaluation $user)
     {
-        $this->users->removeElement($user);
+        $this->evaluations->removeElement($user);
     }
 
     /**
-     * Get users
+     * Get evaluations
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getUsers()
+    public function getEvaluations()
     {
-        return $this->users;
+        return $this->evaluations;
+    }
+
+    /**
+     * Get average evaluations
+     * @return int
+     */
+    public function getAverageMarks(){
+        $evaluations = $this->getEvaluations();
+        $sommeNotes = 0;
+        $nbEval = 0;
+        $noteProduit = 0;
+        foreach ($evaluations as $evaluation){
+            $sommeNotes += $evaluation->getMark();
+            $nbEval++;
+        }
+        if($nbEval > 0){
+            $noteProduit = $sommeNotes / $nbEval;
+        }
+
+        return round($noteProduit);
     }
 
     /**
@@ -499,11 +588,11 @@ abstract class Product
     /**
      * Add conditioningType
      *
-     * @param \ProductBundle\Entity\ConditioningType $conditioningType
+     * @param \ProductBundle\Entity\ProductConditioning $conditioningType
      *
      * @return Product
      */
-    public function addConditioningType(\ProductBundle\Entity\ConditioningType $conditioningType)
+    public function addConditioningType(\ProductBundle\Entity\ProductConditioning $conditioningType)
     {
         $this->conditioningTypes[] = $conditioningType;
 
@@ -513,9 +602,9 @@ abstract class Product
     /**
      * Remove conditioningType
      *
-     * @param \ProductBundle\Entity\ConditioningType $conditioningType
+     * @param \ProductBundle\Entity\ProductConditioning $conditioningType
      */
-    public function removeConditioningType(\ProductBundle\Entity\ConditioningType $conditioningType)
+    public function removeConditioningType(\ProductBundle\Entity\ProductConditioning $conditioningType)
     {
         $this->conditioningTypes->removeElement($conditioningType);
     }
@@ -629,4 +718,39 @@ abstract class Product
     {
         return $this->reservations;
     }
+
+    /**
+     * Add competition
+     *
+     * @param \ConcoursBundle\Entity\CompetitionProduct $competition
+     *
+     * @return Product
+     */
+    public function addCompetition(\ConcoursBundle\Entity\CompetitionProduct $competition)
+    {
+        $this->competitions[] = $competition;
+
+        return $this;
+    }
+
+    /**
+     * Remove competition
+     *
+     * @param \ConcoursBundle\Entity\CompetitionProduct $competition
+     */
+    public function removeCompetition(\ConcoursBundle\Entity\CompetitionProduct $competition)
+    {
+        $this->competitions->removeElement($competition);
+    }
+
+    /**
+     * Get Collection
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCompetitions()
+    {
+        return $this->competitions;
+    }
+
 }

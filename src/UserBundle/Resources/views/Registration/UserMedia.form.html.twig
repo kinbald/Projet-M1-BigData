@@ -2,8 +2,8 @@
 
 {% block fos_user_content %}
     <div id="content">
-        <h1>Inscription médias</h1>
-        {% trans_default_domain 'FOSUserBundle' %}
+        {% trans_default_domain 'FOSUserBundle_trad' %}
+        <h1>{% trans %}Registration Media{% endtrans %}</h1>
         <form action="{{ path('user_media_registration') }}" method="POST">
             {{ form_widget(form) }}
             <div>

@@ -3,6 +3,7 @@
 {% block stylesheets %}
     {{ parent() }}
     <link href="{{ asset('css/accueil.css') }}" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 {% endblock %}
 
 {% block javascripts %}
@@ -10,12 +11,28 @@
 {% endblock %}
 
 {% block body %}
-    <div class="text-center">
-        <h1>Box Office Wines</h1>
+
+    <section class="testimonials testimonials-banner" id="testimonials">
+        <div class="container">
+            <div class="row">
+                <img src="{{ asset("img/logo.png") }}" alt="logo"><br>
+                <span class="text-newsletter newsletter">S'abonner à la Newsletter: </span><br>
+
+                <form method="post" action="">
+                    <p><input id="" class="text-newsletter" name="email" type="text" placeholder="Veuillez entrer votre email"/></p>
+                </form>
+                    <button type="button" class="button btn-info btn-lg" data-toggle="modal" data-target="#myModal">Je m'inscris</button>
+            </div>
+        </div>
+
+    </section>
+
+    <section>
         <div class="text-center">
+            <h1> Box Office Wines</h1>
             {% for universe in universes %}
                 <div class="neutral text-center">
-                    <a type="button" class="btn" href="{{ path("universe_show", {id:universe.id}) }}">
+                    <a type="button" class="btn btn-home" href="{{ path("universe_show", {id:universe.id}) }}">
                         {% set picture = universe.pictures|first %}
                         <img class="image" src="{{ asset(picture.url) }}" alt="{{ picture.alt }}"/>
                         <p class="texte">{{ universe.name }}</p>
@@ -23,6 +40,155 @@
                 </div>
             {% endfor %}
         </div>
+    </section>
+        {% for universe in universes %}
+            <table class="tabdescr">
+            <tr class="descr">
+                <td>
+                    <div>
+                        <a type="button" class="btn" href="{{ path("universe_show", {id:universe.id}) }}">
+                            <p class="centrer">{{ universe.description }}</p>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            <br>
+            </table>
+        {% endfor %}
+
+
+    <section class="testimonials testimonials-banner" id="testimonials">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="section-heading">Recettes</h3>
+                </div>
+                <div class="testimonials-slider text-center">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="testimonials-container shadow"> <img alt="user avatar" class="wow fadeInUp" src="{{ asset("") }}">
+                                <h3 class="wow fadeInUp" data-wow-delay=".4s"> Lien vers site de recettes 1 <span>Fastcompany ltd.</span> </h3>
+                                <p class="wow fadeInUp" data-wow-delay=".6s"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="testimonials-container shadow"> <img alt="user avatar" class="wow fadeInUp" src="{{ asset("") }}">
+                                <h3 class="wow fadeInUp" data-wow-delay=".4s"> Lien vers site de recettes 2 <span>Fastcompany ltd.</span> </h3>
+                                <p class="wow fadeInUp" data-wow-delay=".6s"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="testimonials-container shadow"> <img alt="user avatar" class="wow fadeInUp" src="{{ asset("") }}">
+                                <h3 class="wow fadeInUp" data-wow-delay=".4s"> Lien vers site de recettes 2 <span>Fastcompany ltd.</span> </h3>
+                                <p class="wow fadeInUp" data-wow-delay=".6s"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonials-pagination"></div>
+                    <div class="testimonials-slider-next right-arrow-negative"> <span class="ti-arrow-right"></span> </div>
+                    <div class="testimonials-slider-prev left-arrow-negative"> <span class="ti-arrow-left"></span> </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="post-list" id="news">
+        <div class="container overflow-hidden">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="section-heading">Concours</h3>
+                </div>
+                <div class="post-slider">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="post-entry wow fadeInUp">
+                                <a href="http://www.femmesetvinsdumonde.com" data-toggle="modal" onclick="window.open(this.href); return false;">
+									<img class="post-entry-cover" src="{{ asset('img/concours/femmes-vins-monde.png') }}" alt="femmes-vins-monde"/>
+                                </a>
+
+
+                                <a class="h3" href="http://www.femmesetvinsdumonde.com/" data-toggle="modal" onclick="window.open(this.href); return false;">Femmes et spiritueux du monde</a>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="post-entry wow fadeInUp">
+                                <a href="http://www.femmesetspiritueuxdumonde.com/" data-toggle="modal" onclick="window.open(this.href); return false;">
+                                    <img class="post-entry-cover" src="{{ asset('img/concours/femmes-spiritueux-monde.png') }}" alt="femmes-spiritueux-monde"/>
+                                </a>
+
+                                <a class="h3" href="http://www.femmesetspiritueuxdumonde.com/" data-toggle="modal" onclick="window.open(this.href); return false;">Femmes et vins du monde</a>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="post-entry wow fadeInUp">
+                                <a href="http://femmesetvinsdefrance.com" data-toggle="modal" onclick="window.open(this.href); return false;">
+                                    <img class="post-entry-cover" src="{{ asset('img/concours/femmes-vins-france.png') }}" alt="femmes-vins-france"/>
+                                </a>
+
+                                <a class="h3" href="http://femmesetvinsdefrance.com" data-toggle="modal" onclick="window.open(this.href); return false;">Femmes et vins de France</a>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="post-entry wow fadeInUp">
+                                <a href="http://www.guideduvinrose.com/" data-toggle="modal" onclick="window.open(this.href); return false;">
+                                    <img class="post-entry-cover" src="{{ asset('img/concours/vin_rose_wine.png') }}" alt="vin_rose_wine"/>
+                                </a>
+
+                                <a class="h3" href="http://www.guideduvinrose.com/" data-toggle="modal" onclick="window.open(this.href); return false;">Guide international du vin Rosé</a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="post-entry wow fadeInUp">
+                                <a href="http://www.civg-igwc.fr/" data-toggle="modal" onclick="window.open(this.href); return false;">
+                                    <img class="post-entry-cover" src="{{ asset('img/concours/vins-gastronomie.png') }}" alt="vins-gastronomie"/>
+                                </a>
+
+                                <a class="h3" href="http://www.civg-igwc.fr/" data-toggle="modal" onclick="window.open(this.href); return false;">Vins de Gastronomie</a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="post-entry wow fadeInUp">
+                                <a href="http://www.civt-ictw.fr/" data-toggle="modal" onclick="window.open(this.href); return false;">
+                                    <img class="post-entry-cover" src="{{ asset('img/concours/vins-terroir.png') }}" alt="vins-terroir"/>
+                                </a>
+
+                                <a class="h3" href="http://www.civt-ictw.fr/" data-toggle="modal" onclick="window.open(this.href); return false;">Vins de Terroir</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-pagination text-center"></div>
+                    <div class="post-slider-next right-arrow-negative"> <span class="ti-arrow-right"></span> </div>
+                    <div class="post-slider-prev left-arrow-negative"> <span class="ti-arrow-left"></span> </div>
+                </div>
+                           </div>
+        </div>
+    </section>
+
+    <div class="section section-min">
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-4 col-md-push-4 text-center"> <img class="footer-logo" src="{{ asset('img/logo.png') }}" alt="footer-logo">
+                            <div class="social">
+                                <ul>
+                                    <li><a href="http://facebook.com/" target="_blank"><span class="ti-facebook"></span></a></li>
+                                    <li><a href="https://twitter.com/" target="_blank"><span class="ti-twitter-alt"></span></a></li>
+                                    <li><a href="http://linkedin.com/" target="_blank"><span class="ti-linkedin"></span></a></li>
+                                    <li><a href="https://vimeo.com/" target="_blank"><span class="ti-vimeo-alt"></span></a></li>
+                                    <li><a href="http://youtube.com/" target="_blank"><span class="ti-youtube"></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
     </div>
 {% endblock %}
-

@@ -13,7 +13,14 @@ class PurchaseType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('address')->add('city')->add('postalCode')->add('country')->add('done')->add('dateOrder')->add('user')        ;
+        $builder
+            ->add('address')
+            ->add('city')
+            ->add('postalCode')
+            ->add('country')
+            ->add('done')
+            ->add('dateOrder')
+            ->add('user');
     }
     
     /**

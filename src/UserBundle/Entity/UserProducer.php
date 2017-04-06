@@ -39,9 +39,44 @@ class UserProducer extends BaseUser
     /**
      * @var string
      *
+     * @ORM\Column(name="billing_email", nullable=true, type="string", length=255)
+     */
+    private $billingEmail;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="website", nullable=true, type="string", length=255)
+     */
+    private $website;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="facebook", nullable=true, type="string", length=255)
+     */
+    private $facebook;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="twitter", nullable=true, type="string", length=255)
+     */
+    private $twitter;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="company_name", type="string", length=255)
      */
     private $companyName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="business_name", type="string", length=255)
+     */
+    private $businessName;
 
     /**
      * @var string
@@ -56,6 +91,13 @@ class UserProducer extends BaseUser
      * @ORM\Column(name="city", type="string", length=255)
      */
     private $city;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="country", type="string", length=255)
+     */
+    private $country;
 
     /**
      * @var string
@@ -75,6 +117,29 @@ class UserProducer extends BaseUser
      * @ORM\Column(name="phone", type="string", length=15)
      */
     private $phone;
+
+    /**
+     * @var string
+     * @ORM\Column(name="fax", nullable=true, type="string", length=15)
+     */
+    private $fax;
+
+    /**
+     * @var string
+     * @ORM\Column(name="tva", nullable=true, type="string", length=30)
+     */
+    private $tvaIC;
+
+    /**
+     * @var ProducerStatus
+     *
+     * @ORM\ManyToOne(targetEntity="\UserBundle\Entity\ProducerStatus", inversedBy="userProducer")
+     * @ORM\JoinColumns({
+     *  @ORM\JoinColumn(name="status", referencedColumnName="id", nullable=true)
+     * })
+     */
+    private $status;
+
 
     public function __construct()
     {
@@ -116,6 +181,78 @@ class UserProducer extends BaseUser
     }
 
     /**
+     * Set website
+     *
+     * @param string $website
+     *
+     * @return UserProducer
+     */
+    public function setWebsite($website)
+    {
+        $this->website = $website;
+
+        return $this;
+    }
+
+    /**
+     * Get website
+     *
+     * @return string
+     */
+    public function getWebsite()
+    {
+        return $this->website;
+    }
+
+    /**
+     * Set facebook
+     *
+     * @param string $facebook
+     *
+     * @return UserProducer
+     */
+    public function setFacebook($facebook)
+    {
+        $this->facebook = $facebook;
+
+        return $this;
+    }
+
+    /**
+     * Get facebook
+     *
+     * @return string
+     */
+    public function getFacebook()
+    {
+        return $this->facebook;
+    }
+
+    /**
+     * Set twitter
+     *
+     * @param string $twitter
+     *
+     * @return UserProducer
+     */
+    public function setTwitter($twitter)
+    {
+        $this->twitter = $twitter;
+
+        return $this;
+    }
+
+    /**
+     * Get twitter
+     *
+     * @return string
+     */
+    public function getTwitter()
+    {
+        return $this->twitter;
+    }
+
+    /**
      * Set companyName
      *
      * @param string $companyName
@@ -137,6 +274,30 @@ class UserProducer extends BaseUser
     public function getCompanyName()
     {
         return $this->companyName;
+    }
+
+    /**
+     * Set businessName
+     *
+     * @param string $businessName
+     *
+     * @return UserProducer
+     */
+    public function setBusinessName($businessName)
+    {
+        $this->businessName = $businessName;
+
+        return $this;
+    }
+
+    /**
+     * Get businessName
+     *
+     * @return string
+     */
+    public function getBusinessName()
+    {
+        return $this->businessName;
     }
 
     /**
@@ -185,6 +346,30 @@ class UserProducer extends BaseUser
     public function getCity()
     {
         return $this->city;
+    }
+
+    /**
+     * Set country
+     *
+     * @param string $country
+     *
+     * @return UserProducer
+     */
+    public function setCountry($country)
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * Get country
+     *
+     * @return string
+     */
+    public function getCountry()
+    {
+        return $this->country;
     }
 
     /**
@@ -238,7 +423,7 @@ class UserProducer extends BaseUser
     /**
      * Get options
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return OptionSubscription
      */
     public function getOptions()
     {
@@ -274,5 +459,99 @@ class UserProducer extends BaseUser
     public function getPhone()
     {
         return $this->phone;
+    }
+
+    /**
+     * Set billingEmail
+     *
+     * @param string $billing
+     *
+     * @return UserProducer
+     */
+    public function setBilling($billing)
+    {
+        $this->billingEmail = $billing;
+
+        return $this;
+    }
+
+    /**
+     * Get billingEmail
+     *
+     * @return string
+     */
+    public function getBilling()
+    {
+        return $this->billingEmail;
+    }
+
+    /**
+     * Set fax
+     *
+     * @param string $fax
+     *
+     * @return UserProducer
+     */
+    public function setFax($fax)
+    {
+        $this->fax = $fax;
+
+        return $this;
+    }
+
+    /**
+     * Get fax
+     *
+     * @return string
+     */
+    public function getFax()
+    {
+        return $this->fax;
+    }
+
+    /**
+     * Set tvaIC
+     *
+     * @param string $tva
+     *
+     * @return UserProducer
+     */
+    public function setTvaIC($tva)
+    {
+        $this->tvaIC = $tva;
+        return $this;
+    }
+
+    /**
+     * Get tvaIC
+     *
+     * @return string
+     */
+    public function getTvaIC()
+    {
+        return $this->tvaIC;
+    }
+
+
+    /**
+     * Set origin_country
+     *
+     * @param ProducerStatus $status
+     * @return UserProducer
+     */
+    public function setStatus(ProducerStatus $status = null)
+    {
+        $this->status = $status;
+        return $this;
+    }
+
+    /**
+     * Get origin_country
+     *
+     * @return ProducerStatus
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 }

@@ -1,23 +1,21 @@
 Name: Nom
 Description: Description
 Volume: Volume
-Price: Prix
-Stock: Stock
 Universes: Univers
-Vintage: Millesime
 Color: Couleur
-Wine creation: Ajouter un vin
+Red: Rouge
+White: Blanc
 
-
-Purchase edit: Modification de l'achat
 Edit: Modifier
 Delete: Supprimer
+Show: Aperçu
+Create: Créer
+
 
 
 Back to the list: Retour à la liste
 
-Gestion des commandes: Gestion des commandes
-Create a new purchase: Nouvelle commande
+
 ID commande: Identifiant commande
 ID user: Identifiant utilisateur
 Adresse: Adresse
@@ -26,4 +24,58 @@ Code postal: Code postal
 Pays: Pays
 Date de commande: Date de commande
 Statut: Statut
-Action: Action
+Doing: En cours
+Done: Effectué
+Done Purchase: Commandes terminées
+Degree: Degré d'alcool :
+
+
+Id: Id
+Name: Nom du produit
+Vintage: Millésime
+Color: Couleur
+Price: Prix
+Stock: Stock
+Actions: Actions
+
+
+
+Create Spirit: Ajouter un spiritueux
+Create Wine: Ajouter un vin
+Create Universe: Ajouter un univers
+Create Purchase: Nouvelle commande
+
+Edit Wine: Edition de vin
+Edit Spirit: Edition de spiritueux
+Edit Universe: Edition d'univers
+Edit Purchase: Modification de l'achat
+
+Spirit Title: Liste des spiritueux
+Wine Title: Liste des vins
+Universe Title: Liste des univers
+Purchase Title: Gestion des commandes
+
+
+Purchase Admin: Administration des commandes
+
+
+Retour: Retour à la liste
+Load a picture: Importer une image
+Panier: Ajouter au panier
+Back to selection: Retour à la sélection
+
+
+Medal: Médaille
+Conditioning: Conditionnement
+Cepage: Cépage
+Recipe: Recette
+Category: Catégorie
+Country: Pays
+Region: Région
+
+Search: RECHERCHE
+Range: Gamme
+Type: Type
+Advanced: Critères avancés
+Submit: Envoyer
+Invitation: Découvrez nos produits

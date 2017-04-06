@@ -182,7 +182,6 @@ body{
 }
 .lc-block, .login-content:after {
     vertical-align: middle;
-    display: inline-block;
 }
 .btn:not(.btn-alt) {
     border: 0;
@@ -200,4 +199,18 @@ body{
 }
 .loginError {
     color: #d90000;
+}
+
+@media (max-width: 991px ) {
+    .form-control, .btn{
+        height: 100%;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 500px ) {
+    .form-control, .btn{
+        height: 100%;
+        font-size: 30px;
+    }
 }

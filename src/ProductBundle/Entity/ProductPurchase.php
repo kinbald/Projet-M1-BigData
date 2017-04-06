@@ -3,9 +3,10 @@
 namespace ProductBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use ProductBundle\Entity\ConditioningType;
+use ProductBundle\Entity\ProductConditioning;
 use ProductBundle\Entity\Product;
 use ProductBundle\Entity\Purchase;
+use ProductBundle\Repository\DeliveryRepository;
 
 /**
  * ProductPurchase
@@ -40,20 +41,31 @@ class ProductPurchase
 
     /**
      * @var Purchase
-     * @ORM\ManyToOne(targetEntity="\ProductBundle\Entity\Purchase", inversedBy="products")
+     * @ORM\ManyToOne(targetEntity="\ProductBundle\Entity\Purchase", inversedBy="products", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $purchase;
 
     /**
-     * @var ConditioningType
+     * @var ProductConditioning
      *
-     * @ORM\ManyToOne(targetEntity="\ProductBundle\Entity\ConditioningType", inversedBy="purchases")
+     * @ORM\ManyToOne(targetEntity="\ProductBundle\Entity\ProductConditioning", inversedBy="purchases")
      * @ORM\JoinColumns({
      *  @ORM\JoinColumn(name="conditioning_type", referencedColumnName="id")
      * })
      */
     private $conditioningType;
+
+    /**
+     * @var Delivery
+     *
+     * @ORM\ManyToOne(targetEntity="\ProductBundle\Entity\Delivery", inversedBy="purchases")
+     * @ORM\JoinColumns({
+     *  @ORM\JoinColumn(name="delivery", referencedColumnName="id")
+     * })
+     */
+    private $delivery;
+
 
     /**
      * Get id
@@ -92,11 +104,11 @@ class ProductPurchase
     /**
      * Set conditioningType
      *
-     * @param \ProductBundle\Entity\Product $product
+     * @param \ProductBundle\Entity\ProductConditioning $type
      *
      * @return ProductPurchase
      */
-    public function setConditioningType(ConditioningType $type)
+    public function setConditioningType(ProductConditioning $type)
     {
         $this->conditioningType = $type;
         return $this;
@@ -105,11 +117,34 @@ class ProductPurchase
     /**
      * Get conditioningType
      *
-     * @return ConditioningType
+     * @return ProductConditioning
      */
     public function getConditioningType()
     {
         return $this->conditioningType;
+    }
+
+    /**
+     * Set delivery
+     *
+     * @param \ProductBundle\Entity\Delivery $delivery
+     *
+     * @return ProductPurchase
+     */
+    public function setDelivery(Delivery $delivery)
+    {
+        $this->delivery = $delivery;
+        return $this;
+    }
+
+    /**
+     * Get delivery
+     *
+     * @return Delivery
+     */
+    public function getDelivery()
+    {
+        return $this->delivery;
     }
 
     /**

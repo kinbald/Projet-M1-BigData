@@ -2,6 +2,7 @@
 
 namespace ProductBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use ProductBundle\Entity\Product;
 use ConcoursBundle\Entity\CompetitionWine;
@@ -45,24 +46,69 @@ class Wine extends Product
     private $region;
 
     /**
-     * @var Collection
-     * @ORM\OneToMany(targetEntity="ConcoursBundle\Entity\CompetitionWine", mappedBy="wine")
-     */
-    private $competitions;
-
-    /**
-     * @var grapeVariety
-     *
-     * @ORM\ManyToOne(targetEntity="\ProductBundle\Entity\GrapeVariety", inversedBy="wines")
-     * @ORM\JoinColumns({
-     *  @ORM\JoinColumn(name="grape_variety", referencedColumnName="id")
-     * })
+     * @var Product
+     * @ORM\ManyToMany(targetEntity="\ProductBundle\Entity\GrapeVariety", cascade={"persist"}, mappedBy="wines")
+     * @ORM\JoinColumn(name="grape_variety", referencedColumnName="id")
      */
     private $grapeVariety;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="a_decanter", type="boolean", options={"default" : false})
+     */
+    protected $aDecanter;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="contact_lies", type="boolean", options={"default" : false})
+     */
+    protected $contactLies;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="contact_bois", type="boolean", options={"default" : false})
+     */
+    protected $contactBois;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="non_filtre", type="boolean", options={"default" : false})
+     */
+    protected $nonFiltre;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="demarche_qualite", type="boolean", options={"default" : false})
+     */
+    protected $demarcheQualite;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="overpressure", type="float")
+     */
+    protected $overpressure;
 
 
-
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->grapeVariety = new ArrayCollection();
+        $this->aDecanter = false;
+        $this->contactBois = false;
+        $this->demarcheQualite = false;
+        $this->contactLies = false;
+        $this->nonFiltre = false;
+        $this->overpressure = -1;
+    }
 
     /**
      * Get id
@@ -83,7 +129,6 @@ class Wine extends Product
     {
         return 'wine';
     }
-
 
     /**
      * Set vintage
@@ -133,6 +178,62 @@ class Wine extends Product
         return $this->color;
     }
 
+    /**
+     * Set aDecanter
+     *
+     * @param boolean $aDecanter
+     *
+     * @return Wine
+     */
+    public function setADecanter($aDecanter)
+    {
+        $this->aDecanter = $aDecanter;
+
+        return $this;
+    }
+
+    /**
+     * Get aDecanter
+     *
+     * @return boolean
+     */
+    public function getADecanter()
+    {
+        return $this->aDecanter;
+    }
+
+    /**
+     * Add GrapeVariety
+     *
+     * @param \ProductBundle\Entity\GrapeVariety $grape
+     *
+     * @return Product
+     */
+    public function addGrapeVariety(GrapeVariety $grape)
+    {
+        $this->grapeVariety[] = $grape;
+        return $this;
+    }
+
+    /**
+     * Remove GrapeVariety
+     *
+     * @param \ProductBundle\Entity\GrapeVariety $grape
+     */
+    public function removeGrapeVariety(GrapeVariety $grape)
+    {
+        $this->grapeVariety->removeElement($grape);
+    }
+
+    /**
+     * Get GrapeVarietys
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGrapeVariety()
+    {
+        return $this->grapeVariety;
+    }
 
     /**
      * Set region
@@ -158,62 +259,123 @@ class Wine extends Product
         return $this->region;
     }
 
-
     /**
-     * Add competition
+     * Set contactLies
      *
-     * @param \ConcoursBundle\Entity\CompetitionWine $competition
+     * @param boolean $contactLies
      *
      * @return Wine
      */
-    public function addCompetition(\ConcoursBundle\Entity\CompetitionWine $competition)
+    public function setContactLies($contactLies)
     {
-        $this->competitions[] = $competition;
+        $this->contactLies = $contactLies;
 
         return $this;
     }
 
     /**
-     * Remove competition
+     * Get contactLies
      *
-     * @param \ConcoursBundle\Entity\CompetitionWine $competition
+     * @return boolean
      */
-    public function removeCompetition(\ConcoursBundle\Entity\CompetitionWine $competition)
+    public function getContactLies()
     {
-        $this->competitions->removeElement($competition);
+        return $this->contactLies;
     }
 
     /**
-     * Get Collection
+     * Set contactBois
      *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCompetitions()
-    {
-        return $this->competitions;
-    }
-
-    /**
-     * Set grapeVariety
-     *
-     * @param \ProductBundle\Entity\GrapeVariety $grapeVariety
+     * @param boolean $contactBois
      *
      * @return Wine
      */
-    public function setGrapeVariety(\ProductBundle\Entity\GrapeVariety $grapeVariety = null)
+    public function setContactBois($contactBois)
     {
-        $this->grapeVariety = $grapeVariety;
+        $this->contactBois = $contactBois;
 
         return $this;
     }
 
     /**
-     * Get grapeVariety
+     * Get contactBois
      *
-     * @return \ProductBundle\Entity\GrapeVariety
+     * @return boolean
      */
-    public function getGrapeVariety()
+    public function getContactBois()
     {
-        return $this->grapeVariety;
+        return $this->contactBois;
+    }
+
+    /**
+     * Set nonFiltre
+     *
+     * @param boolean $nonFiltre
+     *
+     * @return Wine
+     */
+    public function setNonFiltre($nonFiltre)
+    {
+        $this->nonFiltre = $nonFiltre;
+
+        return $this;
+    }
+
+    /**
+     * Get nonFiltre
+     *
+     * @return boolean
+     */
+    public function getNonFiltre()
+    {
+        return $this->nonFiltre;
+    }
+
+    /**
+     * Set demarcheQualite
+     *
+     * @param boolean $demarcheQualite
+     *
+     * @return Wine
+     */
+    public function setDemarcheQualite($demarcheQualite)
+    {
+        $this->demarcheQualite = $demarcheQualite;
+
+        return $this;
+    }
+
+    /**
+     * Get demarcheQualite
+     *
+     * @return boolean
+     */
+    public function getDemarcheQualite()
+    {
+        return $this->demarcheQualite;
+    }
+
+    /**
+     * Set overpressure
+     *
+     * @param float $overpressure
+     *
+     * @return Wine
+     */
+    public function setOverpressure($overpressure)
+    {
+        $this->overpressure = $overpressure;
+
+        return $this;
+    }
+
+    /**
+     * Get overpressure
+     *
+     * @return float
+     */
+    public function getOverpressure()
+    {
+        return $this->overpressure;
     }
 }

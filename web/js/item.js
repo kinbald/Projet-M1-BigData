@@ -1,3 +1,4 @@
+/*
 var slideIndex = 1;
 showSlides(slideIndex);
 
@@ -23,4 +24,16 @@ function showSlides(n) {
     }
     slides[slideIndex-1].style.display = "block";
     dots[slideIndex-1].className += " active";
-}
+}*/
+
+$(".star").click(function() {
+    var id = parseInt(this.id);
+    $("#evaluation_mark").val(id);
+    for(var j = 0; j <= id; j++){
+        $("#"+j).removeClass("empty-star").addClass("full-star").html("★");
+    }
+    for(var k = id + 1; k < 6; k++){
+        $("#"+k).removeClass("full-star").addClass("empty-star").html("☆");
+    }
+});
+
