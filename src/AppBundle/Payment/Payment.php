@@ -29,6 +29,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use ProductBundle\Entity\Purchase;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Router;
+use UserBundle\Entity\UserWholesale;
 
 class Payment
 {
@@ -71,8 +72,13 @@ class Payment
         $tva = current($rep->findBy(array('name' => 'TVA')));
         $tva = (float)$tva->getValue();
 
+        $shippingPrice = 0;
+        foreach ($commande->getProducts() as $key=>$productPurchase){
+            $shippingPrice += $productPurchase->getDelivery()->getPrice() * $productPurchase->getStock();
+        }
+
         // total shipping amount
-        $shippingTotal = new BasicAmountType($this->currencyCode, 0);
+        $shippingTotal = new BasicAmountType($this->currencyCode, $shippingPrice);
 
         //total handling amount if any
         $handlingTotal = new BasicAmountType($this->currencyCode, 0);
@@ -254,14 +260,21 @@ class Payment
          * iterate through each item and add to item details
          */
         foreach ($commande->getProducts() as $key=>$productPurchase){
-            $productPrice = $productPurchase->getProduct()->getPrice();
+            if ($commande->getUser() instanceof UserWholesale){
+                $productPrice = $productPurchase->getConditioningType()->getProPrice();
+            }
+            else{
+                $productPrice = $productPurchase->getConditioningType()->getPubPrice();
+            }
+//            $productPrice = $productPurchase->getProduct()->getPrice();
             $productStock = $productPurchase->getStock();
             $itemAmount = new BasicAmountType($this->currencyCode, number_format($productPrice, 2, '.', ''));
 
             $this->itemTotal += $productPrice * $productStock;
             $this->taxTotal += round($tva/100 * $productPrice * $productStock, 2);
             $itemDetails = new PaymentDetailsItemType();
-            $itemDetails->Name = $productPurchase->getProduct()->getName();
+            $itemDetails->Name = $productPurchase->getConditioningType()->getName().
+                'de'.$productPurchase->getProduct()->getName();
             $itemDetails->Amount = $itemAmount;
             $itemDetails->Quantity = $productStock;
             /*

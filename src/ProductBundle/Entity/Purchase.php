@@ -2,10 +2,13 @@
 
 namespace ProductBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use ProductBundle\Entity\Product;
 use DateTime;
+use ProductBundle\Entity\ProductPurchase;
 use UserBundle\Entity\BaseUser;
+use UserBundle\Entity\UserWholesale;
 
 /**
  * Purchase
@@ -102,7 +105,7 @@ class Purchase
     private $user;
 
     /**
-     * @var Product
+     * @var \Doctrine\Common\Collections\Collection|ProductPurchase[]
      * @ORM\OneToMany(targetEntity="ProductBundle\Entity\ProductPurchase", mappedBy="purchase")
      */
     private $products;
@@ -292,7 +295,7 @@ class Purchase
      */
     public function __construct()
     {
-        $this->products = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->products = new ArrayCollection();
         $this->dateOrder = new DateTime();
         $this->paid = false;
         $this->address = 'addr';
@@ -308,11 +311,11 @@ class Purchase
     /**
      * Add product
      *
-     * @param \ProductBundle\Entity\ProductPurchase $product
+     * @param ProductPurchase $product
      *
      * @return Purchase
      */
-    public function addProduct(\ProductBundle\Entity\ProductPurchase $product)
+    public function addProduct(ProductPurchase $product)
     {
         $this->products[] = $product;
 
@@ -322,9 +325,9 @@ class Purchase
     /**
      * Remove product
      *
-     * @param \ProductBundle\Entity\ProductPurchase $product
+     * @param ProductPurchase $product
      */
-    public function removeProduct(\ProductBundle\Entity\ProductPurchase $product)
+    public function removeProduct(ProductPurchase $product)
     {
         $this->products->removeElement($product);
     }
@@ -332,7 +335,7 @@ class Purchase
     /**
      * Get products
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return \Doctrine\Common\Collections\Collection|ProductPurchase[]
      */
     public function getProducts()
     {
@@ -345,9 +348,15 @@ class Purchase
      */
     public function getAmount(){
         $amount = 0;
-        foreach ($this->products as $product){
-            $amount += $product->getStock()*$product->getProduct()->getPrice();
+        foreach ($this->products as $productPurchase){
+            $price = ($this->getUser() instanceof UserWholesale)?
+                $productPurchase->getConditioningType()->getProPrice():
+                $productPurchase->getConditioningType()->getPubPrice();
+            $amount += $productPurchase->getStock()*$price;
         }
+        /*foreach ($this->products as $product){
+            $amount += $product->getStock()*$product->getProduct()->getPrice();
+        }*/
         return $amount;
     }
 

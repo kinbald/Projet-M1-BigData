@@ -15,6 +15,11 @@ use UserBundle\Entity\BaseUser;
 use UserBundle\Entity\UserMedia;
 use UserBundle\Model\UserModel;
 
+/**
+ * Class DefaultController
+ * @package AdminBundle\Controller
+ * @Route("admin")
+ */
 class DefaultController extends Controller
 {
     /**
