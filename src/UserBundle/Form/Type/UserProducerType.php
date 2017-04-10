@@ -3,6 +3,7 @@
 namespace UserBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -22,10 +23,11 @@ class UserProducerType extends RegistrationFormType
             ->add('firstname', TextType::class)
             ->add('lastname', TextType::class)
             ->add('siret', TextType::class)
-            ->add('companyName', TextType::class)
+            ->add('businessName', TextType::class)
             ->add('address', TextareaType::class)
             ->add('city', TextType::class)
             ->add('postalCode', TextType::class)
+            ->add('country', CountryType::class)
             ->add('phone', TextType::class);
     }
     

@@ -67,7 +67,7 @@ class UserProducer extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="company_name", type="string", length=255)
+     * @ORM\Column(name="company_name", nullable=true, type="string", length=255)
      */
     private $companyName;
 
