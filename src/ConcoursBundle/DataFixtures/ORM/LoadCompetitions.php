@@ -3,6 +3,7 @@ namespace ConcoursBundle\DataFixtures\ORM;
 
 use ConcoursBundle\Entity\Competition;
 use ConcoursBundle\Entity\CompetitionProduct;
+use ConcoursBundle\Entity\Medal;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -27,6 +28,13 @@ class LoadCompetitions extends AbstractFixture implements OrderedFixtureInterfac
         $competitionWine->setPoints(75);
         $competitionWine->setUniverse($universe);
         $manager->persist($competitionWine);
+
+        $medal = new Medal();
+        $medal->setName('Médaille souche de bois');
+        $medal->setAnnee(1995);
+        $medal->setUrl('/img/product/lauriers.png');
+        $medal->setCompetition($competitionWine);
+        $manager->persist($medal);
 
         $manager->flush();
     }

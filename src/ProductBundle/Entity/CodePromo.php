@@ -50,6 +50,13 @@ class CodePromo
     private $count;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="min_amount", type="integer")
+     */
+    private $minAmount;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="expirationDate", type="datetime")
@@ -168,6 +175,30 @@ class CodePromo
     public function getCount()
     {
         return $this->count;
+    }
+
+    /**
+     * Set min amount
+     *
+     * @param integer $amount
+     *
+     * @return CodePromo
+     */
+    public function setMinAmount($amount)
+    {
+        $this->minAmount = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Get min amount
+     *
+     * @return int
+     */
+    public function getMinAmount()
+    {
+        return $this->minAmount;
     }
 
     /**

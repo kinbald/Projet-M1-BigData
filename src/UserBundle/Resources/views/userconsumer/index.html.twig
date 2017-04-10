@@ -10,16 +10,16 @@
     <div class="container overflow-hidden">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="section-heading">User comsumer list</h3>
+                <h3 class="section-heading">{% trans %}User consumer list{% endtrans %}</h3>
             </div>
         </div>
     </div>
     <table>
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Prenom</th>
+                <th>ID</th>
+                <th>{% trans %}Last name{% endtrans %}</th>
+                <th>{% trans %}First name{% endtrans %}</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -33,10 +33,10 @@
                         <table>
                             <tr>
                                 <td>
-                                    <a href="{{ path('userconsumer_show', { 'id': userConsumer.id }) }}">show</a>
+                                    <a href="{{ path('userconsumer_show', { 'id': userConsumer.id }) }}">{% trans %}Show{% endtrans %}</a>
                                 </td>
                                 <td>
-                                    <a href="{{ path('userconsumer_edit', { 'id': userConsumer.id }) }}">edit</a>
+                                    <a href="{{ path('userconsumer_edit', { 'id': userConsumer.id }) }}">{% trans %}Edit{% endtrans %}</a>
                                 </td>
                             </tr>
                         </table>
@@ -48,7 +48,7 @@
         <br><br>
     <ul>
         <li>
-            <div class="btn btn-primary btn-circle"><a href="{{ path('userconsumer_new') }}">Create a new Consumer</a></div>
+            <div class="btn btn-primary btn-circle"><a href="{{ path('userconsumer_new') }}">{% trans %}Create a new Consumer{% endtrans %}</a></div>
         </li>
     </ul>
 {% endblock %}

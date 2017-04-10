@@ -7,7 +7,7 @@
 
 {% block body %}
     <div id="content">
-        <h1>Userconsumer</h1>
+        <h1>{% trans %}Userconsumer{% endtrans %}</h1>
         <br>
         <table>
             <tbody>
@@ -16,7 +16,7 @@
                     <td id="champ">{{ userConsumer.id }}</td>
                 </tr>
                 <tr>
-                    <th width="100px">Sex</th>
+                    <th width="100px">{% trans %}Gender{% endtrans %}</th>
                     <td id="champ">{{ userConsumer.sex }}</td>
                 </tr>
                 <tr>
@@ -24,7 +24,7 @@
                     <td id="champ">{{ userConsumer.email }}</td>
                 </tr>
                 <tr>
-                    <th width="100px">Birthdate</th>
+                    <th width="100px">{% trans %}Birth date{% endtrans %}</th>
                     <td id="champ">{% if userConsumer.birthDate %}{{ userConsumer.birthDate|date('Y-m-d') }}{% endif %}</td>
                 </tr>
             </tbody>
@@ -32,10 +32,10 @@
         <br>
         <table>
             <td>
-                <a class="btn btn-primary btn-circle" href="{{ path('userconsumer_index') }}">Back to the list</a>
+                <a class="btn btn-primary btn-circle" href="{{ path('userconsumer_index') }}">{% trans %}Back to the list{% endtrans %}</a>
             </td>
             <td>
-                <a class="btn btn-primary btn-circle" href="{{ path('userconsumer_edit', { 'id': userConsumer.id }) }}">Edit</a>
+                <a class="btn btn-primary btn-circle" href="{{ path('userconsumer_edit', { 'id': userConsumer.id }) }}">{% trans %}Edit{% endtrans %}</a>
             </td>
                 {{ form_start(delete_form) }}
             <td>

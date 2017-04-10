@@ -8,8 +8,8 @@
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript">
-        setTimeout(jeMeCasse,5000);
-        function jeMeCasse() {
+        setTimeout(retour,5000);
+        function retour() {
             window.location.replace('{{path("homepage")}}')
         }
     </script>

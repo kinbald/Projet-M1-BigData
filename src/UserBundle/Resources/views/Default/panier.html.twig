@@ -15,7 +15,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h3 class="section-heading">Récapitulatif des achats</h3>
+                    <h3 class="section-heading">{% trans %}Récapitulatif des achats{% endtrans %}</h3>
                     <div id="timeline" class="timeline-container">
 
                         {% for product in commande.products %}
@@ -56,19 +56,19 @@
         <div class="container">
             <div class="row text-center">
                 <div class="col-md-12">
-                    <h3 class="section-heading">Récap</h3>
+                    <h3 class="section-heading">{% trans %}Récap{% endtrans %}</h3>
                 </div>
                 <table id="table_recap" align="center">
                     <tr>
-                        <th class="about-counter-single">Prix HT</th>
+                        <th class="about-counter-single">{% trans %}Prix HT{% endtrans %}</th>
                         <td>{{ commande.amount }}</td>
                     </tr>
                     <tr>
-                        <th class="about-counter-single">TVA</th>
+                        <th class="about-counter-single">{% trans %}TVA{% endtrans %}</th>
                         <td>{{ tva }}%</td>
                     </tr>
                     <tr>
-                        <th class="about-counter-single">Prix total</th>
+                        <th class="about-counter-single">{% trans %}Prix total{% endtrans %}</th>
                         <td>{{ (commande.amount*(1+tva/100))|round(2) }}</td>
                     </tr>
                 </table>
@@ -76,7 +76,7 @@
             <br>
             <div style="text-align: center">
                 <div class="col-md-12">
-                    <h3 class="section-heading">Moyens de paiement:</h3>
+                    <h3 class="section-heading">{% trans %}Moyens de paiement{% endtrans %}:</h3>
                 </div>
                 <a href="{{ path('pay_cart', {'id' : commande.id}) }}"><img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_37x23.jpg" alt="Payer avec Paypal"></a>
             </div>

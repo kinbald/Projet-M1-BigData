@@ -1,0 +1,24 @@
+@media (max-width: 499px ) {
+    #titre1 {
+        font-size: 2em;
+    }
+
+    #texte1{
+        font-size: 100%;
+    }
+
+}
+
+
+@media (min-width: 500px) and (max-width: 799px) {
+
+    #titre1 {
+        font-size: 2em;
+    }
+}
+
+@media (min-width: 800px ) {
+    #titre1 {
+        font-size: 4em;
+    }
+}

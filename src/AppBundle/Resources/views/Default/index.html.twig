@@ -41,21 +41,33 @@
             {% endfor %}
         </div>
     </section>
-        {% for universe in universes %}
-            <table class="tabdescr">
-            <tr class="descr">
-                <td>
-                    <div>
-                        <a type="button" class="btn" href="{{ path("universe_show", {id:universe.id}) }}">
-                            <p class="centrer">{{ universe.description }}</p>
-                        </a>
-                    </div>
-                </td>
-            </tr>
-            <br>
-            </table>
-        {% endfor %}
 
+        <button type="button" class="btn btn-info uni-info" data-toggle="collapse" data-target="#demo">Cliquez pour plus d'information</button>
+        <div id="demo" class="collapse">
+
+            {% for universe in universes %}
+                <table class="tabdescr">
+                    <tr class="descr">
+                        <td>
+                            <div>
+                                <a type="button" class="btn" data-toggle="collapse" data-parent="#demo" href="#collapse{{ universe.id }}" >
+                                    <p class="centrer">{{ universe.description }}</p>
+                                </a>
+                                <div id="collapse{{ universe.id }}" class="panel-collapse collapse">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                    </p>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <br>
+                </table>
+            {% endfor %}
+
+        </div>
 
     <section class="testimonials testimonials-banner" id="testimonials">
         <div class="container">

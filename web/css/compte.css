@@ -134,8 +134,6 @@ b{
         display: block
 
     }
-
-
 }
 
 
@@ -145,4 +143,9 @@ b{
 
 button, input, optgroup, select, textarea {
     color: black;
+}
+
+#Factures .btn-circle{
+    height: 4em;
+    width: 90%;
 }
