@@ -36,7 +36,7 @@
     <section class="timeline" id="concours">
         <div class="container">
             <div class="row">
-                <h3 class="section-heading">Calendrier des concours</h3>
+                <h3 class="section-heading">{% trans %}Calendrier des concours{% endtrans %}</h3>
                 <div id="timeline" class="timeline-container">
                     {% for competition in competitions %}
                         <!-- timeline-block -->
@@ -71,7 +71,7 @@
         <div class="container overflow-hidden">
             <div class="row">
                 <div class="col-md-12">
-                    <h3 class="section-heading">Contrats</h3>
+                    <h3 class="section-heading">{% trans %}Contrats{% endtrans %}</h3>
                 </div>
             </div>
             <div class="row">
@@ -83,7 +83,7 @@
                                     <a href="http://www.google.fr">
                                         <img alt="product image" class="product-list-primary-img" src="{{ asset('img/product/contract_default.png') }}">
                                         <img alt="Description rapide du contrat {{ i }}. Blablablablabla lololol" class="product-list-secondary-img">
-                                        <span class="product-list-name h3">Contrat {{ i }}</span>
+                                        <span class="product-list-name h3">{% trans %}Contrat{% endtrans %} {{ i }}</span>
                                         <span class="product-list-price">$400.00</span>
                                     </a>
                                 </span>
