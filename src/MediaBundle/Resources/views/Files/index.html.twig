@@ -10,7 +10,7 @@
     <div class="container overflow-hidden">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="section-heading">Communiqués Presse</h3>
+                <h3 class="section-heading">{% trans %}Communiqués Presse{% endtrans %}</h3>
             </div>
         </div>
     </div>
@@ -19,8 +19,8 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Date</th>
-                <th>Name</th>
+                <th>{% trans %}Date{% endtrans %}</th>
+                <th>{% trans %}Name{% endtrans %}</th>
                 <th>Url</th>
                 <th>Actions</th>
             </tr>
@@ -46,7 +46,7 @@
     <br>
     <ul>
         <li>
-            <a class="btn btn-primary btn-circle" href="{{ path('files_new') }}">Create a new file</a>
+            <a class="btn btn-primary btn-circle" href="{{ path('files_new') }}">{% trans %}Create a new file{% endtrans %}</a>
         </li>
     </ul>
 {% endblock %}
