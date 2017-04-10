@@ -1,0 +1,46 @@
+.title{
+    margin-top: 8vh;
+    margin-bottom: 5vh;
+    text-align: center;
+}
+.table th{
+    text-align: center;
+}
+
+td{
+    padding: 200px;
+}
+.post-entry-cover {
+    max-height: 15vh;
+    width: auto;
+    float: left;
+    margin: 0 auto;
+    background-size: cover;
+    background-position: center;
+    border-radius: 3px; }
+#Commandes {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 2px 2px 6px #aaa;
+    color: white;
+    text-shadow: 2px 2px 2px black;
+    width: 80%;
+    position: relative;
+    display: block;
+}
+#Commandes td {
+    vertical-align: inherit
+}
+#Commandes th{
+    vertical-align: inherit;
+}
+
+
+
+
+
+
+

@@ -2,6 +2,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
+    <link href="{{ asset('css/commande.css') }}" rel="stylesheet"/>
 {% endblock %}
 
 {% block javascripts %}
@@ -11,78 +12,49 @@
 
 {% block body %}
 
-    <section class="timeline" id="history">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h3 class="section-heading">{% trans %}Récapitulatif des achats{% endtrans %}</h3>
-                    <div id="timeline" class="timeline-container">
+    <h1 class="title">Récapitulatif des commandes</h1>
+    <table class="table table-responsive" id="Commandes">
+        <thead class="thead-default">
+        <tr>
 
-                        {% for product in commande.products %}
-                            <!-- CART ITEM -->
-                            <div class="timeline-block timeline-block-image-1">
-                                <div class="timeline-point">
-                                </div>
+            <th>{% trans %}Nom du vin{% endtrans %}</th>
+            <th>{% trans %}Image{% endtrans %}</th>
+            <th>{% trans %}Description{% endtrans %}</th>
+            <th>{% trans %}Prix HT{% endtrans %}</th>
+            <th>{% trans %}Quantité{% endtrans %}</th>
+            <th>{% trans %}TVA{% endtrans %}</th>
+            <th>{% trans %}Prix TTC{% endtrans %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for product in commande.products %}
+            <tr>
+                <td>{{ product.product.displayName }}</td>
+                {% for product_picture in product.product.pictures %}
+                    <td><img class="post-entry-cover" src="/upload/{{ product_picture.url }}" alt="{{ product_picture.alt }}" /> </td>
+                {% endfor %}
+                <td><span class="height_description">{{ product.product.description }}</span></td>
+                <td>{{ (product.product.price)|round(2) }}€</td>
+                <td>{{ product.stock }}</td>
+                <td>{{ tva }}%</td>
+                <td>{{ ((product.product.price*(1+tva/100)) * product.stock)|round(2) }}€</td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <td colspan="5"></td>
+            <td>{% trans %}Prix total TTC{% endtrans %}</td>
+            <td>{{ (commande.amount*(1+tva/100))|round(2) }}€</td>
+        </tr>
+        <tr>
+            <td colspan="5"></td>
+            <td>{% trans %}Moyens de Paiement{% endtrans %}</td>
+            <td><a href="{{ path('pay_cart', {'id' : commande.id}) }}"><img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_37x23.jpg" alt="Payer avec Paypal"></a>
+            </td>
+        </tr>
 
-                                <div class="timeline-content wow fadeInLeft" style="visibility: visible; animation-name: fadeInLeft;">
-                                    <span class="timeline-date">
-                                        <span class="timeline-month">{{ product.product.displayName }}</span>
-                                        <br />{{ product.product.price }}€ x {{ product.stock }}
-                                    </span>
+        </tbody>
+    </table>
 
-                                    <div class="slideshow-container">
-                                        {% for product_picture in product.product.pictures %}
-                                            <div class="mySlides" style="text-align:center">
-                                                <img class="photo" src="/img/upload/{{ product_picture.url }}" alt="{{ product_picture.alt }}" />
-                                            </div>
-                                        {% endfor %}
-                                        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                                        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-                                    </div>
-                                    <p>{{ product.product.description }}</p>
-                                </div>
-                            </div>
-                            <!-- / CART ITEM -->
-                        {% endfor %}
-                    </div>
-                    <!-- / TIMELINE ITEM -->
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <section id="contact" class="contact contact-with-map">
-        <div class="container">
-            <div class="row text-center">
-                <div class="col-md-12">
-                    <h3 class="section-heading">{% trans %}Récap{% endtrans %}</h3>
-                </div>
-                <table id="table_recap" align="center">
-                    <tr>
-                        <th class="about-counter-single">{% trans %}Prix HT{% endtrans %}</th>
-                        <td>{{ commande.amount }}</td>
-                    </tr>
-                    <tr>
-                        <th class="about-counter-single">{% trans %}TVA{% endtrans %}</th>
-                        <td>{{ tva }}%</td>
-                    </tr>
-                    <tr>
-                        <th class="about-counter-single">{% trans %}Prix total{% endtrans %}</th>
-                        <td>{{ (commande.amount*(1+tva/100))|round(2) }}</td>
-                    </tr>
-                </table>
-            </div>
-            <br>
-            <div style="text-align: center">
-                <div class="col-md-12">
-                    <h3 class="section-heading">{% trans %}Moyens de paiement{% endtrans %}:</h3>
-                </div>
-                <a href="{{ path('pay_cart', {'id' : commande.id}) }}"><img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_37x23.jpg" alt="Payer avec Paypal"></a>
-            </div>
-        </div>
-        <br>
-    </section>
 {% endblock %}
 {#
 https://api-3t.sandbox.paypal.com/nvp?version=204&user=grisot.remi-facilitator_api1.gmail.com&pwd=QZLEL69NWCF6QUGE&signature=AFcWxV21C7fd0v3bYYYRCpSSRl31Ab6nocvqRHaMJv1ybVoYzIrz8WGl&method=setexpresscheckout&cancelurl=https://google.fr&currencycode=EUR&returnurl=https://google.fr&amt=10.0&desc=bonne%20vinasse&localecode=fr
