@@ -4,6 +4,7 @@ namespace ConcoursBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ConcoursBundle\Entity\Competition;
+use ConcoursBundle\Entity\Medal;
 use ProductBundle\Entity\Product;
 use ProductBundle\Entity\Universe;
 
@@ -61,9 +62,16 @@ class CompetitionProduct
     private $universe;
 
     /**
+     * Medal
+     * @ORM\OneToOne(targetEntity="ConcoursBundle\Entity\Medal", mappedBy="competition")
+     */
+    private $medal;
+
+
+    /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -75,7 +83,7 @@ class CompetitionProduct
      *
      * @param string $primeName
      *
-     * @return CompetitionWine
+     * @return CompetitionProduct
      */
     public function setPrimeName($primeName)
     {
@@ -95,11 +103,11 @@ class CompetitionProduct
     }
 
     /**
-     * Set primeName
+     * Set points
      *
      * @param integer $points
      *
-     * @return CompetitionWine
+     * @return CompetitionProduct
      */
     public function setPoints($points)
     {
@@ -109,7 +117,7 @@ class CompetitionProduct
     }
 
     /**
-     * Get primeName
+     * Get points
      *
      * @return integer
      */
@@ -123,7 +131,7 @@ class CompetitionProduct
      *
      * @param \ConcoursBundle\Entity\Competition $competition
      *
-     * @return CompetitionWine
+     * @return CompetitionProduct
      */
     public function setCompetition(\ConcoursBundle\Entity\Competition $competition)
     {
@@ -143,20 +151,21 @@ class CompetitionProduct
     }
 
     /**
-     * Set wine
+     * Set product
      *
      * @param \ProductBundle\Entity\Product $product
      *
-     * @return CompetitionWine
+     * @return CompetitionProduct
      */
     public function setProduct(\ProductBundle\Entity\Product $product)
     {
         $this->product = $product;
+
         return $this;
     }
 
     /**
-     * Get wine
+     * Get product
      *
      * @return \ProductBundle\Entity\Product
      */
@@ -170,7 +179,7 @@ class CompetitionProduct
      *
      * @param \ProductBundle\Entity\Universe $universe
      *
-     * @return CompetitionWine
+     * @return CompetitionProduct
      */
     public function setUniverse(\ProductBundle\Entity\Universe $universe)
     {
@@ -187,5 +196,29 @@ class CompetitionProduct
     public function getUniverse()
     {
         return $this->universe;
+    }
+
+    /**
+     * Set medal
+     *
+     * @param \ConcoursBundle\Entity\Medal $medal
+     *
+     * @return CompetitionProduct
+     */
+    public function setMedal(\ConcoursBundle\Entity\Medal $medal = null)
+    {
+        $this->medal = $medal;
+
+        return $this;
+    }
+
+    /**
+     * Get medal
+     *
+     * @return \ConcoursBundle\Entity\Medal
+     */
+    public function getMedal()
+    {
+        return $this->medal;
     }
 }
