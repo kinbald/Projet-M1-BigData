@@ -18,7 +18,7 @@
     <div class="container overflow-hidden">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="section-heading">Récapitulatif de la commande</h3>
+                <h3 class="section-heading">{% trans %}Récapitulatif de la commande{% endtrans %}</h3>
             </div>
         </div>
     </div>
@@ -26,26 +26,26 @@
     <div class="gros-bloc">
         <!-------------------Produits de la commande--------------------->
         <div id="Profile">
-        <h2>Commande & Produits</h2>
+        <h2>{% trans %}Commande & Produits{% endtrans %}</h2>
         <br>
 
             <table>
                 <thead>
-                <tr>
-                    <th width="100px">Numéro</th>
-                    <th width="100px">Prix Total</th>
-                    <th width="100px">Articles</th>
-                    <th width="100px">Date</th>
-                </tr>
+                    <tr>
+                        <th width="100px">{% trans %}Numéro{% endtrans %}</th>
+                        <th width="100px">{% trans %}Prix Total{% endtrans %}</th>
+                        <th width="100px">{% trans %}Articles{% endtrans %}</th>
+                        <th width="100px">Date</th>
+                    </tr>
                 </thead>
                 <tbody>
                     <tr>
-                    <tr>
-                        <td>{{ purchase.id }}</td>
-                        <td>{{ purchase.getAmount }} €</td>
-                        <td>{{ purchase.getNbArticles }}</td>
-                        <td>{{ purchase.getdateOrder|date('d-m-y') }}</td>
-                    </tr>
+                        <tr>
+                            <td>{{ purchase.id }}</td>
+                            <td>{{ purchase.getAmount }} €</td>
+                            <td>{{ purchase.getNbArticles }}</td>
+                            <td>{{ purchase.getdateOrder|date('d-m-y') }}</td>
+                        </tr>
                     </tr>
                 </tbody>
             </table>
@@ -53,10 +53,10 @@
 
             {% for product in products %}
                 <div>
-                    <p><b>Nom:</b> <a href="{{ path('product_show', {id:product.id}) }}">{{ product.name }}</a></p>
-                    <p><b>Volume:</b> {{ product.volume }}</p>
-                    <p><b>Prix Unitaire:</b> {{ product.price }}</p>
-                    <p><b>Stock:</b> {{ product.getStock }}</p>
+                    <p><b>{% trans %}Nom{% endtrans %}:</b> <a href="{{ path('product_show', {id:product.id}) }}">{{ product.name }}</a></p>
+                    <p><b>{% trans %}Volume{% endtrans %}:</b> {{ product.volume }}</p>
+                    <p><b>{% trans %}Prix Unitaire{% endtrans %}:</b> {{ product.price }}</p>
+                    <p><b>{% trans %}Stock{% endtrans %}:</b> {{ product.getStock }}</p>
                 </div>
             {% endfor %}
         </div>

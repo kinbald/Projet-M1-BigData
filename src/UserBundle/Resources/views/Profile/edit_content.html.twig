@@ -14,12 +14,12 @@
 {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
 
 
-    <h1 id="titre" style="visibility:hidden">Bienvenue sur votre espace client</h1><br>
+    <h1 id="titre" style="visibility:hidden">{% trans %}Bienvenue sur votre espace client{% endtrans %}</h1><br>
 
     <!-------------------Profile edit--------------------->
 
     <div id="champ_form" style="margin-left:auto;margin-right:auto;width:30%">
-        <h1>Profile</h1>
+        <h1>{% trans %}Profil{% endtrans %}</h1>
             <br>
 
         <div>
@@ -134,7 +134,7 @@
     <!-------------------Factures--------------------->
 
     <div id="Factures" class="w3-container city w3-animate-left" style="display:none">
-        <h2>Factures & Paiements</h2>
+        <h2>{% trans %}Factures & Paiements{% endtrans %}</h2>
         <div>
             <br>
             <p>blablabla</p>

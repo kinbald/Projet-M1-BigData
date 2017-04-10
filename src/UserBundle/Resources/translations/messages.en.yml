@@ -1,5 +1,53 @@
 Client: Customer
 Producteur: Producer
 Presse: Press
-
+Bienvenue sur votre espace client: Welcome in your user space
+Profil: Profile
+Username: Username
+Last name: Last name
+First name: First name
+Birth date: Birth date
+Gender: Gender
+Phone: Phone
+Url blog: Address of your blog
+ID presse: Press ID
+Company name: Company name
+Address: Address
+City: City
+Postal code: Postal code
+Modifier: Change
+Factures & Paiements: Invoices & Payments
+Commandes: Orders
+Commande: Order
+Récapitulatif de la commande: Order summary
+Commande & Produits: Order & Products
+Numéro: Number
+Prix Total: Final price
+Articles: Items
+Nom: Name
+Volume: Tonnage
+Prix Unitaire: Unit price
+Stock: Supply
+Erreur panier: Cart error
+Récapitulatif des achats: Purchase summary
+Récap: Summary
+Prix HT: Pre-tax price
+TVA: VAT
+Prix total: Total price
+Moyens de paiement: Means of payment
+Registration ok: Registration successful
+Redirection: Redirecting
+New Account: New Account
+Registration User: Registration User
+Registration Media: Registration Media
+Registration Producer: Registration Producer
+Registration Wholesale: Registration Wholesale
+Userconsumer edit: User edit
+Back to the list: Retour à la liste
+User consumer list: User consumer list
+Show: Show
+Edit: Edit
+Create a new Consumer: Create a new Consumer
+Userconsumer creation: Userconsumer creation
+Userconsumer: Userconsumer
 
