@@ -192,7 +192,8 @@ class ProductController extends Controller
 
         $options = Array();
         foreach ($product->getConditioningTypes() as $conditioning)
-            $options['values'][$conditioning->getName()] = $conditioning->getId();
+            if($conditioning->getStock() > 0)
+                $options['values'][$conditioning->getName()] = $conditioning->getId();
 
         $conditioningSelect = $this->createForm('ProductBundle\Form\ConditioningSelectType', $options);
         $conditioningSelect->handleRequest($request);

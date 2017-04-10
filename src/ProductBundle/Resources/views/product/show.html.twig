@@ -89,16 +89,20 @@
                 </div>
             {% endif %}
             <p class="wow fadeInDown">{{ product.description }} </p>
-            {{ form_start(conditioning_select_form) }}
-            {{ form_widget(conditioning_select_form) }}
-            {{ form_end(conditioning_select_form) }}
+            {% if conditioning_select_form.children.conditioning is defined %}
+                {{ form_start(conditioning_select_form) }}
+                {{ form_widget(conditioning_select_form) }}
+                {{ form_end(conditioning_select_form) }}
 
-            <div class="countdown-container my-countdown-container">
-                <span class="countdown-price h3 wow fadeInUp price-show" id="price">0.00 €</span>
-                {% set picture = product.pictures|last %}
-                <span class="btn btn-default add-item wow swing" {% if picture %}data-image="/img/upload/{{ picture.url}}"{% endif %}  data-name="{{ product.name }}" data-cost="{{ product.price }}" data-id="{{ product.id }}">
-            <div id="ajout"><img alt="e-commerce" src="{{ asset('img/product/panier.png') }}" height="55"></div>
-            <span class="ti-shopping-cart"></span>{% trans %}Panier{% endtrans %}
+                <div class="countdown-container my-countdown-container">
+                    <span class="countdown-price h3 wow fadeInUp price-show" id="price">0.00 €</span>
+                    {% set picture = product.pictures|last %}
+                    <span class="btn btn-default add-item wow swing" {% if picture %}data-image="/img/upload/{{ picture.url}}"{% endif %}  data-name="{{ product.name }}" data-cost="{{ product.price }}" data-id="{{ product.id }}">
+                <div id="ajout"><img alt="e-commerce" src="{{ asset('img/product/panier.png') }}" height="55"></div>
+                <span class="ti-shopping-cart"></span>{% trans %}Panier{% endtrans %}
+            {% else %}
+                <span class="h2 wow fadeInUp" >Indisponible</span>
+            {% endif %}
         </span>
             </div>
         </div>
