@@ -12,11 +12,11 @@
 
 {% block body %}
     <div id="content">
-        <h1>Edition Communiqués</h1>
+        <h1>{% trans %}Edition Communiqués{% endtrans %}</h1>
         {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
 
-        <a  id="button" class="clic" href="{{ asset('uploader/fancybox.php') }}?iframe">Link a file</a>
+        <a  id="button" class="clic" href="{{ asset('uploader/fancybox.php') }}?iframe">{% trans %}Link a file{% endtrans %}</a>
         <input type="text" id="chemin" name="urlImg">
 
         <table>
@@ -25,7 +25,7 @@
                 {{ form_end(edit_form) }}
             </td>
             <td>
-                <a  class="btn btn-primary btn-circle" href="{{ path('files_index') }}">Back to the list</a>
+                <a  class="btn btn-primary btn-circle" href="{{ path('files_index') }}">{% trans %}Back to the list{% endtrans %}</a>
             </td>
             {{ form_start(delete_form) }}
             <td>

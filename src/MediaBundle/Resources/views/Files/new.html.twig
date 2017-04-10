@@ -20,7 +20,7 @@
             {{ form_start(form) }}
             {{ form_widget(form) }}
 
-            <a  id="button" class="clic" href="{{ asset('uploader/fancybox.php') }}?iframe">Load a file</a>
+            <a id="button" class="clic" href="{{ asset('uploader/fancybox.php') }}?iframe">{% trans %}Load a file{% endtrans %}</a>
             <input type="text" id="chemin" name="urlImg" required>
 
         </div>
@@ -34,7 +34,7 @@
         {{ form_end(form) }}
 
         <div class="bouton1">
-            <a class="btn btn-primary btn-circle" href="{{ path('files_index') }}">Back to the list</a>
+            <a class="btn btn-primary btn-circle" href="{{ path('files_index') }}">{% trans %}Back to the list{% endtrans %}</a>
         </div>
 
     </div>
