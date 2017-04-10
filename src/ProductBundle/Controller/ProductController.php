@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * Lists all product entities
@@ -23,6 +24,7 @@ class ProductController extends Controller
      *
      * @Route("/", name="product_index")
      * @Method("GET")
+     * @Security("has_role('ROLE_ADMIN')")
      */
 
     public function indexAction()
@@ -38,6 +40,7 @@ class ProductController extends Controller
      *         "type": "wine|spirit",
      *     })
      * @Method("GET")
+     * @Security("has_role('ROLE_ADMIN')")
      */
 
     public function listAction($type)
@@ -58,6 +61,7 @@ class ProductController extends Controller
      *         "type": "wine|spirit",
      *     })
      * @Method({"GET", "POST"})
+     * @Security("has_role('ROLE_ADMIN')")
      */
 
     public function newAction(Request $request, $type)
@@ -97,6 +101,7 @@ class ProductController extends Controller
      *         "id": "\d+",
      *     })
      * @Method({"GET", "POST"})
+     * @Security("has_role('ROLE_ADMIN')")
      */
 
     public function editAction(Request $request, Product $product)
@@ -137,6 +142,7 @@ class ProductController extends Controller
      *         "id": "\d+",
      *     })
      * @Method("DELETE")
+     * @Security("has_role('ROLE_ADMIN')")
      */
 
     public function deleteAction(Request $request, Product $product)
@@ -228,6 +234,7 @@ class ProductController extends Controller
      *         "idImg": "\d+",
      *     })
      * @Method({"GET", "POST"})
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function delImgAction(Request $request, Product $product)
     {

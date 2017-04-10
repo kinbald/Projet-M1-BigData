@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * Universe controller.
@@ -38,6 +39,7 @@ class UniverseController extends Controller
      *
      * @Route("/new", name="universe_new")
      * @Method({"GET", "POST"})
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function newAction(Request $request)
     {
@@ -82,19 +84,9 @@ class UniverseController extends Controller
     {
         $deleteForm = $this->createDeleteForm($universe);
 
-
-        $pictureArray = array();
-        $products = $universe->getProducts();
-                    foreach ($products as $product) {
-                        $pictures=$product->getPictures();
-                        array_push($pictureArray, $pictures[0]);
-                    }
-
         return $this->render('ProductBundle:universe:show.html.twig', array(
             'universe' => $universe,
-            'delete_form' => $deleteForm->createView(),
-            'products' => $products,
-            'product_pictures' => $pictureArray,
+            'delete_form' => $deleteForm->createView()
         ));
     }
 
@@ -106,6 +98,7 @@ class UniverseController extends Controller
      *         "id": "\d+",
      *     })
      * @Method({"GET", "POST"})
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function editAction(Request $request, Universe $universe)
     {
@@ -147,6 +140,7 @@ class UniverseController extends Controller
      *         "id": "\d+",
      *     })
      * @Method("DELETE")
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function deleteAction(Request $request, Universe $universe)
     {

@@ -112,7 +112,7 @@
             <div class="text-center">
                 <div class="product-table" id="product-table">
                     <ul class="product-holder">
-                        {% for product in products %}
+                        {% for product in universe.products %}
                             <li>
                                 <div class="text-center">
                                     <a href="{{ path('product_show', {id:product.id}) }}" >

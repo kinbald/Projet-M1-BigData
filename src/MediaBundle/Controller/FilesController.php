@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * Jérémy Tablet
@@ -38,6 +39,7 @@ class FilesController extends Controller
      *
      * @Route("/new", name="files_new")
      * @Method({"GET", "POST"})
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function newAction(Request $request)
     {
@@ -68,6 +70,7 @@ class FilesController extends Controller
      *
      * @Route("/{id}", name="files_show")
      * @Method("GET")
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function showAction(Files $file)
     {
@@ -84,6 +87,7 @@ class FilesController extends Controller
      *
      * @Route("/{id}/edit", name="files_edit")
      * @Method({"GET", "POST"})
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function editAction(Request $request, Files $file)
     {
@@ -115,6 +119,7 @@ class FilesController extends Controller
      *
      * @Route("/{id}", name="files_delete")
      * @Method("DELETE")
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function deleteAction(Request $request, Files $file)
     {

@@ -39,7 +39,7 @@ class ProductEvaluation
 
     /**
      * @var Product
-     * @ORM\ManyToOne(targetEntity="ProductBundle\Entity\Product", inversedBy="users")
+     * @ORM\ManyToOne(targetEntity="ProductBundle\Entity\Product", inversedBy="evaluations")
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $product;

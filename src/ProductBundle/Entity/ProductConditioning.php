@@ -76,19 +76,19 @@ class ProductConditioning
 
     /**
      * @var Collection
-     * @ORM\ManyToMany(targetEntity="\ProductBundle\Entity\Product", cascade={"persist"}, inversedBy="productConditioning")
+     * @ORM\ManyToMany(targetEntity="\ProductBundle\Entity\Product", cascade={"persist"}, inversedBy="conditioningTypes")
      */
     private $products;
 
     /**
      * @var Collection
-     * @ORM\OneToMany(targetEntity="\ProductBundle\Entity\ProductPurchase", mappedBy="productConditioning")
+     * @ORM\OneToMany(targetEntity="\ProductBundle\Entity\ProductPurchase", mappedBy="conditioningType")
      */
     private $purchases;
 
     /**
      * @var Collection
-     * @ORM\ManyToMany(targetEntity="\ProductBundle\Entity\Delivery", mappedBy="productConditioning")
+     * @ORM\ManyToMany(targetEntity="\ProductBundle\Entity\Delivery", mappedBy="conditioningTypes")
      */
     protected $deliveries;
 
