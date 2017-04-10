@@ -7,6 +7,16 @@
 
 {% block javascripts %}
     {{ parent() }}
+    <script type="text/javascript">
+        var conditioning = [];
+        {% for conditioningType in product.conditioningTypes %}
+        conditioning[{{ conditioningType.id }}] = {{ conditioningType.price }};
+        {% endfor %}
+        $('#productbundle_conditioningselect_conditioning').change(function() {
+            $('#price').html(conditioning[$('#productbundle_conditioningselect_conditioning').val()] + '€')
+        });
+        $('#price').html(conditioning[$('#productbundle_conditioningselect_conditioning').val()] + '€');
+    </script>
     <script src="{{ asset('js/item.js') }}"></script>
 {% endblock %}
 
@@ -79,8 +89,12 @@
                 </div>
             {% endif %}
             <p class="wow fadeInDown">{{ product.description }} </p>
+            {{ form_start(conditioning_select_form) }}
+            {{ form_widget(conditioning_select_form) }}
+            {{ form_end(conditioning_select_form) }}
+
             <div class="countdown-container my-countdown-container">
-                <span class="countdown-price h3 wow fadeInUp price-show">{{ product.price }} €</span>
+                <span class="countdown-price h3 wow fadeInUp price-show" id="price">0.00 €</span>
                 {% set picture = product.pictures|last %}
                 <span class="btn btn-default add-item wow swing" {% if picture %}data-image="/img/upload/{{ picture.url}}"{% endif %}  data-name="{{ product.name }}" data-cost="{{ product.price }}" data-id="{{ product.id }}">
             <div id="ajout"><img alt="e-commerce" src="{{ asset('img/product/panier.png') }}" height="55"></div>
@@ -140,6 +154,15 @@
                         {% for conditioningType in product.conditioningTypes %}
                             {{ conditioningType.name }} (XXX {% trans %}Traduction! bouteille{% endtrans %}s){% if not loop.last %}, {% endif %}
                         {% endfor %}
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td class="td attribute">
+                        {% trans %}Conditioning{% endtrans %} :
+                    </td>
+                    <td class="td att-value">
+                        Produit non disponible
                     </td>
                 </tr>
             {% endif %}

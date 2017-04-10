@@ -127,18 +127,6 @@
             </td>
         </tr>
     {% endif %}
-    {% if product.conditioningTypes is not empty  %}
-        <tr>
-            <td class="td attribute">
-                {% trans %}Conditioning{% endtrans %} :
-            </td>
-            <td class="td att-value">
-                {% for conditioningType in product.conditioningTypes %}
-                    {{ conditioningType.name }}{% if not loop.last %}, {% endif %}
-                {% endfor %}
-            </td>
-        </tr>
-    {% endif %}
     {% if product.competitions is not empty  %}
         <tr>
             <td class="td attribute">
