@@ -349,9 +349,7 @@ class Purchase
     public function getAmount(){
         $amount = 0;
         foreach ($this->products as $productPurchase){
-            $price = ($this->getUser() instanceof UserWholesale)?
-                $productPurchase->getConditioningType()->getProPrice():
-                $productPurchase->getConditioningType()->getPubPrice();
+            $price = $productPurchase->getConditioningType()->getPrice($this->getUser());
             $amount += $productPurchase->getStock()*$price;
         }
         /*foreach ($this->products as $product){

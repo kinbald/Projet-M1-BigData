@@ -5,6 +5,8 @@ namespace ProductBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use UserBundle\Entity\BaseUser;
+use UserBundle\Entity\UserWholesale;
 
 /**
  * ProductConditioning
@@ -127,13 +129,12 @@ class ProductConditioning
 
     /**
      * Get price
-     * @deprecated
      *
      * @return float
      */
-    public function getPrice()
+    public function getPrice(BaseUser $user)
     {
-        return $this->pubPrice;
+        return ($user instanceof UserWholesale)?$this->proPrice:$this->pubPrice;
     }
 
 

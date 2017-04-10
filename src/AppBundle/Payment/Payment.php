@@ -260,13 +260,14 @@ class Payment
          * iterate through each item and add to item details
          */
         foreach ($commande->getProducts() as $key=>$productPurchase){
-            if ($commande->getUser() instanceof UserWholesale){
+            /*if ($commande->getUser() instanceof UserWholesale){
                 $productPrice = $productPurchase->getConditioningType()->getProPrice();
             }
             else{
                 $productPrice = $productPurchase->getConditioningType()->getPubPrice();
-            }
+            }*/
 //            $productPrice = $productPurchase->getProduct()->getPrice();
+            $productPrice = $productPurchase->getConditioningType()->getPrice($productPurchase->getPurchase()->getUser());
             $productStock = $productPurchase->getStock();
             $itemAmount = new BasicAmountType($this->currencyCode, number_format($productPrice, 2, '.', ''));
 
