@@ -7,7 +7,7 @@
 
 {% block body %}
     <div id="content">
-        <h1>News creation</h1>
+        <h1>{% trans %}News creation{% endtrans %}</h1>
         <br><br>
         {{ form_start(form) }}
         {{ form_widget(form) }}
@@ -18,7 +18,7 @@
             </td>
             {{ form_end(form) }}
             <td>
-                <a class="btn btn-primary btn-circle" href="{{ path('news_index') }}">Back to the list</a>
+                <a class="btn btn-primary btn-circle" href="{{ path('news_index') }}">{% trans %}Back to the list{% endtrans %}</a>
             </td>
         </table>
     </div>

@@ -4,7 +4,7 @@
     <section class="timeline" id="concours">
         <div class="container">
             <div class="row">
-                <h3 class="section-heading">News</h3>
+                <h3 class="section-heading">{% trans %}News{% endtrans %}</h3>
                 <div id="timeline" class="timeline-container">
                     {% for new in news %}
                         <!-- timeline-block -->
@@ -17,7 +17,7 @@
                                         {{ new.datePublication|localizeddate('full', 'none', 'fr') }}
                                     </span>
                                 </span>
-                                <h2>Concours {{ new.title }}</h2>
+                                <h2>{% trans %}Concours{% endtrans %} {{ new.title }}</h2>
                                 <p>{{ new.newsText}}</p>
                             </div>
                             <!-- timeline-content -->

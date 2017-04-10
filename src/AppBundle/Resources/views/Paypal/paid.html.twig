@@ -2,9 +2,9 @@
 
 {% block body %}
     <br><br>
-    <h1 style="text-align: center">Le paiement a réussi !</h1>
+    <h1 style="text-align: center">{% trans %}Le paiement a réussi{% endtrans %} !</h1>
     <br><br>
-    <p style="text-align: center">Merci d'avoir choisi BoxOfficeWines ! <a href="{{ path("homepage") }}">Retour à la page d'accueil</a>.</p>
+    <p style="text-align: center">{% trans %}Merci d'avoir choisi BoxOfficeWines{% endtrans %} ! <a href="{{ path("homepage") }}">{% trans %}Retour à la page d'accueil{% endtrans %}</a>.</p>
 {% endblock %}
 {% block javascripts %}
     <script type="text/javascript">

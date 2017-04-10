@@ -5,7 +5,7 @@
     <div class="post-entry text-center">
         <h3 class="section-heading">News</h3>
 
-        <p>Date de publication : {% if news.datePublication %}{{ news.datePublication|date('Y-m-d H:i:s') }}{% endif %}</p>
+        <p>{% trans %}Date de publication{% endtrans %} : {% if news.datePublication %}{{ news.datePublication|date('Y-m-d H:i:s') }}{% endif %}</p>
     </div>
 
         <div class="col-md-8 about-white-box col-md-offset-2">
@@ -16,6 +16,6 @@
             <p>{{ news.newsText }}</p>
 
             <br>
-            <a href="{{ path('news_index') }}" class="btn btn-default">Back to the list</a>
+            <a href="{{ path('news_index') }}" class="btn btn-default">{% trans %}Back to the list{% endtrans %}</a>
         </div>
 {% endblock %}

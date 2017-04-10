@@ -16,12 +16,12 @@
         <div class="container">
             <div class="row">
                 <img src="{{ asset("img/logo.png") }}" alt="logo"><br>
-                <span class="text-newsletter newsletter">S'abonner à la Newsletter: </span><br>
+                <span class="text-newsletter newsletter">{% trans %}S'abonner à la Newsletter{% endtrans %}: </span><br>
 
                 <form method="post" action="">
                     <p><input id="" class="text-newsletter" name="email" type="text" placeholder="Veuillez entrer votre email"/></p>
                 </form>
-                    <button type="button" class="button btn-info btn-lg" data-toggle="modal" data-target="#myModal">Je m'inscris</button>
+                    <button type="button" class="button btn-info btn-lg" data-toggle="modal" data-target="#myModal">{% trans %}Je m'inscris{% endtrans %}</button>
             </div>
         </div>
 
@@ -42,7 +42,7 @@
         </div>
     </section>
 
-        <button type="button" class="btn btn-info uni-info" data-toggle="collapse" data-target="#demo">Cliquez pour plus d'information</button>
+        <button type="button" class="btn btn-info uni-info" data-toggle="collapse" data-target="#demo">{% trans %}Cliquez pour plus d'information{% endtrans %}</button>
         <div id="demo" class="collapse">
 
             {% for universe in universes %}
@@ -73,27 +73,27 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h3 class="section-heading">Recettes</h3>
+                    <h3 class="section-heading">{% trans %}Recettes{% endtrans %}</h3>
                 </div>
                 <div class="testimonials-slider text-center">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div class="testimonials-container shadow"> <img alt="user avatar" class="wow fadeInUp" src="{{ asset("") }}">
-                                <h3 class="wow fadeInUp" data-wow-delay=".4s"> Lien vers site de recettes 1 <span>Fastcompany ltd.</span> </h3>
+                                <h3 class="wow fadeInUp" data-wow-delay=".4s">{% trans %}Lien vers site de recettes{% endtrans %} 1 <span>Fastcompany ltd.</span> </h3>
                                 <p class="wow fadeInUp" data-wow-delay=".6s"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
                             </div>
                         </div>
 
                         <div class="swiper-slide">
                             <div class="testimonials-container shadow"> <img alt="user avatar" class="wow fadeInUp" src="{{ asset("") }}">
-                                <h3 class="wow fadeInUp" data-wow-delay=".4s"> Lien vers site de recettes 2 <span>Fastcompany ltd.</span> </h3>
+                                <h3 class="wow fadeInUp" data-wow-delay=".4s">{% trans %}Lien vers site de recettes{% endtrans %} 2 <span>Fastcompany ltd.</span> </h3>
                                 <p class="wow fadeInUp" data-wow-delay=".6s"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
                             </div>
                         </div>
 
                         <div class="swiper-slide">
                             <div class="testimonials-container shadow"> <img alt="user avatar" class="wow fadeInUp" src="{{ asset("") }}">
-                                <h3 class="wow fadeInUp" data-wow-delay=".4s"> Lien vers site de recettes 2 <span>Fastcompany ltd.</span> </h3>
+                                <h3 class="wow fadeInUp" data-wow-delay=".4s">{% trans %}Lien vers site de recettes{% endtrans %} 2 <span>Fastcompany ltd.</span> </h3>
                                 <p class="wow fadeInUp" data-wow-delay=".6s"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
                             </div>
                         </div>
@@ -110,7 +110,7 @@
         <div class="container overflow-hidden">
             <div class="row">
                 <div class="col-md-12">
-                    <h3 class="section-heading">Concours</h3>
+                    <h3 class="section-heading">{% trans %}Concours{% endtrans %}</h3>
                 </div>
                 <div class="post-slider">
                     <div class="swiper-wrapper">
@@ -180,5 +180,25 @@
                            </div>
         </div>
     </section>
-
+    <div class="section section-min">
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-4 col-md-push-4 text-center"> <img class="footer-logo" src="{{ asset('img/logo.png') }}" alt="footer-logo">
+                            <div class="social">
+                                <ul>
+                                    <li><a href="http://facebook.com/" target="_blank"><span class="ti-facebook"></span></a></li>
+                                    <li><a href="https://twitter.com/" target="_blank"><span class="ti-twitter-alt"></span></a></li>
+                                    <li><a href="http://linkedin.com/" target="_blank"><span class="ti-linkedin"></span></a></li>
+                                    <li><a href="https://vimeo.com/" target="_blank"><span class="ti-vimeo-alt"></span></a></li>
+                                    <li><a href="http://youtube.com/" target="_blank"><span class="ti-youtube"></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
 {% endblock %}

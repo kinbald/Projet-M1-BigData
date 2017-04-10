@@ -17,9 +17,9 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
     <div id="content">
-        <h1 class="text-center">Nous contacter</h1>
+        <h1 class="text-center">{% trans %}Nous contacter{% endtrans %}</h1>
         <br>
-        <h3 class="text-center">Retrouvez-nous sur les réseaux sociaux</h3>
+        <h3 class="text-center">{% trans %}Retrouvez-nous sur les réseaux sociaux{% endtrans %}</h3>
         <br>
 
         <table class="tableauContour_bas">
@@ -55,15 +55,15 @@
 
                 <div class="tableauContour">
                     <form>
-                        <label for="nom">Nom :</label><input class="taille_zone_de_saisie" type="text" id="nom" /><br />
-                        <label for="prenom">Prénom :</label><input class="taille_zone_de_saisie" type="text" id="prenom" /><br />
+                        <label for="nom">{% trans %}Nom{% endtrans %} :</label><input class="taille_zone_de_saisie" type="text" id="nom" /><br />
+                        <label for="prenom">{% trans %}Prénom{% endtrans %} :</label><input class="taille_zone_de_saisie" type="text" id="prenom" /><br />
                         <label for="email">Email :</label><input class="taille_zone_de_saisie" type="email" id="email" /><br />
-                        <label for="sujet">Sujet :</label><input  class="taille_zone_de_saisie" type="text" id="sujet" /><br />
-                        <label for="type">Vous êtes :</label><select class="taille_zone_de_saisie" id="type"><option>client</option><option>producteur</option><option>presse</option><option>professionnel</option></select><br />
+                        <label for="sujet">{% trans %}Sujet{% endtrans %} :</label><input  class="taille_zone_de_saisie" type="text" id="sujet" /><br />
+                        <label for="type">{% trans %}Vous êtes{% endtrans %} :</label><select class="taille_zone_de_saisie" id="type"><option>{% trans %}client{% endtrans %}</option><option>{% trans %}producteur{% endtrans %}</option><option>{% trans %}presse{% endtrans %}</option><option>{% trans %}professionnel{% endtrans %}</option></select><br />
                         <br />
-                        <label for="sexe">Sexe :</label><div id="smartphone"><br /><br /></div><div class="bloc_btn_genre"><input type="radio" name="sexe" id="sexe" />Homme</div> <div class="bloc_btn_genre"><input type="radio" name="sexe" />Femme</div><br />
+                        <label for="sexe">{% trans %}Sexe{% endtrans %} :</label><div id="smartphone"><br /><br /></div><div class="bloc_btn_genre"><input type="radio" name="sexe" id="sexe" />{% trans %}Homme{% endtrans %}</div> <div class="bloc_btn_genre"><input type="radio" name="sexe" />{% trans %}Femme{% endtrans %}</div><br />
                         <br />
-                        <label for="message">Votre message</label><textarea class="taille_zone_texte" id="message" placeholder="Taper votre message ici" cols="40" rows="4"></textarea><br />
+                        <label for="message">{% trans %}Votre message{% endtrans %}</label><textarea class="taille_zone_texte" id="message" placeholder="Taper votre message ici" cols="40" rows="4"></textarea><br />
                         <br />
                         <input type="submit" value="Envoyer" />
                     </form>
