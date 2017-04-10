@@ -163,6 +163,7 @@
     margin-right:auto;
     margin-top: 10px;
     margin-bottom: 10px;
+    width:65%;
 
 }
 
@@ -177,9 +178,37 @@
     text-align: center;
 }
 
-.centrer {
-    margin-left: auto;
-    margin-right: auto;
+.descr td{
+    display: block;
+    margin:auto;
 }
 
 
+.centrer {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:6px;
+    margin-bottom:6px;
+}
+
+
+.uni-info{
+    display:block;
+    margin:auto;
+    margin-top:20px;
+    margin-bottom:20px;
+    width:65%;
+    line-height: 30px;
+}
+
+.collapse {
+    margin-bottom: 30px;
+}
+
+.panel-collapse p{
+    padding:2%;
+}
+
+.btn:focus, .btn:hover{
+    color:white;
+}
