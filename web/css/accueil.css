@@ -156,6 +156,10 @@
     .right-arrow-negative,.left-arrow-negative{
         text-shadow: 5px 1px 5px black;
     }
+
+    .uni-info{
+        width:65%;
+    }
 }
 
 .tabdescr {
@@ -195,7 +199,6 @@
     margin:auto;
     margin-top:20px;
     margin-bottom:20px;
-    width:65%;
     line-height: 30px;
 }
 
