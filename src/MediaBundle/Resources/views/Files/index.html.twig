@@ -10,7 +10,7 @@
     <div class="container overflow-hidden">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="section-heading">Post list</h3>
+                <h3 class="section-heading">Communiqués Presse</h3>
             </div>
         </div>
     </div>
@@ -31,7 +31,7 @@
                     <td>{{ file.id }}</td>
                     <td>{{ file.date|date("d/m/Y") }}</td>
                     <td>{{ file.name }}</td>
-                    <td><a href="{{ asset(file.url) }}">{{ file.url }}</a></td>
+                    <td><a href="{{ asset(file.url) }}">{{ asset(file.url) }}</a></td>
                     <td>
                         <ul>
                             <li>
