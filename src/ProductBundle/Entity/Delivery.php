@@ -30,9 +30,9 @@ class Delivery
     private $name;
 
     /**
-     * @var int
+     * @var float
      *
-     * @ORM\Column(name="price", type="integer")
+     * @ORM\Column(name="price", type="float")
      */
     private $price;
 
@@ -95,7 +95,7 @@ class Delivery
     /**
      * Set price
      *
-     * @param integer $price
+     * @param float $price
      *
      * @return Delivery
      */
@@ -109,7 +109,7 @@ class Delivery
     /**
      * Get price
      *
-     * @return int
+     * @return float
      */
     public function getPrice()
     {
@@ -182,5 +182,10 @@ class Delivery
     public function getPurchases()
     {
         return $this->purchases;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }

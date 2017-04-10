@@ -76,7 +76,7 @@ class ProductConditioning
 
     /**
      * @var Collection
-     * @ORM\ManyToMany(targetEntity="\ProductBundle\Entity\Product", cascade={"persist"}, inversedBy="conditioningTypes")
+     * @ORM\ManyToMany(targetEntity="\ProductBundle\Entity\Product", cascade={"persist"}, mappedBy="conditioningTypes")
      */
     private $products;
 
@@ -406,5 +406,10 @@ class ProductConditioning
     public function getDeliveries()
     {
         return $this->deliveries;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }

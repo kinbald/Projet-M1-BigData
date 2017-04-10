@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Productconditionings list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Pubprice</th>
+                <th>Proprice</th>
+                <th>Volumevalue</th>
+                <th>Volumeunit</th>
+                <th>Stock</th>
+                <th>Pack</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for productConditioning in productConditionings %}
+            <tr>
+                <td><a href="{{ path('conditioning_show', { 'id': productConditioning.id }) }}">{{ productConditioning.id }}</a></td>
+                <td>{{ productConditioning.name }}</td>
+                <td>{{ productConditioning.pubPrice }}</td>
+                <td>{{ productConditioning.proPrice }}</td>
+                <td>{{ productConditioning.volumeValue }}</td>
+                <td>{{ productConditioning.volumeUnit }}</td>
+                <td>{{ productConditioning.stock }}</td>
+                <td>{% if productConditioning.pack %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('conditioning_show', { 'id': productConditioning.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('conditioning_edit', { 'id': productConditioning.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('conditioning_new') }}">Create a new productConditioning</a>
+        </li>
+    </ul>
+{% endblock %}

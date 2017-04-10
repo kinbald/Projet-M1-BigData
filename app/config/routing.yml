@@ -1,3 +1,7 @@
+product_product_conditioning:
+    resource: "@ProductBundle/Controller/ProductConditioningController.php"
+    type:     annotation
+
 app_news:
     resource: "@AppBundle/Controller/NewsController.php"
     type:     annotation

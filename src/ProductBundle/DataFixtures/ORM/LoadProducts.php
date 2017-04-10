@@ -6,6 +6,7 @@ use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use ProductBundle\Entity\Continent;
 use ProductBundle\Entity\Country;
+use ProductBundle\Entity\Delivery;
 use ProductBundle\Entity\PictureProduct;
 use ProductBundle\Entity\PictureUniverse;
 use ProductBundle\Entity\ProductEvaluation;
@@ -496,6 +497,17 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $propur->setProduct($wine3);
         $propur->setPurchase($purchase);
         $manager->persist($propur);
+
+
+        $delivery = new Delivery();
+        $delivery->setName('Pigeon voyageur');
+        $delivery->setPrice(12.3);
+        $manager->persist($delivery);
+
+        $delivery2 = new Delivery();
+        $delivery2->setName('camion citerne');
+        $delivery2->setPrice(32.1);
+        $manager->persist($delivery2);
 
         $manager->flush();
     }

@@ -148,7 +148,7 @@ abstract class Product
 
     /**
      * @var Collection
-     * @ORM\ManyToMany(targetEntity="\ProductBundle\Entity\ProductConditioning", mappedBy="products")
+     * @ORM\ManyToMany(targetEntity="\ProductBundle\Entity\ProductConditioning", inversedBy="products")
      */
     protected $conditioningTypes;
 
