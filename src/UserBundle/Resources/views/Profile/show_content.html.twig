@@ -9,6 +9,7 @@
     <link href="{{ asset('css/register.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/media.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('css/profile.css') }}" rel="stylesheet"/>
 
 {% endblock %}
 
@@ -23,7 +24,7 @@
     <div class="container overflow-hidden">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="section-heading">Bienvenue sur votre espace client</h3>
+                <h1 id="titre1" class="section-heading">Bienvenue sur votre espace client</h1>
             </div>
         </div>
     </div>
@@ -32,7 +33,7 @@
 
         <!-------------------Profil--------------------->
         <div id="Profile">
-            <h2>Profil</h2>
+            <h3>Profil</h3>
             <br>
 
             <div>
@@ -122,19 +123,14 @@
     <!-------------------Factures--------------------->
 
     <div id="Factures">
-        <h2>Factures & Paiements</h2>
+        <h3>Factures & Paiements</h3>
         <div>
-            <br>
-            <h1 class="section-heading">Commandes</h1>
-            <br>
             <div class="text-center content">
-                <div class="text-center">
                     {% for purchase in purchases %}
                         <a class="btn btn-primary btn-circle" href="{{ path("profil_products", {'id': purchase.id }) }}">
-                            <div class="texte">Commande n° {{ purchase.id }} - {{ purchase.getdateOrder|date('d-m-y') }} </div>
+                            <div id="texte1" class="texte">Commande n° {{ purchase.id }} - {{ purchase.getdateOrder|date('d-m-y') }} </div>
                         </a>
                     {% endfor %}
-                </div>
             </div>
         </div>
     </div>
