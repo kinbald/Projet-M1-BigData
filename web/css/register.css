@@ -100,7 +100,9 @@
 #fos_user_registration_form_city,
 #fos_user_registration_form_postalCode,
 #fos_user_registration_form_urlBlog,
-#fos_user_registration_form_idPresse{
+#fos_user_registration_form_idPresse,
+#fos_user_registration_form_businessName,
+#fos_user_registration_form_phone{
     border-radius: 10px;
     color:#555555;
 }
@@ -108,6 +110,11 @@
 #fos_user_registration_form_address {
     border-radius: 10px;
     color: #555555;
-    width: 17em;
+    width: 14em;
     height: 7em;
+}
+
+#fos_user_registration_form_country {
+    width: 14em;
+    border-radius: 5px;
 }
