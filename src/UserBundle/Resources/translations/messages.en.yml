@@ -15,7 +15,7 @@ Company name: Company name
 Address: Address
 City: City
 Postal code: Postal code
-Modifier: Change
+Modifier: Edit
 Factures & Paiements: Invoices & Payments
 Commandes: Orders
 Commande: Order
@@ -38,12 +38,12 @@ Moyens de paiement: Means of payment
 Registration ok: Registration successful
 Redirection: Redirecting
 New Account: New Account
-Registration User: Registration User
-Registration Media: Registration Media
-Registration Producer: Registration Producer
-Registration Wholesale: Registration Wholesale
+Registration User: User registration
+Registration Media: Press registration
+Registration Producer: Producer registration
+Registration Wholesale: Wholesale registration
 Userconsumer edit: User edit
-Back to the list: Retour à la liste
+Back to the list: Back to the list
 User consumer list: User consumer list
 Show: Show
 Edit: Edit

@@ -24,11 +24,7 @@
     <div class="container overflow-hidden">
         <div class="row">
             <div class="col-md-12">
-<<<<<<< Updated upstream
-                <h1 id="titre1" class="section-heading">Bienvenue sur votre espace client</h1>
-=======
-                <h3 class="section-heading">{% trans %}Bienvenue sur votre espace client{% endtrans %}</h3>
->>>>>>> Stashed changes
+                <h1 id="titre1" class="section-heading">{% trans %}Bienvenue sur votre espace client{% endtrans %}</h1>
             </div>
         </div>
     </div>
@@ -37,18 +33,14 @@
 
         <!-------------------Profil--------------------->
         <div id="Profile">
-<<<<<<< Updated upstream
-            <h3>Profil</h3>
-=======
-            <h2>{% trans %}Profil{% endtrans %}</h2>
->>>>>>> Stashed changes
+            <h3>{% trans %}Profil{% endtrans %}</h3>
             <br>
 
             <div>
                 <p><b>{% trans %}Username{% endtrans %}:</b> {{ user.username }}</p>
-                <p><b>Email:</b> {{ user.email }}</p>
+                <p><b>{% trans %}Email{% endtrans %}:</b> {{ user.email }}</p>
                 <p><b>{% trans %}Last name{% endtrans %}:</b> {{ user.lastname }}</p>
-                <p><b>{% trans %}First name:{% endtrans %}</b> {{ user.firstname }}</p>
+                <p><b>{% trans %}First name{% endtrans %}:</b> {{ user.firstname }}</p>
             </div>
 
             {% if is_granted('ROLE_CONSUMER') %}
@@ -70,7 +62,7 @@
             {% if is_granted('ROLE_PRODUCER') %}
                 <div>
                     <p><b>{% trans %}Company name{% endtrans %}:</b> {{ user.companyName }}</p>
-                    <p><b>Siret:</b> {{ user.siret }}</p>
+                    <p><b>{% trans %}Siret{% endtrans %}:</b> {{ user.siret }}</p>
                     <p><b>{% trans %}Address{% endtrans %}:</b> {{ user.address }}</p>
                     <p><b>{% trans %}City{% endtrans %}:</b> {{ user.city }}</p>
                     <p><b>{% trans %}Postal code{% endtrans %}:</b> {{ user.postalCode }}</p>
@@ -87,23 +79,25 @@
         </div>
 
 
-            <div id="slideshow">
-                <div>
-                    <img class="diapo" src="/img/slider/slider_1.jpeg">
-                </div>
-                <div>
-                    <img class="diapo" src="/img/slider/slider_2.jpeg">
-                </div>
-                <div>
-                    <img class="diapo" src="/img/slider/slider_3.jpeg">
-                </div>
-                <div>
-                    <img class="diapo" src="/img/slider/slider_4.jpeg">
-                </div>
-                <div>
-                    <img class="diapo" src="/img/slider/slider_5.jpg">
-                </div>
+        <div id="slideshow">
+            <div>
+                <img class="diapo" src="/img/slider/slider_1.jpeg">
             </div>
+            <div>
+                <img class="diapo" src="/img/slider/slider_2.jpeg">
+            </div>
+            <div>
+                <img class="diapo" src="/img/slider/slider_3.jpeg">
+            </div>
+            <div>
+                <img class="diapo" src="/img/slider/slider_4.jpeg">
+            </div>
+            <div>
+                <img class="diapo" src="/img/slider/slider_5.jpg">
+            </div>
+        </div>
+
+
     </div>
 
 
@@ -131,15 +125,12 @@
     <div id="Factures">
         <h3>{% trans %}Factures & Paiements{% endtrans %}</h3>
         <div>
-            <br>
-            <h1 class="section-heading">{% trans %}Commandes{% endtrans %}</h1>
-            <br>
             <div class="text-center content">
-                    {% for purchase in purchases %}
-                        <a class="btn btn-primary btn-circle" href="{{ path("profil_products", {'id': purchase.id }) }}">
-                            <div id="texte1" class="texte">{% trans %}Commande{% endtrans %} n° {{ purchase.id }} - {{ purchase.getdateOrder|date('d-m-y') }} </div>
-                        </a>
-                    {% endfor %}
+                {% for purchase in purchases %}
+                    <a class="btn btn-primary btn-circle" href="{{ path("profil_products", {'id': purchase.id }) }}">
+                        <div id="texte1" class="texte">{% trans %}Commande{% endtrans %} n° {{ purchase.id }} - {{ purchase.getdateOrder|date('d-m-y') }} </div>
+                    </a>
+                {% endfor %}
             </div>
         </div>
     </div>
