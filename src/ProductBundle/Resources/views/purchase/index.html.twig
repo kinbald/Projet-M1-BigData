@@ -15,12 +15,12 @@
     <div class="container overflow-hidden">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="section-heading">{% trans %}Purchase Admin{% endtrans %}</h3>
+                <h3 class="section-heading">{% trans %}Gestion des Commandes{% endtrans %}</h3>
             </div>
         </div>
     </div>
     <div class="tableau_media">
-        <h3 class="section-heading">{% trans %}Purchase Title{% endtrans %}</h3>
+        <h3 class="section-heading">{% trans %}Commandes à préparer{% endtrans %}</h3>
         <table>
             <thead>
                 <tr>
@@ -49,8 +49,10 @@
                     <td class="statut">{% trans %}Doing{% endtrans %}</td>
                     <td class="action">
                         <ul>
-                            <li><a href="{{ path('purchase_show', { 'id': purchase.id }) }}">{% trans %}Show{% endtrans %}</a></li>
-                            <li><a href="{{ path('purchase_edit', { 'id': purchase.id }) }}">{% trans %}Edit{% endtrans %}</a></li>
+                            <li><a href="{{ path('purchase_show', { 'id': purchase.id }) }}">{% trans %}Détails
+                                    Commande{% endtrans %}</a></li>
+                            <li><a href="{{ path('purchase_edit', { 'id': purchase.id }) }}">{% trans %}
+                                    Modifier{% endtrans %}</a></li>
                         </ul>
                     </td>
                 </tr>
@@ -59,7 +61,7 @@
             </tbody>
         </table>
         <br><br>
-        <h3 class="type_commande">{% trans %}Done Purchase{% endtrans %}</h3>
+        <h3 class="type_commande">{% trans %}Commandes expédiées{% endtrans %}</h3>
         <table>
             <thead>
             <tr>
@@ -89,8 +91,10 @@
                     <td class="statut">{% trans %}Done{% endtrans %}</td>
                     <td class="action">
                         <ul>
-                            <li><a href="{{ path('purchase_show', { 'id': purchase.id }) }}">{% trans %}Show{% endtrans %}</a></li>
-                            <li><a href="{{ path('purchase_edit', { 'id': purchase.id }) }}">{% trans %}Edit{% endtrans %}</a></li>
+                            <li><a href="{{ path('purchase_show', { 'id': purchase.id }) }}">{% trans %}Détails
+                                    Commande{% endtrans %}</a></li>
+                            <li><a href="{{ path('purchase_edit', { 'id': purchase.id }) }}">{% trans %}
+                                    Modifier{% endtrans %}</a></li>
                         </ul>
                     </td>
                 </tr>
