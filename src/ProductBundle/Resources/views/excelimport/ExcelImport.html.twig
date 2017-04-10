@@ -11,8 +11,7 @@
 {% endblock %}
 
 {% block body %}
-
-
+{{ dump(test) }}
     <h1>Produits à insérer</h1>
     <table>
         {% for product in products %}
@@ -63,6 +62,19 @@
         {% for shipment in shipments %}
             <tr>
                 {% for cell in shipment %}
+                    <td style="border: 1px solid white; font-family:'Arial';">{{ cell }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+
+
+
+    <h1>Tableau des options de livraison</h1>
+    <table>
+        {% for shipoption in shipoptions %}
+            <tr>
+                {% for cell in shipoption %}
                     <td style="border: 1px solid white; font-family:'Arial';">{{ cell }}</td>
                 {% endfor %}
             </tr>

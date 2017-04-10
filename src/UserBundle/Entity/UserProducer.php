@@ -534,7 +534,7 @@ class UserProducer extends BaseUser
 
 
     /**
-     * Set origin_country
+     * Set status
      *
      * @param ProducerStatus $status
      * @return UserProducer
@@ -546,7 +546,7 @@ class UserProducer extends BaseUser
     }
 
     /**
-     * Get origin_country
+     * Get status
      *
      * @return ProducerStatus
      */
