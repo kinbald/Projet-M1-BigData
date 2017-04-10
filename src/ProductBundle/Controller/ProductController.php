@@ -190,6 +190,12 @@ class ProductController extends Controller
     {
         $deleteForm = $this->createDeleteForm($product, $product->getDiscr());
 
+        $options = Array();
+        foreach ($product->getConditioningTypes() as $conditioning)
+            $options['values'][$conditioning->getName()] = $conditioning->getId();
+
+        $conditioningSelect = $this->createForm('ProductBundle\Form\ConditioningSelectType', $options);
+        $conditioningSelect->handleRequest($request);
 
         $evaluation = new ProductEvaluation();
         $evaluationForm = $this->createForm('ProductBundle\Form\EvaluationType', $evaluation);
@@ -220,6 +226,7 @@ class ProductController extends Controller
             'evaluations' => $product->getEvaluations(),
             'product' => $product,
             'delete_form' => $deleteForm->createView(),
+            'conditioning_select_form' => $conditioningSelect->createView(),
             'product_pictures' => $product->getPictures(),
             'competitions' => ($product->getDiscr() == 'wine') ? $product->getCompetitions() : null
         ));
