@@ -39,6 +39,11 @@
         overflow-wrap: break-word;
         white-space: pre-wrap;
     }
+
+    .espace_footer{
+        visibility: hidden;
+        height: 100px;
+    }
 }
 @media (min-width: 500px) {
 
@@ -81,4 +86,20 @@
         overflow-wrap: break-word;
         white-space: pre-wrap;
     }
+
+    .espace_footer{
+        visibility: hidden;
+        height: 100px;
+        margin-bottom: 0;
+    }
 }
+
+@media (min-width: 500px) and (max-width: 1370px) {
+
+    .espace_footer{
+        visibility: hidden;
+        height: 150px;
+        margin-bottom: 0;
+    }
+}
+

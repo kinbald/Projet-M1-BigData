@@ -11,38 +11,63 @@
 {% endblock %}
 
 {% block body %}
-<div class="product-content">
-    <section class="section-slide">
-        <INPUT type="button" value="❮ {% trans %}Back to selection{% endtrans %}" class="back-button wow fadeInRight" onClick="window.history.back()">
-        <div class="slideshow-container">
-            {% for product_picture in product_pictures %}
-                <div class="mySlides">
-                    <img class="photo" src="{{ asset(product_picture.url) }}" alt="{{ product_picture.alt }}"/>
-                </div>
-            {% endfor %}
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
-        </div>
-        <br>
-        <div style="text-align:center">
-            {% for product_picture in product_pictures %}
-                <span class="dot" onclick="currentSlide({{ product_picture.id }})"></span>
-            {% endfor %}
-        </div>
-    </section>
-    <!--  TEXTE  -->
-    <section class="section-presentation product" id="products">
-        <div class="col-md-7 text-center">
-            <div class="countdown-container">
-                <div id="TITRE">
-                    <h3 class="wow fadeInDown">{{ product.displayName }}</h3>
+    <div class="product-content">
+        <!--Slider-->
+        <div class="section-slide">
+            <INPUT type="button" value="❮ {% trans %}Back to selection{% endtrans %}" class="back-button wow fadeInRight" onClick="window.history.back()">
+            <!--
+            <div class="slideshow-container">
+                {% for product_picture in product_pictures %}
+                    <div class="mySlides">
+                        <img class="photo" src="{{ asset(product_picture.url) }}" alt="{{ product_picture.alt }}"/>
+                    </div>
+                {% endfor %}
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+            <br>
+            <div style="text-align:center">
+                {% for product_picture in product_pictures %}
+                    <span class="dot" onclick="currentSlide({{ product_picture.id }})"></span>
+                {% endfor %}
+            </div>
+        </td>-->
+            <div id="myCarousel" class="carousel mycarousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators mycarousel-indicators">
+                    {% for key,product_picture in product_pictures %}
+                        <li data-target="#myCarousel" data-slide-to="{{ key }}"{% if key==0 %} class="active"{% endif %}></li>
+                    {% endfor %}
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner mycarousel-inner" role="listbox">
+
+                    {% for product_picture in product_pictures %}
+                        <div class="item active">
+                            <img class="photo" src="{{ asset(product_picture.url) }}" alt="{{ product_picture.alt }}"/>
+                        </div>
+                    {% endfor %}
                 </div>
 
-                <img alt="lauriers" src="{{ asset('img/product/lauriers.png') }}" height="55">
-                <h4 class="wow fadeInDown">{% trans %}Medal{% endtrans %}</h4>
-
-                {% if noteProduit > 0 %}
-                <div class="rating">
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <!--  TEXTE  -->
+        <div class="center-justified section-presentation">
+            <h3 id="TITRE" class="wow fadeInDown">{{ product.displayName }}</h3>
+            <img class="wow fadeInDown" alt="lauriers" src="{{ asset('img/product/lauriers.png') }}" height="55">
+            <h4 class="wow fadeInDown">{% trans %}Medal{% endtrans %}</h4>
+            {% if noteProduit > 0 %}
+                <div class="rating wow fadeInDown">
                     {% for i in range(1, noteProduit) %}
                         <span class="full-star">★</span>
                     {% endfor %}
@@ -52,56 +77,104 @@
                         {% endfor %}
                     {% endif %}
                 </div>
-                {% endif %}
-
-                <p class="wow fadeInDown">{{ product.description }} </p>
-                <p><b>{% trans %}Universes{% endtrans %} :</b> {% for universe in product.universes %} {{universe.name}} {% if not loop.last %}, {% endif %}{% endfor %} </br>
-                    <b>{% trans %}Volume{% endtrans %} : </b>{{ product.volume }} <br>
-                    <b>{% trans %}Stock{% endtrans %} : </b>{{ product.stock }} <br>
-                    {%  block features %}
-                    {% endblock %}
-                </p>
-                <span class="h3 wow fadeInUp countdown-price">{{ product.price }} €</span>
+            {% endif %}
+            <p class="wow fadeInDown">{{ product.description }} </p>
+            <div class="countdown-container my-countdown-container">
+                <span class="countdown-price h3 wow fadeInUp price-show">{{ product.price }} €</span>
                 {% set picture = product.pictures|last %}
-                <br><br> <br> <br>
                 <span class="btn btn-default add-item wow swing" {% if picture %}data-image="/img/upload/{{ picture.url}}"{% endif %}  data-name="{{ product.name }}" data-cost="{{ product.price }}" data-id="{{ product.id }}">
-                    <div id="ajout"><img alt="e-commerce" src="{{ asset('img/product/panier.png') }}" height="55"></div>
-                    <span class="ti-shopping-cart"></span>{% trans %}Panier{% endtrans %}
-                </span>
-            </div>
-            <br>
-            <div style="text-align:center">
-                {% for product_picture in product_pictures %}
-                <span class="dot" onclick="currentSlide({{ product_picture.id }})"></span>
-                {% endfor %}
+            <div id="ajout"><img alt="e-commerce" src="{{ asset('img/product/panier.png') }}" height="55"></div>
+            <span class="ti-shopping-cart"></span>{% trans %}Panier{% endtrans %}
+        </span>
             </div>
         </div>
-
-        {% for evaluation in evaluations %}
-        <div class="comment">
-            <div class="comment-header">
-                <h4 class="yellow text-center">{{ evaluation.user.firstname }} {{ evaluation.user.lastname }}</h4>
-                <div class="rating">
-                    {% for i in range(1, evaluation.mark) %}
-                    <span class="full-star">★</span>
-                    {% endfor %}
-                    {% if evaluation.mark < 5 %}
-                        {%  for i in range(evaluation.mark + 1, 5) %}
-                        <span class="empty-star">☆</span>
+        <!--Tableau presentation-->
+        <h2>Details</h2>
+        <table class="presentation-table">
+            <tr>
+                <td class="attribute">
+                    {% trans %}Universes{% endtrans %}:
+                </td>
+                <td class="att-value">
+                    {% for universe in product.universes %} {{universe.name}} {% if not loop.last %}, {% endif %}{% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <td class="attribute">
+                    {% trans %}Volume{% endtrans %}:
+                </td>
+                <td class="att-value">
+                    {{ product.volume }}L
+                </td>
+            </tr>
+            <tr>
+                <td class="attribute">
+                    {% trans %}Traduction! Degres Alcool{% endtrans %}:
+                </td>
+                <td class="att-value">
+                    {{ product.alcoholDegree }}%
+                </td>
+            </tr>
+            <tr>
+                <td class="attribute">
+                    {% trans %}Traduction! Sucre{% endtrans %}:
+                </td>
+                <td class="att-value">
+                    {{ product.sugar }} g/L
+                </td>
+            </tr>
+            <tr>
+                <td class="attribute">
+                    {% trans %}Stock{% endtrans %}:
+                </td>
+                <td class="att-value">
+                    {{ product.stock}} {% trans %}Traduction! bouteille{% endtrans %}{% if product.stock>1 %}s{% endif %}
+                </td>
+            </tr>
+            {% if product.conditioningTypes is not empty  %}
+                <tr>
+                    <td class="td attribute">
+                        {% trans %}Conditioning{% endtrans %} :
+                    </td>
+                    <td class="td att-value">
+                        {% for conditioningType in product.conditioningTypes %}
+                            {{ conditioningType.name }} (XXX {% trans %}Traduction! bouteille{% endtrans %}s){% if not loop.last %}, {% endif %}
                         {% endfor %}
-                    {% endif %}
+                    </td>
+                </tr>
+            {% endif %}
+            {%  block features %}
+            {% endblock %}
+        </table>
+        <!--  AVIS  -->
+        <h2>Avis</h2>
+        {% for evaluation in evaluations %}
+            <div class="comment">
+                <div class="comment-header">
+                    <h4 class="yellow text-center">{{ evaluation.user.firstname }} {{ evaluation.user.lastname }}</h4>
+                    <div class="rating">
+                        {% for i in range(1, evaluation.mark) %}
+                            <span class="full-star">★</span>
+                        {% endfor %}
+                        {% if evaluation.mark < 5 %}
+                            {%  for i in range(evaluation.mark + 1, 5) %}
+                                <span class="empty-star">☆</span>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="comment-content">
+                    <p>{{ evaluation.review }}</p>
+
                 </div>
             </div>
-
-            <div class="comment-content">
-                <p>{{ evaluation.review }}</p>
-
-            </div>
-        </div>
         {% endfor %}
+    </div>
 
-        {% if utilisateur != null %}
-        <h3>Ajouter un commentaire</h3>
+
+    {% if utilisateur != null %}
+        <h3 class="text-center">Ajouter un commentaire</h3>
 
         <div class="comment">
             <div class="comment-header">
@@ -120,19 +193,17 @@
             </div>
 
 
-                <div class="comment-content">
-                    <div class="form-style-1">
-                        {{ form_start(evaluation_form) }}
-                        {{ form_widget(evaluation_form) }}
-                        {{ form_end(evaluation_form) }}
-                    </div>
+            <div class="comment-content">
+                <div class="form-style-1">
+                    {{ form_start(evaluation_form) }}
+                    {{ form_widget(evaluation_form) }}
+                    {{ form_end(evaluation_form) }}
                 </div>
+            </div>
         </div>
-        {% else %}
-        <h3>Vous de devez être connecté pour laisser un commentaire</h3>
-        {% endif %}
-    </section>
-</div>
+    {% else %}
+        <h3 class="text-center">Vous de devez être connecté pour laisser un commentaire</h3>
+    {% endif %}
 {% endblock %}
 
 

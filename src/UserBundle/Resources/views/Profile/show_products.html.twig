@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('http://www.w3schools.com/lib/w3.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/compte.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/admin.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/compte.js') }}"></script>
+{% endblock %}
+
+{%  block body %}
+    <br>
+    <div class="container overflow-hidden">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="section-heading">Récapitulatif de la commande</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="gros-bloc">
+        <!-------------------Produits de la commande--------------------->
+        <div id="Profile">
+        <h2>Commande & Produits</h2>
+        <br>
+
+            <table>
+                <thead>
+                <tr>
+                    <th width="100px">Numéro</th>
+                    <th width="100px">Prix Total</th>
+                    <th width="100px">Articles</th>
+                    <th width="100px">Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <tr>
+                        <td>{{ purchase.id }}</td>
+                        <td>{{ purchase.getAmount }} €</td>
+                        <td>{{ purchase.getNbArticles }}</td>
+                        <td>{{ purchase.getdateOrder|date('d-m-y') }}</td>
+                    </tr>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+
+            {% for product in products %}
+                <div>
+                    <p><b>Nom:</b> <a href="{{ path('product_show', {id:product.id}) }}">{{ product.name }}</a></p>
+                    <p><b>Volume:</b> {{ product.volume }}</p>
+                    <p><b>Prix Unitaire:</b> {{ product.price }}</p>
+                    <p><b>Stock:</b> {{ product.getStock }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
