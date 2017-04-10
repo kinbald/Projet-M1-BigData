@@ -132,7 +132,7 @@ class ProductConditioning
      *
      * @return float
      */
-    public function getPrice(BaseUser $user)
+    public function getPrice($user = null)
     {
         return ($user instanceof UserWholesale)?$this->proPrice:$this->pubPrice;
     }

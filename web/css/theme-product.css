@@ -297,7 +297,29 @@ select{
 .form-style-1 .required{
     color:red;
 }
-
+.conditioning{
+    background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
+    height: 39px;
+    overflow: hidden;
+    width: 240px;
+    color: #fff;
+    background-color: #C6A668;
+    border-color: #C6A668;
+    font-size: 18px;
+}.conditioning select {
+     background: transparent;
+     border: none;
+     font-size: 14px;
+     height: 29px;
+     padding: 5px;
+     width: 308px;
+ }
+ select{
+     -moz-appearance: none;
+ }
+.rounded {
+    border-radius: 20px;
+}
 /********* MEDIA QUERIES *********/
 
 @media screen and (max-width:1200px) {

@@ -7,14 +7,14 @@
 
 {% block body %}
     <div id="content">
-        <h1>{% trans %}Spirit Title{% endtrans %}</h1>
+        <h1>{% trans %}Gestion des Spiritueux{% endtrans %}</h1>
     <br><br>
     <table>
         <thead>
             <tr>
-                <th>{% trans %}Id{% endtrans %}</th>
-                <th>{% trans %}Name{% endtrans %}</th>
-                <th>{% trans %}Price{% endtrans %}</th>
+                <th>{% trans %}ID{% endtrans %}</th>
+                <th>{% trans %}Nom{% endtrans %}</th>
+                <th>{% trans %}Prix{% endtrans %}</th>
                 <th>{% trans %}Stock{% endtrans %}</th>
                 <th>{% trans %}Actions{% endtrans %}</th>
             </tr>
@@ -29,10 +29,12 @@
                 <td class="actions">
                     <ul>
                         <li>
-                            <a href="{{ path('product_show', { 'id': spirit.id }) }}">{% trans %}Show{% endtrans %}</a>
+                            <a href="{{ path('product_show', { 'id': spirit.id }) }}">{% trans %}Fiche
+                                produit{% endtrans %}</a>
                         </li>
                         <li>
-                            <a href="{{ path('product_edit', { 'id': spirit.id }) }}">{% trans %}Edit{% endtrans %}</a>
+                            <a href="{{ path('product_edit', { 'id': spirit.id }) }}">{% trans %}
+                                Modifier{% endtrans %}</a>
                         </li>
                     </ul>
                 </td>
@@ -43,7 +45,9 @@
     <br><br>
         <ul>
             <li>
-                <a href="{{ path('product_new', { 'type' : 'spirit'}) }}"><div class="btn btn-primary btn-circle">{% trans %}Create Spirit{% endtrans %}</div></a>
+                <a href="{{ path('product_new', { 'type' : 'spirit'}) }}">
+                    <div class="btn btn-primary btn-circle">{% trans %}Ajouter un Spiritueux{% endtrans %}</div>
+                </a>
             </li>
         </ul>
     </div>

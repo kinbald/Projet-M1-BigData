@@ -4843,9 +4843,10 @@ button.close, .close {
       margin: 0 0 30px; }
 
 .cart-item {
+  width: 100%;
   float: left;
   position: relative;
-  margin-bottom: 1px;
+  margin-bottom: 2px;
   background: #262626;
   padding: 10px;
   text-align: left; }

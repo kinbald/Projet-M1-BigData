@@ -10,7 +10,7 @@
     <div class="container overflow-hidden">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="section-heading">{% trans %}Wine Title{% endtrans %}</h3>
+                <h3 class="section-heading">{% trans %}Gestion des Vins{% endtrans %}</h3>
             </div>
         </div>
     </div>
@@ -18,11 +18,11 @@
     <table>
         <thead>
             <tr>
-                <th>{% trans %}Id{% endtrans %}</th>
-                <th>{% trans %}Name{% endtrans %}</th>
-                <th>{% trans %}Vintage{% endtrans %}</th>
-                <th>{% trans %}Color{% endtrans %}</th>
-                <th>{% trans %}Price{% endtrans %}</th>
+                <th>{% trans %}ID{% endtrans %}</th>
+                <th>{% trans %}Nom{% endtrans %}</th>
+                <th>{% trans %}Millésime{% endtrans %}</th>
+                <th>{% trans %}Couleur{% endtrans %}</th>
+                <th>{% trans %}Prix{% endtrans %}</th>
                 <th>{% trans %}Stock{% endtrans %}</th>
                 <th>{% trans %}Actions{% endtrans %}</th>
             </tr>
@@ -39,10 +39,12 @@
                     <td class="actions">
                         <ul>
                             <li>
-                                <a href="{{ path('product_show', { 'id': wine.id }) }}">{% trans %}Show{% endtrans %}</a>
+                                <a href="{{ path('product_show', { 'id': wine.id }) }}">{% trans %}Fiche
+                                    produit{% endtrans %}</a>
                             </li>
                             <li>
-                                <a href="{{ path('product_edit', { 'id': wine.id }) }}">{% trans %}Edit{% endtrans %}</a>
+                                <a href="{{ path('product_edit', { 'id': wine.id }) }}">{% trans %}
+                                    Modifier{% endtrans %}</a>
                             </li>
                         </ul>
                     </td>
@@ -53,7 +55,9 @@
     <br><br>
     <ul>
         <li>
-            <a href="{{ path('product_new', {type: 'wine'}) }}"><div class="btn btn-primary btn-circle">{% trans %}Create Wine{% endtrans %}</div></a>
+            <a href="{{ path('product_new', {type: 'wine'}) }}">
+                <div class="btn btn-primary btn-circle">{% trans %}Ajouter un Vin{% endtrans %}</div>
+            </a>
         </li>
     </ul>
 

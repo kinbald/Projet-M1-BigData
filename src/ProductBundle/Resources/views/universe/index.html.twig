@@ -11,7 +11,7 @@
     <div class="container overflow-hidden">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="section-heading">{% trans %}Universe Title{% endtrans %}</h3>
+                <h3 class="section-heading">{% trans %}Gestion des Univers{% endtrans %}</h3>
             </div>
         </div>
     </div>
@@ -19,8 +19,8 @@
     <table border="1">
         <thead>
         <tr>
-            <th>{% trans %}Id{% endtrans %}</th>
-            <th>{% trans %}Name{% endtrans %}</th>
+            <th>{% trans %}ID{% endtrans %}</th>
+            <th>{% trans %}Nom{% endtrans %}</th>
             <th>{% trans %}Description{% endtrans %}</th>
             <th>{% trans %}Actions{% endtrans %}</th>
         </tr>
@@ -34,10 +34,12 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('universe_show', { 'id': universe.id }) }}">{% trans %}Show{% endtrans %}</a>
+                            <a href="{{ path('universe_show', { 'id': universe.id }) }}">{% trans %}
+                                Afficher{% endtrans %}</a>
                         </li>
                         <li>
-                            <a href="{{ path('universe_edit', { 'id': universe.id }) }}">{% trans %}Edit{% endtrans %}</a>
+                            <a href="{{ path('universe_edit', { 'id': universe.id }) }}">{% trans %}
+                                Modifier{% endtrans %}</a>
                         </li>
                     </ul>
                 </td>
@@ -48,7 +50,9 @@
     <br><br>
     <ul>
         <li>
-            <a href="{{ path('universe_new') }}"><div class="btn btn-primary btn-circle">{% trans %}Create Universe {% endtrans%}</div></a>
+            <a href="{{ path('universe_new') }}">
+                <div class="btn btn-primary btn-circle">{% trans %}Créer un Univers {% endtrans %}</div>
+            </a>
         </li>
     </ul>
 {% endblock %}
