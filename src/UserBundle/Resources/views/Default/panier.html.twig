@@ -13,17 +13,18 @@
 {% block body %}
 
     <h1 class="title">Récapitulatif des commandes</h1>
-    <table class="table table-responsive" id="Commandes">
+<div class="table-responsive tab-commande">
+    <table class="table table-hover">
         <thead class="thead-default">
-        <tr>
+        <tr class="color-title">
 
-            <th>{% trans %}Nom du vin{% endtrans %}</th>
-            <th>{% trans %}Image{% endtrans %}</th>
-            <th>{% trans %}Description{% endtrans %}</th>
-            <th>{% trans %}Prix HT{% endtrans %}</th>
-            <th>{% trans %}Quantité{% endtrans %}</th>
-            <th>{% trans %}TVA{% endtrans %}</th>
-            <th>{% trans %}Prix TTC{% endtrans %}</th>
+            <th class="col-xs-1">{% trans %}Nom du vin{% endtrans %}</th>
+            <th class="col-xs-1">{% trans %}Image{% endtrans %}</th>
+            <th class="col-xs-6">{% trans %}Description{% endtrans %}</th>
+            <th class="col-xs-1">{% trans %}Prix HT{% endtrans %}</th>
+            <th class="col-xs-1">{% trans %}Quantité{% endtrans %}</th>
+            <th class="col-xs-1">{% trans %}TVA{% endtrans %}</th>
+            <th class="col-xs-1">{% trans %}Prix TTC{% endtrans %}</th>
         </tr>
         </thead>
         <tbody>
@@ -54,6 +55,9 @@
 
         </tbody>
     </table>
+</div>
+
+
 {% endblock %}
 {#
 https://api-3t.sandbox.paypal.com/nvp?version=204&user=grisot.remi-facilitator_api1.gmail.com&pwd=QZLEL69NWCF6QUGE&signature=AFcWxV21C7fd0v3bYYYRCpSSRl31Ab6nocvqRHaMJv1ybVoYzIrz8WGl&method=setexpresscheckout&cancelurl=https://google.fr&currencycode=EUR&returnurl=https://google.fr&amt=10.0&desc=bonne%20vinasse&localecode=fr

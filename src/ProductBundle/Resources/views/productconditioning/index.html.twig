@@ -1,11 +1,14 @@
 {% extends 'base.html.twig' %}
-
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/media.css') }}" rel="stylesheet" />
+{% endblock %}
 {% block body %}
-    <h1>Productconditionings list</h1>
-
-    <table>
-        <thead>
-            <tr>
+    <h3>Product conditionings list</h3>
+<div class="table-responsive tableau_product">
+    <table class="table table-hover">
+        <thead class="thead-default">
+            <tr class="color-title">
                 <th>Id</th>
                 <th>Name</th>
                 <th>Pubprice</th>
@@ -42,6 +45,7 @@
         {% endfor %}
         </tbody>
     </table>
+</div>
 
     <ul>
         <li>
