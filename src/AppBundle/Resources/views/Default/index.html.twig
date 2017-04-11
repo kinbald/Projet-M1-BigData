@@ -8,6 +8,16 @@
 
 {% block javascripts %}
     {{ parent() }}
+    <script>
+        $(document).ready(function() {
+            $('.page-scroll').on('click', function() { // Au clic sur un élément
+                var page = $(this).attr('href'); // Page cible
+                var speed = 750; // Durée de l'animation (en ms)
+                $('html, body').animate( { scrollTop: $(page).offset().top }, speed ); // Go
+                return false;
+            });
+        });
+    </script>
 {% endblock %}
 
 {% block body %}
@@ -28,6 +38,16 @@
     </section>
 
     <section>
+        <img class="fond_clic" src="/img/img_clic.jpg" alt="/img/lel.gif"/>
+        <div class="fond_clic">
+            <h3>Retrouvez toutes nos fonctionnalités</h3>
+            <a href="#univers" class="page-scroll"><button class="bouton_clic" >Nos Univers</button></a>
+            <a href="#recettes" class="page-scroll"><button class="bouton_clic" >Nos Recettes</button></a>
+            <a href="#news" class="page-scroll"><button class="bouton_clic" >Les Concours</button></a>
+        </div>
+    </section>
+
+    <section id="univers">
         <div class="text-center">
             <h1> Box Office Wines</h1>
             {% for universe in universes %}
@@ -69,11 +89,12 @@
 
         </div>
 
-    <section class="testimonials testimonials-banner" id="testimonials">
-        <div class="container">
+    <section class="testimonials testimonials-banner" id="recettes">
+        <div class="container" >
             <div class="row">
                 <div class="col-md-12">
                     <h3 class="section-heading">{% trans %}Recettes{% endtrans %}</h3>
+
                 </div>
                 <div class="testimonials-slider text-center">
                     <div class="swiper-wrapper">

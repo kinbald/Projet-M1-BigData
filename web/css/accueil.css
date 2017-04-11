@@ -7,6 +7,44 @@
         margin-bottom: 3%;
     }
 
+    h3{
+        font-size: 50px;
+        font-family: 'Dancing Script', cursive;
+        color:white;
+        margin-top: 10px;
+        margin-bottom: 3%;
+    }
+
+
+    .fond_clic{
+        text-align: center;
+        margin-top: 5vh;
+        position: absolute;
+        background-color: rgba(0,0,0,0.7);
+        height: 80vh;
+        width: 100vw;
+    }
+
+    .bouton_clic{
+        font-family: 'Roboto', cursive;
+        font-size: 5vw;
+        background-color: rgba(255,255,255,0.25);
+        display: block;
+        margin-top: 1vh;
+        margin-left: 15vw;
+        height: 10vh;
+        width: 70vw;
+        border-width: medium;
+        border-radius: 20px;
+        border-color: #DDDDDD;
+        border-style: solid;
+
+    }
+
+    .texte_bouton{
+        margin-top: 5px;
+    }
+
     .neutral {
         display: inline-block;
         text-align: center;
@@ -83,6 +121,41 @@
         color:white;
         margin-top: 80px;
         margin-bottom: 3%;
+    }
+    h3{
+        font-size: 50px;
+        font-family: 'Dancing Script', cursive;
+        color:white;
+        margin-top: 80px;
+        margin-bottom: 3%;
+    }
+    .fond_clic{
+        text-align: center;
+        margin-top: 5vh;
+        position: absolute;
+        background-color: rgba(0,0,0,0.7);
+        height: 80vh;
+        width: 100vw;
+    }
+
+    .bouton_clic{
+        font-family: 'Roboto', cursive;
+        font-size: 2vw;
+        background-color: rgba(255,255,255,0.25);
+        display: inline-block;
+        margin-top: 3vh;
+        margin-left: 8vw;
+        height: 10vh;
+        width: 20vw;
+        border-width: medium;
+        border-radius: 20px;
+        border-color: #DDDDDD;
+        border-style: solid;
+
+    }
+
+    .texte_bouton{
+        margin-top: 5px;
     }
 
     .neutral {
