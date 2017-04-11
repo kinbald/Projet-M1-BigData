@@ -10,6 +10,7 @@ use UserBundle\Entity\BaseUser;
 use ContractBundle\Entity\Option;
 use ContractBundle\Entity\OptionSubscription;
 use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * UserProducer
@@ -112,14 +113,14 @@ class UserProducer extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="state", type="string", length=40)
+     * @ORM\Column(name="state", type="string", length=40, nullable=true)
      */
     private $state;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="province", type="string", length=40)
+     * @ORM\Column(name="province", type="string", length=40, nullable=true)
      */
     private $province;
 
@@ -132,6 +133,10 @@ class UserProducer extends BaseUser
     /**
      * @var string
      * @ORM\Column(name="phone", type="string", length=15)
+     * @Assert\Regex(
+     *     pattern="/^\+?[0-9]{10,15}$/",
+     *     message="Only use number, no space, except the '+' for country calling codes"
+     * )
      */
     private $phone;
 
@@ -168,8 +173,6 @@ class UserProducer extends BaseUser
     public function __construct()
     {
         parent::__construct();
-        $this->province="";
-        $this->state="";
     }
 
     /**
