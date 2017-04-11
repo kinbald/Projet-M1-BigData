@@ -191,13 +191,7 @@ class ProductController extends Controller
     {
         $deleteForm = $this->createDeleteForm($product, $product->getDiscr());
 
-        $options = Array();
-        foreach ($product->getConditioningTypes() as $conditioning)
-            if($conditioning->getStock() > 0)
-                $options['values'][$conditioning->getName()] = $conditioning->getId();
-
-        $conditioningSelect = $this->createForm('ProductBundle\Form\ConditioningSelectType', $options);
-        $conditioningSelect->handleRequest($request);
+        $conditioningSelect = $this->createForm('ProductBundle\Form\ConditioningSelectType', array('values' => $product->getConditioningTypes()));
 
         $evaluation = new ProductEvaluation();
         $evaluationForm = $this->createForm('ProductBundle\Form\EvaluationType', $evaluation);
