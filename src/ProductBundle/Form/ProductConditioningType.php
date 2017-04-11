@@ -13,7 +13,14 @@ class ProductConditioningType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('pubPrice')->add('proPrice')->add('volumeValue')->add('volumeUnit')->add('stock')->add('pack', PackType::class)->add('deliveries');
+        $builder->add('name')
+            ->add('pubPrice')
+            ->add('proPrice')
+            ->add('volumeValue')
+            ->add('volumeUnit')
+            ->add('stock')
+            ->add('pack', PackType::class, array('label' => 'Pack details : '))
+            ->add('deliveries');
     }
     
     /**
