@@ -49,12 +49,14 @@ class CartController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $rep = $em->getRepository('ProductBundle:Product');
+        $repConditioning = $em->getRepository('ProductBundle:ProductConditioning');
         $commande = new Purchase();
         $model = new CartModel($this->getDoctrine()->getManager());
         $em = $this->getDoctrine()->getManager();
 
         $idList = explode(",", $request->get('id_list'));
         $quantityList = explode(",", $request->get('quantity_list'));
+        $conditioningTypeList = explode(",", $request->get('conditioning_type_list'));
 
 
         $model->removeUserReservation($this->getUser());
@@ -68,9 +70,11 @@ class CartController extends Controller
             }else
             {
                 $product = $rep->find($idList[$i]);
+                $conditioningType = $repConditioning->find($conditioningTypeList[$i]);
                 $prodPurchase = new ProductPurchase();
                 $prodPurchase->setProduct($product);
                 $prodPurchase->setPurchase($commande);
+                $prodPurchase->setConditioningType($conditioningType);
                 $prodPurchase->setStock($quantityList[$i]);
                 $em->persist($prodPurchase);
                 $commande->addProduct($prodPurchase);
@@ -78,7 +82,7 @@ class CartController extends Controller
                 $reservation->setQuantity($quantityList[$i]);
                 $reservation->setDate(new \DateTime);
                 $reservation->setUser($this->getUser());
-                $reservation->setProduct($model->find($idList[$i]));
+                $reservation->setProductConditioning($conditioningType);
                 $em->persist($reservation);
                 $em->flush();
             }

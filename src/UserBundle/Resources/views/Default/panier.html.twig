@@ -27,17 +27,17 @@
         </tr>
         </thead>
         <tbody>
-        {% for product in commande.products %}
+        {% for productPurchase in commande.products %}
             <tr>
-                <td>{{ product.product.displayName }}</td>
-                {% for product_picture in product.product.pictures %}
+                <td>{{ productPurchase.product.name }} - {{ productPurchase.conditioningType.name }}</td>
+                {% for product_picture in productPurchase.product.pictures %}
                     <td><img class="post-entry-cover" src="/upload/{{ product_picture.url }}" alt="{{ product_picture.alt }}" /> </td>
                 {% endfor %}
-                <td><span class="height_description">{{ product.product.description }}</span></td>
-                <td>{{ (product.product.price)|round(2) }}€</td>
-                <td>{{ product.stock }}</td>
+                <td><span class="height_description">{{ productPurchase.product.description }}</span></td>
+                <td>{{ (productPurchase.conditioningType.price )|round(2) }}€</td>
+                <td>{{ productPurchase.stock}}</td>
                 <td>{{ tva }}%</td>
-                <td>{{ ((product.product.price*(1+tva/100)) * product.stock)|round(2) }}€</td>
+                <td>{{ (( productPurchase.conditioningType.price *(1+tva/100)) * productPurchase.stock)|round(2) }}€</td>
             </tr>
         {% endfor %}
         <tr>
@@ -54,7 +54,6 @@
 
         </tbody>
     </table>
-
 {% endblock %}
 {#
 https://api-3t.sandbox.paypal.com/nvp?version=204&user=grisot.remi-facilitator_api1.gmail.com&pwd=QZLEL69NWCF6QUGE&signature=AFcWxV21C7fd0v3bYYYRCpSSRl31Ab6nocvqRHaMJv1ybVoYzIrz8WGl&method=setexpresscheckout&cancelurl=https://google.fr&currencycode=EUR&returnurl=https://google.fr&amt=10.0&desc=bonne%20vinasse&localecode=fr

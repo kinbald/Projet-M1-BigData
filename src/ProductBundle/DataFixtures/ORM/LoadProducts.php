@@ -349,12 +349,6 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $purchase5->setDateOrder(new \DateTime('2016-12-03 10:00:00'));
         $manager->persist($purchase5);
 
-        $productPurchase = new ProductPurchase();
-        $productPurchase->setStock(10);
-        $productPurchase->setPurchase($purchase5);
-        $productPurchase->setProduct($wine1);
-        $manager->persist($productPurchase);
-
         $productEvaluation = new ProductEvaluation();
         $productEvaluation->setProduct($wine1);
         $productEvaluation->setUser($userConsumer);
@@ -427,6 +421,25 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         /*--------------------------------------------------------*/
 
         $condition = new ProductConditioning();
+        $condition->setName("Unité");
+        $condition->setPrice(45);
+        $condition->setPubPrice(20);
+        $condition->setProPrice(15);
+        $wine1->addConditioningType($condition);
+        $wine2->addConditioningType($condition);
+        $wine3->addConditioningType($condition);
+        $wine4->addConditioningType($condition);
+        $spiritueux1->addConditioningType($condition);
+        $spiritueux2->addConditioningType($condition);
+        $spiritueux3->addConditioningType($condition);
+        $spiritueux4->addConditioningType($condition);
+        $condition->setStock(150);
+        $condition->setPack(false);
+        $condition->setVolumeValue('1');
+        $condition->setVolumeUnit('L');
+        $manager->persist($condition);
+
+        $condition = new ProductConditioning();
         $condition->setName("Cagette");
         $condition->setPrice(45);
         $condition->setPubPrice(45);
@@ -494,13 +507,20 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
 
         /*-------------------PRODUCT PURCHASE---------------------*/
         /*--------------------------------------------------------*/
-        
-        $propur = new ProductPurchase();
-        $propur->setStock(1200);
-        $propur->setConditioningType($condition);
-        $propur->setProduct($wine3);
-        $propur->setPurchase($purchase);
-        $manager->persist($propur);
+
+        $productPurchase = new ProductPurchase();
+        $productPurchase->setStock(1200);
+        $productPurchase->setConditioningType($condition);
+        $productPurchase->setProduct($wine3);
+        $productPurchase->setPurchase($purchase);
+        $manager->persist($productPurchase);
+
+        $productPurchase = new ProductPurchase();
+        $productPurchase->setStock(10);
+        $productPurchase->setConditioningType($condition);
+        $productPurchase->setProduct($wine1);
+        $productPurchase->setPurchase($purchase5);
+        $manager->persist($productPurchase);
 
 
         $delivery = new Delivery();

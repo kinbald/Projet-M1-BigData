@@ -93,6 +93,12 @@ class ProductConditioning
     protected $deliveries;
 
     /**
+     * @var Collection
+     * @ORM\OneToMany(targetEntity="\ProductBundle\Entity\Reservation", mappedBy="product")
+     */
+    protected $reservations;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -411,5 +417,39 @@ class ProductConditioning
     public function __toString()
     {
         return $this->name;
+    }
+
+    /**
+     * Add reservations
+     *
+     * @param \ProductBundle\Entity\Reservation $reservation
+     *
+     * @return Product
+     */
+    public function addReservation(\ProductBundle\Entity\Reservation $reservation)
+    {
+        $this->reservations[] = $reservation;
+
+        return $this;
+    }
+
+    /**
+     * Remove reservations
+     *
+     * @param \ProductBundle\Entity\Reservation $reservation
+     */
+    public function removeReservation(\ProductBundle\Entity\Reservation $reservation)
+    {
+        $this->reservations->removeElement($reservation);
+    }
+
+    /**
+     * Get reservations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReservations()
+    {
+        return $this->reservations;
     }
 }

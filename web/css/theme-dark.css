@@ -23,6 +23,7 @@
   width: 60px;
   border: none;
   float: right;
+  margin: auto;
 }
 
 .ti-wand:before {
@@ -4854,7 +4855,14 @@ button.close, .close {
     float: left;
     width: 80%;
     padding-right: 30px;
-    padding-left: 15px; }
+    padding-left: 15px;
+    font-size: 20px; }
+  .cart-item-conditioning-type {
+    float: left;
+    width: 80%;
+    padding-right: 30px;
+    padding-left: 15px;
+    font-size: 20px; }
   .cart-item-image {
     float: left;
     width: 20%; }

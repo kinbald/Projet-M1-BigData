@@ -5115,9 +5115,12 @@ if (function (e, t) {
     var panier = JSON.parse(window.localStorage.getItem('panier'));
     var idList = "";
     var quantityList = "";
+    var conditioningTypeList = "";
 
     var curCost = 0;
     var curName = 0;
+    var curConditioningTypeName = 0;
+    var curConditioningTypeId = 0;
     var cartItems = [];
     var cindex = 0;
     var fx = 0,
@@ -5126,12 +5129,9 @@ if (function (e, t) {
         ty = 0;
     var curItem = "";
     var item_list = document.querySelectorAll(".add-item");
-    $delivery = $("input[name=delivery]:checked").val();
-    var delivery = Number($delivery);
 
     loadItems();
 
-    document.getElementById("cost_delivery").innerHTML = delivery.toFixed(2);
     for (var i = 0; i < item_list.length; i++) {
         item_list[i].addEventListener("click", function(ev) {
             var id = this.getAttribute("data-id");
@@ -5148,10 +5148,12 @@ if (function (e, t) {
             curCost = this.getAttribute("data-cost");
             curName = this.getAttribute("data-name");
             curImage = this.getAttribute("data-image");
+            curConditioningTypeName = this.getAttribute("data-conditioning-type-name");
+            curConditioningTypeId = this.getAttribute("data-conditioning-type-id");
             quantity = 1;
 
 
-            panier.push({prix: curCost, nom: curName, image: curImage, id: id, quantity: quantity});
+            panier.push({prix: curCost, nom: curName, image: curImage, id: id, quantity: quantity, conditioningTypeName: curConditioningTypeName, conditioningTypeId: curConditioningTypeId});
             window.localStorage.setItem('panier', JSON.stringify(panier));
 
             var x = $(this).position();
@@ -5159,11 +5161,12 @@ if (function (e, t) {
             (function() {
                 mover_animator(fx, fy, tx, ty);
             })(setTimeout(function() {
-                addItem(id, curCost, curName, curImage);
+                addItem(id, curCost, curName, curImage, curConditioningTypeName, curConditioningTypeId);
             }, 350));
             panierToString();
             $("#id_list").val(idList);
             $("#quantity_list").val(quantityList);
+            $("#conditioning_type_list").val(conditioningTypeList);
         })
     }
 
@@ -5192,6 +5195,7 @@ if (function (e, t) {
         panierToString();
         $("#id_list").val(idList);
         $("#quantity_list").val(quantityList);
+        $("#conditioning_type_list").val(conditioningTypeList);
         removeCost(curCost*quantity);
     });
 
@@ -5203,26 +5207,23 @@ if (function (e, t) {
         document.getElementById("items").innerHTML += "<div class='cart-item' id='item" + cindex +
             "' data-id='" + id + "'><span class='cart-item-image'><img alt='" + curName + "' src='" + curImage +
             "'/></span><span class='cart-item-name h4'>" + curName +
+            "</span><span class='cart-item-conditioning-type h4'>" + curConditioningTypeName +
             "</span><span class='cart-item-price'>$<span class='cvalue'>" + cost +
             "</span></span><span class='cart-item-remove'>✘</span>" +
-            "<br/><br/><br/><span class='cart cart-item-name'>quantity<input class='quantityInput' type='number' min='1' max='1023' data-id='" + id +"' value='"+quantity+"'></span></div>";
+            "<br/><br/><br/><span class='cart cart-item-name'>quantity<input class='quantityInput' type='number' min='1' max='1023' data-id='" + id +"' data-conditioning-type-id='" + curConditioningTypeId +"' value='"+quantity+"'></span></div>";
         document.getElementById("items-counter").innerHTML += "<span class='animate '><div class='caddie glyphicon glyphicon-shopping-cart'></div>" + curCounter +
             "<span class='circle'></span></span>";
         document.getElementById("item" + cindex).classList.remove("hidden");
         panierToString();
         $("#id_list").val(idList);
         $("#quantity_list").val(quantityList);
+        $("#conditioning_type_list").val(conditioningTypeList);
         toggleEptyCart();
 
         $('input').change(function() {
-            $delivery = $(this).val();
             $total = document.getElementById("cost_value").innerHTML;
             var total = Number($total);
-            var delivery = Number($delivery);
-            var carttotal = total + delivery;
-            document.getElementById("total-total").innerHTML = carttotal.toFixed(2);
-            $("#amount").val(carttotal.toFixed(2));
-            document.getElementById("cost_delivery").innerHTML = delivery.toFixed(2);
+            $("#amount").val(total.toFixed(2));
 
 
             var id = this.getAttribute("data-id");
@@ -5242,17 +5243,12 @@ if (function (e, t) {
     }
 
     function addCost(amount) {
-        $delivery = $("input[name=delivery]:checked").val();
-        var delivery = Number($delivery);
         var oldcost = document.getElementById("cost_value").innerHTML;
         oldcost = parseFloat(oldcost);
         amount = parseFloat(amount);
         var newcost = oldcost + amount;
-        var total = oldcost + amount;
         document.getElementById("cost_value").innerHTML = newcost.toFixed(2);
-        var carttotal = total + delivery;
-        document.getElementById("total-total").innerHTML = carttotal.toFixed(2);
-        $("#amount").val(carttotal.toFixed(2));
+        $("#amount").val(newcost.toFixed(2));
     }
 
     function loadItems() {
@@ -5265,8 +5261,10 @@ if (function (e, t) {
                     curName = panier[indice].nom;
                     curImage = panier[indice].image;
                     cindex = panier[indice].id;
+                    curConditioningTypeName = panier[indice].conditioningTypeName;
+                    curConditioningTypeId = panier[indice].conditioningTypeId;
                     quantity = panier[indice].quantity;
-                    addItem(cindex, curCost, quantity, curName, curImage);
+                    addItem(cindex, curCost, quantity, curName, curImage, curConditioningTypeName, curConditioningTypeId);
                     addCost(curCost*quantity);
                 }
             }
@@ -5274,18 +5272,22 @@ if (function (e, t) {
         panierToString();
         $("#id_list").val(idList);
         $("#quantity_list").val(quantityList);
+        $("#conditioning_type_list").val(conditioningTypeList);
     }
 
     function panierToString(){
         idList = "";
         quantityList = "";
+        conditioningTypeList = ""
         if(panier.length > 0){
             for(var i = 0; i < panier.length - 1; i++){
                 idList += panier[i].id + ",";
                 quantityList += panier[i].quantity + ",";
+                conditioningTypeList += panier[i].conditioningTypeId + ",";
             }
             idList += panier[i].id;
             quantityList += panier[i].quantity;
+            conditioningTypeList += panier[i].conditioningTypeId;
         }
 
     }
@@ -5293,8 +5295,6 @@ if (function (e, t) {
     function removeItem() {}
 
     function removeCost(amount) {
-        $delivery = $("input[name=delivery]:checked").val();
-        var delivery = Number($delivery);
         var oldcost = document.getElementById("cost_value").innerHTML;
         oldcost = parseFloat(oldcost);
         amount = parseFloat(amount);
@@ -5302,15 +5302,8 @@ if (function (e, t) {
         if (newcost == "NaN") {
             newcost = 0.00
         }
-        var total = (oldcost - amount);
-        if (total == "NaN") {
-            total = 0.00
-        }
-        var carttotal = total + delivery;
-        document.getElementById("total-total").innerHTML = carttotal.toFixed(2);
         document.getElementById("cost_value").innerHTML = newcost.toFixed(2);
-        document.getElementById("cost_delivery").innerHTML = delivery.toFixed(2);
-        $("#amount").val(carttotal.toFixed(2));
+        $("#amount").val(newcost.toFixed(2));
     }
 
     function mover_animator(x1, y1, x2, y2) {
@@ -5352,14 +5345,12 @@ if (function (e, t) {
     function toggleEptyCart() {
         if (document.querySelectorAll(".cart-item").length >= 1) {
             document.getElementById("cart-summary").style.display = "block";
-            document.getElementById("cart-delivery").style.display = "block";
             document.getElementById("cart-form").style.display = "block";
             document.getElementById("cart-empty").style.display = "none";
             document.getElementById("items-counter").style.display = "block";
         }
         else {
             document.getElementById("cart-summary").style.display = "none";
-            document.getElementById("cart-delivery").style.display = "none";
             document.getElementById("cart-form").style.display = "none";
             document.getElementById("cart-empty").style.display = "block";
             document.getElementById("items-counter").style.display = "none";

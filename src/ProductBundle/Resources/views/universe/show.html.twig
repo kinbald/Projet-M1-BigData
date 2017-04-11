@@ -118,15 +118,8 @@
                                         </span>
                             <span class="swiper-slide text-center table-product-text">
 											<span class="table-product-name">{{ product.displayName }}</span><br>
-											<span class="table-product-price">{{ product.price }} â‚¬</span>
 										</span>
                         </a>
-
-                        <span class="btn add-item wow swing"
-                              {% if picture %}data-image="{{ asset(picture.url) }}"{% endif %}
-                              data-name="{{ product.name }}" data-cost="{{ product.price }}"
-                              data-id="{{ product.id }}" >
-                                    <img alt="e-commerce" src="{{ asset('img/product/panier.png') }}" height="55">
                     </span>
                     </div>
                 </li>

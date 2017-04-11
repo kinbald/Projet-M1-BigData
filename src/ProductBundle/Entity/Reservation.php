@@ -39,12 +39,12 @@ class Reservation
 
 
     /**
-     * @var Product
-     * @ORM\ManyToOne(targetEntity="\ProductBundle\Entity\Product", inversedBy="reservations")
+     * @var ProductConditioning
+     * @ORM\ManyToOne(targetEntity="\ProductBundle\Entity\ProductConditioning", inversedBy="reservations")
      * @ORM\JoinColumn(nullable=false)
      * })
      */
-    private $product;
+    private $productConditioning;
 
     /**
      * @var BaseUser
@@ -124,26 +124,26 @@ class Reservation
 
 
     /**
-     * Set products
+     * Set productConditioning
      *
-     * @param \ProductBundle\Entity\Product $product
+     * @param \ProductBundle\Entity\ProductConditioning $productConditioning
      *
      * @return Reservation
      */
-    public function setProduct(\ProductBundle\Entity\Product $product)
+    public function setProductConditioning(\ProductBundle\Entity\ProductConditioning $productConditioning)
     {
-        $this->product = $product;
+        $this->productConditioning = $productConditioning;
         return $this;
     }
 
     /**
-     * Get products
+     * Get productConditioning
      *
-     * @return Product
+     * @return ProductConditioning
      */
-    public function getProduct()
+    public function getProductConditioning()
     {
-        return $this->product;
+        return $this->productConditioning;
     }
 
     /**
