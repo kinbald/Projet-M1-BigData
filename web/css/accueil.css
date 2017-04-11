@@ -18,7 +18,6 @@
 
     .fond_clic{
         text-align: center;
-        margin-top: 5vh;
         position: absolute;
         background-color: rgba(0,0,0,0.7);
         height: 80vh;
@@ -131,7 +130,6 @@
     }
     .fond_clic{
         text-align: center;
-        margin-top: 5vh;
         position: absolute;
         background-color: rgba(0,0,0,0.7);
         height: 80vh;
