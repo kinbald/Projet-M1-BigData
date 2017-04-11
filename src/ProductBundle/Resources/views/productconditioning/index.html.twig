@@ -1,10 +1,13 @@
 {% extends 'base.html.twig' %}
+
 {% block stylesheets %}
     {{ parent() }}
     <link href="{{ asset('css/media.css') }}" rel="stylesheet" />
 {% endblock %}
+
 {% block body %}
-    <h3>Product conditionings list</h3>
+    <div id="content">
+    <h3 style="text-align: center">Product conditionings list</h3>
 <div class="table-responsive tableau_product">
     <table class="table table-hover">
         <thead class="thead-default">
@@ -46,10 +49,11 @@
         </tbody>
     </table>
 </div>
-
-    <ul>
-        <li>
-            <a href="{{ path('conditioning_new') }}">Create a new productConditioning</a>
-        </li>
-    </ul>
+        <br>
+        <ul>
+            <li>
+                <a class="btn btn-primary btn-circle" href="{{ path('conditioning_new') }}">New Conditioning</a>
+            </li>
+        </ul>
+    </div>
 {% endblock %}

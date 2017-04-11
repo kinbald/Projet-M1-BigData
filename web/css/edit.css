@@ -50,12 +50,21 @@ label
 #productbundle_purchase_postalCode,
 #productbundle_purchase_country,
 #productbundle_purchase_user,
-#chemin{
+#chemin,
+#productbundle_productconditioning_name,
+#productbundle_productconditioning_pubPrice,
+#productbundle_productconditioning_proPrice,
+#productbundle_productconditioning_volumeValue,
+#productbundle_productconditioning_volumeUnit,
+#productbundle_productconditioning_stock,
+#productbundle_productconditioning_pack_name,
+#productbundle_productconditioning_pack_quantityIn{
     border-radius: 10px;
     color:#555555;
 }
 
-#productbundle_wine_universes {
+#productbundle_wine_universes,
+#productbundle_productconditioning_deliveries {
     border-radius: 10px;
     color:#555555;
     width: 12em;
@@ -175,5 +184,9 @@ div {
 .clic{
     margin-top: 10px;
     margin-bottom: -40px;
+}
+
+#productbundle_productconditioning_pack {
+    margin-top:30px;
 }
 

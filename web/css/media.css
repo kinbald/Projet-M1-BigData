@@ -76,3 +76,7 @@ body {
 }
 li{text-align: center;}
 .btn{color: black}
+
+#content {
+    margin-top: 75px;
+}
