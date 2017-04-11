@@ -6,14 +6,14 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ProductConditioningType extends AbstractType
+class PackType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('pubPrice')->add('proPrice')->add('volumeValue')->add('volumeUnit')->add('stock')->add('pack', PackType::class)->add('deliveries');
+        $builder->add('name')->add('quantityIn');
     }
     
     /**
@@ -22,7 +22,7 @@ class ProductConditioningType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'ProductBundle\Entity\ProductConditioning'
+            'data_class' => 'ProductBundle\Entity\Pack'
         ));
     }
 
@@ -31,7 +31,7 @@ class ProductConditioningType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'productbundle_productconditioning';
+        return 'productbundle_pack';
     }
 
 

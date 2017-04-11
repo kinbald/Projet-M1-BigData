@@ -14,19 +14,19 @@
                 <td>{{ productConditioning.name }}</td>
             </tr>
             <tr>
-                <th>Pubprice</th>
+                <th>Public price</th>
                 <td>{{ productConditioning.pubPrice }}</td>
             </tr>
             <tr>
-                <th>Proprice</th>
+                <th>Pro price</th>
                 <td>{{ productConditioning.proPrice }}</td>
             </tr>
             <tr>
-                <th>Volumevalue</th>
+                <th>Volume value</th>
                 <td>{{ productConditioning.volumeValue }}</td>
             </tr>
             <tr>
-                <th>Volumeunit</th>
+                <th>Volume unit</th>
                 <td>{{ productConditioning.volumeUnit }}</td>
             </tr>
             <tr>
@@ -35,8 +35,19 @@
             </tr>
             <tr>
                 <th>Pack</th>
-                <td>{% if productConditioning.pack %}Yes{% else %}No{% endif %}</td>
+                <td>{% if productConditioning.pack is not null %}Yes{% else %}No{% endif %}</td>
             </tr>
+            {% if productConditioning.pack is not null %}
+                <tr>
+                    <th>Pack name</th>
+                    <td>productConditioning.pack.name</td>
+                </tr>
+                <tr>
+                    <th>Quantity in pack</th>
+                    <td>productConditioning.pack.quantityIn</td>
+                </tr>
+
+            {% endif %}
         </tbody>
     </table>
 
@@ -47,10 +58,12 @@
         <li>
             <a href="{{ path('conditioning_edit', { 'id': productConditioning.id }) }}">Edit</a>
         </li>
+        {% if not has_purchases %}
         <li>
             {{ form_start(delete_form) }}
                 <input type="submit" value="Delete">
             {{ form_end(delete_form) }}
         </li>
+        {% endif %}
     </ul>
 {% endblock %}

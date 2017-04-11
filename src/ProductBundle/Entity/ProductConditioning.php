@@ -5,6 +5,10 @@ namespace ProductBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use ProductBundle\Entity\Delivery;
+use ProductBundle\Entity\Pack;
+use ProductBundle\Entity\Product;
+use ProductBundle\Entity\ProductPurchase;
 use UserBundle\Entity\BaseUser;
 use UserBundle\Entity\UserWholesale;
 
@@ -68,9 +72,8 @@ class ProductConditioning
     private $stock;
 
     /**
-     * @var boolean
+     *@ORM\OneToOne(targetEntity="\ProductBundle\Entity\Pack", cascade={"persist"})
      *
-     * @ORM\Column(name="pack", type="boolean")
      */
     private $pack;
 
@@ -282,38 +285,16 @@ class ProductConditioning
         return $this->stock;
     }
 
-    /**
-     * Set pack
-     *
-     * @param boolean $pack
-     *
-     * @return ProductConditioning
-     */
-    public function setPack($pack)
-    {
-        $this->pack = $pack;
 
-        return $this;
-    }
-
-    /**
-     * Get pack
-     *
-     * @return boolean
-     */
-    public function getPack()
-    {
-        return $this->pack;
-    }
 
     /**
      * Add product
      *
-     * @param \ProductBundle\Entity\Product $product
+     * @param Product $product
      *
      * @return ProductConditioning
      */
-    public function addProduct(\ProductBundle\Entity\Product $product)
+    public function addProduct(Product $product)
     {
         $this->products[] = $product;
 
@@ -323,9 +304,9 @@ class ProductConditioning
     /**
      * Remove product
      *
-     * @param \ProductBundle\Entity\Product $product
+     * @param Product $product
      */
-    public function removeProduct(\ProductBundle\Entity\Product $product)
+    public function removeProduct(Product $product)
     {
         $this->products->removeElement($product);
     }
@@ -343,11 +324,11 @@ class ProductConditioning
     /**
      * Add purchase
      *
-     * @param \ProductBundle\Entity\ProductPurchase $purchase
+     * @param ProductPurchase $purchase
      *
      * @return ProductConditioning
      */
-    public function addPurchase(\ProductBundle\Entity\ProductPurchase $purchase)
+    public function addPurchase(ProductPurchase $purchase)
     {
         $this->purchases[] = $purchase;
 
@@ -357,9 +338,9 @@ class ProductConditioning
     /**
      * Remove purchase
      *
-     * @param \ProductBundle\Entity\ProductPurchase $purchase
+     * @param ProductPurchase $purchase
      */
-    public function removePurchase(\ProductBundle\Entity\ProductPurchase $purchase)
+    public function removePurchase(ProductPurchase $purchase)
     {
         $this->purchases->removeElement($purchase);
     }
@@ -377,11 +358,11 @@ class ProductConditioning
     /**
      * Add delivery
      *
-     * @param \ProductBundle\Entity\Delivery $delivery
+     * @param Delivery $delivery
      *
      * @return ProductConditioning
      */
-    public function addDelivery(\ProductBundle\Entity\Delivery $delivery)
+    public function addDelivery(Delivery $delivery)
     {
         $this->deliveries[] = $delivery;
 
@@ -391,9 +372,9 @@ class ProductConditioning
     /**
      * Remove delivery
      *
-     * @param \ProductBundle\Entity\Delivery $delivery
+     * @param Delivery $delivery
      */
-    public function removeDelivery(\ProductBundle\Entity\Delivery $delivery)
+    public function removeDelivery(Delivery $delivery)
     {
         $this->deliveries->removeElement($delivery);
     }
@@ -411,5 +392,29 @@ class ProductConditioning
     public function __toString()
     {
         return $this->name;
+    }
+
+    /**
+     * Set pack
+     *
+     * @param Pack $pack
+     *
+     * @return ProductConditioning
+     */
+    public function setPack(Pack $pack = null)
+    {
+        $this->pack = $pack;
+
+        return $this;
+    }
+
+    /**
+     * Get pack
+     *
+     * @return Pack
+     */
+    public function getPack()
+    {
+        return $this->pack;
     }
 }

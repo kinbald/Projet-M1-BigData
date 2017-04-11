@@ -70,6 +70,7 @@ class ProductConditioningController extends Controller
         return $this->render('ProductBundle:productconditioning:show.html.twig', array(
             'productConditioning' => $productConditioning,
             'delete_form' => $deleteForm->createView(),
+            'has_purchases' => count($productConditioning->getPurchases()) > 0
         ));
     }
 
@@ -94,7 +95,7 @@ class ProductConditioningController extends Controller
         return $this->render('ProductBundle:productconditioning:edit.html.twig', array(
             'productConditioning' => $productConditioning,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+            'delete_form' => $deleteForm->createView()
         ));
     }
 
@@ -109,7 +110,7 @@ class ProductConditioningController extends Controller
         $form = $this->createDeleteForm($productConditioning);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid() && count($productConditioning->getPurchases()) == 0) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($productConditioning);
             $em->flush();

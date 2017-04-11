@@ -51,14 +51,14 @@ class Purchase
     /**
      * @var string
      *
-     * @ORM\Column(name="state", type="string", length=40)
+     * @ORM\Column(name="state", type="string", length=40, nullable=true)
      */
     private $state;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="province", type="string", length=40)
+     * @ORM\Column(name="province", type="string", length=40, nullable=true)
      */
     private $province;
 
