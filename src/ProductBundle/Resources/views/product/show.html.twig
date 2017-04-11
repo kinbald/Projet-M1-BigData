@@ -222,9 +222,12 @@
 
             <div class="comment-content">
                 <div class="form-style-1">
-                    {{ dump(evaluation_form) }}
+                    <ul>
+                    {% for error in errors %}
+                        <li>{{ error.message }}</li>
+                    {% endfor %}
+                    </ul>
                     {{ form_start(evaluation_form) }}
-                    {{ form_errors(evaluation_form) }}
                     {{ form_widget(evaluation_form) }}
                     {{ form_end(evaluation_form) }}
                 </div>
