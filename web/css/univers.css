@@ -319,51 +319,103 @@ details[open] summary:after {
 /***********************************************/
 
 
-#Bandeau{
-    margin-top: 53px;
-    width: 100%;
-    height: 200px;
-    background-color: #1ac67d;
-    text-align: center;
+@media screen and (min-width: 1200px) {
+
+    #Bandeau {
+        margin-top: 53px;
+        width: 100%;
+        height: 200px;
+        background-color: #1ac67d;
+        text-align: center;
+    }
+
+    #image_univers {
+        width: 100%;
+        max-height: 200px;
+    }
+
+    #Recherche {
+        width: 20%;
+        height: 100%;
+        float: left;
+
+        margin-top: 30px;
+        margin-left: 30px;
+        margin-right: auto;
+        margin-bottom: 70px;
+        padding: 30px;
+
+        border-radius: 20px;
+        box-shadow: 2px 2px 6px #aaa;
+        color: white;
+        text-shadow: 2px 2px 2px black;
+    }
+
+    #Produits {
+        float: left;
+        width: 70%;
+        height: 100%;
+
+        margin-top: 30px;
+        margin-left: 30px;
+        margin-right: auto;
+        margin-bottom: 70px;
+        padding: 30px;
+
+        border-radius: 20px;
+        box-shadow: 2px 2px 6px #aaa;
+        color: white;
+        text-shadow: 2px 2px 2px black;
+
+    }
 }
 
-#image_univers{
-    width: 100%;
-    max-height: 200px;
-}
+@media screen and (max-width: 1199px) {
 
-#Recherche{
-    width: 20%;
-    height: 100%;
-    float: left;
+    #Bandeau {
+        margin-top: 53px;
+        width: 100%;
+        height: 200px;
+        background-color: #1ac67d;
+        text-align: center;
+    }
 
-    margin-top: 30px;
-    margin-left: 30px;
-    margin-right: auto;
-    margin-bottom: 70px;
-    padding: 30px;
+    #image_univers {
+        width: 100%;
+        max-height: 200px;
+    }
 
-    border-radius: 20px;
-    box-shadow: 2px 2px 6px #aaa;
-    color: white;
-    text-shadow: 2px 2px 2px black;
-}
+    #Recherche {
+        float: left;
+        width: 80%;
+        height: 100%;
 
-#Produits{
-    float: left;
-    width: 70%;
-    height: 100%;
+        margin-top: 30px;
+        margin-left: 10%;
+        margin-right: 10%;
+        padding: 30px;
 
-    margin-top: 30px;
-    margin-left: 30px;
-    margin-right: auto;
-    margin-bottom: 70px;
-    padding: 30px;
+        border-radius: 20px;
+        box-shadow: 2px 2px 6px #aaa;
+        color: white;
+        text-shadow: 2px 2px 2px black;
+    }
 
-    border-radius: 20px;
-    box-shadow: 2px 2px 6px #aaa;
-    color: white;
-    text-shadow: 2px 2px 2px black;
+    #Produits {
+        height: 100%;
+        float: left;
+        width: 80%;
 
+        margin-top: 30px;
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-bottom: 70px;
+        padding: 30px;
+
+        border-radius: 20px;
+        box-shadow: 2px 2px 6px #aaa;
+        color: white;
+        text-shadow: 2px 2px 2px black;
+    }
 }
 
