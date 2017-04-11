@@ -127,7 +127,7 @@
             </tr>
             <tr>
                 <td class="attribute">
-                    {% trans %}Traduction! Degres Alcool{% endtrans %}:
+                    {% trans %}Degres Alcool{% endtrans %}:
                 </td>
                 <td class="att-value">
                     {{ product.alcoholDegree }}%
@@ -135,7 +135,7 @@
             </tr>
             <tr>
                 <td class="attribute">
-                    {% trans %}Traduction! Sucre{% endtrans %}:
+                    {% trans %}Sucre{% endtrans %}:
                 </td>
                 <td class="att-value">
                     {{ product.sugar }} g/L
@@ -146,7 +146,7 @@
                     {% trans %}Stock{% endtrans %}:
                 </td>
                 <td class="att-value">
-                    {{ product.stock}} {% trans %}Traduction! bouteille{% endtrans %}{% if product.stock>1 %}s{% endif %}
+                    {{ product.stock}} {% trans %}Bouteille{% endtrans %}{% if product.stock>1 %}s{% endif %}
                 </td>
             </tr>
             {% if product.conditioningTypes is not empty  %}
@@ -156,7 +156,7 @@
                     </td>
                     <td class="td att-value">
                         {% for conditioningType in product.conditioningTypes %}
-                            {{ conditioningType.name }} (XXX {% trans %}Traduction! bouteille{% endtrans %}s){% if not loop.last %}, {% endif %}
+                            {{ conditioningType.name }} (XXX {% trans %}Bouteille{% endtrans %}s){% if not loop.last %}, {% endif %}
                         {% endfor %}
                     </td>
                 </tr>
