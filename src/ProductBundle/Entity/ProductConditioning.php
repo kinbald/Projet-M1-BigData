@@ -98,7 +98,7 @@ class ProductConditioning
 
     /**
      * @var Collection
-     * @ORM\OneToMany(targetEntity="\ProductBundle\Entity\Reservation", mappedBy="product")
+     * @ORM\OneToMany(targetEntity="\ProductBundle\Entity\Reservation", mappedBy="productConditioning")
      */
     protected $reservations;
 
