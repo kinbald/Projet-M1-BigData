@@ -25,11 +25,10 @@
     <section class="testimonials testimonials-banner" id="testimonials">
         <div class="container">
             <div class="row">
-                <img src="{{ asset("img/logo.png") }}" alt="logo"><br>
-                <span class="text-newsletter newsletter">{% trans %}S'abonner à la Newsletter{% endtrans %}: </span><br>
+                <span class="text-newsletter newsletter">{% trans %}S'abonner à la Newsletter{% endtrans %}: </span>
 
                 <form method="post" action="">
-                    <p><input id="" class="text-newsletter" name="email" type="text" placeholder="Veuillez entrer votre email"/></p>
+                    <input id="input-newsletter" class="text-newsletter" name="email" type="text" placeholder="Veuillez entrer votre email"/>
                 </form>
                     <button type="button" class="button btn-info btn-lg" data-toggle="modal" data-target="#myModal">{% trans %}Je m'inscris{% endtrans %}</button>
             </div>
