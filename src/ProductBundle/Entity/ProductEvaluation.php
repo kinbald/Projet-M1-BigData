@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use ProductBundle\Entity\Product;
 use UserBundle\Entity\UserConsumer;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * ProductEvaluation
  *
@@ -30,14 +31,14 @@ class ProductEvaluation
 
     /**
      * @var int
-     *
+     * @Assert\NotBlank(message="mark should not be empty")
      * @ORM\Column(name="mark", type="integer")
      */
     private $mark;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank(message="review should not be empty")
      * @ORM\Column(name="review", type="string", length=255)
      */
     private $review;

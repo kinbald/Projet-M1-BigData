@@ -191,13 +191,7 @@ class ProductController extends Controller
     {
         $deleteForm = $this->createDeleteForm($product, $product->getDiscr());
 
-        $options = Array();
-        foreach ($product->getConditioningTypes() as $conditioning)
-            if($conditioning->getStock() > 0)
-                $options['values'][$conditioning->getName()] = $conditioning->getId();
-
-        $conditioningSelect = $this->createForm('ProductBundle\Form\ConditioningSelectType', $options);
-        $conditioningSelect->handleRequest($request);
+        $conditioningSelect = $this->createForm('ProductBundle\Form\ConditioningSelectType', array('values' => $product->getConditioningTypes()));
 
         $evaluation = new ProductEvaluation();
         $evaluationForm = $this->createForm('ProductBundle\Form\EvaluationType', $evaluation);
@@ -206,17 +200,13 @@ class ProductController extends Controller
         if ($evaluationForm->isSubmitted() && $evaluationForm->isValid()) {
             $validator = $this->get('validator');
             $em = $this->getDoctrine()->getManager();
-            $userEvaluations = $em->getRepository("ProductBundle:ProductEvaluation")->findByUser($this->getUser());
-            $dejaCommente = false;
-            foreach ($userEvaluations as $evaluation){
-                if($evaluation->getProduct()->getId() == $product->getId()){
-                    $dejaCommente = true;
-                }
-            }
-            if(!$dejaCommente){
-                $evaluation->setUser($this->getUser());
-                $evaluation->setProduct($product);
-                $evaluation->setDate(new \DateTime());
+
+            $evaluation->setUser($this->getUser());
+            $evaluation->setProduct($product);
+            $evaluation->setDate(new \DateTime());
+            $errors = $validator->validate($evaluation);
+
+            if(count($errors) == 0){
                 $em->persist($evaluation);
                 $em->flush($evaluation);
             }
@@ -228,7 +218,8 @@ class ProductController extends Controller
             'product' => $product,
             'delete_form' => $deleteForm->createView(),
             'conditioning_select_form' => $conditioningSelect->createView(),
-            'competitions' => ($product->getDiscr() == 'wine') ? $product->getCompetitions() : null
+            'competitions' => ($product->getDiscr() == 'wine') ? $product->getCompetitions() : null,
+            'errors' => isset($errors)?$errors:null
         ));
     }
 

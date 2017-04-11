@@ -51,6 +51,20 @@ class Purchase
     /**
      * @var string
      *
+     * @ORM\Column(name="state", type="string", length=40)
+     */
+    private $state;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="province", type="string", length=40)
+     */
+    private $province;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="country", type="string", length=100, nullable=true)
      */
     private $country;
@@ -465,6 +479,38 @@ class Purchase
     public function getLastname()
     {
         return $this->lastname;
+    }
+
+    /**
+     * @return string
+     */
+    public function getState()
+    {
+        return $this->state;
+    }
+
+    /**
+     * @param string $state
+     */
+    public function setState($state)
+    {
+        $this->state = $state;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProvince()
+    {
+        return $this->province;
+    }
+
+    /**
+     * @param string $province
+     */
+    public function setProvince($province)
+    {
+        $this->province = $province;
     }
 
 }

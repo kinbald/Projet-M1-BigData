@@ -107,6 +107,20 @@ class UserProducer extends BaseUser
     private $postalCode;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="state", type="string", length=40)
+     */
+    private $state;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="province", type="string", length=40)
+     */
+    private $province;
+
+    /**
      * @var OptionSubscription
      * @ORM\OneToMany(targetEntity="ContractBundle\Entity\OptionSubscription", mappedBy="user")
      */
@@ -554,4 +568,38 @@ class UserProducer extends BaseUser
     {
         return $this->status;
     }
+
+    /**
+     * @return string
+     */
+    public function getState()
+    {
+        return $this->state;
+    }
+
+    /**
+     * @param string $state
+     */
+    public function setState($state)
+    {
+        $this->state = $state;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProvince()
+    {
+        return $this->province;
+    }
+
+    /**
+     * @param string $province
+     */
+    public function setProvince($province)
+    {
+        $this->province = $province;
+    }
+
+
 }
