@@ -12,16 +12,16 @@
 {% endblock %}
 
 {% block body %}
+
     <div class="universe-bandeau" id="universe-bandeau" >
         {% set picture = universe.pictures|last %}
         <img class="universe-img" src="{{ asset(picture.url) }}" alt="{{ picture.alt }}"/>
-        <p id="universe-name">{{ universe.name }}</p>
-        <p class="universe-description">{{ universe.description }}</p>
+        <h1 id="universe-name">{{ universe.name }}</h1>
+        <h3 class="universe-description">{{ universe.description }}</h3>
     </div>
-    <!-- Barre Laterale -->
 
-    <div class="barre_laterale barre_color_police" id="sidebar">
 
+    <div id="Recherche">
         <form method="post" action="traitement.php">
             <div class="barre_color_police">
                 <label for="recherche">{% trans %}Search{% endtrans %} </label><br />
@@ -30,31 +30,31 @@
                 <input class="champ" type="search" maxlength="30" size="12"/><br />
             </div>
             <p>
-                <div class="barre_color_police">
-                    <label for="vin_gamme">{% trans %}Range{% endtrans %}:</label><br />
-                </div>
-                <div class="barre_color_list">
-                    <select name="vin_gamme" id="vin_gamme" class="champ">
-                        <option value=""></option>
-                        <option value="Premium">Premium</option>
-                        <option value="Super_premium">Super premium</option>
-                        <option value="Ultra_premium">Ultra premium</option>
-                        <option value="Icon">Icon</option>
-                    </select>
-                </div>
+            <div class="barre_color_police">
+                <label for="vin_gamme">{% trans %}Range{% endtrans %}:</label><br />
+            </div>
+            <div class="barre_color_list">
+                <select name="vin_gamme" id="vin_gamme" class="champ">
+                    <option value=""></option>
+                    <option value="Premium">Premium</option>
+                    <option value="Super_premium">Super premium</option>
+                    <option value="Ultra_premium">Ultra premium</option>
+                    <option value="Icon">Icon</option>
+                </select>
+            </div>
             </p>
             <p>
-                <div class="barre_color_police">
-                    <label for="vin_type">{% trans %}Type{% endtrans %}:</label><br />
-                </div>
-                <div class="barre_color_list">
-                    <select name="vin_type" id="vin_type" class="champ">
-                        <option value=""></option>
-                        <option value="Rouge_tannique">Rouge tannique</option>
-                        <option value="Rouge_puissant">Rouge puissant</option>
-                        <option value="Rouge_corse">Rouge corsé</option>
-                    </select>
-                </div>
+            <div class="barre_color_police">
+                <label for="vin_type">{% trans %}Type{% endtrans %}:</label><br />
+            </div>
+            <div class="barre_color_list">
+                <select name="vin_type" id="vin_type" class="champ">
+                    <option value=""></option>
+                    <option value="Rouge_tannique">Rouge tannique</option>
+                    <option value="Rouge_puissant">Rouge puissant</option>
+                    <option value="Rouge_corse">Rouge corsÃ©</option>
+                </select>
+            </div>
             </p>
             <br />
             <div class="barre_color_police range">
@@ -68,32 +68,32 @@
                 <fieldset>
                     <div class="barre_color_police"><label>{% trans %}Region{% endtrans %}:</label></div>
                     <p>
-                        <div class="barre_color_list">
-                            <select name="vin_region" id="vin_region" class="champ">
-                                <optgroup label="Region">
-                                    <option value=""> </option>
-                                    <option value="Europe">Europe</option>
-                                    <option value="Asie">Asie</option>
-                                    <option value="Amerique">Amérique</option>
-                                    <option value="Oceanie">Océanie</option>
-                                </optgroup>
-                            </select>
-                        </div>
+                    <div class="barre_color_list">
+                        <select name="vin_region" id="vin_region" class="champ">
+                            <optgroup label="Region">
+                                <option value=""> </option>
+                                <option value="Europe">Europe</option>
+                                <option value="Asie">Asie</option>
+                                <option value="Amerique">AmÃ©rique</option>
+                                <option value="Oceanie">OcÃ©anie</option>
+                            </optgroup>
+                        </select>
+                    </div>
                     </p>
                     <div class="barre_color_police"><label>{% trans %}Cepage{% endtrans %}:</label></div>
                     <p>
                         <input type="radio" id="d1" name="cepage"><label for="d1">{% trans %}Red{% endtrans %}</label>
                         <input type="radio" id="d2" name="cepage"><label for="d2">{% trans %}White{% endtrans %}</label>
-                        <div class="barre_color_list">
-                            <select name="vin_cepage" id="vin_cepage" class="champ">
-                                <optgroup label="Cepage">
-                                    <option value=""> </option>
-                                    <option value="Cabernet sauvignon">Cabernet sauvignon</option>
-                                    <option value="Merlot">Merlot</option>
-                                    <option value="Syrah">Syrah</option>
-                                </optgroup>
-                            </select>
-                        </div>
+                    <div class="barre_color_list">
+                        <select name="vin_cepage" id="vin_cepage" class="champ">
+                            <optgroup label="Cepage">
+                                <option value=""> </option>
+                                <option value="Cabernet sauvignon">Cabernet sauvignon</option>
+                                <option value="Merlot">Merlot</option>
+                                <option value="Syrah">Syrah</option>
+                            </optgroup>
+                        </select>
+                    </div>
                     </p>
                 </fieldset>
             </details>
@@ -103,44 +103,39 @@
             </div>
         </form>
     </div>
-    <div class="section-product">
-        <!-- Autre -->
-        <section class="section-product-table" id="section-product-table">
-            <div class="product-table-title">
-                <h3 class="section-heading">{% trans %}Invitation{% endtrans %}</h3>
-            </div>
-            <div class="text-center">
-                <div class="product-table" id="product-table">
-                    <ul class="product-holder">
-                        {% for product in universe.products %}
-                            <li>
-                                <div class="text-center">
-                                    <a href="{{ path('product_show', {id:product.id}) }}" >
+
+    <div id="Produits">
+        <ul class="product-holder">
+            {% for product in universe.products %}
+                <li>
+                    <div class="text-center">
+                        <a href="{{ path('product_show', {id:product.id}) }}" >
                                         <span class="product-list-primary-img">
                                             {% set picture = product.pictures|last %}
                                             <img alt="product image" class="product-list-primary-img table-primary-img"
                                                  src="{{ asset(picture.url) }}"/>
                                              <br>
                                         </span>
-										<span class="swiper-slide text-center table-product-text">
+                            <span class="swiper-slide text-center table-product-text">
 											<span class="table-product-name">{{ product.displayName }}</span><br>
-											<span class="table-product-price">{{ product.price }} €</span>
+											<span class="table-product-price">{{ product.price }} â‚¬</span>
 										</span>
-                                    </a>
-                                </div>
-                                <span class="btn add-item wow swing"
-                                      {% if picture %}data-image="{{ asset(picture.url) }}"{% endif %}
-                                      data-name="{{ product.name }}" data-cost="{{ product.price }}"
-                                      data-id="{{ product.id }}">
+                        </a>
+
+                        <span class="btn add-item wow swing"
+                              {% if picture %}data-image="{{ asset(picture.url) }}"{% endif %}
+                              data-name="{{ product.name }}" data-cost="{{ product.price }}"
+                              data-id="{{ product.id }}" >
                                     <img alt="e-commerce" src="{{ asset('img/product/panier.png') }}" height="55">
-                                </span>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
-        </section>
+                    </span>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+
     </div>
+
 {% endblock %}
+
 
 
