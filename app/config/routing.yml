@@ -35,6 +35,7 @@ concours:
     type:     annotation
     prefix:   /{_locale}/concours
 
+
 contract:
     resource: "@ContractBundle/Controller/"
     type:     annotation

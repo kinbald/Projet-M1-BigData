@@ -26,6 +26,7 @@
         "pugx/multi-user-bundle": "3.0.*@dev",
         "twig/extensions": "^1.4",
         "symfony/console": "^3.2",
+        "liuggio/excelbundle": "^2.1",
         "paypal/merchant-sdk-php": "3.8.*"
     },
     "require-dev": {

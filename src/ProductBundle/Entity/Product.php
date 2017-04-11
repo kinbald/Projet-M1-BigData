@@ -12,7 +12,9 @@ use ProductBundle\Entity\Universe;
 use ProductBundle\Entity\Purchase;
 use ProductBundle\Entity\ProductPurchase;
 use ProductBundle\Entity\ProductEvaluation;
+use Symfony\Bridge\Doctrine\Tests\Fixtures\User;
 use UserBundle\Entity\UserConsumer;
+use UserBundle\Entity\UserProducer;
 
 /**
  * Product
@@ -115,6 +117,16 @@ abstract class Product
      * })
      */
     private $originCountry;
+
+    /**
+     * @var UserProducer
+     *
+     * @ORM\ManyToOne(targetEntity="\UserBundle\Entity\UserProducer", inversedBy="products")
+     * @ORM\JoinColumns({
+     *  @ORM\JoinColumn(name="producer", referencedColumnName="id", nullable=true)
+     * })
+     */
+    private $producer;
 
     /**
      * @var Range
@@ -711,6 +723,28 @@ abstract class Product
     public function getCompetitions()
     {
         return $this->competitions;
+    }
+
+    /**
+     * Set producer
+     *
+     * @param UserProducer $producer
+     * @return Product
+     */
+    public function setProducer(UserProducer $producer = null)
+    {
+        $this->producer = $producer;
+        return $this;
+    }
+
+    /**
+     * Get producer
+     *
+     * @return UserProducer
+     */
+    public function getProducer()
+    {
+        return $this->producer;
     }
 
 }
