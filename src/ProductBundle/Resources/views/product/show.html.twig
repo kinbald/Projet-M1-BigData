@@ -10,12 +10,20 @@
     <script type="text/javascript">
         var conditioning = [];
         {% for conditioningType in product.conditioningTypes %}
-        conditioning[{{ conditioningType.id }}] = {{ conditioningType.price }};
+        conditioning[{{ conditioningType.id }}] = {"price": {{ conditioningType.price }}, "name": "{{ product.name }}", "conditioningTypeName": "{{ conditioningType.name }}", "conditioningTypeId": {{ conditioningType.id }} };
         {% endfor %}
-        $('#productbundle_conditioningselect_conditioning').change(function() {
-            $('#price').html(conditioning[$('#productbundle_conditioningselect_conditioning').val()] + '€')
-        });
-        $('#price').html(conditioning[$('#productbundle_conditioningselect_conditioning').val()] + '€');
+
+        function Refresh() {
+            $('#price').html(conditioning[$('#productbundle_conditioningselect_conditioning').val()]["price"] + '€');
+            $('.add-item').attr("data-cost", conditioning[$('#productbundle_conditioningselect_conditioning').val()]["price"]);
+            $('.add-item').attr("data-name", conditioning[$('#productbundle_conditioningselect_conditioning').val()]["name"]);
+            $('.add-item').attr("data-conditioning-type-name", conditioning[$('#productbundle_conditioningselect_conditioning').val()]["conditioningTypeName"]);
+            $('.add-item').attr("data-conditioning-type-id", conditioning[$('#productbundle_conditioningselect_conditioning').val()]["conditioningTypeId"]);
+        }
+
+        $('#productbundle_conditioningselect_conditioning').change(Refresh);
+        Refresh();
+
     </script>
     <script src="{{ asset('js/item.js') }}"></script>
 {% endblock %}
@@ -94,12 +102,13 @@
                 {{ form_widget(conditioning_select_form) }}
                 {{ form_end(conditioning_select_form) }}
 
-                <div class="countdown-container my-countdown-container">
-                    <span class="countdown-price h3 wow fadeInUp price-show" id="price">0.00 €</span>
-                    {% set picture = product.pictures|last %}
-                    <span class="btn btn-default add-item wow swing" {% if picture %}data-image="/img/upload/{{ picture.url}}"{% endif %}  data-name="{{ product.name }}" data-cost="{{ product.price }}" data-id="{{ product.id }}">
-                <div id="ajout"><img alt="e-commerce" src="{{ asset('img/product/panier.png') }}" height="55"></div>
-                <span class="ti-shopping-cart"></span>{% trans %}Panier{% endtrans %}
+            <div class="countdown-container my-countdown-container">
+                <span class="countdown-price h3 wow fadeInUp price-show" id="price">0.00 €</span>
+                {% set picture = product.pictures|last %}
+                <span class="btn btn-default add-item wow swing" {% if picture %}data-image="/{{ picture.url}}"{% endif %}
+                      data-name="{{ product.name }}" data-cost="{{ product.price }}" data-id="{{ product.id }}">
+            <div id="ajout"><img alt="e-commerce" src="{{ asset('img/product/panier.png') }}" height="55"></div>
+            <span class="ti-shopping-cart"></span>{% trans %}Panier{% endtrans %}
             {% else %}
                 <span class="h2 wow fadeInUp" >Indisponible</span>
             {% endif %}

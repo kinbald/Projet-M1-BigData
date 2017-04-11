@@ -31,10 +31,10 @@ class ProductStockUpdate implements EventSubscriber
 
         if ($reservation instanceof \ProductBundle\Entity\Reservation)
         {
-            $product = $reservation->getProduct();
-            $product->setStock($product->getStock() + $reservation->getQuantity());
+            $productConditioning = $reservation->getProductConditioning();
+            $productConditioning->setStock($productConditioning->getStock() + $reservation->getQuantity());
 
-            $em->persist($product);
+            $em->persist($productConditioning);
             $em->flush();
         }
     }
@@ -46,10 +46,10 @@ class ProductStockUpdate implements EventSubscriber
 
         if ($reservation instanceof \ProductBundle\Entity\Reservation)
         {
-            $product = $reservation->getProduct();
-            $product->setStock($product->getStock() - $reservation->getQuantity());
+            $productConditioning = $reservation->getProductConditioning();
+            $productConditioning->setStock($productConditioning->getStock() - $reservation->getQuantity());
 
-            $em->persist($product);
+            $em->persist($productConditioning);
             $em->flush();
         }
     }
@@ -69,10 +69,10 @@ class ProductStockUpdate implements EventSubscriber
 
         if ($reservation instanceof \ProductBundle\Entity\Reservation)
         {
-            $product = $reservation->getProduct();
-            $product->setStock($product->getStock() + $this->preUpdateStock - $reservation->getQuantity());
+            $productConditioning = $reservation->getProductConditioning();
+            $productConditioning->setStock($productConditioning->getStock() + $this->preUpdateStock - $reservation->getQuantity());
 
-            $em->persist($product);
+            $em->persist($productConditioning);
             $em->flush();
         }
     }

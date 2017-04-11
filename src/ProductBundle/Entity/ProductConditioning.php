@@ -9,6 +9,7 @@ use ProductBundle\Entity\Delivery;
 use ProductBundle\Entity\Pack;
 use ProductBundle\Entity\Product;
 use ProductBundle\Entity\ProductPurchase;
+use ProductBundle\Entity\Reservation;
 use UserBundle\Entity\BaseUser;
 use UserBundle\Entity\UserWholesale;
 
@@ -94,6 +95,12 @@ class ProductConditioning
      * @ORM\ManyToMany(targetEntity="\ProductBundle\Entity\Delivery", mappedBy="conditioningTypes")
      */
     protected $deliveries;
+
+    /**
+     * @var Collection
+     * @ORM\OneToMany(targetEntity="\ProductBundle\Entity\Reservation", mappedBy="product")
+     */
+    protected $reservations;
 
     /**
      * Constructor
@@ -404,7 +411,18 @@ class ProductConditioning
     public function setPack(Pack $pack = null)
     {
         $this->pack = $pack;
-
+        return $this;
+    }
+    /**
+     * Add reservations
+     *
+     * @param Reservation $reservation
+     *
+     * @return ProductConditioning
+     */
+    public function addReservation(Reservation $reservation)
+    {
+        $this->reservations[] = $reservation;
         return $this;
     }
 
@@ -416,5 +434,24 @@ class ProductConditioning
     public function getPack()
     {
         return $this->pack;
+    }
+    /**
+     * Remove reservations
+     *
+     * @param \ProductBundle\Entity\Reservation $reservation
+     */
+    public function removeReservation(Reservation $reservation)
+    {
+        $this->reservations->removeElement($reservation);
+    }
+
+    /**
+     * Get reservations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReservations()
+    {
+        return $this->reservations;
     }
 }
