@@ -198,9 +198,13 @@
         text-align: center;
         position: relative;
         width: 100%;
-        min-height: 500px;
+        min-height: 100px;
+        height: 100px;
         background: url("/img/concours/fond_accueil_provisoire.jpg") no-repeat;
         background-size: cover;
+    }
+    .container{
+        margin-top:7px;
     }
     .text-newsletter{
         font-size: 155%;
@@ -286,3 +290,48 @@
 .btn:focus, .btn:hover{
     color:white;
 }
+
+form{
+    display:inline-block;
+}
+
+@media (max-width: 499px ) {
+    .testimonials-banner {
+        min-height: 100px;
+        height: 150px;
+    }
+    .newsletter {
+        font-size: 180%;
+    }
+    #input-newsletter{
+        width: 250px;
+        font-size:110%;
+    }
+
+}
+
+@media (min-width: 500px) and (max-width: 991px ) {
+    .testimonials-banner {
+        min-height: 200px;
+        height: 210px;
+    }
+    .newsletter {
+        font-size: 220%;
+    }
+    #input-newsletter{
+        width: 300px;
+        font-size:140%;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px ) {
+    .testimonials-banner {
+        min-height: 100px;
+        height: 210px;
+    }
+    .newsletter {
+        margin-right:100px;
+        margin-left:100px;
+    }
+}
+
