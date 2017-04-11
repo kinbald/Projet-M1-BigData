@@ -61,6 +61,12 @@
         float: left;
         margin: 0 auto;
     }
+    input, textarea, select{
+        width: 15vw;
+    }
+
+
+
 
     #content {
         border: double;
@@ -110,7 +116,10 @@
 #fos_user_registration_form_address {
     border-radius: 10px;
     color: #555555;
+<<<<<<< Updated upstream
     width: 14em;
+=======
+>>>>>>> Stashed changes
     height: 7em;
 }
 
