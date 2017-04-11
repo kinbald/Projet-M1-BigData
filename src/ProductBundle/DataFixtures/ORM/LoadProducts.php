@@ -18,6 +18,7 @@ use ProductBundle\Entity\Recipe;
 use ProductBundle\Entity\GrapeVariety;
 use ProductBundle\Entity\ProductConditioning;
 use ProductBundle\Entity\ProductPurchase;
+use UserBundle\Entity\UserProducer;
 
 class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
 {
@@ -25,6 +26,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
     {
         $user = $manager->getRepository("UserBundle:BaseUser")->findOneByUsername('Consumer');
         $userConsumer = $manager->getRepository("UserBundle:UserConsumer")->findOneByUsername('Consumer');
+        $userProducerRepo = $manager->getRepository("UserBundle:UserProducer");
 
 
         /*-----------------------LES UNIVERS-------------------------*/
@@ -176,6 +178,8 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $wine1->setStock(30);
         $wine1->addUniverse($universe1);
         $wine1->addUniverse($universe3);
+        $producer1 = $userProducerRepo->findOneByCompanyName("Vin & co");
+        $wine1->setProducer($producer1);
 
         $manager->persist($wine1);
         $picture = new PictureProduct();

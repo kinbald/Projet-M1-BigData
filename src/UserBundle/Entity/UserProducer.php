@@ -2,7 +2,10 @@
 
 namespace UserBundle\Entity;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use ProductBundle\Entity\Product;
+use Symfony\Bridge\Doctrine\Tests\Fixtures\User;
 use UserBundle\Entity\BaseUser;
 use ContractBundle\Entity\Option;
 use ContractBundle\Entity\OptionSubscription;
@@ -139,6 +142,13 @@ class UserProducer extends BaseUser
      * })
      */
     private $status;
+
+
+    /**
+     * @var Collection
+     * @ORM\OneToMany(targetEntity="\ProductBundle\Entity\Product", mappedBy="producer")
+     */
+    private $products;
 
 
     public function __construct()
@@ -553,5 +563,38 @@ class UserProducer extends BaseUser
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Add product
+     *
+     * @param Product $product
+     *
+     * @return UserProducer
+     */
+    public function addProduct(Product $product)
+    {
+        $this->products[] = $product;
+        return $this;
+    }
+
+    /**
+     * Remove product
+     *
+     * @param Product $product
+     */
+    public function removeProduct(Product $product)
+    {
+        $this->products->removeElement($product);
+    }
+
+    /**
+     * Get products
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProducts()
+    {
+        return $this->products;
     }
 }

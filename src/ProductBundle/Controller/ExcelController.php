@@ -54,53 +54,54 @@ class ExcelController extends Controller
             'IdProduct' => 0,
             'RaisonSociale' => 1,
             'NomExploitation' => 2,
-            'Statut' => 3,
-            'NomResponsable' => 4,
-            'PrenomResponsable' => 5,
-            'AdresseProducteur' => 6,
-            'CodePostal' => 7,
-            'Ville' => 8,
-            'Pays' => 9,
-            'Tel' => 10,
-            'Email_prod' =>11,
-            'Fax' => 12,
-            'Facebook' => 13,
-            'Twitter' => 14,
-            'Tva' => 15,
-            'Mail' => 16,
-            'Designation' => 17,
-            'NomCommercial' => 18,
-            'Description'=> 19,
-            'LienOenotourisme' => 20,
-            'LienRecette' => 21,
-            'PaysProduction' => 22,
-            'RegionProduction' => 23,
-            'Millesime' => 24,
-            'Couleur' => 25,
-            'Categorie' => 26,
-            'Cepage' => 27,
-            'Point' => 28,
-            'ContactBois' => 29,
-            'ContactLies' => 30,
-            'VinDecante' => 31,
-            'VinNonFiltre' => 32,
-            'DemarcheQualite' => 33,
-            'Volume' => 34,
-            'Sucre' => 35,
-            'Surpression' => 36,
-            'VolumeTotal' => 37,
-            'CodeMedUnivers' => 38,
-            'CodeUnivers' => 39,
-            'CodeMedConcours' => 40,
-            'CodeConcours' => 41,
-            'Quantite' => 42,
-            'ValeurVolume' => 43,
-            'UniteVolume' => 44,
-            'NomConditionnement' => 45,
-            'PrixPublic' => 46,
-            'PrixPro' => 47,
-            'OptionLivraison' => 48,
-            'PrixLivraison' => 49,
+            'Siret' => 3,
+            'Statut' => 4,
+            'NomResponsable' => 5,
+            'PrenomResponsable' => 6,
+            'AdresseProducteur' => 7,
+            'CodePostal' => 8,
+            'Ville' => 9,
+            'Pays' => 10,
+            'Tel' => 11,
+            'Email_prod' =>12,
+            'Fax' => 13,
+            'Facebook' => 14,
+            'Twitter' => 15,
+            'Tva' => 16,
+            'Mail' => 17,
+            'Designation' => 18,
+            'NomCommercial' => 19,
+            'Description'=> 20,
+            'LienOenotourisme' => 21,
+            'LienRecette' => 22,
+            'PaysProduction' => 23,
+            'RegionProduction' => 24,
+            'Millesime' => 25,
+            'Couleur' => 26,
+            'Categorie' => 27,
+            'Cepage' => 28,
+            'Point' => 29,
+            'ContactBois' => 30,
+            'ContactLies' => 31,
+            'VinDecante' => 32,
+            'VinNonFiltre' => 33,
+            'DemarcheQualite' => 34,
+            'Volume' => 35,
+            'Sucre' => 36,
+            'Surpression' => 37,
+            'VolumeTotal' => 38,
+            'CodeMedUnivers' => 39,
+            'CodeUnivers' => 40,
+            'CodeMedConcours' => 41,
+            'CodeConcours' => 42,
+            'Quantite' => 43,
+            'ValeurVolume' => 44,
+            'UniteVolume' => 45,
+            'NomConditionnement' => 46,
+            'PrixPublic' => 47,
+            'PrixPro' => 48,
+            'OptionLivraison' => 49,
+            'PrixLivraison' => 50,
         );
 
 
@@ -179,19 +180,20 @@ class ExcelController extends Controller
                 $arrayTemp[$row['RaisonSociale']], //0
                 $arrayTemp[$row['NomExploitation']], //1
                 $arrayTemp[$row['Statut']], //2
-                $arrayTemp[$row['NomResponsable']], //3
-                $arrayTemp[$row['PrenomResponsable']],//4
-                $arrayTemp[$row['AdresseProducteur']], //5
-                $arrayTemp[$row['CodePostal']], //6
-                $arrayTemp[$row['Ville']], //7
-                $arrayTemp[$row['Pays']], //8
-                $arrayTemp[$row['Tel']], //9
-                $arrayTemp[$row['Email_prod']], //10
-                $arrayTemp[$row['Fax']], //11
-                $arrayTemp[$row['Facebook']], //12
-                $arrayTemp[$row['Twitter']], //13
-                $arrayTemp[$row['Tva']], //14
-                $arrayTemp[$row['Mail']]);//15
+                $arrayTemp[$row['Siret']], //3
+                $arrayTemp[$row['NomResponsable']], //4
+                $arrayTemp[$row['PrenomResponsable']],//5
+                $arrayTemp[$row['AdresseProducteur']], //6
+                $arrayTemp[$row['CodePostal']], //7
+                $arrayTemp[$row['Ville']], //8
+                $arrayTemp[$row['Pays']], //9
+                $arrayTemp[$row['Tel']], //10
+                $arrayTemp[$row['Email_prod']], //11
+                $arrayTemp[$row['Fax']], //12
+                $arrayTemp[$row['Facebook']], //13
+                $arrayTemp[$row['Twitter']], //14
+                $arrayTemp[$row['Tva']], //15
+                $arrayTemp[$row['Mail']]);//16
 
 
             array_push($ProductTempArray,
@@ -216,7 +218,8 @@ class ExcelController extends Controller
                 $arrayTemp[$row['Sucre']], //18
                 $arrayTemp[$row['Surpression']], //19
                 $arrayTemp[$row['VolumeTotal']],// 20
-                $arrayTemp[$row['IdProduct']]); //21
+                $arrayTemp[$row['IdProduct']],//21
+                $arrayTemp[$row['RaisonSociale']]); //22
 
             array_push($DataProducer, $ProducerTempArray);
             array_push($DataProduct, $ProductTempArray);
@@ -224,8 +227,9 @@ class ExcelController extends Controller
 
         $univers = $this->sanitize_data_univers($univers, $row);
         $shipmentsOptions = $this->sanitize_data_shipoptions($shipmentsOptions, $row);
-        $this->insert_product_data($DataProduct);
         $this->insert_producer($DataProducer);
+        $this->insert_product_data($DataProduct);
+
 
 
             return $this->render('ProductBundle:excelimport:ExcelImport.html.twig', array(
@@ -372,6 +376,8 @@ class ExcelController extends Controller
             $product[$keyProductAdd]->setOriginCountry($TempCountry);
             $product[$keyProductAdd]->setOriginContinent($TempContinent);
             $product[$keyProductAdd]->setRange($TempRange);
+            $producer = $em->getRepository("UserBundle:UserProducer")->findOneByCompanyName($DataProduct[$keyProductAdd][22]);
+            $product[$keyProductAdd]->setProducer($producer);
 
 
             $em = $this->getDoctrine()->getManager();
@@ -395,9 +401,9 @@ class ExcelController extends Controller
             }
 
             else {
-                $TempProducer[$keyProducerAdd] = new UserProducer();
-                $TempProducer[$keyProducerAdd]->setCompanyName($DataProducer[$keyProducerAdd][0]);
-                $TempProducer[$keyProducerAdd]->setBusinessName($DataProducer[$keyProducerAdd][1]);
+                $TempProducer = new UserProducer();
+                $TempProducer->setCompanyName($DataProducer[$keyProducerAdd][0]);
+                $TempProducer->setBusinessName($DataProducer[$keyProducerAdd][1]);
 
                 $status = $em->getRepository("UserBundle:ProducerStatus")->findByName($DataProducer[$keyProducerAdd][2]); // On recherche tous les status d'utilisateurs existants en BDD
                 if (!empty($status)) { //Si le status de la ligne excel a été trouvé
@@ -409,22 +415,26 @@ class ExcelController extends Controller
                     $em->persist($TempStatus);
                     $em->flush($TempStatus);
                 }
-
-                $TempProducer[$keyProducerAdd]->setStatus();
-                $TempProducer[$keyProducerAdd]->setFirstname($DataProducer[$keyProducerAdd][3]);
-                $TempProducer[$keyProducerAdd]->setLastname($DataProducer[$keyProducerAdd][4]);
-                $TempProducer[$keyProducerAdd]->setAddress($DataProducer[$keyProducerAdd][5]);
-                $TempProducer[$keyProducerAdd]->setPostalCode($DataProducer[$keyProducerAdd][6]);
-                $TempProducer[$keyProducerAdd]->setCity($DataProducer[$keyProducerAdd][7]);
-                $TempProducer[$keyProducerAdd]->setCountry($DataProducer[$keyProducerAdd][8]);
-                $TempProducer[$keyProducerAdd]->setPhone($DataProducer[$keyProducerAdd][9]);
-                $TempProducer[$keyProducerAdd]->setFax($DataProducer[$keyProducerAdd][11]);
-                $TempProducer[$keyProducerAdd]->setFacebook($DataProducer[$keyProducerAdd][12]);
-                $TempProducer[$keyProducerAdd]->setTwitter($DataProducer[$keyProducerAdd][13]);
-                $TempProducer[$keyProducerAdd]->setTvaIC($DataProducer[$keyProducerAdd][14]);
-                $TempProducer[$keyProducerAdd]->setBilling($DataProducer[$keyProducerAdd][15]);
-                $em->persist($TempProducer[$keyProducerAdd]);
-                $em->flush($TempProducer[$keyProducerAdd]);
+                $TempProducer->setSiret($DataProducer[$keyProducerAdd][3]);
+                $username = strtolower($DataProducer[$keyProducerAdd][5]) .'.'. strtolower($DataProducer[$keyProducerAdd][4]); //creation du login en prenom.nom
+                $TempProducer->setUsername($username);
+                $TempProducer->setEmail($DataProducer[$keyProducerAdd][12]);
+                $TempProducer->setPassword('*');
+                $TempProducer->setStatus($TempStatus);
+                $TempProducer->setFirstname($DataProducer[$keyProducerAdd][4]);
+                $TempProducer->setLastname($DataProducer[$keyProducerAdd][5]);
+                $TempProducer->setAddress($DataProducer[$keyProducerAdd][6]);
+                $TempProducer->setPostalCode($DataProducer[$keyProducerAdd][7]);
+                $TempProducer->setCity($DataProducer[$keyProducerAdd][8]);
+                $TempProducer->setCountry($DataProducer[$keyProducerAdd][9]);
+                $TempProducer->setPhone($DataProducer[$keyProducerAdd][10]);
+                $TempProducer->setFax($DataProducer[$keyProducerAdd][11]);
+                $TempProducer->setFacebook($DataProducer[$keyProducerAdd][13]);
+                $TempProducer->setTwitter($DataProducer[$keyProducerAdd][14]);
+                $TempProducer->setTvaIC($DataProducer[$keyProducerAdd][15]);
+                $TempProducer->setBilling($DataProducer[$keyProducerAdd][16]);
+                $em->persist($TempProducer);
+                $em->flush($TempProducer);
             }
 
         }
