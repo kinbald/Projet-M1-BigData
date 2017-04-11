@@ -18,9 +18,14 @@ class ConditioningSelectType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        if(isset($options['data']['values']) && count($options['data']['values']) > 0)
-            $builder->add('conditioning', ChoiceType::class, array('choices' => $options['data']['values'], 'required' => true, 'label' => false, 'attr' => array('maxlength' => 255,
-            'class' => 'champ conditioning rounded')));
+        $conditioningList = array();
+        foreach ($options['data']['values'] as $conditioning)
+            if($conditioning->getStock() > 0)
+                $conditioningList[$conditioning->getName()] = $conditioning->getId();
+
+        if(count($conditioningList) > 0)
+            $builder->add('conditioning', ChoiceType::class, array('choices' => $conditioningList,
+                'required' => true, 'label' => false, 'attr' => array('maxlength' => 255, 'class' => 'champ conditioning rounded')));
     }
 
     /**
