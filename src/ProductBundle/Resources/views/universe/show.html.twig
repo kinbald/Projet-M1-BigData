@@ -110,16 +110,15 @@
                 <li>
                     <div class="text-center">
                         <a href="{{ path('product_show', {id:product.id}) }}" >
-                                        <span class="product-list-primary-img">
-                                            {% set picture = product.pictures|last %}
-                                            <img alt="product image" class="product-list-primary-img table-primary-img"
-                                                 src="{{ asset(picture.url) }}"/>
-                                             <br>
-                                        </span>
+                            <span class="product-list-primary-img">
+                                {% set picture = product.pictures|last %}
+                                <img alt="product image" class="product-list-primary-img table-primary-img"
+                                     src="{{ asset(picture.url) }}"/>
+                                 <br>
+                            </span>
                             <span class="swiper-slide text-center table-product-text">
-											<span class="table-product-name">{{ product.displayName }}</span><br>
-											<span class="table-product-price">{{ product.price }} €</span>
-										</span>
+                                <span class="table-product-name">{{ product.displayName }}</span><br>
+                            </span>
                         </a>
                     </span>
                     </div>

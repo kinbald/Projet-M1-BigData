@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/commande.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/panier.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+    <h1 class="title">Information Livraison</h1>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+{% endblock %}
+{#
+https://api-3t.sandbox.paypal.com/nvp?version=204&user=grisot.remi-facilitator_api1.gmail.com&pwd=QZLEL69NWCF6QUGE&signature=AFcWxV21C7fd0v3bYYYRCpSSRl31Ab6nocvqRHaMJv1ybVoYzIrz8WGl&method=setexpresscheckout&cancelurl=https://google.fr&currencycode=EUR&returnurl=https://google.fr&amt=10.0&desc=bonne%20vinasse&localecode=fr
+https://www.sandbox.paypal.com/webscr&cmd=_express-checkout&token=EC%2d98A96882VN0088128
+https://api-3t.sandbox.paypal.com/nvp?version=204&user=grisot.remi-facilitator_api1.gmail.com&pwd=QZLEL69NWCF6QUGE&signature=AFcWxV21C7fd0v3bYYYRCpSSRl31Ab6nocvqRHaMJv1ybVoYzIrz8WGl&method=getexpresscheckoutdetails&token=EC%2d98A96882VN0088128
+https://api-3t.sandbox.paypal.com/nvp?version=204&user=grisot.remi-facilitator_api1.gmail.com&pwd=QZLEL69NWCF6QUGE&signature=AFcWxV21C7fd0v3bYYYRCpSSRl31Ab6nocvqRHaMJv1ybVoYzIrz8WGl&method=doexpresscheckoutpayment&token=EC%2d98A96882VN0088128&paymentaction=sale&payerid=44EZAY75P6CS4&amt=10.0&currencycode=EUR#}

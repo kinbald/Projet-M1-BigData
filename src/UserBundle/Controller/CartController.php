@@ -39,8 +39,32 @@ use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class CartController extends Controller
 {
+
     /**
-     * @Route("/", name="cart_view")
+     * @Route("/", name="purchase_informations")
+     * @Security("has_role('ROLE_CONSUMER')")
+     * @Method({"POST"})
+     */
+    public function purchaseAction(Request $request)
+    {
+        $purchase = new Purchase();
+        $form = $this->createForm('UserBundle\Form\Type\AddPurchaseType');
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+
+
+
+            return $this->redirectToRoute('product_list');
+        }
+
+        return $this->render('UserBundle:Default:purchase.html.twig', array(
+            'form' => $form->createView(),
+        ));
+    }
+
+    /**
+     * @Route("/view", name="cart_view")
      * @Security("has_role('ROLE_CONSUMER')")
      * @Method({"POST"})
      */
