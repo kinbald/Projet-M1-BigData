@@ -5,12 +5,17 @@ namespace ProductBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use ProductBundle\Entity\Product;
 use UserBundle\Entity\UserConsumer;
-
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * ProductEvaluation
  *
  * @ORM\Table(name="product_evaluation")
  * @ORM\Entity(repositoryClass="ProductBundle\Repository\ProductEvaluationRepository")
+ * @UniqueEntity(
+ *     fields={"user", "product"},
+ *     errorPath="user",
+ *     message="You have already commented this product, motherfucker"
+ * )
  */
 class ProductEvaluation
 {

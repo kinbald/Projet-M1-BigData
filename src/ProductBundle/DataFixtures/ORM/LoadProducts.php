@@ -431,14 +431,18 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $condition->setPrice(45);
         $condition->setPubPrice(45);
         $condition->setProPrice(40);
-        $condition->addProduct($wine1);
-        $condition->addProduct($wine2);
-        $condition->addProduct($wine3);
         $condition->setStock(10);
         $condition->setPack(true);
         $condition->setVolumeValue('2');
         $condition->setVolumeUnit('mL');
         $manager->persist($condition);
+        $wine1->addConditioningType($condition);
+        $wine2->addConditioningType($condition);
+        $wine3->addConditioningType($condition);
+        //$manager->persist($wine1);
+        //$manager->persist($wine2);
+        //$manager->persist($wine3);
+
 
         $condition2 = new ProductConditioning();
         $condition2->setName("Palette");

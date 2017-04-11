@@ -2,6 +2,7 @@
 
 namespace ProductBundle\Controller;
 
+use Doctrine\Common\Util\Debug;
 use ProductBundle\Entity\PictureProduct;
 use ProductBundle\Entity\Product;
 use ProductBundle\Entity\ProductEvaluation;
@@ -203,6 +204,7 @@ class ProductController extends Controller
         $evaluationForm->handleRequest($request);
 
         if ($evaluationForm->isSubmitted() && $evaluationForm->isValid()) {
+            $validator = $this->get('validator');
             $em = $this->getDoctrine()->getManager();
             $userEvaluations = $em->getRepository("ProductBundle:ProductEvaluation")->findByUser($this->getUser());
             $dejaCommente = false;
@@ -223,12 +225,9 @@ class ProductController extends Controller
         return $this->render('ProductBundle:' . $product->getDiscr() . ':show.html.twig', array(
             'evaluation_form' => $evaluationForm->createView(),
             'utilisateur' => $this->getUser(),
-            'noteProduit' => $product->getAverageMarks(),
-            'evaluations' => $product->getEvaluations(),
             'product' => $product,
             'delete_form' => $deleteForm->createView(),
             'conditioning_select_form' => $conditioningSelect->createView(),
-            'product_pictures' => $product->getPictures(),
             'competitions' => ($product->getDiscr() == 'wine') ? $product->getCompetitions() : null
         ));
     }
