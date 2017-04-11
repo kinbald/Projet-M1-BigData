@@ -1,3 +1,7 @@
+.form-div {
+    margin-bottom: 20px;
+}
+
 @media (max-width: 600px) {
     body {
         font-family:"pacifico",sans-serif;
@@ -116,14 +120,17 @@
 #fos_user_registration_form_address {
     border-radius: 10px;
     color: #555555;
-<<<<<<< Updated upstream
     width: 14em;
-=======
->>>>>>> Stashed changes
     height: 7em;
 }
 
 #fos_user_registration_form_country {
     width: 14em;
     border-radius: 5px;
+}
+#fos_user_registration_form_birthDate_day {
+    width: 60px;
+}
+#fos_user_registration_form_birthDate_year, #fos_user_registration_form_birthDate_month {
+    width: 80px;
 }

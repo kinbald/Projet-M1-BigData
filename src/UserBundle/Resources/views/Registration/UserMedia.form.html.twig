@@ -2,13 +2,12 @@
 
 {% block fos_user_content %}
     <div id="content">
-        {% trans_default_domain 'FOSUserBundle_trad' %}
         <h1>{% trans %}Registration Media{% endtrans %}</h1>
         <form action="{{ path('user_media_registration') }}" method="POST">
-            {{ form_widget(form) }}
-            <div>
-                <input class="btn btn-primary btn-circle" type="submit" value="{{ 'registration'|trans }}" />
+            <div class="form-div">
+                {{ form_widget(form) }}
             </div>
+            <input class="btn btn-primary btn-circle" type="submit" value="{% trans %}Registration{% endtrans %}" />
         </form>
     </div>
 {% endblock fos_user_content %}
