@@ -54,13 +54,10 @@
                     <li><a href="{{ path("contact") }}">Nous Contacter</a></li>
                     <li><a href="{{ path("qui_sommes_nous") }}">Qui Sommes Nous ?</a></li>
                     <li><a href="/logout">Déconnexion</a></li>
-                    <li class="dropdown nav navbar-nav navbar-right">
-                        <a href="#" class="dropdown-toggle nav navbar-nav navbar-right" data-toggle="dropdown" role="button" aria-expanded="false">Langue <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#" class="language" rel="fr-FR"><img src="{{ asset('img/flag_fr.png') }}" alt="Francais" />  Francais</a></li>
-                            <li><a href="#" class="language" rel="us-EN"><img src="{{ asset('img/flag_an.png') }}" alt="Anglais" />  Anglais</a></li>
+                <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#" class="language" rel="fr-FR"><img src="{{ asset('img/flag_fr.png') }}" alt="Francais" /></a></li>
+                            <li><a href="#" class="language" rel="us-EN"><img src="{{ asset('img/flag_an.png') }}" alt="Anglais" /></a></li>
                         </ul>
-                    </li>
                 </ul>
             </div>
         {% elseif is_granted('ROLE_PRODUCER') %}
@@ -72,12 +69,10 @@
                     <li><a href="{{ path("contact") }}">Nous Contacter</a></li>
                     <li><a href="{{ path("qui_sommes_nous") }}">Qui Sommes Nous ?</a></li>
                     <li><a href="/logout">Déconnexion</a></li>
-                    <li class="dropdown nav navbar-nav navbar-right">
-                        <a href="#" class="dropdown-toggle nav navbar-nav navbar-right" data-toggle="dropdown" role="button" aria-expanded="false">Langue <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#" class="language" rel="fr-FR"><img src="{{ asset('img/flag_fr.png') }}" alt="Francais" />  Francais</a></li>
-                            <li><a href="#" class="language" rel="us-EN"><img src="{{ asset('img/flag_an.png') }}" alt="Anglais" />  Anglais</a></li>
-                        </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#" class="language" rel="fr-FR"><img src="{{ asset('img/flag_fr.png') }}" alt="Francais" /></a></li>
+                        <li><a href="#" class="language" rel="us-EN"><img src="{{ asset('img/flag_an.png') }}" alt="Anglais" /></a></li>
+                    </ul>
                     </li>
                 </ul>
             </div>
@@ -90,13 +85,11 @@
                     <li><a href="{{ path("contact") }}">Nous Contacter</a></li>
                     <li><a href="{{ path("qui_sommes_nous") }}">Qui Sommes Nous ?</a></li>
                     <li><a href="/logout">Déconnexion</a></li>
-                    <li class="dropdown nav navbar-nav navbar-right">
-                        <a href="#" class="dropdown-toggle nav navbar-nav navbar-right" data-toggle="dropdown" role="button" aria-expanded="false">Langue <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#" class="language" rel="fr-FR"><img src="{{ asset('img/flag_fr.png') }}" alt="Francais" />  Francais</a></li>
-                            <li><a href="#" class="language" rel="us-EN"><img src="{{ asset('img/flag_an.png') }}" alt="Anglais" />  Anglais</a></li>
-                        </ul>
-                    </li>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#" class="language" rel="fr-FR"><img src="{{ asset('img/flag_fr.png') }}" alt="Francais" /></a></li>
+                        <li><a href="#" class="language" rel="us-EN"><img src="{{ asset('img/flag_an.png') }}" alt="Anglais" /></a></li>
+                    </ul>
+
                 </ul>
             </div>
         {% elseif is_granted('ROLE_ADMIN') %}
@@ -106,13 +99,10 @@
                     <li><a href="{{ path("profil") }}">Compte</a></li>
                     <li><a href="{{ path("admin_index") }}">Admin</a></li>
                     <li><a href="/logout">Déconnexion</a></li>
-                    <li class="dropdown nav navbar-nav navbar-right">
-                        <a href="#" class="dropdown-toggle nav navbar-nav navbar-right" data-toggle="dropdown" role="button" aria-expanded="false">Langue <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#" class="language" rel="fr-FR"><img src="{{ asset('img/flag_fr.png') }}" alt="Francais" />  Francais</a></li>
-                            <li><a href="#" class="language" rel="us-EN"><img src="{{ asset('img/flag_an.png') }}" alt="Anglais" />  Anglais</a></li>
-                        </ul>
-                    </li>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#" class="language" rel="fr-FR"><img src="{{ asset('img/flag_fr.png') }}" alt="Francais" /></a></li>
+                        <li><a href="#" class="language" rel="us-EN"><img src="{{ asset('img/flag_an.png') }}" alt="Anglais" /></a></li>
+                    </ul>
                 </ul>
             </div>
         {% else %}
@@ -123,13 +113,10 @@
                     <li><a href="{{ path("qui_sommes_nous") }}">Qui Sommes Nous ?</a></li>
                     <li><a class="connexion" href="/login">Se Connecter</a></li>
                     <li><a class="inscription" href="{{ path("inscription_choix") }}">S'inscrire</a></li>
-                    <li class="dropdown nav navbar-nav navbar-right">
-                        <a href="#" class="dropdown-toggle nav navbar-nav navbar-right" data-toggle="dropdown" role="button" aria-expanded="false">Langue <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#" class="language" rel="fr-FR"><img src="{{ asset('img/flag_fr.png') }}" alt="Francais" />  Francais</a></li>
-                            <li><a href="#" class="language" rel="us-EN"><img src="{{ asset('img/flag_an.png') }}" alt="Anglais" />  Anglais</a></li>
-                        </ul>
-                    </li>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#" class="language" rel="fr-FR"><img src="{{ asset('img/flag_fr.png') }}" alt="Francais" /></a></li>
+                        <li><a href="#" class="language" rel="us-EN"><img src="{{ asset('img/flag_an.png') }}" alt="Anglais" /></a></li>
+                    </ul>
                 </ul>
 
 
