@@ -158,6 +158,8 @@ class UserProducer extends BaseUser
     public function __construct()
     {
         parent::__construct();
+        $this->province="";
+        $this->state="";
     }
 
     /**

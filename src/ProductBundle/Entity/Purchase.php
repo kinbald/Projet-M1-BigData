@@ -320,6 +320,8 @@ class Purchase
         $this->firstname = 'Jérémy';
         $this->lastname = 'Tablet';
         $this->phone = '1111111111';
+        $this->province = "";
+        $this->state = "";
     }
 
     /**
