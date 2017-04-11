@@ -15,7 +15,7 @@
 
     <div class="universe-bandeau" id="universe-bandeau" >
         {% set picture = universe.pictures|last %}
-        <img class="universe-img" src="{{ asset(picture.url) }}" alt="{{ picture.alt }}"/>
+        <img id="flou" class="universe-img" src="{{ asset(picture.url) }}" alt="{{ picture.alt }}"/>
         <h1 id="universe-name">{{ universe.name }}</h1>
         <h3 class="universe-description">{{ universe.description }}</h3>
     </div>
@@ -28,7 +28,7 @@
             </div>
             <div class="barre_color_list">
                 <input class="champ" type="search" maxlength="30" size="12"/><br />
-            </div>
+            </div><br />
             <p>
             <div class="barre_color_police">
                 <label for="vin_gamme">{% trans %}Range{% endtrans %}:</label><br />

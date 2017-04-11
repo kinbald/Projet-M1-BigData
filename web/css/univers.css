@@ -225,10 +225,10 @@ details[open] summary:after {
 
 @media screen and (min-width: 1280px){
     .universe-bandeau {
-        height: 10vw;
+        height: 13vw;
     }
     #universe-name{
-        top: -10%;
+        top: -1%;
         font-size: 5em;
     }
     .universe-description{
@@ -242,7 +242,7 @@ details[open] summary:after {
         height: 15vw;
     }
     #universe-name{
-        top: -10%;
+        top: -5%;
         font-size: 4em;
     }
     .universe-description{
@@ -266,7 +266,7 @@ details[open] summary:after {
 
 @media screen and (min-width: 650px) and (max-width: 799px) {
     .universe-bandeau {
-        height: 30vw;
+        height: 25vw;
     }
     #universe-name{
         top: 0%;
@@ -417,5 +417,9 @@ details[open] summary:after {
         color: white;
         text-shadow: 2px 2px 2px black;
     }
+}
+
+#flou{
+    filter: blur(15px);
 }
 
