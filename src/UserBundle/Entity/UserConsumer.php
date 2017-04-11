@@ -2,6 +2,8 @@
 
 namespace UserBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use ProductBundle\Entity\ProductEvaluation;
 use UserBundle\Entity\BaseUser;
@@ -54,6 +56,12 @@ class UserConsumer extends BaseUser
      * @ORM\OneToMany(targetEntity="ProductBundle\Entity\ProductEvaluation", mappedBy="user")
      */
     private $products;
+
+    /**
+     * @var Collection|Address[]
+     * @ORM\OneToMany(targetEntity="\UserBundle\Entity\Address", mappedBy="user")
+     */
+    private $addresses;
 
     public function __construct()
     {
@@ -181,5 +189,39 @@ class UserConsumer extends BaseUser
     public function getPhone()
     {
         return $this->phone;
+    }
+
+    /**
+     * Add address
+     *
+     * @param \UserBundle\Entity\Address $address
+     *
+     * @return UserConsumer
+     */
+    public function addAddress(\UserBundle\Entity\Address $address)
+    {
+        $this->addresses[] = $address;
+
+        return $this;
+    }
+
+    /**
+     * Remove address
+     *
+     * @param \UserBundle\Entity\Address $address
+     */
+    public function removeAddress(\UserBundle\Entity\Address $address)
+    {
+        $this->addresses->removeElement($address);
+    }
+
+    /**
+     * Get addresses
+     *
+     * @return \Doctrine\Common\Collections\Collection|\UserBundle\Entity\Address[]
+     */
+    public function getAddresses()
+    {
+        return $this->addresses;
     }
 }
