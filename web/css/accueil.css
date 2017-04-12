@@ -315,11 +315,14 @@ form{
         height: 150px;
     }
     .newsletter {
-        font-size: 180%;
+        font-size: 150%;
     }
     #input-newsletter{
-        width: 250px;
-        font-size:110%;
+        width: 200px;
+        font-size:89%;
+    }
+    .btn-lg{
+        padding: 3px 8px;
     }
     .tabdescr {
         margin-left:auto;
