@@ -5,6 +5,7 @@ namespace ProductBundle\Controller;
 use ConcoursBundle\Entity\CompetitionProduct;
 use ProductBundle\Entity\Continent;
 use ProductBundle\Entity\Country;
+use ProductBundle\Entity\Delivery;
 use ProductBundle\Entity\Pack;
 use ProductBundle\Entity\ProductConditioning;
 use ProductBundle\Entity\Range;
@@ -47,7 +48,7 @@ class ExcelController extends Controller
         $DataProducer = array();
         $DataProduct = array();
         $medal = array();
-        $shipments = array();
+        $conditioning = array();
         $shipmentsOptions = array();
 
         $test = '';
@@ -152,16 +153,16 @@ class ExcelController extends Controller
 
 
             if(isset($data[$i][$row['Quantite']])){ //gestion des expéditions
-                $shipments[$i][0] = $data[$i][$row['Designation']];
-                $shipments[$i][1] = $data[$i][$row['Quantite']];
-                $shipments[$i][3] = $data[$i][$row['ValeurVolume']];
-                $shipments[$i][4] = $data[$i][$row['UniteVolume']];
-                $shipments[$i][5] = $data[$i][$row['NomConditionnement']];
-                $shipments[$i][6] = $data[$i][$row['NomPack']];
-                $shipments[$i][7] = $data[$i][$row['QuantitePack']];
-                $shipments[$i][8] = $data[$i][$row['PrixPublic']];
-                $shipments[$i][9] = $data[$i][$row['PrixPro']];
-                $shipments[$i][10] = $i;
+                $conditioning[$i][0] = $data[$i][$row['Designation']];
+                $conditioning[$i][1] = $data[$i][$row['Quantite']];
+                $conditioning[$i][3] = $data[$i][$row['ValeurVolume']];
+                $conditioning[$i][4] = $data[$i][$row['UniteVolume']];
+                $conditioning[$i][5] = $data[$i][$row['NomConditionnement']];
+                $conditioning[$i][6] = $data[$i][$row['NomPack']];
+                $conditioning[$i][7] = $data[$i][$row['QuantitePack']];
+                $conditioning[$i][8] = $data[$i][$row['PrixPublic']];
+                $conditioning[$i][9] = $data[$i][$row['PrixPro']];
+                $conditioning[$i][10] = $i;
                 $shipmentsOptions[$i][0] = $data[$i][$row['Designation']];
                 $shipmentsOptions[$i][1]= $data[$i][$row['OptionLivraison']];
                 $shipmentsOptions[$i][2] = $data[$i][$row['PrixLivraison']];
@@ -227,7 +228,8 @@ class ExcelController extends Controller
         $shipmentsOptions = $this->sanitize_data_shipoptions($shipmentsOptions, $row);
         $this->insert_producer($DataProducer);
         $this->insert_product_data($DataProduct);
-        //$this->insert_medal($medal);
+        $this->insert_medal($medal);
+        $this->insert_conditionning($conditioning,$shipmentsOptions);
 
 
 
@@ -237,7 +239,7 @@ class ExcelController extends Controller
                 'medal' => $medal,
                 'producers' => $DataProducer,
                 'products' => $DataProduct,
-                'shipments' => $shipments,
+                'shipments' => $conditioning,
                 'shipoptions' => $shipmentsOptions,
                 'test' => $medal
         ));
@@ -371,8 +373,7 @@ class ExcelController extends Controller
             $product[$keyProductAdd]->setAlcoholDegree($DataProduct[$keyProductAdd][17]);
             $product[$keyProductAdd]->setSugar($DataProduct[$keyProductAdd][18]);
             $product[$keyProductAdd]->setVolume($DataProduct[$keyProductAdd][20]);
-            $product[$keyProductAdd]->setPrice(0); //TEMPORARY
-            $product[$keyProductAdd]->setStock(10); //TEMPORARY
+
             $product[$keyProductAdd]->setOriginCountry($TempCountry);
             $product[$keyProductAdd]->setOriginContinent($TempContinent);
             $product[$keyProductAdd]->setRange($TempRange);
@@ -388,8 +389,7 @@ class ExcelController extends Controller
     }
 
 
-    public function insert_producer(array $DataProducer)
-    {
+    public function insert_producer(array $DataProducer){
 
         foreach ($DataProducer as $keyProducerAdd => $ArrayAdd) {
 
@@ -460,7 +460,7 @@ class ExcelController extends Controller
         }
     }
 
-    public function insert_conditionning(array $conditioning){
+    public function insert_conditionning(array $conditioning, array $shipmentsOptions){
         $em = $this->getDoctrine()->getManager();
 
         foreach ($conditioning as $keyConditioning => $ArrayConditioning) { //Pour chaque ligne du tableau des shipments
@@ -472,7 +472,7 @@ class ExcelController extends Controller
             $TempCond->setVolumeUnit($conditioning[$keyConditioning][4]);
             $TempCond->setStock($conditioning[$keyConditioning][1]);
             $product = $em->getRepository("ProductBundle:Product")->findOneByName($conditioning[$keyConditioning][0]);
-            $TempCond->addProduct($product);
+            $TempCond->setProduct($product);
 
             if($conditioning[$keyConditioning][6] != null){ // Si la colonne du pack est non vide, on crée un nouveau pack
                 $newPack = new Pack();
@@ -480,42 +480,32 @@ class ExcelController extends Controller
                 $newPack->setQuantityIn($conditioning[$keyConditioning][7]);
                 $em->persist($newPack);
                 $em->flush();
-                $TempShip->setPack($newPack); //On l'ajoute au shipment
+                $TempCond->setPack($newPack); //On l'ajoute au shipment
             }
             else { }
-            $em->persist($TempCond);
-            $em->flush();
+
+            foreach ($shipmentsOptions as $keyShipment => $ArrayShipment) { //On parcourt le tableau des modes de livraison
+
+                if ($conditioning[$keyConditioning][10] == $shipmentsOptions[$keyShipment][3]){ //Pour chacun des modes de livraison liés au product conditionning
+                    $TempShip = new Delivery();
+                    $TempShip = $this->insert_delivery($shipmentsOptions[$keyShipment]);
+                    $TempShip->addConditioningType($TempCond); //On ajoute le mode de livraison au type de conditionnement
+                    $em->persist($TempCond); //On insère définitivement le mode de conditionnement
+                    $em->flush();
+                }
+            }
+
         }
     }
 
-    public function insert_shipment_options(array $shipmentsOptions){
+    public function insert_delivery(array $shipmentsOption){ //fonction d'insertion des modes de livraisons
         $em = $this->getDoctrine()->getManager();
-
-        foreach ($shipmentsOptions as $keyShipmentOption => $ArrayshipmentOption) { //Pour chaque ligne du tableau des shipments
-            $TempShip = new ProductConditioning();
-            $TempShip->setName($shipments[$keyShipments][5]);
-            $TempShip->setPubPrice($shipments[$keyShipments][8]);
-            $TempShip->setProPrice($shipments[$keyShipments][9]);
-            $TempShip->setVolumeValue($shipments[$keyShipments][3]);
-            $TempShip->setVolumeUnit($shipments[$keyShipments][4]);
-            $TempShip->setStock($shipments[$keyShipments][1]);
-            $product = $em->getRepository("ProductBundle:Product")->findOneByName($shipments[$keyShipments][0]);
-            $TempShip->addProduct($product);
-
-            if($shipments[$keyShipments][6] != null){ // Si la colonne du pack est non vide, on crée un nouveau pack
-                $newPack = new Pack();
-                $newPack->setName($shipments[$keyShipments][6]);
-                $newPack->setQuantityIn($shipments[$keyShipments][7]);
-                $em->persist($newPack);
-                $em->flush();
-                $TempShip->setPack($newPack); //On l'ajoute au shipment
-            }
-            else { }
+            $TempShip = new Delivery();
+            $TempShip->setName($shipmentsOption[1]);
+            $TempShip->setPrice($shipmentsOption[2]);
             $em->persist($TempShip);
             $em->flush();
-        }
+        return $TempShip;
     }
-
-
 
 }
