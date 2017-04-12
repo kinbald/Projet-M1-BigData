@@ -27,7 +27,7 @@ class CompetitionController extends Controller
 
         $competitions = $em->getRepository('ConcoursBundle:Competition')->findAll();
 
-        return $this->render('competition/index.html.twig', array(
+        return $this->render('ConcoursBundle:competition:index.html.twig', array(
             'competitions' => $competitions,
         ));
     }
@@ -52,7 +52,7 @@ class CompetitionController extends Controller
             return $this->redirectToRoute('competition_show', array('id' => $competition->getId()));
         }
 
-        return $this->render('competition/new.html.twig', array(
+        return $this->render('ConcoursBundle:competition:new.html.twig', array(
             'competition' => $competition,
             'form' => $form->createView(),
         ));
@@ -68,7 +68,7 @@ class CompetitionController extends Controller
     {
         $deleteForm = $this->createDeleteForm($competition);
 
-        return $this->render('competition/show.html.twig', array(
+        return $this->render('ConcoursBundle:competition:show.html.twig', array(
             'competition' => $competition,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -92,7 +92,7 @@ class CompetitionController extends Controller
             return $this->redirectToRoute('competition_edit', array('id' => $competition->getId()));
         }
 
-        return $this->render('competition/edit.html.twig', array(
+        return $this->render('ConcoursBundle:competition:edit.html.twig', array(
             'competition' => $competition,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
