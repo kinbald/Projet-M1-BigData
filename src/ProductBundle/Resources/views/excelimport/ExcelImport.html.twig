@@ -35,22 +35,11 @@
     </table>
 
 
-    <h1>Univers a insérer</h1>
+    <h1>Médaille a insérer</h1>
     <table>
-        {% for univer in univers %}
+        {% for medal in medal %}
             <tr>
-                {% for cell in univer %}
-                    <td style="border: 1px solid white; font-family:'Arial';">{{ cell }}</td>
-                {% endfor %}
-            </tr>
-        {% endfor %}
-    </table>
-
-    <h1>Concours à insérer</h1>
-    <table>
-        {% for concour in concours %}
-            <tr>
-                {% for cell in concour %}
+                {% for cell in medal %}
                     <td style="border: 1px solid white; font-family:'Arial';">{{ cell }}</td>
                 {% endfor %}
             </tr>
