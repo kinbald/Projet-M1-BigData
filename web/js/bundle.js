@@ -5400,6 +5400,16 @@ if (function (e, t) {
     }),
     // cart widget toggle
     $(function() {
+        $("#paiement-paypal").click(function() {
+            $.post(refresh_route, { panier: JSON.parse(window.localStorage.getItem('panier')) })
+                .done(function (data) {
+
+                })
+                .fail(function (data) {
+
+                });
+            $("body").toggleClass("cart-widget-open");
+        });
         $("#items-counter").click(function() {
             $.post(refresh_route, { panier: JSON.parse(window.localStorage.getItem('panier')) })
                 .done(function (data) {

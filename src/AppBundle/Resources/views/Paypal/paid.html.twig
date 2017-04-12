@@ -8,6 +8,10 @@
 {% endblock %}
 {% block javascripts %}
     <script type="text/javascript">
-        window.localStorage.removeItem('panier');
+        var panier = JSON.parse(window.localStorage.getItem('panier'));
+        if(panier != null){
+            panier = null;
+            window.localStorage.setItem('panier', JSON.stringify(panier));
+        }
     </script>
 {% endblock %}

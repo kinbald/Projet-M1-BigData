@@ -8,6 +8,7 @@
 
 namespace UserBundle\Model;
 use Doctrine\Common\Persistence\ObjectManager;
+use ProductBundle\Entity\Reservation;
 use UserBundle\Entity\BaseUser;
 
 
@@ -23,6 +24,16 @@ class CartModel
         $this->repositoryProduct = $entityManager->getRepository('ProductBundle:Product');
         $this->repositoryReservation = $entityManager->getRepository('ProductBundle:Reservation');
         $this->repositoryConditioning = $entityManager->getRepository('ProductBundle:ProductConditioning');
+    }
+
+    public function setStockConditioningFromReservationByUser($user)
+    {
+        $reservations = $this->repositoryReservation->findByUser($user);
+        foreach ($reservations as $reservation){
+            $conditioning = $this->repositoryConditioning->find($reservation->getProductConditioning());
+            $conditioning->setStock($conditioning->getStock() - $reservation->getQuantity());
+        }
+        $this->em->flush();
     }
 
     public function getQuantityById($id)

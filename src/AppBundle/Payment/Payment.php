@@ -30,6 +30,7 @@ use ProductBundle\Entity\Purchase;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Router;
 use UserBundle\Entity\UserWholesale;
+use UserBundle\Model\CartModel;
 
 class Payment
 {
@@ -200,6 +201,15 @@ class Payment
         if(!isset($DoECResponse) or $DoECResponse->Ack !== 'Success' or isset($error)) {
             throw new \Exception("Payment not accepted");
         }
+
+        $rep = $this->em->getRepository('ProductBundle:Purchase');
+        $commande = $rep->find($paymentInfo->InvoiceID);
+        //lors de la suppression d'une réservation, un trigger va remettre dans le stock du conditioning qui lui était associé la quantité qui était présente dans la réservation
+        //La fonction setStockConditioningFromReservationByUser va compenser cet ajout juste avant la suppression de la résa (qui déclenche le trigger)
+        $model = new CartModel($this->em);
+        $model->setStockConditioningFromReservationByUser($commande->getUser());
+        $model->removeUserReservation($commande->getUser());
+
         return new RedirectResponse($this->router->generate('paypal_paid'));
     }
 
