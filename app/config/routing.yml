@@ -14,6 +14,10 @@ app_news:
     resource: "@AppBundle/Controller/NewsController.php"
     type:     annotation
 
+mentions_legales:
+    resource: "@AppBundle/Controller/LegalController.php"
+    type:     annotation
+
 product_purchase:
     resource: "@ProductBundle/Controller/PurchaseController.php"
     type:     annotation
