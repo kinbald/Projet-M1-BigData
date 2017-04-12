@@ -160,37 +160,32 @@ div {
     margin-top:30px;
 }
 
-
-.table-product-text, .acheteur{
-    text-align: center;
-    margin: 0 auto;
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 2px 2px 6px #aaa;
-    color: white;
-    text-shadow: 2px 2px 2px black;
-    width: 80%;
-    position: relative;
-    display: block;
-}
-#content{
-    margin-top: 90px;
+.table-product-text table {
+    border-collapse: collapse;
     margin-left: auto;
     margin-right: auto;
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 2px 2px 6px #aaa;
-    color: white;
-    text-shadow: 2px 2px 2px black;
-    width: 60%;
-    position: relative;
-    display: block;
-}
-th{
-    color: #c6a668;
-}
-.thead-default th{
-    text-align: center;
-}
-.th-centre th{text-align: center}
+    width: 50%;
 
+    }
+
+.acheteur table {
+    width: 30%;
+    }
+
+.table-product-text th {
+     font-family: monospace;
+     border: thin solid #0d0d0d;
+     padding: 4px;
+     background-color: #ffc16b;
+ }
+.table-product-text td {
+     font-family: sans-serif;
+     border: thin solid black;
+     padding: 4px;
+     text-align: center;
+     background-color: #ffd893;
+ }
+.table-product-text a, .table-product-text th, .table-product-text td, .table-product-text tr, .btn{
+     color: #0d0d0d;
+     text-align: center;
+ }
