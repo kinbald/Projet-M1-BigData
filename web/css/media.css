@@ -25,27 +25,6 @@
     padding:6px;
 }
 
-.au-producers, .tableau_media, .tableau_presse, .tableau_univers, .tableau_news, .tableau_user_consumer, .tableau_product, .tableau-spiritueux, .tableau-vins {
-    text-align: center;
-    margin: 0 auto;
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 2px 2px 6px #aaa;
-    color: white;
-    text-shadow: 2px 2px 2px black;
-    width: 80%;
-    position: relative;
-    display: block;
-}
-
-
-.au-producers, .tableau_media, .tableau_presse, .tableau_univers, .tableau_news, .tableau_user_consumer, .tableau_product, .tableau-spiritueux, .tableau-vins td {
-    vertical-align: inherit
-}
-.au-producers, .tableau_media, .tableau_presse, .tableau_univers, .tableau_news, .tableau_user_consumer, .tableau_product, .tableau-spiritueux, .tableau-vins th{
-
-    vertical-align: inherit;
-}
 .color-title{
     color: #c6a668;
 }
@@ -76,8 +55,6 @@ body {
 }
 li{text-align: center;}
 .btn{color: black}
-
-#content {
-    margin-top: 75px;
-    text-align: center;
+#content{
+    margin-top: 90px;
 }

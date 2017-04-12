@@ -6,12 +6,12 @@
 {% endblock %}
 
 {% block body %}
-    <div id="content">
+    <div id="content-cadre">
 
         <!--------Purchase------->
         <div class="center">
-                <h1 class="section-heading">Purchase</h1>
-                <br>
+            <h1 class="section-heading">Purchase</h1>
+            <br>
                 <table>
                     <tbody>
                     <tr>
@@ -28,53 +28,53 @@
                     </tr>
                     </tbody>
                 </table>
-                <br>
-                <span class="float">
-            <p class="adresse">Adresse de livraison :</p>
-            <table>
-                <tbody>
-                    <tr>
-                        <th width="100px">Address</th>
-                        <td id="champ">{{ purchase.address }}</td>
-                    </tr>
-                    <tr>
-                        <th width="100px">City</th>
-                        <td id="champ">{{ purchase.city }}</td>
-                    </tr>
-                    <tr>
-                        <th width="100px">Postalcode</th>
-                        <td id="champ">{{ purchase.postalCode }}</td>
-                    </tr>
-                    <tr>
-                        <th width="100px">Country</th>
-                        <td id="champ">{{ purchase.country }}</td>
-                    </tr>
-                </tbody>
-            </table>
+            <br>
+            <span class="float">
+                    <p class="adresse">Adresse de livraison :</p>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <th width="100px">Address</th>
+                            <td id="champ">{{ purchase.address }}</td>
+                        </tr>
+                        <tr>
+                            <th width="100px">City</th>
+                            <td id="champ">{{ purchase.city }}</td>
+                        </tr>
+                        <tr>
+                            <th width="100px">Postalcode</th>
+                            <td id="champ">{{ purchase.postalCode }}</td>
+                        </tr>
+                        <tr>
+                            <th width="100px">Country</th>
+                            <td id="champ">{{ purchase.country }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
             </span>
 
-                <span class="float">
-            <p class="adresse">Adresse de facturation :</p>
-            <table>
-                <tbody>
-                <tr>
-                    <th width="100px">Address</th>
-                    <td id="champ">{{ purchase.address }}</td>
-                </tr>
-                <tr>
-                    <th width="100px">City</th>
-                    <td id="champ">{{ purchase.city }}</td>
-                </tr>
-                <tr>
-                    <th width="100px">Postalcode</th>
-                    <td id="champ">{{ purchase.postalCode }}</td>
-                </tr>
-                <tr>
-                    <th width="100px">Country</th>
-                    <td id="champ">{{ purchase.country }}</td>
-                </tr>
-                </tbody>
-            </table>
+            <span class="float">
+                    <p class="adresse">Adresse de facturation :</p>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <th width="100px">Address</th>
+                            <td id="champ">{{ purchase.address }}</td>
+                        </tr>
+                        <tr>
+                            <th width="100px">City</th>
+                            <td id="champ">{{ purchase.city }}</td>
+                        </tr>
+                        <tr>
+                            <th width="100px">Postalcode</th>
+                            <td id="champ">{{ purchase.postalCode }}</td>
+                        </tr>
+                        <tr>
+                            <th width="100px">Country</th>
+                            <td id="champ">{{ purchase.country }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
             </span>
         </div>
         <br><br><br><br><br><br><br><br><br>
@@ -83,49 +83,46 @@
         <h1 class="section-heading clear">Achat</h1>
 
         <div class="text-center">
-                    <span class="swiper-slide text-center table-product-text">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Nom</th>
-                                    <th>Prix</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+            <div class="table-responsive swiper-slide text-center table-product-text">
+                <table class="table table-hover">
+                    <thead class="thead-default">
+                    <tr class="color-title">
+                        <th class="col-xs-6">Nom</th>
+                        <th class="col-xs-6">Prix</th>
+                    </tr>
+                    </thead>
+                    <tbody>
 
-        {% for product in products %}
+                    {% for product in products %}
+                        <td><a href="{{ path('product_show', {id:product.id}) }}">{{ product.displayName }}</a></td>
+                        <td>{{ product.price }}</td>
+                        </tr>
+                        </tr>
 
-            <tr>
-                <tr>
-                                <td><a href="{{ path('product_show', {id:product.id}) }}">{{ product.displayName }}</a></td>
-                                <td>{{ product.price }}</td>
-                </tr>
-            </tr>
+                    {% endfor %}
 
-        {% endfor %}
-
-                            </tbody>
-                        </table>
-                    </span>
+                    </tbody>
+                </table>
+            </div>
 
         </div>
 
         <!--------Acheteur------->
         <h1 class="section-heading">Acheteur</h1>
-        <div class="table-product-text acheteur">
-            <table>
-                <tbody>
+        <div class="table-responsive table-product-text acheteur">
+            <table class="table table-hover">
+                <tbody class="th-centre">
                 <tr>
-                    <th width="100px">Pseudo</th>
-                    <td><a href="{{ path('userconsumer_show', {id:base_user.id}) }}">{{ base_user.username }}</a></td>
+                    <th class="col-xs-6">Pseudo</th>
+                    <td class="col-xs-6"><a href="{{ path('userconsumer_show', {id:base_user.id}) }}">{{ base_user.username }}</a></td>
                 </tr>
                 <tr>
-                    <th width="100px">Prenom</th>
-                    <td>{{ base_user.firstname }}</td>
+                    <th class="col-xs-6">Prenom</th>
+                    <td class="col-xs-6">{{ base_user.firstname }}</td>
                 </tr>
                 <tr>
-                    <th width="100px">Nom</th>
-                    <td>{{ base_user.lastname }}</td>
+                    <th class="col-xs-6">Nom</th>
+                    <td class="col-xs-6">{{ base_user.lastname }}</td>
                 </tr>
                 </tbody>
             </table>
@@ -133,18 +130,20 @@
 
         <br>
         <!--------Button------->
-        <table class="button">
-            <td>
-                <a class="btn btn-primary btn-circle" href="{{ path('purchase_index') }}">Back to the list</a>
-            </td>
-            <td>
-                <a class="btn btn-primary btn-circle" href="{{ path('purchase_edit', { 'id': purchase.id }) }}">Edit</a>
-            </td>
+        <div class="table-responsive">
+            <table class=" table button">
+                <td>
+                    <a class="btn btn-primary btn-circle" href="{{ path('purchase_index') }}">Back to the list</a>
+                </td>
+                <td>
+                    <a class="btn btn-primary btn-circle" href="{{ path('purchase_edit', { 'id': purchase.id }) }}">Edit</a>
+                </td>
                 {{ form_start(delete_form) }}
-            <td>
-                <input class="btn btn-primary btn-circle" type="submit" value="Delete">
-            </td>
+                <td>
+                    <input class="btn btn-primary btn-circle" type="submit" value="Delete">
+                </td>
                 {{ form_end(delete_form) }}
-        </table>
+            </table>
+        </div>
     </div>
 {% endblock %}

@@ -7,55 +7,57 @@
 
 {% block body %}
     <div id="content">
-    <h1>Productconditioning</h1>
-
-    <table>
+    <h1 class="section-heading">Productconditioning</h1>
+<div class="table-responsive product-conditioning">
+    <table class="table table-hover">
         <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ productConditioning.id }}</td>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <td>{{ productConditioning.name }}</td>
+        </tr>
+        <tr>
+            <th>Public price</th>
+            <td>{{ productConditioning.pubPrice }}</td>
+        </tr>
+        <tr>
+            <th>Pro price</th>
+            <td>{{ productConditioning.proPrice }}</td>
+        </tr>
+        <tr>
+            <th>Volume value</th>
+            <td>{{ productConditioning.volumeValue }}</td>
+        </tr>
+        <tr>
+            <th>Volume unit</th>
+            <td>{{ productConditioning.volumeUnit }}</td>
+        </tr>
+        <tr>
+            <th>Stock</th>
+            <td>{{ productConditioning.stock }}</td>
+        </tr>
+        <tr>
+            <th>Pack</th>
+            <td>{% if productConditioning.pack is not null %}Yes{% else %}No{% endif %}</td>
+        </tr>
+        {% if productConditioning.pack is not null %}
             <tr>
-                <th>Id</th>
-                <td>{{ productConditioning.id }}</td>
+                <th>Pack name</th>
+                <td>productConditioning.pack.name</td>
             </tr>
             <tr>
-                <th>Name</th>
-                <td>{{ productConditioning.name }}</td>
+                <th>Quantity in pack</th>
+                <td>productConditioning.pack.quantityIn</td>
             </tr>
-            <tr>
-                <th>Public price</th>
-                <td>{{ productConditioning.pubPrice }}</td>
-            </tr>
-            <tr>
-                <th>Pro price</th>
-                <td>{{ productConditioning.proPrice }}</td>
-            </tr>
-            <tr>
-                <th>Volume value</th>
-                <td>{{ productConditioning.volumeValue }}</td>
-            </tr>
-            <tr>
-                <th>Volume unit</th>
-                <td>{{ productConditioning.volumeUnit }}</td>
-            </tr>
-            <tr>
-                <th>Stock</th>
-                <td>{{ productConditioning.stock }}</td>
-            </tr>
-            <tr>
-                <th>Pack</th>
-                <td>{% if productConditioning.pack is not null %}Yes{% else %}No{% endif %}</td>
-            </tr>
-            {% if productConditioning.pack is not null %}
-                <tr>
-                    <th>Pack name</th>
-                    <td>productConditioning.pack.name</td>
-                </tr>
-                <tr>
-                    <th>Quantity in pack</th>
-                    <td>productConditioning.pack.quantityIn</td>
-                </tr>
 
-            {% endif %}
+        {% endif %}
         </tbody>
     </table>
+</div>
+
         <div id="boutons">
             <div class="bouton1">
                 <a class="btn btn-primary btn-circle" href="{{ path('conditioning_edit', { 'id': productConditioning.id }) }}">Edit</a>

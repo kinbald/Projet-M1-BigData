@@ -5134,11 +5134,11 @@ if (function (e, t) {
 
     for (var i = 0; i < item_list.length; i++) {
         item_list[i].addEventListener("click", function(ev) {
-            var id = this.getAttribute("data-id");
+            var id = this.getAttribute("data-conditioning-type-id");
             var inCard = false;
             for(var j = 0 ; j < panier.length ; j++)
             {
-                if(panier[j].id == id) {
+                if(panier[j].conditioningTypeId == id) {
                     inCard = true;
                     break;
                 }
