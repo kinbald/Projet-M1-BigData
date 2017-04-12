@@ -25,7 +25,7 @@
     padding:6px;
 }
 
-.au-producers, .tableau_media, .tableau_presse, .tableau_univers, .tableau_news, .tableau_user_consumer, .tableau_product {
+.au-producers, .tableau_media, .tableau_presse, .tableau_univers, .tableau_news, .tableau_user_consumer, .tableau_product, .tableau-spiritueux, .tableau-vins {
     text-align: center;
     margin: 0 auto;
     padding: 20px;
@@ -39,10 +39,10 @@
 }
 
 
-.au-producers, .tableau_media, .tableau_presse, .tableau_univers, .tableau_news, .tableau_user_consumer, .tableau_product td {
+.au-producers, .tableau_media, .tableau_presse, .tableau_univers, .tableau_news, .tableau_user_consumer, .tableau_product, .tableau-spiritueux, .tableau-vins td {
     vertical-align: inherit
 }
-.au-producers, .tableau_media, .tableau_presse, .tableau_univers, .tableau_news, .tableau_user_consumer, .tableau_product th{
+.au-producers, .tableau_media, .tableau_presse, .tableau_univers, .tableau_news, .tableau_user_consumer, .tableau_product, .tableau-spiritueux, .tableau-vins th{
 
     vertical-align: inherit;
 }
@@ -79,4 +79,5 @@ li{text-align: center;}
 
 #content {
     margin-top: 75px;
+    text-align: center;
 }

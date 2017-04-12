@@ -2,7 +2,6 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link href="{{ asset('css/index.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/media.css') }}" rel="stylesheet" />
 {% endblock %}
 
@@ -19,11 +18,11 @@
             </div>
         </div>
     </div>
-    <div class="tableau_media">
-        <h3 class="section-heading">{% trans %}Commandes à préparer{% endtrans %}</h3>
-        <table>
-            <thead>
-                <tr>
+    <div class="table-responsive tableau_media">
+        <h3 class="type_commande">{% trans %}A préparer{% endtrans %}</h3>
+        <table class="table table-hover">
+            <thead class="thead-default">
+                <tr class="color-title">
                     <th>{% trans %}ID commande{% endtrans %}</th>
                     <th>{% trans %}ID user{% endtrans %}</th>
                     <th>{% trans %}Adresse{% endtrans %}</th>
@@ -61,10 +60,10 @@
             </tbody>
         </table>
         <br><br>
-        <h3 class="type_commande">{% trans %}Commandes expédiées{% endtrans %}</h3>
-        <table>
-            <thead>
-            <tr>
+        <h3 class="type_commande">{% trans %}Expédiées{% endtrans %}</h3>
+        <table class="table table-hover">
+            <thead class="thead-default">
+            <tr class="color-title">
                 <th>{% trans %}ID commande{% endtrans %}</th>
                 <th>{% trans %}ID user{% endtrans %}</th>
                 <th>{% trans %}Adresse{% endtrans %}</th>

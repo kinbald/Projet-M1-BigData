@@ -2,7 +2,6 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link href="{{ asset('css/index.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/media.css') }}" rel="stylesheet" />
 {% endblock %}
 
@@ -15,9 +14,10 @@
         </div>
     </div>
     <br><br>
-    <table>
-        <thead>
-            <tr>
+    <div class="table-responsive tableau-vins">
+        <table class="table table-hover">
+            <thead class="thead-default">
+            <tr class="color-title">
                 <th>{% trans %}ID{% endtrans %}</th>
                 <th>{% trans %}Nom{% endtrans %}</th>
                 <th>{% trans %}Millésime{% endtrans %}</th>
@@ -26,8 +26,8 @@
                 <th>{% trans %}Stock{% endtrans %}</th>
                 <th>{% trans %}Actions{% endtrans %}</th>
             </tr>
-        </thead>
-        <tbody>
+            </thead>
+            <tbody>
             {% for wine in products %}
                 <tr>
                     <td class="id"><a href="{{ path('product_show', { 'id': wine.id }) }}">{{ wine.id }}</a></td>
@@ -50,8 +50,10 @@
                     </td>
                 </tr>
             {% endfor %}
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
+
     <br><br>
     <ul>
         <li>
