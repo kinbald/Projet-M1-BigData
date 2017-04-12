@@ -3,6 +3,7 @@
 {% block stylesheets %}
     {{ parent() }}
     <link href="{{ asset('css/media.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/table-template.css') }}" rel="stylesheet" />
 {% endblock %}
 
 {% block javascripts %}
@@ -18,10 +19,10 @@
             </div>
         </div>
     </div>
-    <div class="tableau_media">
-        <table class="table table-responsive table-hover" id="media">
+    <div class="table-responsive table-template tableau_media">
+        <table class="table table-hover" id="media">
             <thead class="thead-default">
-                <tr>
+                <tr class="color-title">
                     <th>{% trans %}Date{% endtrans %}</th>
                     <th>{% trans %}Title{% endtrans %}</th>
                     <th>{% trans %}Description{% endtrans %}</th>
