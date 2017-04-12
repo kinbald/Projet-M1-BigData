@@ -35,16 +35,8 @@ class ProfileCommandController extends Controller
      */
     public function showProductsAction(Purchase $purchase)
     {
-        $products = array();
-        $purchaseProduct = $purchase->getProducts();
-        foreach ($purchaseProduct as $product) {
-            array_push($products, $product->getProduct());
-        }
-
         return $this->render('UserBundle:Profile:show_products.html.twig', array(
-            'products' => $products,
-            'purchase' => $purchase,
-            'purchaseProduct' => $purchaseProduct
+            'purchase' => $purchase
         ));
     }
 }
