@@ -9,16 +9,33 @@
     {{ parent() }}
     <script type="text/javascript">
         var conditioning = [];
+        var infoConditioning = [];
         {% for conditioningType in product.conditioningTypes %}
-        conditioning[{{ conditioningType.id }}] = {"price": {{ conditioningType.price }}, "name": "{{ product.name }}", "conditioningTypeName": "{{ conditioningType.name }}", "conditioningTypeId": {{ conditioningType.id }} };
+        conditioning[{{ conditioningType.id }}] = {"price": "{{ conditioningType.price|number_format(2,'.',',') }}", "name": "{{ product.name }}", "conditioningTypeName": "{{ conditioningType.name }}", "conditioningTypeId": {{ conditioningType.id }} };
+        infoConditioning[{{ conditioningType.id }}] = {"stock": {{ conditioningType.stock }}, "volumeValue": "{{ conditioningType.volumeValue }}", "volumeUnit": "{{ conditioningType.volumeUnit }}"{% if conditioningType.pack is not null %}, "packQuantity": {{ conditioningType.pack.quantityIn }}, "packName": "{{ conditioningType.pack.name }}"{% endif %} };
         {% endfor %}
 
         function Refresh() {
             $('#price').html(conditioning[$('#conditioning_selected').val()]["price"] + '€');
+
             $('.add-item').attr("data-cost", conditioning[$('#conditioning_selected').val()]["price"]);
             $('.add-item').attr("data-name", conditioning[$('#conditioning_selected').val()]["name"]);
             $('.add-item').attr("data-conditioning-type-name", conditioning[$('#conditioning_selected').val()]["conditioningTypeName"]);
             $('.add-item').attr("data-conditioning-type-id", conditioning[$('#conditioning_selected').val()]["conditioningTypeId"]);
+
+            $('#conditioning-stock').html(infoConditioning[$('#conditioning_selected').val()]["stock"]);
+            $('#conditioning-name').html('Volume dans ' + conditioning[$('#conditioning_selected').val()]["name"]);
+            $('#conditioning-volumeValue').html(infoConditioning[$('#conditioning_selected').val()]["volumeValue"]);
+            $('#conditioning-volumeUnit').html(infoConditioning[$('#conditioning_selected').val()]["volumeUnit"]);
+
+            if(infoConditioning[$('#conditioning_selected').val()]["packName"] != undefined)
+            {
+                $("#conditioning-pack").show();
+                $('#conditioning-pack-name').html('Quantité dans le pack ' + infoConditioning[$('#conditioning_selected').val()]["packName"]);
+                $('#conditioning-pack-quantity').html(infoConditioning[$('#conditioning_selected').val()]["packQuantity"]);
+            }else{
+                $("#conditioning-pack").hide();
+            }
         }
 
         $('#conditioning_selected').change(Refresh);
@@ -105,6 +122,20 @@
             </select>
             <div class="countdown-container my-countdown-container">
                 <span class="countdown-price h3 wow fadeInUp price-show" id="price">0.00 €</span>
+                    <table class="table table-condensed">
+                        <tr>
+                            <td class="attribute">Quantité disponible</td>
+                            <td class="att-value" id="conditioning-stock"></td>
+                        </tr>
+                        <tr>
+                            <td class="attribute" id="conditioning-name"></td>
+                            <td class="att-value"><span id="conditioning-volumeValue"></span> <span id="conditioning-volumeUnit"></span></td>
+                        </tr>
+                        <tr id="conditioning-pack">
+                            <td class="attribute" id="conditioning-pack-name"></td>
+                            <td class="att-value" id="conditioning-pack-quantity"></td>
+                        </tr>
+                    </table>
                 {% set picture = product.pictures|last %}
                 <span class="btn btn-default add-item wow swing" {% if picture %}data-image="/{{ picture.url}}"{% endif %}
                       data-name="{{ product.name }}" data-cost="0" data-id="{{ product.id }}">

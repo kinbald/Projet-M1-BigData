@@ -5179,7 +5179,7 @@ if (function (e, t) {
         toggleEptyCart();
         curCounter = $("#items .cart-item").length;
         $("#items-counter").empty();
-        document.getElementById("items-counter").innerHTML += "<span class='animate'>" + curCounter +
+        document.getElementById("items-counter").innerHTML += "<span class='animate'><div class='caddie glyphicon glyphicon-shopping-cart'></div>" + curCounter +
             "<span class='circle'></span></span>";
         var quantity = 1;
 
@@ -5401,6 +5401,13 @@ if (function (e, t) {
     // cart widget toggle
     $(function() {
         $("#items-counter").click(function() {
+            $.post(refresh_route, { panier: JSON.parse(window.localStorage.getItem('panier')) })
+                .done(function (data) {
+
+                })
+                .fail(function (data) {
+
+                });
             $("body").toggleClass("cart-widget-open");
         });
         $("#cart-widget-close").click(function() {
