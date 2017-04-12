@@ -32,12 +32,6 @@ class ProductPurchase
      */
     private $stock;
 
-    /**
-     * @var Product
-     * @ORM\ManyToOne(targetEntity="\ProductBundle\Entity\Product", inversedBy="purchases")
-     * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
-     */
-    private $product;
 
     /**
      * @var Purchase
@@ -145,30 +139,6 @@ class ProductPurchase
     public function getDelivery()
     {
         return $this->delivery;
-    }
-
-    /**
-     * Set product
-     *
-     * @param \ProductBundle\Entity\Product $product
-     *
-     * @return ProductPurchase
-     */
-    public function setProduct(Product $product)
-    {
-        $this->product = $product;
-
-        return $this;
-    }
-
-    /**
-     * Get product
-     *
-     * @return \ProductBundle\Entity\Product
-     */
-    public function getProduct()
-    {
-        return $this->product;
     }
 
     /**

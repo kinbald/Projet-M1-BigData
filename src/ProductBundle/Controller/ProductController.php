@@ -191,8 +191,6 @@ class ProductController extends Controller
     {
         $deleteForm = $this->createDeleteForm($product, $product->getDiscr());
 
-        $conditioningSelect = $this->createForm('ProductBundle\Form\ConditioningSelectType', array('values' => $product->getConditioningTypes()));
-
         $evaluation = new ProductEvaluation();
         $evaluationForm = $this->createForm('ProductBundle\Form\EvaluationType', $evaluation);
         $evaluationForm->handleRequest($request);
@@ -217,7 +215,6 @@ class ProductController extends Controller
             'utilisateur' => $this->getUser(),
             'product' => $product,
             'delete_form' => $deleteForm->createView(),
-            'conditioning_select_form' => $conditioningSelect->createView(),
             'competitions' => ($product->getDiscr() == 'wine') ? $product->getCompetitions() : null,
             'errors' => isset($errors)?$errors:null
         ));
