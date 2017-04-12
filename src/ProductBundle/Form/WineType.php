@@ -15,7 +15,15 @@ class WineType extends ProductType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
-        $builder->add('vintage')->add('color')        ;
+        $builder
+            ->add('vintage')
+            ->add('color')
+            ->add('aDecanter')
+            ->add('contactLies')
+            ->add('contactBois')
+            ->add('nonFiltre')
+            ->add('demarcheQualite')
+            ->add('overpressure');
     }
     
     /**
