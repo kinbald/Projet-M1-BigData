@@ -88,19 +88,21 @@
                     <thead class="thead-default">
                     <tr class="color-title">
                         <th class="col-xs-6">Nom</th>
+                        <th class="col-xs-6">Conditionnement</th>
+                        <th class="col-xs-6">Quantité</th>
                         <th class="col-xs-6">Prix</th>
                     </tr>
                     </thead>
                     <tbody>
-
-                    {% for product in products %}
-                        <td><a href="{{ path('product_show', {id:product.id}) }}">{{ product.displayName }}</a></td>
-                        <td>{{ product.price }}</td>
+                    {% for productPurchase in purchase.products %}
+                        {% set conditioning, product = productPurchase.conditioningType, productPurchase.conditioningType.product %}
+                        <tr>
+                            <td><a href="{{ path('product_show', {id:product.id}) }}">{{ product.name }}</a></td>
+                            <td>{{ conditioning.name }}</td>
+                            <td>{{ conditioning.stock}}</td>
+                            <td>{{ conditioning.getPrice(base_user)|number_format(2, '.', ',') }}€</td>
                         </tr>
-                        </tr>
-
                     {% endfor %}
-
                     </tbody>
                 </table>
             </div>
