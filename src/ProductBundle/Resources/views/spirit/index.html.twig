@@ -16,8 +16,6 @@
                 <tr class="color-title">
                     <th>{% trans %}ID{% endtrans %}</th>
                     <th>{% trans %}Nom{% endtrans %}</th>
-                    <th>{% trans %}Prix{% endtrans %}</th>
-                    <th>{% trans %}Stock{% endtrans %}</th>
                     <th>{% trans %}Actions{% endtrans %}</th>
                 </tr>
                 </thead>
@@ -26,8 +24,6 @@
                     <tr>
                         <td class="id"><a href="{{ path('product_show', { 'id': spirit.id }) }}">{{ spirit.id }}</a></td>
                         <td class="degree">{{ spirit.name }}</td>
-                        <td class="price">{{ spirit.price }} €</td>
-                        <td class="stock">{{ spirit.stock }}</td>
                         <td class="actions">
                             <ul>
                                 <li>

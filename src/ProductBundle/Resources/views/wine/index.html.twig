@@ -23,8 +23,6 @@
                 <th>{% trans %}Nom{% endtrans %}</th>
                 <th>{% trans %}Millésime{% endtrans %}</th>
                 <th>{% trans %}Couleur{% endtrans %}</th>
-                <th>{% trans %}Prix{% endtrans %}</th>
-                <th>{% trans %}Stock{% endtrans %}</th>
                 <th>{% trans %}Actions{% endtrans %}</th>
             </tr>
             </thead>
@@ -35,8 +33,6 @@
                     <td class="name">{{ wine.name }}</td>
                     <td class="vintage">{% if wine.vintage %}{{ wine.vintage|date('Y') }}{% endif %}</td>
                     <td class="color">{{ wine.color }}</td>
-                    <td class="price">{{ wine.price }} €</td>
-                    <td class="price">{{ wine.stock }}</td>
                     <td class="actions">
                         <ul>
                             <li>
