@@ -29,6 +29,22 @@
     display: block
 }
 
+#Contour_blanc-univ{
+    padding: 30px 5%;
+    padding-top: -30px;
+    margin-top: 130px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 70px;
+    width: 80%;
+    border-radius: 20px;
+    box-shadow: 2px 2px 6px #aaa;
+    text-shadow: 2px 2px 2px black;
+
+    position: relative;
+    display: block
+}
+
 #Contour_blanc h3{
     margin-top: -50px;
 }
@@ -42,4 +58,29 @@
     #Contour_blanc-prodcond {
         width: 80%;
     }
+
+}
+
+#Contour_blanc-new_press{
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 70px;
+    width: 80%;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 2px 2px 6px #aaa;
+    text-shadow: 2px 2px 2px black;
+
+    position: relative;
+    display: block;
+}
+
+
+@media (max-width: 800px) {
+
+    #Contour_blanc-new_press h1 {
+        text-align: center;
+    }
+
 }
