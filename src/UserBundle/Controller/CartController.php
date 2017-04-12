@@ -205,4 +205,37 @@ class CartController extends Controller
         //paiement effectué ==> panier remis à 0
         return $this->render('AppBundle:Paypal:paid.html.twig');
     }
+
+
+
+    /**
+     * @Route("/refresh", name="refresh")
+     * @Method({"POST"})
+     */
+    public function refreshAction(Request $request)
+    {
+        $model = new CartModel($this->getDoctrine()->getManager());
+        $em = $this->getDoctrine()->getManager();
+        $model->removeUserReservation($this->getUser());
+        $repConditioning = $em->getRepository('ProductBundle:ProductConditioning');
+
+        $panier = $request->get('panier');
+
+        for($i = 0; $i < count($panier); $i++ )
+        {
+            $reservation = new Reservation();
+            $reservation->setQuantity((int)$panier[$i]['quantity']);
+            $reservation->setDate(new \DateTime);
+            $reservation->setUser($this->getUser());
+            $reservation->setProductConditioning($repConditioning->find((int)$panier[$i]['conditioningTypeId']));
+            $em->persist($reservation);
+            $em->flush();
+        }
+
+        $response = new JsonResponse();
+        $response->setData(array(
+            null
+        ));
+        return $response;
+    }
 }

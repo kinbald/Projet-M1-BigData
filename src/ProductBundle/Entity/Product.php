@@ -64,19 +64,6 @@ abstract class Product
      */
     protected $volume;
 
-    /**
-     * @var float
-     *
-     * @ORM\Column(name="price", type="float")
-     */
-    protected $price;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="stock", type="integer")
-     */
-    protected $stock;
 
     /**
      * @var Collection
@@ -160,15 +147,9 @@ abstract class Product
 
     /**
      * @var Collection
-     * @ORM\ManyToMany(targetEntity="\ProductBundle\Entity\ProductConditioning", inversedBy="products")
+     * @ORM\OneToMany(targetEntity="\ProductBundle\Entity\ProductConditioning", mappedBy="product")
      */
     protected $conditioningTypes;
-
-    /**
-     * @var Collection
-     * @ORM\OneToMany(targetEntity="ProductBundle\Entity\ProductPurchase", mappedBy="product")
-     */
-    protected $purchases;
 
     /**
      * @var Collection
@@ -279,58 +260,6 @@ abstract class Product
     public function getVolume()
     {
         return $this->volume;
-    }
-
-    /**
-     * Set price
-     * @deprecated
-     *
-     * @param float $price
-     *
-     * @return Product
-     */
-    public function setPrice($price)
-    {
-        $this->price = $price;
-
-        return $this;
-    }
-
-    /**
-     * Get price
-     * @deprecated
-     *
-     * @return float
-     */
-    public function getPrice()
-    {
-        return $this->price;
-    }
-
-    /**
-     * Set stock
-     * @deprecated
-     *
-     * @param integer $stock
-     *
-     * @return Product
-     */
-    public function setStock($stock)
-    {
-        $this->stock = $stock;
-
-        return $this;
-    }
-
-    /**
-     * Get stock
-     * @deprecated
-     *
-     * @return int
-     */
-    public function getStock()
-    {
-        return $this->stock;
     }
 
     /**
@@ -467,40 +396,6 @@ abstract class Product
     public function getUniverses()
     {
         return $this->universes;
-    }
-    
-    /**
-     * Add purchase
-     *
-     * @param \ProductBundle\Entity\ProductPurchase $purchase
-     *
-     * @return Product
-     */
-    public function addPurchase(ProductPurchase $purchase)
-    {
-        $this->purchases[] = $purchase;
-
-        return $this;
-    }
-
-    /**
-     * Remove purchase
-     *
-     * @param \ProductBundle\Entity\ProductPurchase $purchase
-     */
-    public function removePurchase(ProductPurchase $purchase)
-    {
-        $this->purchases->removeElement($purchase);
-    }
-
-    /**
-     * Get purchases
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getPurchases()
-    {
-        return $this->purchases;
     }
 
     /**

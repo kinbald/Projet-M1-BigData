@@ -34,7 +34,7 @@ class ReservationRepository extends \Doctrine\ORM\EntityRepository
     {
         return $this->createQueryBuilder('m')
             ->where('m.user = :user')
-            ->andWhere('m.product = :id')
+            ->andWhere('m.productConditioning = :id')
             ->setParameter('user',$user->getId())
             ->setParameter('id',$id)
             ->getQuery()

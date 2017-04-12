@@ -15,7 +15,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @UniqueEntity(
  *     fields={"user", "product"},
  *     errorPath="user",
- *     message="You have already commented this product, motherfucker"
+ *     message="You have already commented this product, you bastard"
  * )
  */
 class ProductEvaluation

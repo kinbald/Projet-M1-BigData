@@ -275,7 +275,7 @@ class Payment
             $this->taxTotal += round($tva/100 * $productPrice * $productStock, 2);
             $itemDetails = new PaymentDetailsItemType();
             $itemDetails->Name = $productPurchase->getConditioningType()->getName().
-                'de'.$productPurchase->getProduct()->getName();
+                'de'.$productPurchase->getConditioningType()->getProduct()->getName();
             $itemDetails->Amount = $itemAmount;
             $itemDetails->Quantity = $productStock;
             /*

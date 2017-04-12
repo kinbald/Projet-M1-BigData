@@ -22,11 +22,12 @@ class CartModel
         $this->em = $entityManager;
         $this->repositoryProduct = $entityManager->getRepository('ProductBundle:Product');
         $this->repositoryReservation = $entityManager->getRepository('ProductBundle:Reservation');
+        $this->repositoryConditioning = $entityManager->getRepository('ProductBundle:ProductConditioning');
     }
 
     public function getQuantityById($id)
     {
-        return $this->repositoryProduct->find($id)->getStock();
+        return $this->repositoryConditioning->find($id)->getStock();
     }
 
     public function getQuantityReservationById($id, $user)
@@ -36,7 +37,7 @@ class CartModel
 
     public function setQuantityById($id, $quantity)
     {
-        return $this->repositoryProduct->find($id)->setStock($quantity);
+        return $this->repositoryConditioning->find($id)->setStock($quantity);
     }
 
     public function find($id)
