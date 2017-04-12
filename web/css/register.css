@@ -66,7 +66,7 @@
         margin: 0 auto;
     }
     input, textarea, select{
-        width: 15vw;
+        width: 15vw !important;
     }
 
 
@@ -112,7 +112,9 @@
 #fos_user_registration_form_urlBlog,
 #fos_user_registration_form_idPresse,
 #fos_user_registration_form_businessName,
-#fos_user_registration_form_phone{
+#fos_user_registration_form_phone,
+#fos_user_registration_form_province,
+#fos_user_registration_form_state{
     border-radius: 10px;
     color:#555555;
 }
@@ -125,12 +127,12 @@
 }
 
 #fos_user_registration_form_country {
-    width: 14em;
+    width: 14em !important;
     border-radius: 5px;
 }
 #fos_user_registration_form_birthDate_day {
-    width: 60px;
+    width: 60px !important;
 }
 #fos_user_registration_form_birthDate_year, #fos_user_registration_form_birthDate_month {
-    width: 80px;
+    width: 80px !important;
 }
