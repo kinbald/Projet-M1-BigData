@@ -7,6 +7,7 @@
         <link href="{{ asset('css/bootstrap-dark.css') }}" rel="stylesheet" />
         <link href="{{ asset('css/theme-dark.css') }}" rel="stylesheet" />
         <link href="{{ asset('css/footer.css') }}" rel="stylesheet" />
+        <link href="{{ asset('css/navbar.css') }}" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Lemonada" rel="stylesheet">
     {% endblock %}
@@ -42,8 +43,8 @@
             </button>
 
             <a class="navbar-brand" href="{{ path("homepage") }}">
-                <img src="{{ asset('img/logo.png') }}" alt="logo">
-                <span>Box Office Wines</span>
+                <img class="style_logo" src="{{ asset('img/logo.png') }}" alt="logo">
+
             </a>
         </div>
         {% if is_granted('ROLE_CONSUMER') %}
@@ -191,7 +192,7 @@
     <footer id="slim_footer" class="footer-bs">
         <div class="row">
             <div class="col-md-3 footer-brand animated fadeInLeft">
-                <h2><a href="{{ path("homepage") }}">Logo</a></h2>
+                <h2><a href="{{ path("homepage") }}"><img class="style_logo_footer" src="{{ asset('img/logo.png') }}" alt="logo"></a></h2>
                 <p>Box Office Wines est une entreprise fondée pour vendre du vin. Principalement.</p>
                 <p>© 2017, All rights reserved.</p>
                 <p><i>Design by ISEN Toulon <strong><3 <3 <3</strong>.</i></p>

@@ -6,6 +6,7 @@
     {% block stylesheets %}
         <link href="{{ asset('css/bootstrap-dark.css') }}" rel="stylesheet" />
         <link href="{{ asset('css/theme-dark.css') }}" rel="stylesheet" />
+        <link href="{{ asset('css/navbar.css') }}" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Lemonada" rel="stylesheet">
     {% endblock %}
@@ -22,7 +23,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="{{ path("homepage") }}">
-                    <img src="{{ asset('img/logo.png') }}" alt="logo">
+                    <img class="style_logo" src="{{ asset('img/logo.png') }}" alt="logo">
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
