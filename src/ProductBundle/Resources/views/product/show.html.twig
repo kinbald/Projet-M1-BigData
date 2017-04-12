@@ -14,14 +14,14 @@
         {% endfor %}
 
         function Refresh() {
-            $('#price').html(conditioning[$('#productbundle_conditioningselect_conditioning').val()]["price"] + '€');
-            $('.add-item').attr("data-cost", conditioning[$('#productbundle_conditioningselect_conditioning').val()]["price"]);
-            $('.add-item').attr("data-name", conditioning[$('#productbundle_conditioningselect_conditioning').val()]["name"]);
-            $('.add-item').attr("data-conditioning-type-name", conditioning[$('#productbundle_conditioningselect_conditioning').val()]["conditioningTypeName"]);
-            $('.add-item').attr("data-conditioning-type-id", conditioning[$('#productbundle_conditioningselect_conditioning').val()]["conditioningTypeId"]);
+            $('#price').html(conditioning[$('#conditioning_selected').val()]["price"] + '€');
+            $('.add-item').attr("data-cost", conditioning[$('#conditioning_selected').val()]["price"]);
+            $('.add-item').attr("data-name", conditioning[$('#conditioning_selected').val()]["name"]);
+            $('.add-item').attr("data-conditioning-type-name", conditioning[$('#conditioning_selected').val()]["conditioningTypeName"]);
+            $('.add-item').attr("data-conditioning-type-id", conditioning[$('#conditioning_selected').val()]["conditioningTypeId"]);
         }
 
-        $('#productbundle_conditioningselect_conditioning').change(Refresh);
+        $('#conditioning_selected').change(Refresh);
         Refresh();
 
     </script>
@@ -97,23 +97,24 @@
                 </div>
             {% endif %}
             <p class="wow fadeInDown">{{ product.description }} </p>
-            {% if conditioning_select_form.children.conditioning is defined %}
-                {{ form_start(conditioning_select_form) }}
-                {{ form_widget(conditioning_select_form) }}
-                {{ form_end(conditioning_select_form) }}
-
+            {% if product.conditioningTypes is not empty %}
+            <select id="conditioning_selected" class="conditioning champ">
+                {% for conditioning in product.conditioningTypes %}
+                    <option value="{{ conditioning.id }}">{{ conditioning.name }}</option>
+                {% endfor %}
+            </select>
             <div class="countdown-container my-countdown-container">
                 <span class="countdown-price h3 wow fadeInUp price-show" id="price">0.00 €</span>
                 {% set picture = product.pictures|last %}
                 <span class="btn btn-default add-item wow swing" {% if picture %}data-image="/{{ picture.url}}"{% endif %}
-                      data-name="{{ product.name }}" data-cost="{{ product.price }}" data-id="{{ product.id }}">
-            <div id="ajout"><img alt="e-commerce" src="{{ asset('img/product/panier.png') }}" height="55"></div>
-            <span class="ti-shopping-cart"></span>{% trans %}Panier{% endtrans %}
-            {% else %}
-                <span class="h2 wow fadeInUp" >Indisponible</span>
-            {% endif %}
-        </span>
+                      data-name="{{ product.name }}" data-cost="0" data-id="{{ product.id }}">
+                <div id="ajout"><img alt="e-commerce" src="{{ asset('img/product/panier.png') }}" height="55"></div>
+                <span class="ti-shopping-cart"></span>{% trans %}Panier{% endtrans %}
+                </span>
             </div>
+            {% else %}
+                <h3>Le produit n'est pas disponible.</h3>
+            {% endif %}
         </div>
         <!--Tableau presentation-->
         <h2>Details</h2>
@@ -148,14 +149,6 @@
                 </td>
                 <td class="att-value">
                     {{ product.sugar }} g/L
-                </td>
-            </tr>
-            <tr>
-                <td class="attribute">
-                    {% trans %}Stock{% endtrans %}:
-                </td>
-                <td class="att-value">
-                    {{ product.stock}} {% trans %}Bouteille{% endtrans %}{% if product.stock>1 %}s{% endif %}
                 </td>
             </tr>
             {% if product.conditioningTypes is not empty  %}

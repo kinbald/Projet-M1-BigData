@@ -308,6 +308,9 @@ form{
 .tabdescr{
     margin-bottom: 20px;
 }
+.btn-lg{
+    padding: 7px 32px;
+}
 
 @media (max-width: 479px ) {
     #testimonials {
@@ -315,11 +318,14 @@ form{
         height: 150px;
     }
     .newsletter {
-        font-size: 180%;
+        font-size: 150%;
     }
     #input-newsletter{
-        width: 250px;
-        font-size:110%;
+        width: 200px;
+        font-size:89%;
+    }
+    .btn-lg{
+        padding: 4px 8px;
     }
     .tabdescr {
         margin-left:auto;

@@ -171,13 +171,11 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $wine1->setName('Vin Gigondas rouge');
         $wine1->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
         $wine1->setVolume(1.5);
-        $wine1->setPrice(135.40);
         $wine1->setRegion('Var');
         $grape->addWine($wine1);
         $wine1->setOriginContinent($continent);
         $wine1->setOriginCountry($country) ;
         $wine1->setRange($range);
-        $wine1->setStock(30);
         $wine1->addUniverse($universe1);
         $wine1->addUniverse($universe3);
         $producer1 = $userProducerRepo->findOneByCompanyName("Vin & co");
@@ -204,8 +202,6 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $wine2->setOriginContinent($continent);
         $wine2->setOriginCountry($country) ;
         $wine2->setRange($range);
-        $wine2->setPrice(48.70);
-        $wine2->setStock(20);
         $wine2->addUniverse($universe1);
         $wine2->addRecipe($recipe);
         $manager->persist($wine2);
@@ -230,8 +226,6 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $wine3->setOriginContinent($continent);
         $wine3->setOriginCountry($country) ;
         $wine3->setRange($range);
-        $wine3->setPrice(12.70);
-        $wine3->setStock(150);
         $wine3->addUniverse($universe1);
         $wine3->addRecipe($recipe);
         $manager->persist($wine3);
@@ -255,8 +249,6 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $wine4->setOriginContinent($continent);
         $wine4->setOriginCountry($country) ;
         $wine4->setRange($range);
-        $wine4->setPrice(9.56);
-        $wine4->setStock(110);
         $wine4->addUniverse($universe2);
         $manager->persist($wine4);
 
@@ -274,8 +266,6 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $spiritueux1->setName('Absolute vodka');
         $spiritueux1->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
         $spiritueux1->setVolume(1);
-        $spiritueux1->setPrice(56.20);
-        $spiritueux1->setStock(60);
         $spiritueux1->addUniverse($universe5);
         $spiritueux1->addUniverse($universe6);
         $manager->persist($spiritueux1);
@@ -292,8 +282,6 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $spiritueux2->setName('Canadian Whisky');
         $spiritueux2->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
         $spiritueux2->setVolume(0.7);
-        $spiritueux2->setPrice(43.15);
-        $spiritueux2->setStock(35);
         $spiritueux2->addUniverse($universe5);
         $spiritueux2->addUniverse($universe6);
         $manager->persist($spiritueux2);
@@ -310,8 +298,6 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $spiritueux3->setName('Belvedere vodka');
         $spiritueux3->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
         $spiritueux3->setVolume(0.7);
-        $spiritueux3->setPrice(35.45);
-        $spiritueux3->setStock(59);
         $spiritueux3->addUniverse($universe5);
         $spiritueux3->addUniverse($universe6);
         $manager->persist($spiritueux3);
@@ -328,8 +314,6 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $spiritueux4->setName('Whisky Red Label');
         $spiritueux4->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
         $spiritueux4->setVolume(0.7);
-        $spiritueux4->setPrice(53.05);
-        $spiritueux4->setStock(56);
         $spiritueux4->addUniverse($universe5);
         $spiritueux4->addUniverse($universe6);
         $manager->persist($spiritueux4);
@@ -425,28 +409,10 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         /*-------------------CONDITONNING TYPE--------------------*/
         /*--------------------------------------------------------*/
 
-        $condition = new ProductConditioning();
-        $condition->setName("Unité");
-        $condition->setPrice(45);
-        $condition->setPubPrice(20);
-        $condition->setProPrice(15);
-        $wine1->addConditioningType($condition);
-        $wine2->addConditioningType($condition);
-        $wine3->addConditioningType($condition);
-        $wine4->addConditioningType($condition);
-        $spiritueux1->addConditioningType($condition);
-        $spiritueux2->addConditioningType($condition);
-        $spiritueux3->addConditioningType($condition);
-        $spiritueux4->addConditioningType($condition);
-        $condition->setStock(150);
         $pack = new Pack();
         $pack->setName('jet');
         $pack->setQuantityIn(2);
         $manager->persist($pack);
-        $condition->setPack($pack);
-        $condition->setVolumeValue('1');
-        $condition->setVolumeUnit('L');
-        $manager->persist($condition);
 
         $condition = new ProductConditioning();
         $condition->setName("Cagette");
@@ -456,6 +422,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $condition->setStock(10);
         $condition->setVolumeValue('2');
         $condition->setVolumeUnit('mL');
+        $condition->setProduct($wine1);
         $manager->persist($condition);
         $wine1->addConditioningType($condition);
         $wine2->addConditioningType($condition);
@@ -473,8 +440,8 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $condition2->setStock(10);
         $condition2->setVolumeValue('2');
         $condition2->setVolumeUnit('mL');
-        $condition2->addProduct($wine2);
-        $condition2->addProduct($wine1);
+        $condition2->setProduct($wine2);
+        $condition2->setProduct($wine1);
         $manager->persist($condition2);
 
 
@@ -484,6 +451,8 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $cond1->setPubPrice(5);
         $cond1->setProPrice(3);
         $cond1->setStock(10);
+        $cond1->setProduct($spiritueux1);
+        $cond1->setProduct($spiritueux2);
         $pack2 = new Pack();
         $pack2->setName('back');
         $pack2->setQuantityIn(2);
@@ -494,11 +463,13 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($cond1);
 
         $cond2 = new ProductConditioning();
-        $cond2->setName('Fût');
+        $cond2->setName('Fut');
         $cond2->setPrice(10);
         $cond2->setPubPrice(10);
         $cond2->setProPrice(6);
         $cond2->setStock(20);
+        $cond2->setProduct($wine3);
+        $cond2->setProduct($wine4);
         $cond2->setVolumeValue('50');
         $cond2->setVolumeUnit('cL');
         $manager->persist($cond2);
@@ -509,6 +480,10 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $cond3->setPubPrice(1);
         $cond3->setProPrice(0.5);
         $cond3->setStock(50);
+        $cond3->setProduct($spiritueux1);
+        $cond3->setProduct($spiritueux2);
+        $cond3->setProduct($spiritueux3);
+        $cond3->setProduct($spiritueux4);
         $pack3 = new Pack();
         $pack3->setName('man');
         $pack3->setQuantityIn(2);
@@ -525,14 +500,12 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $productPurchase = new ProductPurchase();
         $productPurchase->setStock(1200);
         $productPurchase->setConditioningType($condition);
-        $productPurchase->setProduct($wine3);
         $productPurchase->setPurchase($purchase);
         $manager->persist($productPurchase);
 
         $productPurchase = new ProductPurchase();
         $productPurchase->setStock(10);
         $productPurchase->setConditioningType($condition);
-        $productPurchase->setProduct($wine1);
         $productPurchase->setPurchase($purchase5);
         $manager->persist($productPurchase);
 

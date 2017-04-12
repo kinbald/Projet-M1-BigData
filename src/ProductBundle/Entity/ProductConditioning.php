@@ -79,10 +79,14 @@ class ProductConditioning
     private $pack;
 
     /**
-     * @var Collection
-     * @ORM\ManyToMany(targetEntity="\ProductBundle\Entity\Product", cascade={"persist"}, mappedBy="conditioningTypes")
+     * @var Product
+     *
+     * @ORM\ManyToOne(targetEntity="\ProductBundle\Entity\Product", inversedBy="conditioningTypes")
+     * @ORM\JoinColumns({
+     *  @ORM\JoinColumn(name="product", referencedColumnName="id", nullable=false)
+     * })
      */
-    private $products;
+    private $product;
 
     /**
      * @var Collection
@@ -291,42 +295,7 @@ class ProductConditioning
     {
         return $this->stock;
     }
-
-
-
-    /**
-     * Add product
-     *
-     * @param Product $product
-     *
-     * @return ProductConditioning
-     */
-    public function addProduct(Product $product)
-    {
-        $this->products[] = $product;
-
-        return $this;
-    }
-
-    /**
-     * Remove product
-     *
-     * @param Product $product
-     */
-    public function removeProduct(Product $product)
-    {
-        $this->products->removeElement($product);
-    }
-
-    /**
-     * Get products
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getProducts()
-    {
-        return $this->products;
-    }
+    
 
     /**
      * Add purchase
@@ -453,5 +422,29 @@ class ProductConditioning
     public function getReservations()
     {
         return $this->reservations;
+    }
+
+    /**
+     * Set product
+     *
+     * @param \ProductBundle\Entity\Product $product
+     *
+     * @return ProductConditioning
+     */
+    public function setProduct(\ProductBundle\Entity\Product $product)
+    {
+        $this->product = $product;
+
+        return $this;
+    }
+
+    /**
+     * Get product
+     *
+     * @return \ProductBundle\Entity\Product
+     */
+    public function getProduct()
+    {
+        return $this->product;
     }
 }

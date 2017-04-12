@@ -27,7 +27,8 @@
         "twig/extensions": "^1.4",
         "symfony/console": "^3.2",
         "liuggio/excelbundle": "^2.1",
-        "paypal/merchant-sdk-php": "3.8.*"
+        "paypal/merchant-sdk-php": "3.8.*",
+        "symfony/serializer": "^3.2"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
