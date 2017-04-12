@@ -30,11 +30,11 @@
         <tbody>
         {% for productPurchase in commande.products %}
             <tr>
-                <td>{{ productPurchase.product.name }} - {{ productPurchase.conditioningType.name }}</td>
-                {% for product_picture in productPurchase.product.pictures %}
+                <td>{{ productPurchase.conditioningType.product.name }} - {{ productPurchase.conditioningType.name }}</td>
+                {% for product_picture in productPurchase.conditioningType.product.pictures %}
                     <td><img class="post-entry-cover" src="/upload/{{ product_picture.url }}" alt="{{ product_picture.alt }}" /> </td>
                 {% endfor %}
-                <td><span class="height_description">{{ productPurchase.product.description }}</span></td>
+                <td><span class="height_description">{{ productPurchase.conditioningType.product.description }}</span></td>
                 <td>{{ (productPurchase.conditioningType.price )|round(2) }}€</td>
                 <td>{{ productPurchase.stock}}</td>
                 <td>{{ tva }}%</td>
@@ -59,8 +59,3 @@
 
 
 {% endblock %}
-{#
-https://api-3t.sandbox.paypal.com/nvp?version=204&user=grisot.remi-facilitator_api1.gmail.com&pwd=QZLEL69NWCF6QUGE&signature=AFcWxV21C7fd0v3bYYYRCpSSRl31Ab6nocvqRHaMJv1ybVoYzIrz8WGl&method=setexpresscheckout&cancelurl=https://google.fr&currencycode=EUR&returnurl=https://google.fr&amt=10.0&desc=bonne%20vinasse&localecode=fr
-https://www.sandbox.paypal.com/webscr&cmd=_express-checkout&token=EC%2d98A96882VN0088128
-https://api-3t.sandbox.paypal.com/nvp?version=204&user=grisot.remi-facilitator_api1.gmail.com&pwd=QZLEL69NWCF6QUGE&signature=AFcWxV21C7fd0v3bYYYRCpSSRl31Ab6nocvqRHaMJv1ybVoYzIrz8WGl&method=getexpresscheckoutdetails&token=EC%2d98A96882VN0088128
-https://api-3t.sandbox.paypal.com/nvp?version=204&user=grisot.remi-facilitator_api1.gmail.com&pwd=QZLEL69NWCF6QUGE&signature=AFcWxV21C7fd0v3bYYYRCpSSRl31Ab6nocvqRHaMJv1ybVoYzIrz8WGl&method=doexpresscheckoutpayment&token=EC%2d98A96882VN0088128&paymentaction=sale&payerid=44EZAY75P6CS4&amt=10.0&currencycode=EUR#}

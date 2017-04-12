@@ -10,27 +10,26 @@ namespace UserBundle\Controller;
 
 use AppBundle\Payment\Configuration;
 use Doctrine\Common\Util\Debug;
-use PayPal\CoreComponentTypes\BasicAmountType;
-use PayPal\EBLBaseComponents\AddressType;
-use PayPal\EBLBaseComponents\BillingAgreementDetailsType;
-use PayPal\EBLBaseComponents\PaymentDetailsItemType;
-use PayPal\EBLBaseComponents\PaymentDetailsType;
-use PayPal\EBLBaseComponents\SetExpressCheckoutRequestDetailsType;
-use PayPal\PayPalAPI\SetExpressCheckoutReq;
-use PayPal\PayPalAPI\SetExpressCheckoutRequestType;
-use PayPal\Service\PayPalAPIInterfaceServiceService;
 use ProductBundle\Entity\ProductPurchase;
 use ProductBundle\Entity\Purchase;
 use ProductBundle\Entity\Reservation;
-use AppBundle\Entity\Parameters;
+use ProductBundle\Form\ProductDeliveryType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+use UserBundle\Entity\Address;
+use UserBundle\Form\AddressType;
+use UserBundle\Form\Type\DeliveryPurchaseType;
 use UserBundle\Model\CartModel;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
  * @Route("/cart")
@@ -41,21 +40,43 @@ class CartController extends Controller
 {
 
     /**
-     * @Route("/", name="purchase_informations")
+     * @Route("/address", name="purchase_informations")
      * @Security("has_role('ROLE_CONSUMER')")
-     * @Method({"POST"})
+     * @Method({"POST", "GET"})
      */
     public function purchaseAction(Request $request)
     {
         $purchase = new Purchase();
-        $form = $this->createForm('UserBundle\Form\Type\AddPurchaseType');
+        $addresse = new Address();
+        $form = $this->createForm(AddressType::class, $addresse);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $session = new Session();
+            //$session->start();
+            /*if(!$session->isStarted()){
+                $session->start();
+            }*/
+            $purchase_id = $session->get('commande');
+            $rep = $em->getRepository('ProductBundle:Purchase');
+            $purchase = $rep->find($purchase_id);
+            if($purchase === null or $purchase->getPaid()){
+                throw new NotFoundHttpException();
+            }
+            $purchase->setFirstname($addresse->getFirstName())
+                ->setLastname($addresse->getLastName())
+                ->setAddress($addresse->getAddress())
+                ->setCity($addresse->getCity())
+                ->setCountry($addresse->getCountry())
+                ->setDateOrder(new \DateTime())
+                ->setPostalCode($addresse->getPostalCode())
+                ->setState($addresse->getState());
+            $em->persist($purchase);
+            $em->flush();
 
-
-
-            return $this->redirectToRoute('product_list');
+            return $this->redirectToRoute('choose_delivery', array(
+                //'id' => $purchase->getId()
+            ));
         }
 
         return $this->render('UserBundle:Default:purchase.html.twig', array(
@@ -64,7 +85,7 @@ class CartController extends Controller
     }
 
     /**
-     * @Route("/view", name="cart_view")
+     * @Route("/", name="cart_view")
      * @Security("has_role('ROLE_CONSUMER')")
      * @Method({"POST"})
      */
@@ -96,7 +117,6 @@ class CartController extends Controller
                 $product = $rep->find($idList[$i]);
                 $conditioningType = $repConditioning->find($conditioningTypeList[$i]);
                 $prodPurchase = new ProductPurchase();
-                $prodPurchase->setProduct($product);
                 $prodPurchase->setPurchase($commande);
                 $prodPurchase->setConditioningType($conditioningType);
                 $prodPurchase->setStock($quantityList[$i]);
@@ -112,11 +132,52 @@ class CartController extends Controller
             }
         }
         $commande->setUser($this->getUser());
+        /*$em->persist($commande);
+        $em->flush();*/
+
+        $session = new Session();
+        /*if(!$session->isStarted()){
+            $session->start();
+        }*/
+
         $em->persist($commande);
         $em->flush();
+        $session->set('commande', $commande->getId());
 
-        return $this->redirectToRoute('show_cart', array(
+        return $this->redirectToRoute('purchase_informations');
+
+        /*return $this->redirectToRoute('show_cart', array(
             'id' => $commande->getId()
+        ));*/
+    }
+
+    /**
+     * @Method({"GET", "POST"})
+     * @Security("has_role('ROLE_CONSUMER')")
+     * @Route("/delivery", name="choose_delivery")
+     */
+    public function chooseDeliveryAction(Request $request){
+        $session = new Session();
+        $purchase = new Purchase();
+        $em = $this->getDoctrine()->getManager();
+        if($request->getMethod() === 'GET'){
+
+            $purchase_id = $session->get('commande');
+            $rep = $em->getRepository('ProductBundle:Purchase');
+            $purchase = $rep->find($purchase_id);
+        }
+        if($purchase === null or $purchase->getPaid()){
+            throw new NotFoundHttpException();
+        }
+        $form = $this->createForm(ProductDeliveryType::class, $purchase);
+        if ($form->isSubmitted() && $form->isValid()){
+            $em->persist($purchase);
+            $em->flush();
+            return $this->redirectToRoute('show_cart');
+        }
+
+        return $this->render('ProductBundle:delivery:choose.html.twig', array(
+            'form' => $form->createView()
         ));
     }
 
