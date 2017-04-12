@@ -233,16 +233,6 @@
         text-shadow: 5px 1px 5px black;
     }
 
-    .uni-info{
-        width:65%;
-    }
-}
-
-.tabdescr {
-    margin-left:auto;
-    margin-right:auto;
-    width:65%;
-
 }
 
 .descr {
@@ -267,6 +257,7 @@
     margin-right: auto;
     margin-top:6px;
     margin-bottom:6px;
+    font-family: 'Lemonada', cursive;
 }
 
 
@@ -276,6 +267,7 @@
     margin-top:20px;
     margin-bottom:20px;
     line-height: 30px;
+    font-family: 'Lemonada', cursive;
 }
 
 
@@ -313,7 +305,11 @@ form{
     background: rgba(0,0,0,0.5);
 }
 
-@media (max-width: 499px ) {
+.tabdescr{
+    margin-bottom: 20px;
+}
+
+@media (max-width: 479px ) {
     #testimonials {
         min-height: 100px;
         height: 150px;
@@ -325,24 +321,43 @@ form{
         width: 250px;
         font-size:110%;
     }
-
+    .tabdescr {
+        margin-left:auto;
+        margin-right:auto;
+        width:95%;
+    }
+    .uni-info{
+        width:95%;
+    }
+    #testimonials{
+        margin-top:20px;
+    }
 }
 
-@media (min-width: 500px) and (max-width: 991px ) {
+@media (min-width: 480px) and (max-width: 992px ) {
     #testimonials {
         min-height: 200px;
         height: 210px;
     }
     .newsletter {
         font-size: 220%;
+        display:block;
     }
     #input-newsletter{
         width: 300px;
         font-size:140%;
     }
+    .tabdescr {
+        margin-left:auto;
+        margin-right:auto;
+        width:90%;
+    }
+    .uni-info{
+        width:90%;
+    }
 }
 
-@media (min-width: 992px) and (max-width: 1199px ) {
+@media (min-width: 993px) and (max-width: 1199px ) {
     #testimonials {
         min-height: 100px;
         height: 210px;
@@ -350,6 +365,14 @@ form{
     #input-newsletter{
         width: 300px;
         font-size:140%;
+    }
+    .tabdescr {
+        margin-left:auto;
+        margin-right:auto;
+        width:65%;
+    }
+    .uni-info{
+        width:65%;
     }
 
 }
@@ -361,6 +384,18 @@ form{
     }
     .newsletter {
         font-size:190%;
+    }
+    #input-newsletter{
+        width: 300px;
+        font-size:140%;
+    }
+    .tabdescr {
+        margin-left:auto;
+        margin-right:auto;
+        width:65%;
+    }
+    .uni-info{
+        width:65%;
     }
 }
 
