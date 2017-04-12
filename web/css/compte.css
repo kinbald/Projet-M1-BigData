@@ -149,3 +149,14 @@ button, input, optgroup, select, textarea {
     height: 4em;
     width: 90%;
 }
+
+#fos_user_registration_form_country {
+    width: 14em !important;
+    border-radius: 5px;
+}
+#fos_user_profile_form_birthDate_day {
+    width: 60px !important;
+}
+#fos_user_profile_form_birthDate_year, #fos_user_profile_form_birthDate_month {
+    width: 80px !important;
+}

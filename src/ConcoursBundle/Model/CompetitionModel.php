@@ -11,7 +11,7 @@ class CompetitionModel
     public function __construct(ObjectManager $entityManager)
     {
         $this->repository = $entityManager->getRepository('ConcoursBundle:Competition');
-        $this->repositoryWine = $entityManager->getRepository('ConcoursBundle:CompetitionWine');
+        $this->repositoryWine = $entityManager->getRepository('ConcoursBundle:CompetitionProduct');
     }
 
     public function getAllCompetitions($limit = 10, $page = 0)

@@ -3,45 +3,47 @@
 {% block stylesheets %}
     {{ parent() }}
     <link href="{{ asset('css/edit.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/table-template.css') }}" rel="stylesheet" />
 {% endblock %}
 
 {% block body %}
     <div id="content">
-        <h1>{% trans %}Userconsumer{% endtrans %}</h1>
-        <br>
-        <table>
-            <tbody>
-                <tr>
-                    <th width="100px">Id</th>
-                    <td id="champ">{{ userConsumer.id }}</td>
+        <h3 class="section-heading">{% trans %}User consumer{% endtrans %}</h3>
+        <div class="table-responsive table-template">
+            <table class="table table-hover">
+                <thead class="thead-default">
+                <tr class="color-title">
+                    <th>ID</th>
+                    <th>{% trans %}Gender{% endtrans %}</th>
+                    <th>Email</th>
+                    <th>{% trans %}Birth date{% endtrans %}</th>
                 </tr>
+                </thead>
+                <tbody>
                 <tr>
-                    <th width="100px">{% trans %}Gender{% endtrans %}</th>
-                    <td id="champ">{{ userConsumer.sex }}</td>
+                    <td>{{ userConsumer.id }}</td>
+                    <td>{{ userConsumer.sex }}</td>
+                    <td>{{ userConsumer.email }}</td>
+                    <td>{% if userConsumer.birthDate %}
+                            {{ userConsumer.birthDate|date('Y-m-d') }}
+                        {% endif %}
+                    </td>
                 </tr>
-                <tr>
-                    <th width="100px">Email</th>
-                    <td id="champ">{{ userConsumer.email }}</td>
-                </tr>
-                <tr>
-                    <th width="100px">{% trans %}Birth date{% endtrans %}</th>
-                    <td id="champ">{% if userConsumer.birthDate %}{{ userConsumer.birthDate|date('Y-m-d') }}{% endif %}</td>
-                </tr>
-            </tbody>
-        </table>
-        <br>
-        <table>
-            <td>
-                <a class="btn btn-primary btn-circle" href="{{ path('userconsumer_index') }}">{% trans %}Back to the list{% endtrans %}</a>
-            </td>
-            <td>
-                <a class="btn btn-primary btn-circle" href="{{ path('userconsumer_edit', { 'id': userConsumer.id }) }}">{% trans %}Edit{% endtrans %}</a>
-            </td>
+                </tbody>
+            </table>
+        </div>
+            <table class="centrer-bouton">
+                <td>
+                    <a class="btn btn-primary btn-circle" href="{{ path('userconsumer_index') }}">{% trans %}Back to the list{% endtrans %}</a>
+                </td>
+                <td>
+                    <a class="btn btn-primary btn-circle" href="{{ path('userconsumer_edit', { 'id': userConsumer.id }) }}">{% trans %}Edit{% endtrans %}</a>
+                </td>
                 {{ form_start(delete_form) }}
-            <td>
-                <input class="btn btn-primary btn-circle" type="submit" value="Delete">
-            </td>
-            {{ form_end(delete_form) }}
-        </table>
+                <td>
+                    <input class="btn btn-primary btn-circle" type="submit" value="Delete">
+                </td>
+                {{ form_end(delete_form) }}
+            </table>
     </div>
 {% endblock %}

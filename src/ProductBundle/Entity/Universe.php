@@ -202,11 +202,11 @@ class Universe
     /**
      * Add competition
      *
-     * @param \ConcoursBundle\Entity\CompetitionWine $competition
+     * @param \ConcoursBundle\Entity\CompetitionProduct $competition
      *
      * @return Universe
      */
-    public function addCompetition(\ConcoursBundle\Entity\CompetitionWine $competition)
+    public function addCompetition(\ConcoursBundle\Entity\CompetitionProduct $competition)
     {
         $this->competitions[] = $competition;
 
@@ -216,9 +216,9 @@ class Universe
     /**
      * Remove competition
      *
-     * @param \ConcoursBundle\Entity\CompetitionWine $competition
+     * @param \ConcoursBundle\Entity\CompetitionProduct $competition
      */
-    public function removeCompetition(\ConcoursBundle\Entity\CompetitionWine $competition)
+    public function removeCompetition(\ConcoursBundle\Entity\CompetitionProduct $competition)
     {
         $this->competitions->removeElement($competition);
     }

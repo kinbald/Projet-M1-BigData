@@ -17,8 +17,6 @@ class ProductType extends AbstractType
         $builder->add('name')
                 ->add('description')
                 ->add('volume')
-                ->add('price')
-                ->add('stock')
                 ->add('universes')
                 ->add('conditioningTypes');
     }

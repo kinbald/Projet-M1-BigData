@@ -37,7 +37,7 @@ Prix total: Total price
 Moyens de paiement: Means of payment
 Registration: Send
 Registration ok: Registration successful
-Redirection: Redirecting
+Redirection: Redirecting now...
 New Account: New Account
 Registration User: User registration
 Registration Media: Press registration
@@ -51,4 +51,7 @@ Edit: Edit
 Create a new Consumer: Create a new Consumer
 Userconsumer creation: Userconsumer creation
 Userconsumer: Userconsumer
-
+Email: Email
+Last name: Last name
+First name: First name
+Siret: Siret number

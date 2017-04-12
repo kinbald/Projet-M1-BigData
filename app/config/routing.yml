@@ -1,9 +1,21 @@
+concours_competition:
+    resource: "@ConcoursBundle/Controller/CompetitionController.php"
+    type:     annotation
+
+concours_medal:
+    resource: "@ConcoursBundle/Controller/MedalController.php"
+    type:     annotation
+
 product_product_conditioning:
     resource: "@ProductBundle/Controller/ProductConditioningController.php"
     type:     annotation
 
 app_news:
     resource: "@AppBundle/Controller/NewsController.php"
+    type:     annotation
+
+mentions_legales:
+    resource: "@AppBundle/Controller/LegalController.php"
     type:     annotation
 
 product_purchase:

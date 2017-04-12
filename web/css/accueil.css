@@ -308,6 +308,9 @@ form{
 .tabdescr{
     margin-bottom: 20px;
 }
+.btn-lg{
+    padding: 7px 32px;
+}
 
 @media (max-width: 479px ) {
     #testimonials {
@@ -322,7 +325,7 @@ form{
         font-size:89%;
     }
     .btn-lg{
-        padding: 3px 8px;
+        padding: 4px 8px;
     }
     .tabdescr {
         margin-left:auto;

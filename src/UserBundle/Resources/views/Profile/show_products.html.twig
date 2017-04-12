@@ -51,12 +51,13 @@
             </table>
             <br>
 
-            {% for product in products %}
+            {% for productPurchase in purchase.products %}
+                {% set conditioning, product = productPurchase.conditioningType, productPurchase.conditioningType.product %}
                 <div>
-                    <p><b>{% trans %}Nom{% endtrans %}:</b> <a href="{{ path('product_show', {id:product.id}) }}">{{ product.name }}</a></p>
+                    <p><b>{% trans %}Nom{% endtrans %}:</b> <a href="{{ path('product_show', {id:product.id}) }}">{{ product.name }} - {{ conditioning.name }}</a></p>
                     <p><b>{% trans %}Volume{% endtrans %}:</b> {{ product.volume }}</p>
-                    <p><b>{% trans %}Prix Unitaire{% endtrans %}:</b> {{ product.price }}</p>
-                    <p><b>{% trans %}Stock{% endtrans %}:</b> {{ product.getStock }}</p>
+                    <p><b>{% trans %}Prix Unitaire{% endtrans %}:</b> {{ conditioning.price }}</p>
+                    <p><b>{% trans %}Stock{% endtrans %}:</b> {{ conditioning.stock }}</p>
                 </div>
             {% endfor %}
         </div>

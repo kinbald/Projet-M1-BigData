@@ -165,7 +165,7 @@
             <input name="quantity_list" id="quantity_list" value="" type="hidden">
             <input name="currency_code" value="EUR" type="hidden">
             <!-- Display the payment button. -->
-            <button type="submit" name="submit" class="btn btn-default btn-lg">
+            <button type="submit" name="submit" class="btn btn-default btn-lg" id="paiement-paypal">
                 paiement paypal ⯈</span>
             </button>
         </form>
@@ -203,6 +203,7 @@
                     <ul class="list">
                         <li><a href="{{ path("qui_sommes_nous") }}">About Us</a></li>
                         <li><a href="{{ path("contact") }}">Contacts</a></li>
+                        <li><a href="{{ path("mentions_legales") }}">Mentions légales</a></li>
                     </ul>
                 </div>
             </div>
@@ -233,7 +234,7 @@
 
 <!------------------------Bandeau cookies------------------------------->
 
-<script src="{{ asset('js/cookiechoices.js') }}"></script><script>document.addEventListener('DOMContentLoaded', function(event){cookieChoices.showCookieConsentBar('Ce site utilise des cookies pour vous offrir le meilleur service. En poursuivant votre navigation, vous acceptez l’utilisation des cookies.', 'J’accepte', 'En savoir plus', 'http://www.example.com/mentions-legales/');});</script>
+<script src="{{ asset('js/cookiechoices.js') }}"></script><script>document.addEventListener('DOMContentLoaded', function(event){cookieChoices.showCookieConsentBar('Ce site utilise des cookies pour vous offrir le meilleur service. En poursuivant votre navigation, vous acceptez l’utilisation des cookies.', 'J’accepte', 'En savoir plus', '{{ path("mentions_legales") }}');});</script>
 
 
 {% block javascripts %}

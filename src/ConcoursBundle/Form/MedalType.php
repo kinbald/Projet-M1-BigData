@@ -1,38 +1,28 @@
 <?php
 
-namespace ProductBundle\Form;
+namespace ConcoursBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use ProductBundle\Form\ProductType;
 
-class WineType extends ProductType
+class MedalType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        parent::buildForm($builder, $options);
-        $builder
-            ->add('vintage')
-            ->add('color')
-            ->add('aDecanter')
-            ->add('contactLies')
-            ->add('contactBois')
-            ->add('nonFiltre')
-            ->add('demarcheQualite')
-            ->add('overpressure');
+        $builder->add('name')->add('annee')->add('url')->add('competition');
     }
-    
+
     /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'ProductBundle\Entity\Wine'
+            'data_class' => 'ConcoursBundle\Entity\Medal'
         ));
     }
 
@@ -41,7 +31,7 @@ class WineType extends ProductType
      */
     public function getBlockPrefix()
     {
-        return 'productbundle_wine';
+        return 'concoursbundle_medal';
     }
 
 

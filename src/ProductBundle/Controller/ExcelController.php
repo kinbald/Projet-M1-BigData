@@ -2,8 +2,12 @@
 
 namespace ProductBundle\Controller;
 
+use ConcoursBundle\Entity\CompetitionProduct;
 use ProductBundle\Entity\Continent;
 use ProductBundle\Entity\Country;
+use ProductBundle\Entity\Delivery;
+use ProductBundle\Entity\Pack;
+use ProductBundle\Entity\ProductConditioning;
 use ProductBundle\Entity\Range;
 use ProductBundle\Entity\Recipe;
 use ProductBundle\Entity\Spirit;
@@ -43,9 +47,8 @@ class ExcelController extends Controller
 
         $DataProducer = array();
         $DataProduct = array();
-        $univers = array();
-        $concours = array();
-        $shipments = array();
+        $medal = array();
+        $conditioning = array();
         $shipmentsOptions = array();
 
         $test = '';
@@ -92,12 +95,12 @@ class ExcelController extends Controller
             'VolumeTotal' => 38,
             'CodeMedUnivers' => 39,
             'CodeUnivers' => 40,
-            'CodeMedConcours' => 41,
-            'CodeConcours' => 42,
-            'Quantite' => 43,
-            'ValeurVolume' => 44,
-            'UniteVolume' => 45,
-            'NomConditionnement' => 46,
+            'Quantite' => 41,
+            'ValeurVolume' => 42,
+            'UniteVolume' => 43,
+            'NomConditionnement' => 44,
+            'NomPack' => 45,
+            'QuantitePack' =>46,
             'PrixPublic' => 47,
             'PrixPro' => 48,
             'OptionLivraison' => 49,
@@ -140,31 +143,27 @@ class ExcelController extends Controller
 
 
             if (isset($data[$i][$row['CodeMedUnivers']]) &&  isset($data[$i][$row['CodeUnivers']])) {
-                $univers[$i][0] = $data[$i][$row['IdProduct']];
-                $univers[$i][1] = $data[$i][$row['CodeMedUnivers']]; // $row['CodeMedUnivers']
-                $univers[$i][2] = $data[$i][$row['CodeUnivers']]; // $row['CodeUnivers']
+                $medal[$i][0] = $data[$i][$row['Designation']];
+                $medal[$i][1] = $data[$i][$row['CodeMedUnivers']]; // $row['CodeMedUnivers']
+                $medal[$i][2] = $data[$i][$row['CodeUnivers']]; // $row['CodeUnivers']
             }
             else{
 
             }
 
 
-            if(isset($data[$i][$row['CodeMedConcours']]) && isset($data[$i][$row['CodeMedConcours']])){ //gestion des concours
-                $concours[$i][0] = $data[$i][$row['IdProduct']];
-                $concours[$i][1] = $data[$i][$row['CodeMedConcours']]; // $row['CodeMedConcours']
-                $concours[$i][2] = $data[$i][$row['CodeConcours']]; // $row['CodeConcours']
-            }
-
             if(isset($data[$i][$row['Quantite']])){ //gestion des expéditions
-                $shipments[$i][0] = $data[$i][$row['IdProduct']];
-                $shipments[$i][1] = $data[$i][$row['Quantite']];
-                $shipments[$i][3] = $data[$i][$row['ValeurVolume']];
-                $shipments[$i][4] = $data[$i][$row['UniteVolume']];
-                $shipments[$i][5] = $data[$i][$row['NomConditionnement']];
-                $shipments[$i][6] = $data[$i][$row['PrixPublic']];
-                $shipments[$i][7] = $data[$i][$row['PrixPro']];
-                $shipments[$i][8] = $i;
-                $shipmentsOptions[$i][0] = $data[$i][$row['IdProduct']];
+                $conditioning[$i][0] = $data[$i][$row['Designation']];
+                $conditioning[$i][1] = $data[$i][$row['Quantite']];
+                $conditioning[$i][3] = $data[$i][$row['ValeurVolume']];
+                $conditioning[$i][4] = $data[$i][$row['UniteVolume']];
+                $conditioning[$i][5] = $data[$i][$row['NomConditionnement']];
+                $conditioning[$i][6] = $data[$i][$row['NomPack']];
+                $conditioning[$i][7] = $data[$i][$row['QuantitePack']];
+                $conditioning[$i][8] = $data[$i][$row['PrixPublic']];
+                $conditioning[$i][9] = $data[$i][$row['PrixPro']];
+                $conditioning[$i][10] = $i;
+                $shipmentsOptions[$i][0] = $data[$i][$row['Designation']];
                 $shipmentsOptions[$i][1]= $data[$i][$row['OptionLivraison']];
                 $shipmentsOptions[$i][2] = $data[$i][$row['PrixLivraison']];
                 $shipmentsOptions[$i][3] = $i;
@@ -225,23 +224,24 @@ class ExcelController extends Controller
             array_push($DataProduct, $ProductTempArray);
         }
 
-        $univers = $this->sanitize_data_univers($univers, $row);
+        $medal = $this->sanitize_data_medal($medal, $row);
         $shipmentsOptions = $this->sanitize_data_shipoptions($shipmentsOptions, $row);
         $this->insert_producer($DataProducer);
         $this->insert_product_data($DataProduct);
+        $this->insert_medal($medal);
+        $this->insert_conditionning($conditioning,$shipmentsOptions);
 
 
 
             return $this->render('ProductBundle:excelimport:ExcelImport.html.twig', array(
             'rows' => $data,
             'rows_unique' => $data_unique,
-                'univers' => $univers,
-                'concours' => $concours,
+                'medal' => $medal,
                 'producers' => $DataProducer,
                 'products' => $DataProduct,
-                'shipments' => $shipments,
+                'shipments' => $conditioning,
                 'shipoptions' => $shipmentsOptions,
-                'test' => $univers
+                'test' => $medal
         ));
 
 
@@ -253,23 +253,24 @@ class ExcelController extends Controller
 
 
 
-    public function sanitize_data_univers(array $univers, array $row)
+    public function sanitize_data_medal(array $medal, array $row)
     {
 
-        foreach ($univers as $keyUnivers => $arrayUnivers) {
-            if (!preg_match('/^M\d{4}\-\d+$/', $arrayUnivers[1])) { //Si il y a plusieurs codes médailles dans la case
-                $CodeUniversSplitTemp = explode(",", $arrayUnivers[1]); // on les sépare dans un tableau temporaire
-                foreach ($CodeUniversSplitTemp as $keySplitUnivers => $ArrayUniverse) { //on insère les lignes splitées dans le tableau de base
-                    array_push($univers, array($arrayUnivers[0], $ArrayUniverse, $arrayUnivers[2]));
+        foreach ($medal as $keyMedal => $arrayMedal) {
+            if (!preg_match('/^d{1}$/', $arrayMedal[1])) { //Si il y a plusieurs codes médailles dans la case
+                $CodeMedalSplitTemp = explode(",", $arrayMedal[1]); // on les sépare dans un tableau temporaire
+                foreach ($CodeMedalSplitTemp as $keySplitMedal => $ArrayMedal) { //on insère les lignes splitées dans le tableau de base
+                    array_push($medal, array($arrayMedal[0], $ArrayMedal, $arrayMedal[2]));
                 }
-                unset($univers[$keyUnivers]); // On supprime l'ancienne ligne avec doublon
+                unset($medal[$keyMedal]); // On supprime l'ancienne ligne avec doublon
             }
             else{
 
             }
         }
-        return $univers;
+        return $medal;
     }
+
 
     public function sanitize_data_shipoptions(array $shipmentsOptions, array $row)
     {
@@ -286,12 +287,13 @@ class ExcelController extends Controller
         return $shipmentsOptions;
     }
 
+
+
+
     public function insert_product_data(array $DataProduct)
     {
 
         foreach ($DataProduct as $keyProductAdd => $ArrayAdd) {
-
-
 
             $TempCountry = new Country();
             $TempContinent= new Continent();
@@ -308,7 +310,7 @@ class ExcelController extends Controller
                     $TempCountry = new Country();
                     $TempCountry->setName($DataProduct[$keyProductAdd][5]);
                     $em->persist($TempCountry);
-                    $em->flush($TempCountry);
+                    $em->flush();
                 }
 
 
@@ -320,7 +322,7 @@ class ExcelController extends Controller
                     $TempContinent= new Continent();
                     $TempContinent->setName('Europe');
                     $em->persist($TempContinent);
-                    $em->flush($TempContinent);
+                    $em->flush();
                 }
 
 
@@ -334,14 +336,14 @@ class ExcelController extends Controller
                 $TempRange->setName('Premiumfd');
                 $TempRange->setImg('Premiumfd');
                 $em->persist($TempRange);
-                $em->flush($TempRange);
+                $em->flush();
             }
 
 
             $Recette->setName($DataProduct[$keyProductAdd][4]);
             $Recette->setUrl($DataProduct[$keyProductAdd][4]);
             $em->persist($Recette);
-            $em->flush($Recette);
+            $em->flush();
 
             preg_match('/^([A-Z])\-[0-9]{4}$/', $DataProduct[$keyProductAdd][21], $matches); //on différencie les vins et les spiritueux
             switch ($matches[1]) //Suivant le type de produit, on crée une entité et des paramètres différents
@@ -371,8 +373,7 @@ class ExcelController extends Controller
             $product[$keyProductAdd]->setAlcoholDegree($DataProduct[$keyProductAdd][17]);
             $product[$keyProductAdd]->setSugar($DataProduct[$keyProductAdd][18]);
             $product[$keyProductAdd]->setVolume($DataProduct[$keyProductAdd][20]);
-            $product[$keyProductAdd]->setPrice(0); //TEMPORARY
-            $product[$keyProductAdd]->setStock(10); //TEMPORARY
+
             $product[$keyProductAdd]->setOriginCountry($TempCountry);
             $product[$keyProductAdd]->setOriginContinent($TempContinent);
             $product[$keyProductAdd]->setRange($TempRange);
@@ -382,14 +383,13 @@ class ExcelController extends Controller
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($product[$keyProductAdd]);
-            $em->flush($product[$keyProductAdd]);
+            $em->flush();
         }
 
     }
 
 
-    public function insert_producer(array $DataProducer)
-    {
+    public function insert_producer(array $DataProducer){
 
         foreach ($DataProducer as $keyProducerAdd => $ArrayAdd) {
 
@@ -405,7 +405,7 @@ class ExcelController extends Controller
                 $TempProducer->setCompanyName($DataProducer[$keyProducerAdd][0]);
                 $TempProducer->setBusinessName($DataProducer[$keyProducerAdd][1]);
 
-                $status = $em->getRepository("UserBundle:ProducerStatus")->findByName($DataProducer[$keyProducerAdd][2]); // On recherche tous les status d'utilisateurs existants en BDD
+                $status = $em->getRepository("UserBundle:ProducerStatus")->findByName($DataProducer[$keyProducerAdd][2]); //
                 if (!empty($status)) { //Si le status de la ligne excel a été trouvé
                     $TempStatus = $status[0];
                 }
@@ -413,7 +413,7 @@ class ExcelController extends Controller
                     $TempStatus = new ProducerStatus();
                     $TempStatus->setName($DataProducer[$keyProducerAdd][2]);
                     $em->persist($TempStatus);
-                    $em->flush($TempStatus);
+                    $em->flush();
                 }
                 $TempProducer->setSiret($DataProducer[$keyProducerAdd][3]);
                 $username = strtolower($DataProducer[$keyProducerAdd][5]) .'.'. strtolower($DataProducer[$keyProducerAdd][4]); //creation du login en prenom.nom
@@ -434,14 +434,78 @@ class ExcelController extends Controller
                 $TempProducer->setTvaIC($DataProducer[$keyProducerAdd][15]);
                 $TempProducer->setBilling($DataProducer[$keyProducerAdd][16]);
                 $em->persist($TempProducer);
-                $em->flush($TempProducer);
+                $em->flush();
             }
 
         }
     }
 
+    public function insert_medal(array $medal){
 
+        $em = $this->getDoctrine()->getManager();
 
+        foreach ($medal as $keyMedal => $ArrayMedal) { //Pour chaque ligne du tableau de médailles
+            $medalTemp = $em->getRepository("ConcoursBundle:Medal")->findOneById($medal[$keyMedal][1]); // on récupère la médaille associée à l'ID du tableau
+            $competitionProduct = $medalTemp->getCompetition(); // On récupère la compétition associée à cete médaille
 
+            $product = $em->getRepository("ProductBundle:Product")->findOneByName($medal[$keyMedal][0]); //On récupére le produit associé à la médaille
+            $universe = $em->getRepository("ProductBundle:Universe")->findOneById($medal[$keyMedal][2]); //On récupère l'univers associé à la médaille et au produit
+            $product->addUniverse($universe); //On associe le produit a l'univers
+            $em->persist($product);
+
+            $competitionProduct->setProduct($product); // On associe le produit à la médaille
+            $em->persist($competitionProduct);
+
+            $em->flush();
+        }
+    }
+
+    public function insert_conditionning(array $conditioning, array $shipmentsOptions){
+        $em = $this->getDoctrine()->getManager();
+
+        foreach ($conditioning as $keyConditioning => $ArrayConditioning) { //Pour chaque ligne du tableau des shipments
+            $TempCond = new ProductConditioning();
+            $TempCond->setName($conditioning[$keyConditioning][5]);
+            $TempCond->setPubPrice($conditioning[$keyConditioning][8]);
+            $TempCond->setProPrice($conditioning[$keyConditioning][9]);
+            $TempCond->setVolumeValue($conditioning[$keyConditioning][3]);
+            $TempCond->setVolumeUnit($conditioning[$keyConditioning][4]);
+            $TempCond->setStock($conditioning[$keyConditioning][1]);
+            $product = $em->getRepository("ProductBundle:Product")->findOneByName($conditioning[$keyConditioning][0]);
+            $TempCond->setProduct($product);
+
+            if($conditioning[$keyConditioning][6] != null){ // Si la colonne du pack est non vide, on crée un nouveau pack
+                $newPack = new Pack();
+                $newPack->setName($conditioning[$keyConditioning][6]);
+                $newPack->setQuantityIn($conditioning[$keyConditioning][7]);
+                $em->persist($newPack);
+                $em->flush();
+                $TempCond->setPack($newPack); //On l'ajoute au shipment
+            }
+            else { }
+
+            foreach ($shipmentsOptions as $keyShipment => $ArrayShipment) { //On parcourt le tableau des modes de livraison
+
+                if ($conditioning[$keyConditioning][10] == $shipmentsOptions[$keyShipment][3]){ //Pour chacun des modes de livraison liés au product conditionning
+                    $TempShip = new Delivery();
+                    $TempShip = $this->insert_delivery($shipmentsOptions[$keyShipment]);
+                    $TempShip->addConditioningType($TempCond); //On ajoute le mode de livraison au type de conditionnement
+                    $em->persist($TempCond); //On insère définitivement le mode de conditionnement
+                    $em->flush();
+                }
+            }
+
+        }
+    }
+
+    public function insert_delivery(array $shipmentsOption){ //fonction d'insertion des modes de livraisons
+        $em = $this->getDoctrine()->getManager();
+            $TempShip = new Delivery();
+            $TempShip->setName($shipmentsOption[1]);
+            $TempShip->setPrice($shipmentsOption[2]);
+            $em->persist($TempShip);
+            $em->flush();
+        return $TempShip;
+    }
 
 }

@@ -3,6 +3,7 @@
 {% block stylesheets %}
     {{ parent() }}
     <link href="{{ asset('css/media.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/table-template.css') }}" rel="stylesheet" />
 {% endblock %}
 
 {% block body %}
@@ -14,7 +15,7 @@
         </div>
     </div>
     <br><br>
-    <div class="table-responsive tableau-vins">
+    <div class="table-responsive table-template tableau-vins">
         <table class="table table-hover">
             <thead class="thead-default">
             <tr class="color-title">
@@ -22,8 +23,6 @@
                 <th>{% trans %}Nom{% endtrans %}</th>
                 <th>{% trans %}Millésime{% endtrans %}</th>
                 <th>{% trans %}Couleur{% endtrans %}</th>
-                <th>{% trans %}Prix{% endtrans %}</th>
-                <th>{% trans %}Stock{% endtrans %}</th>
                 <th>{% trans %}Actions{% endtrans %}</th>
             </tr>
             </thead>
@@ -34,8 +33,6 @@
                     <td class="name">{{ wine.name }}</td>
                     <td class="vintage">{% if wine.vintage %}{{ wine.vintage|date('Y') }}{% endif %}</td>
                     <td class="color">{{ wine.color }}</td>
-                    <td class="price">{{ wine.price }} €</td>
-                    <td class="price">{{ wine.stock }}</td>
                     <td class="actions">
                         <ul>
                             <li>
