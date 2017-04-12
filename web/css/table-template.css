@@ -16,5 +16,9 @@
 }
 
 .table-template th{
+    text-align: center;
     vertical-align: inherit;
+}
+.color-title{
+    color: #c6a668;
 }

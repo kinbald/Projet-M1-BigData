@@ -189,3 +189,6 @@ div {
      color: #0d0d0d;
      text-align: center;
  }
+.centrer-bouton{
+    margin: 0 auto;
+}

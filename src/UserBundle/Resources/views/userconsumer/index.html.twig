@@ -14,40 +14,34 @@
             </div>
         </div>
     </div>
-<div class="table-responsive table-template tableau_user_consumer">
-    <table class="table table-hover">
-        <thead class="thead-default">
+    <div class="table-responsive table-template tableau_user_consumer">
+        <table class="table table-hover">
+            <thead class="thead-default">
             <tr class="color-title">
                 <th>ID</th>
                 <th>{% trans %}Last name{% endtrans %}</th>
                 <th>{% trans %}First name{% endtrans %}</th>
                 <th>Actions</th>
             </tr>
-        </thead>
-        <tbody>
+            </thead>
+            <tbody>
             {% for userConsumer in userConsumers %}
                 <tr>
                     <td><a href="{{ path('userconsumer_show', { 'id': userConsumer.id }) }}">{{ userConsumer.id }}</a></td>
                     <td>{{ userConsumer.lastname }}</td>
                     <td>{{ userConsumer.firstname }}</td>
                     <td>
-                        <table class="table table-hover">
-                            <tr>
-                                <td>
-                                    <a href="{{ path('userconsumer_show', { 'id': userConsumer.id }) }}">{% trans %}Show{% endtrans %}</a>
-                                </td>
-                                <td>
-                                    <a href="{{ path('userconsumer_edit', { 'id': userConsumer.id }) }}">{% trans %}Edit{% endtrans %}</a>
-                                </td>
-                            </tr>
-                        </table>
+                        <a href="{{ path('userconsumer_show', { 'id': userConsumer.id }) }}">{% trans %}Show{% endtrans %}</a>
+                        /
+                        <a href="{{ path('userconsumer_edit', { 'id': userConsumer.id }) }}">{% trans %}Edit{% endtrans %}</a>
                     </td>
-                </tr>
+
+
             {% endfor %}
-        </tbody>
-    </table>
-</div>
-        <br><br>
+            </tbody>
+        </table>
+    </div>
+    <br><br>
     <ul>
         <li>
             <div class="btn btn-primary btn-circle"><a href="{{ path('userconsumer_new') }}">{% trans %}Create a new Consumer{% endtrans %}</a></div>
