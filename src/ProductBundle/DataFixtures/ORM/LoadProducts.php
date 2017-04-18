@@ -424,9 +424,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $condition->setVolumeUnit('mL');
         $condition->setProduct($wine1);
         $manager->persist($condition);
-        $wine1->addConditioningType($condition);
-        $wine2->addConditioningType($condition);
-        $wine3->addConditioningType($condition);
+
         //$manager->persist($wine1);
         //$manager->persist($wine2);
         //$manager->persist($wine3);
@@ -493,6 +491,12 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $cond3->setVolumeUnit('mL');
         $manager->persist($cond3);
 
+        $wine1->addConditioningType($condition);
+        $wine2->addConditioningType($condition);
+        $wine3->addConditioningType($condition);
+        $wine1->addConditioningType($condition2);
+        $wine2->addConditioningType($cond1);
+        $wine3->addConditioningType($cond3);
 
         /*-------------------PRODUCT PURCHASE---------------------*/
         /*--------------------------------------------------------*/
@@ -519,6 +523,18 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $delivery2->setName('camion citerne');
         $delivery2->setPrice(32.1);
         $manager->persist($delivery2);
+
+        $condition->addDelivery($delivery);
+        $condition2->addDelivery($delivery);
+
+        $cond1->addDelivery($delivery);
+        $cond1->addDelivery($delivery2);
+
+        $cond2->addDelivery($delivery);
+        $cond2->addDelivery($delivery2);
+
+        $cond3->addDelivery($delivery);
+
 
         $manager->flush();
     }

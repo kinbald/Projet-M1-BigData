@@ -96,7 +96,7 @@ class ProductConditioning
 
     /**
      * @var Collection
-     * @ORM\ManyToMany(targetEntity="\ProductBundle\Entity\Delivery", mappedBy="conditioningTypes")
+     * @ORM\ManyToMany(targetEntity="\ProductBundle\Entity\Delivery", inversedBy="conditioningTypes")
      */
     protected $deliveries;
 
