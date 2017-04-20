@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use ProductBundle\Entity\ProductEvaluation;
 use UserBundle\Entity\BaseUser;
 use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * UserConsumer
@@ -46,7 +47,11 @@ class UserConsumer extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="phone", type="string", length=15)
+     * @ORM\Column(name="phone", type="string", length=16)
+     * @Assert\Regex(
+     *     pattern="/^\+?[0-9]{10,15}$/",
+     *     message="Only use number, no space, except the '+' for country calling codes"
+     * )
      */
     private $phone;
 
