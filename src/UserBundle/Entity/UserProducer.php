@@ -132,7 +132,7 @@ class UserProducer extends BaseUser
 
     /**
      * @var string
-     * @ORM\Column(name="phone", type="string", length=15)
+     * @ORM\Column(name="phone", type="string", length=16)
      * @Assert\Regex(
      *     pattern="/^\+?[0-9]{10,15}$/",
      *     message="Only use number, no space, except the '+' for country calling codes"
