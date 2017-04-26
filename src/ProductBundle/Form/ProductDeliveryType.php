@@ -32,8 +32,7 @@ class ProductDeliveryType extends AbstractType
             'entry_options' => array(
                 'ids_product' => $ids_products
             )
-        ))
-        ->add('Valider', SubmitType::class);
+        ));
     }
 
     /**

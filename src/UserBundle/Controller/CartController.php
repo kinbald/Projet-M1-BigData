@@ -17,6 +17,7 @@ use ProductBundle\Form\ProductDeliveryType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -114,7 +115,6 @@ class CartController extends Controller
                 return $this->render('UserBundle:Default:error.html.twig');
             }else
             {
-                $product = $rep->find($idList[$i]);
                 $conditioningType = $repConditioning->find($conditioningTypeList[$i]);
                 $prodPurchase = new ProductPurchase();
                 $prodPurchase->setPurchase($commande);
@@ -160,20 +160,24 @@ class CartController extends Controller
         $session = new Session();
         $purchase = new Purchase();
         $em = $this->getDoctrine()->getManager();
-        if($request->getMethod() === 'GET'){
+        //if($request->getMethod() === 'GET'){
 
             $purchase_id = $session->get('commande');
             $rep = $em->getRepository('ProductBundle:Purchase');
             $purchase = $rep->find($purchase_id);
-        }
+        //}
+
         if($purchase === null or $purchase->getPaid()){
             throw new NotFoundHttpException();
         }
-        $form = $this->createForm(ProductDeliveryType::class, $purchase);
+
+        $form = $this->createForm(ProductDeliveryType::class, $purchase)
+            ->add('Valider', SubmitType::class);
+        $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()){
             $em->persist($purchase);
             $em->flush();
-            return $this->redirectToRoute('show_cart');
+            return $this->redirectToRoute('show_cart', array('id' => $purchase->getId()));
         }
 
         return $this->render('ProductBundle:delivery:choose.html.twig', array(
@@ -193,7 +197,10 @@ class CartController extends Controller
         $em = $this->getDoctrine()->getManager();
         $rep = $em->getRepository('AppBundle:Parameters');
         $tva = $rep->findByName('TVA');
-
+        foreach ($commande->getProducts() as $productPurchase){
+            $productPurchase->getDelivery()->getName();
+            $productPurchase->getDelivery()->getPrice();
+        }
         return $this->render('UserBundle:Default:panier.html.twig', [
             'commande' => $commande,
             'tva' => $tva[0]->getValue()

@@ -188,4 +188,11 @@ class Delivery
     {
         return $this->name;
     }
+
+    /**
+     * @return string
+     */
+    public function getNameAndPrice(){
+        return $this->getName().' ('.$this->getPrice().'€ )';
+    }
 }

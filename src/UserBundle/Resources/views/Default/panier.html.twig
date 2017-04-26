@@ -25,6 +25,7 @@
             <th class="col-xs-1">{% trans %}Quantité{% endtrans %}</th>
             <th class="col-xs-1">{% trans %}TVA{% endtrans %}</th>
             <th class="col-xs-1">{% trans %}Prix TTC{% endtrans %}</th>
+            <th class="col-xs-1">{% trans %}Livraison{% endtrans %}</th>
         </tr>
         </thead>
         <tbody>
@@ -39,12 +40,13 @@
                 <td>{{ productPurchase.stock}}</td>
                 <td>{{ tva }}%</td>
                 <td>{{ (( productPurchase.conditioningType.price *(1+tva/100)) * productPurchase.stock)|round(2) }}€</td>
+                <td>{{ productPurchase.delivery.nameAndPrice }}</td>
             </tr>
         {% endfor %}
         <tr>
-            <td colspan="5"></td>
+            <td colspan="6"></td>
             <td>{% trans %}Prix total TTC{% endtrans %}</td>
-            <td>{{ (commande.amount*(1+tva/100))|round(2) }}€</td>
+            <td>{{ (commande.amount*(1+tva/100))|round(2) + commande.totalShipping }}€</td>
         </tr>
         <tr>
             <td colspan="5"></td>

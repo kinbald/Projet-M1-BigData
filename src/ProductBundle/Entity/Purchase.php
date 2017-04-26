@@ -375,6 +375,34 @@ class Purchase
     }
 
     /**
+     * @return int
+     */
+    public function getTotal(){
+        $amount = 0;
+        foreach ($this->products as $productPurchase){
+            $price = $productPurchase->getConditioningType()->getPrice($this->getUser());
+            $amount += $productPurchase->getStock()*$price;
+            if($productPurchase->getDelivery() !== null){
+                $amount += $productPurchase->getDelivery()->getPrice() * $productPurchase->getStock();
+            }
+        }
+        return $amount;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTotalShipping(){
+        $amount = 0;
+        foreach ($this->products as $productPurchase){
+            if($productPurchase->getDelivery() !== null){
+                $amount += $productPurchase->getDelivery()->getPrice() * $productPurchase->getStock();
+            }
+        }
+        return $amount;
+    }
+
+    /**
      * Get purchase number of articles
      * @return int
      */
