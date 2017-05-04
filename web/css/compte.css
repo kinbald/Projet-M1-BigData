@@ -17,22 +17,25 @@ b{
     #Profile{
         margin-left: auto;
         margin-right: auto;
-        width: 60%;
+        width: 40%;
         padding: 30px;
         border-radius: 20px;
         box-shadow: 2px 2px 6px #aaa;
         color: white;
         text-shadow: 2px 2px 2px black;
-        /*padding: 20px;*/
-        /*border-radius: 20px;*/
-        /*box-shadow: 2px 2px 6px #aaa;*/
-        /*color: white;*/
-        /*text-shadow: 2px 2px 2px black;*/
-        /*width: 40%;*/
-        /*float: left;*/
-        /*position: relative;*/
-        /*display: block;*/
+        float: left;
     }
+    #Profile2{
+        margin-left: auto;
+        margin-right: auto;
+        width: 40%;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 2px 2px 6px #aaa;
+        color: white;
+        text-shadow: 2px 2px 2px black;
+    }
+
 
     #slideshow {
         float: left;
@@ -102,6 +105,16 @@ b{
 @media (max-width: 879px) {
 
     #Profile{
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 2px 2px 6px #aaa;
+        color: white;
+        text-shadow: 2px 2px 2px black;
+    }
+    #Profile2{
         margin-left: auto;
         margin-right: auto;
         width: 80%;
