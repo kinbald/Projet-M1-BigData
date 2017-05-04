@@ -5,6 +5,7 @@ namespace UserBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use UserBundle\Entity\BaseUser;
 use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * UserMedia
@@ -30,6 +31,7 @@ class UserWholesale extends BaseUser
      * @var string
      *
      * @ORM\Column(name="company_name", type="string", length=255)
+     * @Assert\Length( max=255, maxMessage="Il faut saisir au maximum {{ limit }} caractères.")
      */
     private $companyName;
 

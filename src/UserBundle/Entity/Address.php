@@ -3,6 +3,7 @@
 namespace UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Address
@@ -32,6 +33,8 @@ class Address
      * @var string
      *
      * @ORM\Column(name="city", type="string", length=255)
+     * @Assert\Length( max=255, maxMessage="Il faut saisir au maximum {{ limit }} caractères.")
+     *
      */
     private $city;
 
@@ -39,6 +42,7 @@ class Address
      * @var string
      *
      * @ORM\Column(name="postal_code", type="string", length=20)
+     * @Assert\Length( max=20, maxMessage="Il faut saisir au maximum {{ limit }} caractères.")
      */
     private $postalCode;
 
@@ -46,6 +50,7 @@ class Address
      * @var string
      *
      * @ORM\Column(name="state", type="string", length=50, nullable=true)
+     * @Assert\Length( max=50, maxMessage="Il faut saisir au maximum {{ limit }} caractères.")
      */
     private $state;
 
@@ -53,6 +58,7 @@ class Address
      * @var string
      *
      * @ORM\Column(name="country", type="string", length=255)
+     * @Assert\Length( max=255, maxMessage="Il faut saisir au maximum {{ limit }} caractères.")
      */
     private $country;
 
@@ -60,6 +66,7 @@ class Address
      * @var string
      *
      * @ORM\Column(name="firstName", type="string", length=255)
+     * @Assert\Length( max=255, maxMessage="Il faut saisir au maximum {{ limit }} caractères.")
      */
     private $firstName;
 
@@ -67,6 +74,7 @@ class Address
      * @var string
      *
      * @ORM\Column(name="lastName", type="string", length=255)
+     * @Assert\Length( max=255, maxMessage="Il faut saisir au maximum {{ limit }} caractères.")
      */
     private $lastName;
 
@@ -74,6 +82,7 @@ class Address
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\Length( max=255, maxMessage="Il faut saisir au maximum {{ limit }} caractères.")
      */
     private $name;
 

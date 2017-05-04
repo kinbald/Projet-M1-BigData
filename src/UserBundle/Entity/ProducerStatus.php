@@ -5,6 +5,7 @@ namespace UserBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * ProducerStatus
@@ -27,6 +28,7 @@ class ProducerStatus
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\Length( max=255, maxMessage="Il faut saisir au maximum {{ limit }} caractères.")
      */
     private $name;
 

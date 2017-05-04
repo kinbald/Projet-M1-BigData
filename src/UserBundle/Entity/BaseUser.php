@@ -9,6 +9,7 @@ use Symfony\Component\Validator\Constraints\Date;
 use UserBundle\Entity\UserConsumer;
 use UserBundle\Entity\UserMedia;
 use FOS\UserBundle\Model\User as FosUser;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
@@ -35,6 +36,7 @@ abstract class BaseUser extends FosUser
      * @var string
      *
      * @ORM\Column(name="firstname", type="string", length=255)
+     * @Assert\Length( max=255, maxMessage="Il faut saisir au maximum {{ limit }} caractères.")
      */
     private $firstname;
 
@@ -42,6 +44,7 @@ abstract class BaseUser extends FosUser
      * @var string
      *
      * @ORM\Column(name="lastname", type="string", length=255)
+     * @Assert\Length( max=255, maxMessage="Il faut saisir au maximum {{ limit }} caractères.")
      */
     private $lastname;
 

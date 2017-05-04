@@ -36,7 +36,9 @@ class UserProducer extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="siret", type="string", length=255)
+     * @ORM\Column(name="siret", type="string", length=14)
+     * @Assert\Length( max=14, maxMessage="Il faut saisir au maximum {{ limit }} caractères.")
+     *
      */
     private $siret;
 
@@ -44,6 +46,7 @@ class UserProducer extends BaseUser
      * @var string
      *
      * @ORM\Column(name="billing_email", nullable=true, type="string", length=255)
+     * @Assert\Length( max=255, maxMessage="Il faut saisir au maximum {{ limit }} caractères.")
      */
     private $billingEmail;
 
@@ -51,6 +54,7 @@ class UserProducer extends BaseUser
      * @var string
      *
      * @ORM\Column(name="website", nullable=true, type="string", length=255)
+     * @Assert\Length( max=255, maxMessage="Il faut saisir au maximum {{ limit }} caractères.")
      */
     private $website;
 
@@ -58,6 +62,7 @@ class UserProducer extends BaseUser
      * @var string
      *
      * @ORM\Column(name="facebook", nullable=true, type="string", length=255)
+     * @Assert\Length( max=255, maxMessage="Il faut saisir au maximum {{ limit }} caractères.")
      */
     private $facebook;
 
@@ -65,6 +70,7 @@ class UserProducer extends BaseUser
      * @var string
      *
      * @ORM\Column(name="twitter", nullable=true, type="string", length=255)
+     * @Assert\Length( max=255, maxMessage="Il faut saisir au maximum {{ limit }} caractères.")
      */
     private $twitter;
 
@@ -72,6 +78,7 @@ class UserProducer extends BaseUser
      * @var string
      *
      * @ORM\Column(name="company_name", nullable=true, type="string", length=255)
+     * @Assert\Length( max=255, maxMessage="Il faut saisir au maximum {{ limit }} caractères.")
      */
     private $companyName;
 
@@ -79,6 +86,7 @@ class UserProducer extends BaseUser
      * @var string
      *
      * @ORM\Column(name="business_name", type="string", length=255)
+     * @Assert\Length( max=255, maxMessage="Il faut saisir au maximum {{ limit }} caractères.")
      */
     private $businessName;
 
@@ -86,6 +94,7 @@ class UserProducer extends BaseUser
      * @var string
      *
      * @ORM\Column(name="address", type="string", length=255)
+     * @Assert\Length( max=255, maxMessage="Il faut saisir au maximum {{ limit }} caractères.")
      */
     private $address;
 
@@ -93,6 +102,7 @@ class UserProducer extends BaseUser
      * @var string
      *
      * @ORM\Column(name="city", type="string", length=255)
+     * @Assert\Length( max=255, maxMessage="Il faut saisir au maximum {{ limit }} caractères.")
      */
     private $city;
 
@@ -100,6 +110,7 @@ class UserProducer extends BaseUser
      * @var string
      *
      * @ORM\Column(name="country", type="string", length=255)
+     * @Assert\Length( max=255, maxMessage="Il faut saisir au maximum {{ limit }} caractères.")
      */
     private $country;
 
@@ -107,6 +118,7 @@ class UserProducer extends BaseUser
      * @var string
      *
      * @ORM\Column(name="postal_code", type="string", length=10)
+     * @Assert\Length( max=10, maxMessage="Il faut saisir au maximum {{ limit }} caractères.")
      */
     private $postalCode;
 
@@ -114,6 +126,7 @@ class UserProducer extends BaseUser
      * @var string
      *
      * @ORM\Column(name="state", type="string", length=40, nullable=true)
+     * @Assert\Length( max=40, maxMessage="Il faut saisir au maximum {{ limit }} caractères.")
      */
     private $state;
 
@@ -121,6 +134,7 @@ class UserProducer extends BaseUser
      * @var string
      *
      * @ORM\Column(name="province", type="string", length=40, nullable=true)
+     * @Assert\Length( max=40, maxMessage="Il faut saisir au maximum {{ limit }} caractères.")
      */
     private $province;
 
@@ -143,12 +157,15 @@ class UserProducer extends BaseUser
     /**
      * @var string
      * @ORM\Column(name="fax", nullable=true, type="string", length=15)
+     * @Assert\Length( max=15, maxMessage="Il faut saisir au maximum {{ limit }} caractères.")
      */
     private $fax;
 
     /**
      * @var string
      * @ORM\Column(name="tva", nullable=true, type="string", length=30)
+     * @Assert\Length( max=30, maxMessage="Il faut saisir au maximum {{ limit }} caractères.")
+
      */
     private $tvaIC;
 
@@ -561,7 +578,6 @@ class UserProducer extends BaseUser
         return $this->tvaIC;
     }
 
-
     /**
      * Set status
      *
@@ -617,7 +633,6 @@ class UserProducer extends BaseUser
     {
         $this->province = $province;
     }
-
 
     /**
      * Add product

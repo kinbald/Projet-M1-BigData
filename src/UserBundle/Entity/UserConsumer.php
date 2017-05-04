@@ -34,6 +34,7 @@ class UserConsumer extends BaseUser
      * @var string
      *
      * @ORM\Column(name="sex", type="string", length=10)
+     * @Assert\Length( max=10, maxMessage="Il faut saisir au maximum {{ limit }} caractères.")
      */
     private $sex;
 
