@@ -55,10 +55,10 @@
                     <li><a href="{{ path("contact") }}">Nous Contacter</a></li>
                     <li><a href="{{ path("qui_sommes_nous") }}">Qui Sommes Nous ?</a></li>
                     <li><a href="/logout">Déconnexion</a></li>
-                <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#" class="language" rel="fr-FR"><img src="{{ asset('img/flag_fr.png') }}" alt="Francais" /></a></li>
-                            <li><a href="#" class="language" rel="us-EN"><img src="{{ asset('img/flag_an.png') }}" alt="Anglais" /></a></li>
-                        </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a class="language" rel="fr-FR" href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'fr'})) }}"><img src="{{ asset('img/flag_fr.png') }}" alt="Francais" /></a></li>
+                        <li><a class="language" rel="us-EN" href="{{  path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'}))}}"><img src="{{ asset('img/flag_an.png') }}" alt="Anglais" /></a></li>
+                    </ul>
                 </ul>
             </div>
         {% elseif is_granted('ROLE_PRODUCER') %}
@@ -71,8 +71,8 @@
                     <li><a href="{{ path("qui_sommes_nous") }}">Qui Sommes Nous ?</a></li>
                     <li><a href="/logout">Déconnexion</a></li>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#" class="language" rel="fr-FR"><img src="{{ asset('img/flag_fr.png') }}" alt="Francais" /></a></li>
-                        <li><a href="#" class="language" rel="us-EN"><img src="{{ asset('img/flag_an.png') }}" alt="Anglais" /></a></li>
+                        <li><a class="language" rel="fr-FR" href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'fr'})) }}"><img src="{{ asset('img/flag_fr.png') }}" alt="Francais" /></a></li>
+                        <li><a class="language" rel="us-EN" href="{{  path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'}))}}"><img src="{{ asset('img/flag_an.png') }}" alt="Anglais" /></a></li>
                     </ul>
                     </li>
                 </ul>
@@ -87,8 +87,8 @@
                     <li><a href="{{ path("qui_sommes_nous") }}">Qui Sommes Nous ?</a></li>
                     <li><a href="/logout">Déconnexion</a></li>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#" class="language" rel="fr-FR"><img src="{{ asset('img/flag_fr.png') }}" alt="Francais" /></a></li>
-                        <li><a href="#" class="language" rel="us-EN"><img src="{{ asset('img/flag_an.png') }}" alt="Anglais" /></a></li>
+                        <li><a class="language" rel="fr-FR" href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'fr'})) }}"><img src="{{ asset('img/flag_fr.png') }}" alt="Francais" /></a></li>
+                        <li><a class="language" rel="us-EN" href="{{  path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'}))}}"><img src="{{ asset('img/flag_an.png') }}" alt="Anglais" /></a></li>
                     </ul>
 
                 </ul>
@@ -101,8 +101,8 @@
                     <li><a href="{{ path("admin_index") }}">Admin</a></li>
                     <li><a href="/logout">Déconnexion</a></li>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#" class="language" rel="fr-FR"><img src="{{ asset('img/flag_fr.png') }}" alt="Francais" /></a></li>
-                        <li><a href="#" class="language" rel="us-EN"><img src="{{ asset('img/flag_an.png') }}" alt="Anglais" /></a></li>
+                        <li><a class="language" rel="fr-FR" href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'fr'})) }}"><img src="{{ asset('img/flag_fr.png') }}" alt="Francais" /></a></li>
+                        <li><a class="language" rel="us-EN" href="{{  path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'}))}}"><img src="{{ asset('img/flag_an.png') }}" alt="Anglais" /></a></li>
                     </ul>
                 </ul>
             </div>
