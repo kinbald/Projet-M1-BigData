@@ -27,10 +27,10 @@
             <div class="row">
                 <span class="text-newsletter newsletter">{% trans %}S'abonner à la Newsletter{% endtrans %}: </span>
 
-                <form method="post" action="">
+                <form action="{{ path('news_letter_registration') }}" method="POST">
                     <input id="input-newsletter" class="text-newsletter" name="email" type="text" placeholder="Veuillez entrer votre email"/>
+                    <button type="submit" class="button btn-info btn-lg" data-toggle="modal" data-target="#myModal">{% trans %}Je m'inscris{% endtrans %}</button>
                 </form>
-                    <button type="button" class="button btn-info btn-lg" data-toggle="modal" data-target="#myModal">{% trans %}Je m'inscris{% endtrans %}</button>
             </div>
         </div>
 

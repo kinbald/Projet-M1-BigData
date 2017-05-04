@@ -6,7 +6,9 @@ use AppBundle\Entity\News;
 use AppBundle\Model\NewsModel;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use UserBundle\Entity\Newsletter;
 
 /**
  * News controller.
@@ -153,5 +155,21 @@ class NewsController extends Controller
         return $this->render('AppBundle:News:public_news.html.twig', [
             'news' => $model-> getAllNews( 10, 0)
         ]);
+    }
+
+    /**
+     * @Route("/newsRegistration", name="news_letter_registration")
+     * @Method({"POST"})
+     */
+    public function newsRegistrationAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $newsLetter = new Newsletter();
+        $newsLetter->setMail($request->get('email'));
+        $em->persist($newsLetter);
+        $em->flush();
+
+        return $this->render('AppBundle:Newsletter:confirmation.html.twig');
     }
 }
