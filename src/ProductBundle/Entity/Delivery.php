@@ -190,9 +190,17 @@ class Delivery
     }
 
     /**
+     * @param int $stock
      * @return string
      */
-    public function getNameAndPrice(){
-        return $this->getName().' ('.$this->getPrice().'€ )';
+    public function getNameAndPrice($stock=1){
+        return $this->getName().' ('.$stock*$this->getPrice().'€ )';
+    }
+
+    /**
+     * @return string
+     */
+    public function getNameAndUnitPrice(){
+        return $this->getName().' ('.$this->getPrice().'€ par produit)';
     }
 }

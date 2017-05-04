@@ -40,7 +40,7 @@
                 <td>{{ productPurchase.stock}}</td>
                 <td>{{ tva }}%</td>
                 <td>{{ (( productPurchase.conditioningType.price *(1+tva/100)) * productPurchase.stock)|round(2) }}€</td>
-                <td>{{ productPurchase.delivery.nameAndPrice }}</td>
+                <td>{{ productPurchase.delivery.nameAndPrice(productPurchase.Stock) }}</td>
             </tr>
         {% endfor %}
         <tr>

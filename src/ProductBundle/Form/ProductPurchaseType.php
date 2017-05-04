@@ -31,7 +31,7 @@ class ProductPurchaseType extends AbstractType
                     ->join('d.conditioningTypes', 'c', 'WITH', 'c.id=:id')
                     ->setParameter('id', $options['ids_product'][self::$count++]);
             },
-            'choice_label' => 'nameAndPrice'
+            'choice_label' => 'nameAndUnitPrice'
         ));
     }
     
