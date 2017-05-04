@@ -181,7 +181,8 @@ class CartController extends Controller
         }
 
         return $this->render('ProductBundle:delivery:choose.html.twig', array(
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'purchase' => $purchase->getProducts()
         ));
     }
 
@@ -197,10 +198,6 @@ class CartController extends Controller
         $em = $this->getDoctrine()->getManager();
         $rep = $em->getRepository('AppBundle:Parameters');
         $tva = $rep->findByName('TVA');
-        foreach ($commande->getProducts() as $productPurchase){
-            $productPurchase->getDelivery()->getName();
-            $productPurchase->getDelivery()->getPrice();
-        }
         return $this->render('UserBundle:Default:panier.html.twig', [
             'commande' => $commande,
             'tva' => $tva[0]->getValue()

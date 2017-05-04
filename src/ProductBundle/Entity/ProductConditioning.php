@@ -295,6 +295,13 @@ class ProductConditioning
     {
         return $this->stock;
     }
+
+    /**
+     * @return string
+     */
+    public function getNameOfProduct(){
+        return $this->name.' de '.$this->product->getName();
+    }
     
 
     /**

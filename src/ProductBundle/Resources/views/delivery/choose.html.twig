@@ -1,6 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div style="margin-top:200px">{{ form(form) }}</div>
-
+    <div style="margin-top:200px">
+        {{ form_start(form) }}
+        <ul>
+            {% for product in form.products %}
+                <li>{{ form_errors(product) }}</li>
+                <li>{{ form_label(product, purchase[loop.index0].conditioningType.nameOfProduct) }}{{ form_widget(product) }}</li>
+            {% endfor %}
+        </ul>
+        {{ form_end(form) }}
+    </div>
 {% endblock %}
