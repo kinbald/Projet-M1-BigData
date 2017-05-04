@@ -5,7 +5,7 @@
     {{ parent() }}
     <link href="{{ asset('http://www.w3schools.com/lib/w3.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/compte.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/admin.css') }}" rel="stylesheet"/>
+  
 {% endblock %}
 
 {% block javascripts %}
@@ -26,11 +26,11 @@
     <div class="gros-bloc">
         <!-------------------Produits de la commande--------------------->
         <div id="Profile">
-        <h2>{% trans %}Commande & Produits{% endtrans %}</h2>
+        <h2 class="text-center">{% trans %}Commande & Produits{% endtrans %}</h2>
         <br>
 
-            <table>
-                <thead>
+            <table class="table table-hoover">
+                <thead class="thead-default">
                     <tr>
                         <th width="100px">{% trans %}Numéro{% endtrans %}</th>
                         <th width="100px">{% trans %}Prix Total{% endtrans %}</th>
