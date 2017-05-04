@@ -18,7 +18,9 @@
     #productbundle_productconditioning_name, #productbundle_productconditioning_pubPrice, #productbundle_productconditioning_proPrice,
     #productbundle_productconditioning_volumeValue, #productbundle_productconditioning_volumeUnit, #productbundle_productconditioning_stock,
     #productbundle_productconditioning_pack, #productbundle_productconditioning_pack_name, #productbundle_productconditioning_pack_quantityIn,
-    #productbundle_productconditioning_deliveries{
+    #productbundle_productconditioning_deliveries,
+    #userbundle_address_name, #userbundle_address_address, #userbundle_address_bundle, #userbundle_address_city, #userbundle_address_postalCode,
+    #userbundle_address_state, #userbundle_address_country, #userbundle_address_firstName, #userbundle_address_lastName{
         width: 90%;
         max-width: 500px;
         margin-bottom: 10px;
@@ -68,7 +70,9 @@
     #productbundle_productconditioning_name, #productbundle_productconditioning_pubPrice, #productbundle_productconditioning_proPrice,
     #productbundle_productconditioning_volumeValue, #productbundle_productconditioning_volumeUnit, #productbundle_productconditioning_stock,
     #productbundle_productconditioning_pack, #productbundle_productconditioning_pack_name, #productbundle_productconditioning_pack_quantityIn,
-    #productbundle_productconditioning_deliveries{
+    #productbundle_productconditioning_deliveries,
+    #userbundle_address_name, #userbundle_address_address, #userbundle_address_bundle, #userbundle_address_city, #userbundle_address_postalCode,
+    #userbundle_address_state, #userbundle_address_country, #userbundle_address_firstName, #userbundle_address_lastName{
         width: 100%;
         margin-bottom: 20px;
         color: black;
@@ -121,4 +125,13 @@
 
 #productbundle_productconditioning_pack{
     color: #c6a668;
+}
+
+#userbundle_address_submit{
+    border-radius: 5px;
+    background-color: #c6a668;
+    color: black;
+    margin-top: 50px;
+    width: 150px;
+    height: 35px;
 }
