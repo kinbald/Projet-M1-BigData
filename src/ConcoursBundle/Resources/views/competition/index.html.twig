@@ -1,43 +1,52 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/media.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/table-template.css') }}" rel="stylesheet" />
+{% endblock %}
+
 {% block body %}
-    <h1>Competitions list</h1>
+    <div id="content">
+        <h3 class="section-heading" style="text-align: center">Competitions list</h3>
+        <div class="table-responsive table-template">
+            <table class="table table-hover">
+                <thead class="thead-default">
+                <tr class="color-title">
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Datecompetition</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for competition in competitions %}
+                    <tr>
+                        <td><a href="{{ path('competition_show', { 'id': competition.id }) }}">{{ competition.id }}</a></td>
+                        <td>{{ competition.name }}</td>
+                        <td>{% if competition.dateCompetition %}{{ competition.dateCompetition|date('Y-m-d') }}{% endif %}</td>
+                        <td>{{ competition.description }}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('competition_show', { 'id': competition.id }) }}">show</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('competition_edit', { 'id': competition.id }) }}">edit</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
 
-    <table>
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Datecompetition</th>
-            <th>Description</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for competition in competitions %}
-            <tr>
-                <td><a href="{{ path('competition_show', { 'id': competition.id }) }}">{{ competition.id }}</a></td>
-                <td>{{ competition.name }}</td>
-                <td>{% if competition.dateCompetition %}{{ competition.dateCompetition|date('Y-m-d') }}{% endif %}</td>
-                <td>{{ competition.description }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('competition_show', { 'id': competition.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('competition_edit', { 'id': competition.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('competition_new') }}">Create a new competition</a>
-        </li>
-    </ul>
+        <ul>
+            <li>
+                <a href="{{ path('competition_new') }}">Create a new competition</a>
+            </li>
+        </ul>
+    </div>
 {% endblock %}

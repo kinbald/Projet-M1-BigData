@@ -1,43 +1,56 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <h1>Medals list</h1>
-
-    <table>
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Annee</th>
-            <th>Url</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for medal in medals %}
-            <tr>
-                <td><a href="{{ path('medal_show', { 'id': medal.id }) }}">{{ medal.id }}</a></td>
-                <td>{{ medal.name }}</td>
-                <td>{{ medal.annee }}</td>
-                <td>{{ medal.url }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('medal_show', { 'id': medal.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('medal_edit', { 'id': medal.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('medal_new') }}">Create a new medal</a>
-        </li>
-    </ul>
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/media.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/table-template.css') }}" rel="stylesheet" />
 {% endblock %}
+
+{% block body %}
+    <div id="content">
+
+
+        <h3 class="section-heading" style="text-align: center">Medals list</h3>
+        <div class="table-responsive table-template">
+
+
+            <table class="table table-hover">
+                <thead class="thead-default">
+                <tr class="color-title">
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Annee</th>
+                    <th>Url</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for medal in medals %}
+                    <tr>
+                        <td><a href="{{ path('medal_show', { 'id': medal.id }) }}">{{ medal.id }}</a></td>
+                        <td>{{ medal.name }}</td>
+                        <td>{{ medal.annee }}</td>
+                        <td>{{ medal.url }}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('medal_show', { 'id': medal.id }) }}">show</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('medal_edit', { 'id': medal.id }) }}">edit</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <ul>
+            <li>
+                <a href="{{ path('medal_new') }}">Create a new medal</a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
+ii
