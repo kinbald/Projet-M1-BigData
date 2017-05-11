@@ -20,7 +20,8 @@
     #productbundle_productconditioning_pack, #productbundle_productconditioning_pack_name, #productbundle_productconditioning_pack_quantityIn,
     #productbundle_productconditioning_deliveries,
     #userbundle_address_name, #userbundle_address_address, #userbundle_address_bundle, #userbundle_address_city, #userbundle_address_postalCode,
-    #userbundle_address_state, #userbundle_address_country, #userbundle_address_firstName, #userbundle_address_lastName{
+    #userbundle_address_state, #userbundle_address_country, #userbundle_address_firstName, #userbundle_address_lastName,
+    #concoursbundle_competition_name, #concoursbundle_competition_description{
         width: 90%;
         max-width: 500px;
         margin-bottom: 10px;
@@ -72,7 +73,8 @@
     #productbundle_productconditioning_pack, #productbundle_productconditioning_pack_name, #productbundle_productconditioning_pack_quantityIn,
     #productbundle_productconditioning_deliveries,
     #userbundle_address_name, #userbundle_address_address, #userbundle_address_bundle, #userbundle_address_city, #userbundle_address_postalCode,
-    #userbundle_address_state, #userbundle_address_country, #userbundle_address_firstName, #userbundle_address_lastName{
+    #userbundle_address_state, #userbundle_address_country, #userbundle_address_firstName, #userbundle_address_lastName,
+    #concoursbundle_competition_name, #concoursbundle_competition_description{
         width: 100%;
         margin-bottom: 20px;
         color: black;
@@ -134,4 +136,8 @@
     margin-top: 50px;
     width: 150px;
     height: 35px;
+}
+
+#concoursbundle_competition_dateCompetition{
+    color: black;
 }
