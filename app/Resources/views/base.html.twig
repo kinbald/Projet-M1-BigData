@@ -44,85 +44,43 @@
 
             <a class="navbar-brand" href="{{ path("homepage") }}">
                 <img class="style_logo" src="{{ asset('img/logo.png') }}" alt="logo">
-
             </a>
         </div>
-        {% if is_granted('ROLE_CONSUMER') %}
             <div class="navbar-collapse collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
                     <li><a href="{{ path("homepage") }}">Accueil</a></li>
-                    <li><a href="{{ path("profil") }}">Compte</a></li>
-                    <li><a href="{{ path("contact") }}">Nous Contacter</a></li>
-                    <li><a href="{{ path("qui_sommes_nous") }}">Qui Sommes Nous ?</a></li>
-                    <li><a href="/logout">Déconnexion</a></li>
+                    {% if is_granted('ROLE_CONSUMER') %}
+                        <li><a href="{{ path("profil") }}">Compte</a></li>
+                        <li><a href="{{ path("contact") }}">Nous Contacter</a></li>
+                        <li><a href="{{ path("qui_sommes_nous") }}">Qui Sommes Nous ?</a></li>
+                        <li><a href="/logout">Déconnexion</a></li>
+                    {% elseif is_granted('ROLE_PRODUCER') %}
+                        <li><a href="{{ path("concours_index") }}">Concours</a></li>
+                        <li><a href="{{ path("profil") }}">Compte</a></li>
+                        <li><a href="{{ path("contact") }}">Nous Contacter</a></li>
+                        <li><a href="{{ path("qui_sommes_nous") }}">Qui Sommes Nous ?</a></li>
+                        <li><a href="/logout">Déconnexion</a></li>
+                    {% elseif is_granted('ROLE_MEDIA') %}
+                        <li><a href="{{ path("media_index") }}">Presse</a></li>
+                        <li><a href="{{ path("profil") }}">Compte</a></li>
+                        <li><a href="{{ path("contact") }}">Nous Contacter</a></li>
+                        <li><a href="{{ path("qui_sommes_nous") }}">Qui Sommes Nous ?</a></li>
+                        <li><a href="/logout">Déconnexion</a></li>
+                    {% elseif is_granted('ROLE_ADMIN') %}
+                        <li><a href="{{ path("profil") }}">Compte</a></li>
+                        <li><a href="{{ path("admin_index") }}">Admin</a></li>
+                        <li><a href="/logout">Déconnexion</a></li>
+                    {% else %}
+                        <li><a href="{{ path("contact") }}">Nous Contacter</a></li>
+                        <li><a href="{{ path("qui_sommes_nous") }}">Qui Sommes Nous ?</a></li>
+                        <li><a class="connexion" href="/login">Se Connecter</a></li>
+                    {% endif %}
                     <ul class="nav navbar-nav navbar-right">
                         <li><a class="language" rel="fr-FR" href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'fr'})) }}"><img src="{{ asset('img/flag_fr.png') }}" alt="Francais" /></a></li>
                         <li><a class="language" rel="us-EN" href="{{  path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'}))}}"><img src="{{ asset('img/flag_an.png') }}" alt="Anglais" /></a></li>
                     </ul>
                 </ul>
             </div>
-        {% elseif is_granted('ROLE_PRODUCER') %}
-            <div class="navbar-collapse collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ path("homepage") }}">Accueil</a></li>
-                    <li><a href="{{ path("concours_index") }}">Concours</a></li>
-                    <li><a href="{{ path("profil") }}">Compte</a></li>
-                    <li><a href="{{ path("contact") }}">Nous Contacter</a></li>
-                    <li><a href="{{ path("qui_sommes_nous") }}">Qui Sommes Nous ?</a></li>
-                    <li><a href="/logout">Déconnexion</a></li>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a class="language" rel="fr-FR" href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'fr'})) }}"><img src="{{ asset('img/flag_fr.png') }}" alt="Francais" /></a></li>
-                        <li><a class="language" rel="us-EN" href="{{  path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'}))}}"><img src="{{ asset('img/flag_an.png') }}" alt="Anglais" /></a></li>
-                    </ul>
-                    </li>
-                </ul>
-            </div>
-        {% elseif is_granted('ROLE_MEDIA') %}
-            <div class="navbar-collapse collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ path("homepage") }}">Accueil</a></li>
-                    <li><a href="{{ path("media_index") }}">Presse</a></li>
-                    <li><a href="{{ path("profil") }}">Compte</a></li>
-                    <li><a href="{{ path("contact") }}">Nous Contacter</a></li>
-                    <li><a href="{{ path("qui_sommes_nous") }}">Qui Sommes Nous ?</a></li>
-                    <li><a href="/logout">Déconnexion</a></li>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a class="language" rel="fr-FR" href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'fr'})) }}"><img src="{{ asset('img/flag_fr.png') }}" alt="Francais" /></a></li>
-                        <li><a class="language" rel="us-EN" href="{{  path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'}))}}"><img src="{{ asset('img/flag_an.png') }}" alt="Anglais" /></a></li>
-                    </ul>
-
-                </ul>
-            </div>
-        {% elseif is_granted('ROLE_ADMIN') %}
-            <div class="navbar-collapse collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ path("homepage") }}">Accueil</a></li>
-                    <li><a href="{{ path("profil") }}">Compte</a></li>
-                    <li><a href="{{ path("admin_index") }}">Admin</a></li>
-                    <li><a href="/logout">Déconnexion</a></li>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a class="language" rel="fr-FR" href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'fr'})) }}"><img src="{{ asset('img/flag_fr.png') }}" alt="Francais" /></a></li>
-                        <li><a class="language" rel="us-EN" href="{{  path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'}))}}"><img src="{{ asset('img/flag_an.png') }}" alt="Anglais" /></a></li>
-                    </ul>
-                </ul>
-            </div>
-        {% else %}
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ path("homepage") }}">Accueil</a></li>
-                    <li><a href="{{ path("contact") }}">Nous Contacter</a></li>
-                    <li><a href="{{ path("qui_sommes_nous") }}">Qui Sommes Nous ?</a></li>
-                    <li><a class="connexion" href="/login">Se Connecter</a></li>
-                    <li><a class="inscription" href="{{ path("inscription_choix") }}">S'inscrire</a></li>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a class="language" rel="fr-FR" href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'fr'})) }}"><img src="{{ asset('img/flag_fr.png') }}" alt="Francais" /></a></li>
-                        <li><a class="language" rel="us-EN" href="{{  path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'}))}}"><img src="{{ asset('img/flag_an.png') }}" alt="Anglais" /></a></li>
-                    </ul>
-                </ul>
-
-
-            </div>
-        {% endif %}
     </div>
 </nav>
 
