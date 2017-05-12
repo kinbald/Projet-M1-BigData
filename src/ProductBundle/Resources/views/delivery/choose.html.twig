@@ -1,14 +1,32 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/delivery.css') }}" rel="stylesheet" />
+{% endblock %}
+
 {% block body %}
-    <div style="margin-top:200px">
+    <div class="espace-haut"></div>
         {{ form_start(form) }}
         <ul>
+            <table>
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Delivery</th>
+                </tr>
+                </thead>
+                <tbody>
             {% for product in form.products %}
-                <li>{{ form_errors(product) }}</li>
-                <li>{{ form_label(product, purchase[loop.index0].conditioningType.nameOfProduct) }}{{ form_widget(product) }}</li>
+                <tr>
+                    <li class="first">{{ form_errors(product) }}</li>
+                    <td>{{ form_label(product, purchase[loop.index0].conditioningType.nameOfProduct) }}</td>
+                    <td>{{ form_widget(product) }}</td>
+                </tr>
             {% endfor %}
+                </tbody>
+            </table>
         </ul>
         {{ form_end(form) }}
-    </div>
+    <div class="espace-bas"></div>
 {% endblock %}
