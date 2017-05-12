@@ -13,7 +13,7 @@ use UserBundle\Entity\Newsletter;
 /**
  * News controller.
  *
- * @Route("news")
+ * @Route("/news")
  */
 class NewsController extends Controller
 {
