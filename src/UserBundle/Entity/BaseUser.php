@@ -35,6 +35,23 @@ abstract class BaseUser extends FosUser
     /**
      * @var string
      *
+     * @Assert\Length(
+     *     min=8,
+     *     max=100,
+     *     minMessage="user.password.short",
+     *     groups={"Profile", "ResetPassword", "Registration", "ChangePassword"}
+     * )
+     * @Assert\Regex(
+     *     pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{8,100}$/",
+     *     message="user.password.difficulty",
+     *     groups={"Profile", "ResetPassword", "Registration", "ChangePassword"}
+     * )
+     */
+    protected $plainPassword;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="firstname", type="string", length=255)
      * @Assert\Length( max=255, maxMessage="Il faut saisir au maximum {{ limit }} caractères.")
      */
