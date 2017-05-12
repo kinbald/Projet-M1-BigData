@@ -27,7 +27,7 @@ class MedalController extends Controller
 
         $medals = $em->getRepository('ConcoursBundle:Medal')->findAll();
 
-        return $this->render('medal/index.html.twig', array(
+        return $this->render('ConcoursBundle:medal:index.html.twig', array(
             'medals' => $medals,
         ));
     }
@@ -52,7 +52,7 @@ class MedalController extends Controller
             return $this->redirectToRoute('medal_show', array('id' => $medal->getId()));
         }
 
-        return $this->render('medal/new.html.twig', array(
+        return $this->render('ConcoursBundle:medal:new.html.twig', array(
             'medal' => $medal,
             'form' => $form->createView(),
         ));
@@ -68,7 +68,7 @@ class MedalController extends Controller
     {
         $deleteForm = $this->createDeleteForm($medal);
 
-        return $this->render('medal/show.html.twig', array(
+        return $this->render('ConcoursBundle:medal:show.html.twig', array(
             'medal' => $medal,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -92,7 +92,7 @@ class MedalController extends Controller
             return $this->redirectToRoute('medal_edit', array('id' => $medal->getId()));
         }
 
-        return $this->render('medal/edit.html.twig', array(
+        return $this->render('ConcoursBundle:medal:edit.html.twig', array(
             'medal' => $medal,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
