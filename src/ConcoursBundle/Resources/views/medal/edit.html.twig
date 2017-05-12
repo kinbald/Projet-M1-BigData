@@ -1,21 +1,31 @@
 {% extends 'baseadmin.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/formulaire.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/edit.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/mise_en_page_admin.css') }}" rel="stylesheet" />
+{% endblock %}
+
 {% block body %}
-    <h1>{% trans %}Medal edit{% endtrans %}</h1>
+    <div class="contour">
+        <h2>{% trans %}Medal edit{% endtrans %}</h2>
 
-    {{ form_start(edit_form) }}
-    {{ form_widget(edit_form) }}
-    <input type="submit" value="{% trans %}Edit{% endtrans %}"/>
-    {{ form_end(edit_form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('medal_index') }}">{% trans %}Back to the list{% endtrans %}</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-            <input type="submit" value="{% trans %}Delete{% endtrans %}">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+    </div>
+    <div class="center">
+        <input class="btn btn-circle btn-primary col-md-4" type="submit" value="{% trans %}Edit{% endtrans %}"/>
+        {{ form_end(edit_form) }}
+        <ul>
+            <li>
+                <a class="btn btn-circle  btn-primary col-md-4" href="{{ path('medal_index') }}">{% trans %}Back to the list{% endtrans %}</a>
+            </li>
+            <li>
+                {{ form_start(delete_form) }}
+                <input class="btn btn-circle btn-primary col-md-4" type="submit" value="{% trans %}Delete{% endtrans %}">
+                {{ form_end(delete_form) }}
+            </li>
+        </ul>
+    </div>
 {% endblock %}

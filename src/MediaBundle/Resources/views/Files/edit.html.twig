@@ -4,7 +4,7 @@
     {{ parent() }}
     <link href="{{ asset('css/edit.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('uploader/fancybox/source/jquery.fancybox.css') }}">
-    <link href="{{ asset('css/contour_blanc.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/mise_en_page_admin.css') }}" rel="stylesheet" />
 
 {% endblock %}
 {% block javascripts %}
@@ -13,32 +13,29 @@
 {% endblock %}
 
 {% block body %}
-    <div id="content">
-        <div id="Contour_blanc-new_press">
-        <h1>{% trans %}Edition Communiqués{% endtrans %}</h1><br><br>
+
+        <div class="contour" id="content">
+
+            <h1>{% trans %}Edition Communiqués{% endtrans %}</h1><br><br>
             <div class="form11">
-
-            {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-
-        <a  id="button" class="clic" href="{{ asset('uploader/fancybox.php') }}?iframe">{% trans %}Link a file{% endtrans %}</a>
-        <input type="text" id="chemin" name="urlImg">
-        <br><br>
-        <table>
-            <td>
-                <input class="btn btn-primary btn-circle" type="submit" value="{% trans %}Edit{% endtrans %}"/>
-                {{ form_end(edit_form) }}
-            </td>
-            <td>
-                <a  class="btn btn-primary btn-circle" href="{{ path('files_index') }}">{% trans %}Back to the list{% endtrans %}</a>
-            </td>
-            {{ form_start(delete_form) }}
-            <td>
-                <input class="btn btn-primary btn-circle" type="submit" value="{% trans %}Delete{% endtrans %}">
-            </td>
-            {{ form_end(delete_form) }}
-        </table>
+                {{ form_start(edit_form) }}
+                {{ form_widget(edit_form) }}
+                <a  id="button" class="clic" href="{{ asset('uploader/fancybox.php') }}?iframe">{% trans %}Link a file{% endtrans %}</a>
+                <input type="text" id="chemin" name="urlImg">
             </div>
-        </div>
     </div>
+    <table class="center">
+        <td>
+            <input class="btn btn-primary btn-circle" type="submit" value="{% trans %}Edit{% endtrans %}"/>
+            {{ form_end(edit_form) }}
+        </td>
+        <td>
+            <a  class="btn btn-primary btn-circle" href="{{ path('files_index') }}">{% trans %}Back to the list{% endtrans %}</a>
+        </td>
+        {{ form_start(delete_form) }}
+        <td>
+            <input class="btn btn-primary btn-circle" type="submit" value="{% trans %}Delete{% endtrans %}">
+        </td>
+        {{ form_end(delete_form) }}
+    </table>
 {% endblock %}

@@ -8,32 +8,26 @@
 {% endblock %}
 
 {% block body %}
-    <div class="contour" id="content">
+    <div class="contour">
 
             <h2 class="titre">{% trans %}Userconsumer edit{% endtrans %}</h2>
-            <br><br>
+            <br>
             {{ form_start(edit_form) }}
             {{ form_widget(edit_form) }}
-
-
-
-
-        <div class="marge-inf">
-            <div class="bouton1">
-                <input class="btn btn-primary btn-circle" type="submit" value="{% trans %}Edit{% endtrans %}" />
-            </div>
-            {{ form_end(edit_form) }}
-            {{ form_start(delete_form) }}
-            <div class="bouton1">
-                <input class="btn btn-primary btn-circle" type="submit" value="{% trans %}Delete{% endtrans %}">
-            </div>
-            {{ form_end(delete_form) }}
-            <div class="bouton1">
-                <a class="btn btn-primary btn-circle" href="{{ path('userconsumer_index') }}">{% trans %}Back to the list{% endtrans %}</a>
-            </div>
+    </div>
+    <div class="marge-inf center">
+        <div class="bouton1">
+            <input class="btn btn-primary btn-circle" type="submit" value="{% trans %}Edit{% endtrans %}" />
+        </div>
+        {{ form_end(edit_form) }}
+        {{ form_start(delete_form) }}
+        <div class="bouton1">
+            <input class="btn btn-primary btn-circle" type="submit" value="{% trans %}Delete{% endtrans %}">
+        </div>
+        {{ form_end(delete_form) }}
+        <div class="bouton1">
+            <a class="btn btn-primary btn-circle" href="{{ path('userconsumer_index') }}">{% trans %}Back to the list{% endtrans %}</a>
         </div>
     </div>
 
-
-    <div class="espace-bas"></div>
 {% endblock %}

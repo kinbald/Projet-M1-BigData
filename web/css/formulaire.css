@@ -22,7 +22,8 @@
     #userbundle_address_address, #userbundle_address_bundle, #userbundle_address_city, #userbundle_address_postalCode,
     #userbundle_address_state, #userbundle_address_country, #userbundle_address_firstName, #userbundle_address_lastName,
     #concoursbundle_competition_name, #concoursbundle_competition_description,
-    #appbundle_news_title, #appbundle_news_author, #appbundle_news_datePublication, #appbundle_news_newsText{
+    #appbundle_news_title, #appbundle_news_author, #appbundle_news_datePublication, #appbundle_news_newsText,
+    #concoursbundle_medal_name, #concoursbundle_medal_annee, #concourbundle_medal_url, #concoursbundler_medal_competition{
         width: 90%;
         max-width: 500px;
         margin-bottom: 10px;
@@ -80,7 +81,8 @@
     #userbundle_address_address, #userbundle_address_bundle, #userbundle_address_city, #userbundle_address_postalCode,
     #userbundle_address_state, #userbundle_address_country, #userbundle_address_firstName, #userbundle_address_lastName,
     #concoursbundle_competition_name, #concoursbundle_competition_description,
-    #appbundle_news_title, #appbundle_news_author, #appbundle_news_datePublication, #appbundle_news_newsText{
+    #appbundle_news_title, #appbundle_news_author, #appbundle_news_datePublication, #appbundle_news_newsText,
+    #concoursbundle_medal_name, #concoursbundle_medal_annee, #concourbundle_medal_url, #concoursbundler_medal_competition{
         width: 100%;
         margin-bottom: 20px;
         color: black;

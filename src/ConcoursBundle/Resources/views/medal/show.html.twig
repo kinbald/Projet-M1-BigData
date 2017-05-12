@@ -4,6 +4,7 @@
 {% block stylesheets %}
     {{ parent() }}
     <link href="{{ asset('css/media.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/edit.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/table-template.css') }}" rel="stylesheet" />
 {% endblock %}
 
@@ -35,19 +36,19 @@
             </table>
         </div>
 
-        <ul>
-            <li>
-                <a href="{{ path('medal_index') }}">{% trans %}Back to the list{% endtrans %}</a>
-            </li>
-            <li>
-                <a href="{{ path('medal_edit', { 'id': medal.id }) }}">{% trans %}Edit{% endtrans %}</a>
-            </li>
-            <li>
+        <div id="boutons">
+            <div class="bouton1">
+                <a class="btn btn-circle btn-primary" href="{{ path('medal_index') }}">{% trans %}Back to the list{% endtrans %}</a>
+            </div>
+            <div class="bouton1">
+                <a class="btn btn-circle btn-primary" href="{{ path('medal_edit', { 'id': medal.id }) }}">{% trans %}Edit{% endtrans %}</a>
+            </div>
+            <div class="bouton1">
                 {{ form_start(delete_form) }}
-                <input type="submit" value="{% trans %}Delete{% endtrans %}">
+                <input class="btn btn-circle btn-primary" type="submit" value="{% trans %}Delete{% endtrans %}">
                 {{ form_end(delete_form) }}
-            </li>
-        </ul>
+            </div>
+        </div>
 
     </div>
 

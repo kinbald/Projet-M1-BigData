@@ -22,6 +22,10 @@
                     <td id="champ">{% if purchase.done %}Yes{% else %}No{% endif %}</td>
                 </tr>
                 <tr>
+                    <th width="100px">By</th>
+                    <td id="champ"><a href="{{ path('userconsumer_show', {id:base_user.id}) }}"><i>{{ base_user.username }}</i></a></td>
+                </tr>
+                <tr>
                     <th width="100px">{% trans %}Date de commande{% endtrans %}</th>
                     <td id="champ">{% if purchase.dateOrder %}{{ purchase.dateOrder|date('Y-m-d H:i:s') }}{% endif %}</td>
                 </tr>
