@@ -24,8 +24,8 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li><a href="#concours">Concours</a></li>
-                    <li><a href="#contrats">Contrats</a></li>
+                    <li><a href="#concours">{% trans %}Concours{% endtrans %}</a></li>
+                    <li><a href="#contrats">{% trans %}Contrats{% endtrans %}</a></li>
                 </ul>
             </div>
         </div>
@@ -50,7 +50,7 @@
                                     </span>
                                 </span>
                                 <a href="http://www.google.fr">
-                                    <h2>Concours {{ competition.name }}</h2>
+                                    <h2>{% trans %}Concour{% endtrans %} {{ competition.name }}</h2>
                                     <p>{{ competition.description}}</p>
                                 </a>
                             </div>
