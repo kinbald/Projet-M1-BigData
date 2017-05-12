@@ -14,13 +14,6 @@
         height: 20em;
     }
 
-    .btn {
-        padding: 0px 0px;
-        text-align: center;
-        width: 350px;
-        height: 280px;
-        margin-bottom: 25px;
-    }
 
     .image {
         position: inherit;
@@ -61,13 +54,6 @@
         height: 20em;
     }
 
-    .btn {
-        padding: 0px 0px;
-        text-align: center;
-        width: 450px;
-        height: 350px;
-        margin-bottom: 25px;
-    }
 
     .image {
         position: inherit;
