@@ -19,6 +19,8 @@ Back to the list: Retour à la liste
 ID commande: Identifiant commande
 ID user: Identifiant utilisateur
 Adresse: Adresse
+Adresse de livraison: Adresse de livraison
+Adresse de facturation: Adresse de facturation
 Ville: Ville
 Code postal: Code postal
 Pays: Pays
@@ -30,7 +32,7 @@ Done Purchase: Commandes terminées
 Degree: Degré d'alcool :
 
 
-Id: Id
+ID: ID
 Name: Nom du produit
 Vintage: Millésime
 Color: Couleur
@@ -38,10 +40,10 @@ Price: Prix
 Stock: Stock
 Actions: Actions
 
-
-
+Gestion des Spiritueux: Gestion des spiritueux
 Create Spirit: Ajouter un spiritueux
 Create Wine: Ajouter un vin
+Gestion des univers: Gestion des univers
 Create Universe: Ajouter un univers
 Create Purchase: Nouvelle commande
 
@@ -55,7 +57,6 @@ Wine Title: Liste des vins
 Universe Title: Liste des univers
 Purchase Title: Gestion des commandes
 
-
 Purchase Admin: Administration des commandes
 
 
@@ -63,7 +64,6 @@ Retour: Retour à la liste
 Load a picture: Importer une image
 Panier: Ajouter au panier
 Back to selection: Retour à la sélection
-
 
 Medal: Médaille
 Conditioning: Conditionnement
@@ -73,13 +73,70 @@ Category: Catégorie
 Country: Pays
 Region: Région
 
-Search: RECHERCHE
+Search: Recherche
 Range: Gamme
 Type: Type
 Advanced: Critères avancés
 Submit: Envoyer
 Invitation: Découvrez nos produits
+Asie: Asie
+Amérique: Amérique
+Océanie: Océanie
+A partir de: A partir de
 
 Degres Alcool: Degres Alcool
 Sucre: Sucre
 Bouteille: Bouteille
+
+Delivery: Livraison
+
+Produits à insérer: Produits à insérer
+Producteurs à insérer: Producteurs à insérer
+Médaille a insérer: Médaille a insérer
+Tableau des expéditions: Tableau des expéditions
+Tableau des options de livraison: Tableau des options de livraison
+
+Quantité disponible: Quantité disponible
+Le produit n'est pas disponible: Le produit n'est pas disponible
+Produit non disponible: Produit indisponible
+Ajouter un commentaire: Ajouter un commentaire
+Vous devez être connecté pour laisser un commentaire: Vous devez être connecté pour laisser un commentaire
+
+Productconditioning edit: Modification du conditionnement
+Product conditionings list: Liste des conditionnements
+Pubprice: Prix public
+Proprice: Prix professionnel
+Volumevalue: Valeur du volume
+Volumeunit: Unité du volume
+New Conditioning: Nouveau conditionnement
+
+Productconditioning creation: Creation d'un conditionnement
+Productconditioning: Conditionnement
+
+Pack name: Nom du pack
+Quantity in pack: Quantité du pack
+
+Gestion des Commandes: Gestion des Commandes
+A préparer: A préparer
+ID commande: ID commande
+ID user: ID utilisateur
+Doing: En cours
+Détails Commande: Détails Commande
+Modifier: Modifier
+Expédiées: Expédiées
+
+Purchase: Achat
+
+City: Ville
+Postalcode: Code postal
+Quantité: Quantité
+Acheteur: Acheteur
+Pseudo: Pseudo
+Prenom: Prénom
+Nom: Nom
+
+Fiche produit: Fiche produit
+
+A decanter: A decanter
+Non Filtré: Non filtré
+Démarche Qualité: Démarche qualité

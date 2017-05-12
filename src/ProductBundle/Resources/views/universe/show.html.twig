@@ -72,9 +72,9 @@
                             <optgroup label="Region">
                                 <option value=""> </option>
                                 <option value="Europe">Europe</option>
-                                <option value="Asie">Asie</option>
-                                <option value="Amerique">Amérique</option>
-                                <option value="Oceanie">Océanie</option>
+                                <option value="Asie">{% trans %}Asie{% endtrans %}</option>
+                                <option value="Amerique">{% trans %}Amérique{% endtrans %}</option>
+                                <option value="Oceanie">{% trans %}Océanie{% endtrans %}</option>
                             </optgroup>
                         </select>
                     </div>
@@ -119,9 +119,9 @@
                                 <span class="table-product-name">{{ product.displayName }}</span><br>
                             </span>
                             {% if product.MinPrice %}
-                                <p>A partir de {{  product.MinPrice }}€</p>
+                                <p>{% trans %}A partir de{% endtrans %} {{  product.MinPrice }}€</p>
                             {% else %}
-                                <p>Produit indisponible</p>
+                                <p>{% trans %}Produit non disponible{% endtrans %}</p>
                             {% endif %}
                         </a>
                     </div>

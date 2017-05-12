@@ -8,17 +8,17 @@
 
 {% block body %}
     <div id="content">
-    <h3 class="section-heading" style="text-align: center">Product conditionings list</h3>
+    <h3 class="section-heading" style="text-align: center">{% trans %}Product conditionings list{% endtrans %}</h3>
 <div class="table-responsive table-template tableau_product">
     <table class="table table-hover">
         <thead class="thead-default">
             <tr class="color-title">
                 <th>Id</th>
-                <th>Name</th>
-                <th>Pubprice</th>
-                <th>Proprice</th>
-                <th>Volumevalue</th>
-                <th>Volumeunit</th>
+                <th>{% trans %}Name{% endtrans %}</th>
+                <th>{% trans %}Pubprice{% endtrans %}</th>
+                <th>{% trans %}Proprice{% endtrans %}</th>
+                <th>{% trans %}Volumevalue{% endtrans %}</th>
+                <th>{% trans %}Volumeunit{% endtrans %}</th>
                 <th>Stock</th>
                 <th>Pack</th>
                 <th>Actions</th>
@@ -38,10 +38,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('conditioning_show', { 'id': productConditioning.id }) }}">show</a>
+                            <a href="{{ path('conditioning_show', { 'id': productConditioning.id }) }}">{% trans %}Show{% endtrans %}</a>
                         </li>
                         <li>
-                            <a href="{{ path('conditioning_edit', { 'id': productConditioning.id }) }}">edit</a>
+                            <a href="{{ path('conditioning_edit', { 'id': productConditioning.id }) }}">{% trans %}Edit{% endtrans %}</a>
                         </li>
                     </ul>
                 </td>
@@ -53,7 +53,7 @@
         <br>
         <ul>
             <li>
-                <a class="btn btn-primary btn-circle" href="{{ path('conditioning_new') }}">New Conditioning</a>
+                <a class="btn btn-primary btn-circle" href="{{ path('conditioning_new') }}">{% trans %}New Conditioning{% endtrans %}</a>
             </li>
         </ul>
     </div>
