@@ -26,7 +26,7 @@
         <br><br>
         <table>
             <td>
-                <input class="btn btn-primary btn-circle" type="submit" value="Edit"/>
+                <input class="btn btn-primary btn-circle" type="submit" value="{% trans %}Edit{% endtrans %}"/>
                 {{ form_end(edit_form) }}
             </td>
             <td>
@@ -34,7 +34,7 @@
             </td>
             {{ form_start(delete_form) }}
             <td>
-                <input class="btn btn-primary btn-circle" type="submit" value="Delete">
+                <input class="btn btn-primary btn-circle" type="submit" value="{% trans %}Delete{% endtrans %}">
             </td>
             {{ form_end(delete_form) }}
         </table>

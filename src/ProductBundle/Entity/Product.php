@@ -642,4 +642,18 @@ abstract class Product
         return $this->producer;
     }
 
+    public function getMinPrice()
+    {
+        $prixMin = null;
+        foreach ($this->getConditioningTypes() as $conditioning)
+        {
+            if($prixMin == null) {
+                $prixMin = $conditioning->getPrice();
+                continue;
+            }
+            if($conditioning->getPrice() < $prixMin)
+                $prixMin = $conditioning->getPrice();
+        }
+        return $prixMin;
+    }
 }

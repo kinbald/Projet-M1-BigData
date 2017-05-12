@@ -118,12 +118,16 @@
                             <span class="swiper-slide text-center table-product-text">
                                 <span class="table-product-name">{{ product.displayName }}</span><br>
                             </span>
+                            {% if product.MinPrice %}
+                                <p>A partir de {{  product.MinPrice }}€</p>
+                            {% else %}
+                                <p>Produit indisponible</p>
+                            {% endif %}
                         </a>
                     </div>
                 </li>
             {% endfor %}
         </ul>
-
     </div>
 
 {% endblock %}
