@@ -8,78 +8,78 @@
             <div class="form-div">
                 <div>
                     {{ form_label(form.username) }}
-                    {{ form_errors(form.username) }}
                     {{ form_widget(form.username) }}
+                    <span class="form_error">{{ form_errors(form.username) }}</span>
                 </div>
                 <div>
                     {{ form_label(form.plainPassword.first) }}
                     {{ form_widget(form.plainPassword.first) }}
-                    <span class="form_error" style="color: red;">{{ form_errors(form.plainPassword.first) }}</span>
+                    <span class="form_error">{{ form_errors(form.plainPassword.first) }}</span>
                 </div>
                 <div>
                     {{ form_label(form.plainPassword.second) }}
                     {{ form_widget(form.plainPassword.second) }}
-                    {{ form_errors(form.plainPassword.second) }}
+                    <span class="form_error">{{ form_errors(form.plainPassword.second) }}</span>
                 </div>
                 <div>
                     {{ form_label(form.email) }}
-                    {{ form_errors(form.email) }}
                     {{ form_widget(form.email) }}
+                    <span class="form_error">{{ form_errors(form.email) }}</span>
                 </div>
                 <div>
                     {{ form_label(form.lastname) }}
-                    {{ form_errors(form.lastname) }}
                     {{ form_widget(form.lastname) }}
+                    <span class="form_error">{{ form_errors(form.lastname) }}</span>
                 </div>
                 <div>
                     {{ form_label(form.firstname) }}
-                    {{ form_errors(form.firstname) }}
                     {{ form_widget(form.firstname) }}
+                    <span class="form_error">{{ form_errors(form.firstname) }}</span>
                 </div>
                 <div>
                     {{ form_label(form.businessName) }}
-                    {{ form_errors(form.businessName) }}
                     {{ form_widget(form.businessName) }}
+                    <span class="form_error">{{ form_errors(form.businessName) }}</span>
                 </div>
                 <div>
                     {{ form_label(form.siret) }}
-                    {{ form_errors(form.siret) }}
                     {{ form_widget(form.siret) }}
+                    <span class="form_error">{{ form_errors(form.siret) }}</span>
                 </div>
                 <div>
                     {{ form_label(form.address) }}
-                    {{ form_errors(form.address) }}
                     {{ form_widget(form.address) }}
+                    <span class="form_error">{{ form_errors(form.address) }}</span>
                 </div>
                 <div>
                     {{ form_label(form.city) }}
-                    {{ form_errors(form.city) }}
                     {{ form_widget(form.city) }}
+                    <span class="form_error">{{ form_errors(form.city) }}</span>
                 </div>
                 <div>
                     {{ form_label(form.postalCode) }}
-                    {{ form_errors(form.postalCode) }}
                     {{ form_widget(form.postalCode) }}
+                    <span class="form_error">{{ form_errors(form.postalCode) }}</span>
                 </div>
                 <div>
                     {{ form_label(form.country) }}
-                    {{ form_errors(form.country) }}
                     {{ form_widget(form.country) }}
+                    <span class="form_error">{{ form_errors(form.country) }}</span>
                 </div>
                 <div>
                     {{ form_label(form.province) }}
-                    {{ form_errors(form.province) }}
                     {{ form_widget(form.province) }}
+                    <span class="form_error">{{ form_errors(form.province) }}</span>
                 </div>
                 <div>
                     {{ form_label(form.state) }}
-                    {{ form_errors(form.state) }}
                     {{ form_widget(form.state) }}
+                    <span class="form_error">{{ form_errors(form.state) }}</span>
                 </div>
                 <div>
                     {{ form_label(form.phone) }}
                     {{ form_widget(form.phone) }}
-                    <span class="form_error" style="color: red;">{{ form_errors(form.phone) }}</span>
+                    <span class="form_error">{{ form_errors(form.phone) }}</span>
                 </div>
             </div>
             <input class="btn btn-primary btn-circle" type="submit" value="{% trans %}Registration{% endtrans %}" />

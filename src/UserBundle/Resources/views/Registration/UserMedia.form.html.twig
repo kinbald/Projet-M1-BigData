@@ -8,48 +8,48 @@
             <div class="form-div">
                 <div>
                     {{ form_label(form.username) }}
-                    {{ form_errors(form.username) }}
                     {{ form_widget(form.username) }}
+                    <span class="form_error">{{ form_errors(form.username) }}</span>
                 </div>
                 <div>
                     {{ form_label(form.plainPassword.first) }}
                     {{ form_widget(form.plainPassword.first) }}
-                    <span class="form_error" style="color: red;">{{ form_errors(form.plainPassword.first) }}</span>
+                    <span class="form_error">{{ form_errors(form.plainPassword.first) }}</span>
                 </div>
                 <div>
                     {{ form_label(form.plainPassword.second) }}
-                    {{ form_errors(form.plainPassword.second) }}
                     {{ form_widget(form.plainPassword.second) }}
+                    <span class="form_error">{{ form_errors(form.plainPassword.second) }}</span>
                 </div>
                 <div>
                     {{ form_label(form.email) }}
-                    {{ form_errors(form.email) }}
                     {{ form_widget(form.email) }}
+                    <span class="form_error">{{ form_errors(form.email) }}</span>
                 </div>
                 <div>
                     {{ form_label(form.lastname) }}
-                    {{ form_errors(form.lastname) }}
                     {{ form_widget(form.lastname) }}
+                    <span class="form_error">{{ form_errors(form.lastname) }}</span>
                 </div>
                 <div>
                     {{ form_label(form.firstname) }}
-                    {{ form_errors(form.firstname) }}
                     {{ form_widget(form.firstname) }}
+                    <span class="form_error">{{ form_errors(form.firstname) }}</span>
                 </div>
                 <div>
                     {{ form_label(form.urlBlog) }}
-                    {{ form_errors(form.urlBlog) }}
                     {{ form_widget(form.urlBlog) }}
+                    <span class="form_error">{{ form_errors(form.urlBlog) }}</span>
                 </div>
                 <div>
                     {{ form_label(form.idPresse) }}
-                    {{ form_errors(form.idPresse) }}
                     {{ form_widget(form.idPresse) }}
+                    <span class="form_error">{{ form_errors(form.idPresse) }}</span>
                 </div>
                 <div>
                     {{ form_label(form.companyName) }}
-                    {{ form_errors(form.companyName) }}
                     {{ form_widget(form.companyName) }}
+                    <span class="form_error">{{ form_errors(form.companyName) }}</span>
                 </div>
             </div>
             <input class="btn btn-primary btn-circle" type="submit" value="{% trans %}Registration{% endtrans %}" />

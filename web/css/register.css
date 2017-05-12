@@ -6,6 +6,14 @@
     margin-bottom: 20px;
 }
 
+.form_error{
+    width: 15vw;
+    display: inline-block;
+    position: relative;
+    left: 100px;
+    color:red;
+}
+
 @media (max-width: 600px) {
     body {
         font-family:"pacifico",sans-serif;
@@ -135,8 +143,9 @@
 }
 
 #fos_user_registration_form_country {
-    width: 14em !important;
+    /*width: 14em !important;*/
     border-radius: 5px;
+    color:#555555;;
 }
 #fos_user_registration_form_birthDate_day {
     width: 60px !important;
