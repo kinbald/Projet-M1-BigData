@@ -3,7 +3,8 @@
 {% block fos_user_content %}
     <div id="content">
         <h1>{% trans %}Registration Producer{% endtrans %}</h1>
-        <form action="{{ path('user_producer_registration') }}" method="POST">
+        {#<form action="{{ path('user_producer_registration') }}" method="POST">#}
+        {{ form_start(form) }}
             <div class="form-div">
                 <div>
                     {{ form_label(form.username) }}
@@ -82,6 +83,7 @@
                 </div>
             </div>
             <input class="btn btn-primary btn-circle" type="submit" value="{% trans %}Registration{% endtrans %}" />
-        </form>
+        {#</form>#}
+        {{ form_end(form) }}
     </div>
 {% endblock fos_user_content %}
