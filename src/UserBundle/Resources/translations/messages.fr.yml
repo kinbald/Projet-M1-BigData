@@ -30,6 +30,7 @@ Prix Unitaire: Prix Unitaire
 Stock: Stock
 Erreur panier: Erreur panier
 Récapitulatif des achats: Récapitulatif des achats
+Récapitulatif des commandes: Récapitulatif des commandes
 Récap: Récapitulatif
 Prix HT: Prix HT
 TVA: TVA
@@ -57,3 +58,14 @@ First name: Prénom
 Siret: Siret
 Registration ok: Enregistrement réussi
 Redirection: Vous allez être rediriger
+Nom du vin: Nom du vin
+Image: Image
+Description: Description
+Quantité: Quantité
+Prix TTC: Prix TTC
+Livraison: Livraison
+Prix total TTC: Prix total TTC
+Informations livraison: Informations de livraison
+Commande & Produits: Commande & Produits
+Delete: Suprimmer
+Create: Créer

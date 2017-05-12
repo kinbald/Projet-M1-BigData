@@ -30,6 +30,7 @@ Prix Unitaire: Unit price
 Stock: Supply
 Erreur panier: Cart error
 Récapitulatif des achats: Purchase summary
+Récapitulatif des commandes: Order summary
 Récap: Summary
 Prix HT: Pre-tax price
 TVA: VAT
@@ -57,3 +58,14 @@ First name: First name
 Siret: Siret number
 Registration ok: Registration confirmed
 Redirection: You will be redirected
+Nom du vin: Name of the wine
+Image: Picture
+Description: Description
+Quantité: Quantity
+Prix TTC: Final price
+Livraison: Delivery
+Prix total TTC: Total final price
+Informations livraison: Delivery informations
+Commande & Produits: Order & Products
+Delete: Delete
+Create: Create

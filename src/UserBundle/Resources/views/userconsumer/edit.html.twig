@@ -20,12 +20,12 @@
 
         <div class="marge-inf">
             <div class="bouton1">
-                <input class="btn btn-primary btn-circle" type="submit" value="Edit" />
+                <input class="btn btn-primary btn-circle" type="submit" value="{% trans %}Edit{% endtrans %}" />
             </div>
             {{ form_end(edit_form) }}
             {{ form_start(delete_form) }}
             <div class="bouton1">
-                <input class="btn btn-primary btn-circle" type="submit" value="Delete">
+                <input class="btn btn-primary btn-circle" type="submit" value="{% trans %}Delete{% endtrans %}">
             </div>
             {{ form_end(delete_form) }}
             <div class="bouton1">

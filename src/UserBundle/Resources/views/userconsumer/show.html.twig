@@ -8,13 +8,13 @@
 
 {% block body %}
     <div id="content">
-        <h3 class="section-heading">{% trans %}User consumer{% endtrans %}</h3>
+        <h3 class="section-heading">{% trans %}Userconsumer{% endtrans %}</h3>
         <div class="table-responsive table-template">
             <table class="table table-hover">
                 <thead class="thead-default">
                 <tr class="color-title">
                     <th>ID</th>
-                    <th>{% trans %}Gender{% endtrans %}</th>
+                    <th>{% trans %}Sex{% endtrans %}</th>
                     <th>Email</th>
                     <th>{% trans %}Birth date{% endtrans %}</th>
                 </tr>
@@ -41,7 +41,7 @@
                 </td>
                 {{ form_start(delete_form) }}
                 <td>
-                    <input class="btn btn-primary btn-circle" type="submit" value="Delete">
+                    <input class="btn btn-primary btn-circle" type="submit" value="{% trans %}Delete{% endtrans %}">
                 </td>
                 {{ form_end(delete_form) }}
             </table>

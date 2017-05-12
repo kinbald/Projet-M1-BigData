@@ -45,8 +45,8 @@
 
             {% if is_granted('ROLE_CONSUMER') %}
                 <div>
-                    <p><b>{% trans %}Birth Date{% endtrans %}:</b> {{ user.birthDate | date("Y-m-d") }}</p>
-                    <p><b>{% trans %}Gender{% endtrans %}:</b> {{ user.sex }}</p>
+                    <p><b>{% trans %}Birth date{% endtrans %}:</b> {{ user.birthDate | date("Y-m-d") }}</p>
+                    <p><b>{% trans %}Sex{% endtrans %}:</b> {{ user.sex }}</p>
                     <p><b>{% trans %}Phone{% endtrans %}:</b> {{ user.phone }}</p>
                 </div>
             {% endif %}
