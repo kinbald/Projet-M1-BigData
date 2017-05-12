@@ -42,7 +42,7 @@ abstract class BaseUser extends FosUser
      *     groups={"Profile", "ResetPassword", "Registration", "ChangePassword"}
      * )
      * @Assert\Regex(
-     *     pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{8,100}$/",
+     *     pattern="/^(?:(?=.*[a-z])(?:(?=.*[A-Z])(?=.*[\d\W])|(?=.*\W)(?=.*\d))|(?=.*\W)(?=.*[A-Z])(?=.*\d)).{8,}$/",
      *     message="user.password.difficulty",
      *     groups={"Profile", "ResetPassword", "Registration", "ChangePassword"}
      * )
