@@ -5,7 +5,51 @@
         <h1>{% trans %}Registration User{% endtrans %}</h1>
         <form action="{{ path('user_consumer_registration') }}" method="POST">
             <div class="form-div">
-                {{ form_widget(form) }}
+                <div>
+                    {{ form_label(form.username) }}
+                    {{ form_errors(form.username) }}
+                    {{ form_widget(form.username) }}
+                </div>
+                <div>
+                    {{ form_label(form.plainPassword.first) }}
+                    {{ form_widget(form.plainPassword.first) }}
+                    <span class="form_error" style="color: red;">{{ form_errors(form.plainPassword.first) }}</span>
+                </div>
+                <div>
+                    {{ form_label(form.plainPassword.second) }}
+                    {{ form_errors(form.plainPassword.second) }}
+                    {{ form_widget(form.plainPassword.second) }}
+                </div>
+                <div>
+                    {{ form_label(form.email) }}
+                    {{ form_errors(form.email) }}
+                    {{ form_widget(form.email) }}
+                </div>
+                <div>
+                    {{ form_label(form.lastname) }}
+                    {{ form_errors(form.lastname) }}
+                    {{ form_widget(form.lastname) }}
+                </div>
+                <div>
+                    {{ form_label(form.firstname) }}
+                    {{ form_errors(form.firstname) }}
+                    {{ form_widget(form.firstname) }}
+                </div>
+                <div>
+                    {{ form_label(form.birthDate) }}
+                    {{ form_errors(form.birthDate) }}
+                    {{ form_widget(form.birthDate) }}
+                </div>
+                <div>
+                    {{ form_label(form.sex) }}
+                    {{ form_errors(form.sex) }}
+                    {{ form_widget(form.sex) }}
+                </div>
+                <div>
+                    {{ form_label(form.phone) }}
+                    {{ form_widget(form.phone) }}
+                    <span class="form_error" style="color: red;">{{ form_errors(form.phone) }}</span>
+                </div>
             </div>
             <input class="btn btn-primary btn-circle" type="submit" value="{% trans %}Registration{% endtrans %}" />
         </form>
