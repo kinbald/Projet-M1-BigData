@@ -83,7 +83,13 @@
             </div>
     </div>
 </nav>
-
+{% if app.session.flashBag.has('success') %}
+    <div class="alert alert-success">
+        {% for msg in app.session.flashBag.get('success') %}
+            {{ msg }}
+        {% endfor %}
+    </div>
+{% endif %}
 <span id="items-counter" class="h3 cart-items-counter" style="display: none">0</span>
 <div class="cart-widget-container">
     <div class="cart-widget text-center">

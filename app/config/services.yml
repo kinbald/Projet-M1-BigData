@@ -16,3 +16,5 @@ services:
     app.paypal:
         class: AppBundle\Payment\Payment
         arguments: [ '@router', '%kernel.environment%', '@doctrine.orm.entity_manager' ]
+    app.contact:
+        class: AppBundle\Contact\Contact

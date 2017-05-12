@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <header>
+            <h1>Box office</h1>
+            <h2>{{ data.firstName }} {{ data.lastName }} sent you a message on {{ sent_at|date("D/M/Y H:I:S") }}</h2>
+        </header>
+        <h5>
+            {{ data.firstName }} {{ data.lastName }} sent you this message via the Box office website :
+        </h5>
+        <article>
+            <header>
+                <h1>{{ data.topic }}</h1>
+            </header>
+            <p>
+                {{ data.message }}
+            </p>
+        </article>
+    </div>
+</body>
+</html>

@@ -45,7 +45,7 @@ class LoadApp extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($partner);
 
         $partner2->setUrl("http://www.yahoo.fr");
-        $partner2->setDescription("L'autre moteur de recherche");
+        $partner2->setDescription("L'autre moteur de recherche (il manque Bing!!)");
         $partner2->setImageUrl("http://www.underconsideration.com/brandnew/archives/yahoo_logo_detail.png");
         $partner2->setLevel("");
         $partner2->setName("Yahoo!");
@@ -55,6 +55,11 @@ class LoadApp extends AbstractFixture implements OrderedFixtureInterface
         $parameters->setName('TVA');
         $parameters->setValue('19.6');
         $manager->persist($parameters);
+
+        $mail = new Parameters();
+        $mail->setName('mail');
+        $mail->setValue('laGrosseLeCoz@vinasse.com');
+        $manager->persist($mail);
 
         $manager->flush();
     }
