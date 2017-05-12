@@ -1,6 +1,5 @@
 #large_footer{
-    width: 80%;
-    margin-top: 50px;
+    margin-top: 80px;
 }
 
 #slim_footer{
@@ -12,7 +11,12 @@
     height: 40px;
 }
 
-.style_logo_footer{
-    width: 10vw;
-
+.style_logo_footer {
+    width: 180px;
+}
+h4{
+    font-size: 22px;
+}
+.color-textfooter{
+    color: white;
 }
