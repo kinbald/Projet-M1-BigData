@@ -61,7 +61,7 @@
 
             {% if is_granted('ROLE_PRODUCER') %}
                 <div>
-                    <p><b>{% trans %}Company name{% endtrans %}:</b> {{ user.companyName }}</p>
+                    <p><b>{% trans %}Company name{% endtrans %}:</b> {{ user.displayName }}</p>
                     <p><b>{% trans %}Siret{% endtrans %}:</b> {{ user.siret }}</p>
                     <p><b>{% trans %}Address{% endtrans %}:</b> {{ user.address }}</p>
                     <p><b>{% trans %}City{% endtrans %}:</b> {{ user.city }}</p>

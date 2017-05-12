@@ -666,4 +666,15 @@ class UserProducer extends BaseUser
     {
         return $this->products;
     }
+
+    /**
+     * Get displayName
+     *
+     * @return string
+     */
+    public function getDisplayName()
+    {
+        return ($this->companyName == null) ? $this->businessName : $this->companyName;
+    }
+
 }
