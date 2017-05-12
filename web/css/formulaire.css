@@ -62,6 +62,10 @@
         text-align: center;
     }
 
+    h2{
+        text-align: center;
+    }
+
     #productbundle_universe_name, #productbundle_wine_color, #productbundle_wine_vintage, #chemin,
     #productbundle_wine_stock, #productbundle_wine_price, #productbundle_wine_volume, #productbundle_universe_description,
     #productbundle_wine_name, #mediabundle_files_url, #mediabundle_files_name, #mediabundle_files_date_date, #productbundle_purchase_address,

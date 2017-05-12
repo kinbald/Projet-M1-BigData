@@ -1,0 +1,27 @@
+.titre{
+    text-align: center;
+}
+
+.contour{
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 70px;
+
+    width: 50%;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 2px 2px 6px #aaa;
+    text-shadow: 2px 2px 2px black;
+
+    position: relative;
+    display: block;
+}
+
+.marges{
+    margin-left: 30%;
+}
+
+.marge-inf{
+    margin-bottom: 5vh;
+}
