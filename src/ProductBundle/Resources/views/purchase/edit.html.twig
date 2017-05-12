@@ -19,16 +19,16 @@
 
     <div id="boutons">
         <div class="bouton1">
-            <input class="btn btn-primary btn-circle" type="submit" value="{% trans %} Edit {% endtrans %}" />
+            <input class="btn btn-primary btn-circle" type="submit" value="{% trans %}Edit{% endtrans %}" />
         </div>
         {{ form_end(edit_form) }}
         {{ form_start(delete_form) }}
         <div class="bouton1">
-            <input class="btn btn-primary btn-circle" type="submit" value="{% trans %} Delete {% endtrans %}">
+            <input class="btn btn-primary btn-circle" type="submit" value="{% trans %}Delete{% endtrans %}">
         </div>
         {{ form_end(delete_form) }}
         <div class="bouton1">
-            <a class="btn btn-primary btn-circle" href="{{ path('purchase_index') }}">{% trans %} Back to the list {% endtrans %}</a>
+            <a class="btn btn-primary btn-circle" href="{{ path('purchase_index') }}">{% trans %}Back to the list{% endtrans %}</a>
         </div>
     </div>
 

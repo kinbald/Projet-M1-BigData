@@ -124,7 +124,7 @@
                 <span class="countdown-price h3 wow fadeInUp price-show" id="price">0.00 €</span>
                     <table class="presentation-table">
                         <tr>
-                            <td class="attribute">Quantité disponible</td>
+                            <td class="attribute">{% trans %}Quantité disponible{% endtrans %}</td>
                             <td class="att-value" id="conditioning-stock"></td>
                         </tr>
                         <tr>
@@ -145,7 +145,7 @@
                 </span>
             </div>
             {% else %}
-                <h3>Le produit n'est pas disponible.</h3>
+                <h3>{% trans %}Le produit n'est pas disponible{% endtrans %}.</h3>
             {% endif %}
         </div>
         <!--Tableau presentation-->
@@ -200,7 +200,7 @@
                         {% trans %}Conditioning{% endtrans %} :
                     </td>
                     <td class="td att-value">
-                        Produit non disponible
+                        {% trans %}Produit non disponible{% endtrans %}
                     </td>
                 </tr>
             {% endif %}
@@ -235,7 +235,7 @@
 
 
     {% if utilisateur != null %}
-        <h3 class="text-center">Ajouter un commentaire</h3>
+        <h3 class="text-center">{% trans %}Ajouter un commentaire{% endtrans %}</h3>
 
         <div class="comment">
             <div class="comment-header">
@@ -268,7 +268,7 @@
             </div>
         </div>
     {% else %}
-        <h3 class="text-center">Vous de devez être connecté pour laisser un commentaire</h3>
+        <h3 class="text-center">{% trans %}Vous devez être connecté pour laisser un commentaire{% endtrans %}</h3>
     {% endif %}
 {% endblock %}
 

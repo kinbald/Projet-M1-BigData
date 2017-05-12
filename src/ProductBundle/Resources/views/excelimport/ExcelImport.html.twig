@@ -12,7 +12,7 @@
 
 {% block body %}
 {{ dump(test) }}
-    <h1>Produits à insérer</h1>
+    <h1>{% trans %}Produits à insérer{% endtrans %}</h1>
     <table>
         {% for product in products %}
             <tr>
@@ -23,7 +23,7 @@
         {% endfor %}
     </table>
 
-    <h1>Producteurs à insérer</h1>
+    <h1>{% trans %}Producteurs à insérer{% endtrans %}</h1>
     <table>
         {% for producer in producers %}
             <tr>
@@ -35,7 +35,7 @@
     </table>
 
 
-    <h1>Médaille a insérer</h1>
+    <h1>{% trans %}Médaille a insérer{% endtrans %}</h1>
     <table>
         {% for medal in medal %}
             <tr>
@@ -46,7 +46,7 @@
         {% endfor %}
     </table>
 
-    <h1>Tableau des expéditions</h1>
+    <h1>{% trans %}Tableau des expéditions{% endtrans %}</h1>
     <table>
         {% for shipment in shipments %}
             <tr>
@@ -59,7 +59,7 @@
 
 
 
-    <h1>Tableau des options de livraison</h1>
+    <h1>{% trans %}Tableau des options de livraison{% endtrans %}</h1>
     <table>
         {% for shipoption in shipoptions %}
             <tr>

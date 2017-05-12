@@ -13,13 +13,14 @@ Show: Show
 Create: Create
 
 
-
 Back to the list: Back to the list
 
 
 ID commande: Order ID
 ID user: User ID
 Adresse: Address
+Adresse de livraison: Delivery address
+Adresse de facturation: Billing address
 Ville: City
 Code postal: Postal code
 Pays: Country
@@ -31,7 +32,7 @@ Done Purchase: Finished purchases
 Degree: Alcohol degree :
 
 
-Id: Id
+ID: ID
 Name: Product name
 Vintage: Vintage
 Color: Color
@@ -39,8 +40,10 @@ Price: Price
 Stock: Stock
 Actions: Actions
 
+Gestion des Spiritueux: Spirit management
 Create Spirit: Add a new spirit
 Create Wine: Add a new wine
+Gestion des univers: Universe management
 Create Universe: Add a new universe
 Create Purchase: Create a new purchase
 
@@ -76,10 +79,64 @@ Type: Type
 Advanced: Advanced criteria
 Submit: Submit
 Invitation: Discover our products
+Asie: Asia
+Amérique: America
+Océanie: Oceania
+A partir de: Starting from
 
 Degres Alcool: Alcohol level
 Sucre: Sugar
 Bouteille: Bottle
 
+Delivery: Livraison
 
+Produits à insérer: Products to import
+Producteurs à insérer: Producers to import
+Médaille a insérer: Medal to import
+Tableau des expéditions: Shipments table
+Tableau des options de livraison: Delevery options table
 
+Quantité disponible: Quantity available
+Le produit n'est pas disponible: This product is unavailable
+Produit non disponible: Product unavailable
+Ajouter un commentaire: Add a comment
+Vous devez être connecté pour laisser un commentaire: You must be connected to leave a comment
+
+Productconditioning edit: Product conditioning edit
+Product conditionings list: Product conditionings list
+Pubprice: Public price
+Proprice: Professional price
+Volumevalue: Volume value
+Volumeunit: Volume unit
+New Conditioning: New Conditioning
+
+Productconditioning creation: Product conditioning creation
+Productconditioning: Productconditioning
+
+Pack name: Pack name
+Quantity in pack: Quantity in pack
+
+Gestion des Commandes: Orders management
+A préparer: To prepare
+ID commande: ID order
+ID user: ID user
+Doing: Managing
+Détails Commande: Order details
+Modifier: Modify
+Expédiées: Shipped
+
+Purchase: Purchase
+
+City: City
+Postalcode: Postal code
+Quantité: Quantity
+Acheteur: Buyer
+Pseudo: Pseudo
+Prenom: First name
+Nom: Last name
+
+Fiche produit: Product page
+
+A decanter: To decant
+Non Filtré: Unfiltered
+Démarche Qualité: Quality approach

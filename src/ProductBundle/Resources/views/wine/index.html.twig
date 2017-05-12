@@ -21,8 +21,8 @@
             <tr class="color-title">
                 <th>{% trans %}ID{% endtrans %}</th>
                 <th>{% trans %}Nom{% endtrans %}</th>
-                <th>{% trans %}Millésime{% endtrans %}</th>
-                <th>{% trans %}Couleur{% endtrans %}</th>
+                <th>{% trans %}Vintage{% endtrans %}</th>
+                <th>{% trans %}Color{% endtrans %}</th>
                 <th>{% trans %}Actions{% endtrans %}</th>
             </tr>
             </thead>
@@ -36,12 +36,10 @@
                     <td class="actions">
                         <ul>
                             <li>
-                                <a href="{{ path('product_show', { 'id': wine.id }) }}">{% trans %}Fiche
-                                    produit{% endtrans %}</a>
+                                <a href="{{ path('product_show', { 'id': wine.id }) }}">{% trans %}Fiche produit{% endtrans %}</a>
                             </li>
                             <li>
-                                <a href="{{ path('product_edit', { 'id': wine.id }) }}">{% trans %}
-                                    Modifier{% endtrans %}</a>
+                                <a href="{{ path('product_edit', { 'id': wine.id }) }}">{% trans %}Modifier{% endtrans %}</a>
                             </li>
                         </ul>
                     </td>
@@ -55,7 +53,7 @@
     <ul>
         <li>
             <a href="{{ path('product_new', {type: 'wine'}) }}">
-                <div class="btn btn-primary btn-circle">{% trans %}Ajouter un Vin{% endtrans %}</div>
+                <div class="btn btn-primary btn-circle">{% trans %}Create Wine{% endtrans %}</div>
             </a>
         </li>
     </ul>

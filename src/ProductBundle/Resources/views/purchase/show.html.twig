@@ -10,7 +10,7 @@
 
         <!--------Purchase------->
         <div class="center">
-            <h1 class="section-heading">Purchase</h1>
+            <h1 class="section-heading">{% trans %}Purchase{% endtrans %}</h1>
             <br>
                 <table>
                     <tbody>
@@ -19,34 +19,34 @@
                         <td id="champ">{{ purchase.id }}</td>
                     </tr>
                     <tr>
-                        <th width="100px">Done</th>
+                        <th width="100px">{% trans %}Done{% endtrans %}</th>
                         <td id="champ">{% if purchase.done %}Yes{% else %}No{% endif %}</td>
                     </tr>
                     <tr>
-                        <th width="100px">Dateorder</th>
+                        <th width="100px">{% trans %}Date de commande{% endtrans %}</th>
                         <td id="champ">{% if purchase.dateOrder %}{{ purchase.dateOrder|date('Y-m-d H:i:s') }}{% endif %}</td>
                     </tr>
                     </tbody>
                 </table>
             <br>
             <span class="float">
-                    <p class="adresse">Adresse de livraison :</p>
+                    <p class="adresse">{% trans %}Adresse de livraison{% endtrans %} :</p>
                     <table>
                         <tbody>
                         <tr>
-                            <th width="100px">Address</th>
+                            <th width="100px">{% trans %}Address{% endtrans %}</th>
                             <td id="champ">{{ purchase.address }}</td>
                         </tr>
                         <tr>
-                            <th width="100px">City</th>
+                            <th width="100px">{% trans %}City{% endtrans %}</th>
                             <td id="champ">{{ purchase.city }}</td>
                         </tr>
                         <tr>
-                            <th width="100px">Postalcode</th>
+                            <th width="100px">{% trans %}Postalcode{% endtrans %}</th>
                             <td id="champ">{{ purchase.postalCode }}</td>
                         </tr>
                         <tr>
-                            <th width="100px">Country</th>
+                            <th width="100px">{% trans %}Country{% endtrans %}</th>
                             <td id="champ">{{ purchase.country }}</td>
                         </tr>
                         </tbody>
@@ -54,23 +54,23 @@
             </span>
 
             <span class="float">
-                    <p class="adresse">Adresse de facturation :</p>
+                    <p class="adresse">{% trans %}Adresse de facturation{% endtrans %} :</p>
                     <table>
                         <tbody>
                         <tr>
-                            <th width="100px">Address</th>
+                            <th width="100px">{% trans %}Address{% endtrans %}</th>
                             <td id="champ">{{ purchase.address }}</td>
                         </tr>
                         <tr>
-                            <th width="100px">City</th>
+                            <th width="100px">{% trans %}City{% endtrans %}</th>
                             <td id="champ">{{ purchase.city }}</td>
                         </tr>
                         <tr>
-                            <th width="100px">Postalcode</th>
+                            <th width="100px">{% trans %}Postalcode{% endtrans %}</th>
                             <td id="champ">{{ purchase.postalCode }}</td>
                         </tr>
                         <tr>
-                            <th width="100px">Country</th>
+                            <th width="100px">{% trans %}Country{% endtrans %}</th>
                             <td id="champ">{{ purchase.country }}</td>
                         </tr>
                         </tbody>
@@ -80,17 +80,17 @@
         <br><br><br><br><br><br><br><br><br>
 
         <!--------Achat------->
-        <h1 class="section-heading clear">Achat</h1>
+        <h1 class="section-heading clear">{% trans %}Purchase{% endtrans %}</h1>
 
         <div class="text-center">
             <div class="table-responsive swiper-slide text-center table-product-text">
                 <table class="table table-hover">
                     <thead class="thead-default">
                     <tr class="color-title">
-                        <th class="col-xs-6">Nom</th>
-                        <th class="col-xs-6">Conditionnement</th>
-                        <th class="col-xs-6">Quantité</th>
-                        <th class="col-xs-6">Prix</th>
+                        <th class="col-xs-6">{% trans %}Name{% endtrans %}</th>
+                        <th class="col-xs-6">{% trans %}Conditioning{% endtrans %}</th>
+                        <th class="col-xs-6">{% trans %}Quantité{% endtrans %}</th>
+                        <th class="col-xs-6">{% trans %}Price{% endtrans %}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -110,20 +110,20 @@
         </div>
 
         <!--------Acheteur------->
-        <h1 class="section-heading">Acheteur</h1>
+        <h1 class="section-heading">{% trans %}Acheteur{% endtrans %}</h1>
         <div class="table-responsive table-product-text acheteur">
             <table class="table table-hover">
                 <tbody class="th-centre">
                 <tr>
-                    <th class="col-xs-6">Pseudo</th>
+                    <th class="col-xs-6">{% trans %}Pseudo{% endtrans %}</th>
                     <td class="col-xs-6"><a href="{{ path('userconsumer_show', {id:base_user.id}) }}">{{ base_user.username }}</a></td>
                 </tr>
                 <tr>
-                    <th class="col-xs-6">Prenom</th>
+                    <th class="col-xs-6">{% trans %}Prenom{% endtrans %}</th>
                     <td class="col-xs-6">{{ base_user.firstname }}</td>
                 </tr>
                 <tr>
-                    <th class="col-xs-6">Nom</th>
+                    <th class="col-xs-6">{% trans %}Nom{% endtrans %}</th>
                     <td class="col-xs-6">{{ base_user.lastname }}</td>
                 </tr>
                 </tbody>
@@ -135,14 +135,14 @@
         <div class="table-responsive">
             <table class=" table button">
                 <td>
-                    <a class="btn btn-primary btn-circle" href="{{ path('purchase_index') }}">Back to the list</a>
+                    <a class="btn btn-primary btn-circle" href="{{ path('purchase_index') }}">{% trans %}Back to the list{% endtrans %}</a>
                 </td>
                 <td>
-                    <a class="btn btn-primary btn-circle" href="{{ path('purchase_edit', { 'id': purchase.id }) }}">Edit</a>
+                    <a class="btn btn-primary btn-circle" href="{{ path('purchase_edit', { 'id': purchase.id }) }}">{% trans %}Edit{% endtrans %}</a>
                 </td>
                 {{ form_start(delete_form) }}
                 <td>
-                    <input class="btn btn-primary btn-circle" type="submit" value="Delete">
+                    <input class="btn btn-primary btn-circle" type="submit" value="{% trans %}Delete{% endtrans %}">
                 </td>
                 {{ form_end(delete_form) }}
             </table>

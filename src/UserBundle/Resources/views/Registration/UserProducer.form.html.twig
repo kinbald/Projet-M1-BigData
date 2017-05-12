@@ -5,9 +5,83 @@
         <h1>{% trans %}Registration Producer{% endtrans %}</h1>
         <form action="{{ path('user_producer_registration') }}" method="POST">
             <div class="form-div">
-                {{ form_widget(form) }}
+                <div>
+                    {{ form_label(form.username) }}
+                    {{ form_errors(form.username) }}
+                    {{ form_widget(form.username) }}
+                </div>
+                <div>
+                    {{ form_label(form.plainPassword.first) }}
+                    {{ form_widget(form.plainPassword.first) }}
+                    <span class="form_error" style="color: red;">{{ form_errors(form.plainPassword.first) }}</span>
+                </div>
+                <div>
+                    {{ form_label(form.plainPassword.second) }}
+                    {{ form_widget(form.plainPassword.second) }}
+                    {{ form_errors(form.plainPassword.second) }}
+                </div>
+                <div>
+                    {{ form_label(form.email) }}
+                    {{ form_errors(form.email) }}
+                    {{ form_widget(form.email) }}
+                </div>
+                <div>
+                    {{ form_label(form.lastname) }}
+                    {{ form_errors(form.lastname) }}
+                    {{ form_widget(form.lastname) }}
+                </div>
+                <div>
+                    {{ form_label(form.firstname) }}
+                    {{ form_errors(form.firstname) }}
+                    {{ form_widget(form.firstname) }}
+                </div>
+                <div>
+                    {{ form_label(form.businessName) }}
+                    {{ form_errors(form.businessName) }}
+                    {{ form_widget(form.businessName) }}
+                </div>
+                <div>
+                    {{ form_label(form.siret) }}
+                    {{ form_errors(form.siret) }}
+                    {{ form_widget(form.siret) }}
+                </div>
+                <div>
+                    {{ form_label(form.address) }}
+                    {{ form_errors(form.address) }}
+                    {{ form_widget(form.address) }}
+                </div>
+                <div>
+                    {{ form_label(form.city) }}
+                    {{ form_errors(form.city) }}
+                    {{ form_widget(form.city) }}
+                </div>
+                <div>
+                    {{ form_label(form.postalCode) }}
+                    {{ form_errors(form.postalCode) }}
+                    {{ form_widget(form.postalCode) }}
+                </div>
+                <div>
+                    {{ form_label(form.country) }}
+                    {{ form_errors(form.country) }}
+                    {{ form_widget(form.country) }}
+                </div>
+                <div>
+                    {{ form_label(form.province) }}
+                    {{ form_errors(form.province) }}
+                    {{ form_widget(form.province) }}
+                </div>
+                <div>
+                    {{ form_label(form.state) }}
+                    {{ form_errors(form.state) }}
+                    {{ form_widget(form.state) }}
+                </div>
+                <div>
+                    {{ form_label(form.phone) }}
+                    {{ form_widget(form.phone) }}
+                    <span class="form_error" style="color: red;">{{ form_errors(form.phone) }}</span>
+                </div>
             </div>
-                <input class="btn btn-primary btn-circle" type="submit" value="{% trans %}Registration{% endtrans %}" />
+            <input class="btn btn-primary btn-circle" type="submit" value="{% trans %}Registration{% endtrans %}" />
         </form>
     </div>
 {% endblock fos_user_content %}
