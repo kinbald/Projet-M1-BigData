@@ -12,61 +12,61 @@
 
 
 {% block body %}
-{% trans_default_domain 'FOSUserBundle' %}
-{{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
-
-
-    <h1 id="titre" style="visibility:hidden">{% trans %}Bienvenue sur votre espace client{% endtrans %}</h1><br>
+    {% trans_default_domain 'FOSUserBundle' %}
+    {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
 
     <!-------------------Profile edit--------------------->
 
-    <div id="champ_form" style="margin-left:auto;margin-right:auto;width:30%">
+    <div id="champ_form">
         <h1>{% trans %}Profil{% endtrans %}</h1>
-            <br>
 
-        <div>
+        <div class="el-form">
             {{ form_label(form.username) }}
             {{ form_errors(form.username) }}
             {{ form_widget(form.username) }}
         </div>
-        <div>
+        <div class="el-form">
             {{ form_label(form.plainPassword.first) }}
             {{ form_errors(form.plainPassword.first) }}
             {{ form_widget(form.plainPassword.first) }}
         </div>
-        <div>
+        <div class="el-form">
             {{ form_label(form.plainPassword.second) }}
             {{ form_errors(form.plainPassword.second) }}
             {{ form_widget(form.plainPassword.second) }}
         </div>
-        <div>
+        <div class="el-form">
             {{ form_label(form.email) }}
             {{ form_errors(form.email) }}
             {{ form_widget(form.email) }}
         </div>
-        <div>
+        <div class="el-form">
             {{ form_label(form.lastname) }}
             {{ form_errors(form.lastname) }}
             {{ form_widget(form.lastname) }}
         </div>
-        <div>
+        <div class="el-form">
             {{ form_label(form.firstname) }}
             {{ form_errors(form.firstname) }}
             {{ form_widget(form.firstname) }}
         </div>
 
         {% if is_granted('ROLE_CONSUMER') %}
-            <div>
+            <div class="el-form">
                 {{ form_label(form.birthDate) }}
                 {{ form_errors(form.birthDate) }}
-                {{ form_widget(form.birthDate) }}
+                <span id="edit-birthday">
+                    {{ form_widget(form.birthDate.day) }}
+                    {{ form_widget(form.birthDate.month) }}
+                    {{ form_widget(form.birthDate.year) }}
+                </span>
             </div>
-            <div>
+            <div class="el-form">
                 {{ form_label(form.sex) }}
                 {{ form_errors(form.sex) }}
                 {{ form_widget(form.sex) }}
             </div>
-            <div>
+            <div class="el-form">
                 {{ form_label(form.phone) }}
                 {{ form_errors(form.phone) }}
                 {{ form_widget(form.phone) }}
@@ -74,17 +74,17 @@
         {% endif %}
 
         {% if is_granted('ROLE_MEDIA') %}
-            <div>
+            <div class="el-form">
                 {{ form_label(form.urlBlog) }}
                 {{ form_errors(form.urlBlog) }}
                 {{ form_widget(form.urlBlog) }}
             </div>
-            <div>
+            <div class="el-form">
                 {{ form_label(form.idPresse) }}
                 {{ form_errors(form.idPresse) }}
                 {{ form_widget(form.idPresse) }}
             </div>
-            <div>
+            <div class="el-form">
                 {{ form_label(form.companyName) }}
                 {{ form_errors(form.companyName) }}
                 {{ form_widget(form.companyName) }}
@@ -92,79 +92,81 @@
         {% endif %}
 
         {% if is_granted('ROLE_PRODUCER') %}
-            <div>
+            <div class="el-form">
                 {{ form_label(form.businessName) }}
                 {{ form_errors(form.businessName) }}
                 {{ form_widget(form.businessName) }}
             </div>
-            <div>
+            <div class="el-form">
                 {{ form_label(form.siret) }}
                 {{ form_errors(form.siret) }}
                 {{ form_widget(form.siret) }}
             </div>
-            <div>
+            <div class="el-form">
                 {{ form_label(form.address) }}
                 {{ form_errors(form.address) }}
                 {{ form_widget(form.address) }}
             </div>
-            <div>
+            <div class="el-form">
                 {{ form_label(form.city) }}
                 {{ form_errors(form.city) }}
                 {{ form_widget(form.city) }}
             </div>
-            <div>
+            <div class="el-form">
                 {{ form_label(form.postalCode) }}
                 {{ form_errors(form.postalCode) }}
                 {{ form_widget(form.postalCode) }}
             </div>
-            <div>
+            <div class="el-form">
                 {{ form_label(form.phone) }}
                 {{ form_errors(form.phone) }}
                 {{ form_widget(form.phone) }}
             </div>
+            <div class="el-form">
+                {{ form_label(form.country) }}
+                {{ form_errors(form.country) }}
+                {{ form_widget(form.country) }}
+            </div>
+            <div class="el-form">
+                {{ form_label(form.province) }}
+                {{ form_errors(form.province) }}
+                {{ form_widget(form.province) }}
+            </div>
+            <div class="el-form">
+                {{ form_label(form.state) }}
+                {{ form_errors(form.state) }}
+                {{ form_widget(form.state) }}
+            </div>
         {% endif %}
 
+        {{ form_end(form) }}
 
-        <br>
-            <div>
-                <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
-            </div>
-
-    </div>
-
-
-    <!-------------------Factures--------------------->
-
-    <div id="Factures" class="w3-container city w3-animate-left" style="display:none">
-        <h2>{% trans %}Factures & Paiements{% endtrans %}</h2>
-        <div>
-            <br>
-            <p>blablabla</p>
-            <p>blablabla</p>
+        <div class="edit-submit">
+            <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
         </div>
 
     </div>
 
 
-<script>
-    function openLink(evt, animName) {
-        var i, x, tablinks;
-        x = document.getElementsByClassName("city");
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
+    <script>
+        function openLink(evt, animName) {
+            var i, x, tablinks;
+            x = document.getElementsByClassName("city");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < x.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+            }
+            document.getElementById(animName).style.display = "block";
+            evt.currentTarget.className += " w3-red";
         }
-        tablinks = document.getElementsByClassName("tablink");
-        for (i = 0; i < x.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
-        }
-        document.getElementById(animName).style.display = "block";
-        evt.currentTarget.className += " w3-red";
-    }
-    openLink(null, 'Profile1');
+        openLink(null, 'Profile1');
 
-</script>
+    </script>
 
 
-{{ form_end(form) }}
+
 {% endblock %}
 
