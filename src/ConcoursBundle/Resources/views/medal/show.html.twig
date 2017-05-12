@@ -34,21 +34,18 @@
                 </tr>
                 </tbody>
             </table>
+
+
+        <ul style="margin-left: 30%;">
+            <li>
+                <a class="btn btn-circle btn-primary col-md-6" href="{{ path('medal_edit', { 'id': medal.id }) }}">{% trans %}Edit{% endtrans %}</a>
+            </li>
+            <li>
+                <a class="btn btn-circle btn-primary col-md-6" href="{{ path('medal_index') }}">{% trans %}Back to the list{% endtrans %}</a>
+            </li>
+        </ul>
         </div>
 
-        <div id="boutons">
-            <div class="bouton1">
-                <a class="btn btn-circle btn-primary" href="{{ path('medal_index') }}">{% trans %}Back to the list{% endtrans %}</a>
-            </div>
-            <div class="bouton1">
-                <a class="btn btn-circle btn-primary" href="{{ path('medal_edit', { 'id': medal.id }) }}">{% trans %}Edit{% endtrans %}</a>
-            </div>
-            <div class="bouton1">
-                {{ form_start(delete_form) }}
-                <input class="btn btn-circle btn-primary" type="submit" value="{% trans %}Delete{% endtrans %}">
-                {{ form_end(delete_form) }}
-            </div>
-        </div>
 
     </div>
 
