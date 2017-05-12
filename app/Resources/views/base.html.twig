@@ -149,53 +149,51 @@
 
 
 <!----------- Footer ------------>
-
-<div id="large_footer" class="container">
-
-    <div class="row" style="text-align:center;"></div>
-
-    <footer id="slim_footer" class="footer-bs">
-        <div class="row">
-            <div class="col-md-3 footer-brand animated fadeInLeft">
-                <h2><a href="{{ path("homepage") }}"><img class="style_logo_footer" src="{{ asset('img/logo.png') }}" alt="logo"></a></h2>
-                <p>Box Office Wines est une entreprise fondée pour vendre du vin. Principalement.</p>
-                <p>© 2017, All rights reserved.</p>
-                <p><i>Design by ISEN Toulon</i></p>
-            </div>
-            <div class="col-md-3 footer-nav animated fadeInUp">
-                <h4>Menu</h4>
-                <div class="col-md-6">
-                    <ul class="list">
-                        <li><a href="{{ path("qui_sommes_nous") }}">About Us</a></li>
-                        <li><a href="{{ path("contact") }}">Contacts</a></li>
-                        <li><a href="{{ path("mentions_legales") }}">Mentions légales</a></li>
+<div class="section section-min">
+    <footer class="footer">
+        <div class="container" id="large_footer">
+            <div class="row color-textfooter">
+                <div class="col-md-3 col-sm-3 col-xs-7">
+                    <h4><a href="{{ path("homepage") }}"><img class="style_logo_footer" src="{{ asset('img/logo.png') }}" alt="logo"></a></h4>
+                    <p>© 2017, All rights reserved.</p>
+                    <p><i>Design by ISEN Toulon</i></p>
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-5">
+                    <h4>Menu</h4>
+                        <ul class="list">
+                            <li><a href="{{ path("qui_sommes_nous") }}">About Us</a></li>
+                            <li><a href="{{ path("contact") }}">Contacts</a></li>
+                            <li><a href="{{ path("mentions_legales") }}">Mentions légales</a></li>
+                        </ul>
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-7">
+                    <h4>Suivez-nous !</h4>
+                    <ul>
+                        <li><a href="http://www.facebook.com" class="ti-facebook"> Facebook</a></li>
+                        <li><a href="http://www.twitter.com" class="ti-twitter-alt"> Twitter</a></li>
+                        <li><a href="http://www.linkedin.com" class="ti-linkedin"> LinkedIn </a></li>
+                        <li><a href="http://www.instagram.com" class="ti-instagram"> Instagram</a></li>
                     </ul>
                 </div>
-            </div>
-            <div class="col-md-3 footer-social animated fadeInDown">
-                <h4>Suivez-nous !</h4>
-                <ul>
-                    <li><a href="http://www.facebook.com">Facebook</a></li>
-                    <li><a href="http://www.twitter.com">Twitter</a></li>
-                    <li><a href="http://www.instagram.com">Instagram</a></li>
-                    <li><a href="http://www.jeuxvideo.com/rss/rss.xml">RSS </a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 footer-ns animated fadeInRight">
-                <h4>Newsletter</h4>
-                <p>Recevoir nos actualités</p>
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Votre mail">
-                    <span class="input-group-btn">
-                        <button id="enveloppe" class="btn btn-default" type="button"><span class="glyphicon glyphicon-envelope"></span></button>
-                      </span>
-                </div><!-- /input-group -->
+                <div class="col-md-3 col-sm-3 col-xs-5">
+                    <h4>Recevoir nos actualités</h4>
+                    <div class="footer-newsletter">
+                        <div class="center text-center">
+                            <form action="{{ path('news_letter_registration') }}" method="post">
+                                <div class="input-group">
+                                    <input class="form-control" type="text" placeholder="e-mail">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button"><span class="ti-arrow-right"></span></button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
-
 </div>
-
 
 <!------------------------Bandeau cookies------------------------------->
 
