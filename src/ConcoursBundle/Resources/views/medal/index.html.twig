@@ -10,7 +10,7 @@
     <div id="content">
 
 
-        <h3 class="section-heading" style="text-align: center">Medals list</h3>
+        <h3 class="section-heading" style="text-align: center">{% trans %}Medals list{% endtrans %}</h3>
         <div class="table-responsive table-template">
 
 
@@ -18,8 +18,8 @@
                 <thead class="thead-default">
                 <tr class="color-title">
                     <th>Id</th>
-                    <th>Name</th>
-                    <th>Annee</th>
+                    <th>{% trans %}Name{% endtrans %}</th>
+                    <th>{% trans %}Annee{% endtrans %}</th>
                     <th>Url</th>
                     <th>Actions</th>
                 </tr>
@@ -34,10 +34,10 @@
                         <td>
                             <ul>
                                 <li>
-                                    <a href="{{ path('medal_show', { 'id': medal.id }) }}">show</a>
+                                    <a href="{{ path('medal_show', { 'id': medal.id }) }}">{% trans %}Show{% endtrans %}</a>
                                 </li>
                                 <li>
-                                    <a href="{{ path('medal_edit', { 'id': medal.id }) }}">edit</a>
+                                    <a href="{{ path('medal_edit', { 'id': medal.id }) }}">{% trans %}Edit{% endtrans %}</a>
                                 </li>
                             </ul>
                         </td>
@@ -48,7 +48,7 @@
         </div>
         <ul>
             <li>
-                <a href="{{ path('medal_new') }}">Create a new medal</a>
+                <a href="{{ path('medal_new') }}">{% trans %}Create a new medal{% endtrans %}</a>
             </li>
         </ul>
     </div>
