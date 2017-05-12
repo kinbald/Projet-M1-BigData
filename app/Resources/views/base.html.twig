@@ -85,7 +85,7 @@
     </div>
 </nav>
 {% if app.session.flashBag.has('success') %}
-    <div class="alert alert-success">
+    <div class="alert alert-success" style="margin-top: 55px; background-color: #C6A668; color: black;">
         {% for msg in app.session.flashBag.get('success') %}
             {{ msg }}
         {% endfor %}
