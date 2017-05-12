@@ -28,7 +28,7 @@
                 <span class="text-newsletter newsletter">{% trans %}S'abonner à la Newsletter{% endtrans %}: </span>
 
                 <form action="{{ path('news_letter_registration') }}" method="POST">
-                    <input id="input-newsletter" class="text-newsletter" name="email" type="text" placeholder="Veuillez entrer votre email"/>
+                    <input id="input-newsletter" class="text-newsletter" name="email" type="text" placeholder="{% trans %}Veuillez entrer votre email{% endtrans %}"/>
                     <button type="submit" class="button btn-info btn-lg" data-toggle="modal" data-target="#myModal">{% trans %}Je m'inscris{% endtrans %}</button>
                 </form>
             </div>
@@ -39,10 +39,10 @@
     <section>
         <img class="fond_clic" src="/img/img_clic.jpg" alt="/img/lel.gif"/>
         <div class="fond_clic">
-            <h3>Retrouvez toutes nos fonctionnalités</h3>
-            <a href="#univers" class="page-scroll"><button class="bouton_clic" >Nos Univers</button></a>
-            <a href="#recettes" class="page-scroll"><button class="bouton_clic" >Nos Recettes</button></a>
-            <a href="#news" class="page-scroll"><button class="bouton_clic" >Les Concours</button></a>
+            <h3>{% trans %}Retrouvez toutes nos fonctionnalités{% endtrans %}</h3>
+            <a href="#univers" class="page-scroll"><button class="bouton_clic" >{% trans %}Nos Univers{% endtrans %}</button></a>
+            <a href="#recettes" class="page-scroll"><button class="bouton_clic" >{% trans %}Nos Recettes{% endtrans %}</button></a>
+            <a href="#news" class="page-scroll"><button class="bouton_clic" >{% trans %}Les Concours{% endtrans %}</button></a>
         </div>
     </section>
 

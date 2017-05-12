@@ -10,26 +10,7 @@
 {% endblock %}
 
 {% block body %}
-    <!----------------------------------------->
-    <!---------------- ONGLETS ---------------->
-    <!----------------------------------------->
-    <nav class="onglets navbar navbar-fixed-top shadow subnav" id="js-nav">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button class="navbar-toggle" data-target="#myNavbar" data-toggle="collapse" type="button">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
-                    <li><a href="#concours">Concours</a></li>
-                    <li><a href="#contrats">Contrats</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+
     <!----------------------------------------->
     <!------- CALENDRIER DES CONCOURS --------->
     <!----------------------------------------->
@@ -50,7 +31,7 @@
                                     </span>
                                 </span>
                                 <a href="http://www.google.fr">
-                                    <h2>Concours {{ competition.name }}</h2>
+                                    <h2>{% trans %}Concour{% endtrans %} {{ competition.name }}</h2>
                                     <p>{{ competition.description}}</p>
                                 </a>
                             </div>
@@ -64,39 +45,5 @@
         </div>
         <!-- end container -->
     </section>
-    <!----------------------------------------->
-    <!------------ CONTRATS 1 + PRIX ---------->
-    <!----------------------------------------->
-    <section class="section-min section product" id="contrats">
-        <div class="container overflow-hidden">
-            <div class="row">
-                <div class="col-md-12">
-                    <h3 class="section-heading">{% trans %}Contrats{% endtrans %}</h3>
-                </div>
-            </div>
-            <div class="row">
-                <div class="product-list-slider">
-                    <ul class="swiper-wrapper product-list product-list-vertical">
-                        {% for i in 1..10 %}
-                            <li class="swiper-slide wow fadeInUp text-center">
-                                <span class="product-list-left pull-left">
-                                    <a href="http://www.google.fr">
-                                        <img alt="product image" class="product-list-primary-img" src="{{ asset('img/product/contract_default.png') }}">
-                                        <img alt="Description rapide du contrat {{ i }}. Blablablablabla lololol" class="product-list-secondary-img">
-                                        <span class="product-list-name h3">{% trans %}Contrat{% endtrans %} {{ i }}</span>
-                                        <span class="product-list-price">$400.00</span>
-                                    </a>
-                                </span>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                    <!-----------------------------------   DEFILEMENT  -------------------------------->
-                    <!-- Add Pagination -->
-                    <div class="product-list-pagination text-center"> </div>
-                    <div class="product-list-slider-next right-arrow-negative"> &#10095; </div>
-                    <div class="product-list-slider-prev left-arrow-negative"> &#10094;</div>
-                </div>
-            </div>
-        </div>
-    </section>
+
 {% endblock %}

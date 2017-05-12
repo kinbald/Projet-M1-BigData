@@ -73,6 +73,7 @@
                     {% else %}
                         <li><a href="{{ path("contact") }}">Nous Contacter</a></li>
                         <li><a href="{{ path("qui_sommes_nous") }}">Qui Sommes Nous ?</a></li>
+                        <li><a class="inscription" href="{{ path("inscription_choix") }}">S'inscrire</a></li>
                         <li><a class="connexion" href="/login">Se Connecter</a></li>
                     {% endif %}
                     <ul class="nav navbar-nav navbar-right">
@@ -182,9 +183,9 @@
             </div>
             <div class="col-md-3 footer-ns animated fadeInRight">
                 <h4>Newsletter</h4>
-                <p>Si tu veux recevoir des infos sur le vin, ça peut être bien</p>
+                <p>Recevoir nos actualités</p>
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Ton mail ici">
+                    <input type="text" class="form-control" placeholder="Votre mail">
                     <span class="input-group-btn">
                         <button id="enveloppe" class="btn btn-default" type="button"><span class="glyphicon glyphicon-envelope"></span></button>
                       </span>

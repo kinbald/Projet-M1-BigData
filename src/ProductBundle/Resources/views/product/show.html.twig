@@ -122,7 +122,7 @@
             </select>
             <div class="countdown-container my-countdown-container">
                 <span class="countdown-price h3 wow fadeInUp price-show" id="price">0.00 €</span>
-                    <table class="table table-condensed">
+                    <table class="presentation-table">
                         <tr>
                             <td class="attribute">Quantité disponible</td>
                             <td class="att-value" id="conditioning-stock"></td>
@@ -136,6 +136,7 @@
                             <td class="att-value" id="conditioning-pack-quantity"></td>
                         </tr>
                     </table>
+                <br>
                 {% set picture = product.pictures|last %}
                 <span class="btn btn-default add-item wow swing" {% if picture %}data-image="/{{ picture.url}}"{% endif %}
                       data-name="{{ product.name }}" data-cost="0" data-id="{{ product.id }}">

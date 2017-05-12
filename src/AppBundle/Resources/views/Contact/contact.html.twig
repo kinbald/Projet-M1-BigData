@@ -24,9 +24,65 @@
             <li>Twitter : <a href="https://twitter.com/twitter" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @twitter</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></li>
         </ul>
 
+        <table class="tableauContour_bas">
+            <div class=smartphone>
+                <tr class=smartphone>
+                   <td>
+                       Facebook:
+                   </td>
+                    <td>
+                        <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="300" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+
+                    </td>
+                </tr>
+
+                <tr class=smartphone>
+                   <td>
+                       Twitter:
+                   </td>
+                    <td>
+                        <br />
+                        <a href="https://twitter.com/twitter" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @twitter</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                    </td>
+                </tr>
+            </div>
+            <tr>
+
+                <div class="tableauContour">
+                        {{ form_start(form) }}
+                        {{ form_errors(form.lastName) }}<br>
+                        {{ form_label(form.lastName) }}
+                        {{ form_widget(form.lastName, { 'attr': {'class': 'taille_zone_de_saisie'} }) }}<br>
+
+                        {{ form_errors(form.firstName) }}<br>
+                        {{ form_label(form.firstName) }}
+                        {{ form_widget(form.firstName, { 'attr': {'class': 'taille_zone_de_saisie'} }) }}<br>
+
+                        {{ form_errors(form.email) }}<br>
+                        {{ form_label(form.email) }}
+                        {{ form_widget(form.email, { 'attr': {'class': 'taille_zone_de_saisie'} }) }}<br>
+
+                        {{ form_errors(form.topic) }}<br>
+                        {{ form_label(form.topic) }}
+                        {{ form_widget(form.topic, { 'attr': {'class': 'taille_zone_de_saisie'} }) }}<br>
+
+                        {{ form_errors(form.userType) }}<br>
+                        {{ form_label(form.userType) }}
+                        {{ form_widget(form.userType, { 'attr': {'class': 'taille_zone_de_saisie'} }) }}<br>
+
+                        {{ form_errors(form.gender) }}<br>
+                        {{ form_label(form.gender) }}
+                        {{ form_widget(form.gender, { 'attr': {'class': 'bloc_btn_genre'} }) }}<br>
+
+                        {{ form_errors(form.message) }}<br>
+                        {{ form_label(form.message) }}
+                        {{ form_widget(form.message, { 'attr': {'class': 'taille_zone_de_saisie', 'rows': '5'} }) }}<br>
+
+                        {{ form_widget(form.submit) }}
+                        {{ form_end(form) }}
+                </div>
+            </tr>
+        </table>
     </div>
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    {{ form_end(form) }}
 {% endblock %}
 
