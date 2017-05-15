@@ -28,7 +28,6 @@ class UserProducerType extends RegistrationFormType
             ->add('city', TextType::class)
             ->add('postalCode', TextType::class)
             ->add('country', CountryType::class)
-            ->add('province', TextType::class, array('required' => false))
             ->add('state', TextType::class, array('required' => false))
             ->add('phone', TextType::class);
     }

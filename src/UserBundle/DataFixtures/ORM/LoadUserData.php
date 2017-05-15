@@ -45,7 +45,6 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $userProducer->setCountry('Azerbaidjan');
         $userProducer->setPostalCode('83000');
         $userProducer->setState('État dictatorial');
-        $userProducer->setProvince('Province');
         $userProducer->setPhone('0606060606');
         $manager->persist($userProducer);
 
@@ -66,7 +65,6 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $userProducer->setCountry('France');
         $userProducer->setPostalCode('26485');
         $userProducer->setState('État dictatorial');
-        $userProducer->setProvince('Province');
         $userProducer->setPhone('0606060606');
         $manager->persist($userProducer);
 

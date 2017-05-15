@@ -13,7 +13,7 @@ class UserProducerType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('siret')->add('billingEmail')->add('website')->add('facebook')->add('twitter')->add('companyName')->add('businessName')->add('address')->add('city')->add('country')->add('postalCode')->add('state')->add('province')->add('phone')->add('fax')->add('tvaIC')->add('status');
+        $builder->add('siret')->add('billingEmail')->add('website')->add('facebook')->add('twitter')->add('companyName')->add('businessName')->add('address')->add('city')->add('country')->add('postalCode')->add('state')->add('phone')->add('fax')->add('tvaIC')->add('status');
     }
 
     /**

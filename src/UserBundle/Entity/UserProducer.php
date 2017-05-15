@@ -130,13 +130,7 @@ class UserProducer extends BaseUser
      */
     private $state;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="province", type="string", length=40, nullable=true)
-     * @Assert\Length( max=40, maxMessage="Il faut saisir au maximum {{ limit }} caractères.")
-     */
-    private $province;
+
 
     /**
      * @var OptionSubscription
@@ -629,21 +623,7 @@ class UserProducer extends BaseUser
         $this->state = $state;
     }
 
-    /**
-     * @return string
-     */
-    public function getProvince()
-    {
-        return $this->province;
-    }
 
-    /**
-     * @param string $province
-     */
-    public function setProvince($province)
-    {
-        $this->province = $province;
-    }
 
     /**
      * Add product
