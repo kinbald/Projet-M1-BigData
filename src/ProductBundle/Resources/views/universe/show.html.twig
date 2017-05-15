@@ -21,7 +21,17 @@
 
 
     <div id="Recherche">
-        <form method="post" action="traitement.php">
+            {{ form_start(productbundle_product) }}
+            {{ form_widget(productbundle_product.name, { 'id': 'chemin'}) }}
+
+            <div class="bouton1">
+                {{ form_widget(productbundle_product.submit) }}
+            </div>
+            {{ form_end(productbundle_product) }}
+
+
+
+
             <div class="barre_color_police">
                 <label for="recherche">{% trans %}Search{% endtrans %} </label><br />
             </div>
@@ -100,7 +110,6 @@
             <div class="barre_color_list">
                 <input class="champ" type="submit" value="{% trans %}Submit{% endtrans %}" />
             </div>
-        </form>
     </div>
 
     <div id="Produits">

@@ -29,7 +29,10 @@
 
 
     {% else %}
-        <h1>Produits à insérer</h1>
+        <h1>Insertion réussie</h1>
+        <img class="style_logo" src="{{ asset('img/ok_excel.png') }}" alt="logo" height=100>
+        <br />
+        <h2>Produits insérés</h2>
     <table>
         {% for product in products %}
             <tr>
@@ -40,7 +43,7 @@
         {% endfor %}
     </table>
 
-    <h1>{% trans %}Producteurs à insérer{% endtrans %}</h1>
+    <h2>{% trans %}Producteurs insérés{% endtrans %}</h2>
     <table>
         {% for producer in producers %}
             <tr>
@@ -52,7 +55,7 @@
     </table>
 
 
-    <h1>{% trans %}Médaille a insérer{% endtrans %}</h1>
+    <h2>{% trans %}Médaille a insérer{% endtrans %}</h2>
     <table>
         {% for medal in medal %}
             <tr>
@@ -63,7 +66,7 @@
         {% endfor %}
     </table>
 
-    <h1>{% trans %}Tableau des expéditions{% endtrans %}</h1>
+    <h2>{% trans %}Tableau des expéditions{% endtrans %}</h2>
     <table>
         {% for shipment in shipments %}
             <tr>
@@ -76,7 +79,7 @@
 
 
 
-    <h1>{% trans %}Tableau des options de livraison{% endtrans %}</h1>
+    <h2>{% trans %}Tableau des options de livraison{% endtrans %}</h2>
     <table>
         {% for shipoption in shipoptions %}
             <tr>

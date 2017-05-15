@@ -54,8 +54,6 @@ class ExcelController extends Controller
             'excel_form' => $excelForm->createView(),
         ));
 
-
-
     }
 
 }

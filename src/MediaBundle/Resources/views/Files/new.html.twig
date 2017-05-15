@@ -5,6 +5,8 @@
     <link href="{{ asset('css/create.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/formulaire.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('uploader/fancybox/source/jquery.fancybox.css') }}">
+    <link href="{{ asset('css/mise_en_page_admin.css') }}" rel="stylesheet" />
+
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
@@ -13,18 +15,18 @@
 
 {% block body %}
 
-    <div id="contenu">
-        <div id="content">
-            <h1>{% trans %}File creation{% endtrans %}</h1>
-            <br><br>
-            {{ form_start(form) }}
-            {{ form_widget(form) }}
+<div class="contour">
+    <div id="content">
+        <h1 class="espace_br">{% trans %}File creation{% endtrans %}</h1>
 
-            <a id="button" class="clic" href="{{ asset('uploader/fancybox.php') }}?iframe">{% trans %}Load a file{% endtrans %}</a>
-            <input type="text" id="chemin" name="urlImg" required>
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
 
-        </div>
+        <a id="button" class="clic" href="{{ asset('uploader/fancybox.php') }}?iframe">{% trans %}Load a file{% endtrans %}</a>
+        <input type="text" id="chemin" name="urlImg" required>
+
     </div>
+</div>
 
 
     <div id="boutons">
@@ -39,6 +41,4 @@
 
     </div>
 
-
-    <div class="espace-bas"></div>
 {% endblock %}

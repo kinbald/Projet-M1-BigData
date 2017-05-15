@@ -46,12 +46,12 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
 
         /*-----------------------------------------------------------*/
         $universe2 = new Universe();
-        $universe2->setName('Femmes et vin de France');
+        $universe2->setName('Femmes et vins de France');
         $universe2->setDescription('Sélection de femmes expertes internationales');
         $manager->persist($universe2);
 
         $picture = new PictureUniverse();
-        $picture->setAlt('Femmes et vin de France');
+        $picture->setAlt('Femmes et vins de France');
         $picture->setUrl('../uploads/Illustrations Univers/univ_france.jpg');
         $picture->setUniverse($universe2);
         $manager->persist($picture);
