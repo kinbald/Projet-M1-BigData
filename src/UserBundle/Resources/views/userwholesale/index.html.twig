@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Userwholesales list</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Companyname</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for userWholesale in userWholesales %}
+            <tr>
+                <td><a href="{{ path('userwholesale_show', { 'id': userWholesale.id }) }}">{{ userWholesale.id }}</a>
+                </td>
+                <td>{{ userWholesale.companyName }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('userwholesale_show', { 'id': userWholesale.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('userwholesale_edit', { 'id': userWholesale.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('userwholesale_new') }}">Create a new userWholesale</a>
+        </li>
+    </ul>
+{% endblock %}
