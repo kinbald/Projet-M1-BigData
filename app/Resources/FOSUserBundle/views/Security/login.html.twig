@@ -29,7 +29,7 @@
                 <h4>Vous n'avez pas encore de compte?</h4>
                 <a href="{{ path("inscription_choix") }}" class="btn btn-block btn-primary btn-float m-t-25">S'inscrire</a>
             </div>
-            <div><a href="{{ path("fos_user_resetting_request") }}">{% trans %}Mot de passe oublié?{% endtrans %}</a></div>
+            <div><a id="mdp" href="{{ path("fos_user_resetting_request") }}">{% trans %}Mot de passe oublié?{% endtrans %}</a></div>
         </div>
     </div>
 {% endblock fos_user_content %}

@@ -24,12 +24,12 @@
 
 <div id="bandeau-age">
     <div class="bandeau">
-        <h2>Ce site propose de la vente d'alcool. En poursuivant sur ce site, vous confirmez avoir plus de 18 ans.</h2>
+        <h2>{% trans %}Ce site propose de la vente d'alcool. En poursuivant sur ce site, vous confirmez avoir plus de 18 ans.{% endtrans %}</h2>
         <button type="submit" name="submit" id="bouton-bandeau" class=" btn-default btn-lg">
-            Je confirme
+            {% trans %}Je confirme{% endtrans %}
         </button>
         <button type="button" onclick="history.go(-1);" class=" btn-default btn-lg">
-            Non (retour page précédente)
+            {% trans %}Non (retour page précédente){% endtrans %}
         </button>
     </div>
 </div>
@@ -49,33 +49,34 @@
         </div>
             <div class="navbar-collapse collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ path("homepage") }}">Accueil</a></li>
+                    <li><a href="{{ path("homepage") }}">{% trans %}Accueil{% endtrans %}</a></li>
+                    <li><a href="{{ path("news_public") }}">News</a></li>
                     {% if is_granted('ROLE_CONSUMER') %}
-                        <li><a href="{{ path("profil") }}">Compte</a></li>
-                        <li><a href="{{ path("contact") }}">Nous Contacter</a></li>
-                        <li><a href="{{ path("qui_sommes_nous") }}">Qui Sommes Nous ?</a></li>
-                        <li><a href="{{ path("fos_user_security_logout") }}">Déconnexion</a></li>
+                        <li><a href="{{ path("profil") }}">{% trans %}Compte{% endtrans %}</a></li>
+                        <li><a href="{{ path("contact") }}">{% trans %}Nous Contacter{% endtrans %}</a></li>
+                        <li><a href="{{ path("qui_sommes_nous") }}">{% trans %}Qui Sommes-Nous ?{% endtrans %}</a></li>
+                        <li><a href="{{ path("fos_user_security_logout") }}">{% trans %}Déconnexion{% endtrans %}</a></li>
                     {% elseif is_granted('ROLE_PRODUCER') %}
-                        <li><a href="{{ path("producer_space") }}">Vos Produits</a></li>
-                        <li><a href="{{ path("profil") }}">Compte</a></li>
-                        <li><a href="{{ path("contact") }}">Nous Contacter</a></li>
-                        <li><a href="{{ path("qui_sommes_nous") }}">Qui Sommes Nous ?</a></li>
-                        <li><a href="{{ path("fos_user_security_logout") }}">Déconnexion</a></li>
+                        <li><a href="{{ path("producer_space") }}">{% trans %}Vos Produits{% endtrans %}</a></li>
+                        <li><a href="{{ path("profil") }}">{% trans %}Compte{% endtrans %}</a></li>
+                        <li><a href="{{ path("contact") }}">{% trans %}Nous Contacter{% endtrans %}</a></li>
+                        <li><a href="{{ path("qui_sommes_nous") }}">{% trans %}Qui Sommes Nous ?{% endtrans %}</a></li>
+                        <li><a href="{{ path("fos_user_security_logout") }}">{% trans %}Déconnexion{% endtrans %}</a></li>
                     {% elseif is_granted('ROLE_MEDIA') %}
-                        <li><a href="{{ path("media_index") }}">Presse</a></li>
-                        <li><a href="{{ path("profil") }}">Compte</a></li>
-                        <li><a href="{{ path("contact") }}">Nous Contacter</a></li>
-                        <li><a href="{{ path("qui_sommes_nous") }}">Qui Sommes Nous ?</a></li>
-                        <li><a href="{{ path("fos_user_security_logout") }}">Déconnexion</a></li>
+                        <li><a href="{{ path("media_index") }}">{% trans %}Presse{% endtrans %}</a></li>
+                        <li><a href="{{ path("profil") }}">{% trans %}Compte{% endtrans %}</a></li>
+                        <li><a href="{{ path("contact") }}">{% trans %}Nous Contacter{% endtrans %}</a></li>
+                        <li><a href="{{ path("qui_sommes_nous") }}">{% trans %}Qui Sommes Nous ?{% endtrans %}</a></li>
+                        <li><a href="{{ path("fos_user_security_logout") }}">{% trans %}Déconnexion{% endtrans %}</a></li>
                     {% elseif is_granted('ROLE_ADMIN') %}
-                        <li><a href="{{ path("profil") }}">Compte</a></li>
-                        <li><a href="{{ path("admin_index") }}">Admin</a></li>
-                        <li><a href="{{ path("fos_user_security_logout") }}">Déconnexion</a></li>
+                        <li><a href="{{ path("profil") }}">{% trans %}Compte{% endtrans %}</a></li>
+                        <li><a href="{{ path("admin_index") }}">{% trans %}Admin{% endtrans %}</a></li>
+                        <li><a href="{{ path("fos_user_security_logout") }}">{% trans %}Déconnexion{% endtrans %}</a></li>
                     {% else %}
-                        <li><a href="{{ path("contact") }}">Nous Contacter</a></li>
-                        <li><a href="{{ path("qui_sommes_nous") }}">Qui Sommes Nous ?</a></li>
-                        <li><a class="inscription" href="{{ path("inscription_choix") }}">S'inscrire</a></li>
-                        <li><a class="connexion" href="{{ path("fos_user_security_login") }}">Se Connecter</a></li>
+                        <li><a href="{{ path("contact") }}">{% trans %}Nous Contacter{% endtrans %}</a></li>
+                        <li><a href="{{ path("qui_sommes_nous") }}">{% trans %}Qui Sommes Nous ?{% endtrans %}</a></li>
+                        <li><a class="inscription" href="{{ path("inscription_choix") }}">{% trans %}S'inscrire{% endtrans %}</a></li>
+                        <li><a class="connexion" href="{{ path("fos_user_security_login") }}">{% trans %}Se Connecter{% endtrans %}</a></li>
                     {% endif %}
                     <ul class="nav navbar-nav navbar-right">
                         <li><a class="language" rel="fr-FR" href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'fr'})) }}"><img src="{{ asset('img/flag_fr.png') }}" alt="Francais" /></a></li>
@@ -99,10 +100,10 @@
             ✘
         </a>
         <img class="cart-logo" src="{{ asset("img/logo.png") }}" alt="store logo" width="200">
-        <h3 class="section-heading">Votre panier</h3>
+        <h3 class="section-heading">{% trans %}Votre panier{% endtrans %}</h3>
         <!-- EMPTY CART MESSAGE -->
         <div id="cart-empty" class="cart-empty">
-            <h4>vide</h4>
+            <h4>{% trans %}vide{% endtrans %}</h4>
         </div>
         <!-- / EMPTY CART MESSAGE -->
 
@@ -132,7 +133,7 @@
             <input name="currency_code" value="EUR" type="hidden">
             <!-- Display the payment button. -->
             <button type="submit" name="submit" class="btn btn-default btn-lg" id="paiement-paypal">
-                paiement paypal ⯈</span>
+                {% trans %}paiement paypal{% endtrans %} ⯈</span>
             </button>
         </form>
         <!-- / HIDDEN PAYPAL FORM -->
@@ -162,13 +163,13 @@
                 <div class="col-md-3 col-sm-3 col-xs-5">
                     <h4>Menu</h4>
                         <ul class="list">
-                            <li><a href="{{ path("qui_sommes_nous") }}">About Us</a></li>
+                            <li><a href="{{ path("qui_sommes_nous") }}">{% trans %}Qui Sommes-Nous ?{% endtrans %}</a></li>
                             <li><a href="{{ path("contact") }}">Contacts</a></li>
-                            <li><a href="{{ path("mentions_legales") }}">Mentions légales</a></li>
+                            <li><a href="{{ path("mentions_legales") }}">{% trans %}Mentions légales{% endtrans %}</a></li>
                         </ul>
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-7">
-                    <h4>Suivez-nous !</h4>
+                    <h4>{% trans %}Suivez-nous !{% endtrans %}</h4>
                     <ul>
                         <li><a href="http://www.facebook.com" class="ti-facebook"> Facebook</a></li>
                         <li><a href="http://www.twitter.com" class="ti-twitter-alt"> Twitter</a></li>
@@ -177,7 +178,7 @@
                     </ul>
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-5">
-                    <h4>Recevoir nos actualités</h4>
+                    <h4>{% trans %}Recevoir nos actualités{% endtrans %}</h4>
                     <div class="footer-newsletter">
                         <div class="center text-center">
                             <form action="{{ path('news_letter_registration') }}" method="post">
@@ -204,6 +205,7 @@
 {% block javascripts %}
     <script src="{{ asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/bundle.js') }}"></script>
+    <script src="{{ asset('js/backpage.js') }}"></script>
 {% endblock %}
 </body>
 </html>
