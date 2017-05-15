@@ -9,14 +9,13 @@
 
 {% block body %}
 
-    <div class="contour">
-        <div id="content">
-            <h1>{% trans %}Edit Purchase{% endtrans %}</h1>
-            <br><br>
-            {{ form_start(edit_form) }}
-            {{ form_widget(edit_form) }}
-        </div>
+<div class="contour">
+    <div id="content">
+        <h1 class="espace_br">{% trans %}Edit Purchase{% endtrans %}</h1>
+         {{ form_start(edit_form) }}
+         {{ form_widget(edit_form) }}
     </div>
+</div>
 
     <div id="boutons">
         <div class="bouton1">
@@ -32,7 +31,5 @@
             <a class="btn btn-primary btn-circle" href="{{ path('purchase_index') }}">{% trans %}Back to the list{% endtrans %}</a>
         </div>
     </div>
-
-    <div class="espace-bas"></div>
 
 {% endblock %}

@@ -8,14 +8,17 @@
 {% endblock %}
 
 {% block body %}
-    <div class="contour">
 
-            <h2 class="titre">{% trans %}Userconsumer edit{% endtrans %}</h2>
-            <br>
+<div class="contour">
+    <div id="content">
+        <h1 class="espace_br">{% trans %}Userconsumer edit{% endtrans %}</h1>
+
             {{ form_start(edit_form) }}
             {{ form_widget(edit_form) }}
     </div>
-    <div class="marge-inf center">
+</div>
+
+    <div id="boutons">
         <div class="bouton1">
             <input class="btn btn-primary btn-circle" type="submit" value="{% trans %}Edit{% endtrans %}" />
         </div>
