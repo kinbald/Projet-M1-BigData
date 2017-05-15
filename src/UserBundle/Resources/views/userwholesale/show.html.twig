@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Userwholesale</h1>
+    <h1>{% trans %}Userwholesale{% endtrans %}</h1>
 
     <table>
         <tbody>
@@ -10,7 +10,7 @@
             <td>{{ userWholesale.id }}</td>
         </tr>
         <tr>
-            <th>Companyname</th>
+            <th>{% trans %}Companyname{% endtrans %}</th>
             <td>{{ userWholesale.companyName }}</td>
         </tr>
         </tbody>
@@ -18,14 +18,14 @@
 
     <ul>
         <li>
-            <a href="{{ path('userwholesale_index') }}">Back to the list</a>
+            <a href="{{ path('userwholesale_index') }}">{% trans %}Back to the list{% endtrans %}</a>
         </li>
         <li>
-            <a href="{{ path('userwholesale_edit', { 'id': userWholesale.id }) }}">Edit</a>
+            <a href="{{ path('userwholesale_edit', { 'id': userWholesale.id }) }}">{% trans %}Edit{% endtrans %}</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-            <input type="submit" value="Delete">
+            <input type="submit" value="{% trans %}Delete{% endtrans %}">
             {{ form_end(delete_form) }}
         </li>
     </ul>

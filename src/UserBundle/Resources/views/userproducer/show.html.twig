@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Userproducer</h1>
+    <h1>{% trans %}Userproducer{% endtrans %}</h1>
 
     <table>
         <tbody>
@@ -14,11 +14,11 @@
             <td>{{ userProducer.siret }}</td>
         </tr>
         <tr>
-            <th>Billingemail</th>
+            <th>{% trans %}Billingemail{% endtrans %}</th>
             <td>{{ userProducer.billingEmail }}</td>
         </tr>
         <tr>
-            <th>Website</th>
+            <th>{% trans %}Website{% endtrans %}</th>
             <td>{{ userProducer.website }}</td>
         </tr>
         <tr>
@@ -30,31 +30,31 @@
             <td>{{ userProducer.twitter }}</td>
         </tr>
         <tr>
-            <th>Companyname</th>
+            <th>{% trans %}Companyname{% endtrans %}</th>
             <td>{{ userProducer.companyName }}</td>
         </tr>
         <tr>
-            <th>Businessname</th>
+            <th>{% trans %}Businessname{% endtrans %}</th>
             <td>{{ userProducer.businessName }}</td>
         </tr>
         <tr>
-            <th>Address</th>
+            <th>{% trans %}Address{% endtrans %}</th>
             <td>{{ userProducer.address }}</td>
         </tr>
         <tr>
-            <th>City</th>
+            <th>{% trans %}City{% endtrans %}</th>
             <td>{{ userProducer.city }}</td>
         </tr>
         <tr>
-            <th>Country</th>
+            <th>{% trans %}Country{% endtrans %}</th>
             <td>{{ userProducer.country }}</td>
         </tr>
         <tr>
-            <th>Postalcode</th>
+            <th>{% trans %}Postal code{% endtrans %}</th>
             <td>{{ userProducer.postalCode }}</td>
         </tr>
         <tr>
-            <th>State</th>
+            <th>{% trans %}State{% endtrans %}</th>
             <td>{{ userProducer.state }}</td>
         </tr>
         <tr>
@@ -62,7 +62,7 @@
             <td>{{ userProducer.province }}</td>
         </tr>
         <tr>
-            <th>Phone</th>
+            <th>{% trans %}Phone{% endtrans %}</th>
             <td>{{ userProducer.phone }}</td>
         </tr>
         <tr>
@@ -70,7 +70,7 @@
             <td>{{ userProducer.fax }}</td>
         </tr>
         <tr>
-            <th>Tvaic</th>
+            <th>{% trans %}Tvaic{% endtrans %}</th>
             <td>{{ userProducer.tvaIC }}</td>
         </tr>
         </tbody>
@@ -78,14 +78,14 @@
 
     <ul>
         <li>
-            <a href="{{ path('userproducer_index') }}">Back to the list</a>
+            <a href="{{ path('userproducer_index') }}">{% trans %}Back to the list{% endtrans %}</a>
         </li>
         <li>
-            <a href="{{ path('userproducer_edit', { 'id': userProducer.id }) }}">Edit</a>
+            <a href="{{ path('userproducer_edit', { 'id': userProducer.id }) }}">{% trans %}Edit{% endtrans %}</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-            <input type="submit" value="Delete">
+            <input type="submit" value="{% trans %}Delete{% endtrans %}">
             {{ form_end(delete_form) }}
         </li>
     </ul>
