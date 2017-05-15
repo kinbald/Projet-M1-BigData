@@ -605,6 +605,17 @@ class UserProducer extends BaseUser
         return $this->status;
     }
 
+    public function getProvince()
+    {
+        return $this->getState();
+    }
+
+    public function setProvince($province)
+    {
+        $this->setState($province);
+        return $this;
+    }
+
     /**
      * Get State
      *
