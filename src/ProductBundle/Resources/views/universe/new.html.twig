@@ -1,11 +1,12 @@
 {% extends 'baseadmin.html.twig' %}
 
 {% block stylesheets %}
-    <link href="{{ asset('css/bootstrap-dark.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/theme-dark.css') }}" rel="stylesheet" />
+    {{ parent() }}
     <link href="{{ asset('css/create.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/formulaire.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('uploader/fancybox/source/jquery.fancybox.css') }}">
+    <link href="{{ asset('css/mise_en_page_admin.css') }}" rel="stylesheet"/>
+
 {% endblock %}
 {% block javascripts %}
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"
@@ -30,7 +31,7 @@
 
 {% block body %}
 
-    <div id="contenu">
+    <div class="contour">
         <div id="content">
             <h1>{% trans %}Create Universe{% endtrans %}</h1>
             <br><br>

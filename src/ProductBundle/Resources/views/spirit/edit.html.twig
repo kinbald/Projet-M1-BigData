@@ -12,10 +12,10 @@
 {% endblock %}
 
 {% block body %}
-    <div class="contour">
 
+    <div class="contour">
         <div id="content">
-            <h2>{% trans %}Edit Spirit{% endtrans %}</h2>
+            <h1>{% trans %}Edit Spirit{% endtrans %}</h1>
             <br><br>
             {{ form_start(edit_form) }}
             {{ form_widget(edit_form) }}
@@ -32,11 +32,13 @@
                         <td class="url">{{ picture.url }}</td>
                         <td><div class="pic1"><a href="{{ asset(picture.url) }}"><img src="/img/adminlogo/eye.png" alt="preview" style="height: 30px;"></a></div></td>
                         <td>
-                            <div class="pic1"><a
-                                        href="{{ path('product_del_img', { 'id': spirit.id, 'idImg': picture.id}) }}"><img
-                                            src="/img/adminlogo/trash.png" alt="delete" style="height: 30px;"></a></div>
+                            <div class="pic1">
+                                <a href="{{ path('product_del_img', { 'id': spirit.id, 'idImg': picture.id}) }}">
+                                <img src="/img/adminlogo/trash.png" alt="delete" style="height: 30px;"></a>
+                            </div>
+
                         </td>
-                        <td> class="supprimer"></td>
+                        <td class="supprimer"></td>
                     </tr>
 
                 {% endfor %}
@@ -57,7 +59,7 @@
         </div>
         {{ form_end(delete_form) }}
         <div class="bouton1">
-            <a class="btn btn-primary btn-circle" href="{{ path('product_list', {type: 'wine'}) }}">{% trans %}Retour{% endtrans %}</a>
+            <a class="btn btn-primary btn-circle" href="{{ path('product_list', {type: 'wine'}) }}">{% trans %}Back to the list{% endtrans %}</a>
         </div>
     </div>
 
