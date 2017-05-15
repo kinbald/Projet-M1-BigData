@@ -10,14 +10,16 @@
 {% endblock %}
 
 {% block body %}
-    <div id="Contour_blanc">
-    <h1 style="margin-top: -3px">{% trans %}Competition edit{% endtrans %}</h1><br>
+<div class="contour">
+    <div id="content">
+        <h1 class="espace_br">{% trans %}Competition edit{% endtrans %}</h1>
 
     {{ form_start(edit_form) }}
     {{ form_widget(edit_form) }}
     {{ form_end(edit_form) }}
 
     </div>
+</div>
         <div id="boutons">
             <div class="bouton1">
                 {{ form_start(edit_form) }}
@@ -34,8 +36,7 @@
                 <a class="btn btn-primary btn-circle" href="{{ path('competition_index') }}">{% trans %}Back to the list{% endtrans %}</a>
 
             </div>
-        </div><br>
-        <div class="espace-bas" style="visibility: hidden;">...</div><br>
+        </div>
 
 
 {% endblock %}

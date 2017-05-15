@@ -15,8 +15,7 @@
 
     <div class="contour">
         <div id="content">
-            <h1>{% trans %}Edit Universe{% endtrans %}</h1>
-            <br><br>
+            <h1 class="espace_br">{% trans %}Edit Universe{% endtrans %}</h1>
             {{ form_start(edit_form) }}
             {{ form_widget(edit_form) }}
             <a  id="button" class="clic" href="{{ asset('uploader/fancybox.php') }}?iframe">{% trans %}Load a picture{% endtrans %}</a>
@@ -38,7 +37,5 @@
             <a class="btn btn-primary btn-circle" href="{{ path('universe_index') }}">{% trans %}Back to the list{% endtrans %}</a>
         </div>
     </div>
-
-    <div class="espace-bas"></div>
 
 {% endblock %}
