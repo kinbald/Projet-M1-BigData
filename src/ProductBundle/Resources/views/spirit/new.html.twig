@@ -5,6 +5,8 @@
     <link href="{{ asset('css/create.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/formulaire.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('uploader/fancybox/source/jquery.fancybox.css') }}">
+    <link href="{{ asset('css/mise_en_page_admin.css') }}" rel="stylesheet" />
+
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
@@ -12,7 +14,8 @@
 {% endblock %}
 
 {% block body %}
-    <div id="contenu">
+
+    <div class="contour">
         <div id="content">
             <h1>{% trans %}Create Spirit{% endtrans %}</h1>
             <br><br>
@@ -33,7 +36,7 @@
         {{ form_end(form) }}
 
         <div class="bouton1">
-            <a class="btn btn-primary btn-circle" href="{{ path('product_list', {type: 'spirit'}) }}">{% trans %}Retour{% endtrans %}</a>
+            <a class="btn btn-primary btn-circle" href="{{ path('product_list', {type: 'spirit'}) }}">{% trans %}Back to the list{% endtrans %}</a>
         </div>
 
     </div>
