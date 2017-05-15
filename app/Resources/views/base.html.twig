@@ -60,7 +60,7 @@
                         <li><a href="{{ path("producer_space") }}">{% trans %}Vos Produits{% endtrans %}</a></li>
                         <li><a href="{{ path("profil") }}">{% trans %}Compte{% endtrans %}</a></li>
                         <li><a href="{{ path("contact") }}">{% trans %}Nous Contacter{% endtrans %}</a></li>
-                        <li><a href="{{ path("qui_sommes_nous") }}">{% trans %}Qui Sommes Nous ?{% endtrans %}</a></li>
+                        <li><a href="{{ path("qui_sommes_nous") }}">{% trans %}Qui Sommes-Nous ?{% endtrans %}</a></li>
                         <li><a href="{{ path("fos_user_security_logout") }}">{% trans %}Déconnexion{% endtrans %}</a></li>
                     {% elseif is_granted('ROLE_MEDIA') %}
                         <li><a href="{{ path("media_index") }}">{% trans %}Presse{% endtrans %}</a></li>
@@ -74,7 +74,7 @@
                         <li><a href="{{ path("fos_user_security_logout") }}">{% trans %}Déconnexion{% endtrans %}</a></li>
                     {% else %}
                         <li><a href="{{ path("contact") }}">{% trans %}Nous Contacter{% endtrans %}</a></li>
-                        <li><a href="{{ path("qui_sommes_nous") }}">{% trans %}Qui Sommes Nous ?{% endtrans %}</a></li>
+                        <li><a href="{{ path("qui_sommes_nous") }}">{% trans %}Qui Sommes-Nous ?{% endtrans %}</a></li>
                         <li><a class="inscription" href="{{ path("inscription_choix") }}">{% trans %}S'inscrire{% endtrans %}</a></li>
                         <li><a class="connexion" href="{{ path("fos_user_security_login") }}">{% trans %}Se Connecter{% endtrans %}</a></li>
                     {% endif %}
