@@ -1,16 +1,31 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseadmin.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/create.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/formulaire.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('uploader/fancybox/source/jquery.fancybox.css') }}">
+    <link href="{{ asset('css/mise_en_page_admin.css') }}" rel="stylesheet" />
+{% endblock %}
 
 {% block body %}
-    <h1>{% trans %}Userproducer creation{% endtrans %}</h1>
+    <div class="contour">
+        <div id="content">
+            <h1 class="espace_br">{% trans %}Userproducer creation{% endtrans %}</h1>
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+        </div>
+    </div>
 
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <input type="submit" value="{% trans %}Create{% endtrans %}"/>
-    {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('userproducer_index') }}">{% trans %}Back to the list{% endtrans %}</a>
-        </li>
-    </ul>
+    <div id="boutons">
+        <div class="bouton1">
+            <input class="btn btn-circle btn-primary" type="submit" value="{% trans %}Create{% endtrans %}"/>
+        </div>
+        {{ form_end(form) }}
+        <div class="bouton1">
+            <a class="btn btn-circle btn-primary" href="{{ path('userproducer_index') }}">{% trans %}Back to the list{% endtrans %}</a>
+        </div>
+    </div>
+
 {% endblock %}

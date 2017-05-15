@@ -1,32 +1,46 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseadmin.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/edit.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/formulaire.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/table-template.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/mise_en_page_admin.css') }}" rel="stylesheet" />
+{% endblock %}
 
 {% block body %}
-    <h1>{% trans %}Userwholesale{% endtrans %}</h1>
+    <div id="content">
+        <h1 class="section-heading">{% trans %}Userwholesale{% endtrans %}</h1>
+    </div>
 
-    <table>
+    <div class="table-responsive table-template">
+    <table class="table table-hover">
+        <thead class="thead-default">
+        <tr class="color-title">
+            <th>Id</th>
+            <th>{% trans %}Companyname{% endtrans %}</th>
+        </tr>
+        </thead>
         <tbody>
         <tr>
-            <th>Id</th>
             <td>{{ userWholesale.id }}</td>
-        </tr>
-        <tr>
-            <th>{% trans %}Companyname{% endtrans %}</th>
             <td>{{ userWholesale.companyName }}</td>
         </tr>
         </tbody>
     </table>
+    </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('userwholesale_index') }}">{% trans %}Back to the list{% endtrans %}</a>
-        </li>
-        <li>
-            <a href="{{ path('userwholesale_edit', { 'id': userWholesale.id }) }}">{% trans %}Edit{% endtrans %}</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-            <input type="submit" value="{% trans %}Delete{% endtrans %}">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <div id="boutons">
+        <div class="bouton1">
+            <a class="btn btn-circle btn-primary" href="{{ path('userwholesale_index') }}">{% trans %}Back to the list{% endtrans %}</a>
+        </div>
+        <div class="bouton1">
+            <a class="btn btn-circle btn-primary" href="{{ path('userwholesale_edit', { 'id': userWholesale.id }) }}">{% trans %}Edit{% endtrans %}</a>
+        </div>
+        {{ form_start(delete_form) }}
+        <div class="bouton1">
+            <input class="btn btn-circle btn-primary" type="submit" value="{% trans %}Delete{% endtrans %}">
+        </div>
+        {{ form_end(delete_form) }}
+    </div>
 {% endblock %}
