@@ -8,20 +8,24 @@
 {% endblock %}
 
 {% block body %}
+
     <div class="contour">
-    <h2>{% trans %}Medal creation{% endtrans %}</h2>
+        <div id="content">
+            <h1 class="espace_br">{% trans %}Medal creation{% endtrans %}</h1>
 
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+        </div>
     </div>
-    <div class="center">
-    <input class="btn btn-primary btn-circle col-md-6" type="submit" value="{% trans %}Create{% endtrans %}"/>
-    {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a class="btn btn-circle btn-primary col-md-6" href="{{ path('medal_index') }}">{% trans %}Back to the list{% endtrans %}</a>
-        </li>
-    </ul>
+    <div class="center">
+        <input class="btn btn-primary btn-circle col-md-6" type="submit" value="{% trans %}Create{% endtrans %}"/>
+        {{ form_end(form) }}
+
+        <ul>
+            <li>
+                <a class="btn btn-circle btn-primary col-md-6" href="{{ path('medal_index') }}">{% trans %}Back to the list{% endtrans %}</a>
+            </li>
+        </ul>
     </div>
 {% endblock %}

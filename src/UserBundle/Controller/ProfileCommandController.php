@@ -7,6 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use ProductBundle\Entity\Purchase;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\HttpFoundation\Request;
+use UserBundle\Entity\UserMedia;
 
 class ProfileCommandController extends Controller
 {
@@ -38,5 +40,27 @@ class ProfileCommandController extends Controller
         return $this->render('UserBundle:Profile:show_products.html.twig', array(
             'purchase' => $purchase
         ));
+    }
+
+    /**
+     * @Route("/edit", name="edit_profile")
+     * Edit Profile
+     */
+    public function editAction(Request $request)
+    {
+        $user = $this->getUser();
+        $editForm = $this->createForm('UserBundle\Form\Type\User'. ucfirst($user->getDiscr()) .'EditType', $user);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('profil');
+        }
+
+        return $this->render('UserBundle:Profile:edit_content.html.twig', array(
+            'form' => $editForm->createView(),
+        ));
+
     }
 }

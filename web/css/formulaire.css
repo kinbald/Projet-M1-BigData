@@ -143,6 +143,6 @@
     height: 35px;
 }
 
-#concoursbundle_competition_dateCompetition{
+#concoursbundle_competition_dateCompetition, #productbundle_wine_conditioningTypes, #productbundle_wine_overpressure, #concoursbundle_medal_url, #concoursbundle_medal_competition{
     color: black;
 }

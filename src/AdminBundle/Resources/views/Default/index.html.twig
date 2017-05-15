@@ -2,6 +2,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
+    <link href="{{ asset('css/mise_en_page_admin.css') }}" rel="stylesheet"/>
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet"/>
 {% endblock %}
 
@@ -10,56 +11,61 @@
 {% endblock %}
 
 {% block body %}
-    <div class="text-center content">
-        <h1>{% trans %}Gestion BDD{% endtrans %}</h1>
+    <div class="text-center content contour">
+        <h1>{% trans %}Portail d'administration{% endtrans %}</h1>
+        <a class="btn btn-primary btn-circle" href="{{ path("excel_index") }}">
+            <div class="texte">{% trans %}Importation Excel{% endtrans %}</div>
+        </a>
+        <h4>{% trans %}Gestion du site{% endtrans %}</h4>
         <div class="text-center">
             <a class="btn btn-primary btn-circle" href="{{ path("product_list", {type:'wine'}) }}">
-                <div class="texte">{% trans %}Gestion Vin{% endtrans %}</div>
+                <div class="texte">{% trans %}Gestion des Vins{% endtrans %}</div>
             </a>
             <a class="btn btn-primary btn-circle" href="{{ path("product_list", {type:'spirit'}) }}">
-                <div class="texte">{% trans %}Gestion Spiritueux{% endtrans %}</div>
+                <div class="texte">{% trans %}Gestion des Spiritueux{% endtrans %}</div>
             </a>
             <a class="btn btn-primary btn-circle" href="{{ path("universe_index") }}">
-                <div class="texte">{% trans %}Gestion Univers{% endtrans %}</div>
+                <div class="texte">{% trans %}Gestion des Univers{% endtrans %}</div>
             </a>
-            <a class="btn btn-primary btn-circle" href="{{ path("excel_index") }}">
-                <div class="texte">{% trans %}Importation Excel{% endtrans %}</div>
+            <a class="btn btn-primary btn-circle" href="{{ path('medal_index') }}">
+                <div class="texte">{% trans %}Gestion des Médailles{% endtrans %}</div>
+            </a>
+            <a class="btn btn-primary btn-circle" href="{{ path('competition_index') }}">
+                <div class="texte">{% trans %}Gestion des Concours{% endtrans %}</div>
+            </a>
+        </div>
+        <h4>{% trans %}Gestion Utilisateurs et Commandes{% endtrans %}</h4>
+        <div class="text-center">
+            <a class="btn btn-primary btn-circle" href="{{ path('userconsumer_index') }}">
+                <div class="texte">{% trans %}Gestion des Utilisateurs{% endtrans %}</div>
+            </a>
+            <a class="btn btn-primary btn-circle" href="{{ path('userproducer_index') }}">
+                <div class="texte">{% trans %}Gestion des Producteurs{% endtrans %}</div>
             </a>
             <a class="btn btn-primary btn-circle" href="{{ path('validationProducer') }}">
-                <div class="texte">{% trans %}Gestion Producteurs{% endtrans %}</div>
+                <div class="texte">{% trans %}Autorisation Producteurs{% endtrans %}</div>
             </a>
-            <a class="btn btn-primary btn-circle" href="{{ path('userconsumer_index') }}">
-                <div class="texte">{% trans %}Gestion Utilisateurs{% endtrans %}</div>
+            <a class="btn btn-primary btn-circle" href="{{ path('userwholesale_index') }}">
+                <div class="texte">{% trans %}Gestion des Utilisateurs Pro{% endtrans %}</div>
+            </a>
+            <a class="btn btn-primary btn-circle" href="{{ path('conditioning_index') }}">
+                <div class="texte">{% trans %}Gestion des Conditionements{% endtrans %}</div>
             </a>
             <a class="btn btn-primary btn-circle" href="{{ path('purchase_index') }}">
-                <div class="texte">{% trans %}Gestion Commandes{% endtrans %}</div>
+                <div class="texte">{% trans %}Gestion des Commandes{% endtrans %}</div>
             </a>
+
+        </div>
+        <h4>{% trans %}Gestion de l'Espace Presse{% endtrans %}</h4>
+        <div class="text-center">
             <a class="btn btn-primary btn-circle" href="{{ path('news_index') }}">
                 <div class="texte">{% trans %}News{% endtrans %}</div>
             </a>
-            <a class="btn btn-primary btn-circle" href="{{ path('conditioning_index') }}">
-                <div class="texte">{% trans %}Gestion Conditionements{% endtrans %}</div>
-            </a>
-            <a class="btn btn-primary btn-circle" href="{{ path('competition_index') }}">
-                <div class="texte">{% trans %}Gestion Concours{% endtrans %}</div>
-            </a>
-            <a class="btn btn-primary btn-circle" href="{{ path('medal_index') }}">
-                <div class="texte">{% trans %}Gestion Médailles{% endtrans %}</div>
-            </a>
-            <a class="btn btn-primary btn-circle" href="{{ path('userproducer_index') }}">
-                <div class="texte">{% trans %}Gestion Producteurs{% endtrans %}</div>
-            </a>
-            <a class="btn btn-primary btn-circle" href="{{ path('userwholesale_index') }}">
-                <div class="texte">{% trans %}Gestion Utilisateurs Pro{% endtrans %}</div>
-            </a>
-        </div>
-        <h2>{% trans %}Gestion Presse{% endtrans %}</h2>
-        <div class="text-center">
-            <a class="btn btn-primary btn-circle" href="{{ path("validationPresse") }}">
-                <div class="texte">{% trans %}Gestion Accréditations{% endtrans %}</div>
-            </a>
             <a class="btn btn-primary btn-circle" href="{{ path("files_index") }}">
-                <div class="texte">{% trans %}Gestion Communiqués{% endtrans %}</div>
+                <div class="texte">{% trans %}Gestion des Communiqués{% endtrans %}</div>
+            </a>
+            <a class="btn btn-primary btn-circle" href="{{ path("validationPresse") }}">
+                <div class="texte">{% trans %}Gestion des Accréditations{% endtrans %}</div>
             </a>
         </div>
     </div>

@@ -19,6 +19,7 @@
     background: none;
     border: none;
     font-weight: bold;
+    font-size: 20px;
 }
 .back-button:hover {
     color: rgba(156, 127, 80, 0.78);

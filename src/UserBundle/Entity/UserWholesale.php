@@ -84,5 +84,15 @@ class UserWholesale extends BaseUser
     public function setRegisterRole(){
         $this->addRole('ROLE_WHOLESALE');
     }
+
+    /**
+     * Get discr
+     *
+     * @return string
+     */
+    public function getDiscr()
+    {
+        return 'wholesale';
+    }
 }
 

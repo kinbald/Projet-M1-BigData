@@ -47,9 +47,9 @@ Gestion des univers: Gestion des univers
 Create Universe: Ajouter un univers
 Create Purchase: Nouvelle commande
 
-Edit Wine: Edition de vin
-Edit Spirit: Edition de spiritueux
-Edit Universe: Edition d'univers
+Edit Wine: Modifier les caractéristiques d'un vin
+Edit Spirit: Modifier les caractéristiques d'un spiritueux
+Edit Universe: Modifier les caractéristiques d'un univers
 Edit Purchase: Modification de l'achat
 
 Spirit Title: Liste des spiritueux
@@ -137,6 +137,8 @@ Nom: Nom
 
 Fiche produit: Fiche produit
 
-A decanter: A decanter
+A decanter: A décanter
 Non Filtré: Non filtré
 Démarche Qualité: Démarche qualité
+
+By: Par

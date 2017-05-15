@@ -14,10 +14,12 @@ use Symfony\Component\HttpFoundation\Request;
 use UserBundle\Entity\BaseUser;
 use UserBundle\Entity\UserMedia;
 use UserBundle\Model\UserModel;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * Class DefaultController
  * @package AdminBundle\Controller
+ * @Security("has_role('ROLE_ADMIN')")
  */
 class DefaultController extends Controller
 {
