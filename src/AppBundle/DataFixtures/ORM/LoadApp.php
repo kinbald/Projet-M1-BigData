@@ -58,7 +58,7 @@ class LoadApp extends AbstractFixture implements OrderedFixtureInterface
 
         $mail = new Parameters();
         $mail->setName('mail');
-        $mail->setValue('laGrosseLeCoz@vinasse.com');
+        $mail->setValue('aaa.a@a.fr');
         $manager->persist($mail);
 
         $manager->flush();
