@@ -9,6 +9,7 @@
         <link href="{{ asset('css/theme-dark.css') }}" rel="stylesheet" />
         <link href="{{ asset('css/footer.css') }}" rel="stylesheet" />
         <link href="{{ asset('css/navbar.css') }}" rel="stylesheet" />
+        <link href="{{ asset('css/message_confirmation.css') }}" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Lemonada" rel="stylesheet">
     {% endblock %}
@@ -87,13 +88,13 @@
     </div>
 </nav>
 {% if app.session.flashBag.has('success') %}
-    <div class="alert alert-success" style="margin-top: 55px; background-color: #C6A668; color: black;">
+    <div class="alert alert-success">
         {% for msg in app.session.flashBag.get('success') %}
             {{ msg }}
         {% endfor %}
     </div>
 {% endif %}
-<span id="items-counter" class="h3 cart-items-counter" style="display: none">0</span>
+<span id="items-counter" class="h3 cart-items-counter">0</span>
 <div class="cart-widget-container">
     <div class="cart-widget text-center">
         <a class="close" id="cart-widget-close">

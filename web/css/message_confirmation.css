@@ -1,0 +1,9 @@
+.alert{
+    margin-top: 55px;
+    background-color: #C6A668;
+    color: black;
+}
+
+.items-counter{
+    display: none;
+}
