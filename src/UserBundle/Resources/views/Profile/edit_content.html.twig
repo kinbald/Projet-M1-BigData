@@ -1,9 +1,8 @@
-<!---- on enlève l'extends 'base.html.twig' car le script charge
-       une autre page dont l'extends existe déjà
------>
+{% extends 'base.html.twig' %}
 
 
 {% block stylesheets %}
+    {{ parent() }}
     <link href="{{ asset('http://www.w3schools.com/lib/w3.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/register.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/compte.css') }}" rel="stylesheet" />
@@ -13,33 +12,12 @@
 
 {% block body %}
     {% trans_default_domain 'FOSUserBundle' %}
-    {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+    {{ form_start(form, { 'attr': { 'class': 'fos_user_profile_edit' } }) }}
 
     <!-------------------Profile edit--------------------->
 
     <div id="champ_form">
         <h1>{% trans %}Profil{% endtrans %}</h1>
-
-        <div class="el-form">
-            {{ form_label(form.username) }}
-            {{ form_errors(form.username) }}
-            {{ form_widget(form.username) }}
-        </div>
-        <div class="el-form">
-            {{ form_label(form.plainPassword.first) }}
-            {{ form_errors(form.plainPassword.first) }}
-            {{ form_widget(form.plainPassword.first) }}
-        </div>
-        <div class="el-form">
-            {{ form_label(form.plainPassword.second) }}
-            {{ form_errors(form.plainPassword.second) }}
-            {{ form_widget(form.plainPassword.second) }}
-        </div>
-        <div class="el-form">
-            {{ form_label(form.email) }}
-            {{ form_errors(form.email) }}
-            {{ form_widget(form.email) }}
-        </div>
         <div class="el-form">
             {{ form_label(form.lastname) }}
             {{ form_errors(form.lastname) }}
@@ -139,34 +117,42 @@
             </div>
         {% endif %}
 
-        {{ form_end(form) }}
+
 
         <div class="edit-submit">
             <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
         </div>
 
+    {{ form_end(form) }}
+
     </div>
 
 
-    <script>
-        function openLink(evt, animName) {
-            var i, x, tablinks;
-            x = document.getElementsByClassName("city");
-            for (i = 0; i < x.length; i++) {
-                x[i].style.display = "none";
-            }
-            tablinks = document.getElementsByClassName("tablink");
-            for (i = 0; i < x.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
-            }
-            document.getElementById(animName).style.display = "block";
-            evt.currentTarget.className += " w3-red";
-        }
-        openLink(null, 'Profile1');
 
-    </script>
+
+
+
 
 
 
 {% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        function openLink(evt, animName) {
+        var i, x, tablinks;
+        x = document.getElementsByClassName("city");
+        for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablink");
+        for (i = 0; i < x.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+        }
+        document.getElementById(animName).style.display = "block";
+        evt.currentTarget.className += " w3-red";
+        }
+        openLink(null, 'Profile1');
+    </script>
+{% endblock %}

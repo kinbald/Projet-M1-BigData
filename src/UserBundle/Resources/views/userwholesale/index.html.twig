@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Userwholesales list</h1>
+    <h1>{% trans %}Userwholesales list{% endtrans %}</h1>
 
     <table>
         <thead>
         <tr>
             <th>Id</th>
-            <th>Companyname</th>
+            <th>{% trans %}Companyname{% endtrans %}</th>
             <th>Actions</th>
         </tr>
         </thead>
@@ -20,10 +20,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('userwholesale_show', { 'id': userWholesale.id }) }}">show</a>
+                            <a href="{{ path('userwholesale_show', { 'id': userWholesale.id }) }}">{% trans %}Show{% endtrans %}</a>
                         </li>
                         <li>
-                            <a href="{{ path('userwholesale_edit', { 'id': userWholesale.id }) }}">edit</a>
+                            <a href="{{ path('userwholesale_edit', { 'id': userWholesale.id }) }}">{% trans %}Edit{% endtrans %}</a>
                         </li>
                     </ul>
                 </td>
@@ -34,7 +34,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('userwholesale_new') }}">Create a new userWholesale</a>
+            <a href="{{ path('userwholesale_new') }}">{% trans %}Create a new userWholesale{% endtrans %}</a>
         </li>
     </ul>
 {% endblock %}

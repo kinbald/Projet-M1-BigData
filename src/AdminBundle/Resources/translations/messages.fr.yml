@@ -3,17 +3,17 @@ Utilisez cette page pour importer un fichier excel correctement formaté et l'ut
 Envoyer: Envoyer
 Open iframe: Ouvrir le gestionnaire de fichiers
 Gestion BDD: Gestion BDD
-Gestion Vin: Gestion Vin
-Gestion Spiritueux: Gestion Spiritueux
-Gestion Univers: Gestion Univers
+Gestion des Vins: Gestion des Vins
+Gestion des Spiritueux: Gestion des Spiritueux
+Gestion des Univers: Gestion des Univers
 Importation Excel: Importation Excel
 Gestion Producteurs: Gestion Producteurs
 Gestion Utilisateurs: Gestion Utilisateurs
 Gestion Commandes: Gestion Commandes
 News: Actualités
-Gestion Presse: Gestion Presse
-Gestion Accréditations: Gestion Accréditations
-Gestion Communiqués: Gestion Communiqués
+Gestion de l'Espace Presse: Gestion de l'Espace Presse
+Gestion des Accréditations: Gestion des Accréditations
+Gestion des Communiqués: Gestion des Communiqués
 Gestion des droits d'accès à l'espace Presse: Gestion des droits d'accès à l'espace Presse
 Nom journaliste: Nom journaliste
 Justificatif (carte presse): Justificatif (carte presse)
@@ -26,6 +26,10 @@ Adresse: Adresse
 Ville: Ville
 Code Postal: Code Postal
 Autorisation de connexion: Autorisation de connexion
-Gestion Conditionements: Gestion Conditionements
-Gestion Concours: Gestion Concours
-Gestion Médailles: Gestion Médailles
+Gestion des Conditionements: Gestion des Conditionements
+Gestion des Concours: Gestion des Concours
+Gestion des Médailles: Gestion des Médailles
+Portail d'administration : Portail d'administration
+Gestion du site : Gestion du site
+Gestion Utilisateurs et Commandes  : Gestion Utilisateurs et Commandes
+Gestion des Utilisateurs Pro : Gestion des Utilisateurs Pro

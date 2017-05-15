@@ -3,8 +3,7 @@
 {% block stylesheets %}
     {{ parent() }}
     <link href="{{ asset('css/theme-product.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/media.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/table-template.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/register.css') }}" rel="stylesheet" />
 {% endblock %}
 
 {% block javascripts %}
@@ -13,11 +12,97 @@
 
 {% block body %}
 
-<div class="product-content">
-    {{ form_start(form) }}
-    <div>
-        <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
-    </div>
-    {{ form_end(form) }}
-</div>
+<table class="presentation-table">
+{{ form_start(form) }}
+    <tr>
+        <div>
+            <td class="attribute">
+                {{ form_label(form.name) }}
+            </td>
+            <td class="att-value">
+                {{ form_widget(form.name) }}
+            </td>
+                <span class="form_error">{{ form_errors(form.name) }}</span>
+        </div>
+    </tr>
+    <tr>
+        <div>
+            <td class="attribute">
+                {{ form_label(form.pubPrice) }}
+            </td>
+            <td class="att-value">
+                {{ form_widget(form.pubPrice) }}
+            </td>
+                <span class="form_error">{{ form_errors(form.pubPrice) }}</span>
+        </div>
+    </tr>
+    <tr>
+        <div>
+            <td class="attribute">
+                {{ form_label(form.proPrice) }}
+            </td>
+            <td class="att-value">
+                {{ form_widget(form.proPrice) }}
+            </td>
+                <span class="form_error">{{ form_errors(form.proPrice) }}</span>
+        </div>
+    </tr>
+    <tr>
+        <div>
+            <td class="attribute">
+                {{ form_label(form.volumeValue) }}
+            </td>
+            <td class="att-value">
+                {{ form_widget(form.volumeValue) }}
+            </td>
+                <span class="form_error">{{ form_errors(form.volumeValue) }}</span>
+        </div>
+    </tr>
+    <tr>
+        <div>
+            <td class="attribute">
+                {{ form_label(form.volumeUnit) }}
+            </td>
+            <td class="att-value">
+                {{ form_widget(form.volumeUnit) }}
+            </td>
+                <span class="form_error">{{ form_errors(form.volumeUnit) }}</span>
+        </div>
+    </tr>
+    <tr>
+        <div>
+            <td class="attribute">
+                {{ form_label(form.stock) }}
+            </td>
+            <td class="att-value">
+                {{ form_widget(form.stock) }}
+            </td>
+                <span class="form_error">{{ form_errors(form.stock) }}</span>
+        </div>
+    </tr>
+    <tr>
+        <div>
+            <td class="attribute">
+                {{ form_label(form.pack) }}
+            </td>
+            <td class="att-value">
+                {{ form_widget(form.pack) }}
+            </td>
+                <span class="form_error">{{ form_errors(form.pack) }}</span>
+        </div>
+    </tr>
+    <tr>
+        <div>
+            <td class="attribute">
+                {{ form_label(form.deliveries) }}
+            </td>
+            <td class="att-value">
+                {{ form_widget(form.deliveries) }}
+            </td>
+                <span class="form_error">{{ form_errors(form.deliveries) }}</span>
+        </div>
+    </tr>
+</table>
+<input class="btn btn-primary btn-circle" type="submit" value="{% trans %}Submit{% endtrans %}" />
+{{ form_end(form) }}
 {% endblock %}
