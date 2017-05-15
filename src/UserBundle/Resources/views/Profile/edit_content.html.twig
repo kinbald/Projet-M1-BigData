@@ -126,19 +126,18 @@
     </div>
 
 <!-------------------Password edit--------------------->
-
-<div class="champ_form">
-    <h1>{% trans %}Change Password{% endtrans %}</h1>
+<div id="content">
+    <h1 class="espace_br">{% trans %}Change Password{% endtrans %}</h1>
     {{ form_start(formPW) }}
     {{ form_widget(formPW) }}
-    <div class="edit-submit">
-        <input type="submit" value="{{ 'change_password.submit'|trans }}" />
+
+    <div class="espace_br">
+        <div class="edit-submit">
+            <input type="submit" value="{{ 'change_password.submit'|trans }}" />
+        </div>
     </div>
     {{ form_end(formPW) }}
 </div>
-
-
-    </div>
 
 
 
