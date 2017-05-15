@@ -45,5 +45,53 @@
                 </td>
                 {{ form_end(delete_form) }}
             </table>
+        <hr/>
+        <h3 class="section-heading">{% trans %}Purchases{% endtrans %}</h3>
+        <div class="table-responsive table-template">
+        <table class="table table-hover">
+            <thead class="thead-default">
+            <tr class="color-title">
+                <th>ID</th>
+                <th>{% trans %}Date{% endtrans %}</th>
+                <th>{% trans %}Price{% endtrans %}</th>
+                <th>{% trans %}Products{% endtrans %}</th>
+                <th>{% trans %}Status{% endtrans %}</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for purchase in userConsumer.purchases %}
+                <tr>
+                    <td>{{ purchase.id }}</td>
+                    <td>{{ purchase.dateOrder|date('d/m/Y') }}</td>
+                    <td>{{ purchase.total|number_format(2,'.',',') }} €</td>
+                    <td>{{ purchase.NbArticles }}</td>
+                    <td>
+                        {% if purchase.done %}
+                        {% trans %}Done{% endtrans %}
+                        {% elseif purchase.paid %}
+                        {% trans %}Paid{% endtrans %}
+                        {% else %}
+                        {% trans %}Waiting{% endtrans %}
+                        {% endif %}
+                    </td>
+                    <td><a href="{{ path('purchase_show', {'id': purchase.id}) }}">{% trans %}Show{% endtrans %}</a></td>
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        </div>
+        <table class="centrer-bouton">
+
+            <td>
+                <a class="btn btn-primary btn-circle" href="{{ path('userconsumer_index') }}">{% trans %}Back to the list{% endtrans %}</a>
+            </td>
+
+
+
+        </table>
+
+
     </div>
 {% endblock %}
