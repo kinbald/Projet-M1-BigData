@@ -126,10 +126,12 @@
         <h3>{% trans %}Factures & Paiements{% endtrans %}</h3>
         <div>
             <div class="text-center content">
-                {% for purchase in purchases %}
-                    <a class="btn btn-primary btn-circle" href="{{ path("profil_products", {'id': purchase.id }) }}">
-                        <div id="texte1" class="texte">{% trans %}Commande{% endtrans %} n° {{ purchase.id }} - {{ purchase.getdateOrder|date('d-m-y') }} </div>
-                    </a>
+                {% for purchase in user.purchases %}
+                    {% if purchase.paid %}
+                        <a class="btn btn-primary btn-circle" href="{{ path("profil_products", {'id': purchase.id }) }}">
+                            <div id="texte1" class="texte">{% trans %}Commande{% endtrans %} n° {{ purchase.id }} - {{ purchase.getdateOrder|date('d-m-y') }} </div>
+                        </a>
+                    {% endif %}
                 {% endfor %}
             </div>
         </div>
