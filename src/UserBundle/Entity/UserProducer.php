@@ -507,6 +507,17 @@ class UserProducer extends BaseUser
         return $this->phone;
     }
 
+    public function setBillingEmail($billing)
+    {
+        $this->$this->setBilling($billing);
+        return $this;
+    }
+
+    public function getBillingEmail()
+    {
+        return $this->getBilling();
+    }
+
     /**
      * Set billingEmail
      *

@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Userproducers list</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Siret</th>
+            <th>Billingemail</th>
+            <th>Website</th>
+            <th>Facebook</th>
+            <th>Twitter</th>
+            <th>Companyname</th>
+            <th>Businessname</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>Country</th>
+            <th>Postalcode</th>
+            <th>State</th>
+            <th>Province</th>
+            <th>Phone</th>
+            <th>Fax</th>
+            <th>Tvaic</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for userProducer in userProducers %}
+            <tr>
+                <td><a href="{{ path('userproducer_show', { 'id': userProducer.id }) }}">{{ userProducer.id }}</a></td>
+                <td>{{ userProducer.siret }}</td>
+                <td>{{ userProducer.billingEmail }}</td>
+                <td>{{ userProducer.website }}</td>
+                <td>{{ userProducer.facebook }}</td>
+                <td>{{ userProducer.twitter }}</td>
+                <td>{{ userProducer.companyName }}</td>
+                <td>{{ userProducer.businessName }}</td>
+                <td>{{ userProducer.address }}</td>
+                <td>{{ userProducer.city }}</td>
+                <td>{{ userProducer.country }}</td>
+                <td>{{ userProducer.postalCode }}</td>
+                <td>{{ userProducer.state }}</td>
+                <td>{{ userProducer.province }}</td>
+                <td>{{ userProducer.phone }}</td>
+                <td>{{ userProducer.fax }}</td>
+                <td>{{ userProducer.tvaIC }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('userproducer_show', { 'id': userProducer.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('userproducer_edit', { 'id': userProducer.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('userproducer_new') }}">Create a new userProducer</a>
+        </li>
+    </ul>
+{% endblock %}
