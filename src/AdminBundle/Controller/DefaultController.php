@@ -130,12 +130,5 @@ class DefaultController extends Controller
         return $this->render('AdminBundle:Default:importationPresse.html.twig');
     }
 
-    /**
-     * @Route("/importationDb", name="importationDb")
-     */
-    public function importationDbAction()
-    {
-        return $this->render('AdminBundle:Default:importationDb.html.twig');
-    }
 
 }

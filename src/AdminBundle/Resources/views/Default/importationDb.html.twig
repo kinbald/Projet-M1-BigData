@@ -19,11 +19,16 @@
                 <p>{% trans %}Utilisez cette page pour importer un fichier excel correctement formaté et l'utiliser pour actualiser les données du site.{% endtrans %}</p>
                 <br>
                 <a id="button" href="{{ asset('uploader/fancybox.php') }}?iframe">{% trans %}Open iframe{% endtrans %}:   </a>
-                <input type="text" id="chemin"><br><br>
 
-                <a class="btn btn-primary">
-                    <div class="texte">{% trans %}Envoyer{% endtrans %}</div>
-                </a>
+                {{ form_start(excel_form) }}
+                {{ form_widget(excel_form.excel, { 'id': 'chemin'}) }}
+
+
+                <div class="bouton1">
+                    {{ form_widget(excel_form.submit) }}
+                </div>
+                {{ form_end(excel_form) }}
+
             </div>
         </div>
     </div>

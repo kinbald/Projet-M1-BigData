@@ -1,18 +1,35 @@
-{% extends "base.html.twig" %}
+{% extends 'baseadmin.html.twig' %}
 
 {% block stylesheets %}
     {{ parent() }}
-    <link href="{{ asset('css/theme-product.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/admin.css') }}" rel="stylesheet"/>
 {% endblock %}
-
 {% block javascripts %}
     {{ parent() }}
     <script src="{{ asset('js/item.js') }}"></script>
 {% endblock %}
 
 {% block body %}
-{{ dump(test) }}
-    <h1>{% trans %}Produits à insérer{% endtrans %}</h1>
+
+    <div class="text-center content">
+
+
+
+    {% if Error is defined %}
+        <h1>Erreur</h1>
+        <img class="style_logo" src="{{ asset('img/error_excel.png') }}" alt="logo" height=100>
+        <br />
+
+        <p>{{ Error }}</p>
+        <a class="btn btn-primary btn-circle" href="{{ path("excel_index") }}">
+            <div class="texte">{% trans %}Retour{% endtrans %}</div>
+        </a>
+
+
+
+
+    {% else %}
+        <h1>Produits à insérer</h1>
     <table>
         {% for product in products %}
             <tr>
@@ -70,4 +87,7 @@
         {% endfor %}
     </table>
 
+    {% endif %}
+
+    </div>
 {% endblock %}
