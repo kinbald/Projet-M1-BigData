@@ -22,20 +22,10 @@
         <tr class="color-title">
             <th>Id</th>
             <th>Siret</th>
-            <th>{% trans %}Billingemail{% endtrans %}</th>
-            <th>{% trans %}Website{% endtrans %}</th>
-            <th>Facebook</th>
-            <th>Twitter</th>
             <th>{% trans %}Companyname{% endtrans %}</th>
-            <th>{% trans %}Businessname{% endtrans %}</th>
-            <th>{% trans %}Address{% endtrans %}</th>
             <th>{% trans %}City{% endtrans %}</th>
             <th>{% trans %}Country{% endtrans %}</th>
-            <th>{% trans %}Postal code{% endtrans %}</th>
-            <th>{% trans %}State{% endtrans %}</th>
             <th>{% trans %}Phone{% endtrans %}</th>
-            <th>Fax</th>
-            <th>{% trans %}Tvaic{% endtrans %}</th>
             <th>Actions</th>
         </tr>
         </thead>
@@ -44,20 +34,10 @@
             <tr>
                 <td><a href="{{ path('userproducer_show', { 'id': userProducer.id }) }}">{{ userProducer.id }}</a></td>
                 <td>{{ userProducer.siret }}</td>
-                <td>{{ userProducer.billingEmail }}</td>
-                <td>{{ userProducer.website }}</td>
-                <td>{{ userProducer.facebook }}</td>
-                <td>{{ userProducer.twitter }}</td>
                 <td>{{ userProducer.companyName }}</td>
-                <td>{{ userProducer.businessName }}</td>
-                <td>{{ userProducer.address }}</td>
                 <td>{{ userProducer.city }}</td>
                 <td>{{ userProducer.country }}</td>
-                <td>{{ userProducer.postalCode }}</td>
-                <td>{{ userProducer.state }}</td>
                 <td>{{ userProducer.phone }}</td>
-                <td>{{ userProducer.fax }}</td>
-                <td>{{ userProducer.tvaIC }}</td>
                 <td>
                     <ul>
                         <li>
