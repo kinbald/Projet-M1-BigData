@@ -5,7 +5,7 @@
 {% endblock %}
 <div class="espace"></div>
 <div id="content">
-    <h1>Réinitialiser votre mot de passe</h1>
+    <h1>{% trans %}Réinitialiser votre mot de passe{% endtrans %}</h1>
     <form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
         <div class="mini-espace">
             <label for="username">{{ 'resetting.request.username'|trans }}</label>
