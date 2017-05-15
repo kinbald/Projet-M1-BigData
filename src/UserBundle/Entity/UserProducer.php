@@ -688,4 +688,14 @@ class UserProducer extends BaseUser
         return ($this->companyName == null) ? $this->businessName : $this->companyName;
     }
 
+    /**
+     * Get discr
+     *
+     * @return string
+     */
+    public function getDiscr()
+    {
+        return 'producer';
+    }
+
 }
