@@ -17,11 +17,9 @@
     {{ form_start(form, { 'attr': { 'class': 'fos_user_profile_edit' } }) }}
 
 
-
+    <!-------------------Profile edit--------------------->
     <div id="content">
         <h1 class="espace_br">{% trans %}Profil{% endtrans %}</h1>
-
-        <!-------------------Profile edit--------------------->
 
         <div class="el-form">
             {{ form_label(form.lastname) }}
@@ -123,8 +121,21 @@
                 <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
             </div>
         </div>
+    {{ form_end(form) }}
 
-        {{ form_end(form) }}
+    </div>
+
+<!-------------------Password edit--------------------->
+
+<div class="champ_form">
+    <h1>{% trans %}Change Password{% endtrans %}</h1>
+    {{ form_start(formPW) }}
+    {{ form_widget(formPW) }}
+    <div class="edit-submit">
+        <input type="submit" value="{{ 'change_password.submit'|trans }}" />
+    </div>
+    {{ form_end(formPW) }}
+</div>
 
 
     </div>
