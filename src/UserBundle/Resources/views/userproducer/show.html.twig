@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Userproducer</h1>
+
+    <table>
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ userProducer.id }}</td>
+        </tr>
+        <tr>
+            <th>Siret</th>
+            <td>{{ userProducer.siret }}</td>
+        </tr>
+        <tr>
+            <th>Billingemail</th>
+            <td>{{ userProducer.billingEmail }}</td>
+        </tr>
+        <tr>
+            <th>Website</th>
+            <td>{{ userProducer.website }}</td>
+        </tr>
+        <tr>
+            <th>Facebook</th>
+            <td>{{ userProducer.facebook }}</td>
+        </tr>
+        <tr>
+            <th>Twitter</th>
+            <td>{{ userProducer.twitter }}</td>
+        </tr>
+        <tr>
+            <th>Companyname</th>
+            <td>{{ userProducer.companyName }}</td>
+        </tr>
+        <tr>
+            <th>Businessname</th>
+            <td>{{ userProducer.businessName }}</td>
+        </tr>
+        <tr>
+            <th>Address</th>
+            <td>{{ userProducer.address }}</td>
+        </tr>
+        <tr>
+            <th>City</th>
+            <td>{{ userProducer.city }}</td>
+        </tr>
+        <tr>
+            <th>Country</th>
+            <td>{{ userProducer.country }}</td>
+        </tr>
+        <tr>
+            <th>Postalcode</th>
+            <td>{{ userProducer.postalCode }}</td>
+        </tr>
+        <tr>
+            <th>State</th>
+            <td>{{ userProducer.state }}</td>
+        </tr>
+        <tr>
+            <th>Province</th>
+            <td>{{ userProducer.province }}</td>
+        </tr>
+        <tr>
+            <th>Phone</th>
+            <td>{{ userProducer.phone }}</td>
+        </tr>
+        <tr>
+            <th>Fax</th>
+            <td>{{ userProducer.fax }}</td>
+        </tr>
+        <tr>
+            <th>Tvaic</th>
+            <td>{{ userProducer.tvaIC }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('userproducer_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('userproducer_edit', { 'id': userProducer.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+            <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

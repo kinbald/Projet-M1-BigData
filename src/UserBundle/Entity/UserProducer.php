@@ -507,6 +507,17 @@ class UserProducer extends BaseUser
         return $this->phone;
     }
 
+    public function setBillingEmail($billing)
+    {
+        $this->$this->setBilling($billing);
+        return $this;
+    }
+
+    public function getBillingEmail()
+    {
+        return $this->getBilling();
+    }
+
     /**
      * Set billingEmail
      *
@@ -675,6 +686,16 @@ class UserProducer extends BaseUser
     public function getDisplayName()
     {
         return ($this->companyName == null) ? $this->businessName : $this->companyName;
+    }
+
+    /**
+     * Get discr
+     *
+     * @return string
+     */
+    public function getDiscr()
+    {
+        return 'producer';
     }
 
 }
