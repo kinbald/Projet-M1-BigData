@@ -22,7 +22,7 @@
                     <td id="champ">{% if purchase.done %}Yes{% else %}No{% endif %}</td>
                 </tr>
                 <tr>
-                    <th width="100px">By</th>
+                    <th width="100px">{% trans %}By{% endtrans %}</th>
                     <td id="champ"><a href="{{ path('userconsumer_show', {id:base_user.id}) }}"><i>{{ base_user.username }}</i></a></td>
                 </tr>
                 <tr>
