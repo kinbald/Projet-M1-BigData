@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use UserBundle\Entity\Newsletter;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * News controller.
@@ -22,6 +23,7 @@ class NewsController extends Controller
      *
      * @Route("/", name="news_index")
      * @Method("GET")
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function indexAction()
     {
@@ -39,6 +41,7 @@ class NewsController extends Controller
      *
      * @Route("/new", name="news_new")
      * @Method({"GET", "POST"})
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function newAction(Request $request)
     {
@@ -68,6 +71,7 @@ class NewsController extends Controller
      *         "id": "\d+",
      *     })
      * @Method("GET")
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function showAction(News $news)
     {
@@ -87,6 +91,7 @@ class NewsController extends Controller
      *         "id": "\d+",
      *     })
      * @Method({"GET", "POST"})
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function editAction(Request $request, News $news)
     {
@@ -115,6 +120,7 @@ class NewsController extends Controller
      *         "id": "\d+",
      *     })
      * @Method("DELETE")
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function deleteAction(Request $request, News $news)
     {
@@ -160,6 +166,7 @@ class NewsController extends Controller
     /**
      * @Route("/newsRegistration", name="news_letter_registration")
      * @Method({"POST"})
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function newsRegistrationAction(Request $request)
     {
