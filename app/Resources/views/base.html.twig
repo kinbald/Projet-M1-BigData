@@ -49,12 +49,8 @@
         </div>
             <div class="navbar-collapse collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-<<<<<<< Updated upstream
-                    <li><a href="{{ path("homepage") }}">Accueil</a></li>
-                    <li><a href="{{ path("news_public") }}">News</a></li>
-=======
                     <li><a href="{{ path("homepage") }}">{% trans %}Accueil{% endtrans %}</a></li>
->>>>>>> Stashed changes
+                    <li><a href="{{ path("news_public") }}">News</a></li>
                     {% if is_granted('ROLE_CONSUMER') %}
                         <li><a href="{{ path("profil") }}">{% trans %}Compte{% endtrans %}</a></li>
                         <li><a href="{{ path("contact") }}">{% trans %}Nous Contacter{% endtrans %}</a></li>
