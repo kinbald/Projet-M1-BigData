@@ -3,17 +3,17 @@ Utilisez cette page pour importer un fichier excel correctement formaté et l'ut
 Envoyer: Send
 Open iframe: Open file explorer and uploader
 Gestion BDD: Database management
-Gestion Vin: Wine management
-Gestion Spiritueux: Spirituous management
-Gestion Univers: Universe management
+Gestion des Vins: Wine management
+Gestion des Spiritueux: Spirituous management
+Gestion des Univers: Universe management
 Importation Excel: Excel importation
-Gestion Producteurs: Producers management
-Gestion Utilisateurs: User management
-Gestion Commandes: Order management
+Gestion des Producteurs: Producers management
+Gestion des Utilisateurs: User management
+Gestion des Commandes: Order management
 News: News
-Gestion Presse: Press management
-Gestion Accréditations: Accreditation management
-Gestion Communiqués: Press release management
+Gestion de l'Espace Presse: Press management
+Gestion des Accréditations: Accreditation management
+Gestion des Communiqués: Press release management
 Gestion des droits d'accès à l'espace Presse: Permission to access press area management
 Nom journaliste: Name of journalist
 Justificatif (carte presse): Proof (press card)
@@ -26,6 +26,10 @@ Adresse: Address
 Ville: City
 Code Postal: Postal code
 Autorisation de connexion: Connection Authorization
-Gestion Conditionements: Conditioning management
-Gestion Concours: Contest management
-Gestion Médailles: Medals management
+Gestion des Conditionements: Conditioning management
+Gestion des Concours: Contest management
+Gestion des Médailles: Medals management
+Portail d'administration : Management portal
+Gestion du site : Web site administration
+Gestion Utilisateurs et Commandes: User and order
+Gestion des Utilisateurs Pro : Professional User Management
