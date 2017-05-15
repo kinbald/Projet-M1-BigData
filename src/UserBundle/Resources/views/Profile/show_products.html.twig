@@ -35,9 +35,9 @@
                     <tr>
                         <tr>
                             <td>{{ purchase.id }}</td>
-                            <td>{{ purchase.getAmount }} €</td>
-                            <td>{{ purchase.getNbArticles }}</td>
-                            <td>{{ purchase.getdateOrder|date('d-m-y') }}</td>
+                            <td>{{ purchase.total }} €</td>
+                            <td>{{ purchase.nbArticles }}</td>
+                            <td>{{ purchase.dateOrder|date('d-m-Y') }}</td>
                         </tr>
                     </tr>
                 </tbody>
@@ -48,8 +48,8 @@
                 {% set conditioning, product = productPurchase.conditioningType, productPurchase.conditioningType.product %}
                 <div>
                     <p><b>{% trans %}Nom{% endtrans %}:</b> <a href="{{ path('product_show', {id:product.id}) }}">{{ product.name }} - {{ conditioning.name }}</a></p>
-                    <p><b>{% trans %}Volume{% endtrans %}:</b> {{ product.volume }}</p>
-                    <p><b>{% trans %}Prix Unitaire{% endtrans %}:</b> {{ conditioning.price }}</p>
+                    <p><b>{% trans %}Volume{% endtrans %}:</b> {{ product.volume }} L</p>
+                    <p><b>{% trans %}Prix Unitaire{% endtrans %}:</b> {{ conditioning.price }} €</p>
                     <p><b>{% trans %}Stock{% endtrans %}:</b> {{ conditioning.stock }}</p>
                 </div>
             {% endfor %}

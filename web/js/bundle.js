@@ -5227,10 +5227,10 @@ if (function (e, t) {
             $("#amount").val(total.toFixed(2));
 
 
-            var id = this.getAttribute("data-id");
+            var conditioningTypeId = this.getAttribute("data-conditioning-type-id");
             var value = this.value;
             panier.forEach(function (element) {
-                if(element.id == id){
+                if(element.conditioningTypeId == conditioningTypeId){
                     var diff = element.quantity - value;
                     element.quantity = value;
                     removeCost(diff*element.prix);
