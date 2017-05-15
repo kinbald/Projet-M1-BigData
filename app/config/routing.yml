@@ -1,3 +1,11 @@
+user_user_producer:
+    resource: "@UserBundle/Controller/UserProducerController.php"
+    type:     annotation
+
+user_user_wholesale:
+    resource: "@UserBundle/Controller/UserWholesaleController.php"
+    type:     annotation
+
 concours:
     resource: "@ConcoursBundle/Controller/"
     type:     annotation
