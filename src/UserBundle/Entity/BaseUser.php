@@ -87,6 +87,13 @@ abstract class BaseUser extends FosUser
 
 
     /**
+     * Get discr
+     *
+     * @return string
+     */
+    abstract public function getDiscr();
+
+    /**
      * Get id
      *
      * @return int

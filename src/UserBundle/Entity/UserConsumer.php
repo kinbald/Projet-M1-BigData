@@ -230,4 +230,14 @@ class UserConsumer extends BaseUser
     {
         return $this->addresses;
     }
+
+    /**
+     * Get discr
+     *
+     * @return string
+     */
+    public function getDiscr()
+    {
+        return 'consumer';
+    }
 }
