@@ -1,4 +1,4 @@
 services:
-#    admin.example:
-#        class: AdminBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    admin.excel:
+        class: AdminBundle\Service\Excel
+        arguments: [ '@router', '%kernel.environment%', '@doctrine.orm.entity_manager' ]
