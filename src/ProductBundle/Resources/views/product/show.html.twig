@@ -47,26 +47,8 @@
 
 {% block body %}
     <div class="product-content">
-        <!--Slider-->
         <div class="section-slide">
-            <button class="back-button wow fadeInRight" onClick="window.history.back()">❮ {% trans %}Back to selection{% endtrans %}</button>
-            <!--
-            <div class="slideshow-container">
-                {% for product_picture in product.pictures %}
-                    <div class="mySlides">
-                        <img class="photo" src="{{ asset(product_picture.url) }}" alt="{{ product_picture.alt }}"/>
-                    </div>
-                {% endfor %}
-                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                <a class="next" onclick="plusSlides(1)">&#10095;</a>
-            </div>
-            <br>
-            <div style="text-align:center">
-                {% for product_picture in product.pictures %}
-                    <span class="dot" onclick="currentSlide({{ product_picture.id }})"></span>
-                {% endfor %}
-            </div>
-        </td>-->
+            <a id="backpage" class="back-button wow fadeInRight">❮ {% trans %}Retour{% endtrans %}</a>
             <div id="myCarousel" class="carousel mycarousel slide" data-ride="carousel">
                 <!-- Indicators -->
                 <ol class="carousel-indicators mycarousel-indicators">

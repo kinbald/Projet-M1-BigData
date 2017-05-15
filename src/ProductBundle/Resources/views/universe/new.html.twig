@@ -33,8 +33,7 @@
 
     <div class="contour">
         <div id="content">
-            <h1>{% trans %}Create Universe{% endtrans %}</h1>
-            <br><br>
+            <h1 class="espace_br">{% trans %}Create Universe{% endtrans %}</h1>
             {{ form_start(form) }}
             {{ form_widget(form) }}
             <a  id="button" class="clic" href="{{ asset('uploader/fancybox.php') }}?iframe">{% trans %}Load a picture{% endtrans %}</a>
@@ -54,7 +53,5 @@
         </div>
 
     </div>
-
-    <div class="espace-bas"></div>
 
 {% endblock %}

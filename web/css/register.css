@@ -157,3 +157,11 @@ input, select, textarea{
 #fos_user_registration_form_birthDate_year, #fos_user_registration_form_birthDate_month {
     width: 80px !important;
 }
+
+.espace {
+    margin-top:100px;
+}
+
+.mini-espace {
+    margin-top:50px;
+}

@@ -214,3 +214,11 @@ body{
         font-size: 30px;
     }
 }
+
+#mdp {
+    color: #555555;
+}
+
+#mdp:hover{
+    color: #c6a668;
+}

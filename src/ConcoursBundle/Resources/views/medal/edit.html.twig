@@ -8,15 +8,20 @@
 {% endblock %}
 
 {% block body %}
-    <div class="contour">
-        <h2>{% trans %}Medal edit{% endtrans %}</h2>
 
-        {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
+    <div class="contour">
+        <div id="content">
+            <h1 class="espace_br">{% trans %}Medal edit{% endtrans %}</h1>
+
+            {{ form_start(edit_form) }}
+            {{ form_widget(edit_form) }}
+        </div>
     </div>
+
     <div class="center">
         <input class="btn btn-circle btn-primary col-md-4" type="submit" value="{% trans %}Edit{% endtrans %}"/>
         {{ form_end(edit_form) }}
+
         <ul>
             <li>
                 <a class="btn btn-circle  btn-primary col-md-4" href="{{ path('medal_index') }}">{% trans %}Back to the list{% endtrans %}</a>

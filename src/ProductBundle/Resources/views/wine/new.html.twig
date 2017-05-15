@@ -14,11 +14,10 @@
 
 {% block body %}
 
-<div class="contour">
-    <div id="content">
+    <div class="contour">
+        <div id="content">
 
-            <h1>{% trans %}Create Wine{% endtrans %}</h1>
-            <br><br>
+            <h1 class="espace_br">{% trans %}Create Wine{% endtrans %}</h1>
             {{ form_start(form) }}
             {{ form_widget(form) }}
 
@@ -39,9 +38,6 @@
         <div class="bouton1">
             <a class="btn btn-primary btn-circle" href="{{ path('product_list', {type: 'wine'}) }}">{% trans %}Back to the list{% endtrans %}</a>
         </div>
-
     </div>
 
-
-    <div class="espace-bas"></div>
 {% endblock %}
