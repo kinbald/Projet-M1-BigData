@@ -247,12 +247,12 @@ class Excel
                     $product = $this->em->getRepository("ProductBundle:Product")->findOneByName($medal[$keyMedal][0]); //On récupére le produit associé à la médaille
                     $universe = $this->em->getRepository("ProductBundle:Universe")->findOneById($medal[$keyMedal][2]); //On récupère l'univers associé à la médaille et au produit
                     if ($universe == NULL) {
-                        throw new Exception('Pas de compétition associée à la médaille');
+                        throw new Exception('Pas de compétition associée à la médaille'); // throw new Exception('Erreur colonne code Univers : Un produit est déjà associé à un univers');
                     }
                     else {
                         $product->addUniverse($universe); //On associe le produit a l'univers
                         $this->em->persist($product);
-                        //throw new Exception('Erreur colonne code Univers : Un produit est déjà associé à un univers');
+
                     }
                     $competitionProduct->setProduct($product); // On associe le produit à la médaille
                     $this->em->persist($competitionProduct);
@@ -513,7 +513,7 @@ class Excel
         }
         catch (\Exception $e) {
             $this->em->getConnection()->rollBack();
-            $errors = $e;  //$e->getMessage();
+            $errors = $e; //$e->getMessage();
             return array('Error' => $errors);
         }
 
@@ -532,7 +532,6 @@ class Excel
 
 
     }
-
 
 
 
