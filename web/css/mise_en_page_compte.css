@@ -75,3 +75,7 @@ h1{
 #fos_user_change_password_current_password, #fos_user_change_password_plainPassword_first{
     margin-bottom: 20px;
 }
+
+#userbundle_userconsumer_birthDate_day, #userbundle_userconsumer_birthDate_month, #userbundle_userconsumer_birthDate_year{
+    width: 10% !important;
+}

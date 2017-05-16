@@ -3,6 +3,9 @@
 {% block stylesheets %}
     {{ parent() }}
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('css/index.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('css/excel.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('css/table-template.css') }}" rel="stylesheet"/>
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
@@ -11,86 +14,149 @@
 
 {% block body %}
 
+
+
+
     <div class="text-center content">
 
+        {% if Error is defined %}
 
 
-    {% if Error is defined %}
-        <h1>Erreur</h1>
-        <img class="style_logo" src="{{ asset('img/error_excel.png') }}" alt="logo" height=100>
-        <br />
+            <div class="container overflow-hidden">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="section-heading">Erreur</h1>
+                        <img class="style_logo" src="{{ asset('img/error_excel.png') }}" alt="logo" height=100>
+                        <ul class="espace_br">
+                            <li>
+                                <a class="btn btn-primary btn-circle" href="{{ path('excel_index') }}">{% trans %}Retour{% endtrans %}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
-        <p>{{ Error }}</p>
-        <a class="btn btn-primary btn-circle" href="{{ path("excel_index") }}">
-            <div class="texte">{% trans %}Retour{% endtrans %}</div>
-        </a>
+
+        {% else %}
+            <div class="container overflow-hidden">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>Importation réussie</h1>
+                        <img class="style_logo" src="{{ asset('img/ok_excel.png') }}" alt="logo" height=100>
+                    </div>
+                </div>
+            </div>
 
 
 
 
-    {% else %}
-        <h1>Insertion réussie</h1>
-        <img class="style_logo" src="{{ asset('img/ok_excel.png') }}" alt="logo" height=100>
-        <br />
-        <h2>Produits insérés</h2>
-    <table>
-        {% for product in products %}
-            <tr>
-                {% for cell in product %}
-                    <td style="border: 1px solid white; font-family:'Arial';">{{ cell }}</td>
+            <div class="container overflow-hidden">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="espace_titre">Produits insérés</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive table-template tableau-vins">
+                <table class="table table-hover">
+                    {% for product in products %}
+                        <tr>
+                            {% for cell in product %}
+                                <td>{{ cell }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </table>
+             </div>
+
+
+
+
+
+            <div class="container overflow-hidden">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="espace_titre">Producteurs insérés</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive table-template tableau-vins">
+                <table class="table table-hover">
+                    {% for producer in producers %}
+                        <tr>
+                            {% for cell in producer %}
+                                <td>{{ cell }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+
+
+            <div class="container overflow-hidden">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="espace_titre">Médailles insérées</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive table-template tableau-vins">
+                <table class="table table-hover">
+                {% for medal in medal %}
+                    <tr>
+                        {% for cell in medal %}
+                            <td>{{ cell }}</td>
+                        {% endfor %}
+                    </tr>
                 {% endfor %}
-            </tr>
-        {% endfor %}
-    </table>
-
-    <h2>{% trans %}Producteurs insérés{% endtrans %}</h2>
-    <table>
-        {% for producer in producers %}
-            <tr>
-                {% for cell in producer %}
-                    <td style="border: 1px solid white; font-family:'Arial';">{{ cell }}</td>
-                {% endfor %}
-            </tr>
-        {% endfor %}
-    </table>
-
-
-    <h2>{% trans %}Médaille a insérer{% endtrans %}</h2>
-    <table>
-        {% for medal in medal %}
-            <tr>
-                {% for cell in medal %}
-                    <td style="border: 1px solid white; font-family:'Arial';">{{ cell }}</td>
-                {% endfor %}
-            </tr>
-        {% endfor %}
-    </table>
-
-    <h2>{% trans %}Tableau des expéditions{% endtrans %}</h2>
-    <table>
-        {% for shipment in shipments %}
-            <tr>
-                {% for cell in shipment %}
-                    <td style="border: 1px solid white; font-family:'Arial';">{{ cell }}</td>
-                {% endfor %}
-            </tr>
-        {% endfor %}
-    </table>
+            </table>
+            </div>
 
 
 
-    <h2>{% trans %}Tableau des options de livraison{% endtrans %}</h2>
-    <table>
-        {% for shipoption in shipoptions %}
-            <tr>
-                {% for cell in shipoption %}
-                    <td style="border: 1px solid white; font-family:'Arial';">{{ cell }}</td>
-                {% endfor %}
-            </tr>
-        {% endfor %}
-    </table>
+            <div class="container overflow-hidden">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="espace_titre">Tableau des expéditions</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive table-template tableau-vins">
+                <table class="table table-hover">
+                    {% for shipment in shipments %}
+                        <tr>
+                            {% for cell in shipment %}
+                                <td>{{ cell }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
 
-    {% endif %}
+
+
+            <div class="container overflow-hidden">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="espace_titre">Tableau des options de livraison</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive table-template tableau-vins">
+                <table class="table table-hover">
+                    {% for shipoption in shipoptions %}
+                        <tr>
+                            {% for cell in shipoption %}
+                                <td>{{ cell }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+
+        {% endif %}
 
     </div>
 {% endblock %}
