@@ -35,19 +35,6 @@
         </tr>
     {% endif %}
 
-    {% if product.range  %}
-        <tr>
-            <td class="td attribute">
-                {% trans %}Category{% endtrans %} :
-            </td>
-            <td class="td att-value">
-                {% if product.range.img %}
-                    <img src="{{ product.range.img }}" alt="categorie" height="30">
-                {% endif %} {{ product.range.name }}
-            </td>
-        </tr>
-    {% endif %}
-
     <tr>
         <td class="td attribute">
             {% trans %}A decanter{% endtrans %} :
