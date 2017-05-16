@@ -2,37 +2,59 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link href="{{ asset('css/theme-product.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/media.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/table-template.css') }}" rel="stylesheet" />
 {% endblock %}
 {% block body %}
 
-<div class="product-content">
-        <table class="table table-hover">
-            <thead class="thead-default">
-            <tr class="color-title">
-                <th>{% trans %}Nom{% endtrans %}</th>
-                <th>{% trans %}Actions{% endtrans %}</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for product in products %}
-                <tr>
-                    <td>{{ product.name }}</td>
-                    <td>
-                        <ul>
-                            <li>
-                                <a href="{{ path('product_show', { 'id': product.id }) }}">{% trans %}Show{% endtrans %}</a>
-                            </li>
-                            <li>
-                                <a href="{{ path('producer_space_conditioning', { 'id': product.id }) }}">{% trans %}Modifier{% endtrans %}</a>
-                            </li>
-                        </ul>
-                    </td>
+    <div id="content">
+        <h3 class="section-heading" style="text-align: center">{% trans %}Liste des Produits{% endtrans %}</h3>
+        <div class="table-responsive table-template tableau_media">
+            <table class="table table-hover">
+                <thead class="thead-default">
+                <tr class="color-title">
+                    <th>{% trans %}Name{% endtrans %}</th>
+                    <th>{% trans %}Type{% endtrans %}</th>
+                    <th>{% trans %}Volume{% endtrans %}</th>
+                    <th>{% trans %}Sugar{% endtrans %}</th>
+                    <th>{% trans %}Actions{% endtrans %}</th>
                 </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-</div>
+                </thead>
+                <tbody>
+                {% for product in products %}
+                    <tr>
+                        <td class="id_user"><a href="{{ path('product_show', { 'id': product.id }) }}">{{ product.name }}</a></td>
+                        <td class="pays">{{ product.discr }}</td>
+                        <td class="ville">{{ product.volume }}</td>
+                        <td class="ville">{{ product.sugar }}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a type="button" data-toggle="modal" data-target="#myModal" class="btn-primary btn-sm"
+                                       href="{{ path('producer_space_conditioning', { 'id': product.id }) }}">
+                                        {% trans %}Conditioning{% endtrans %}</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+                <div id="contenu"></div>
+
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}
