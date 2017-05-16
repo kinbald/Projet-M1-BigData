@@ -146,6 +146,13 @@ class UserMedia extends BaseUser
     }
 
     /**
+     * @ORM\PrePersist
+     */
+    public function disableUser(){
+        $this->enabled = false;
+    }
+
+    /**
      * Get discr
      *
      * @return string

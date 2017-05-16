@@ -478,6 +478,13 @@ class UserProducer extends BaseUser
     }
 
     /**
+     * @ORM\PrePersist
+     */
+    public function disableUser(){
+        $this->enabled = false;
+    }
+
+    /**
      * Set phone
      *
      * @param string $phone
