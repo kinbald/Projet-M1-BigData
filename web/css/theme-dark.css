@@ -4852,7 +4852,7 @@ button.close, .close {
   padding: 10px;
   text-align: left; }
   .cart-item-name {
-    float: left;
+    float: right;
     width: 80%;
     padding-right: 30px;
     padding-left: 15px;
@@ -4869,7 +4869,7 @@ button.close, .close {
     .cart-item-image img {
       width: 100%; }
   .cart-item-price {
-    float: left;
+    float: right;
     width: 80%;
     display: block;
     padding-left: 15px; }
