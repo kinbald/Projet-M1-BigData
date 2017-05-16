@@ -177,6 +177,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $wine1->setOriginCountry($country) ;
         $wine1->setRange($range);
         $wine1->addUniverse($universe1);
+        $wine1->setOnSale(true);
         $wine1->addUniverse($universe3);
         $producer1 = $userProducerRepo->findOneByCompanyName("Vin & co");
         $wine1->setProducer($producer1);
@@ -204,6 +205,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $wine2->setRange($range);
         $wine2->addUniverse($universe1);
         $wine2->addRecipe($recipe);
+        $wine2->setOnSale(true);
         $manager->persist($wine2);
 
         $picture = new PictureProduct();
@@ -228,6 +230,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $wine3->setRange($range);
         $wine3->addUniverse($universe1);
         $wine3->addRecipe($recipe);
+        $wine3->setOnSale(true);
         $manager->persist($wine3);
 
         $picture = new PictureProduct();
@@ -250,6 +253,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $wine4->setOriginCountry($country) ;
         $wine4->setRange($range);
         $wine4->addUniverse($universe2);
+        $wine4->setOnSale(true);
         $manager->persist($wine4);
 
         $picture = new PictureProduct();
@@ -268,6 +272,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $spiritueux1->setVolume(1);
         $spiritueux1->addUniverse($universe5);
         $spiritueux1->addUniverse($universe6);
+        $spiritueux1->setOnSale(true);
         $manager->persist($spiritueux1);
 
         $picture = new PictureProduct();
@@ -284,6 +289,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $spiritueux2->setVolume(0.7);
         $spiritueux2->addUniverse($universe5);
         $spiritueux2->addUniverse($universe6);
+        $spiritueux2->setOnSale(true);
         $manager->persist($spiritueux2);
 
         $picture = new PictureProduct();
@@ -300,6 +306,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $spiritueux3->setVolume(0.7);
         $spiritueux3->addUniverse($universe5);
         $spiritueux3->addUniverse($universe6);
+        $spiritueux3->setOnSale(true);
         $manager->persist($spiritueux3);
 
         $picture = new PictureProduct();
@@ -316,6 +323,7 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $spiritueux4->setVolume(0.7);
         $spiritueux4->addUniverse($universe5);
         $spiritueux4->addUniverse($universe6);
+        $spiritueux4->setOnSale(true);
         $manager->persist($spiritueux4);
 
         $picture = new PictureProduct();
