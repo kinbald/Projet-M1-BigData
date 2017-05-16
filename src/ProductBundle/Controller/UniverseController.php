@@ -4,6 +4,7 @@ namespace ProductBundle\Controller;
 
 use ProductBundle\Entity\PictureUniverse;
 use ProductBundle\Entity\Universe;
+use ProductBundle\Model\UniversModel;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -72,23 +73,53 @@ class UniverseController extends Controller
     }
 
     /**
-     * Finds and displays a universe entity.
+     * Finds and displays a universe entity with a query.
      *
      * @Route("/{id}", name="universe_show",
      *     requirements={
      *         "id": "\d+",
      *     })
-     * @Method("GET")
+     * @Method({"GET", "POST"})
      */
-    public function showAction(Universe $universe)
+    public function showActionQuery(Request $request, Universe $universe)
     {
-        $deleteForm = $this->createDeleteForm($universe);
-
+        $pictureArray = array();
+        $temp = null;
+        $products = $universe->getProducts();
+        $formResult=null;
+        $options=array(); //options du formulaire
+        $searchForm = $this->createForm('ProductBundle\Form\SearchType', $options);
+        $model = new UniversModel($this->getDoctrine()->getManager());
+        $searchForm->handleRequest($request);
+        if ($searchForm->isSubmitted() && $searchForm->isValid()) { // si le formulaire est rempli et valide, alors on retourne les résultats de la recherche
+            $formResult= $searchForm->getData(); //On récupère les données du formulaire puis on exécute la recherche et on renvoie les résultats dans products pour affichage
+            if($formResult['name']!=null){
+                $products = $model->findProductsByName($formResult['name']);
+            }
+            if($formResult['price_max']!=null && $formResult['name']==null) {
+                $products = null;
+                $products = array();
+                $temps = $model->findProductConditionningByPrice($formResult['price_max']);
+                foreach ($temps as $temp) {
+                    array_push($products, $temp->getProduct());
+                }
+            }
+        }
+        foreach ($products as $product) { // pour récupérer les photos des produits
+            $pictures=$product->getPictures();
+            array_push($pictureArray, $pictures[0]);
+        }
         return $this->render('ProductBundle:universe:show.html.twig', array(
             'universe' => $universe,
-            'delete_form' => $deleteForm->createView()
+            'search_form' => $searchForm->createView(),
+            'products' => $products,
+            'product_pictures' => $pictureArray,
+            'query' => $formResult //pour le débug
         ));
     }
+
+
+
 
     /**
      * Displays a form to edit an existing universe entity.

@@ -20,13 +20,8 @@ class ProductRepository extends \Doctrine\ORM\EntityRepository
 
     }
 
-    public function findProductsByPrice($price)
-    {
-        $queryBuilder = $this->createQueryBuilder('p');
-        $queryBuilder->where($queryBuilder->expr()->lte('p.price', $price));
-        $query = $queryBuilder->getQuery();
-        return $query->getResult();
-    }
+
 
 
 }
+

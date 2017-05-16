@@ -11,7 +11,6 @@
 {% endblock %}
 
 {% block body %}
-
     <div class="universe-bandeau" id="universe-bandeau" >
         {% set picture = universe.pictures|last %}
         <img id="flou" class="universe-img" src="{{ asset(picture.url) }}" alt="{{ picture.alt }}"/>
@@ -20,10 +19,24 @@
     </div>
 
 
+    <div id="Recherche">
+
+            {{ form_start(search_form) }}
+            {{ form_widget(search_form) }}
+            <table>
+                <td>
+                    <input class="btn btn-primary btn-circle" type="submit" value="Rechercher" />
+                </td>
+            </table>
+            {{ form_end(search_form) }}
+    </div>
+
 
     <div id="Produits">
+        {{ dump(products) }}
         <ul class="product-holder">
-            {% for product in universe.products %}
+            {% for product in products %}
+                {% if product in universe.products %}
                 <li>
                     <div class="text-center">
                         <a href="{{ path('product_show', {id:product.id}) }}" >
@@ -44,6 +57,7 @@
                         </a>
                     </div>
                 </li>
+                {% endif %}
             {% endfor %}
         </ul>
     </div>

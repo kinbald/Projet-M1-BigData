@@ -13,20 +13,24 @@ use Doctrine\Common\Persistence\ObjectManager;
 class UniversModel
 {
     protected $repositoryUniverse;
-
     public function __construct(ObjectManager $entityManager)
     {
         $this->repositoryUniverse = $entityManager->getRepository('ProductBundle:Product');
+        $this->repositoryProductConditioning = $entityManager->getRepository('ProductBundle:ProductConditioning');
     }
-
     public function findProductsByName($name)
     {
         return $this->repositoryUniverse->findProductsByName($name);
     }
-
-    public function findProductsByPrice($price)
+    public function findProductConditionningByPrice($price)
     {
-        return $this->repositoryUniverse->findProductsByPrice($price);
+
+        return $this->repositoryProductConditioning->findProductConditionningByPrice($price);
     }
 
 }
+
+
+
+
+

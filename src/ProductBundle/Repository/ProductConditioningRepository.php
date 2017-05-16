@@ -10,4 +10,16 @@ namespace ProductBundle\Repository;
  */
 class ProductConditioningRepository extends \Doctrine\ORM\EntityRepository
 {
+
+
+    public function findProductConditionningByPrice($price)
+    {
+
+        $queryBuilder = $this->createQueryBuilder('p');
+        $queryBuilder->where($queryBuilder->expr()->lte('p.pubPrice', $price));
+        $query = $queryBuilder->getQuery();
+        return $query->getResult();
+    }
+
+
 }
