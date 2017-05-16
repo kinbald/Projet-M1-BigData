@@ -5211,7 +5211,7 @@ if (function (e, t) {
             "</span><span class='cart-item-conditioning-type h4'>" + curConditioningTypeName +
             "</span><span class='cart-item-price'><span class='cvalue'>" + cost +
             "</span>€</span><span class='cart-item-remove'>✘</span>" +
-            "<br/><br/><br/><span class='cart cart-item-name'>quantity<input class='quantityInput' type='number' min='1' max='1023' data-id='" + id +"' data-conditioning-type-id='" + curConditioningTypeId +"' value='"+quantity+"'></span></div>";
+            "<span class='cart cart-item-name'>" + translate.quantity + "<input class='quantityInput' type='number' min='1' max='1023' data-id='" + id +"' data-conditioning-type-id='" + curConditioningTypeId +"' value='"+quantity+"'></span></div>";
         document.getElementById("items-counter").innerHTML += "<span class='animate '><div class='caddie glyphicon glyphicon-shopping-cart'></div>" + curCounter +
             "<span class='circle'></span></span>";
         document.getElementById("item" + cindex).classList.remove("hidden");
