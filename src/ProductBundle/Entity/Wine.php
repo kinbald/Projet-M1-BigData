@@ -90,7 +90,7 @@ class Wine extends Product
     /**
      * @var float
      *
-     * @ORM\Column(name="overpressure", type="float")
+     * @ORM\Column(name="overpressure", type="float", nullable=true)
      */
     protected $overpressure;
 
@@ -107,7 +107,6 @@ class Wine extends Product
         $this->demarcheQualite = false;
         $this->contactLies = false;
         $this->nonFiltre = false;
-        $this->overpressure = -1;
     }
 
     /**

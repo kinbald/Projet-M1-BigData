@@ -9,6 +9,21 @@
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
+    <script type="text/javascript" src="{{ asset('uploader/fancybox/source/jquery.fancybox.pack.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('uploader/js/uploader.js') }}"></script>
+    <script type="text/javascript">
+        var uploader = new Uploader("chemin");
+        $("#button").fancybox({
+            'fitToView': false,
+            'width': '75%',
+            'height': '80%',
+            'autoScale': false,
+            'autoSize': false,
+            'transitionIn': 'elastic',
+            'transitionOut': 'elastic',
+            'type': 'iframe'
+        });
+    </script>
 {% endblock %}
 
 {% block body %}
@@ -20,14 +35,15 @@
             {{ form_widget(edit_form) }}
             <a  id="button" class="clic" href="{{ asset('uploader/fancybox.php') }}?iframe">{% trans %}Load a picture{% endtrans %}</a>
             <input type="text" id="chemin" name="urlImg">
+            <div class="bouton1">
+                <input class="btn btn-primary btn-circle" type="submit" value="{% trans %}Edit{% endtrans %}" />
+            </div>
+            {{ form_end(edit_form) }}
         </div>
     </div>
 
     <div id="boutons">
-        <div class="bouton1">
-            <input class="btn btn-primary btn-circle" type="submit" value="{% trans %}Edit{% endtrans %}" />
-        </div>
-        {{ form_end(edit_form) }}
+
         {{ form_start(delete_form) }}
         <div class="bouton1">
             <input class="btn btn-primary btn-circle" type="submit" value="{% trans %}Delete{% endtrans %}">
