@@ -103,6 +103,10 @@
         width: 500px;
     }
 
+    .bouton2{
+        margin-left: 30%;
+    }
+
     .bouton1{
         display: block;
         float: left;
