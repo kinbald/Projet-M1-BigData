@@ -19,6 +19,8 @@
                 <th>{% trans %}Proprice{% endtrans %}</th>
                 <th>{% trans %}Volumevalue{% endtrans %}</th>
                 <th>{% trans %}Volumeunit{% endtrans %}</th>
+                <th>{% trans %}Pack name{% endtrans %}</th>
+                <th>{% trans %}Quantity in pack{% endtrans %}</th>
                 <th>Stock</th>
                 <th>Pack</th>
                 <th>Actions</th>
@@ -33,6 +35,13 @@
                 <td>{{ productConditioning.proPrice|number_format(2,'.',',') }} €</td>
                 <td>{{ productConditioning.volumeValue }}</td>
                 <td>{{ productConditioning.volumeUnit }}</td>
+                {% if productConditioning.pack is not null %}
+                    <td>{{ productConditioning.pack.name }}</td>
+                    <td>{{ productConditioning.pack.quantityIn }}</td>
+                {% else %}
+                    <td>{% trans %}No pack{% endtrans %}</td>
+                    <td>{% trans %}No pack{% endtrans %}</td>
+                {% endif %}
                 <td>{{ productConditioning.stock }}</td>
                 <td>{% if productConditioning.pack %}Yes{% else %}No{% endif %}</td>
                 <td>
