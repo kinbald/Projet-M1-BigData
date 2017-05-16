@@ -100,12 +100,24 @@
                         <td colspan="2">
                             <h3 class="wow fadeInDown">{% trans %}Medals{% endtrans %}</h3>
                         </td>
+                        <td >
+                            <h3 class="wow fadeInDown">{% trans %}Mark{% endtrans %}</h3>
+                        </td>
                     </tr>
                 {% for competition in product.competitions %}
                     <tr>
                         <td class="attribute">{{ competition.medal.name }} ({{ competition.medal.annee }})</td>
-                        <td class="att-value">
+                        <td class="attribute">
                             <img src="{{ competition.medal.url }}" alt="médaille : {{ competition.medal.name }}" class="medal_img">
+                        </td>
+                        <td class="attribute">
+                            {% if competitionProduct is not empty %}
+                                {% if competitionProduct[loop.index0].points != null %}
+                                    {{ competitionProduct[loop.index0].points }}
+                                {% else %}
+                                    {% trans %}No mark{% endtrans %}
+                                {% endif %}
+                            {% endif %}
                         </td>
                     </tr>
                 {% endfor %}

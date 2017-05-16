@@ -12,11 +12,6 @@ use ProductBundle\Entity\Universe;
  */
 class CompetitionProductRepository extends \Doctrine\ORM\EntityRepository
 {
-
-
-
-
-
     public function findCompetitionsByUniverse(Universe $universe, Product $product)
     {
         return $this->createQueryBuilder('m')
@@ -27,12 +22,12 @@ class CompetitionProductRepository extends \Doctrine\ORM\EntityRepository
             ->getQuery()
             ->getResult();
     }
-
-
-
-
-
-
-
-
+    public function findCompetitionsByProduct(Product $product)
+    {
+        return $this->createQueryBuilder('m')
+            ->where("m.product = ?1")
+            ->setParameter(1, $product->getId())
+            ->getQuery()
+            ->getResult();
+    }
 }

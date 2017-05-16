@@ -190,10 +190,12 @@ class ProductController extends Controller
     public function showAction(Product $product, Request $request)
     {
         $deleteForm = $this->createDeleteForm($product, $product->getDiscr());
+        $em = $this->getDoctrine()->getManager();
 
         $evaluation = new ProductEvaluation();
         $evaluationForm = $this->createForm('ProductBundle\Form\EvaluationType', $evaluation);
         $evaluationForm->handleRequest($request);
+        $competitionProduct = ($product->getDiscr() == 'wine') ? $em->getRepository('ConcoursBundle:CompetitionProduct')->findCompetitionsByProduct($product) : null;
 
         if ($evaluationForm->isSubmitted() && $evaluationForm->isValid()) {
             $validator = $this->get('validator');
@@ -216,7 +218,8 @@ class ProductController extends Controller
             'product' => $product,
             'delete_form' => $deleteForm->createView(),
             'competitions' => ($product->getDiscr() == 'wine') ? $product->getCompetitions() : null,
-            'errors' => isset($errors)?$errors:null
+            'errors' => isset($errors)?$errors:null,
+            'competitionProduct' => $competitionProduct
         ));
     }
 
