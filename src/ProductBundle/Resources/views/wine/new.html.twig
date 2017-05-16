@@ -37,17 +37,17 @@
             {{ form_widget(form) }}
             <a  id="button" class="clic" href="{{ asset('uploader/fancybox.php') }}?iframe">{% trans %}Load a picture{% endtrans %}</a>
             <input type="text" id="chemin" name="urlImg" required>
-            <div class="bouton1">
-                <input class="btn btn-primary btn-circle" type="submit" value="{% trans %}Create{% endtrans %}" />
-            </div>
-            {{ form_end(form) }}
+
         </div>
     </div>
 
 
 
     <div id="boutons">
-
+        <div class="bouton1">
+            <input class="btn btn-primary btn-circle" type="submit" value="{% trans %}Create{% endtrans %}" />
+        </div>
+        {{ form_end(form) }}
 
         <div class="bouton1">
             <a class="btn btn-primary btn-circle" href="{{ path('product_list', {type: 'wine'}) }}">{% trans %}Back to the list{% endtrans %}</a>
