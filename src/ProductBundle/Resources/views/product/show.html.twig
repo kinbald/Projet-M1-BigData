@@ -93,6 +93,7 @@
                     {% endif %}
                 </div>
             {% endif %}
+            {% if product.competitions is not empty %}
             <div>
                 <table class="presentation-table">
                     <tr>
@@ -110,6 +111,7 @@
                 {% endfor %}
                 </table>
             </div>
+            {% endif %}
             <br>
             <p class="wow fadeInDown">{{ product.description }} </p>
             {% if product.conditioningTypes is not empty %}
