@@ -23,10 +23,11 @@ class ContactController extends Controller
      */
     public function indexAction(Request $request)
     {
+        $user = $this->getUser();
         $form = $this->createFormBuilder()
-            ->add('lastName', TextType::class)
-            ->add('firstName', TextType::class)
-            ->add('email', EmailType::class)
+            ->add('lastName', TextType::class, array('data' => ($user == null) ? null : $user->getLastname()))
+            ->add('firstName', TextType::class, array('data' => ($user == null) ? null : $user->getFirstname()))
+            ->add('email', EmailType::class, array('data' => ($user == null) ? null : $user->getEmail()))
             ->add('topic', TextType::class)
             ->add('userType', ChoiceType::class, array(
                 'choices' => array(
@@ -36,11 +37,8 @@ class ContactController extends Controller
                     'professional' => 'professional'
                 )))
             ->add('gender', ChoiceType::class, array(
-                'choices' => array(
-                    'M' => 'm',
-                    'F' => 'f'
-                )
-            ))
+                'choices' => ($user != null && $user->getDiscr() == 'consumer' && $user->getSex() == 'Female') ?
+                    array('F' => 'f', 'M' => 'm') : array('M' => 'm', 'F' => 'f')))
             ->add('message', TextareaType::class)
             ->add('submit', SubmitType::class)
             ->getForm();
