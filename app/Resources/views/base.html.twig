@@ -177,11 +177,11 @@
                     <h4>{% trans %}Recevoir nos actualités{% endtrans %}</h4>
                     <div class="footer-newsletter">
                         <div class="center text-center">
-                            <form action="{{ path('news_letter_registration') }}" method="post">
+                            <form action="{{ path('news_letter_registration') }}" method="POST">
                                 <div class="input-group">
-                                    <input class="form-control" type="text" placeholder="e-mail">
+                                    <input id="input-newsletter" class="text-newsletter" name="email" type="text" placeholder="e-mail">
                                     <span class="input-group-btn">
-                                        <button class="btn btn-default" type="button"><span class="ti-arrow-right"></span></button>
+                                        <button class="btn btn-default" type="submit" data-toggle="modal" data-target="#myModal"><span class="ti-arrow-right"></span></button>
                                     </span>
                                 </div>
                             </form>

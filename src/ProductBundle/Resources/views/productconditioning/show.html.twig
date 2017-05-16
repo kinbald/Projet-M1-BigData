@@ -48,11 +48,11 @@
         {% if productConditioning.pack is not null %}
             <tr>
                 <th>{% trans %}Pack name{% endtrans %}</th>
-                <td>productConditioning.pack.name</td>
+                <td>{{ productConditioning.pack.name }}</td>
             </tr>
             <tr>
                 <th>{% trans %}Quantity in pack{% endtrans %}</th>
-                <td>productConditioning.pack.quantityIn</td>
+                <td>{{ productConditioning.pack.quantityIn }}</td>
             </tr>
 
         {% endif %}

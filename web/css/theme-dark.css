@@ -16,6 +16,10 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
+.glyphicon{
+  font-size: 1.8em;
+}
+
 .quantityInput {
   color:#fff;
   background-color:#262626;
@@ -3676,15 +3680,15 @@ input[type="checkbox"] .styled:checked + label::after, input[type="radio"] .styl
   margin: 0 5px; }
 
 .swiper-pagination-bullet {
-  background: #C6A668;
-  opacity: .4; }
+  background: #FFF;
+  opacity: .6; }
 
 .negative .swiper-pagination-bullet {
   background: #C6A668;
   opacity: .4; }
 
 .swiper-pagination-bullet-active {
-  background: #C6A668;
+  background: #FFF;
   opacity: 1; }
 
 .negative .swiper-pagination-bullet-active {
@@ -3719,7 +3723,7 @@ input[type="checkbox"] .styled:checked + label::after, input[type="radio"] .styl
     background-color: black; }
 
 .left-arrow-negative {
-  color: #C6A668;
+  color: #FFF;
   left: 100px; }
   @media (min-width: 480px) and (max-width: 1199px) {
     .left-arrow-negative {
@@ -3731,7 +3735,7 @@ input[type="checkbox"] .styled:checked + label::after, input[type="radio"] .styl
     background-color: black; }
 
 .right-arrow-negative {
-  color: #C6A668;
+  color: #FFF;
   right: 100px; }
   @media (min-width: 480px) and (max-width: 1199px) {
     .right-arrow-negative {
