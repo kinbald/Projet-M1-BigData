@@ -658,7 +658,7 @@ abstract class Product
      *
      * @return boolean
      */
-    public function getOnSale()
+    public function isOnSale()
     {
         return $this->onSale;
     }
