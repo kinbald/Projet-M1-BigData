@@ -2,7 +2,9 @@
 
 namespace ProductBundle\Form;
 
+use Doctrine\DBAL\Types\TextType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -19,7 +21,14 @@ class ProductType extends AbstractType
                 ->add('onSale')
                 ->add('volume')
                 ->add('universes')
-                ->add('conditioningTypes');
+                ->add('conditioningTypes')
+                ->add('pictures', CollectionType::class, array(
+                    'entry_type' => PictureProductType::class,
+                    'allow_add' => true,
+                    'allow_delete' => true,
+                    'delete_empty' => true,
+
+                ));
     }
     
     /**
