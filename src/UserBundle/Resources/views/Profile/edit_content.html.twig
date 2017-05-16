@@ -6,6 +6,8 @@
     <link href="{{ asset('http://www.w3schools.com/lib/w3.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/register.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/compte.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/formulaire.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/mise_en_page_compte.css') }}" rel="stylesheet" />
 
 {% endblock %}
 
@@ -14,10 +16,11 @@
     {% trans_default_domain 'FOSUserBundle' %}
     {{ form_start(form, { 'attr': { 'class': 'fos_user_profile_edit' } }) }}
 
-    <!-------------------Profile edit--------------------->
 
-    <div id="champ_form">
-        <h1>{% trans %}Profil{% endtrans %}</h1>
+    <!-------------------Profile edit--------------------->
+    <div id="content">
+        <h1 class="espace_br">{% trans %}Profil{% endtrans %}</h1>
+
         <div class="el-form">
             {{ form_label(form.lastname) }}
             {{ form_errors(form.lastname) }}
@@ -113,19 +116,28 @@
         {% endif %}
 
 
-
-        <div class="edit-submit">
-            <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+        <div class="espace_br">
+            <div class="edit-submit">
+                <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+            </div>
         </div>
-
     {{ form_end(form) }}
 
     </div>
 
+<!-------------------Password edit--------------------->
+<div id="content">
+    <h1 class="espace_br">{% trans %}Change Password{% endtrans %}</h1>
+    {{ form_start(formPW) }}
+    {{ form_widget(formPW) }}
 
-
-
-
+    <div class="espace_br">
+        <div class="edit-submit">
+            <input type="submit" value="{{ 'change_password.submit'|trans }}" />
+        </div>
+    </div>
+    {{ form_end(formPW) }}
+</div>
 
 
 
@@ -136,17 +148,17 @@
     {{ parent() }}
     <script type="text/javascript">
         function openLink(evt, animName) {
-        var i, x, tablinks;
-        x = document.getElementsByClassName("city");
-        for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablink");
-        for (i = 0; i < x.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
-        }
-        document.getElementById(animName).style.display = "block";
-        evt.currentTarget.className += " w3-red";
+            var i, x, tablinks;
+            x = document.getElementsByClassName("city");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < x.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+            }
+            document.getElementById(animName).style.display = "block";
+            evt.currentTarget.className += " w3-red";
         }
         openLink(null, 'Profile1');
     </script>

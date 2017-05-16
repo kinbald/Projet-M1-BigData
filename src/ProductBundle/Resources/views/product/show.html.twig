@@ -81,14 +81,6 @@
         <!--  TEXTE  -->
         <div class="center-justified section-presentation">
             <h3 id="TITRE" class="wow fadeInDown">{{ product.displayName }}</h3>
-            <img class="wow fadeInDown" alt="lauriers" src="{{ asset('img/product/lauriers.png') }}" height="55">
-            <div>
-                <h4 class="wow fadeInDown">{% trans %}Medals{% endtrans %}</h4>
-                {% for competition in product.competitions %}
-                    {{ competition.medal.name }} ({{ competition.medal.annee }})
-                    <img src="{{ competition.medal.url }}" alt="médaille : {{ competition.medal.name }}">
-                {% endfor %}
-            </div>
             {% if product.averageMarks > 0 %}
                 <div class="rating wow fadeInDown">
                     {% for i in range(1, product.averageMarks) %}
@@ -101,6 +93,26 @@
                     {% endif %}
                 </div>
             {% endif %}
+            {% if product.competitions is not empty %}
+            <div>
+                <table class="presentation-table">
+                    <tr>
+                        <td colspan="2">
+                            <h3 class="wow fadeInDown">{% trans %}Medals{% endtrans %}</h3>
+                        </td>
+                    </tr>
+                {% for competition in product.competitions %}
+                    <tr>
+                        <td class="attribute">{{ competition.medal.name }} ({{ competition.medal.annee }})</td>
+                        <td class="att-value">
+                            <img src="{{ competition.medal.url }}" alt="médaille : {{ competition.medal.name }}" class="medal_img">
+                        </td>
+                    </tr>
+                {% endfor %}
+                </table>
+            </div>
+            {% endif %}
+            <br>
             <p class="wow fadeInDown">{{ product.description }} </p>
             {% if product.conditioningTypes is not empty %}
             <select id="conditioning_selected" class="conditioning champ">
