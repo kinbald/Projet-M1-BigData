@@ -23,7 +23,7 @@
     "sensio/framework-extra-bundle": "^3.0.2",
     "incenteev/composer-parameter-handler": "^2.0",
     "friendsofsymfony/user-bundle": "2.0.x-dev",
-    "pugx/multi-user-bundle": "3.0.*@dev",
+    "pugx/multi-user-bundle": "3.0.x-dev#e0af577b221ca74e07a09629f5617bb2a152ce53",
     "twig/extensions": "^1.4",
     "symfony/console": "^3.2",
     "liuggio/excelbundle": "^2.1",
