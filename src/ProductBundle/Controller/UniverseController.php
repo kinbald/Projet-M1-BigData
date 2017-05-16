@@ -83,13 +83,13 @@ class UniverseController extends Controller
      */
     public function showActionQuery(Request $request, Universe $universe)
     {
+        $model = new UniversModel($this->getDoctrine()->getManager());
         $pictureArray = array();
         $temp = null;
         $products = $universe->getProducts();
         $formResult=null;
-        $options=array(); //options du formulaire
+        $options=array('price_max' => $model->getMaxConditionningPrice()); //options du formulaire
         $searchForm = $this->createForm('ProductBundle\Form\SearchType', $options);
-        $model = new UniversModel($this->getDoctrine()->getManager());
         $searchForm->handleRequest($request);
         if ($searchForm->isSubmitted() && $searchForm->isValid()) { // si le formulaire est rempli et valide, alors on retourne les résultats de la recherche
             $formResult= $searchForm->getData(); //On récupère les données du formulaire puis on exécute la recherche et on renvoie les résultats dans products pour affichage
@@ -114,7 +114,8 @@ class UniverseController extends Controller
             'search_form' => $searchForm->createView(),
             'products' => $products,
             'product_pictures' => $pictureArray,
-            'query' => $formResult //pour le débug
+            'query' => $formResult, //pour le débug
+            'prix_max' => $options['price_max']
         ));
     }
 
@@ -147,7 +148,6 @@ class UniverseController extends Controller
                 $pictUniv->setUrl($urlImg);
                 $pictUniv->setAlt($universe->getName());
                 $pictUniv->setUniverse($universe);
-
                 $em->persist($pictUniv);
             }
 

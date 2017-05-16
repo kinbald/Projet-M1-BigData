@@ -43,4 +43,11 @@ class CompetitionModel
     {
         return $this->repositoryWine->findByPrime_name($name);
     }
+
+
+    public function getCompetitionsByProduct($product)
+    {
+        return $this->repositoryWine->findCompetitionsByProduct($product);
+    }
+
 }

@@ -55,9 +55,11 @@
 </div>
     <ul>
         <li>
+            <a href="{{ path('userproducer_new') }}">
             <div class="btn btn-primary btn-circle">
-                <a href="{{ path('userproducer_new') }}">{% trans %}new userProducer{% endtrans %}</a>
+                {% trans %}new userProducer{% endtrans %}
             </div>
+            </a>
         </li>
     </ul>
 {% endblock %}

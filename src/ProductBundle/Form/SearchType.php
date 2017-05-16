@@ -23,7 +23,7 @@ class SearchType extends AbstractType
         //$ranges = $options['data']['ranges'];
         //$regions = $options['data']['regions'];
         $builder->add('name', TextType::class, array('required' => false));
-        $builder->add('price_max', RangeType::class, array('required' => false, 'attr' => array('min' => 1, 'max' => 1000)));
+        $builder->add('price_max', RangeType::class, array('required' => false, 'attr' => array('id' => 'slider', 'min' => 1, 'max' => $options['data']['price_max'])));
         /*$builder->add('category', ChoiceType::class, ['choices' => $ranges,  'choice_label' => function($range, $key, $index) {
             return $range->getName();
         }]);

@@ -24,8 +24,12 @@ class UniversModel
     }
     public function findProductConditionningByPrice($price)
     {
-
         return $this->repositoryProductConditioning->findProductConditionningByPrice($price);
+    }
+
+    public function getMaxConditionningPrice()
+    {
+        return $this->repositoryProductConditioning->getMaxConditionningPrice();
     }
 
 }

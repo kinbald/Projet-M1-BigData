@@ -21,5 +21,18 @@ class ProductConditioningRepository extends \Doctrine\ORM\EntityRepository
         return $query->getResult();
     }
 
+   public function getMaxConditionningPrice()
+    {
+        $queryBuilder = $this->createQueryBuilder('p');
+        $queryBuilder->select('MAX(p.pubPrice)');
+        $query = $queryBuilder->getQuery();
+        return $query->getSingleScalarResult();
+    }
+
+
+
+
+
 
 }
+
