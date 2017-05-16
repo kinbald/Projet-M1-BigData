@@ -416,7 +416,6 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
 
         $condition = new ProductConditioning();
         $condition->setName("Cagette");
-        $condition->setPrice(45);
         $condition->setPubPrice(45);
         $condition->setProPrice(40);
         $condition->setStock(10);
@@ -432,7 +431,6 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
 
         $condition2 = new ProductConditioning();
         $condition2->setName("Palette");
-        $condition2->setPrice(125);
         $condition2->setPubPrice(125);
         $condition2->setProPrice(120);
         $condition2->setStock(10);
@@ -445,7 +443,6 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
 
         $cond1 = new ProductConditioning();
         $cond1->setName('Caisse');
-        $cond1->setPrice(5);
         $cond1->setPubPrice(5);
         $cond1->setProPrice(3);
         $cond1->setStock(10);
@@ -462,7 +459,6 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
 
         $cond2 = new ProductConditioning();
         $cond2->setName('Fut');
-        $cond2->setPrice(10);
         $cond2->setPubPrice(10);
         $cond2->setProPrice(6);
         $cond2->setStock(20);
@@ -474,7 +470,6 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
 
         $cond3 = new ProductConditioning();
         $cond3->setName('Sac plastique');
-        $cond3->setPrice(1);
         $cond3->setPubPrice(1);
         $cond3->setProPrice(0.5);
         $cond3->setStock(50);

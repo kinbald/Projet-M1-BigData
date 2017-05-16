@@ -1,0 +1,50 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/media.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/table-template.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block body %}
+    <div id="content">
+    <h3 class="section-heading" style="text-align: center">{% trans %}Deliveries list{% endtrans %}</h3>
+<div class="table-responsive table-template tableau_product">
+    <table class="table table-hover">
+        <thead class="thead-default">
+            <tr class="color-title">
+                <th>Id</th>
+                <th>{% trans %}Name{% endtrans %}</th>
+                <th>{% trans %}Price{% endtrans %}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for delivery in deliveries %}
+            <tr>
+                <td><a href="{{ path('delivery_show', { 'id': delivery.id }) }}">{{ delivery.id }}</a></td>
+                <td>{{ delivery.name }}</td>
+                <td>{{ delivery.price }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('delivery_show', { 'id': delivery.id }) }}">{% trans %}Show{% endtrans %}</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('delivery_edit', { 'id': delivery.id }) }}">{% trans %}Edit{% endtrans %}</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+        <br>
+        <ul>
+            <li>
+                <a class="btn btn-primary btn-circle" href="{{ path('delivery_new') }}">{% trans %}New Delivery{% endtrans %}</a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}

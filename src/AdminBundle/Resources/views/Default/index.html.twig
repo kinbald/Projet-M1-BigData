@@ -13,9 +13,11 @@
 {% block body %}
     <div class="text-center content contour">
         <h1>{% trans %}Portail d'administration{% endtrans %}</h1>
+        <hr/>
         <a class="btn btn-primary btn-circle" href="{{ path("excel_index") }}">
             <div class="texte">{% trans %}Importation Excel{% endtrans %}</div>
         </a>
+        <hr/>
         <h4>{% trans %}Gestion Produits et Concours{% endtrans %}</h4>
         <div class="text-center">
             <a class="btn btn-primary btn-circle" href="{{ path("product_list", {type:'wine'}) }}">
@@ -34,6 +36,7 @@
                 <div class="texte">{% trans %}Gestion des Concours{% endtrans %}</div>
             </a>
         </div>
+        <hr/>
         <h4>{% trans %}Gestion Utilisateurs et Commandes{% endtrans %}</h4>
         <div class="text-center">
             <a class="btn btn-primary btn-circle" href="{{ path('userconsumer_index') }}">
@@ -51,11 +54,15 @@
             <a class="btn btn-primary btn-circle" href="{{ path('conditioning_index') }}">
                 <div class="texte">{% trans %}Gestion des Conditionements{% endtrans %}</div>
             </a>
+            <a class="btn btn-primary btn-circle" href="{{ path('delivery_index') }}">
+                <div class="texte">{% trans %}Gestion des Types de Livraisons{% endtrans %}</div>
+            </a>
             <a class="btn btn-primary btn-circle" href="{{ path('purchase_index') }}">
                 <div class="texte">{% trans %}Gestion des Commandes{% endtrans %}</div>
             </a>
 
         </div>
+        <hr/>
         <h4>{% trans %}Gestion de l'Espace Presse{% endtrans %}</h4>
         <div class="text-center">
             <a class="btn btn-primary btn-circle" href="{{ path('news_index') }}">

@@ -127,21 +127,6 @@ class ProductConditioning
     }
 
     /**
-     * Set price
-     * @deprecated
-     *
-     * @param float $price
-     *
-     * @return ProductConditioning
-     */
-    public function setPrice($price)
-    {
-        $this->pubPrice = $price;
-
-        return $this;
-    }
-
-    /**
      * Get price
      *
      * @return float
