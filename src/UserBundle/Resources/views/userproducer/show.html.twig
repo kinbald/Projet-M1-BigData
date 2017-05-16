@@ -2,68 +2,17 @@
 
 {% block stylesheets %}
     {{ parent() }}
+    <link href="{{ asset('css/media.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/edit.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/formulaire.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/formulaire.css') }}" rel="stylesheet"/>
     <link href="{{ asset('css/table-template.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/mise_en_page_admin.css') }}" rel="stylesheet" />
 {% endblock %}
 
 {% block body %}
     <div id="content">
         <h1 class="section-heading">{% trans %}Userproducer{% endtrans %}</h1>
-    </div>
         <div class="table-responsive table-template">
-            <table class="table table-hover">
-                <thead class="thead-default">
-                <tr class="color-title">
-                    <th>Id</th>
-                    <th>Siret</th>
-                    <th>{% trans %}Billingemail{% endtrans %}</th>
-                    <th>{% trans %}Website{% endtrans %}</th>
-                    <th>Facebook</th>
-                    <th>Twitter</th>
-                    <th>{% trans %}Companyname{% endtrans %}</th>
-                    <th>{% trans %}Businessname{% endtrans %}</th>
-                    <th>{% trans %}Address{% endtrans %}</th>
-                    <th>{% trans %}City{% endtrans %}</th>
-                    <th>{% trans %}Country{% endtrans %}</th>
-                    <th>{% trans %}Postal code{% endtrans %}</th>
-                    <th>{% trans %}State{% endtrans %}</th>
-                    <th>Province</th>
-                    <th>{% trans %}Phone{% endtrans %}</th>
-                    <th>Fax</th>
-                    <th>{% trans %}Tvaic{% endtrans %}</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>{{ userProducer.id }}</td>
-                    <td>{{ userProducer.siret }}</td>
-                    <td>{{ userProducer.billingEmail }}</td>
-                    <td>{{ userProducer.website }}</td>
-                    <td>{{ userProducer.facebook }}</td>
-                    <td>{{ userProducer.twitter }}</td>
-                    <td>{{ userProducer.companyName }}</td>
-                    <td>{{ userProducer.businessName }}</td>
-                    <td>{{ userProducer.address }}</td>
-                    <td>{{ userProducer.city }}</td>
-                    <td>{{ userProducer.country }}</td>
-                    <td>{{ userProducer.postalCode }}</td>
-                    <td>{{ userProducer.state }}</td>
-                    <td>{{ userProducer.province }}</td>
-                    <td>{{ userProducer.phone }}</td>
-                    <td>{{ userProducer.fax }}</td>
-                    <td>{{ userProducer.tvaIC }}</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-
-
-
-
-<<<<<<< Updated upstream
-    <table>
+                <table class="table table-hover">
         <tbody>
         <tr>
             <th>Id</th>
@@ -131,7 +80,8 @@
         </tr>
         </tbody>
     </table>
-=======
+        </div>
+
     <div id="boutons">
         <div class="bouton1">
             <a class="btn btn-circle btn-primary" href="{{ path('userproducer_index') }}">{% trans %}Back to the list{% endtrans %}</a>
@@ -145,6 +95,5 @@
         </div>
         {{ form_end(delete_form) }}
     </div>
->>>>>>> Stashed changes
 
 {% endblock %}

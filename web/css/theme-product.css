@@ -1,16 +1,11 @@
 .ti-shopping-cart:before {
     content: none; }
 
+.medal_img{
+    max-height: 64px;
+    max-width: 64px;
+}
 
-
-/* Slideshow container
-.slideshow-container {
-    max-width: 1000px;
-    position: relative;
-    margin: auto;
-}*/
-
-/*Bouton retour*/
 .back-button{
     margin-top: 10px;
     margin-left: 6vw;
