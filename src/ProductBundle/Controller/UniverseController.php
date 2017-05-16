@@ -113,7 +113,6 @@ class UniverseController extends Controller
             'universe' => $universe,
             'search_form' => $searchForm->createView(),
             'products' => $products,
-            'product_pictures' => $pictureArray,
             'query' => $formResult, //pour le débug
             'prix_max' => $options['price_max']
         ));
