@@ -32,3 +32,7 @@
 .disabled-row{
     opacity: 0.3;
 }
+
+li .btn-circle{
+    color: black !important;
+}
