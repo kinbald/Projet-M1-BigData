@@ -13,6 +13,10 @@ services:
         class: Twig_Extensions_Extension_Intl
         tags:
             - { name: twig.extension }
+    twig.extension.sortbyfield:
+        class: Snilius\Twig\SortByFieldExtension
+        tags:
+            - { name: twig.extension }
     app.paypal:
         class: AppBundle\Payment\Payment
         arguments: [ '@router', '%kernel.environment%', '@doctrine.orm.entity_manager' ]
