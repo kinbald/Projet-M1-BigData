@@ -324,6 +324,7 @@ abstract class Product
     {
         $this->pictures = new ArrayCollection();
         $this->reservations = new ArrayCollection();
+        $this->onSale = true;
     }
 
     public function __toString()
