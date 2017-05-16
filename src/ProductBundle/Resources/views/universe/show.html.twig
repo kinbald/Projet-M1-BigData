@@ -11,6 +11,7 @@
 {% endblock %}
 
 {% block body %}
+    <div class="espace"></div>
     <div class="universe-bandeau" id="universe-bandeau" >
         {% set picture = universe.pictures|last %}
         <img id="flou" class="universe-img" src="{{ asset(picture.url) }}" alt="{{ picture.alt }}"/>
