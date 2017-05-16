@@ -2,8 +2,6 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link href="{{ asset('css/theme-product.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/media.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/table-template.css') }}" rel="stylesheet" />
 {% endblock %}
 
@@ -12,23 +10,32 @@
 {% endblock %}
 
 {% block body %}
-
-<div class="product-content">
+<div id="content">
+    <h3 class="section-heading" style="text-align: center">{% trans %}Conditioning{% endtrans %}</h3>
+    <div class="table-responsive table-template tableau_media">
         <table class="table table-hover">
             <thead class="thead-default">
             <tr class="color-title">
-                <th>{% trans %}Nom{% endtrans %}</th>
+                <th>{% trans %}Name{% endtrans %}</th>
+                <th>{% trans %}Volume{% endtrans %}</th>
+                <th>{% trans %}Unité{% endtrans %}</th>
+                <th>{% trans %}Prix{% endtrans %}</th>
+                <th>{% trans %}Stock{% endtrans %}</th>
                 <th>{% trans %}Actions{% endtrans %}</th>
             </tr>
             </thead>
             <tbody>
             {% for conditioningType in product.conditioningTypes %}
                 <tr>
-                    <td>{{ conditioningType.name }}</td>
+                    <td class="id_user">{{ conditioningType.name }}</td>
+                    <td class="ville">{{ conditioningType.volumeValue }}</td>
+                    <td class="ville">{{ conditioningType.volumeUnit }}</td>
+                    <td class="pays">{{ conditioningType.pubPrice }}</td>
+                    <td class="statut">{{ conditioningType.stock }}</td>
                     <td>
                         <ul>
                             <li>
-                                <a href="{{ path('producer_space_conditioning_edit', {'id': conditioningType.id }) }}">{% trans %}Modifier{% endtrans %}</a>
+                                <a type="button" class="btn-primary btn-sm" href="{{ path('producer_space_conditioning_edit', {'id': conditioningType.id }) }}">{% trans %}Modifier{% endtrans %}</a>
                             </li>
                         </ul>
                     </td>
@@ -36,5 +43,6 @@
             {% endfor %}
             </tbody>
         </table>
+    </div>
 </div>
 {% endblock %}
