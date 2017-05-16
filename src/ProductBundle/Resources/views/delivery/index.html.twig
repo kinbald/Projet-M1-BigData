@@ -24,7 +24,7 @@
             <tr>
                 <td><a href="{{ path('delivery_show', { 'id': delivery.id }) }}">{{ delivery.id }}</a></td>
                 <td>{{ delivery.name }}</td>
-                <td>{{ delivery.price }}</td>
+                <td>{{ delivery.price|number_format(2,'.',',') }} €</td>
                 <td>
                     <ul>
                         <li>

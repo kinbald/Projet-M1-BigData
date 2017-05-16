@@ -23,7 +23,7 @@
         </tr>
         <tr>
             <th>{% trans %}Price{% endtrans %}</th>
-            <td>{{ delivery.price }}</td>
+            <td>{{ delivery.price|number_format(2,'.',',') }} €</td>
         </tr>
 
         </tbody>

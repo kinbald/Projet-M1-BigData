@@ -29,8 +29,8 @@
             <tr>
                 <td><a href="{{ path('conditioning_show', { 'id': productConditioning.id }) }}">{{ productConditioning.id }}</a></td>
                 <td>{{ productConditioning.name }}</td>
-                <td>{{ productConditioning.pubPrice }}</td>
-                <td>{{ productConditioning.proPrice }}</td>
+                <td>{{ productConditioning.pubPrice|number_format(2,'.',',') }} €</td>
+                <td>{{ productConditioning.proPrice|number_format(2,'.',',') }} €</td>
                 <td>{{ productConditioning.volumeValue }}</td>
                 <td>{{ productConditioning.volumeUnit }}</td>
                 <td>{{ productConditioning.stock }}</td>

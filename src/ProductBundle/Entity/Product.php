@@ -158,6 +158,13 @@ abstract class Product
     protected $evaluations;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="on_sale", type="boolean", options={"default" : true})
+     */
+    protected $onSale;
+
+    /**
      * Get id
      *
      * @return int
@@ -630,6 +637,30 @@ abstract class Product
     {
         $this->producer = $producer;
         return $this;
+    }
+
+    /**
+     * Set aDecanter
+     *
+     * @param boolean $onSale
+     *
+     * @return Product
+     */
+    public function setOnSale($onSale)
+    {
+        $this->onSale = $onSale;
+
+        return $this;
+    }
+
+    /**
+     * Get onSale
+     *
+     * @return boolean
+     */
+    public function getOnSale()
+    {
+        return $this->onSale;
     }
 
     /**

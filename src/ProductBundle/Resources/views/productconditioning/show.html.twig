@@ -23,11 +23,11 @@
         </tr>
         <tr>
             <th>{% trans %}Pubprice{% endtrans %}</th>
-            <td>{{ productConditioning.pubPrice }}</td>
+            <td>{{ productConditioning.pubPrice|number_format(2,'.',',') }} €</td>
         </tr>
         <tr>
             <th>{% trans %}Proprice{% endtrans %}</th>
-            <td>{{ productConditioning.proPrice }}</td>
+            <td>{{ productConditioning.proPrice|number_format(2,'.',',') }} €</td>
         </tr>
         <tr>
             <th>{% trans %}Volumevalue{% endtrans %}</th>
