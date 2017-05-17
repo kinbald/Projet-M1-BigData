@@ -148,8 +148,11 @@ div {
 }
 
 #chemin{
-    visibility: hidden;
+    position: relative;
+    top: 50px;
+    margin-bottom: 70px !important;
 }
+
 
 .clic{
     margin-top: 10px;
