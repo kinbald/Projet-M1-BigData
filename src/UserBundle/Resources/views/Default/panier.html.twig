@@ -36,17 +36,17 @@
                     <td><img class="post-entry-cover" src="/upload/{{ product_picture.url }}" alt="{{ product_picture.alt }}" /> </td>
                 {% endfor %}
                 <td><span class="height_description">{{ productPurchase.conditioningType.product.description }}</span></td>
-                <td>{{ (productPurchase.conditioningType.price )|round(2) }}€</td>
+                <td>{{ (productPurchase.conditioningType.price )|round(2)|number_format(2, '.', ',') }}€</td>
                 <td>{{ productPurchase.stock}}</td>
                 <td>{{ tva }}%</td>
-                <td>{{ (( productPurchase.conditioningType.price *(1+tva/100)) * productPurchase.stock)|round(2) }}€</td>
+                <td>{{ (( productPurchase.conditioningType.price *(1+tva/100)) * productPurchase.stock)|round(2)|number_format(2, '.', ',') }}€</td>
                 <td>{{ productPurchase.delivery.nameAndPrice(productPurchase.Stock) }}</td>
             </tr>
         {% endfor %}
         <tr>
             <td colspan="6"></td>
             <td>{% trans %}Prix total TTC{% endtrans %}</td>
-            <td>{{ (commande.amount*(1+tva/100))|round(2) + commande.totalShipping }}€</td>
+            <td>{{ (commande.amount*(1+tva/100))|round(2)|number_format(2, '.', ',') + commande.totalShipping|number_format(2, '.', ',') }}€</td>
         </tr>
         <tr>
             <td colspan="5"></td>

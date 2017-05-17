@@ -74,7 +74,11 @@
                             <span class="product-list-primary-img">
                                 {% set picture = product.pictures|last %}
                                 <img alt="product image" class="product-list-primary-img table-primary-img"
-                                     src="{{ asset(picture.url) }}"/>
+                                     {% if picture is empty %}
+                                            src="{{ asset('./img/product/defaultProduct.jpeg') }}"/>
+                                        {% else %}
+                                            src="{{ asset(picture.url) }}"/>
+                                     {% endif %}
                                  <br>
                             </span>
                             <span class="swiper-slide text-center table-product-text">

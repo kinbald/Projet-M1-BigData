@@ -18,6 +18,8 @@ class ProductType extends AbstractType
     {
         $builder->add('name')
                 ->add('description')
+                ->add('alcoholDegree')
+                ->add('sugar')
                 ->add('onSale')
                 ->add('volume')
                 ->add('universes')
