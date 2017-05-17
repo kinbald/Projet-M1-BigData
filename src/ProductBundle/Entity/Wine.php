@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use ProductBundle\Entity\Product;
 use ConcoursBundle\Entity\CompetitionWine;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Wine
@@ -28,6 +29,7 @@ class Wine extends Product
      * @var \DateTime
      *
      * @ORM\Column(name="vintage", type="date")
+     * @Assert\NotBlank()
      */
     private $vintage;
 
@@ -35,6 +37,7 @@ class Wine extends Product
      * @var string
      *
      * @ORM\Column(name="color", type="string", length=50)
+     * @Assert\NotBlank()
      */
     private $color;
 
