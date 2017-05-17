@@ -15,6 +15,7 @@ use ProductBundle\Entity\ProductEvaluation;
 use Symfony\Bridge\Doctrine\Tests\Fixtures\User;
 use UserBundle\Entity\UserConsumer;
 use UserBundle\Entity\UserProducer;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Product
@@ -38,7 +39,7 @@ abstract class Product
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="name", type="string", length=255)
      */
     protected $name;
@@ -54,6 +55,7 @@ abstract class Product
      * @var string
      *
      * @ORM\Column(name="description", type="text")
+     * @Assert\NotBlank()
      */
     protected $description;
 
@@ -61,6 +63,7 @@ abstract class Product
      * @var float
      *
      * @ORM\Column(name="volume", type="float")
+     * @Assert\NotBlank()
      */
     protected $volume;
 
@@ -68,6 +71,7 @@ abstract class Product
     /**
      * @var Collection
      * @ORM\OneToMany(targetEntity="ConcoursBundle\Entity\CompetitionProduct", mappedBy="product")
+     *
      */
     private $competitions;
 
@@ -75,6 +79,7 @@ abstract class Product
      * @var float
      *
      * @ORM\Column(name="alcohol_degree", type="float")
+     *
      */
     private $alcoholDegree;
 
@@ -82,6 +87,7 @@ abstract class Product
      * @var float
      *
      * @ORM\Column(name="sugar", type="float")
+     * @Assert\NotBlank()
      */
     private $sugar;
 
@@ -129,6 +135,7 @@ abstract class Product
      * @var PictureProduct
      *
      * @ORM\OneToMany(targetEntity="\ProductBundle\Entity\PictureProduct", mappedBy="product")
+     * @Assert\NotBlank()
      */
     protected $pictures;
 
@@ -136,6 +143,7 @@ abstract class Product
      * @var Collection
      * @ORM\ManyToMany(targetEntity="\ProductBundle\Entity\Universe", inversedBy="products")
      * @ORM\JoinColumn(name="product_id", referencedColumnName="id")
+     * @Assert\NotBlank()
      */
     protected $universes;
 
@@ -148,6 +156,7 @@ abstract class Product
     /**
      * @var Collection
      * @ORM\OneToMany(targetEntity="\ProductBundle\Entity\ProductConditioning", mappedBy="product")
+     * @Assert\NotBlank()
      */
     protected $conditioningTypes;
 

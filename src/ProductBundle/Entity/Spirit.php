@@ -4,6 +4,7 @@ namespace ProductBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ProductBundle\Entity\Product;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Spirit

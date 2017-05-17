@@ -32,12 +32,12 @@
     <div class="contour">
         <div id="content">
             <h1 class="espace_br">{% trans %}Create Spirit{% endtrans %}</h1>
-            {{ form_start(form) }}
+            {{ form_start(form, {'attr': {'id': 'form_spirit_new'}}) }}
             {{ form_widget(form) }}
 
             <a  id="button" class="clic" href="{{ asset('uploader/fancybox.php') }}?iframe">{% trans %}Load a picture{% endtrans %}</a>
             <input type="text" id="chemin" name="urlImg" required>
-
+            {{ form_end(form) }}
         </div>
     </div>
 
@@ -45,9 +45,8 @@
     <div id="boutons">
 
         <div class="bouton1">
-            <input class="btn btn-primary btn-circle" type="submit" value="{% trans %}Create{% endtrans %}" />
+            <button class="btn btn-primary btn-circle" type="button" value="" onclick="$('#form_spirit_new').submit()" >{% trans %}Create{% endtrans %}</button>
         </div>
-        {{ form_end(form) }}
         <div class="bouton1">
             <a class="btn btn-primary btn-circle" href="{{ path('product_list', {type: 'spirit'}) }}">{% trans %}Back to the list{% endtrans %}</a>
         </div>
