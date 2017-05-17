@@ -148,7 +148,13 @@ div {
 }
 
 #chemin{
-    visibility: hidden;
+    position: relative;
+    top: 50px;
+    margin-bottom: 70px !important;
+}
+
+.bouton1 {
+    float: none !important;
 }
 
 .clic{
