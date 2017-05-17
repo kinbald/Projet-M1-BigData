@@ -78,7 +78,7 @@ abstract class Product
     /**
      * @var float
      *
-     * @ORM\Column(name="alcohol_degree", type="float")
+     * @ORM\Column(name="alcohol_degree", type="float", nullable=true)
      *
      */
     private $alcoholDegree;
@@ -86,8 +86,7 @@ abstract class Product
     /**
      * @var float
      *
-     * @ORM\Column(name="sugar", type="float")
-     * @Assert\NotBlank()
+     * @ORM\Column(name="sugar", type="float", nullable=true)
      */
     private $sugar;
 

@@ -44,7 +44,7 @@ class Wine extends Product
     /**
      * @var string
      *
-     * @ORM\Column(name="region", type="string", length=255)
+     * @ORM\Column(name="region", type="string", length=255, nullable=true)
      */
     private $region;
 
