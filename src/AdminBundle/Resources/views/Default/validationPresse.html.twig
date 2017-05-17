@@ -30,18 +30,25 @@
                     <th>{% trans %}Justificatif (carte presse){% endtrans %}</th>
                     <th>{% trans %}Justificatif (adresse du blog){% endtrans %}</th>
                     <th>{% trans %}Droit d'accès au contenu Média{% endtrans %}</th>
+                    <th>{% trans %}Supprimer{% endtrans %}</th>
                 </tr>
             </thead>
             <tbody>
-                {% for media in medias %}
-                    <tr>
-                        <td class="id">{{ media.id }}</td>
-                        <td class="nom">{{ media.companyName }}</td>
-                        <td class="justificatif-carte">{{ media.idPresse }}</td>
-                        <td class="justificatif-adresse">{{ media.urlBlog }}</td>
-                        <td class="droit">{{ form_widget(attribute(form, 'media_'~media.id))}}</td>
-                    </tr>
-                {% endfor %}
+            {% set i = 0 %}
+            {% for media in medias %}
+                <tr>
+                    <td class="id">{{ media.id }}</td>
+                    <td class="nom">{{ media.companyName }}</td>
+                    <td class="justificatif-carte">{{ media.idPresse }}</td>
+                    <td class="justificatif-adresse">{{ media.urlBlog }}</td>
+                    <td class="droit">{{ form_widget(attribute(form, 'media_'~media.id))}}</td>
+                    <td class="droit">
+                        <a href="{{ path('media_delete', {id: media.id}) }}">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </a></td>
+                </tr>
+                {% set i = i + 1 %}
+            {% endfor %}
                     <tr>
                         <td colspan="4"></td>
                         <td>{{ form_widget(form.save) }}</td>

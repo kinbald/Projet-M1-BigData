@@ -5,6 +5,7 @@ namespace AdminBundle\Controller;
 use AdminBundle\Model\AdminModel;
 use Doctrine\Common\Util\Debug;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -75,6 +76,20 @@ class DefaultController extends Controller
             'form' => $bform->getForm()->createView(),
             'medias' => $users
         ));
+    }
+
+    /**
+     * Deletes a productConditioning entity.
+     *
+     * @Route("/deletemedia/{id}", name="media_delete")
+     * @Method("GET")
+     */
+    public function deleteAction(Request $request, UserMedia $userMedia)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($userMedia);
+        $em->flush();
+        return $this->redirectToRoute('validationPresse');
     }
 
     /**
