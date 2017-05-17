@@ -153,7 +153,7 @@
             <div class="row color-textfooter">
                 <div class="col-md-3 col-sm-3 col-xs-7">
                     <h4><a href="{{ path("homepage") }}"><img class="style_logo_footer" src="{{ asset('img/logo.png') }}" alt="logo"></a></h4>
-                    <p>© 2017, All rights reserved.</p>
+                    <p>{% trans %}Toujours copié, Quelques fois imité, Parfois plagié ... Mais...Toujours les Premiers !{% endtrans %}<br>© 2017, All rights reserved.</p>
                     <p><i>Designed by ISEN Toulon</i></p>
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-5">
@@ -177,14 +177,9 @@
                     <h4>{% trans %}Recevoir nos actualités{% endtrans %}</h4>
                     <div class="footer-newsletter">
                         <div class="center text-center">
-                            <form action="{{ path('news_letter_registration') }}" method="POST">
-                                <div class="input-group">
-                                    <input id="input-newsletter" class="text-newsletter" name="email" type="text" placeholder="e-mail">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-default" type="submit" data-toggle="modal" data-target="#myModal"><span class="ti-arrow-right"></span></button>
-                                    </span>
-                                </div>
-                            </form>
+                            {{ render(controller(
+                            'AppBundle:Default:newsletterForm'
+                            )) }}
                         </div>
                     </div>
                 </div>

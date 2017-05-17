@@ -48,3 +48,6 @@
 
 # Backup entities generated with doctrine:generate:entities command
 */Entity/*~
+bdd.mcd
+composer.lock
+/logo.png

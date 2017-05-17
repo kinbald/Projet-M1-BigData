@@ -24,13 +24,20 @@
 
     <section class="testimonials testimonials-banner-newsletter" id="testimonials">
         <div class="container">
+            {% set n = app.request.query.get("newsletter") %}
+            {% if n is not null %}
+                {% if n == 1 %}
+                    {% trans %}Merci de nous être inscrit{% endtrans %}
+                {% elseif n == 0 %}
+                    {% trans %}Oups, une erreur est survenue{% endtrans %}
+                {% endif %}
+            {% endif %}
             <div class="row">
                 <span class="text-newsletter newsletter">{% trans %}S'abonner à la Newsletter{% endtrans %}: </span>
-
-                <form action="{{ path('news_letter_registration') }}" method="POST">
-                    <input id="input-newsletter" class="text-newsletter" name="email" type="text" placeholder="{% trans %}Veuillez entrer votre email{% endtrans %}"/>
+                {{ form_start(newsletterForm) }}
+                {{ form_widget(newsletterForm.mail, {id: "input-newsletter", attr: {class: "text-newsletter", placeholder: "Veuillez entrer votre email"|trans}}) }}
                     <button type="submit" class="button btn-info btn-lg" data-toggle="modal" data-target="#myModal">{% trans %}Je m'inscris{% endtrans %}</button>
-                </form>
+                {{ form_end(newsletterForm) }}
             </div>
         </div>
 

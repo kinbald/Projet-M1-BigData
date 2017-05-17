@@ -67,8 +67,7 @@
 
     <div id="Produits">
         <ul class="product-holder">
-            {% for product in products %}
-                {% if product in universe.products %}
+            {% for product in products|sortbyfield('minPrice')|reverse %}
                 <li>
                     <div class="text-center">
                         <a href="{{ path('product_show', {id:product.id}) }}" >
@@ -82,14 +81,13 @@
                                 <span class="table-product-name">{{ product.displayName }}</span><br>
                             </span>
                             {% if product.MinPrice %}
-                                <p>{% trans %}A partir de{% endtrans %} {{  product.MinPrice }}€</p>
+                                <p>{% trans %}A partir de{% endtrans %} {{ product.MinPrice|number_format(2,'.',',') }}€</p>
                             {% else %}
                                 <p>{% trans %}Produit non disponible{% endtrans %}</p>
                             {% endif %}
                         </a>
                     </div>
                 </li>
-                {% endif %}
             {% endfor %}
         </ul>
     </div>

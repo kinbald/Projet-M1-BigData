@@ -164,6 +164,8 @@ abstract class Product
      */
     protected $onSale;
 
+    protected $minPrice;
+
     /**
      * Get id
      *
@@ -325,6 +327,7 @@ abstract class Product
         $this->pictures = new ArrayCollection();
         $this->reservations = new ArrayCollection();
         $this->onSale = true;
+        $this->minPrice = null;
     }
 
     public function __toString()
@@ -676,6 +679,8 @@ abstract class Product
 
     public function getMinPrice()
     {
+        if($this->minPrice != null)
+            return $this->minPrice;
         $prixMin = null;
         foreach ($this->getConditioningTypes() as $conditioning)
         {
@@ -686,6 +691,6 @@ abstract class Product
             if($conditioning->getPrice() < $prixMin)
                 $prixMin = $conditioning->getPrice();
         }
-        return $prixMin;
+        return $this->minPrice = $prixMin;
     }
 }
