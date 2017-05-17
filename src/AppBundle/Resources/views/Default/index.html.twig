@@ -27,11 +27,13 @@
             {% set n = app.request.query.get("newsletter") %}
             {% if n is not null %}
                 {% if n == 1 %}
-                    {% trans %}Merci de nous être inscrit{% endtrans %}
+                    <h4>{% trans %}Merci de vous être inscrit{% endtrans %}</h4>
+                    <img style="width: 100px; height: 100px;" src="http://www.clipartbest.com/cliparts/bcy/64z/bcy64zkgi.png" alt="success">
                 {% elseif n == 0 %}
-                    {% trans %}Oups, une erreur est survenue{% endtrans %}
+                    <div>{% trans %}Oups, une erreur est survenue{% endtrans %}</div>
                 {% endif %}
             {% endif %}
+            {% if n is null or n == 0 %}
             <div class="row">
                 <span class="text-newsletter newsletter">{% trans %}S'abonner à la Newsletter{% endtrans %}: </span>
                 {{ form_start(newsletterForm) }}
@@ -39,6 +41,7 @@
                     <button type="submit" class="button btn-info btn-lg" data-toggle="modal" data-target="#myModal">{% trans %}Je m'inscris{% endtrans %}</button>
                 {{ form_end(newsletterForm) }}
             </div>
+            {% endif %}
         </div>
 
     </section>

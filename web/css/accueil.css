@@ -20,7 +20,7 @@
         text-align: center;
         position: absolute;
         background-color: rgba(0,0,0,0.7);
-        height: auto;
+        height: 100%;
         max-width: 100%;
     }
 
@@ -133,8 +133,8 @@
         text-align: center;
         position: absolute;
         background-color: rgba(0,0,0,0.7);
-        height: 80vh;
-        width: 100vw;
+        height: 100%;
+        width: 100%;
     }
 
     .bouton_clic{
@@ -388,7 +388,6 @@ form{
 @media (min-width: 993px){
     #testimonials {
         min-height: 100px;
-        height: 110px;
     }
     .newsletter {
         font-size:190%;
