@@ -21,14 +21,7 @@ class ProductType extends AbstractType
                 ->add('onSale')
                 ->add('volume')
                 ->add('universes')
-                ->add('conditioningTypes')
-                ->add('pictures', CollectionType::class, array(
-                    'entry_type' => PictureProductType::class,
-                    'allow_add' => true,
-                    'allow_delete' => true,
-                    'delete_empty' => true,
-
-                ));
+                ->add('conditioningTypes');
     }
     
     /**
