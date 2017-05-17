@@ -16,6 +16,7 @@ class WineType extends ProductType
     {
         parent::buildForm($builder, $options);
         $builder
+            ->add('region')
             ->add('vintage')
             ->add('color')
             ->add('aDecanter')

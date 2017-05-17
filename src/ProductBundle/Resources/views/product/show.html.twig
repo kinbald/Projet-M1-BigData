@@ -51,20 +51,27 @@
             <a id="backpage" class="back-button wow fadeInRight">❮ {% trans %}Retour{% endtrans %}</a>
             <div id="myCarousel" class="carousel mycarousel slide" data-ride="carousel">
                 <!-- Indicators -->
-                <ol class="carousel-indicators mycarousel-indicators">
-                    {% for key,product_picture in product.pictures %}
-                        <li data-target="#myCarousel" data-slide-to="{{ key }}"{% if key==0 %} class="active"{% endif %}></li>
-                    {% endfor %}
-                </ol>
+                {% if product.pictures is not empty %}
+                    <ol class="carousel-indicators mycarousel-indicators">
+                        {% for key,product_picture in product.pictures %}
+                            <li data-target="#myCarousel" data-slide-to="{{ key }}"{% if key==0 %} class="active"{% endif %}></li>
+                        {% endfor %}
+                    </ol>
+                {% endif %}
 
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner mycarousel-inner" role="listbox">
-
-                    {% for product_picture in product.pictures %}
+                    {% if product.pictures is empty %}
                         <div class="item active">
-                            <img class="photo" src="{{ asset(product_picture.url) }}" alt="{{ product_picture.alt }}"/>
+                            <img class="photo" src="{{ asset("./img/product/defaultProduct.jpeg") }}" alt="No.Picture.Product"/>
                         </div>
-                    {% endfor %}
+                    {% else %}
+                        {% for product_picture in product.pictures %}
+                            <div class="item active">
+                                <img class="photo" src="{{ asset(product_picture.url) }}" alt="{{ product_picture.alt }}"/>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
                 </div>
 
                 <!-- Left and right controls -->
@@ -150,7 +157,7 @@
                     </table>
                 <br>
                 {% set picture = product.pictures|last %}
-                <span class="btn btn-default add-item wow swing" {% if picture %}data-image="/{{ picture.url}}"{% endif %}
+                <span class="btn btn-default add-item wow swing" {% if picture is empty %}data-image="./img/product/defaultProduct.jpeg"{% else %} data-image="{{ picture.url}}"{% endif %}
                       data-name="{{ product.name }}" data-cost="0" data-id="{{ product.id }}">
                 <div id="ajout"><img alt="e-commerce" src="{{ asset('img/product/panier.png') }}" height="55"></div>
                 <span class="ti-shopping-cart"></span>{% trans %}Panier{% endtrans %}
