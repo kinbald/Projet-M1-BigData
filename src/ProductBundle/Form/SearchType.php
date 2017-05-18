@@ -1,15 +1,16 @@
 <?php
 
 namespace ProductBundle\Form;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use ProductBundle\Form\ProductType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\RangeType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use ProductBundle\Form\ProductType;
 
 class SearchType extends AbstractType
 {
@@ -20,21 +21,13 @@ class SearchType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
-        //$ranges = $options['data']['ranges'];
-        //$regions = $options['data']['regions'];
         $builder->add('name', TextType::class, array('required' => false));
         $builder->add('price_max', RangeType::class, array('required' => false, 'attr' => array('id' => 'slider', 'min' => 1, 'max' => $options['data']['price_max'])));
-        /*$builder->add('category', ChoiceType::class, ['choices' => $ranges,  'choice_label' => function($range, $key, $index) {
-            return $range->getName();
-        }]);
-        $builder->add('region', ChoiceType::class, ['choices' => $regions,  'choice_label' => function($region, $key, $index) {
-            return $region->getRegion();
-        }]); */
-        //$builder->add('region', TextType::class, array('required' => false));
-        //$builder->add('cepage', TextType::class, array('required' => false));
+        $builder->add('color', ChoiceType::class, [
+        'choices' => $options['data']['array_color'],
+            'required' => false
+        ]);
     }
-
-
 
 
     /**
