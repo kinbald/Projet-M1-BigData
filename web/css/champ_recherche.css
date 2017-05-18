@@ -1,0 +1,28 @@
+.Rech{
+    margin-top: 5px;
+    margin-bottom: 30px;
+}
+
+#productbundle_product_name, #productbundle_product_price_max{
+    color: black;
+    display: block;
+    margin-top: 0;
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+#productbundle_product output{
+    color: white;
+    margin-top: 90px;
+}
+
+#Recherche table{
+    margin-top: 50px;
+    width: 100%;
+}
+
+#Search1{
+    width: 100%;
+    color: black;
+}
+
