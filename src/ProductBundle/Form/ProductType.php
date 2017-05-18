@@ -24,10 +24,9 @@ class ProductType extends AbstractType
                 ->add('onSale')
                 ->add('volume')
                 ->add('universes')
-                ->add('conditioningTypes')
                 ->add('producer', EntityType::class, array(
-                    'class' => UserProducer::class,
-                    'choice_label' => 'fullName'
+                'class' => UserProducer::class,
+                'choice_label' => 'fullName'
                 ));
     }
     

@@ -62,7 +62,7 @@
 
         <div id="boutons">
             <div class="bouton1">
-                <a class="btn btn-primary btn-circle" href="{{ path('conditioning_edit', { 'id': productConditioning.id }) }}">{% trans %}Edit{% endtrans %}</a>
+                <a class="btn btn-primary btn-circle" href="{{ path('conditioning_edit', { 'product': product.id, 'id': productConditioning.id }) }}">{% trans %}Edit{% endtrans %}</a>
             </div>
             {% if not has_purchases %}
                 <div class="bouton1">
@@ -72,7 +72,7 @@
                 </div>
             {% endif %}
             <div class="bouton1">
-                <a class="btn btn-primary btn-circle" href="{{ path('conditioning_index') }}">{% trans %}Back to the list{% endtrans %}</a>
+                <a class="btn btn-primary btn-circle" href="{{ path('conditioning_index', {'id': product.id}) }}">{% trans %}Back to the list{% endtrans %}</a>
             </div>
         </div>
     </div>

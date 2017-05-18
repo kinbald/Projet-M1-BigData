@@ -23,7 +23,7 @@
         </div>
         {{ form_end(form) }}
         <div class="bouton1">
-            <a class="btn btn-primary btn-circle" href="{{ path('conditioning_index') }}">{% trans %}Back to the list{% endtrans %}</a>
+            <a class="btn btn-primary btn-circle" href="{{ path('conditioning_index', {'id': product.id}) }}">{% trans %}Back to the list{% endtrans %}</a>
         </div>
     </div>
 

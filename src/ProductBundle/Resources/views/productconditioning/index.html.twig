@@ -29,7 +29,7 @@
         <tbody>
         {% for productConditioning in productConditionings %}
             <tr>
-                <td><a href="{{ path('conditioning_show', { 'id': productConditioning.id }) }}">{{ productConditioning.id }}</a></td>
+                <td><a href="{{ path('conditioning_show', { 'product': product.id, 'id': productConditioning.id }) }}">{{ productConditioning.id }}</a></td>
                 <td>{{ productConditioning.name }}</td>
                 <td>{{ productConditioning.pubPrice|number_format(2,'.',',') }} €</td>
                 <td>{{ productConditioning.proPrice|number_format(2,'.',',') }} €</td>
@@ -47,10 +47,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('conditioning_show', { 'id': productConditioning.id }) }}">{% trans %}Show{% endtrans %}</a>
+                            <a href="{{ path('conditioning_show', { 'product': product.id, 'id': productConditioning.id }) }}">{% trans %}Show{% endtrans %}</a>
                         </li>
                         <li>
-                            <a href="{{ path('conditioning_edit', { 'id': productConditioning.id }) }}">{% trans %}Edit{% endtrans %}</a>
+                            <a href="{{ path('conditioning_edit', { 'product': product.id, 'id': productConditioning.id }) }}">{% trans %}Edit{% endtrans %}</a>
                         </li>
                     </ul>
                 </td>
@@ -62,7 +62,10 @@
         <br>
         <ul>
             <li>
-                <a class="btn btn-primary btn-circle" href="{{ path('conditioning_new') }}">{% trans %}New Conditioning{% endtrans %}</a>
+                <a class="btn btn-primary btn-circle" href="{{ path('product_list', {'type': product.discr}) }}">{% trans %}Back to the list{% endtrans %}</a>
+            </li>
+            <li>
+                <a class="btn btn-primary btn-circle" href="{{ path('conditioning_new', {'product': product.id}) }}">{% trans %}New Conditioning{% endtrans %}</a>
             </li>
         </ul>
     </div>
