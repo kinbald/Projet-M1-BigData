@@ -34,7 +34,6 @@
                 </tr>
             </thead>
             <tbody>
-            {% set i = 0 %}
             {% for media in medias %}
                 <tr>
                     <td class="id">{{ media.id }}</td>
@@ -47,7 +46,6 @@
                             <span class="glyphicon glyphicon-trash"></span>
                         </a></td>
                 </tr>
-                {% set i = i + 1 %}
             {% endfor %}
                     <tr>
                         <td colspan="4"></td>

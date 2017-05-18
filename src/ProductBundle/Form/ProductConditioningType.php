@@ -19,7 +19,7 @@ class ProductConditioningType extends AbstractType
             ->add('volumeValue')
             ->add('volumeUnit')
             ->add('stock')
-            ->add('pack', PackType::class, array('label' => 'Pack details : '))
+            ->add('pack', PackType::class, array('label' => 'Pack details : ', 'required' => false))
             ->add('deliveries');
     }
     
