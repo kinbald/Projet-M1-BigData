@@ -67,7 +67,6 @@
 
 
     <div id="Produits">
-        {{ dump() }}
         <ul class="product-holder">
             {% for product in products|sortbyfield('minPrice')|reverse %}
                 <li>
