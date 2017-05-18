@@ -696,4 +696,8 @@ class UserProducer extends BaseUser
         return 'producer';
     }
 
+    public function getFullName(){
+        return $this->getLastname().' '.$this->getFirstname();
+    }
+
 }

@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use UserBundle\Entity\UserProducer;
 
 class ProductType extends AbstractType
 {
@@ -23,7 +24,11 @@ class ProductType extends AbstractType
                 ->add('onSale')
                 ->add('volume')
                 ->add('universes')
-                ->add('conditioningTypes');
+                ->add('conditioningTypes')
+                ->add('producer', EntityType::class, array(
+                    'class' => UserProducer::class,
+                    'choice_label' => 'fullName'
+                ));
     }
     
     /**
