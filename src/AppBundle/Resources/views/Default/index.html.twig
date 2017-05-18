@@ -29,16 +29,15 @@
                 {% if n == 1 %}
                     <h4>{% trans %}Merci de vous être inscrit{% endtrans %}</h4>
                     <img style="width: 100px; height: 100px;" src="http://www.clipartbest.com/cliparts/bcy/64z/bcy64zkgi.png" alt="success">
-                {% elseif n == 0 %}
-                    <div>{% trans %}Oups, une erreur est survenue{% endtrans %}</div>
                 {% endif %}
             {% endif %}
             {% if n is null or n == 0 %}
             <div class="row">
                 <span class="text-newsletter newsletter">{% trans %}S'abonner à la Newsletter{% endtrans %}: </span>
                 {{ form_start(newsletterForm) }}
+                <span class="newsletter_form_error">{{ form_errors(newsletterForm.mail) }}</span>
                 {{ form_widget(newsletterForm.mail, {id: "input-newsletter", attr: {class: "text-newsletter", placeholder: "Veuillez entrer votre email"|trans}}) }}
-                    <button type="submit" class="button btn-info btn-lg" data-toggle="modal" data-target="#myModal">{% trans %}Je m'inscris{% endtrans %}</button>
+                <button type="submit" class="button btn-info btn-lg" data-toggle="modal" data-target="#myModal">{% trans %}Je m'inscris{% endtrans %}</button>
                 {{ form_end(newsletterForm) }}
             </div>
             {% endif %}
@@ -137,7 +136,7 @@
                     </div>
                     <div class="testimonials-pagination"></div>
                     <div class="testimonials-slider-next right-arrow-negative"><span class="glyphicon glyphicon-chevron-right"></span></div>
-                    <div class="testimonials-slider-prev left-arrow-negative"><span class="glyphicon glyphicon-chevron-left"></div>
+                    <div class="testimonials-slider-prev left-arrow-negative"><span class="glyphicon glyphicon-chevron-left"></span></div>
                 </div>
             </div>
         </div>

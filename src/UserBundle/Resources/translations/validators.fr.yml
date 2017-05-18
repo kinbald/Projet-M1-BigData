@@ -2,3 +2,6 @@ user:
     password:
         short: 'Le mot de passe doit contenir au moins 8 caractères'
         difficulty: 'Le mot de passe doit contenir au moins une minuscule, une majuscule et un nombre'
+newsletter:
+    already: "Ce courriel est déjà inscrit"
+    notvalid: "Ce courriel est invalide"

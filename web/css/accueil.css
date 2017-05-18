@@ -414,3 +414,7 @@ form{
     max-width: 100%;
 }
 
+.newsletter_form_error {
+    color: red;
+    font-weight: bold;
+}
