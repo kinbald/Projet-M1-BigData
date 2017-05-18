@@ -5,6 +5,25 @@
     <link href="{{ asset('css/formulaire.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/edit.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/mise_en_page_admin.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('uploader/fancybox/source/jquery.fancybox.css') }}">
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('uploader/fancybox/source/jquery.fancybox.pack.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('uploader/js/uploader.js') }}"></script>
+    <script type="text/javascript">
+        var uploader = new Uploader("chemin");
+        $("#button").fancybox({
+            'fitToView': false,
+            'width': '75%',
+            'height': '80%',
+            'autoScale': false,
+            'autoSize': false,
+            'transitionIn': 'elastic',
+            'transitionOut': 'elastic',
+            'type': 'iframe'
+        });
+    </script>
 {% endblock %}
 
 {% block body %}
@@ -13,14 +32,16 @@
         <div id="content">
             <h1 class="espace_br">{% trans %}Medal creation{% endtrans %}</h1>
 
-            {{ form_start(form) }}
+            {{ form_start(form, {'attr': {'id': 'form_medal_new'}}) }}
             {{ form_widget(form) }}
+            <a  id="button" class="clic" href="{{ asset('uploader/fancybox.php') }}?iframe">{% trans %}Load a picture{% endtrans %}</a>
+            <input type="text" id="chemin" name="urlImg" required>
+            {{ form_end(form) }}
         </div>
     </div>
 
     <div class="center">
-        <input class="btn btn-primary btn-circle col-md-6" type="submit" value="{% trans %}Create{% endtrans %}"/>
-        {{ form_end(form) }}
+        <button class="btn btn-primary btn-circle" type="button" value="" onclick="$('#form_medal_new').submit()" >{% trans %}Create{% endtrans %}</button>
 
         <ul>
             <li>

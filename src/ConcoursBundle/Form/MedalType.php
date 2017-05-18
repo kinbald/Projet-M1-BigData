@@ -3,8 +3,11 @@
 namespace ConcoursBundle\Form;
 
 use ConcoursBundle\Entity\Competition;
+use ConcoursBundle\Entity\CompetitionProduct;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,8 +18,12 @@ class MedalType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('annee')->add('url')->add('competition', EntityType::class, array('class' => Competition::class
-        , 'choice_label' => 'name'));
+        $currentDate = new \DateTime();
+        $currentYear = $currentDate->format('Y');
+        $builder->add('name')
+            ->add('annee', IntegerType::class, array(
+                'data' => $currentYear
+            ));
     }
 
     /**

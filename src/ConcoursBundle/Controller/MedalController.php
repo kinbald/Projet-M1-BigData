@@ -45,7 +45,9 @@ class MedalController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $urlImg = $request->get('urlImg');
             $em = $this->getDoctrine()->getManager();
+            $medal->setUrl($urlImg);
             $em->persist($medal);
             $em->flush();
 
@@ -87,7 +89,11 @@ class MedalController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $urlImg = $request->get('urlImg');
+            $medal->setUrl($urlImg);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($medal);
+            $em->flush();
 
             return $this->redirectToRoute('medal_edit', array('id' => $medal->getId()));
         }
