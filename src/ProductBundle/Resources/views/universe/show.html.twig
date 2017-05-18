@@ -3,6 +3,7 @@
 {% block stylesheets %}
     {{ parent() }}
     <link href="{{ asset('css/univers.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/champ_recherche.css') }}" rel="stylesheet" />
     <style type="text/css">
         form { position: relative; }
         input[type="range"] {
@@ -53,12 +54,12 @@
 
 
     <div id="Recherche">
-
+            <h1 class="Rech">Recherche</h1>
             {{ form_start(search_form) }}
             {{ form_widget(search_form) }}
             <table>
                 <td>
-                    <input class="btn btn-primary btn-circle" type="submit" value="Rechercher" />
+                    <input id="Search1" class="btn btn-primary btn-circle" type="submit" value="Rechercher" />
                 </td>
             </table>
             {{ form_end(search_form) }}
