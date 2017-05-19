@@ -20,6 +20,7 @@ Justificatif (carte presse): Proof (press card)
 Justificatif (adresse du blog): Proof (blod address)
 Droit d'accès au contenu Média: Permission to access the media content
 Autorisations Producteurs: Authorizations Producers
+Autorisation Producteurs: Authorizations Producers
 Numéro SIRET: SIRET number
 Nom entreprise: Company name
 Adresse: Address
@@ -41,3 +42,7 @@ Producteurs insérés: Inserted producers
 Médailles insérées: Inserted medals
 Tableau des expéditions: Conditioning table
 Tableau des options de livraison: Delivery options table
+Supprimer: Delete
+Gestion Produits et Concours: Products and contests management
+Gestion des Types de Livraisons: Delivery options management
+Gestion des Commandes: Orders management

@@ -7,8 +7,8 @@ Gestion des Vins: Gestion des Vins
 Gestion des Spiritueux: Gestion des Spiritueux
 Gestion des Univers: Gestion des Univers
 Importation Excel: Importation Excel
-Gestion Producteurs: Gestion Producteurs
-Gestion Utilisateurs: Gestion Utilisateurs
+Gestion des Producteurs: Gestion Producteurs
+Gestion des Utilisateurs: Gestion Utilisateurs
 Gestion Commandes: Gestion Commandes
 News: Actualités
 Gestion de l'Espace Presse: Gestion de l'Espace Presse
@@ -20,6 +20,7 @@ Justificatif (carte presse): Justificatif (carte presse)
 Justificatif (adresse du blog): Justificatif (adresse du blog)
 Droit d'accès au contenu Média: Droit d'accès au contenu Média
 Autorisations Producteurs: Autorisations Producteurs
+Autorisation Producteurs: Autorisations Producteurs
 Numéro SIRET: Numéro SIRET
 Nom entreprise: Nom entreprise
 Adresse: Adresse
@@ -41,4 +42,9 @@ Producteurs insérés: Producteurs insérés
 Médailles insérées: Médailles insérées
 Tableau des expéditions: Tableau des conditionnements
 Tableau des options de livraison: Tableau des modes de livraison
+Droit d'accès au contenu Média: Droit d'accès au contenu Média
+Supprimer: Supprimer
+Gestion Produits et Concours: Gestion Produits et Concours
+Gestion des Types de Livraisons: Gestion des Types de Livraisons
+Gestion des Commandes: Gestion des Commandes
 
