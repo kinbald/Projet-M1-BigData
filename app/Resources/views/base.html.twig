@@ -154,13 +154,13 @@
 <div class="section section-min">
     <footer class="footer">
         <div class="container" id="large_footer">
-            <div id="ajout123" class="row color-textfooter">
-                <div class="col-md-3 col-sm-3 col-xs-7">
+            <div class="row color-textfooter">
+                <div class="col-lg-4 text-center div-footer">
                     <h4><a href="{{ path("homepage") }}"><img class="style_logo_footer" src="{{ asset('img/logo.png') }}" alt="logo"></a></h4>
                     <p>{% trans %}Toujours copié, Quelques fois imité, Parfois plagié ... Mais...Toujours les Premiers !{% endtrans %}<br>© 2017, All rights reserved.</p>
                     <p><i>Designed by ISEN Toulon</i></p>
                 </div>
-                <div class="col-md-3 col-sm-3 col-xs-5">
+                <div class="col-lg-4 text-center div-footer">
                     <h4>Menu</h4>
                         <ul class="list">
                             <li><a href="{{ path("qui_sommes_nous") }}">{% trans %}Qui Sommes-Nous ?{% endtrans %}</a></li>
@@ -168,7 +168,7 @@
                             <li><a href="{{ path("mentions_legales") }}">{% trans %}Mentions légales{% endtrans %}</a></li>
                         </ul>
                 </div>
-                <div class="col-md-3 col-sm-3 col-xs-7">
+                <div class="col-lg-4 text-center div-footer">
                     <h4>{% trans %}Suivez-nous !{% endtrans %}</h4>
                     <ul>
                         <li><a href="http://www.facebook.com" class="ti-facebook"> Facebook</a></li>
@@ -177,16 +177,10 @@
                         <li><a href="http://www.instagram.com" class="ti-instagram"> Instagram</a></li>
                     </ul>
                 </div>
-                <div class="col-md-3 col-sm-3 col-xs-5">
-                    <h4>{% trans %}Recevoir nos actualités{% endtrans %}</h4>
-                    <div class="footer-newsletter">
-                        <div class="center text-center">
-                            {{ render(controller(
-                            'AppBundle:Default:newsletterForm'
-                            )) }}
-                        </div>
-                    </div>
-                </div>
+            </div>
+            <div class="text-center div-footer">
+                <h4>{% trans %}Recevoir nos actualités{% endtrans %}</h4>
+                {{ render(controller('AppBundle:Default:newsletterForm')) }}
             </div>
         </div>
     </footer>
