@@ -164,7 +164,7 @@ class UniverseController extends Controller
 
             $em->flush();
 
-            return $this->redirectToRoute('universe_edit', array('id' => $universe->getId()));
+            return $this->redirectToRoute('universe_index');
         }
 
         return $this->render('ProductBundle:universe:edit.html.twig', array(

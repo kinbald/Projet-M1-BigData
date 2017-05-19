@@ -107,7 +107,7 @@ class PurchaseController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('purchase_edit', array('id' => $purchase->getId()));
+            return $this->redirectToRoute('purchase_index');
         }
 
         return $this->render('ProductBundle:purchase:edit.html.twig', array(
