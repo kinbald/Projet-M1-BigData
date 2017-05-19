@@ -1,6 +1,6 @@
-{{ form_start(newsletterForm) }}
+{{ form_start(newsletterForm, {attr: {class: "form-inline"}}) }}
 <div class="form-group">
-    {{ form_widget(newsletterForm.mail, {attr: {class: "form-control col-xs-8 col-sm-8", placeholder: "e-mail"}}) }}
-    <button class="btn btn-default col-xs-4 col-sm-4" type="submit"><span class="ti-arrow-right"></span></button>
+    {{ form_widget(newsletterForm.mail, {attr: {class: "form-control", placeholder: "e-mail"}}) }}
 </div>
+<button class="btn btn-default" type="submit"><span class="ti-arrow-right"></span></button>
 {{ form_end(newsletterForm) }}

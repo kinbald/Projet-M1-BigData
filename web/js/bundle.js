@@ -5148,7 +5148,7 @@ if (function (e, t) {
                 return;
             curCost = this.getAttribute("data-cost");
             curName = this.getAttribute("data-name");
-            curImage = this.getAttribute("data-image");
+            curImage = this.getAttribute("data-image").substring(2);
             curConditioningTypeName = this.getAttribute("data-conditioning-type-name");
             curConditioningTypeId = this.getAttribute("data-conditioning-type-id");
             quantity = 1;

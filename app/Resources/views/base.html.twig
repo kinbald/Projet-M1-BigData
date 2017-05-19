@@ -10,6 +10,7 @@
         <link href="{{ asset('css/footer.css') }}" rel="stylesheet" />
         <link href="{{ asset('css/navbar.css') }}" rel="stylesheet" />
         <link href="{{ asset('css/message_confirmation.css') }}" rel="stylesheet" />
+        <link href="{{ asset('css/global.css') }}" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Lemonada" rel="stylesheet">
     {% endblock %}
@@ -39,15 +40,14 @@
 <nav class="navbar navbar-fixed-top shadow" id="js-nav">
     <div class="container-fluid">
         <div class="navbar-header">
+            <a class="navbar-brand" href="{{ path("homepage") }}">
+                <img class="style_logo" src="{{ asset('img/logo.png') }}" alt="logo">
+            </a>
             <button class="navbar-toggle" data-target="#myNavbar" data-toggle="collapse" type="button">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-
-            <a class="navbar-brand" href="{{ path("homepage") }}">
-                <img class="style_logo" src="{{ asset('img/logo.png') }}" alt="logo">
-            </a>
         </div>
             <div class="navbar-collapse collapse taille-li-navbar" id="myNavbar">
                 <ul class="nav navbar-nav">
@@ -85,16 +85,14 @@
                     {% endif %}
 
 
-                    <ul class="nav navbar-nav navbar-right">
-                        {%  if app.request.get('_route') is null %}
-                            <li><a class="language" rel="fr-FR" href="{{ path('homepage', {'_locale': 'fr'}) }}"><img src="{{ asset('img/flag_fr.png') }}" alt="Francais" /></a></li>
-                            <li><a class="language" rel="us-EN" href="{{ path('homepage', {'_locale': 'en'}) }}"><img src="{{ asset('img/flag_an.png') }}" alt="Anglais" /></a></li>
+                    {%  if app.request.get('_route') is null %}
+                        <li><a class="language" rel="fr-FR" href="{{ path('homepage', {'_locale': 'fr'}) }}"><img src="{{ asset('img/flag_fr.png') }}" alt="Francais" /></a></li>
+                        <li><a class="language" rel="us-EN" href="{{ path('homepage', {'_locale': 'en'}) }}"><img src="{{ asset('img/flag_an.png') }}" alt="Anglais" /></a></li>
 
-                        {% else %}
+                    {% else %}
                         <li><a class="language" rel="fr-FR" href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'fr'})) }}"><img src="{{ asset('img/flag_fr.png') }}" alt="Francais" /></a></li>
                         <li><a class="language" rel="us-EN" href="{{  path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'}))}}"><img src="{{ asset('img/flag_an.png') }}" alt="Anglais" /></a></li>
-                        {% endif %}
-                    </ul>
+                    {% endif %}
                 </ul>
             </div>
     </div>
@@ -147,14 +145,10 @@
     <div class="cart-widget-close-overlay"></div>
 </div>
 
+<div id="contenu">
 {% block body %}
 {% endblock %}
-
-
-
-
-
-
+</div>
 
 <!----------- Footer ------------>
 <div class="section section-min">
@@ -168,11 +162,11 @@
                 </div>
                 <div class="col-lg-4 text-center div-footer">
                     <h4>Menu</h4>
-                        <ul class="list">
-                            <li><a href="{{ path("qui_sommes_nous") }}">{% trans %}Qui Sommes-Nous ?{% endtrans %}</a></li>
-                            <li><a href="{{ path("contact") }}">Contacts</a></li>
-                            <li><a href="{{ path("mentions_legales") }}">{% trans %}Mentions légales{% endtrans %}</a></li>
-                        </ul>
+                    <ul class="list">
+                        <li><a href="{{ path("qui_sommes_nous") }}">{% trans %}Qui Sommes-Nous ?{% endtrans %}</a></li>
+                        <li><a href="{{ path("contact") }}">Contacts</a></li>
+                        <li><a href="{{ path("mentions_legales") }}">{% trans %}Mentions légales{% endtrans %}</a></li>
+                    </ul>
                 </div>
                 <div class="col-lg-4 text-center div-footer">
                     <h4>{% trans %}Suivez-nous !{% endtrans %}</h4>
@@ -193,7 +187,6 @@
 <!------------------------Bandeau cookies------------------------------->
 
 <script src="{{ asset('js/cookiechoices.js') }}"></script><script>document.addEventListener('DOMContentLoaded', function(event){cookieChoices.showCookieConsentBar('Ce site utilise des cookies pour vous offrir le meilleur service. En poursuivant votre navigation, vous acceptez l’utilisation des cookies.', 'J’accepte', 'En savoir plus', '{{ path("mentions_legales") }}');});</script>
-
 
 {% block javascripts %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

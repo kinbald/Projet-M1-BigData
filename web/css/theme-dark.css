@@ -3860,7 +3860,8 @@ a:hover, a:active, a:focus {
 
 .btn {
   box-shadow: none !important;
-  text-transform: uppercase; }
+  /*text-transform: uppercase;*/
+}
   .btn [class^="ti-"], .btn [class*=" ti-"] {
     display: inline-block;
     margin-right: 5px; }

@@ -18,21 +18,9 @@
 .style_logo_footer {
     width: 180px;
 }
-h4{
+.div-footer h4{
     font-size: 22px;
 }
 .color-textfooter{
     color: white;
-}
-
-#ajout123{
-    text-align: left;
-}
-
-#ajout123 li{
-    text-align: left;
-}
-
-#ajout123 h4{
-    font-family: "Dancing Script", cursive;
 }

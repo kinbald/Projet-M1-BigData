@@ -1,0 +1,95 @@
+.navbar-nav{
+    display: inline-block;
+    overflow: hidden;
+}
+.div-footer{
+    padding-top: 25px;
+}
+
+#large_footer{
+    margin-top: 80px;
+}
+
+#slim_footer{
+    padding: 10px 30px;
+}
+
+#enveloppe{
+    width: 40px;
+    height: 40px;
+}
+
+.style_logo_footer {
+    width: 180px;
+}
+.div-footer h4{
+    font-size: 22px;
+}
+.color-textfooter{
+    color: white;
+}
+form {
+    display: inline-block;
+}.style_logo{
+     width: auto;
+ }
+
+#myNavbar{
+    padding: 0;
+}
+.navbar{
+    margin-bottom: 0px;
+    position: relative;
+}
+#form_mail{
+    margin: 0;
+}
+#button-form-mail{
+    margin: 0;
+}
+
+@media (min-width: 769px ) {
+    .navbar-brand img{
+        height: 30px;
+    }
+    .nav > li > a > img {
+        width: 30px;
+    }
+}
+
+@media (max-width: 768px ) {
+    .navbar-brand img{
+        height: 45px;
+    }
+    .navbar-header{
+        height: 90px;
+    }
+    .navbar-toggle{
+        padding-top: 30px;
+    }
+    .navbar-toggle .icon-bar{
+        height: 4px;
+        width: 44px;
+    }
+    .navbar-toggle .icon-bar + .icon-bar{
+        margin-top: 8px;
+    }
+    .navbar-nav li > a {
+        padding: 36px;
+        font-size: 25px;
+    }
+    #testimonials{
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 768px ) and (min-width: 545px){
+    .nav > li > a > img {
+        width: 50px;
+    }
+}
+@media (max-width: 544px ) {
+    .nav > li > a > img {
+        width: 80px;
+    }
+}

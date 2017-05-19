@@ -22,7 +22,7 @@
 
 {% block body %}
 
-    <section class="testimonials testimonials-banner-newsletter" id="testimonials">
+    <section class="testimonials-banner-newsletter" id="testimonials">
         <div class="container">
             {% set n = app.request.query.get("newsletter") %}
             {% if n is not null %}
@@ -37,22 +37,11 @@
                 {{ form_start(newsletterForm) }}
                 <span class="newsletter_form_error">{{ form_errors(newsletterForm.mail) }}</span>
                 {{ form_widget(newsletterForm.mail, {id: "input-newsletter", attr: {class: "text-newsletter", placeholder: "Veuillez entrer votre email"|trans}}) }}
-                <button type="submit" class="button btn-info btn-lg" data-toggle="modal" data-target="#myModal">{% trans %}Je m'inscris{% endtrans %}</button>
+                <button type="submit" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">{% trans %}Je m'inscris{% endtrans %}</button>
                 {{ form_end(newsletterForm) }}
             </div>
             {% endif %}
         </div>
-
-    </section>
-
-    <section class="feature">
-        <div class="fond_clic">
-            <h3>{% trans %}Retrouvez toutes nos fonctionnalités{% endtrans %}</h3>
-            <div class="titre-menu">
-            <a href="#univers" class="page-scroll"><button class="bouton_clic" >{% trans %}Nos Univers{% endtrans %}</button></a>
-            <a href="#recettes" class="page-scroll"><button class="bouton_clic" >{% trans %}Nos Recettes{% endtrans %}</button></a>
-            <a href="#news" class="page-scroll"><button class="bouton_clic" >{% trans %}Les Concours{% endtrans %}</button></a>
-            </div></div>
     </section>
 
     <section id="univers">
@@ -212,7 +201,7 @@
                     <div class="post-slider-next right-arrow-negative"> <span class="ti-arrow-right"></span> </div>
                     <div class="post-slider-prev left-arrow-negative"> <span class="ti-arrow-left"></span> </div>
                 </div>
-                           </div>
+            </div>
         </div>
     </section>
  
