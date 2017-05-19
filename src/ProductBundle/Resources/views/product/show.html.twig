@@ -90,6 +90,13 @@
         <!--  TEXTE  -->
         <div class="center-justified section-presentation">
             <h3 id="TITRE" class="wow fadeInDown">{{ product.displayName }}</h3>
+            {% for competition in product.competitions %}
+                {% if competitionProduct is not empty %}
+                    {% if competitionProduct[loop.index0].primeName != null %}
+                        <h4 class="wow fadeInDown">{{ competitionProduct[loop.index0].primeName }}</h4>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
             {% if product.averageMarks > 0 %}
                 <div class="rating wow fadeInDown">
                     {% for i in range(1, product.averageMarks) %}
