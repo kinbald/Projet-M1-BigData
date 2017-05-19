@@ -1,91 +1,29 @@
-@media (max-width: 499px) {
-
-    h1 {
-        font-size: 60px;
-        font-family: 'Dancing Script', cursive;
-        color: white;
-        margin-top: 80px;
-        margin-bottom: 3%;
-    }
-
-    .neutral {
-        display: inline-block;
-        text-align: center;
-        height: 20em;
-    }
-
-
-    .image {
-        position: inherit;
-        border-radius: 10px;
-        background-size: cover;
-        width: 350px;
-        height: 280px;
-    }
-
-    .texte {
-        position: relative;
-        top: -180px;
-        text-shadow: 3px 2px 1px black;
-        font-size: 150%;
-        font-family: 'Lemonada', cursive;
-        overflow-wrap: break-word;
-        white-space: pre-wrap;
-    }
-
-    .espace_footer{
-        visibility: hidden;
-        height: 100px;
-    }
-}
-@media (min-width: 500px) {
-
-    h1 {
-        font-size: 60px;
-        font-family: 'Dancing Script', cursive;
-        color: white;
-        margin-top: 80px;
-        margin-bottom: 3%;
-    }
-
-    .neutral {
-        display: inline-block;
-        text-align: center;
-        height: 20em;
-    }
-
-
-    .image {
-        position: inherit;
-        border-radius: 10px;
-        background-size: cover;
-        width: 430px;
-        height: 350px;
-    }
-
-    .texte {
-        position: relative;
-        top: -225px;
-        text-shadow: 3px 2px 1px black;
-        font-size: 150%;
-        font-family: 'Lemonada', cursive;
-        overflow-wrap: break-word;
-        white-space: pre-wrap;
-    }
-
-    .espace_footer{
-        visibility: hidden;
-        height: 100px;
-        margin-bottom: 0;
-    }
+body {
+    margin-top: 80px;
 }
 
-@media (min-width: 500px) and (max-width: 1370px) {
+h1{
+    font-size: 4em;
+    font-family: 'Dancing Script', cursive;
+    color: white;
+    margin-bottom: 80px;
+}
 
-    .espace_footer{
-        visibility: hidden;
-        height: 150px;
-        margin-bottom: 0;
-    }
+img {
+    border-radius : 10px;
+}
+.caption {
+    font-family: 'Lemonada', cursive;
+    text-shadow: 3px 2px 1px black;
+    font-size: 2em;
+    position: absolute;
+    top: 40%;
+    left: 0;
+    width: 100%;
+}
+
+.user-type {
+    margin-bottom: 30px;
+
 }
 

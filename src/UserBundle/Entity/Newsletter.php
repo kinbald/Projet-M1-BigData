@@ -3,12 +3,15 @@
 namespace UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
 
 /**
  * Newsletter
  *
  * @ORM\Table(name="newsletter")
  * @ORM\Entity(repositoryClass="UserBundle\Repository\NewsletterRepository")
+ * @UniqueEntity(fields = "mail", targetClass = "UserBundle\Entity\Newsletter", message="newsletter.already")
  */
 class Newsletter
 {
@@ -24,7 +27,12 @@ class Newsletter
     /**
      * @var string
      *
+     * @Assert\Email(
+     *     message = "newsletter.notvalid",
+     *     checkMX = true
+     * )
      * @ORM\Column(name="mail", type="string", length=255, unique=true)
+     *
      */
     private $mail;
 

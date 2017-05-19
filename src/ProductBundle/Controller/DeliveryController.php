@@ -93,7 +93,7 @@ class DeliveryController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('delivery_edit', array('id' => $delivery->getId()));
+            return $this->redirectToRoute('delivery_index');
         }
 
         return $this->render('ProductBundle:delivery:edit.html.twig', array(

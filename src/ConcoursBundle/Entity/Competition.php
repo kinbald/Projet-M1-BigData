@@ -49,6 +49,16 @@ class Competition
      */
     private $products;
 
+    /**
+     * Get Products
+     *
+     * @return CompetitionProduct
+     */
+    public function getProducts()
+    {
+        return $this->products;
+    }
+
 
     /**
      * Get id

@@ -8,11 +8,11 @@
     <h1>{% trans %}Réinitialiser votre mot de passe{% endtrans %}</h1>
     <form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
         <div class="mini-espace">
-            <label for="username">{{ 'resetting.request.username'|trans }}</label>
-            <input type="text" id="username" name="username" required="required" />
+            <label id="tres_imp" for="username">{{ 'resetting.request.username'|trans }}</label>
+            <input id="tres_important" type="text" id="username" name="username" required="required" />
         </div>
         <div>
-            <input type="submit" value="{{ 'resetting.request.submit'|trans }}" />
+            <input id="tres_important" type="submit" value="{{ 'resetting.request.submit'|trans }}" />
         </div>
         <div class="mini-espace"></div>
 

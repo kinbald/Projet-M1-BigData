@@ -14,15 +14,15 @@
     {% if status_code==404 %}
         {% set text = 'Le contenu de cette page n\'est pas disponible.' %}
     {%  else %}
-        {% set text = 'Une erreur sgit \'est produite' %}
+        {% set text = 'Une erreur s\'est produite' %}
     {% endif %}
     <div class="exceptionContent">
-        <h1 id="exceptionTitle">Oups...{{ text }}</h1>
-        <p class="exceptionCode">Erreur {{ status_code }}</p>
-        <p>
-            <a onClick="window.history.back()" class="btn btn-primary btn-exception">❮ Retour</a>
-            <a href="/" class="btn btn-primary btn-exception">Accueil</a>
-        </p>
-        <img class='exceptionImg' src="{{ asset('img/exception.gif') }}" alt="404 gif">
-    </div>
+<h1 id="exceptionTitle">Oups...{{ text }}</h1>
+<p class="exceptionCode">Erreur {{ status_code }}</p>
+<p>
+    <a onClick="window.history.back()" class="btn btn-primary btn-exception">❮ Retour</a>
+    <a href="/" class="btn btn-primary btn-exception">Accueil</a>
+</p>
+<img class='exceptionImg' src="{{ asset('img/exception.gif') }}" alt="404 gif">
+</div>
 {% endblock %}

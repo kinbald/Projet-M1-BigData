@@ -11,4 +11,23 @@ use Doctrine\ORM\EntityRepository;
  */
 class WineRepository extends EntityRepository
 {
+
+    public function getColors()
+    {
+        $queryBuilder = $this->createQueryBuilder('p');
+        $queryBuilder->select('p.color')->distinct(true);
+        $query = $queryBuilder->getQuery();
+        return $query->getResult();
+    }
+
+    public function findProductConditionningByColor($color)
+    {
+        $queryBuilder = $this->createQueryBuilder('p');
+        $queryBuilder->where('p.color = :color')
+        ->setParameter('color', $color);
+        $query = $queryBuilder->getQuery();
+        return $query->getResult();
+    }
+
+
 }

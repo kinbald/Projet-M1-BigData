@@ -81,14 +81,14 @@ class UniverseController extends Controller
      *     })
      * @Method({"GET", "POST"})
      */
-    public function showActionQuery(Request $request, Universe $universe)
+    public function showAction(Request $request, Universe $universe)
     {
         $model = new UniversModel($this->getDoctrine()->getManager());
         $pictureArray = array();
         $temp = null;
         $products = $universe->getProducts();
         $formResult=null;
-        $options=array('price_max' => $model->getMaxConditionningPrice()); //options du formulaire
+        $options=array('price_max' => $model->getMaxConditionningPrice(), 'array_color' => $model->getColors()); //options du formulaire
         $searchForm = $this->createForm('ProductBundle\Form\SearchType', $options);
         $searchForm->handleRequest($request);
         if ($searchForm->isSubmitted() && $searchForm->isValid()) { // si le formulaire est rempli et valide, alors on retourne les résultats de la recherche
@@ -96,7 +96,8 @@ class UniverseController extends Controller
             if($formResult['name']!=null){
                 $products = $model->findProductsByName($formResult['name']);
             }
-            if($formResult['price_max']!=null && $formResult['name']==null) {
+
+            if($formResult['price_max']!=null && $formResult['name']==null && $formResult['color'] ==null) {
                 $products = null;
                 $products = array();
                 $temps = $model->findProductConditionningByPrice($formResult['price_max']);
@@ -104,6 +105,17 @@ class UniverseController extends Controller
                     array_push($products, $temp->getProduct());
                 }
             }
+
+            if($formResult['price_max']!=null && $formResult['name']==null && $formResult['color']!=null) {
+                $products = null;
+                $products = array();
+                $temps = $model->findProductConditionningByColor($formResult['color']);
+                foreach ($temps as $temp) {
+                    array_push($products, $temp);
+                }
+            }
+
+
         }
         foreach ($products as $product) { // pour récupérer les photos des produits
             $pictures=$product->getPictures();
@@ -114,7 +126,7 @@ class UniverseController extends Controller
             'search_form' => $searchForm->createView(),
             'products' => $products,
             'query' => $formResult, //pour le débug
-            'prix_max' => $options['price_max']
+            'prix_max' => $model->getColors()
         ));
     }
 
@@ -152,7 +164,7 @@ class UniverseController extends Controller
 
             $em->flush();
 
-            return $this->redirectToRoute('universe_edit', array('id' => $universe->getId()));
+            return $this->redirectToRoute('universe_index');
         }
 
         return $this->render('ProductBundle:universe:edit.html.twig', array(

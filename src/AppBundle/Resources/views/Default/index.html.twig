@@ -29,16 +29,15 @@
                 {% if n == 1 %}
                     <h4>{% trans %}Merci de vous être inscrit{% endtrans %}</h4>
                     <img style="width: 100px; height: 100px;" src="http://www.clipartbest.com/cliparts/bcy/64z/bcy64zkgi.png" alt="success">
-                {% elseif n == 0 %}
-                    <div>{% trans %}Oups, une erreur est survenue{% endtrans %}</div>
                 {% endif %}
             {% endif %}
             {% if n is null or n == 0 %}
             <div class="row">
                 <span class="text-newsletter newsletter">{% trans %}S'abonner à la Newsletter{% endtrans %}: </span>
                 {{ form_start(newsletterForm) }}
+                <span class="newsletter_form_error">{{ form_errors(newsletterForm.mail) }}</span>
                 {{ form_widget(newsletterForm.mail, {id: "input-newsletter", attr: {class: "text-newsletter", placeholder: "Veuillez entrer votre email"|trans}}) }}
-                    <button type="submit" class="button btn-info btn-lg" data-toggle="modal" data-target="#myModal">{% trans %}Je m'inscris{% endtrans %}</button>
+                <button type="submit" class="button btn-info btn-lg" data-toggle="modal" data-target="#myModal">{% trans %}Je m'inscris{% endtrans %}</button>
                 {{ form_end(newsletterForm) }}
             </div>
             {% endif %}
@@ -49,10 +48,11 @@
     <section class="feature">
         <div class="fond_clic">
             <h3>{% trans %}Retrouvez toutes nos fonctionnalités{% endtrans %}</h3>
+            <div class="titre-menu">
             <a href="#univers" class="page-scroll"><button class="bouton_clic" >{% trans %}Nos Univers{% endtrans %}</button></a>
             <a href="#recettes" class="page-scroll"><button class="bouton_clic" >{% trans %}Nos Recettes{% endtrans %}</button></a>
             <a href="#news" class="page-scroll"><button class="bouton_clic" >{% trans %}Les Concours{% endtrans %}</button></a>
-        </div>
+            </div></div>
     </section>
 
     <section id="univers">
@@ -79,13 +79,11 @@
                         <td>
                             <div>
                                 <a type="button" class="btn" data-toggle="collapse" data-parent="#demo" href="#collapse{{ universe.id }}" >
-                                    <p class="centrer">{{ universe.description }}</p>
+                                    <p class="centrer">{{ universe.name }}</p>
                                 </a>
                                 <div id="collapse{{ universe.id }}" class="panel-collapse collapse">
                                     <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                        {{ universe.description }}
                                     </p>
                                 </div>
                             </div>
@@ -137,7 +135,7 @@
                     </div>
                     <div class="testimonials-pagination"></div>
                     <div class="testimonials-slider-next right-arrow-negative"><span class="glyphicon glyphicon-chevron-right"></span></div>
-                    <div class="testimonials-slider-prev left-arrow-negative"><span class="glyphicon glyphicon-chevron-left"></div>
+                    <div class="testimonials-slider-prev left-arrow-negative"><span class="glyphicon glyphicon-chevron-left"></span></div>
                 </div>
             </div>
         </div>

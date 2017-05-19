@@ -17,6 +17,7 @@ class UniversModel
     {
         $this->repositoryUniverse = $entityManager->getRepository('ProductBundle:Product');
         $this->repositoryProductConditioning = $entityManager->getRepository('ProductBundle:ProductConditioning');
+        $this->repositoryWine = $entityManager->getRepository('ProductBundle:Wine');
     }
     public function findProductsByName($name)
     {
@@ -27,10 +28,26 @@ class UniversModel
         return $this->repositoryProductConditioning->findProductConditionningByPrice($price);
     }
 
+    public function findProductConditionningByColor($color)
+    {
+        return $this->repositoryWine->findProductConditionningByColor($color);
+    }
+
     public function getMaxConditionningPrice()
     {
         return $this->repositoryProductConditioning->getMaxConditionningPrice();
     }
+
+    public function getColors()
+    {
+        $array = $this->repositoryWine->getColors();
+        $colors = array(""=>"");
+        foreach ($array as $color)
+            $colors[$color['color']] = $color['color'];
+        return $colors;
+    }
+
+
 
 }
 

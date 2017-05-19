@@ -10,10 +10,12 @@
     <script type="text/javascript">
         var conditioning = [];
         var infoConditioning = [];
-        {% for conditioningType in product.conditioningTypes %}
-        conditioning[{{ conditioningType.id }}] = {"price": "{{ conditioningType.price|number_format(2,'.',',') }}", "name": "{{ product.name }}", "conditioningTypeName": "{{ conditioningType.name }}", "conditioningTypeId": {{ conditioningType.id }} };
-        infoConditioning[{{ conditioningType.id }}] = {"stock": {{ conditioningType.stock }}, "volumeValue": "{{ conditioningType.volumeValue }}", "volumeUnit": "{{ conditioningType.volumeUnit }}"{% if conditioningType.pack is not null %}, "packQuantity": {{ conditioningType.pack.quantityIn }}, "packName": "{{ conditioningType.pack.name }}"{% endif %} };
-        {% endfor %}
+        {% if product.onSale %}
+            {% for conditioningType in product.conditioningTypes %}
+            conditioning[{{ conditioningType.id }}] = {"price": "{{ conditioningType.price|number_format(2,'.',',') }}", "name": "{{ product.name }}", "conditioningTypeName": "{{ conditioningType.name }}", "conditioningTypeId": {{ conditioningType.id }} };
+            infoConditioning[{{ conditioningType.id }}] = {"stock": {{ conditioningType.stock }}, "volumeValue": "{{ conditioningType.volumeValue }}", "volumeUnit": "{{ conditioningType.volumeUnit }}"{% if conditioningType.pack is not null %}, "packQuantity": {{ conditioningType.pack.quantityIn }}, "packName": "{{ conditioningType.pack.name }}"{% endif %} };
+            {% endfor %}
+        {% endif %}
 
         function Refresh() {
             $('#price').html(conditioning[$('#conditioning_selected').val()]["price"] + '€');
@@ -24,14 +26,14 @@
             $('.add-item').attr("data-conditioning-type-id", conditioning[$('#conditioning_selected').val()]["conditioningTypeId"]);
 
             $('#conditioning-stock').html(infoConditioning[$('#conditioning_selected').val()]["stock"]);
-            $('#conditioning-name').html('Volume dans ' + conditioning[$('#conditioning_selected').val()]["name"]);
+            $('#conditioning-name').html('{% trans %}Volume dans{% endtrans %} ' + conditioning[$('#conditioning_selected').val()]["name"]);
             $('#conditioning-volumeValue').html(infoConditioning[$('#conditioning_selected').val()]["volumeValue"]);
             $('#conditioning-volumeUnit').html(infoConditioning[$('#conditioning_selected').val()]["volumeUnit"]);
 
             if(infoConditioning[$('#conditioning_selected').val()]["packName"] != undefined)
             {
                 $("#conditioning-pack").show();
-                $('#conditioning-pack-name').html('Quantité dans le pack ' + infoConditioning[$('#conditioning_selected').val()]["packName"]);
+                $('#conditioning-pack-name').html('{% trans %}Quantité dans le pack{% endtrans %} ' + infoConditioning[$('#conditioning_selected').val()]["packName"]);
                 $('#conditioning-pack-quantity').html(infoConditioning[$('#conditioning_selected').val()]["packQuantity"]);
             }else{
                 $("#conditioning-pack").hide();
@@ -133,7 +135,7 @@
             {% endif %}
             <br>
             <p class="wow fadeInDown">{{ product.description }} </p>
-            {% if product.conditioningTypes is not empty %}
+            {% if product.onSale and product.conditioningTypes is not empty %}
             <select id="conditioning_selected" class="conditioning champ">
                 {% for conditioning in product.conditioningTypes %}
                     <option value="{{ conditioning.id }}">{{ conditioning.name }}</option>

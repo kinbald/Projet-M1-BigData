@@ -25,7 +25,7 @@
         }
         output {
             position: absolute;
-            top: 35px; left: 70px;
+            top: -18px; left: 75px;
         }
     </style>
 {% endblock %}
@@ -54,12 +54,12 @@
 
 
     <div id="Recherche">
-            <h1 class="Rech">Recherche</h1>
+            <h1 class="Rech">{% trans %}Recherche{% endtrans %}</h1>
             {{ form_start(search_form) }}
             {{ form_widget(search_form) }}
             <table>
                 <td>
-                    <input id="Search1" class="btn btn-primary btn-circle" type="submit" value="Rechercher" />
+                    <input id="Search1" class="btn btn-primary btn-circle" type="submit" value="{% trans %}Rechercher{% endtrans %}" />
                 </td>
             </table>
             {{ form_end(search_form) }}
@@ -68,7 +68,7 @@
 
     <div id="Produits">
         <ul class="product-holder">
-            {% for product in products|sortbyfield('minPrice')|reverse %}
+            {% for product in products|sortbyfield('minPrice')|reverse if product.onSale %}
                 <li>
                     <div class="text-center">
                         <a href="{{ path('product_show', {id:product.id}) }}" >

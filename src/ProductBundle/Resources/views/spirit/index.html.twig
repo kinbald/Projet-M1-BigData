@@ -20,10 +20,10 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for spirit in products %}
-                    <tr>
+                {% for spirit in products | sortbyfield('onSale') | reverse  %}
+                    <tr {% if not spirit.onSale %} class="disabled-row" {% endif %}>
                         <td class="id"><a href="{{ path('product_show', { 'id': spirit.id }) }}">{{ spirit.id }}</a></td>
-                        <td class="degree">{{ spirit.name }}</td>
+                        <td class="name">{% if not spirit.onSale %}<s>{{ spirit.displayName }}</s>{% else %}{{ spirit.displayName }}{% endif %}</td>
                         <td class="actions">
                             <ul>
                                 <li>

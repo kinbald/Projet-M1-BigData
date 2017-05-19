@@ -30,12 +30,10 @@ class DefaultController extends Controller
             {
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($newsletter);
-                $em->flush($newsletter);
+                $em->flush();
 
                 return $this->redirectToRoute('homepage', array('newsletter' => true));
             }
-            else
-                return $this->redirectToRoute('homepage', array('newsletter' => false));
         }
 
         $pictureArray = array();
@@ -75,7 +73,7 @@ class DefaultController extends Controller
             {
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($newsletter);
-                $em->flush($newsletter);
+                $em->flush();
 
                 return $this->redirectToRoute('homepage', array('newsletter' => true));
             }
