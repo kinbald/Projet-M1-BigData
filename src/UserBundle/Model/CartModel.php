@@ -53,7 +53,8 @@ class CartModel
 
     public function find($id)
     {
-        return $this->repositoryProduct->find($id);
+        $p = $this->repositoryProduct->find($id);
+        return ($p != null && $p->getOnSale()) ? $p : null;
     }
 
     public function findAllReservation($user)

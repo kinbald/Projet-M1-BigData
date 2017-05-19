@@ -68,7 +68,7 @@
 
     <div id="Produits">
         <ul class="product-holder">
-            {% for product in products|sortbyfield('minPrice')|reverse %}
+            {% for product in products|sortbyfield('minPrice')|reverse if product.onSale %}
                 <li>
                     <div class="text-center">
                         <a href="{{ path('product_show', {id:product.id}) }}" >

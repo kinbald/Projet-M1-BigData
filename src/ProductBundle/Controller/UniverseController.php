@@ -81,7 +81,7 @@ class UniverseController extends Controller
      *     })
      * @Method({"GET", "POST"})
      */
-    public function showActionQuery(Request $request, Universe $universe)
+    public function showAction(Request $request, Universe $universe)
     {
         $model = new UniversModel($this->getDoctrine()->getManager());
         $pictureArray = array();
