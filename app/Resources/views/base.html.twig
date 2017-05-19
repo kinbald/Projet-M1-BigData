@@ -49,7 +49,7 @@
                 <img class="style_logo" src="{{ asset('img/logo.png') }}" alt="logo">
             </a>
         </div>
-            <div class="navbar-collapse collapse" id="myNavbar">
+            <div class="navbar-collapse collapse taille-li-navbar" id="myNavbar">
                 <ul class="nav navbar-nav">
                     <li><a href="{{ path("homepage") }}">{% trans %}Accueil{% endtrans %}</a></li>
                     {% if is_granted('ROLE_ADMIN') %}

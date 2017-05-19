@@ -9,3 +9,13 @@
 #myNavbar{
     padding: 0;
 }
+
+@media (max-width: 1200px) {
+    .taille-li-navbar li{
+       height: 100px;
+    }
+    .taille-li-navbar a {
+        font-size: xx-large !important;
+    }
+    
+}
