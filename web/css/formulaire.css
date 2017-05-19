@@ -24,10 +24,13 @@
     #concoursbundle_competition_name, #concoursbundle_competition_description,
     #appbundle_news_title, #appbundle_news_author, #appbundle_news_datePublication, #appbundle_news_newsText,
     #concoursbundle_medal_name, #concoursbundle_medal_annee, #concourbundle_medal_url, #concoursbundler_medal_competition,
+    #userbundle_userproducer_lastname, #userbundle_userproducer_firstname,
     #userbundle_userproducer_siret, #userbundle_userproducer_billingEmail, #userbundle_userproducer_website, #userbundle_userproducer_facebook,
     #userbundle_userproducer_twitter, #userbundle_userproducer_companyName, #userbundle_userproducer_businessName,#userbundle_userproducer_address,
     #userbundle_userproducer_city, #userbundle_userproducer_country, #userbundle_userproducer_postalCode, #userbundle_userproducer_state, #userbundle_userproducer_province,
-    #userbundle_userproducer_phone, #userbundle_userproducer_fax, #userbundle_userproducer_tvaIC, #userbundle_userproducer_status, #userbundle_userwholesale_companyName{
+    #userbundle_userproducer_phone, #userbundle_userproducer_fax, #userbundle_userproducer_tvaIC, #userbundle_userproducer_status, #userbundle_userwholesale_companyName,
+    #fos_user_change_password_current_password, #fos_user_change_password_plainPassword_first, #fos_user_change_password_plainPassword_second
+    {
         width: 90%;
         max-width: 500px;
         margin-bottom: 10px;
@@ -90,7 +93,9 @@
     #userbundle_userproducer_siret, #userbundle_userproducer_billingEmail, #userbundle_userproducer_website, #userbundle_userproducer_facebook,
     #userbundle_userproducer_twitter, #userbundle_userproducer_companyName, #userbundle_userproducer_businessName,#userbundle_userproducer_address,
     #userbundle_userproducer_city, #userbundle_userproducer_country, #userbundle_userproducer_postalCode, #userbundle_userproducer_state, #userbundle_userproducer_province,
-    #userbundle_userproducer_phone, #userbundle_userproducer_fax, #userbundle_userproducer_tvaIC, #userbundle_userproducer_status, #userbundle_userwholesale_companyName{
+    #userbundle_userproducer_phone, #userbundle_userproducer_fax, #userbundle_userproducer_tvaIC, #userbundle_userproducer_status, #userbundle_userwholesale_companyName,
+    #fos_user_change_password_current_password, #fos_user_change_password_plainPassword_first, #fos_user_change_password_plainPassword_second
+    {
         width: 100%;
         margin-bottom: 20px;
         color: black;
@@ -157,4 +162,20 @@
 
 #concoursbundle_competition_dateCompetition, #productbundle_wine_conditioningTypes, #productbundle_wine_overpressure, #concoursbundle_medal_url, #concoursbundle_medal_competition{
     color: black;
+}
+
+
+@media (min-width: 901px) and (max-width: 1200px) {
+
+    #userbundle_userconsumer_lastname, #userbundle_userconsumer_firstname, #userbundle_userconsumer_sex, #userbundle_userconsumer_phone,
+    #userbundle_userproducer_lastname, #userbundle_userproducer_firstname,
+    #userbundle_userproducer_businessName, #userbundle_userproducer_siret, #userbundle_userproducer_billingEmail, #userbundle_userproducer_website, #userbundle_userproducer_facebook,
+    #userbundle_userproducer_twitter, #userbundle_userproducer_companyName, #userbundle_userproducer_businessName,#userbundle_userproducer_address,
+    #userbundle_userproducer_city, #userbundle_userproducer_country, #userbundle_userproducer_postalCode, #userbundle_userproducer_state, #userbundle_userproducer_province,
+    #userbundle_userproducer_phone, #userbundle_userproducer_fax, #userbundle_userproducer_tvaIC, #userbundle_userproducer_status,
+    #fos_user_change_password_current_password, #fos_user_change_password_plainPassword_first, #fos_user_change_password_plainPassword_second
+    {
+        width: 90%;
+    }
+
 }
