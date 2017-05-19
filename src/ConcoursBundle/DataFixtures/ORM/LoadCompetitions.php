@@ -30,7 +30,7 @@ class LoadCompetitions extends AbstractFixture implements OrderedFixtureInterfac
         $manager->persist($competitionWine);
 
         $medal = new Medal();
-        $medal->setName('Médaille souche de bois');
+        $medal->setName('Médaille meilleure couleur');
         $medal->setAnnee(1995);
         $medal->setUrl('/img/product/lauriers.png');
         $medal->setCompetition($competitionWine);

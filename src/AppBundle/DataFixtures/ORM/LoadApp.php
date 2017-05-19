@@ -26,7 +26,7 @@ class LoadApp extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($news);
 
         $news2->setTitle("Ouverture du site");
-        $news2->setAuthor("Juju Cassagne");
+        $news2->setAuthor("Julien Cassagne");
         $news2->setDatePublication(new \DateTime());
         $news2->setNewsText("Même si ce n'est qu'un test, j'espère que tout cela va vous plaire");
         $manager->persist($news2);
@@ -45,7 +45,7 @@ class LoadApp extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($partner);
 
         $partner2->setUrl("http://www.yahoo.fr");
-        $partner2->setDescription("L'autre moteur de recherche (il manque Bing!!)");
+        $partner2->setDescription("L'autre moteur de recherche");
         $partner2->setImageUrl("http://www.underconsideration.com/brandnew/archives/yahoo_logo_detail.png");
         $partner2->setLevel("");
         $partner2->setName("Yahoo!");

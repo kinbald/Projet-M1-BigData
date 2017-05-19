@@ -42,9 +42,9 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $userProducer->setBusinessName('Vin & co');
         $userProducer->setAddress('25 Avenue A');
         $userProducer->setCity('Toulon');
-        $userProducer->setCountry('Azerbaidjan');
+        $userProducer->setCountry('France');
         $userProducer->setPostalCode('83000');
-        $userProducer->setState('État dictatorial');
+        $userProducer->setState('PACA');
         $userProducer->setPhone('0606060606');
         $manager->persist($userProducer);
 
@@ -55,8 +55,8 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $userProducer->setEmailCanonical('zrhgiuOfgezorg@gmail.com');
         $userProducer->setEnabled(false);
         $userProducer->setPassword('$2y$12$sNM3lJ9oRrOZB2cUSBKoHOjRkZMt8mB826dS5rE.2ppPg9TXby9BO');
-        $userProducer->setFirstname('zrgerg');
-        $userProducer->setLastname('qegetg');
+        $userProducer->setFirstname('Jean');
+        $userProducer->setLastname('Bois');
         $userProducer->setSiret('646535');
         $userProducer->setCompanyName('vzu zfhkuzdhf hfskd');
         $userProducer->setBusinessName('vzu zfhkuzdhf hfskd');
@@ -64,7 +64,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $userProducer->setCity('Azerty');
         $userProducer->setCountry('France');
         $userProducer->setPostalCode('26485');
-        $userProducer->setState('État dictatorial');
+        $userProducer->setState('Hauts-de-France');
         $userProducer->setPhone('0606060606');
         $manager->persist($userProducer);
 
@@ -91,7 +91,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $userMedia->setPassword('$2y$12$VtTfiZZ68ThnssIEc8vkp.pkCL9YGAKB85Zk/8Ur3MWg85t2h3drf');
         $userMedia->setFirstname('vsqfgljn');
         $userMedia->setLastname('vlziehglz');
-        $userMedia->setCompanyName('Magazine sur du vin');
+        $userMedia->setCompanyName('Vin Mag');
         $userMedia->setIdPresse('168464360');
         $userMedia->setUrlBlog('blablalbaalbalbla.com');
         $manager->persist($userMedia);
@@ -105,7 +105,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $userMedia->setPassword('$2y$12$VtTfiZZ68ThnssIEc8vkp.pkCL9YGAKB85Zk/8Ur3Mjgk8t2h3drf');
         $userMedia->setFirstname('vepojtgo');
         $userMedia->setLastname('erfcvek');
-        $userMedia->setCompanyName('un autre magazine');
+        $userMedia->setCompanyName('Osez rosé');
         $userMedia->setIdPresse('134864785');
         $userMedia->setUrlBlog('blablavzelijla.com');
         $manager->persist($userMedia);
@@ -119,7 +119,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
         $userWhole->setPassword('$2y$12$VtTfiZZ68ThnssIEc8vkp.pkCL9YGAKB85Zk/8Ur3Mjgk8t2h3drf');
         $userWhole->setFirstname('vepojtgo');
         $userWhole->setLastname('erfcvek');
-        $userWhole->setCompanyName('Baboo');
+        $userWhole->setCompanyName('Amazon');
         $manager->persist($userWhole);
 
         $manager->flush();

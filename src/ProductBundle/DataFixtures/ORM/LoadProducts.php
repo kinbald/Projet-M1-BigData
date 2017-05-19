@@ -217,8 +217,8 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $wine3->setSugar(2.5);
         $wine3->setVintage(new \DateTime('2015-01-01 10:00:00'));
         $wine3->setColor('Rose');
-        $wine3->setName('Vin rosé cultivé dans les océans');
-        $wine3->setDisplayName('Ocean Rose');
+        $wine3->setName('Vin rosé méditerrannéen');
+        $wine3->setDisplayName('Mer Rose');
         $wine3->setDescription('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
         $wine3->setVolume(0.7);
         $wine3->setRegion('Var');
@@ -350,14 +350,14 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         $productEvaluation->setUser($userConsumer);
         $productEvaluation->setMark(3);
         $productEvaluation->setDate(new \DateTime());
-        $productEvaluation->setReview('commentaire 2');
+        $productEvaluation->setReview('This wine is one of the best I have ever tasted. 10/10 would have a hangover again.');
         $manager->persist($productEvaluation);
         $productEvaluation = new ProductEvaluation();
         $productEvaluation->setProduct($wine1);
         $productEvaluation->setUser($userConsumer);
         $productEvaluation->setMark(3);
         $productEvaluation->setDate(new \DateTime());
-        $productEvaluation->setReview('commentaire 3');
+        $productEvaluation->setReview('Vin passable. Je suis très déçu de cette sélection.');
         $manager->persist($productEvaluation);
 
         /*-----------------------LES RECETTES---------------------*/
@@ -410,9 +410,14 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
         /*--------------------------------------------------------*/
 
         $pack = new Pack();
-        $pack->setName('jet');
+        $pack->setName('Bouteille');
         $pack->setQuantityIn(2);
         $manager->persist($pack);
+
+        $pack1 = new Pack();
+        $pack1->setName('Cubi');
+        $pack1->setQuantityIn(2);
+        $manager->persist($pack1);
 
         $condition = new ProductConditioning();
         $condition->setName("Cagette");
@@ -510,12 +515,12 @@ class LoadProducts extends AbstractFixture implements OrderedFixtureInterface
 
 
         $delivery = new Delivery();
-        $delivery->setName('Pigeon voyageur');
+        $delivery->setName('Colissimo');
         $delivery->setPrice(12.3);
         $manager->persist($delivery);
 
         $delivery2 = new Delivery();
-        $delivery2->setName('camion citerne');
+        $delivery2->setName('Camion réfrigéré');
         $delivery2->setPrice(32.1);
         $manager->persist($delivery2);
 
