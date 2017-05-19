@@ -4,6 +4,7 @@ namespace UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 class RegistrationUserController extends Controller
 {
@@ -18,8 +19,15 @@ class RegistrationUserController extends Controller
     /**
      * @Route("/register", name="user_consumer_registration")
      */
-    public function registerConsumerAction()
+    public function registerConsumerAction(Request $request)
     {
+        if ($request == 'POST'){
+            $captcha = $this->get('app.captcha.validator');
+            if(!isset($_POST['g-recaptcha-response']) or !$captcha->validateCaptcha($_POST['g-recaptcha-response'])){
+                return $this->redirectToRoute("user_consumer_registration");
+            }
+        }
+
         return $this->container
             ->get('pugx_multi_user.registration_manager')
             ->register('UserBundle\Entity\UserConsumer');
@@ -28,7 +36,13 @@ class RegistrationUserController extends Controller
     /**
      * @Route("/register-media", name="user_media_registration")
      */
-    public function registerMediaAction(){
+    public function registerMediaAction(Request $request){
+        if ($request == 'POST') {
+            $captcha = $this->get('app.captcha.validator');
+            if (!isset($_POST['g-recaptcha-response']) or !$captcha->validateCaptcha($_POST['g-recaptcha-response'])) {
+                return $this->redirectToRoute("user_media_registration");
+            }
+        }
         return $this->container
             ->get('pugx_multi_user.registration_manager')
             ->register('UserBundle\Entity\UserMedia');
@@ -37,7 +51,13 @@ class RegistrationUserController extends Controller
     /**
      * @Route("/register-producer", name="user_producer_registration")
      */
-    public function registerProducerAction(){
+    public function registerProducerAction(Request $request){
+        if ($request == 'POST') {
+            $captcha = $this->get('app.captcha.validator');
+            if (!isset($_POST['g-recaptcha-response']) or !$captcha->validateCaptcha($_POST['g-recaptcha-response'])) {
+                return $this->redirectToRoute("user_producer_registration");
+            }
+        }
         return $this->container
             ->get('pugx_multi_user.registration_manager')
             ->register('UserBundle\Entity\UserProducer');

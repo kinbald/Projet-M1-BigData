@@ -40,13 +40,14 @@ class ContactController extends Controller
                 'choices' => ($user != null && $user->getDiscr() == 'consumer' && $user->getSex() == 'Female') ?
                     array('F' => 'f', 'M' => 'm') : array('M' => 'm', 'F' => 'f')))
             ->add('message', TextareaType::class)
-            ->add('submit', SubmitType::class)
             ->getForm();
         $form->handleRequest($request);
         if($request->getMethod() === 'POST'){
             if($form->isSubmitted()){
                 $validator = $this->get('app.contact');
+                $captcha = $this->get('app.captcha.validator');
                 $datas = $validator->validateForm($form);
+                $captcha->validateCaptcha($_POST['g-recaptcha-response'], $form);
                 if ($form->isValid()){
                     $em = $this->getDoctrine()->getManager();
                     $rep = $em->getRepository('AppBundle:Parameters');

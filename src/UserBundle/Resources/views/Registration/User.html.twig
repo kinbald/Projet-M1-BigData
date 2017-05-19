@@ -6,6 +6,16 @@
 
 {% endblock %}
 
+{% block javascripts %}
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>
+        function onSubmit(token) {
+            document.getElementById("form_register").submit();
+        }
+    </script>
+
+{% endblock %}
+
 {% block fos_user_content %}
 
 {% endblock fos_user_content %}

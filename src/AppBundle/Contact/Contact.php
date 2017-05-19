@@ -14,12 +14,15 @@ use Symfony\Component\Form\FormInterface;
 
 class Contact
 {
+
+
     public function validateForm(FormInterface $form):array{
         $datas = $form->getData();
         $sanitizedDatas = array();
+
         foreach ($datas as $key=>$data){
             if($key === 'email'){
-                if(!($value = $this->validateEmail($data))){
+                if($data == null or !($value = $this->validateEmail($data))){
                     $form->get('email')->addError(new FormError($key.' is not valid'));
                 }
             }
@@ -29,16 +32,19 @@ class Contact
                 }else{
                     $allowedValues = ['m', 'f'];
                 }
-                if(!($value = $this->validateSelect($data, $allowedValues))){
+                if($data == null or !($value = $this->validateSelect($data, $allowedValues))){
                     $form->get($key)->addError(new FormError($key.' is not valid'));
                 }
             }
             else{
-                if(!$value = $this->validateString($data)){
+                if($data == null or !$value = $this->validateString($data)){
                     $form->get('email')->addError(new FormError($key.' is not valid'));
                 }
             }
-            $sanitizedDatas[$key] = $value;
+            if(isset($value)){
+                $sanitizedDatas[$key] = $value;
+            }
+
         }
         return $sanitizedDatas;
     }

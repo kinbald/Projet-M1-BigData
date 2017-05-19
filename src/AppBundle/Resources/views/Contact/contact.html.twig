@@ -7,6 +7,16 @@
     <link href="https://fonts.googleapis.com/css?family=Lemonada" rel="stylesheet">
 {% endblock %}
 
+{% block javascripts %}
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+     <script>
+       function onSubmit(token) {
+         document.getElementById("form_contact").submit();
+       }
+     </script>
+
+{% endblock %}
+
 {% block body %}
     <div id="fb-root"></div>
     <script>(function(d, s, id) {
@@ -42,42 +52,45 @@
             </div>
             <tr>
 
-                <div class="tableauContour">
-                        {{ form_start(form) }}
-                        {{ form_errors(form.lastName) }}<br>
-                        {{ form_label(form.lastName) }}
-                        {{ form_widget(form.lastName, { 'attr': {'class': 'taille_zone_de_saisie'} }) }}<br>
 
-                        {{ form_errors(form.firstName) }}<br>
-                        {{ form_label(form.firstName) }}
-                        {{ form_widget(form.firstName, { 'attr': {'class': 'taille_zone_de_saisie'} }) }}<br>
-
-                        {{ form_errors(form.email) }}<br>
-                        {{ form_label(form.email) }}
-                        {{ form_widget(form.email, { 'attr': {'class': 'taille_zone_de_saisie'} }) }}<br>
-
-                        {{ form_errors(form.topic) }}<br>
-                        {{ form_label(form.topic) }}
-                        {{ form_widget(form.topic, { 'attr': {'class': 'taille_zone_de_saisie'} }) }}<br>
-
-                        {{ form_errors(form.userType) }}<br>
-                        {{ form_label(form.userType) }}
-                        {{ form_widget(form.userType, { 'attr': {'class': 'taille_zone_de_saisie'} }) }}<br>
-
-                        {{ form_errors(form.gender) }}<br>
-                        {{ form_label(form.gender) }}
-                        {{ form_widget(form.gender, { 'attr': {'class': 'bloc_btn_genre'} }) }}<br>
-
-                        {{ form_errors(form.message) }}<br>
-                        {{ form_label(form.message) }}
-                        {{ form_widget(form.message, { 'attr': {'class': 'taille_zone_de_saisie', 'rows': '5'} }) }}<br>
-                        <br>
-                        {{ form_widget(form.submit) }}
-                        {{ form_end(form) }}
-                        <br>
-                </div>
             </tr>
         </table>
+    </div>
+    <div class="tableauContour">
+
+
+        {{ form_start(form, {'attr': {'id': 'form_contact'}}) }}
+        {{ form_errors(form.lastName) }}<br>
+        {{ form_label(form.lastName) }}
+        {{ form_widget(form.lastName, { 'attr': {'class': 'taille_zone_de_saisie'} }) }}<br>
+
+        {{ form_errors(form.firstName) }}<br>
+        {{ form_label(form.firstName) }}
+        {{ form_widget(form.firstName, { 'attr': {'class': 'taille_zone_de_saisie'} }) }}<br>
+
+        {{ form_errors(form.email) }}<br>
+        {{ form_label(form.email) }}
+        {{ form_widget(form.email, { 'attr': {'class': 'taille_zone_de_saisie'} }) }}<br>
+
+        {{ form_errors(form.topic) }}<br>
+        {{ form_label(form.topic) }}
+        {{ form_widget(form.topic, { 'attr': {'class': 'taille_zone_de_saisie'} }) }}<br>
+
+        {{ form_errors(form.userType) }}<br>
+        {{ form_label(form.userType) }}
+        {{ form_widget(form.userType, { 'attr': {'class': 'taille_zone_de_saisie'} }) }}<br>
+
+        {{ form_errors(form.gender) }}<br>
+        {{ form_label(form.gender) }}
+        {{ form_widget(form.gender, { 'attr': {'class': 'bloc_btn_genre'} }) }}<br>
+
+        {{ form_errors(form.message) }}<br>
+        {{ form_label(form.message) }}
+        {{ form_widget(form.message, { 'attr': {'class': 'taille_zone_de_saisie', 'rows': '5'} }) }}<br>
+        <br>
+        <button class="g-recaptcha" data-sitekey="{{ captcha_key }}" data-callback='onSubmit'>{% trans %}Send{% endtrans %}</button>
+
+        {{ form_end(form) }}
     </div>
 {% endblock %}
 

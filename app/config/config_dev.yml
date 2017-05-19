@@ -11,6 +11,9 @@ web_profiler:
     toolbar: true
     intercept_redirects: false
 
+parameters:
+    captcha_key: 6Lc7HCIUAAAAAFJfftG5Z48p0TOLy1L8XGcVMZ6T
+
 monolog:
     handlers:
         main:
@@ -29,6 +32,8 @@ monolog:
         #chromephp:
         #    type:   chromephp
         #    level:  info
-
+twig:
+    globals:
+        captcha_key: 6Lc7HCIUAAAAAHuOEmVf_zp6GeOYWxl14hehbqPM
 #swiftmailer:
 #    delivery_address: me@example.com

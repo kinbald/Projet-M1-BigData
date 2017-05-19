@@ -22,3 +22,6 @@ services:
         arguments: [ '@router', '%kernel.environment%', '@doctrine.orm.entity_manager' ]
     app.contact:
         class: AppBundle\Contact\Contact
+    app.captcha.validator:
+        class: AppBundle\Captcha\Validator
+        arguments: ['%captcha_key%']
