@@ -165,3 +165,32 @@ input, select, textarea{
 .mini-espace {
     margin-top:50px;
 }
+
+
+
+#tres_important{
+    width: 20vw !important;
+}
+
+@media (min-width: 901px) and (max-width: 1199px) {
+    #tres_important{
+        width: 30vw !important;
+    }
+}
+
+@media (min-width: 551px) and (max-width: 900px) {
+    #tres_important{
+        width: 40vw !important;
+    }
+}
+
+
+@media (max-width: 600px) {
+    #tres_imp{
+        display: block;
+    }
+
+    #tres_important{
+        width: 90% !important;
+    }
+}
