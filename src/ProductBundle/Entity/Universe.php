@@ -41,7 +41,7 @@ class Universe
     /**
      * @var PictureUniverse
      *
-     * @ORM\OneToMany(targetEntity="\ProductBundle\Entity\PictureUniverse", mappedBy="universe")
+     * @ORM\OneToMany(targetEntity="\ProductBundle\Entity\PictureUniverse", mappedBy="universe", cascade={"remove"})
      * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $pictures;
