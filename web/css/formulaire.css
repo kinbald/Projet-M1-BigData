@@ -43,6 +43,7 @@
         margin-left: 10%;
         margin-top: 40px;
         width: 100%;
+        overflow: hidden;
     }
 
     .bouton1{
@@ -106,6 +107,7 @@
         margin: auto;
         margin-top: 40px;
         width: 500px;
+        overflow: hidden;
     }
 
     .bouton2{
