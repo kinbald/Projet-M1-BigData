@@ -233,6 +233,10 @@ class Universe
         return $this->competitions;
     }
 
+    public function hasProducts(){
+        return count($this->getProducts()) > 0;
+    }
+
 
 
 }
