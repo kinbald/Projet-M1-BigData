@@ -12,16 +12,17 @@
 <div class="contour">
     <div id="content">
         <h1 class="espace_br">{% trans %}Edit Purchase{% endtrans %}</h1>
-         {{ form_start(edit_form) }}
+         {{ form_start(edit_form, {'attr': {'id': 'form_purchase_edit'}}) }}
          {{ form_widget(edit_form) }}
+        {{ form_end(edit_form) }}
     </div>
 </div>
 
     <div id="boutons">
         <div class="bouton1">
-            <input class="btn btn-primary btn-circle" type="submit" value="{% trans %}Edit{% endtrans %}" />
+            <button class="btn btn-primary btn-circle"  onclick="$('#form_purchase_edit').submit()">{% trans %}Edit{% endtrans %}</button>
         </div>
-        {{ form_end(edit_form) }}
+
         {{ form_start(delete_form) }}
         <div class="bouton1">
             <input class="btn btn-primary btn-circle" type="submit" value="{% trans %}Delete{% endtrans %}">
