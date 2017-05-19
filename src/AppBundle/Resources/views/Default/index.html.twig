@@ -79,13 +79,11 @@
                         <td>
                             <div>
                                 <a type="button" class="btn" data-toggle="collapse" data-parent="#demo" href="#collapse{{ universe.id }}" >
-                                    <p class="centrer">{{ universe.description }}</p>
+                                    <p class="centrer">{{ universe.name }}</p>
                                 </a>
                                 <div id="collapse{{ universe.id }}" class="panel-collapse collapse">
                                     <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                        {{ universe.description }}
                                     </p>
                                 </div>
                             </div>
