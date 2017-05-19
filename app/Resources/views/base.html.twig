@@ -86,8 +86,14 @@
 
 
                     <ul class="nav navbar-nav navbar-right">
+                        {%  if app.request.get('_route') is null %}
+                            <li><a class="language" rel="fr-FR" href="{{ path('homepage', {'_locale': 'fr'}) }}"><img src="{{ asset('img/flag_fr.png') }}" alt="Francais" /></a></li>
+                            <li><a class="language" rel="us-EN" href="{{ path('homepage', {'_locale': 'en'}) }}"><img src="{{ asset('img/flag_an.png') }}" alt="Anglais" /></a></li>
+
+                        {% else %}
                         <li><a class="language" rel="fr-FR" href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'fr'})) }}"><img src="{{ asset('img/flag_fr.png') }}" alt="Francais" /></a></li>
                         <li><a class="language" rel="us-EN" href="{{  path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'}))}}"><img src="{{ asset('img/flag_an.png') }}" alt="Anglais" /></a></li>
+                        {% endif %}
                     </ul>
                 </ul>
             </div>

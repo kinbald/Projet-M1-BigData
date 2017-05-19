@@ -33,6 +33,7 @@
                 </tbody>
             </table>
         </div>
+
         <div id="boutons">
             <div class="bouton1">
                 <a class="btn btn-circle btn-primary" href="{{ path('competition_index') }}">{% trans %}Back to the list{% endtrans %}</a>
@@ -45,6 +46,45 @@
                 <input class="btn btn-circle btn-primary" type="submit" value="{% trans %}Delete{% endtrans %}">
             </div>
             {{ form_end(delete_form) }}
+        </div>
+
+        <h3 class="section-heading">{% trans %}PrimeWines{% endtrans %}</h3>
+
+        <div id="products-table" class="table-responsive table-template">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>{% trans %}Id{% endtrans %}</th>
+                        <th>{% trans %}Picture{% endtrans %}</th>
+                        <th>{% trans %}Nom{% endtrans %}</th>
+                        <th>{% trans %}PrimeName{% endtrans %}</th>
+                        <th>{% trans %}Note{% endtrans %}</th>
+                        <th>{% trans %}Fiche produit{% endtrans %}</th>
+                        <th>{% trans %}Modifier{% endtrans %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for competitionProduct in competition.products %}
+                    <tr>
+                        <td style="margin: auto">{{ competitionProduct.product.id }}</td>
+                        <td>
+                            {% set picture = competitionProduct.product.pictures|last %}
+                                <img alt="product image" class="product-img"
+                            {% if picture is empty %}
+                                src="{{ asset('./img/product/defaultProduct.jpeg') }}"/>
+                            {% else %}
+                                src="{{ asset(picture.url) }}"/>
+                            {% endif %}
+                        </td>
+                        <td>{{ competitionProduct.product.name }}</td>
+                        <td>{{ competitionProduct.primeName }}</td>
+                        <td>{{ competitionProduct.points }}</td>
+                        <td><a href="{{ path('product_show', { 'id': competitionProduct.product.id }) }}"><span class="glyphicon glyphicon-eye-open form-icon"></span>{% trans %}Show{% endtrans %}</a></td>
+                        <td><a href="{{ path('product_edit', { 'id': competitionProduct.product.id }) }}"><span class="glyphicon glyphicon-pencil form-icon"></span>{% trans %}Modifier{% endtrans %}</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
 {% endblock %}
