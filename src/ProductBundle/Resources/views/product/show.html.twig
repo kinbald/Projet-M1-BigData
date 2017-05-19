@@ -68,8 +68,8 @@
                             <img class="photo" src="{{ asset("./img/product/defaultProduct.jpeg") }}" alt="No.Picture.Product"/>
                         </div>
                     {% else %}
-                        {% for product_picture in product.pictures %}
-                            <div class="item active">
+                        {% for key,product_picture in product.pictures %}
+                            <div class="item {% if key==0 %}active{% endif %}">
                                 <img class="photo" src="{{ asset(product_picture.url) }}" alt="{{ product_picture.alt }}"/>
                             </div>
                         {% endfor %}
