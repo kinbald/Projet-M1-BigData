@@ -25,13 +25,13 @@
             $('.add-item').attr("data-conditioning-type-name", conditioning[$('#conditioning_selected').val()]["conditioningTypeName"]);
             $('.add-item').attr("data-conditioning-type-id", conditioning[$('#conditioning_selected').val()]["conditioningTypeId"]);
 
-            $('#conditioning-name').html('{% trans %}Volume {% endtrans %}');
+            $('#conditioning-name').html('{% trans %}Volume{% endtrans %} ');
             $('#conditioning-volumeValue').html(infoConditioning[$('#conditioning_selected').val()]["volumeValue"]);
             $('#conditioning-volumeUnit').html(infoConditioning[$('#conditioning_selected').val()]["volumeUnit"]);
 
             if(infoConditioning[$('#conditioning_selected').val()]["packName"] != undefined)
             {
-                $('#conditioning-name').html('{% trans %}Volume par {% endtrans %} ' + infoConditioning[$('#conditioning_selected').val()]["packName"]);
+                $('#conditioning-name').html('{% trans %}Volume par{% endtrans %} ' + infoConditioning[$('#conditioning_selected').val()]["packName"]);
                 $("#conditioning-pack").show();
                 $('#conditioning-pack-name').html('{% trans %}Nombre de{% endtrans %} ' + infoConditioning[$('#conditioning_selected').val()]["packName"] + 's');
                 $('#conditioning-pack-quantity').html(infoConditioning[$('#conditioning_selected').val()]["packQuantity"]);
