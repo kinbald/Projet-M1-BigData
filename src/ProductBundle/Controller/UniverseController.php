@@ -190,9 +190,12 @@ class UniverseController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($universe);
-            $em->flush($universe);
+            if(!$universe->hasProducts()){
+                $em = $this->getDoctrine()->getManager();
+                $em->remove($universe);
+                $em->flush($universe);
+            }
+
         }
 
         return $this->redirectToRoute('universe_index');
