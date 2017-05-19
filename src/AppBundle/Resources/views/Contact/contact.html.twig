@@ -26,37 +26,11 @@
             js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.8";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
+
     <div id="content">
         <h1 class="text-center">{% trans %}Nous contacter{% endtrans %}</h1>
-        <table class="tableauContour_bas">
-            <div class=smartphone>
-                <tr class=smartphone>
-                   <td>
-                       Facebook
-                   </td>
-                    <td>
-                        <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="300" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
 
-                    </td>
-                </tr>
-
-                <tr class=smartphone>
-                   <td>
-                       Twitter:
-                   </td>
-                    <td>
-                        <br />
-                        <a href="https://twitter.com/twitter" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @twitter</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-                    </td>
-                </tr>
-            </div>
-            <tr>
-
-
-            </tr>
-        </table>
-    </div>
-    <div class="tableauContour">
+    <div class="tableauContour text-center">
 
 
         {{ form_start(form, {'attr': {'id': 'form_contact'}}) }}
@@ -88,9 +62,38 @@
         {{ form_label(form.message) }}
         {{ form_widget(form.message, { 'attr': {'class': 'taille_zone_de_saisie', 'rows': '5'} }) }}<br>
         <br>
-        <button class="g-recaptcha" data-sitekey="{{ captcha_key }}" data-callback='onSubmit'>{% trans %}Send{% endtrans %}</button>
+        <button class="g-recaptcha btn btn-primary btn-circle text-center" data-sitekey="{{ captcha_key }}" data-callback='onSubmit'>{% trans %}Envoyer{% endtrans %}</button>
 
         {{ form_end(form) }}
+    </div>
+
+        <table class="tableauContour_bas">
+            <div class=smartphone>
+                <tr class=smartphone>
+                    <td>
+                        Facebook
+                    </td>
+                    <td>
+                        <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="300" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+
+                    </td>
+                </tr>
+
+                <tr class=smartphone>
+                    <td>
+                        Twitter:
+                    </td>
+                    <td>
+                        <br />
+                        <a href="https://twitter.com/twitter" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @twitter</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                    </td>
+                </tr>
+            </div>
+            <tr>
+
+
+            </tr>
+        </table>
     </div>
 {% endblock %}
 
