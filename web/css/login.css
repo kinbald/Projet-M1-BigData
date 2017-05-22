@@ -20,14 +20,3 @@
     margin-top: 50px;
     box-sizing: content-box;
 }
-
-@media (min-width: 545px ) and (max-width: 992px ) {
-    #content {
-        margin-left: 30%;
-    }
-}
-@media (max-width: 544px ) {
-    #content {
-        margin-left: 20%;
-    }
-}
