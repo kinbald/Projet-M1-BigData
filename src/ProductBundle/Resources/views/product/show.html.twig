@@ -19,11 +19,12 @@
 
         function Refresh() {
             $('#price').html(conditioning[$('#conditioning_selected').val()]["price"] + '€');
+            $("#span-ajout-panier").attr("data-cost", conditioning[$('#conditioning_selected').val()]["price"]);
             $('#conditioning-stock').html(infoConditioning[$('#conditioning_selected').val()]["stock"]);
 
-            $('.add-item').attr("data-name", conditioning[$('#conditioning_selected').val()]["name"]);
-            $('.add-item').attr("data-conditioning-type-name", conditioning[$('#conditioning_selected').val()]["conditioningTypeName"]);
-            $('.add-item').attr("data-conditioning-type-id", conditioning[$('#conditioning_selected').val()]["conditioningTypeId"]);
+            $("#span-ajout-panier").attr("data-name", conditioning[$('#conditioning_selected').val()]["name"]);
+            $("#span-ajout-panier").attr("data-conditioning-type-name", conditioning[$('#conditioning_selected').val()]["conditioningTypeName"]);
+            $("#span-ajout-panier").attr("data-conditioning-type-id", conditioning[$('#conditioning_selected').val()]["conditioningTypeId"]);
 
             $('#conditioning-name').html('{% trans %}Volume{% endtrans %} ');
             $('#conditioning-volumeValue').html(infoConditioning[$('#conditioning_selected').val()]["volumeValue"]);
@@ -166,7 +167,7 @@
                     </table>
                 <br>
                 {% set picture = product.pictures|last %}
-                <span class="btn btn-default add-item wow swing" {% if picture is empty %}data-image="./img/product/defaultProduct.jpeg"{% else %} data-image="{{ picture.url}}"{% endif %}
+                <span id="span-ajout-panier" class="btn btn-default add-item wow swing" {% if picture is empty %}data-image="./img/product/defaultProduct.jpeg"{% else %} data-image="{{ picture.url}}"{% endif %}
                       data-name="{{ product.name }}" data-cost="0" data-id="{{ product.id }}">
                 <div id="ajout"><img alt="e-commerce" src="{{ asset('img/product/panier.png') }}" height="55"></div>
                 <span class="ti-shopping-cart"></span>{% trans %}Panier{% endtrans %}
