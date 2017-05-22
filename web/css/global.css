@@ -32,6 +32,10 @@
 .footer{
     background-color: #1e1e1e;
 }
+
+#footer-content{
+    padding-top: 50px;
+}
 form {
     display: inline-block;
 }.style_logo{
