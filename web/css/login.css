@@ -14,9 +14,14 @@
     color:red;
 }
 #content {
-    border: double;
+    border: double #c6a668;
     text-align: center;
     padding: 10px 50px 50px 50px;
     margin-top: 50px;
     box-sizing: content-box;
+}
+
+.form-control
+{
+    width: 100%;
 }
