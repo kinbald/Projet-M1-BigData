@@ -20,41 +20,43 @@
             </div>
         </div>
     </div>
+    <div id="autorization-producers-form">
         {{ form_start(form) }}
-    <div class="table-responsive table-template tableau_media">
-        <table class="table table-hover">
-            <thead class="thead-default">
-                <tr class="color-title">
-                    <th>Id</th>
-                    <th>{% trans %}Nom journaliste{% endtrans %}</th>
-                    <th>{% trans %}Justificatif (carte presse){% endtrans %}</th>
-                    <th>{% trans %}Justificatif (adresse du blog){% endtrans %}</th>
-                    <th>{% trans %}Droit d'accès au contenu Média{% endtrans %}</th>
-                    <th>{% trans %}Supprimer{% endtrans %}</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for media in medias %}
-                <tr>
-                    <td class="id">{{ media.id }}</td>
-                    <td class="nom">{{ media.companyName }}</td>
-                    <td class="justificatif-carte">{{ media.idPresse }}</td>
-                    <td class="justificatif-adresse">{{ media.urlBlog }}</td>
-                    <td class="droit">{{ form_widget(attribute(form, 'media_'~media.id))}}</td>
-                    <td class="droit">
-                        <a href="{{ path('media_delete', {id: media.id}) }}">
-                            <span class="glyphicon glyphicon-trash"></span>
-                        </a></td>
-                </tr>
-            {% endfor %}
-                    <tr>
-                        <td colspan="4"></td>
-                        <td>{{ form_widget(form.save) }}</td>
+        <div class="table-responsive table-template tableau_media">
+            <table class="table table-hover">
+                <thead class="thead-default">
+                    <tr class="color-title">
+                        <th>Id</th>
+                        <th>{% trans %}Nom journaliste{% endtrans %}</th>
+                        <th>{% trans %}Justificatif (carte presse){% endtrans %}</th>
+                        <th>{% trans %}Justificatif (adresse du blog){% endtrans %}</th>
+                        <th>{% trans %}Droit d'accès au contenu Média{% endtrans %}</th>
+                        <th>{% trans %}Supprimer{% endtrans %}</th>
                     </tr>
-            </tbody>
-        </table>
-    </div>
+                </thead>
+                <tbody>
+                {% for media in medias %}
+                    <tr>
+                        <td class="id">{{ media.id }}</td>
+                        <td class="nom">{{ media.companyName }}</td>
+                        <td class="justificatif-carte">{{ media.idPresse }}</td>
+                        <td class="justificatif-adresse">{{ media.urlBlog }}</td>
+                        <td class="droit">{{ form_widget(attribute(form, 'media_'~media.id))}}</td>
+                        <td class="droit">
+                            <a href="{{ path('media_delete', {id: media.id}) }}">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </a></td>
+                    </tr>
+                {% endfor %}
+                        <tr>
+                            <td colspan="4"></td>
+                            <td>{{ form_widget(form.save) }}</td>
+                        </tr>
+                </tbody>
+            </table>
+        </div>
         {{ form_end(form) }}
+    </div>
 {% endblock %}
 
 
