@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use Doctrine\Common\Util\Debug;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use ProductBundle\Entity\PictureUniverse;
 use ProductBundle\Entity\Universe;
@@ -36,21 +37,20 @@ class DefaultController extends Controller
             }
         }
 
-        $pictureArray = array();
         $em = $this->getDoctrine()->getManager();
         $universes = $em->getRepository('ProductBundle:Universe')->findAll();
-        foreach ($universes as $universe) {
-            $pictures=$universe->getPictures();
-            array_push($pictureArray, $pictures[0]);
 
-        }
+        $rep = $em->getRepository('ProductBundle:Recipe');
+        $query = $rep->createQueryBuilder('p')
+            ->setMaxResults(3)
+            ->getQuery();
+        $recipes = $query->getResult();
 
 
         return $this->render('AppBundle:Default:index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.root_dir') . '/..') . DIRECTORY_SEPARATOR,
             'universes' => $universes,
-            'product_pictures' => $pictureArray,
-            'newsletterForm' => $form->createView()
+            'newsletterForm' => $form->createView(),
+            'recipes' => $recipes
         ]);
     }
 

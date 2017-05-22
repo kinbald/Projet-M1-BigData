@@ -92,35 +92,18 @@
                 </div>
                 <div class="testimonials-slider text-center">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="testimonials-container shadow">
-                                <a href="http://www.marmiton.org/">
-                                    <span class="glyphicon glyphicon-cutlery" aria-hidden="true" style="font-size: 2em;"></span>
-                                <h2 class="wow fadeInUp" data-wow-delay=".4s">{% trans %}Lien vers site de recettes{% endtrans %} 1 <span>Fastcompany ltd.</span> </h2>
-                                <p class="wow fadeInUp" data-wow-delay=".6s"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-                                </a>
+                        {% for recipe in recipes %}
+                            <div class="swiper-slide">
+                                <div class="testimonials-container shadow">
+                                    <a href="{{ recipe.url }}">
+                                        <span class="glyphicon glyphicon-cutlery" aria-hidden="true" style="font-size: 2em;"></span>
+                                        <h2 class="wow fadeInUp" data-wow-delay=".4s">{{ recipe.name }}</h2>
+                                    </a>
+                                    <a href="{{ recipe.url }}" class="btn btn-primary btn-lg wow fadeInUp" data-wow-delay=".6s">Voir la recette</a>
+                                </div>
                             </div>
-                        </div>
+                        {% endfor %}
 
-                        <div class="swiper-slide">
-                            <div class="testimonials-container shadow">
-                                <a href="http://www.marmiton.org/">
-                                    <span class="glyphicon glyphicon-cutlery" aria-hidden="true" style="font-size: 2em;"></span>
-                                    <h2 class="wow fadeInUp" data-wow-delay=".4s">{% trans %}Lien vers site de recettes{% endtrans %} 2 <span>Fastcompany ltd.</span> </h2>
-                                    <p class="wow fadeInUp" data-wow-delay=".6s"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="swiper-slide">
-                            <div class="testimonials-container shadow">
-                                <a href="http://www.marmiton.org/">
-                                    <span class="glyphicon glyphicon-cutlery" aria-hidden="true" style="font-size: 2em;"></span>
-                                    <h2 class="wow fadeInUp" data-wow-delay=".4s">{% trans %}Lien vers site de recettes{% endtrans %} 3 <span>Fastcompany ltd.</span> </h2>
-                                    <p class="wow fadeInUp" data-wow-delay=".6s"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-                                </a>
-                            </div>
-                        </div>
                     </div>
                     <div class="testimonials-pagination"></div>
                     <div class="testimonials-slider-next right-arrow-negative"><span class="glyphicon glyphicon-chevron-right"></span></div>
