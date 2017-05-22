@@ -5,7 +5,7 @@ h1{
     margin-bottom: 80px;
 }
 
-img {
+.img-responsive {
     border-radius : 10px;
 }
 .caption {
