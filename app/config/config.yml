@@ -93,8 +93,11 @@ fos_user:
     service:
         user_manager: pugx_user_manager
     from_email:
-        address: "yourapp@yourapp.com"
-        sender_name: "Demo String"
+        address: "noreply@boxofficewines.xyz"
+        sender_name: "Box Office Wines"
+    registration:
+        confirmation:
+            enabled: true
 
 pugx_multi_user:
   users:

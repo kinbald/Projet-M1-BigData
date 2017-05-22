@@ -35,5 +35,9 @@ monolog:
 twig:
     globals:
         captcha_key: 6Lc7HCIUAAAAAHuOEmVf_zp6GeOYWxl14hehbqPM
+fos_user:
+    registration:
+        confirmation:
+            enabled: false
 #swiftmailer:
 #    delivery_address: me@example.com
