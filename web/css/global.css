@@ -28,6 +28,10 @@
 .color-textfooter{
     color: white;
 }
+
+.footer{
+    background-color: #1e1e1e;
+}
 form {
     display: inline-block;
 }.style_logo{
